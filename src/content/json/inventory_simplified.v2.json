@@ -1,0 +1,110 @@
+{
+	"_config" : {
+		"path" : "content/imgs/models/",
+		"colours" : ["red", "green", "blue"]
+	},
+
+	"mini":[{
+		
+		"model" : "3-door Hatch",
+		"img" : "hatch-3dr.jpg",
+		"topspeed" : 121,
+		"mpg" : 61.4,
+		"monthlycost" : 199,
+		"_config" : {
+			"cartype" : [1],
+			"capacity" : [1,3,4],
+			"load" : [2],
+			"lifestyle" : [1],
+			"options" : [2],
+			"performance" : "2, 3",
+			"economy" : 3,
+			"budget" : 1
+		}
+	},
+	{
+		"model" : "5-door Hatch",
+		"img" : "hatch-5dr.jpg",
+		"topspeed" : 118,
+		"mpg" : 83.1,
+		"monthlycost" : 199,		
+		"_config" : {
+			"cartype" : [1],
+			"capacity" : [1,3,4],
+			"load" : [3],
+			"lifestyle" : [1],
+			"options" : [2],
+			"performance" : 1,
+			"economy" : 1,
+			"budget" : 1
+		}
+	},
+	{
+		"model" : "Countryman",
+		"img" : "countryman.jpg",
+		"topspeed" : 130,
+		"mpg" : 62.8,
+		"monthlycost" : 209,
+		"_config" : {
+			"cartype" : [2],
+			"capacity" : [1,3,4],
+			"load" : [4],
+			"lifestyle" : [2],
+			"options" : [2],
+			"performance" : 2,
+			"economy" : 2,
+			"budget" : 2
+		}
+	},
+	{
+		"model" : "Paceman",
+		"img" : "paceman.jpg",
+		"topspeed" : 127,
+		"mpg" : 80.7,
+		"monthlycost" : 209,
+		"_config" : {
+			"cartype" : [2],
+			"capacity" : [1,3,4],
+			"load" : [2],
+			"lifestyle" : [2],
+			"options" : [2],
+			"performance" : 2,
+			"economy" : 2,
+			"budget" : 2
+		}
+	},
+	{
+		"model" : "Coupe",
+		"img" : "coupe.jpg",
+		"topspeed" : 146,
+		"mpg" : 49.6,
+		"monthlycost" : 259,
+		"_config" : {
+			"cartype" : [3],
+			"capacity" : [1,3,4],
+			"load" : [1],
+			"lifestyle" : [3],
+			"options" : [2],
+			"performance" : 2,
+			"economy" : 1,
+			"budget" : 3
+		}
+	},
+	{
+		"model" : "Roadster",
+		"img" : "roadster.jpg",
+		"topspeed" : 141,
+		"mpg" : 70.6,
+		"monthlycost" : 259,
+		"_config" : {
+			"cartype" : [3],
+			"capacity" : [1,3,4],
+			"load" : [1],
+			"lifestyle" : [4],
+			"options" : [2],
+			"performance" : 2,
+			"economy" : 1,
+			"budget" : 3
+		}
+	}
+]}
