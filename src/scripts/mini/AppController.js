@@ -31,21 +31,6 @@ require(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
 
 		/* App Init
 		*************************/
-		//GET > INVENTORY ================================================
-		var url = "content/json/inventory_simplified.json";
-		var promise = $.getJSON(url);
-		var data;
-
-		promise.progress(function(){
-			console.log(" :LOADING: ");
-		}).done(function(_data){
-
-			startApp(_data);
-
-		}).fail(function(){
-			console.log("FAIL WHALE");
-		});
-
 
 		/* Bind events
 		*************************/

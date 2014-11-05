@@ -1,0 +1,202 @@
+/*
+*	Compressed and generated using grunt.js sass/compress build tools
+*
+*	@title: 	styles.main.scss (partial)
+* 	@project: 	
+* 	@author: 	
+**/
+
+/* =============================================================================
+	Core
+	========================================================================== */
+html, body {
+	background: #1E1E1E none;
+}
+
+body{
+	
+}
+
+
+/* =============================================================================
+	Page
+	========================================================================== */
+#app-page{
+
+	max-width:$pageWidth;
+	margin:0 auto;
+	padding-left:$halfgutter;
+	padding-right:$halfgutter;
+}
+
+#app-page{
+	width:960px;
+	margin:0 auto;
+}
+
+#app-content{
+	background-color:$black;
+	margin:$margin 0;
+}
+
+/* =============================================================================
+	
+	========================================================================== */
+#results{
+	width:40%;
+	float:right;
+}
+
+#interface{
+	width:60%;
+}
+
+
+form fieldset{
+	background-color:#000;
+	padding:0 20px;
+	margin-top:0;
+
+	label, legend{
+		color:#FFF;
+	}
+
+	select{
+		min-width:160px;
+	}
+
+	input[type="number"]{
+		width:240px;
+	}
+
+	label span{
+		color:rgb(30,158,218);
+	}
+
+	label :checked ~ .button span,
+	label .checked ~ .button span,
+	label input[checked] ~ .button span,
+	label input[checked=checked] ~ .button span{
+		color:#FFF;
+	}
+
+	.radio,
+	.checkbox{
+
+		input[type="radio"],
+		input[type="checkbox"]{
+			display:none;
+		}
+
+		label > span{
+			background-color:$white;
+			margin:10px;
+
+			@include inline-block();
+
+			& > span{
+				padding:3px 10px;
+				display:block;
+			}
+		}
+	}
+}
+
+#loadbay{
+	margin:20px 0;
+	height:100%;
+	padding:20px;
+
+	p{
+		font-size:24px;
+		color:#FFF;
+	}
+}
+
+fieldset label span,
+select{
+
+	.cyan &{color:cyan;}
+	.orange &{color:orange;}
+	.indigo &{color:indigo;}
+	.white &{color:white;}
+	.red &{color:red;}
+	.blue &{color:blue;}
+	.green &{color:green;}
+	.black &{color:black;}
+	.yellow &{color:yellow;}
+	.cream &{color:cream;}
+	.silver &{color:silver;}
+	.crimson &{color:crimson;}
+	.peach &{color:peach;}
+	.brown &{color:brown;}
+	.grey &{color:grey;}
+
+	@include transition(color 0.4s ease-in-out);
+}
+
+.radio .control > label input:checked ~ .button,
+.radio .control-group > label input:checked ~ .button,
+.radio .control li > label input:checked ~ .button,
+.radio .control-group li > label input:checked ~ .button,
+.checkbox .control > label input:checked ~ .button,
+.checkbox .control-group > label input:checked ~ .button,
+.checkbox .control li > label input:checked ~ .button,
+.checkbox .control-group li > label input:checked ~ .button,
+
+input.primary[type="submit"], button.primary,
+div.button.primary, div.btn.primary{
+
+	.cyan &{background-color:cyan;}
+	.orange &{background-color:orange;}
+	.indigo &{background-color:indigo;}
+	.white &{background-color:white;}
+	.red &{background-color:red;}
+	.blue &{background-color:blue;}
+	.green &{background-color:green;}
+	.black &{background-color:black;}
+	.yellow &{background-color:yellow;}
+	.cream &{background-color:cream;}
+	.silver &{background-color:silver;}
+	.crimson &{background-color:crimson;}
+	.peach &{background-color:peach;}
+	.brown &{background-color:brown;}
+	.grey &{background-color:grey;}
+
+	@include transition(background-color 0.4s ease-in-out);
+}
+
+input.primary[type="submit"], button.primary,
+div.button.primary, div.btn.primary{
+	width:85px;
+	height:85px;
+	@include border-radius(50%);
+}
+
+.radio .control > label input:hover ~ .button,
+.radio .control-group > label input:hover ~ .button,
+.radio .control li > label input:hover ~ .button,
+.radio .control-group li > label input:hover ~ .button,
+.checkbox .control > label input:hover ~ .button,
+.checkbox .control-group > label input:hover ~ .button,
+.checkbox .control li > label input:hover ~ .button,
+.checkbox .control-group li > label input:hover ~ .button{
+
+	.cyan &{border-color:cyan;}
+	.orange &{border-color:orange;}
+	.indigo &{border-color:indigo;}
+	.white &{border-color:white;}
+	.red &{border-color:red;}
+	.blue &{border-color:blue;}
+	.green &{border-color:green;}
+	.black &{border-color:black;}
+	.yellow &{border-color:yellow;}
+	.cream &{border-color:cream;}
+	.silver &{border-color:silver;}
+	.crimson &{border-color:crimson;}
+	.peach &{border-color:peach;}
+	.brown &{border-color:brown;}
+	.grey &{border-color:grey;}
+
+	@include transition(border-color 0.4s ease-in-out);
+}

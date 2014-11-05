@@ -1,32 +1,32 @@
 /*
 *	Compressed and generated using grunt.js sass/compress build tools
 *
-*	@title: 	main.scss
+*	@title: 	app.palette.scss (partial)
 * 	@project: 	
-* 	@author: 	
+* 	@author:
 **/
 
 
 /* =============================================================================
-	Vendor pre-processed styles
+	Primary / Brand
 	========================================================================== */
-@import 'compass/css3';									//http://compass-style.org
+$white: 	rgb(255,255,255) 	!default;
+$black: 	rgb(0,0,0) 			!default;
+
+$cyan: 		rgb(30,158,218) 	!default; 		//#1e9eda
+
+/* =============================================================================
+	Secondary
+	========================================================================== */
 
 
 /* =============================================================================
-	Config
+	Tertiary
 	========================================================================== */
-@import 'app.vars';
-@import 'app.typography';
-
-/* =============================================================================
-	Core styles
-	========================================================================== */
-@import 'core.normalize';
-@import 'core.reset';
-
-
-/* =============================================================================
-	Application styles
-	========================================================================== */
-@import 'styles.main';
+$yellow: 	rgb(255,204,40)		!default; 		//#ffcc28
+$green: 	rgb(79,175,75)		!default; 		//#4faf4b
+$red: 		rgb(224,33,37)		!default; 		//#e02125
+$blue: 		rgb(0,38,75) 		!default; 		//#005585
+$purple: 	rgb(180,67,143)		!default; 		//#b4438f
+$grey: 		rgb(113,114,113) 	!default; 		//#717271
+$silver: 	rgb(233,232,230) 	!default; 		//#e9e8e6

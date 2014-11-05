@@ -1,0 +1,59 @@
+/*
+*	Compressed and generated using grunt.js sass/compress build tools
+*
+*	@title: 	app.vars.scss (partial)
+* 	@project: 	Barclays Escalator
+* 	@author: 	
+**/
+
+//SassScript datatypes = numbers(ints,decimal,units[px,em,rem,%]), strings, colours(string,hex,rgba,hsla), boolean, null, delimited data sets(csv, space delimited)
+//SassScript interpolation = #{str}, use variables in selectors and property names + to escape a string(forgo "", '' wrapping) + encapsulate operations for dynamic values 
+
+//== and != equality operators on all datatypes, + can be used to concatenate strings, arithmetic operators (+,-,*,/,%) and relational operators(<,>,<=,>=) on numbers - not division operations should be surrounded in parentheses as '/'' is an accepted css convention
+
+
+/* =============================================================================
+	Paths
+	========================================================================== */
+$fontpath: '../fonts/';
+$imgpath: '../img/';
+
+
+/* =============================================================================
+	Core / Base values - base6
+	========================================================================== */
+$pageWidth: 					1204px  						!default;
+
+$margin: 						20px 							!default;
+$marginpercent: 				($margin/$pageWidth)*100 		!default;
+$marginrem: 	 				2rem 							!default;
+$halfmargin: 					$margin/2 						!default;
+$halfmarginpercent: 			($halfmargin/$pageWidth)*100 	!default;
+$halfmarginrem: 				$marginrem/2 					!default;
+
+$padding: 						20px 							!default;
+$paddingpercent: 				($padding/$pageWidth)*100 		!default;
+$paddingrem: 					2rem 							!default;
+$halfpadding: 					$padding/2 						!default;
+$halfpaddingpercent: 			($halfpadding/$pageWidth)*100 	!default;
+$halfpaddingrem: 				$paddingrem/2 					!default;
+
+$grid: 							12 								!default;
+$gutter: 						40px 							!default;
+$halfgutter: 					$gutter/2 						!default;
+
+$baseSpacing: 					0.6rem 							!default; //6px - DEVNOTE: mixin with < ie9 fallback in px;
+
+$baseFontSize: 					16px 							!default;
+$baseFontSizeRem: 				1.6rem 							!default;
+$baseLineHeight: 				1.5 							!default; //150% - unitless to mitigate inheritence
+
+$borderRadius: 					3px 							!default;
+$default-border-radius: 		1px 							!default; //compass default
+$borderWeight: 					2px 							!default;
+
+
+/* =============================================================================
+	Palette
+	========================================================================== */
+@import 'app.palette';

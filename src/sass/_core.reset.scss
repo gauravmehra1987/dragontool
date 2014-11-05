@@ -1,0 +1,109 @@
+/*
+*	Compressed and generated using grunt.js sass/compass build tools
+*
+*	@title: 		core.reset.scss (partial)
+* 	@project: 		pix8 reset
+* 	@author: 		Jonathan Brincat@pix8.co.uk, <jonathan@pix8.co.uk>
+*
+*	@description: 	
+*					
+**/
+
+@charset "UTF-8";
+
+/* =============================================================================
+	Root
+	========================================================================== */
+html{background-color:$black; font:62.5%/1 $regular; overflow-y:scroll;}
+body{font-family: $regular; color:$grey; line-height:1.5;}
+
+
+/* =============================================================================
+	Headings
+	========================================================================== */
+h1, h2, h3, h4, h5, h6{
+	font-family: $regular;
+	line-height:1.25;
+	font-weight:normal;
+	margin:$margin 0;
+
+	@include font-size($baseFontSizeRem);
+	
+	a{}
+
+	span{
+		&[class]{display:inline;}
+	}
+}
+
+h1{		@include font-size(4.2rem);} 		//42px
+h2{ 	@include font-size(3.6rem);} 		//36px
+h3{ 	@include font-size(2.8rem);} 		//28px
+h4{ 	@include font-size(2rem);} 			//20px
+h5{ 	@include font-size(1.8rem);} 		//18px
+h6{ 	@include font-size(1.6rem);} 		//16px
+
+/* =============================================================================
+	Core
+	========================================================================== */
+a{
+	text-decoration:none;
+
+	&:link{		color:$cyan;}
+	&:visited{	color:$cyan;}
+	&:hover{	text-decoration:underline;}
+	&:focus{	outline-color:$cyan;}
+	&:active{}
+}
+
+img{
+	max-width:100%;
+	height:auto;
+
+	a{border:0 none;}
+}
+
+p{
+	font-family:$regular;
+	@include font-size($baseFontSizeRem);
+
+	a{}
+}
+
+p, li{
+	margin:$margin 0; 						//18px
+}
+
+/* =============================================================================
+	Form
+	========================================================================== */
+form{}
+fieldset{}
+
+legend,
+label,
+.label{
+	font-family:$regular;
+	@include font-size($baseFontSizeRem);
+	color:$grey;
+	margin:$margin 0;
+}
+
+button, input, select, option, textarea{
+	font-family:$regular;
+	@include font-size($baseFontSizeRem);
+	color:$grey;
+}
+
+button{
+	margin:$margin 0;
+	padding:$halfpadding $padding;
+}
+
+button, input, select, textarea{
+	margin:$margin 0;
+}
+
+select{
+	display:block;
+}
