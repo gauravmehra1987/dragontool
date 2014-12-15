@@ -1,0 +1,93 @@
+// Type
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl
+form,
+figure,
+blockquote,
+pre {
+
+	.remove-last-margin;
+
+	line-height: @fontSizeLarge;
+
+}
+
+a {
+
+	color: @accent;
+	text-decoration: none;
+
+	&:hover { text-decoration: underline; }
+
+}
+
+// Headings
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+	font-family: @fontAlt;
+	font-size: @fontSizeLarger;
+	font-weight: normal;
+	line-height: 1;
+
+}
+
+h6 {
+
+	font-size: @fontSizeSmall;
+	font-weight: bold;
+	text-transform: uppercase;
+
+}
+
+// Utilities
+
+img {
+
+	display: block;
+
+	height: auto;
+	width: 100%;
+
+}
+
+hr {
+
+	background: @grayLighter;
+	border: none;
+	display: block;
+	margin: @margin 0;
+
+	height: 1px;
+	width: auto;
+
+}
+
+pre, code {
+
+	background: linen;
+	color: @gray;
+	font-family: @fontMono;
+	font-size: @fontSizeSmall;
+	white-space: pre;
+
+	a:link,
+	a:visited { color: @grayDark; }
+
+}
+
+pre { padding: @margin; }
