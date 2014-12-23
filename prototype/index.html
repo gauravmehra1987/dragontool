@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../assets/main.css">
+	
+</head>
+<body><h1>Mini Dataset Logic test</h1>
+	<form>
+		<p>Q1: Who will be travelling most often in your MINI?</p>
+		<select name="capacity" id="capacity">
+			<option value="0">Select</option>
+			<option value="1">1 - 2 people</option>
+			<option value="2">1-2 adults/1-2 children (w' car seat)</option>
+			<option value="3">1-2 adults/1-2 children</option>
+			<option value="4">3 - 4 adults</option>
+			<option value="5">5 people / family</option>
+		</select><br />
+		<input type="checkbox" name="eggs" value="John">Alien 
+		<input type="checkbox" name="eggs" value="2">Cat
+		<input type="checkbox" name="eggs" value="3">Dog<br>
+
+		<br /><br />
+
+		<p>Q2: How would you describe the typical use of the car?</p>
+		<select name="luggage" id="luggage">
+			<option value="0">Select</option>
+			<option value="1">Minimalist</option>
+			<option value="2">Light packer</option>
+			<option value="3">Lugger</option>
+			<option value="4">Big loader</option>
+		</select>
+		<br /><br />
+
+		<p>Q3: Which options would you like to have:</p>
+			<input type="checkbox" name="options" value="1">4WD<br>
+			<input type="checkbox" name="options" value="2">Drop top<br>
+			<input type="checkbox" name="options" value="3">Elevated driving position<br>
+			<input type="checkbox" name="options" value="4">Teleportation<br>
+		<br />
+		<br />
+
+		<p>Q4: What is your budget for your new MINI?</p>
+		<select name="price_scale" id="price_scale">
+			<option value="0">Select</option>
+			<option value="5">up to 50</option>
+			<option value="1">1 Up to 200</option>
+			<option value="2">2 Up to 250</option>
+			<option value="3">3 Up to 300</option>
+			<option value="4">4 300 +</option>
+		</select>
+		<br /><br />
+
+		<p>Q5: Performance for your new MINI?</p>
+		<select name="performance" id="performance">
+			<option value="0">Select</option>
+			<option value="1">1 = 105 - 120mph (nippy)</option>
+			<option value="2">2 = 121 - 130 (nippier)</option>
+			<option value="3">3 = 131 - 140 (quick)</option>
+			<option value="4">4 = 141 - 145 + (woohooo)</option>
+			<option value="5">Lightspeed</option>
+		</select>
+		<br /><br />
+
+		<p>Q6: Economy for your new MINI?</p>
+		<select name="economy" id="economy">
+			<option value="0">Select</option>
+			<option value="1">1 = 25 - 45 (min economic)</option>
+			<option value="2">2 = 46 - 60</option>
+			<option value="3">3 = 61 - 69</option>
+			<option value="4">4 = 70 - 80 + (max economic)</option>
+		</select>
+		<br /><br />
+
+		<p>Q7: How would you describe the typical use of the car?</p>
+		<select name="useofcar" id="useofcar">
+			<option value="0">Select</option>
+			<option value="1">Urbanite</option>
+			<option value="2">Beach Bum</option>
+			<option value="3">Mountain ranger</option>
+			<option value="4">Junleist</option>
+		</select>
+		<br /><br />
+
+		<input type="submit" value="Submit" id="submit">
+	</form>
+	<div id="panel">
+		<h3><b>Showing <span></span> Cars </b></h3>
+		<ul></ul>
+	</div>
+	<div id="output">
+		<script id="template" type="text/x-handlebars-template">
+			<div class="output-cont">
+				{{#each this}}
+
+					<div style="overflow:hidden; width:600px;">
+						<p style="float: left; width:226px; margin-right:30px;">
+							name: {{Display_name}}<br/>
+							model: {{Model_code}}<br/>
+							capacity : {{Capacity_scale}}<br/>
+							luggage: {{Luggage_scale}}<br/>
+							options: {{Options}}<br/>
+							price_scale: {{price_scale}}<br/>
+							performance: {{Performance_scale}}<br/>
+							economy: {{Economy_scale}}<br/>
+							useofcar: {{Useage_scale}}<br/>
+						</p>
+
+						<p style="float: left; width:300px; margin-right:30px; clear:right;">
+							Alternative 1: {{Alt_1}}<br/>
+							Alternative 2: {{Alt_2}}<br/>
+							Alternative 3: {{Alt_3}}<br/>
+						</p>
+					</div>
+
+				{{/each}}
+			</div>
+		</script>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="../assets/handlebars.js"></script>
+	<script src="../assets/master.js"></script>
+		<script type="text/javascript">
+			if (typeof jQuery !== "undefined") {
+				$(document).ready(function () {
+					Iris.miniDashboard.init();
+				});
+			}
+		</script>
+</body>
+</html>
