@@ -1,0 +1,52 @@
+.control.mpg {
+
+	border: solid 25px @dialGray;
+	position: relative;
+
+	height: 150px;
+	width: 150px;
+
+	.scale, .control-bg, .indicators, .knob, .arrow { .align-centers; } // Center all layers
+
+	.knob { .sprite( @_mpg_knob ); }
+	.indicators { .sprite( @_mpg_off ); }
+	.arrow { .sprite( @_mpg_knob_arrow ); }
+
+	.value {
+
+		.tc;
+
+		background: #1a1a1a;
+		border: solid 1px darken( @white, 85% );
+		border-radius: 3px;
+		box-shadow: 0 6px 10px @black inset;
+		color: @white;
+		font-weight: bold;
+		margin: 0 auto;
+		padding: 3px;
+		position: absolute;
+
+		left: 0;
+		bottom: -10px;
+		right: 0;
+
+		width: 2em;
+
+
+	}
+
+	&.scale-1 .indicators { .sprite( @_mpg_01 ); }
+	&.scale-2 .indicators { .sprite( @_mpg_02 ); }
+	&.scale-3 .indicators { .sprite( @_mpg_03 ); }
+	&.scale-4 .indicators { .sprite( @_mpg_04 ); }
+	&.scale-5 .indicators { .sprite( @_mpg_05 ); }
+	&.scale-6 .indicators { .sprite( @_mpg_06 ); }
+	&.scale-7 .indicators { .sprite( @_mpg_07 ); }
+	&.scale-8 .indicators { .sprite( @_mpg_08 ); }
+	&.scale-9 .indicators { .sprite( @_mpg_09 ); }
+	&.scale-10 .indicators { .sprite( @_mpg_10 ); }
+	&.scale-11 .indicators { .sprite( @_mpg_11 ); }
+	&.scale-12 .indicators { .sprite( @_mpg_12 ); }
+	&.scale-13 .indicators { .sprite( @_mpg_13 ); }
+
+}

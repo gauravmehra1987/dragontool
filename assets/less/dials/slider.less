@@ -1,0 +1,56 @@
+// .handle - bottom controls position
+// .control-bg - height controls position
+
+.control.slider {
+
+	background: @dialGray;
+	position: relative;
+
+	height: 500px;
+	width: 200px;
+
+	.bg, .wrapper, .control-bg-wrapper, .mask, .handle { .align-centers; } // Center all layers
+
+	.bg { .sprite( @range-bg ); }
+	.mask { .sprite( @range-mask ); }	
+	.handle {
+
+		.sprite( @range-handle );
+
+		margin-bottom: -( 56px / 2 );
+
+		top: auto;
+		bottom: 0%;
+
+	}
+
+	.wrapper {
+
+		overflow: hidden;
+
+		height: @range-bg-height + 56;
+		width: @range-bg-width;
+
+	}
+
+	.control-bg-wrapper {
+
+		max-height: @range-bg-height;
+
+		height: @range-bg-height;
+		width: @range-bg-width;
+
+		.control-bg {
+
+			position: absolute;
+
+			bottom: 0;
+
+			height: 0%;
+			width: 100%
+
+		}
+
+	}
+
+}

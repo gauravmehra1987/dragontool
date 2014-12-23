@@ -1,0 +1,135 @@
+@import 'dials/slots';
+@import 'dials/mpg';
+@import 'dials/luggage';
+@import 'dials/options';
+@import 'dials/slider';
+
+.dial-control {
+
+	&:before {
+
+		.tc;
+
+		background: darken( @dialGray, 10% );
+		color: @grayDarker;
+		content: 'Dial title';
+		font-size: 14px;
+		font-weight: bold;
+		display: block;
+		line-height: 30px;
+		text-transform: uppercase;
+		
+		height: 30px;
+
+	}
+
+}
+
+#debug {
+
+	position: absolute;
+
+	top: @margin;
+	left: @margin;
+
+	input, button { width: 100%; }
+
+	input {
+
+		.placeholder( @grayDarker );
+
+		background: lighten( @black, 10% );
+		border: 0;
+		clear: both;
+		color: @grayDark;
+		display: block;
+		margin-bottom: @margin;
+
+	}
+
+}
+
+#bgcontrol {
+
+	color: @gray;
+	padding: @margin;
+
+	input { margin: 0 @margin / 2; }
+
+}
+
+.control-bg {
+
+	.transition( background-color 3s linear );
+
+	background: purple;
+
+}
+
+#dashboard {
+
+	margin: auto;
+	overflow: hidden;
+
+	width: 800px;
+
+}
+
+#dials_left, #dials_middle, #dials_right { float: left; }
+
+#dials_left { width: 400px; }
+#dials_middle { width: 200px; }
+#dials_right { width: 200px; }
+
+#dial_m,
+#dial_l { float: left; }
+
+#dial_b { clear: both; }
+
+#dial_s, #dial_v { background: @dialGray; }
+
+#dial_s {
+
+	height: 240px;
+	width: 400px;
+
+	.controls {
+
+		display: table;
+		margin: 20px auto;
+
+		.control {
+
+			float: left;
+			margin: 0 5px 0 0;
+
+			&:last-of-type { margin: 0; }
+
+		}
+
+	}
+
+	#rnd {
+
+		display: table;
+		margin: 20px auto;
+
+	}
+
+}
+
+#dial_v {
+
+	position: relative;
+
+	height: 190px;
+
+	.control.slot {
+
+		.align-centers;
+
+		.slot { text-transform: uppercase; }
+
+	}
+
+}

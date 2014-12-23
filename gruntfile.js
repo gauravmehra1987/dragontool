@@ -73,10 +73,17 @@ module.exports = function( grunt ) {
 
 					// List bower components
 					
+					paths.bower + 'fastclick/lib/fastclick.js',
+					paths.bower + 'underscore/underscore.js',
+					paths.bower + 'hammerjs/hammer.js',
 					paths.bower + 'jquery/dist/jquery.js',
 					paths.bower + 'jquery.browser/dist/jquery.browser.js',
-					paths.bower + 'fancybox/source/jquery.fancybox.js',
-					paths.bower + 'slick.js/slick/slick.js',
+					// paths.bower + 'fancybox/source/jquery.fancybox.js',
+					// paths.bower + 'slick.js/slick/slick.js',
+					'assets/js/src/ThrowPropsPlugin.js',
+					paths.bower + 'greensock/src/uncompressed/plugins/CSSPlugin.js',
+					paths.bower + 'greensock/src/uncompressed/TweenLite.js',
+					paths.bower + 'greensock/src/uncompressed/utils/Draggable.js',
 
 				],
 			
@@ -91,7 +98,6 @@ module.exports = function( grunt ) {
 					// List scripts
 					
 					'assets/js/src/config.js',
-					'assets/js/src/plugins.js',
 					'assets/js/src/social.js',
 					'assets/js/src/logic.js',
 					'assets/js/src/ui.js',
@@ -109,7 +115,6 @@ module.exports = function( grunt ) {
 					// First IE-specific libraries
 
 					paths.bower + 'html5shiv/dist/html5shiv.js',
-					paths.bower + 'jquery-migrate/jquery-migrate.js',
 
 					// Then the script
 
@@ -227,6 +232,20 @@ module.exports = function( grunt ) {
 
 		},
 
+		// Sprites
+
+		sprite: {
+
+			all: {
+			
+				src: 'assets/sprites/*.png',
+				dest: 'assets/img/sprites/sprites.png',
+				destCss: 'assets/less/sprites.less'
+
+			}
+
+		},
+
 		// Watch file changes
 		
 		watch: {
@@ -249,6 +268,14 @@ module.exports = function( grunt ) {
 				files: [ paths.fontello + '/config.json' ],
 
 				tasks: [ 'icons' ]
+			
+			},
+
+			sprites: {
+
+				files: [ 'assets/sprites/*.*' ],
+
+				tasks: [ 'images' ]
 			
 			},
 
@@ -299,6 +326,13 @@ module.exports = function( grunt ) {
 
 			],
 
+			less: [
+
+				'assets/less/icon-codes.less',
+				'assets/less/sprites.less',
+
+			],
+
 			css: [ 'assets/css' ],
 
 			other: [ '**/.DS_Store' ]
@@ -324,7 +358,7 @@ module.exports = function( grunt ) {
 
 	} );
 
-// Load modules
+	// Load modules
 	
 	grunt.loadNpmTasks( 'grunt-contrib-less' );
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
@@ -334,6 +368,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-fontello' );
+	grunt.loadNpmTasks( 'grunt-spritesmith' );
 	grunt.loadNpmTasks( 'grunt-newer' );
 	grunt.loadNpmTasks( 'grunt-notify' );
 
@@ -346,6 +381,45 @@ module.exports = function( grunt ) {
 		'images',
 		'dev',
 		'watch'
+
+	] );
+
+	// Other tasks
+
+	grunt.registerTask( 'icons', [
+
+		'clean:fonts',
+		'fontello',
+		'fontello-less'
+
+	] );
+
+	grunt.registerTask( 'images', [
+
+		'clean:images',
+		'sprites',
+		'imagemin',
+		'copy',
+		'clean:optimized'
+
+	] );
+
+	grunt.registerTask( 'dev', [
+
+		'less:dev',
+		'newer:concat',
+		'notify',
+
+	] );
+
+	grunt.registerTask( 'build', [
+		
+		'clean',
+		'icons',
+		'less:dist',
+		'concat',
+		'uglify',
+		'images',
 
 	] );
 
@@ -391,42 +465,7 @@ module.exports = function( grunt ) {
 
 	// Other tasks 
 	
+	grunt.registerTask( 'sprites', 'sprite' );
 	grunt.registerTask( 'styles', 'less:dev' );
-
-	grunt.registerTask( 'icons', [
-
-		'clean:fonts',
-		'fontello',
-		'fontello-less'
-
-	] );
-
-	grunt.registerTask( 'images', [
-
-		'imagemin',
-		'clean:images',
-		'copy',
-		'clean:optimized'
-
-	] );
-
-	grunt.registerTask( 'dev', [
-
-		'less:dev',
-		'newer:concat',
-		'notify',
-
-	] );
-
-	grunt.registerTask( 'build', [
-		
-		'clean',
-		'icons',
-		'less:dist',
-		'concat',
-		'uglify',
-		'images',
-
-	] );
 
 };

@@ -18,13 +18,16 @@
   "dependencies": {
     "animate.css": "*",
     "fancybox": "~2.1.5",
-    "fastclick": "*",
+    "fastclick": "~1.0.3",
     "html5shiv": "*",
-    "jquery-migrate": "*",
     "jquery.browser": "*",
     "lesshat": "*",
     "modernizr": "*",
     "normalize-css": "*",
-    "slick.js": "~1.3.7"
+    "slick.js": "~1.3.7",
+    "greensock": "~1.15.0",
+    "jquery": "1.11.1",
+    "underscore": "~1.7.0",
+    "hammerjs": "~2.0.4"
   }
 }

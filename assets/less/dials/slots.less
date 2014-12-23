@@ -1,0 +1,54 @@
+.control.slot {
+
+	background: black;
+	overflow: hidden;
+	
+	height: 75px;
+	width: 55px;
+
+	.slots {
+
+		.transition( top 0.6s );
+		.translate3d;
+
+		cursor: -webkit-grab;
+		cursor: -moz-grab;
+		overflow: hidden;
+		position: relative;
+
+		top: 0;
+
+	}
+
+	.slot {
+
+		background: @gray;
+		position: relative;
+
+		height: 75px;
+		width: 55px;
+
+		span {
+
+			.align-centers;
+			.tc;
+
+			font-size: 24px;
+			font-weight: bold;
+			line-height: 75px;
+
+		}
+
+		&:nth-child( odd ) { background: @grayLighter; }
+
+	}
+
+	&.slot-wide {
+
+		&, .slot { width: 120px; }
+
+	}
+
+	&.dragging .slots { .transition( none ); }
+
+}
