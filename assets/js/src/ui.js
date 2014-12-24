@@ -1,22 +1,43 @@
-FastClick.attach( document.body );
+function scale( el, targetWidth ) {
+
+	var elWidth	= $( el ).outerWidth();
+	var scale	= ( targetWidth / elWidth );
+
+	$( el ).css( {
+
+		'transform': 'scale(' + scale + ')',
+		'transform-origin': '0 0',
+
+	} );
+
+}
 
 // BG changer
 
-$( '#bgcontrol input' ).on( 'change', function( e ) {
+$( '#bgcontrol input' ).on( 'change', function( e ) { var color = $( this ).val(); $( '.control-bg' ).css( 'background-color', color ); } );
 
-	var color = $( this ).val();
+// ################################################## //
+//
+// FastClick & some global variables
+//
+// ################################################## //
 
-	$( '.control-bg' ).css( 'background-color', color );
+FastClick.attach( document.body );
 
-} );
+// Variables
 
-// Some global variables
+var slot_1		= '#dial_s .control.slot:nth-of-type( 1 ) .slots';
+var slot_2		= '#dial_s .control.slot:nth-of-type( 2 ) .slots';
+var slot_3		= '#dial_s .control.slot:nth-of-type( 3 ) .slots';
+var slot_4		= '#dial_s .control.slot:nth-of-type( 4 ) .slots';
+var slot_5		= '#dial_s .control.slot:nth-of-type( 5 ) .slots';
+var speed_slot	= '#dial_v .control.slot .slots';
 
-var slotStartPosition	= 0;
-var currentSlot			= 0;
-var sh					= 75;
-
+// ################################################## //
+//
 // Read values from controls
+//
+// ################################################## //
 
 function getValues() {
 
@@ -27,10 +48,10 @@ function getValues() {
 	var $s = $( '#v_speed' );
 	var $p = $( '#v_price' );
 
-	$c.val( getSlotValue( $slot_1 )[ 1 ] + getSlotValue( $slot_2 )[ 1 ] + getSlotValue( $slot_3 )[ 1 ] + getSlotValue( $slot_4 )[ 1 ] + getSlotValue( $slot_5 )[ 1 ] );
+	$c.val( getSlotValue( slot_1 ) + getSlotValue( slot_2 ) + getSlotValue( slot_3 ) + getSlotValue( slot_4 ) + getSlotValue( slot_5 ) );
 	$m.val( mpg_knob._value );
 	$l.val( $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim() );
-	$s.val( getSlotValue( $speed )[ 1 ] );
+	$s.val( getSlotValue( speed_slot ) );
 	$o.val( getOptions() );
 	$p.val( getPriceValue( price_slider.y )[ 1 ] );
 
@@ -43,19 +64,19 @@ function getOptions() {
 	var $inputs = $( '.control.options input:checked' );
 	var values = [];
 
-	$inputs.each( function( i, el ) {
+	$inputs.each( function( i, el ) { values.push( $( this ).val() ); } );
 
-		values.push( $( this ).val() );
-
-	} );
-
-	if( values.length <= 0 ) values = 'none selected';
+	if( values.length <= 0 ) values = 'none';
 
 	return values;
 
 }
 
+// ################################################## //
+//
 // Price slider
+//
+// ################################################## //
 
 function getPriceValue( v ) {
 
@@ -86,119 +107,35 @@ var price_slider	= new Draggable( price_el, {
 
 } );
 
+// ################################################## //
+//
 // Slots
+//
+// ################################################## //
 
-var $slot_1 = $( '#dial_s .control:nth-of-type( 1 )' );
-var $slot_2 = $( '#dial_s .control:nth-of-type( 2 )' );
-var $slot_3 = $( '#dial_s .control:nth-of-type( 3 )' );
-var $slot_4 = $( '#dial_s .control:nth-of-type( 4 )' );
-var $slot_5 = $( '#dial_s .control:nth-of-type( 5 )' );
+function getSlotValue( slot ) {
 
-var $speed = $( '#dial_v .control' );
+	var slotHeight	= $( slot ).find( '.slot:first' ).height();
+	var draggableY	= parseInt( Draggable.get( slot ).y ) || 0;
+	var activeSlot	= Math.abs( draggableY ) / slotHeight;
 
-// Hammer
-
-function getSlotValue( $slot ) {
-
-	var slotIndex	= getCurrentIndex( $slot );
-	var label		= $( $slot.find( '.slot' )[ slotIndex ] ).text()
-
-	return [ slotIndex, label ];
+	return $( slot ).find( '.slot' ).eq( activeSlot ).text();
 
 }
 
-function slotExists( $slot, slotIndex ) { return ( slotIndex >=0 && slotIndex < $slot.find( '.slot' ).length ); }
+function setSlotValue( index, slot ) {
 
-function getCurrentIndex( $slot ) { return parseInt( Math.abs( parseInt( $slot.find( '.slots' ).css( 'top' ) ) ) / sh ); }
+	var slotHeight	= $( slot ).find( '.slot:first' ).height();
+	var draggable	= Draggable.get( $( slot ) );
 
-function showSlot( which, $slot ) { return $slot.find( '.slots' ).css( 'top', -( sh * ( which ) ) ); }
+	TweenLite.to( $( slot ).get( 0 ), 0.6, {
 
-function initSlot( $slot ) {
+		y: -( index * slotHeight ),
+		onComplete: function() {
 
-	var handlePan = function( e, $slot ) {
+			draggable.update();
 
-		var delta = e.deltaY;
-
-		switch( e.type ) {
-
-			// Store original position
-
-			case 'panstart':
-
-				slotStartPosition	= parseInt( $slot.find( '.slots' ).css( 'top' ) );
-				currentSlot			= getCurrentIndex( $slot );
-
-			break;
-
-			// Remove dragging class and snap to the slot
-
-			case 'panend':
-
-				$slot.removeClass( 'dragging' );
-
-				console.log( currentSlot );
-
-				var slotEndPosition	= parseInt( $slot.find( '.slots' ).css( 'top' ) );
-				var direction		= slotStartPosition - slotEndPosition;
-				var targetSlot		= ( direction >= 0 ) ? currentSlot + 1 : currentSlot - 1;
-
-				setTimeout( function() {
-
-					if( Math.abs( direction ) > sh / 4 ) {
-
-						( slotExists( $slot, targetSlot ) ) ? showSlot( targetSlot, $slot ) : showSlot( currentSlot, $slot );
-
-					}
-
-					else {
-
-						showSlot( currentSlot, $slot );
-
-					}
-
-				}, 0 );
-
-			break;
-
-			// Move slot
-
-			case 'panmove':
-
-				if( Math.abs( delta ) >= 0 && Math.abs( delta ) <= sh ) $slot.addClass( 'dragging' ).find( '.slots' ).css( 'top', ( e.deltaY / 2 ) + slotStartPosition );
-
-			break;
-
-		}
-
-	}
-
-	// hammer.js
-
-	var hammer	= new Hammer.Manager( $slot.get( 0 ) );
-	var pan		= new Hammer.Pan( {
-
-		direction: Hammer.DIRECTION_VERTICAL,
-		threshold: 0
-
-	} );
-	var swipe	= new Hammer.Swipe( {
-
-		direction: Hammer.DIRECTION_VERTICAL,
-		threshold: 10,
-		velocity: 0.5,
-
-	} );
-
-	hammer.add( pan );
-	hammer.add( swipe ).recognizeWith( pan );
-
-	hammer.on( 'swipeup swipedown panmove panstart panend', function( e ) {
-
-		switch( e.type ) {
-
-			case 'swipeup': showSlot( $slot.find( '.slot' ).length - 1, $slot ); break;
-			case 'swipedown': showSlot( 0, $slot ); break;
-			default: handlePan( e, $slot ); break;
+			console.log( draggable.y );
 
 		}
 
@@ -206,12 +143,28 @@ function initSlot( $slot ) {
 
 }
 
-initSlot( $slot_1 );
-initSlot( $slot_2 );
-initSlot( $slot_3 );
-initSlot( $slot_4 );
-initSlot( $slot_5 );
-initSlot( $speed );
+function initSlot( slot ) {
+
+	var slotHeight	= $( slot ).find( '.slot:first' ).height();
+	var slot_dial	= new Draggable( slot, {
+
+		type: 'y',
+		bounds: $( slot ).parent(),
+		throwProps: true,
+		snap: function( endValue ) { return Math.round( endValue / slotHeight ) * slotHeight; }
+
+	} );
+
+}
+
+// Init slots
+
+initSlot( slot_1 );
+initSlot( slot_2 );
+initSlot( slot_3 );
+initSlot( slot_4 );
+initSlot( slot_5 );
+initSlot( speed_slot );
 
 // Randomize slots
 
@@ -219,15 +172,19 @@ $( '#rnd' ).on( 'click', function( e ) {
 
 	e.preventDefault();
 
-	showSlot( _.random( 0, $slot_1.find( '.slot ').length - 1 ), $slot_1 );
-	showSlot( _.random( 0, $slot_2.find( '.slot ').length - 1 ), $slot_2 );
-	showSlot( _.random( 0, $slot_3.find( '.slot ').length - 1 ), $slot_3 );
-	showSlot( _.random( 0, $slot_4.find( '.slot ').length - 1 ), $slot_4 );
-	showSlot( _.random( 0, $slot_5.find( '.slot ').length - 1 ), $slot_5 );
+	setSlotValue( _.random( 0, $( slot_1 ).find( '.slot' ).length - 1 ), slot_1 );
+	setSlotValue( _.random( 0, $( slot_2 ).find( '.slot' ).length - 1 ), slot_2 );
+	setSlotValue( _.random( 0, $( slot_3 ).find( '.slot' ).length - 1 ), slot_3 );
+	setSlotValue( _.random( 0, $( slot_4 ).find( '.slot' ).length - 1 ), slot_4 );
+	setSlotValue( _.random( 0, $( slot_5 ).find( '.slot' ).length - 1 ), slot_5 );
 
 } );
 
+// ################################################## //
+//
 // MPG knob
+//
+// ################################################## //
 
 var mpg_el		= document.querySelector( '.control.mpg .arrow' );
 var mpg_bounds	= 120;
@@ -269,7 +226,11 @@ mpg_knob._value = mpg_min;
 
 $( '#mpg_value' ).text( mpg_knob._value );
 
+// ################################################## //
+//
 // Luggage
+//
+// ################################################## //
 
 function dial_class( r ) {
 
@@ -322,17 +283,7 @@ $( '.control.luggage .arrows' ).on( 'mousedown mouseup', function( e ) {
 
 	e.preventDefault();
 
-	if( e.type === 'mousedown' ) {
-
-		$( '.control.luggage .arrows' ).removeClass( 'right left' ).addClass( e.target.id );
-
-	}
-
-	else {
-
-		$( '.control.luggage .arrows' ).removeClass( 'right left' );
-
-	}
+	( e.type === 'mousedown' ) ? $( '.control.luggage .arrows' ).removeClass( 'right left' ).addClass( e.target.id ): $( '.control.luggage .arrows' ).removeClass( 'right left' );
 
 } );
 
@@ -350,11 +301,7 @@ $( '#left, #right' ).on( 'click', function( e ) {
 
 	// Move to the initial position
 
-	TweenLite.to( luggage_el, 1, { rotation: nr, onComplete: function( v ) {
-
-		dial_class( nr );
-
-	} } );
+	TweenLite.to( luggage_el, 1, { rotation: nr, onComplete: function( v ) { dial_class( nr ); } } );
 
 	// Update rotation & value
 

@@ -6,19 +6,20 @@
 
 .dial-control {
 
-	&:before {
+	h3.control-title {
 
 		.tc;
 
-		background: darken( @dialGray, 10% );
+		background: darken( @dialGray, 10% );;
 		color: @grayDarker;
-		content: 'Dial title';
+		display: block;
 		font-size: 14px;
 		font-weight: bold;
 		display: block;
 		line-height: 30px;
+		margin: 0;
 		text-transform: uppercase;
-		
+
 		height: 30px;
 
 	}
@@ -84,13 +85,22 @@
 #dial_m,
 #dial_l { float: left; }
 
-#dial_b { clear: both; }
+#dial_b {
+
+	background: @dialGray;
+	clear: both;
+	position: relative;
+
+	height: 240px;
+	width: 400px;
+
+}
 
 #dial_s, #dial_v { background: @dialGray; }
 
 #dial_s {
 
-	height: 240px;
+	height: 290px;
 	width: 400px;
 
 	.controls {
@@ -122,13 +132,27 @@
 
 	position: relative;
 
-	height: 190px;
+	height: 240px;
 
 	.control.slot {
 
 		.align-centers;
 
 		.slot { text-transform: uppercase; }
+
+	}
+
+}
+
+@media ( max-width: 480px ) {
+
+	#debug { display: none; }
+
+	.dial-control, #dials_left, #dials_middle, #dials_right {
+
+		.clearfix;
+
+		clear: both;
 
 	}
 

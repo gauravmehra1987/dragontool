@@ -31,6 +31,8 @@
 
 				<div id="dial_s" class="dial-control">
 
+					<h3 class="control-title">Bums on seats</h3><!-- end h3.control-title -->
+
 					<div class="controls">
 						
 						<div class="control slot">
@@ -114,6 +116,8 @@
 
 				<div id="dial_m" class="dial-control">
 
+					<h3 class="control-title">MPG</h3><!-- end h3.control-title -->
+
 					<div class="control mpg">
 						
 						<div class="scale">
@@ -146,6 +150,8 @@
 
 				<div id="dial_b" class="dial-control">
 
+					<h3 class="control-title">Luggage</h3><!-- end h3.control-title -->
+
 					<div class="control luggage">
 						
 						<div class="base">
@@ -170,12 +176,14 @@
 			<div id="dials_middle">			
 
 				<div id="dial_o" class="dial-control">
-					
+
+					<h3 class="control-title">Options</h3><!-- end h3.control-title -->
+
 					<div class="control options">
-					
+
 						<div class="option">
 
-							<input id="4wd" name="4wd" value"4WD" type="checkbox" />
+							<input id="4wd" name="4wd" value="4WD" type="checkbox" />
 							<label for="4wd"><span class="control-bg">4WD</span></label>
 							<div class="control-bg"></div><!-- end div.control-bg -->
 
@@ -205,35 +213,38 @@
 
 						</div><!-- end div.option -->
 
-						<div id="dial_v" class="dial-control">
-							
-							<div class="control slot slot-wide">
-
-									<div class="slots">
-
-										<div class="slot turtle"><span>turtle</span></div><!-- end div.slot adult -->
-										<div class="slot slow"><span>slow</span></div><!-- end div.slot adult -->
-										<div class="slot normal"><span>normal</span></div><!-- end div.slot adult -->
-										<div class="slot quick"><span>quick</span></div><!-- end div.slot adult -->
-										<div class="slot fast"><span>fast</span></div><!-- end div.slot adult -->
-										<div class="slot rocket"><span>rocket</span></div><!-- end div.slot adult -->
-
-									</div><!-- end div.slots -->
-									
-								</div><!-- end div.control slot -->
-
-						</div><!-- end div#dial_v.dial-control -->
-
 					</div><!-- end div.control options -->
 
 				</div><!-- end div#dial_o.dial -->
 
+				<div id="dial_v" class="dial-control">
+
+					<h3 class="control-title">Speed</h3><!-- end h3.control-title -->
+
+					<div class="control slot slot-wide">
+
+						<div class="slots">
+
+							<div class="slot turtle"><span>turtle</span></div><!-- end div.slot adult -->
+							<div class="slot slow"><span>slow</span></div><!-- end div.slot adult -->
+							<div class="slot normal"><span>normal</span></div><!-- end div.slot adult -->
+							<div class="slot quick"><span>quick</span></div><!-- end div.slot adult -->
+							<div class="slot fast"><span>fast</span></div><!-- end div.slot adult -->
+							<div class="slot rocket"><span>rocket</span></div><!-- end div.slot adult -->
+
+						</div><!-- end div.slots -->
+
+					</div><!-- end div.control slot -->
+
+				</div><!-- end div#dial_v.dial-control -->
 
 			</div><!-- end div#dials_middle -->
 
 			<div id="dials_right">
 
 				<div id="dial_p" class="dial-control">
+
+					<h3 class="control-title">£ per month</h3><!-- end h3.control-title -->
 				
 					<div class="control slider">
 								

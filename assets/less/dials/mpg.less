@@ -1,16 +1,24 @@
 .control.mpg {
 
-	border: solid 25px @dialGray;
 	position: relative;
 
-	height: 150px;
-	width: 150px;
+	height: 210px;
+	width: 200px;
 
 	.scale, .control-bg, .indicators, .knob, .arrow { .align-centers; } // Center all layers
 
 	.knob { .sprite( @_mpg_knob ); }
 	.indicators { .sprite( @_mpg_off ); }
 	.arrow { .sprite( @_mpg_knob_arrow ); }
+
+	.scale { background: @dialGray; }
+
+	.control-bg {
+
+		height: 150px;
+		width: 150px;
+
+	}
 
 	.value {
 
@@ -27,7 +35,7 @@
 		position: absolute;
 
 		left: 0;
-		bottom: -10px;
+		bottom: @margin;
 		right: 0;
 
 		width: 2em;
