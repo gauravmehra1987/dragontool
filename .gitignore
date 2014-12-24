@@ -1,3 +1,4 @@
 # front end packages
 /node_modules
 /bower_components
+/prototype/assets/_archive.js
