@@ -1,6 +1,32 @@
 var Iris = Iris || {};
 
+// TODO:
+// This is the prototype version for logic testing.
+// A number of functions here concerned with DOM manipulation and templating will not be necessary in the final product
+// There needs to be an interface built to accept the raw options chosen in the form and convert the data into a format acceptable to this service
+
 "use strict";
+
+// indexof polyfill for <ie9
+if (!Array.prototype.indexOf) {
+  Array.prototype.indexOf = function(elt /*, from*/) {
+    var len = this.length >>> 0;
+
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+
+    for (; from < len; from++) {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
+}
 
 Iris.miniDashboard = {
 
@@ -82,13 +108,13 @@ Iris.miniDashboard = {
 	},
 
 	renderProgressItem: function(value){
-		panel = $('#panel');
+		var panel = $('#panel');
 		var html = $('<li/>', {'text': value});
 		panel.find('ul').append(html);
 	},
 
 	renderFinalCount: function(count){
-		panel = $('#panel');
+		var panel = $('#panel');
 		panel.find('h3 span').text(count);
 	},
 
@@ -106,6 +132,7 @@ Iris.miniDashboard = {
 				'Price_scale' : 5
 			}
 		}
+
 		var counter = {
 			count:0,
 			update: function(){
@@ -159,6 +186,8 @@ Iris.miniDashboard = {
 			},
 
 			doValuesMatch: function(numberArray, qValue) {
+				// attempt to match array values to target
+				// else match single value to target
 				return Helpers.matchArrayValuesInArrary(numberArray, qValue) || Helpers.matchSingleValueInArrary(numberArray, qValue)
 			},
 
@@ -189,6 +218,8 @@ Iris.miniDashboard = {
 			},
 
 			// accepts database value, query value, record
+			// check: dataset & query value contains valid content
+			// match: do any values in query match the values in the data
 			matchDatasetValueAgainstQueryValue: function(dValue, qValue, obj){
 
 				// convert the dataset value into an array
@@ -206,43 +237,6 @@ Iris.miniDashboard = {
 				return !!Helpers.areValuesValid(dValue, qValue) && ( Helpers.doValuesMatch(numberArray, qValue) ? matchAccept() : matchReject() );
 			},
 
-			// UNFINISHED
-			killerMatch: function(object, thing, more){
-
-				var qProp = this.toString();
-
-				for (var prop in object) {
-					console.log(prop);
-					console.log(object)
-
-					if(Helpers.isValueLegitimate(object[qProp])){
-						console.log('yup')
-						return true;
-					}
-				}
-
-
-				// convert the dataset value into an array
-				//	var numberArray = Helpers.convertValueToArray(dValue);
-
-				var matchAccept = function(){
-					Filter.addObjectToCollection(obj);
-					return true;
-				}
-
-				var matchReject = function(){
-					console.log('skipped value');
-				}
-
-				//return !!Helpers.areValuesValid(dValue, qValue) && ( Helpers.doValuesMatch(numberArray, qValue) ? matchAccept() : matchReject() );
-			},
-
-			addObjectToCollection: function(obj){
-				console.log('added')
-				Filter.store.push(obj);
-				Filter.reduced++;
-			},
-
 			matchSingleRecord: function(object){
 				var record = this;
 				for (var prop in object) {
@@ -252,27 +246,36 @@ Iris.miniDashboard = {
 				}
 			},
 
-			haveWeReachedTheEnd: function(array, order) {
+			addObjectToCollection: function(obj){
+				console.log('added')
+				Filter.store.push(obj);
+				Filter.reduced++;
+			},
+
+			// requires array of objects, search order array
+			// check: are the conditions right to break out of loop
+			// recurse with next filter property or render final results
+			haveWeReachedTheEnd: function(resultCollection, order) {
 
 				var continueLoop = function(){
 					counter.update();
 					console.log('Dataset still large so next is > ' + order[counter.echo()]);
-					filterObjectsWithProperty(array, order[counter.echo()]);
+					filterObjectsWithProperty(resultCollection, order[counter.echo()]);
 				}
 
 				var endLoop = function(){
 					console.log('Finished: Rendering results')
-					self._collection.add(array);
+					self._collection.add(resultCollection);
 					self.renderResultsToView();
-					self.renderFinalCount(array.length);
+					self.renderFinalCount(resultCollection.length);
 				}
 
-				return Helpers.isBreakCriteraUnsatisfied( array, order[(counter.echo()+1)]) ? continueLoop() : endLoop();
+				return Helpers.isBreakCriteraUnsatisfied( resultCollection, order[(counter.echo()+1)]) ? continueLoop() : endLoop();
 			},
 
+			// requires dataset value attempt to match with queryValue
+			// success adds this record to the collection 
 			continueMasterLoop: function(record, prop){
-				// take dataset value attempt to match with queryValue
-				// success adds this record to the collection 
 				Filter.matchDatasetValueAgainstQueryValue(record[prop], self._query[prop], record);
 			},
 
@@ -287,8 +290,8 @@ Iris.miniDashboard = {
 			},
 
 			renderSingleRecordThenExit: function(record){
-				Filter.addObjectToCollection(record[0]);
 				console.log('Finished: Rendering results');
+				Filter.addObjectToCollection(record[0]);
 				self._collection.add(Filter.store);
 				self.renderResultsToView();
 				self.renderFinalCount(Filter.store.length);
@@ -299,7 +302,7 @@ Iris.miniDashboard = {
 		console.log(cars.Models.length);
 
 		// accepts an array of objects & property string to match
-		// on match success add parent object to collection
+		// match: success add parent object to collection
 		// if break criteria is not met, call recursively
 		function filterObjectsWithProperty(dataSet, prop){
 			// reset values for this loop
@@ -322,7 +325,7 @@ Iris.miniDashboard = {
 
 		};
 
-		// checks query against easter egg criteria
+		// check: does query value match easter egg criteria
 		function hasUserSelectedEasterEgg(query){
 			// does the query prop/value match one in the basket
 			for (var prop in query) {
