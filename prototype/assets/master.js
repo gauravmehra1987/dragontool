@@ -76,8 +76,9 @@ Iris.miniDashboard = {
 
 	renderResultsToView: function(){
 		var template = Handlebars.compile( $('#template').html() );
-		var copy = this._collection.all();
-		$('#output').append( template( copy.slice(-1).pop()) );
+		var results = this._collection.all();
+		$('#output').append( template( results.slice(-1).pop()) );
+		$('#extras').html(this._query.Eggs);
 	},
 
 	renderProgressItem: function(value){
@@ -97,10 +98,13 @@ Iris.miniDashboard = {
 
 	carCollectionController: function(response){
 		var self = this;
-
 		var cars = response;
 		var settings = {
-			minNoResults: 2
+			minNoResults: 2,
+			easterEggs : {
+				'Performance_scale' : 5,
+				'Price_scale' : 5
+			}
 		}
 		var counter = {
 			count:0,
@@ -134,9 +138,9 @@ Iris.miniDashboard = {
 
 				if (typeof userArray !== 'object') {return false;}
 
-				console.log('we got a array')
-				console.log(array);
-				console.log(userArray);
+				// console.log('we got a array')
+				// console.log(array);
+				// console.log(userArray);
 
 				// Match all userArray values to pass
 				for (var i=0; i<len;i++) {
@@ -239,21 +243,6 @@ Iris.miniDashboard = {
 				Filter.reduced++;
 			},
 
-			hasUserSelectedEasterEgg: function(query){
-				var basket = {
-					'Performance_scale' : 5,
-					'Price_scale' : 5
-				}
-				// does the query prop/value match one in the basket
-				for (var prop in query) {
-					if(Helpers.isValueLegitimate(query[prop]) && query[prop]==basket[prop]){
-						var obj = {}
-						obj[prop] = query[prop];
-						return  obj;
-					}
-				}
-			},
-
 			matchSingleRecord: function(object){
 				var record = this;
 				for (var prop in object) {
@@ -279,30 +268,15 @@ Iris.miniDashboard = {
 				}
 
 				return Helpers.isBreakCriteraUnsatisfied( array, order[(counter.echo()+1)]) ? continueLoop() : endLoop();
-			}
-		}
+			},
 
-		console.log(cars)
-		console.log(cars.Models.length);
-
-		// takes an array of objects & property to match
-		// on match success add parent object to collection
-		// if break criteria is not met, call recursively
-		function filterObjectsWithProperty(dataSet, prop){
-			// reset values for this loop
-			Filter.store = [];
-			Filter.reduced = 0;
-			Filter.easterEgg = Filter.hasUserSelectedEasterEgg(self._query);
-
-			console.log('This is ' + prop + ': ' + self._query[prop]);
-
-			var continueLoop = function(record){
+			continueMasterLoop: function(record, prop){
 				// take dataset value attempt to match with queryValue
 				// success adds this record to the collection 
 				Filter.matchDatasetValueAgainstQueryValue(record[prop], self._query[prop], record);
-			}
+			},
 
-			var endLoop = function(){
+			endMasterLoop: function(dataSet, prop){
 				console.log('end')
 				// output console message
 				Filter.outputDatasetMessages(prop, dataSet);
@@ -310,36 +284,66 @@ Iris.miniDashboard = {
 				// if endpoint not reached recurse
 				// otherwise exit
 				Filter.haveWeReachedTheEnd(Filter.store, self._order);
-			}
+			},
 
-			var renderSingleRecordThenExit = function(record){
+			renderSingleRecordThenExit: function(record){
 				Filter.addObjectToCollection(record[0]);
 				console.log('Finished: Rendering results');
 				self._collection.add(Filter.store);
 				self.renderResultsToView();
 				self.renderFinalCount(Filter.store.length);
 			}
+		}
 
-			if (Filter.easterEgg) {
-				var single = dataSet.filter(Filter.matchSingleRecord, Filter.easterEgg);
-				renderSingleRecordThenExit(single);
-			} else {
+		console.log(cars)
+		console.log(cars.Models.length);
 
-				//Main loop through dataset
-				for (var i=0; i<dataSet.length; i++) {
-					var record = dataSet[i];
+		// accepts an array of objects & property string to match
+		// on match success add parent object to collection
+		// if break criteria is not met, call recursively
+		function filterObjectsWithProperty(dataSet, prop){
+			// reset values for this loop
+			Filter.store = [];
+			Filter.reduced = 0;
 
-					// if last entry in set
-					(i===dataSet.length-1) ? endLoop() : continueLoop(record);
+			console.log('This is ' + prop + ': ' + self._query[prop]);
 
-				};
+			// Main loop through dataset
+			for (var i=0; i<dataSet.length; i++) {
+				var record = dataSet[i];
 
-				console.log('end of ' + prop);
-			}
+				// if last entry in set trigger end condition
+				// else continue looping trough the data
+				(i===dataSet.length-1) ? Filter.endMasterLoop(dataSet, prop) : Filter.continueMasterLoop(record, prop);
+
+			};
+
+			console.log('end of ' + prop);
 
 		};
 
-		filterObjectsWithProperty(cars.Models, self._order[(counter.echo())]);
+		// checks query against easter egg criteria
+		function hasUserSelectedEasterEgg(query){
+			// does the query prop/value match one in the basket
+			for (var prop in query) {
+				if(Helpers.isValueLegitimate(query[prop]) && query[prop]==settings.easterEggs[prop]){
+					var obj = {}
+					obj[prop] = query[prop];
+					return  obj;
+				}
+			}
+		};
+
+		var easterEgg = hasUserSelectedEasterEgg(self._query);
+
+		// if the user has chosen an easter egg option render single record
+		// otherwise begin the filter using the first property in the order collection
+		if (easterEgg) {
+			var record = cars.Models.filter(Filter.matchSingleRecord, easterEgg);
+			Filter.renderSingleRecordThenExit(record);
+		} else {
+			filterObjectsWithProperty(cars.Models, self._order[(counter.echo())]);
+		}
 
 	},
 

@@ -155,4 +155,9 @@ h1 {
   list-style-type: none;
 }
 
+#panel p {
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
 

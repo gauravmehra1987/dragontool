@@ -20,9 +20,9 @@
 
 		<select name="eggs" id="eggs">
 			<option value="0">Select</option>
-			<option value="john">Alien</option>
-			<option value="2">Cat</option>
-			<option value="3">Dog</option>
+			<option value="Alien">Alien</option>
+			<option value="Cat">Cat</option>
+			<option value="Dog">Dog</option>
 		</select><br />
 
 		<br /><br />
@@ -92,6 +92,7 @@
 	<div id="panel">
 		<h3><b>Showing <span></span> Cars </b></h3>
 		<ul></ul>
+		<p>extras: <span  id="extras"></span> </p>
 	</div>
 	<div id="output">
 		<script id="template" type="text/x-handlebars-template">
@@ -119,6 +120,7 @@
 					</div>
 
 				{{/each}}
+
 			</div>
 		</script>
 	</div>
