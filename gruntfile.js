@@ -78,8 +78,10 @@ module.exports = function( grunt ) {
 					paths.bower + 'hammerjs/hammer.js',
 					paths.bower + 'jquery/dist/jquery.js',
 					paths.bower + 'jquery.browser/dist/jquery.browser.js',
+					paths.bower + 'slick.js/slick/slick.js',
 					// paths.bower + 'fancybox/source/jquery.fancybox.js',
-					// paths.bower + 'slick.js/slick/slick.js',
+					
+					// Greensock
 					'assets/js/src/ThrowPropsPlugin.js',
 					paths.bower + 'greensock/src/uncompressed/plugins/CSSPlugin.js',
 					paths.bower + 'greensock/src/uncompressed/TweenLite.js',

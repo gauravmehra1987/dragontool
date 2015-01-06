@@ -1,51 +1,147 @@
+@from:	fadeout( @trueBlack, 10% );
+@to:	fadeout( @trueBlack, 100% );
+
 .control.slot {
 
 	background: black;
-	overflow: hidden;
 	
-	height: 75px;
+	height: 80px * 2;
 	width: 55px;
 
-	.slots { overflow: hidden; }
+	.control-bg {
+
+		.align-centers;
+
+		height: 70px;
+
+	}
+
+	.wrap {
+
+		overflow: hidden;
+		padding-top: 80px / 2;
+		position: relative;
+
+		height: 80px * 1.5;
+		width: 100%;
+
+		&:before, &:after {
+
+			.pseudo;
+
+			position: absolute;
+			z-index: 10;
+
+			left: 0;
+
+			height: 80px / 2;
+			width: 100%;
+
+		}
+
+		&:before {
+
+			.background-image( linear-gradient( to bottom, @from 0%, @to 100% ) );
+
+			top: 0;
+
+		}
+
+		&:after {
+
+			.background-image( linear-gradient( to top, @from 0%, @to 100% ) );
+
+			bottom: 0;
+
+		}
+
+	}
+
+	.slots {
+
+		overflow: hidden;
+		padding: 80px / 2 0;
+
+	}
 
 	.slot {
 
-		background: @gray;
+		.sprite( @slot-girl );
+
 		position: relative;
 
-		height: 75px;
-		width: 55px;
+		height: 80px;
+		width: 100%;
 
 		span {
 
 			.align-centers;
+			.letter-spacing( 50 );
 			.tc;
 
-			font-size: 24px;
+			font-size: 18px;
 			font-weight: bold;
-			line-height: 75px;
+			line-height: 80px;
+			opacity: 0;
 
 		}
 
-		&:nth-child( odd ) { background: @grayLighter; }
-
-	}
-
-	&.slot-wide {
-
-		top: 30px !important;
-
-		&, .slot {
-
-			height: 160px;
-			width: 120px;
-
-			span { line-height: 160px; }
-
-		}
+		&.empty { .sprite( @slot-empty ); }
+		&.man { .sprite( @slot-man ); }
+		&.woman { .sprite( @slot-woman ); }
+		&.girl { .sprite( @slot-girl ); }
+		&.boy { .sprite( @slot-boy ); }
+		&.infant { .sprite( @slot-infant ); }
+		&.dog { .sprite( @slot-dog ); }
+		&.cat { .sprite( @slot-cat ); }
+		&.alien { .sprite( @slot-alien ); }
 
 	}
 
 	&.dragging .slots { .transition( none ); }
+
+	// Wide slot dimensions
+
+	@wsT: 160px;
+	@wsW: 130px;
+	@wsH: 80px;
+	@wsP: ( @wsT - @wsH ) / 2;
+
+	&.slot-wide {
+	
+		height: @wsT;
+		width: @wsW;
+
+		.wrap {
+
+			padding-top: @wsP;
+
+			height: @wsH + @wsP;
+			width: 100%;
+
+			&:before, &:after { height: @wsP; }
+
+		}
+
+		.slots { padding: @wsP 0; }
+
+		.slot {
+
+			background: #363636;
+			color: @white;
+
+			height: @wsH;
+
+			span {
+
+				line-height: @wsH;
+				opacity: 1;
+
+			}
+
+		}	
+
+	}
+	
 
 }

@@ -37,74 +37,101 @@
 						
 						<div class="control slot">
 
-							<div class="slots">
+							<div class="wrap">
 
-								<div class="slot adult"><span>M</span></div><!-- end div.slot adult -->
-								<div class="slot adult"><span>W</span></div><!-- end div.slot adult -->
+								<div class="control-bg"></div><!-- end div.control-bg -->
 
-							</div><!-- end div.slots -->
+								<div class="slots">
+
+									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
+									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+
+								</div><!-- end div.slots -->
+
+							</div><!-- end div.wrap -->
 							
 						</div><!-- end div.control slot -->
 
 						<div class="control slot">
 
-							<div class="slots">
+							<div class="wrap">
 
-								<div class="slot adult"><span>W</span></div><!-- end div.slot adult -->
-								<div class="slot adult"><span>M</span></div><!-- end div.slot adult -->
+								<div class="control-bg"></div><!-- end div.control-bg -->
 
-							</div><!-- end div.slots -->
+								<div class="slots">
+
+									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->									
+
+								</div><!-- end div.slots -->
+
+							</div><!-- end div.wrap -->
 							
 						</div><!-- end div.control slot -->
 
 						<div class="control slot">
 
-							<div class="slots">
-							
-								<div class="slot child"><span>B</span></div><!-- end div.slot child -->
-								<div class="slot child"><span>G</span></div><!-- end div.slot child -->
-								<div class="slot adult"><span>M</span></div><!-- end div.slot adult -->
-								<div class="slot adult"><span>W</span></div><!-- end div.slot adult -->								
-								<div class="slot infant"><span>I</span></div><!-- end div.slot infant -->
-								<div class="slot extra"><span>D</span></div><!-- end div.slot extra -->
-								<div class="slot extra"><span>C</span></div><!-- end div.slot extra -->
-								<div class="slot extra"><span>A</span></div><!-- end div.slot extra -->
+							<div class="wrap">
 
-							</div><!-- end div.slots -->
-							
-						</div><!-- end div.control slot -->
+								<div class="control-bg"></div><!-- end div.control-bg -->
 
-						<div class="control slot">
+								<div class="slots">
+								
+									<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
+									<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
+									<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
+									<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
+									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
+									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
 
-							<div class="slots">
-							
-								<div class="slot child"><span>G</span></div><!-- end div.slot child -->
-								<div class="slot child"><span>B</span></div><!-- end div.slot child -->
-								<div class="slot adult"><span>M</span></div><!-- end div.slot adult -->
-								<div class="slot adult"><span>W</span></div><!-- end div.slot adult -->
-								<div class="slot infant"><span>I</span></div><!-- end div.slot infant -->
-								<div class="slot extra"><span>D</span></div><!-- end div.slot extra -->
-								<div class="slot extra"><span>C</span></div><!-- end div.slot extra -->
-								<div class="slot extra"><span>A</span></div><!-- end div.slot extra -->
+								</div><!-- end div.slots -->
 
-							</div><!-- end div.slots -->
+							</div><!-- end div.wrap -->
 							
 						</div><!-- end div.control slot -->
 
 						<div class="control slot">
 
-							<div class="slots">
-							
-								<div class="slot infant"><span>I</span></div><!-- end div.slot infant -->
-								<div class="slot adult"><span>M</span></div><!-- end div.slot adult -->
-								<div class="slot adult"><span>W</span></div><!-- end div.slot adult -->
-								<div class="slot child"><span>B</span></div><!-- end div.slot child -->
-								<div class="slot child"><span>G</span></div><!-- end div.slot child -->								
-								<div class="slot extra"><span>D</span></div><!-- end div.slot extra -->
-								<div class="slot extra"><span>C</span></div><!-- end div.slot extra -->
-								<div class="slot extra"><span>A</span></div><!-- end div.slot extra -->
+							<div class="wrap">
 
-							</div><!-- end div.slots -->
+								<div class="control-bg"></div><!-- end div.control-bg -->
+
+								<div class="slots">
+								
+									<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
+									<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
+									<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->									
+									<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
+									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
+									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+
+								</div><!-- end div.slots -->
+
+							</div><!-- end div.wrap -->
+							
+						</div><!-- end div.control slot -->
+
+						<div class="control slot">
+
+							<div class="wrap">
+
+								<div class="control-bg"></div><!-- end div.control-bg -->
+
+								<div class="slots">
+								
+									<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
+									<div class="slot dog"><span>Dog</span></div><!-- end div.slot dog -->
+									<div class="slot cat"><span>Cat</span></div><!-- end div.slot cat -->
+									<div class="slot alien"><span>Alien</span></div><!-- end div.slot alien -->
+									<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
+									<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
+									<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
+									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
+									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+
+								</div><!-- end div.slots -->
+
+							</div><!-- end div.wrap -->
 							
 						</div><!-- end div.control slot -->
 						
@@ -183,7 +210,7 @@
 
 						<div class="option">
 
-							<input id="4wd" name="4wd" value="4WD" type="checkbox" />
+							<input id="4wd" name="4wd" value="1" type="checkbox" />
 							<label for="4wd"><span class="control-bg">4WD</span></label>
 							<div class="control-bg"></div><!-- end div.control-bg -->
 
@@ -191,7 +218,7 @@
 
 						<div class="option">
 
-							<input id="hp" name="hp" value="High driving position" type="checkbox" />
+							<input id="hp" name="hp" value="2" type="checkbox" />
 							<label for="hp"><span class="control-bg">High position</span></label>
 							<div class="control-bg"></div><!-- end div.control-bg -->
 
@@ -199,7 +226,7 @@
 
 						<div class="option">
 
-							<input id="dt" name="dt" value="Drop top" type="checkbox" />
+							<input id="dt" name="dt" value="3" type="checkbox" />
 							<label for="dt"><span class="control-bg">Drop top</span></label>
 							<div class="control-bg"></div><!-- end div.control-bg -->
 
@@ -207,7 +234,7 @@
 
 						<div class="option">
 
-							<input id="tp" name="tp" value="Teleportation" type="checkbox" />
+							<input id="tp" name="tp" value="4" type="checkbox" />
 							<label for="tp"><span class="control-bg">Teleportation</span></label>
 							<div class="control-bg"></div><!-- end div.control-bg -->
 
@@ -223,16 +250,19 @@
 
 					<div class="control slot slot-wide">
 
-						<div class="slots">
+						<div class="wrap">
 
-							<div class="slot turtle"><span>turtle</span></div><!-- end div.slot adult -->
-							<div class="slot slow"><span>slow</span></div><!-- end div.slot adult -->
-							<div class="slot normal"><span>normal</span></div><!-- end div.slot adult -->
-							<div class="slot quick"><span>quick</span></div><!-- end div.slot adult -->
-							<div class="slot fast"><span>fast</span></div><!-- end div.slot adult -->
-							<div class="slot rocket"><span>rocket</span></div><!-- end div.slot adult -->
+							<div class="slots">
 
-						</div><!-- end div.slots -->
+								<div class="slot nippy" data-value="1"><span>Nippy</span></div><!-- end div.slot nippy -->
+								<div class="slot nippier" data-value="2"><span>Nippier</span></div><!-- end div.slot nippier -->
+								<div class="slot quick" data-value="3"><span>Quick</span></div><!-- end div.slot quick -->
+								<div class="slot woohoo" data-value="4"><span>Woohoo</span></div><!-- end div.slot woohoo -->
+								<div class="slot lightspeed" data-value="5"><span>Lightspeed</span></div><!-- end div.slot lightspeed -->
+
+							</div><!-- end div.slots -->
+
+						</div><!-- end div.wrap -->
 
 					</div><!-- end div.control slot -->
 
@@ -262,6 +292,16 @@
 					</div><!-- end div.control slider -->
 
 				</div><!-- end div#dial_p.dial-control -->
+
+				<div id="dial_c" class="dial-control">
+					
+					<div class="control start">
+						
+						<span class="control-bg">Combobulate</span>
+
+					</div><!-- end div.control start -->
+
+				</div><!-- end div#dial_c.dial-control -->
 
 			</div><!-- end div#dials_right -->
 
