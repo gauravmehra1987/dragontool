@@ -48,13 +48,13 @@ Iris.testPage = {
 
 		$('.output-cont').remove();
 
-		userQuery.Capacity_scale = $('#capacity').val();
+		userQuery.CapacityScale = $('#capacity').val();
 		userQuery.Options = ( $("form input[name=options]:checkbox:checked").length >0 ) ? $("form input[name=options]:checkbox:checked").map(function(){return $(this).val();}).toArray() : "0";
-		userQuery.Luggage_scale = $('#luggage').val();
-		userQuery.Price_scale = $('#price_scale').val();
-		userQuery.Performance_scale = $('#performance').val();
-		userQuery.Economy_scale = $('#economy').val();
-		userQuery.Usage_scale = $('#useofcar').val();
+		userQuery.LuggageScale = $('#luggage').val();
+		userQuery.PriceScale = $('#price_scale').val();
+		userQuery.PerformanceScale = $('#performance').val();
+		userQuery.EconomyScale = $('#economy').val();
+		userQuery.UsageScale = $('#useofcar').val();
 		userQuery.Eggs = $('#eggs').val();
 
 		// store search
@@ -139,7 +139,7 @@ Iris.testPage = {
 Iris.UILogic = {
 	_query: null,
 	_collection: null,
-	_order: ['Capacity_scale', 'Luggage_scale', 'Options', 'Price_scale', 'Performance_scale', 'Economy_scale', 'Usage_scale' ],
+	_order: ['CapacityScale', 'LuggageScale', 'Options', 'PriceScale', 'PerformanceScale', 'EconomyScale', 'UsageScale' ],
 	_jsonUrl: 'assets/data.v2.json',
 
 	init: function(){
@@ -152,8 +152,8 @@ Iris.UILogic = {
 		var settings = {
 			minNoResults: 2,
 			easterEggs : {
-				'Performance_scale' : 5,
-				'Price_scale' : 5
+				'PerformanceScale' : 5,
+				'PriceScale' : 5
 			}
 		}
 
@@ -215,11 +215,17 @@ Iris.UILogic = {
 				return Helpers.matchArrayValuesInArrary(numberArray, qValue) || Helpers.matchSingleValueInArrary(numberArray, qValue)
 			},
 
+
 			isValueLegitimate: function(value){
 				return value !== 'n/a' && value !== 'TBC' && typeof value !== 'undefined' && value !== null && value != 0;
 			},
 
-			isBreakCriteraUnsatisfied: function(array, nextProperty){
+			shallWeContinueTheLoop: function(array, nextProperty){
+				console.log(array.length)
+				console.log(settings.minNoResults)
+				console.log(array.length > settings.minNoResults)
+				console.log(nextProperty)
+				console.log(typeof nextProperty !== 'undefined')
 				console.log(!!(array.length > settings.minNoResults && typeof nextProperty !== 'undefined'))
 				return !!(array.length > settings.minNoResults && typeof nextProperty !== 'undefined');
 			}
@@ -294,7 +300,7 @@ Iris.UILogic = {
 					Iris.testPage.renderFinalCount(resultCollection.length);
 				}
 
-				return Helpers.isBreakCriteraUnsatisfied( resultCollection, order[(counter.echo()+1)]) ? continueLoop() : endLoop();
+				return Helpers.shallWeContinueTheLoop( resultCollection, order[(counter.echo()+1)]) ? continueLoop() : endLoop();
 			},
 
 			// requires dataset value attempt to match with queryValue
@@ -336,9 +342,11 @@ Iris.UILogic = {
 			for (var i=0; i<dataSet.length; i++) {
 				var record = dataSet[i];
 
+				Filter.continueMasterLoop(record, prop)
+
 				// if last entry in set trigger end condition
 				// else continue looping trough the data
-				(i===dataSet.length-1) ? Filter.endMasterLoop(dataSet, prop) : Filter.continueMasterLoop(record, prop);
+				if(i===dataSet.length-1) { Filter.endMasterLoop(dataSet, prop) }
 
 			};
 
