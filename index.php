@@ -1,29 +1,20 @@
 <?php require( 'inc/header.inc.php' ); ?>
 
-		<form id="debug">
-
-			<input type="text" id="v_seats" placeholder="seats" />
-			<input type="text" id="v_mpg" placeholder="mpg" />
-			<input type="text" id="v_luggage" placeholder="luggage" />				
-			<input type="text" id="v_options" placeholder="options" />
-			<input type="text" id="v_speed" placeholder="speed" />
-			<input type="text" id="v_price" placeholder="price" />
-
-			<button id="get">Read values</button>
-
-		</form><!-- end form#debug -->
-
 		<div id="dashboard">
 
 			<div id="bgcontrol">
 
-				<span>Background color:	</span>
+				<h3>Debug tools</h3>
+
+				<span>Change background color to:</span>
 				
 				<input id="b" type="radio" name="bg" value="blue" checked /><label for="b">Blue</label>
 				<input id="r" type="radio" name="bg" value="red" /><label for="r">Red</label>
 				<input id="y" type="radio" name="bg" value="yellow" /><label for="y">Yellow</label>
 				<input id="l" type="radio" name="bg" value="lime" /><label for="l">Lime</label>
 				<input id="w" type="radio" name="bg" value="white" /><label for="w">White</label>
+
+				<button id="get">Generate JS object with values from the UI</button>
 
 			</div><!-- end div#bgcontrol -->
 
@@ -134,10 +125,10 @@
 							</div><!-- end div.wrap -->
 							
 						</div><!-- end div.control slot -->
-						
-					</div><!-- end div.controls -->
 
-					<button id="rnd">Randomize</button>
+						<button id="rnd">Randomize</button>
+						
+					</div><!-- end div.controls -->					
 
 				</div><!-- end div#dial_s -->
 
@@ -208,7 +199,7 @@
 
 					<div class="control options">
 
-						<div class="option">
+						<div class="option opts-awd">
 
 							<input id="4wd" name="4wd" value="1" type="checkbox" />
 							<label for="4wd"><span class="control-bg">4WD</span></label>
@@ -216,7 +207,7 @@
 
 						</div><!-- end div.option -->
 
-						<div class="option">
+						<div class="option opts-hp">
 
 							<input id="hp" name="hp" value="2" type="checkbox" />
 							<label for="hp"><span class="control-bg">High position</span></label>
@@ -224,7 +215,7 @@
 
 						</div><!-- end div.option -->
 
-						<div class="option">
+						<div class="option opts-dt">
 
 							<input id="dt" name="dt" value="3" type="checkbox" />
 							<label for="dt"><span class="control-bg">Drop top</span></label>
@@ -232,7 +223,7 @@
 
 						</div><!-- end div.option -->
 
-						<div class="option">
+						<div class="option opts-tp">
 
 							<input id="tp" name="tp" value="4" type="checkbox" />
 							<label for="tp"><span class="control-bg">Teleportation</span></label>
@@ -254,11 +245,23 @@
 
 							<div class="slots">
 
-								<div class="slot nippy" data-value="1"><span>Nippy</span></div><!-- end div.slot nippy -->
-								<div class="slot nippier" data-value="2"><span>Nippier</span></div><!-- end div.slot nippier -->
-								<div class="slot quick" data-value="3"><span>Quick</span></div><!-- end div.slot quick -->
-								<div class="slot woohoo" data-value="4"><span>Woohoo</span></div><!-- end div.slot woohoo -->
-								<div class="slot lightspeed" data-value="5"><span>Lightspeed</span></div><!-- end div.slot lightspeed -->
+								<!-- <div class="slot nippy clone1" data-value="1"><span>Nippy</span></div>
+								<div class="slot nippier clone1" data-value="2"><span>Nippier</span></div>
+								<div class="slot quick clone1" data-value="3"><span>Quick</span></div>
+								<div class="slot woohoo clone1" data-value="4"><span>Woohoo</span></div>
+								<div class="slot lightspeed clone1" data-value="5"><span>Lightspeed</span></div> -->
+
+								<div class="slot nippy" data-value="1"><span>Nippy</span></div>
+								<div class="slot nippier" data-value="2"><span>Nippier</span></div>
+								<div class="slot quick" data-value="3"><span>Quick</span></div>
+								<div class="slot woohoo" data-value="4"><span>Woohoo</span></div>
+								<div class="slot lightspeed" data-value="5"><span>Lightspeed</span></div>
+
+							<!-- 	<div class="slot nippy clone2" data-value="1"><span>Nippy</span></div>
+								<div class="slot nippier clone2" data-value="2"><span>Nippier</span></div>
+								<div class="slot quick clone2" data-value="3"><span>Quick</span></div>
+								<div class="slot woohoo clone2" data-value="4"><span>Woohoo</span></div>
+								<div class="slot lightspeed clone2" data-value="5"><span>Lightspeed</span></div> -->
 
 							</div><!-- end div.slots -->
 

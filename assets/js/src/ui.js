@@ -41,26 +41,12 @@ var speed_slot	= '#dial_v .control.slot .slots';
 
 function getValues() {
 
-	var $c = $( '#v_seats' );
-	var $m = $( '#v_mpg' );
-	var $l = $( '#v_luggage' );
-	var $o = $( '#v_options' );	
-	var $s = $( '#v_speed' );
-	var $p = $( '#v_price' );
-
 	var c_v = new Array( getSlotValue( slot_1 ), getSlotValue( slot_2 ), getSlotValue( slot_3 ), getSlotValue( slot_4 ), getSlotValue( slot_5 ) );
 	var m_v = mpg_knob._value;
 	var l_v = $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
 	var s_v = getSlotValue( speed_slot );
 	var o_v = getOptions();
 	var p_v = getPriceValue( price_slider.y )[ 1 ];
-
-	$c.val( c_v );
-	$m.val( m_v );
-	$l.val( l_v );
-	$s.val( s_v );
-	$o.val( o_v );
-	$p.val( p_v );
 
 	var data = {
 
@@ -74,8 +60,7 @@ function getValues() {
 
 	};
 
-	console.log( "JSON.parse( '" + JSON.stringify(data ) + "' )" );
-	console.log( data );
+	alert( "JSON.parse( '" + JSON.stringify(data ) + "' );" );
 
 }
 
@@ -175,6 +160,13 @@ function setSlotValue( index, slot ) {
 
 function initSlot( slot ) {
 
+	function moveToFrame(amount){
+		// nippy -ori -440
+		// lightspeed -ori -760
+		TweenLite.set( speed_slot, { y: amount } );
+		Draggable.get( speed_slot ).update()
+	}
+
 	var slotHeight	= $( slot ).find( '.slot:first' ).height();
 	var slotPadding = parseInt( $( slot ).css( 'padding-top' ) );
 	var slot_dial	= new Draggable( slot, {
@@ -182,6 +174,31 @@ function initSlot( slot ) {
 		type: 'y',
 		bounds: $( slot ).parent(),
 		throwProps: true,
+		// onDragEnd: function() {
+			
+		// 	console.log('onThrowComplete')
+
+		// 	var endPosition	= Math.abs( this.endY + slotPadding );
+		// 	var end			= Math.abs( this.minY + slotPadding );
+		// 	var start		= Math.floor( this.maxY + slotPadding ); // do we really need to round it down?!
+
+		// 	var $c = $( slot ).contents();
+
+		// 	if( endPosition > end - ( slotHeight * 2 ) ) {
+
+		// 		console.log( 'append at the bottom' );
+		// 		moveToFrame(-760);
+
+		// 	}
+
+		// 	else if( endPosition < ( slotHeight * 2 ) ) {
+
+		// 		console.log( 'append at the top' );
+		// 		moveToFrame(-440);
+
+		// 	}
+
+		// },
 		onRelease: function() {
 
 			var endPosition	= Math.abs( this.endY + slotPadding );

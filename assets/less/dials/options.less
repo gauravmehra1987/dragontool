@@ -21,7 +21,6 @@
 			& + label {
 
 				.box-sizing( border-box );
-				.sprite( @awd-off );
 				.transition( background 100ms ease-out );
 
 				display: block;
@@ -57,7 +56,7 @@
 				&:after {
 
 					.pseudo;
-					.sprite( @awd-on );
+					.sprite( @opts-awd-on );
 					.transition( opacity 0.2s linear );
 
 					opacity: 0;
@@ -100,6 +99,48 @@
 				span { opacity: 1; }
 
 			}
+
+		}
+
+		// Sprites
+
+		// 4-wheel drive
+
+		&.opts-awd input + label {
+
+			.sprite( @opts-awd-off );
+
+			&:after { .sprite( @opts-awd-on ); }
+
+		}
+
+		// High position
+
+		&.opts-hp input + label {
+
+			.sprite( @opts-hp-off );
+
+			&:after { .sprite( @opts-hp-on ); }
+
+		}
+
+		// Drop top
+
+		&.opts-dt input + label {
+
+			.sprite( @opts-dt-off );
+
+			&:after { .sprite( @opts-dt-on ); }
+
+		}
+
+		// Teleportation
+
+		&.opts-tp input + label {
+
+			.sprite( @opts-tp-off );
+
+			&:after { .sprite( @opts-tp-on ); }
 
 		}
 

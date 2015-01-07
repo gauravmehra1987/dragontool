@@ -1,0 +1,19 @@
+syntax: glob
+.codekit_cache/*
+cache/*
+system/*
+tmp/*
+uploads/*
+bower_components/*
+node_modules/*
+npm-debug.log
+assets/img/fancybox/*
+assets/fonts/css/*
+assets/fonts/icons/*
+assets/css/*.css
+assets/js/*.min.js
+assets/js/*.src.js
+.DS_Store
+app.js
+ie.js
+lib.js

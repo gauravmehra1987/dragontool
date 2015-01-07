@@ -1,0 +1,45 @@
+#bums {
+
+	.controls {
+
+		display: table;
+		margin: 40px auto;
+		position: relative;
+
+		.control {
+
+			float: left;
+			margin: 0 5px 0 0;
+
+			&:last-of-type { margin: 0; }
+
+		}
+
+		#rnd {
+
+			.box-sizing( content-box );
+			.hide-text;
+
+			background: #4e4e4e;
+			border: solid 5px @trueBlack;
+			border-radius: 100%;
+			box-shadow: 0 1px 1px fadeout( @white, 80% ) inset, 0 -1px 2px @black inset;
+			display: block;
+			margin-left: -25px;
+			padding: 0;
+			position: absolute;
+			z-index: 999;
+
+			top: -25px;
+			left: 50%;
+
+			height: 45px;
+			width: 45px;
+
+		}
+
+	}
+
+	
+
+}

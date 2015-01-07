@@ -1,0 +1,102 @@
+#dash {
+
+	overflow: hidden;
+	margin: auto;
+	max-width: 780px;
+	position: relative;
+
+	height: 735px;
+
+	#dash-left, #dash-middle, #dash-right {
+
+		float: left;
+
+		height: 100%;
+
+		.top, .middle, .bottom, .inner-left, .inner-right {
+
+			background: @dialGray;
+			box-shadow: 0 0 0 1px @black inset;
+			color: @grayDarker;
+			position: relative;
+
+			h5 {
+
+				.tc;
+
+				background: lighten( @dialGray, 5% );
+				display: block;
+				font-size: 12px;
+				line-height: 3;
+				margin: 0 1px;
+				text-transform: uppercase;
+
+			}
+
+		}
+
+	}
+
+	#dash-left {
+
+		width: 50%;
+
+		.top, .middle, .bottom { height: 100% / 3; }
+
+	}
+
+	#dash-middle, #dash-right {
+
+		width: 25%;
+
+		.top { height: ( 100% / 3 ) * 2; }
+		
+		.bottom { height: 100% / 3; }
+
+	}
+
+	.inner-left, .inner-right {
+
+		float: left;
+
+		height: 100%;
+		width: 50%;
+
+	}
+
+	.backline {
+
+		.background-image( linear-gradient( top, transparent 49%, transparent 49%, @black 49%, @black 51%, transparent 51% ) ) !important;
+
+	}
+
+}
+
+// Responsive
+
+@media ( max-width: 720px ) {
+
+	#dash {
+
+		height: auto;
+
+		#dash-left, #dash-middle, #dash-right {
+
+			&, .inner-left, .inner-right {
+
+				clear: both;
+				float: none;
+
+				width: auto;
+
+			}
+
+			.top, .middle, .bottom, .inner-left, .inner-right { height: auto; }
+
+		}
+
+	}
+
+}
+
+@import 'dials2';

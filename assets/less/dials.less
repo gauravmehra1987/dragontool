@@ -27,36 +27,21 @@
 
 }
 
-#debug {
-
-	position: absolute;
-
-	top: @margin;
-	left: @margin;
-
-	input, button { width: 100%; }
-
-	input {
-
-		.placeholder( @grayDarker );
-
-		background: lighten( @black, 10% );
-		border: 0;
-		clear: both;
-		color: @grayDark;
-		display: block;
-		margin-bottom: @margin;
-
-	}
-
-}
-
 #bgcontrol {
 
+	background: @grayDarker;
 	color: @gray;
+	margin: 0 0 @margin 0;
 	padding: @margin;
 
 	input { margin: 0 @margin / 2; }
+
+	button {
+
+		display: table;
+		margin: @margin auto 0;
+
+	}
 
 }
 
@@ -97,9 +82,9 @@
 
 }
 
-#dial_s, #dial_v { background: @dialGray; }
-
 #dial_s {
+
+	background: @dialGray;
 
 	height: 290px;
 	width: 400px;
@@ -107,7 +92,8 @@
 	.controls {
 
 		display: table;
-		margin: 20px auto;
+		margin: 40px auto;
+		position: relative;
 
 		.control {
 
@@ -118,14 +104,32 @@
 
 		}
 
+		#rnd {
+
+			.box-sizing( content-box );
+			.hide-text;
+
+			background: #4e4e4e;
+			border: solid 5px @trueBlack;
+			border-radius: 100%;
+			box-shadow: 0 1px 1px fadeout( @white, 80% ) inset, 0 -1px 2px @black inset;
+			display: block;
+			margin-left: -25px;
+			padding: 0;
+			position: absolute;
+			z-index: 999;
+
+			top: -25px;
+			left: 50%;
+
+			height: 45px;
+			width: 45px;
+
+		}
+
 	}
 
-	#rnd {
-
-		display: table;
-		margin: 20px auto;
-
-	}
+	
 
 }
 
