@@ -1,14 +1,16 @@
 <?php require( 'inc/header.inc.php' ); ?>
 
+	<div id="tools"><?php include( 'tools.php' ); ?></div>
+
 	<div id="dash">
 		
 		<div id="dash-left">
 			
 			<div class="top">
 
-				<h5>Bums on seats</h5>
+				<h5 class="control-title">Bums on seats</h5>
 
-				<?php include( 'control-bums.php' ); ?>
+				<div id="c-bums" class="control-wrapper"><?php include( 'control-bums.php' ); ?></div>
 
 			</div><!-- end div.top -->
 
@@ -16,17 +18,17 @@
 
 				<div class="inner-left">
 
-					<h5>Mpg</h5>
+					<h5 class="control-title">Mpg</h5>
 
-					<?php include( 'control-mpg.php' ); ?>
+					<div class="control-wrapper"><?php include( 'control-mpg.php' ); ?></div>
 
 				</div><!-- end div.inner-left -->
 
 				<div class="inner-right">
 
-					<h5>Lifestyle</h5>
+					<h5 class="control-title">Lifestyle</h5>
 
-					<?php include( 'control-lifestyle.php' ); ?>
+					<div class="control-wrapper"><?php include( 'control-lifestyle.php' ); ?></div>
 
 				</div><!-- end div.inner-right -->
 
@@ -34,9 +36,9 @@
 
 			<div class="bottom">
 
-				<h5>Luggage</h5>
+				<h5 class="control-title">Luggage</h5>
 
-				<?php include( 'control-luggage.php' ); ?>
+				<div class="control-wrapper"><?php include( 'control-luggage.php' ); ?></div>
 
 			</div><!-- end div.bottom -->
 
@@ -46,17 +48,17 @@
 			
 			<div class="top">
 
-				<h5>Options</h5>
+				<h5 class="control-title">Options</h5>
 
-				<?php include( 'control-options.php' ); ?>
+				<div class="control-wrapper"><?php include( 'control-options.php' ); ?></div>
 
 			</div><!-- end div.top -->
 
 			<div class="bottom">
 
-				<h5>Speed</h5>
+				<h5 class="control-title">Speed</h5>
 
-				<?php include( 'control-speed.php' ); ?>
+				<div id="c-speed" class="control-wrapper"><?php include( 'control-speed.php' ); ?></div>
 
 			</div><!-- end div.bottom -->
 
@@ -66,13 +68,19 @@
 			
 			<div class="top">
 
-				<h5>£ per month</h5>
+				<h5 class="control-title">£ per month</h5>
 
-				<?php include( 'control-price.php' ); ?>
+				<div class="control-wrapper"><?php include( 'control-price.php' ); ?></div>
 				
 			</div><!-- end div.top -->
 
-			<div class="bottom"><?php include( 'control-start.php' ); ?></div><!-- end div.bottom -->
+			<div class="bottom">
+
+				<h5 class="control-title">Start</h5>
+
+				<div class="control-wrapper"><?php include( 'control-start.php' ); ?></div><!-- end div.bottom -->
+
+			</div>
 
 		</div><!-- end div#dash-right -->
 

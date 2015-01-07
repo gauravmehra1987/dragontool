@@ -1,17 +1,17 @@
+@mpgW: 150px;
+@mpgH: 180px;
+
 .control.mpg {
 
 	position: relative;
 
-	height: 210px;
-	width: 200px;
+	height: @mpgH;
+	width: @mpgW;
 
 	.scale, .control-bg, .indicators, .knob, .arrow { .align-centers; } // Center all layers
 
 	.knob { .sprite( @mpg-knob ); }
-	.indicators { .sprite( @mpg-00 ); }
 	.arrow { .sprite( @mpg-knob-arrow ); }
-
-	.scale { background: @dialGray; }
 
 	.control-bg {
 
@@ -24,7 +24,7 @@
 
 		.tc;
 
-		background: #1a1a1a;
+		background: darken( @dialGray, 10% );
 		border: solid 1px darken( @white, 85% );
 		border-radius: 3px;
 		box-shadow: 0 6px 10px @black inset;
@@ -35,13 +35,16 @@
 		position: absolute;
 
 		left: 0;
-		bottom: @margin;
+		bottom: 0;
 		right: 0;
 
 		width: 2em;
 
-
 	}
+
+	// ############################## Sprites ############################## //
+
+	.indicators { .sprite( @mpg-00 ); }
 
 	&.scale-1 .indicators { .sprite( @mpg-01 ); }
 	&.scale-2 .indicators { .sprite( @mpg-02 ); }

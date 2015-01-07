@@ -1,3 +1,36 @@
+// Tools
+
+#bgcontrol {
+
+	.box-sizing( border-box );
+
+	background: @grayDarker;
+	color: @gray;
+	margin: 0 auto @margin;
+	max-width: 780px;
+	padding: @margin;
+
+	input { margin: 0 @margin / 2; }
+
+	button {
+
+		display: table;
+		margin: @margin auto 0;
+
+	}
+
+}
+
+// Background switcher
+
+.control-bg {
+
+	.transition( background-color 0.2s linear );
+
+	background-color: @accent;
+
+}
+
 #dash {
 
 	overflow: hidden;
@@ -20,16 +53,26 @@
 			color: @grayDarker;
 			position: relative;
 
-			h5 {
+			.control-title {
 
 				.tc;
 
-				background: lighten( @dialGray, 5% );
+				background: #1a1a1a;
+				color: @grayDarker;
 				display: block;
-				font-size: 12px;
-				line-height: 3;
+				font-size: 14px;
+				line-height: 30px;
 				margin: 0 1px;
 				text-transform: uppercase;
+
+			}
+
+			.control-wrapper {
+
+				overflow: hidden;
+				position: relative;
+
+				height: ~'calc( 100% - 30px )';
 
 			}
 
@@ -98,5 +141,3 @@
 	}
 
 }
-
-@import 'dials2';

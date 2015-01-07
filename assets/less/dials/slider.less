@@ -1,12 +1,13 @@
 // .handle - bottom controls position
 // .control-bg - height controls position
 
+@handleHeight: 56px;
+
 .control.slider {
 
-	background: @dialGray;
 	position: relative;
 
-	height: 500px;
+	height: 100%;
 	width: 200px;
 
 	.bg, .wrapper, .control-bg-wrapper, .mask, .handle { .align-centers; } // Center all layers
@@ -17,7 +18,7 @@
 
 		.sprite( @range-handle );
 
-		margin-bottom: -( 56px / 2 );
+		margin-bottom: -( @handleHeight / 2 );
 
 		top: auto;
 		bottom: 0%;
@@ -28,7 +29,7 @@
 
 		overflow: hidden;
 
-		height: @range-bg-height + 56;
+		height: @range-bg-height + @handleHeight;
 		width: @range-bg-width;
 
 	}

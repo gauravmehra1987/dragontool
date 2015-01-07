@@ -1,98 +1,19 @@
 @import 'dials/slots';
 @import 'dials/mpg';
+@import 'dials/lifestyle';
 @import 'dials/luggage';
 @import 'dials/options';
 @import 'dials/slider';
 @import 'dials/button';
 
-.dial-control {
+// Bums on seats
 
-	h3.control-title {
-
-		.tc;
-
-		background: darken( @dialGray, 10% );;
-		color: @grayDarker;
-		display: block;
-		font-size: 14px;
-		font-weight: bold;
-		display: block;
-		line-height: 30px;
-		margin: 0;
-		text-transform: uppercase;
-
-		height: 30px;
-
-	}
-
-}
-
-#bgcontrol {
-
-	background: @grayDarker;
-	color: @gray;
-	margin: 0 0 @margin 0;
-	padding: @margin;
-
-	input { margin: 0 @margin / 2; }
-
-	button {
-
-		display: table;
-		margin: @margin auto 0;
-
-	}
-
-}
-
-.control-bg {
-
-	.transition( background-color 0.2s linear );
-
-	background-color: purple;
-
-}
-
-#dashboard {
-
-	margin: auto;
-	overflow: hidden;
-
-	width: 800px;
-
-}
-
-#dials_left, #dials_middle, #dials_right { float: left; }
-
-#dials_left { width: 400px; }
-#dials_middle { width: 200px; }
-#dials_right { width: 200px; }
-
-#dial_m,
-#dial_l { float: left; }
-
-#dial_b {
-
-	background: @dialGray;
-	clear: both;
-	position: relative;
-
-	height: 240px;
-	width: 400px;
-
-}
-
-#dial_s {
-
-	background: @dialGray;
-
-	height: 290px;
-	width: 400px;
+#c-bums {
 
 	.controls {
 
 		display: table;
-		margin: 40px auto;
+		margin: auto;
 		position: relative;
 
 		.control {
@@ -109,7 +30,7 @@
 			.box-sizing( content-box );
 			.hide-text;
 
-			background: #4e4e4e;
+			background: @grayDarker;
 			border: solid 5px @trueBlack;
 			border-radius: 100%;
 			box-shadow: 0 1px 1px fadeout( @white, 80% ) inset, 0 -1px 2px @black inset;
@@ -127,47 +48,6 @@
 
 		}
 
-	}
-
-	
-
-}
-
-#dial_v {
-
-	position: relative;
-
-	height: 240px;
-
-	.control.slot {
-
-		.align-centers;
-
-		.slot { text-transform: uppercase; }
-
-	}
-
-}
-
-#dial_c {
-
-	background: @dialGray;
-	position: relative;
-
-	height: 240px;
-
-}
-
-@media ( max-width: 480px ) {
-
-	#debug { display: none; }
-
-	.dial-control, #dials_left, #dials_middle, #dials_right {
-
-		.clearfix;
-
-		clear: both;
-
-	}
+	}	
 
 }

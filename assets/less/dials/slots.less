@@ -1,12 +1,22 @@
 @from:	fadeout( @trueBlack, 20% );
-@to:	fadeout( @trueBlack, 90% );
+@to:	fadeout( @trueBlack, 100% );
+
+@slotW: 55px;
+@slotH: 80px;
+
+// Wide slot dimensions
+
+@wsT: 160px;
+@wsW: 130px;
+@wsH: @slotH;
+@wsP: ( @wsT - @wsH ) / 2;
 
 .control.slot {
 
 	background: black;
 	
-	height: 80px * 2;
-	width: 55px;
+	height: @slotH * 2;
+	width: @slotW;
 
 	.control-bg {
 
@@ -20,10 +30,10 @@
 
 		background: #3a3a3b;
 		overflow: hidden;
-		padding-top: 80px / 2;
+		padding-top: @slotH / 2;
 		position: relative;
 
-		height: 80px * 1.5;
+		height: @slotH * 1.5;
 		width: 100%;
 
 		&:before, &:after {
@@ -35,7 +45,7 @@
 
 			left: 0;
 
-			height: 80px / 2;
+			height: @slotH / 2;
 			width: 100%;
 
 		}
@@ -61,7 +71,7 @@
 	.slots {
 
 		overflow: hidden;
-		padding: 80px / 2 0;
+		padding: @slotH / 2 0;
 
 	}
 
@@ -71,7 +81,7 @@
 
 		position: relative;
 
-		height: 80px;
+		height: @slotH;
 		width: 100%;
 
 		span {
@@ -82,7 +92,7 @@
 
 			font-size: 18px;
 			font-weight: bold;
-			line-height: 80px;
+			line-height: @slotH;
 			opacity: 0;
 
 		}
@@ -101,12 +111,7 @@
 
 	&.dragging .slots { .transition( none ); }
 
-	// Wide slot dimensions
-
-	@wsT: 160px;
-	@wsW: 130px;
-	@wsH: 80px;
-	@wsP: ( @wsT - @wsH ) / 2;
+	// Wide slot - for speed control
 
 	&.slot-wide {
 	

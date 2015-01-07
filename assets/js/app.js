@@ -1,3 +1,171 @@
+// Setup namespace and some global variables
+
+var $html	= $( 'html' );
+var	$body	= $( 'body' );
+var	w		= window;
+
+var Mini	= {
+
+	settings: {
+
+		debug:			true,
+
+	},
+
+	thirdParty: {
+
+		facebookID:		892580704115737,
+		analyticsID:	'UA-000000-01'
+
+	},
+
+	browser: {
+
+		name:			$.browser.name,
+		version:		$.browser.version,
+		mobile: 		$.browser.mobile || false,
+		platform:		$.browser.platform,
+
+		// Quick fuction to check IE version
+
+		isIE:			function( version ) {
+
+			switch( typeof( version ) ) {
+
+				case 'string': return ( $.browser.name === 'msie' && $.browser.platform === 'win' && eval( parseInt( $.browser.version ) + version ) ); break;
+				
+				case 'number': return ( $.browser.name === 'msie' && $.browser.platform === 'win' && parseInt( $.browser.version ) === version ); break;
+
+				default: return ( $.browser.name === 'msie' && $.browser.platform === 'win' ); break;
+
+			}
+
+		}
+
+	}
+
+};
+
+// Add some useful classes to the <html> element
+
+document.querySelector( 'html' ).className += ' ' + Mini.browser.platform;
+
+// Add browser name via JavaScript if it's not IE
+
+if( ! Mini.browser.isIE() ) document.querySelector( 'html' ).className += ' ' + Mini.browser.name;
+
+// We have to manually append .js class to the <html> element if modernizr isn't used
+
+if( typeof( Modernizr ) === 'undefined' ) {
+
+	var bodyClass = document.querySelector( 'html' ).className;
+
+	document.querySelector( 'html' ).className = bodyClass.replace( 'no-js', 'js' );
+
+}
+
+// Plugins
+
+jQuery.fn.removeClassExcept = function ( val ) {
+
+	return this.each( function( index, el ) {
+		
+		var keep = val.split( ' ' );
+		var reAdd = [];
+		var $el = $(el);
+	
+		for( var c = 0; c < keep.length; c++ ) {
+
+			if( $el.hasClass( keep[ c ] ) ) reAdd.push( keep[ c ] );
+
+		}
+
+	
+	$el.removeClass().addClass( reAdd.join( ' ' ) );
+	
+	} );
+
+};
+
+( function( Mini ) {
+	
+	$body.on( 'click', '.js-sharer li a', function( e ) {
+
+		e.preventDefault();
+
+		var $link		= $( this );
+		var website		= $( this ).parent();
+		var title		= website.attr( 'title' );
+		var currentURL	= location.href;
+
+		switch( $( website ).attr( 'class') ) {
+
+			case 'facebook':
+
+				FB.ui( {
+					
+					method: 'share',
+					href: currentURL,
+
+				},
+
+				function( response ) {
+
+					console.log( response );
+
+				} );
+
+			break;
+
+			case 'twitter':
+
+				var hashtags = website.data( 'hashtags' );
+
+				if( hashtags === undefined ) hashtags = '';
+
+				window.open( 'https://twitter.com/intent/tweet?url=' + currentURL + '&hashtags=' + hashtags, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );
+
+			break;
+
+			case 'gplus':
+
+				window.open( 'http://plus.google.com/share?url=' + currentURL, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );
+
+			break;
+
+			case 'print': window.print(); break;
+			
+			case 'mail':
+
+				dialog( 'Please enter your friend\'s e-mail address.', 'prompt', function() {
+
+					var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				
+					if( regex.test( this ) ) {
+
+						window.location.href = 'mailto:' + this + '?subject=Check this out&body=Hello there, I thought you\'ll find it interesting: ' + currentURL;
+
+					}
+					else{
+
+						dialog( 'The e-mail address seems invalid. Please try again.' );
+
+					}
+
+				} );
+
+			break;
+
+		}
+
+	} );
+
+} )( Mini );
+( function( Mini ) {
+
+	// Write your stuff here. Before doing so, have a look at config.js.
+
+} ( Mini ) );
 function scale( el, targetWidth ) {
 
 	var elWidth	= $( el ).outerWidth();
