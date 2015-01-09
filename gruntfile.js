@@ -61,6 +61,15 @@ module.exports = function( grunt ) {
 
 		},
 
+		php: {
+			dist: {
+				options: {
+					keepalive: true,
+					port: 5000
+				}
+			}
+		},
+
 		// Merge JS files
 		
 		concat: {
@@ -359,8 +368,11 @@ module.exports = function( grunt ) {
 
 	} );
 
+	// Local modules
+
+	grunt.loadNpmTasks( 'grunt-php' );
+
 	// Load modules
-	
 	grunt.loadNpmTasks( 'grunt-contrib-less' );
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
