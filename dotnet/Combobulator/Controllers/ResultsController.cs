@@ -76,7 +76,18 @@ namespace Combobulator.Controllers
             Customer customer = new Customer();
             customer.Titles = queryTitles.ToList();
             customer.Dealers = queryDealers.ToList();
-            return PartialView("NewCustomerForm", customer);
+
+            PartialViewResult view = null;
+            if (id != null)
+            {
+                view = PartialView("ExistingCustomerForm", customer);
+            }
+            else
+            {
+                view = PartialView("NewCustomerForm", customer);
+            }
+
+            return view;
         }
 
         [ChildActionOnly]
