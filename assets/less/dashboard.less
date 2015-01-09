@@ -1,3 +1,32 @@
+#slick-test {
+
+	height: 400px;
+	width: 800px;
+	margin: 40px auto;
+	background: red;
+	position: relative;
+
+	.wrapper {
+
+		height: 400px;
+		width: 100%;
+
+		.item {
+
+			background: yellow;
+			float: left;
+
+			height: 400px;
+			width: 100%;
+
+		}
+
+	}
+
+}
+
+
+
 // Tools
 
 #bgcontrol {
@@ -140,7 +169,23 @@
 
 			}
 
-			.top, .middle, .bottom, .inner-left, .inner-right { height: auto; }
+			.top, .middle, .bottom, .inner-left, .inner-right {
+
+				height: auto;
+
+				.control-wrapper {
+
+					.control-inner {
+
+						.transform; // remove transform and make position static
+
+						position: static;
+
+					}
+
+				}
+
+			}
 
 		}
 
