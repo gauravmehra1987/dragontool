@@ -24,35 +24,11 @@
 
 		&:before {
 
+			.align-centers;
 			.pseudo;
 			.sprite( @luggage-mask ); background: url( ../sprites/luggage-mask.png );
 
-			position: absolute;
 			z-index: 999;
-
-			top: 0;
-			right: 0;
-			left: 0;
-			bottom: auto;
-
-			height: 20px;
-
-		}
-
-		&:after {
-
-			.pseudo;
-			.sprite( @luggage-mask-bottom ); background: url( ../sprites/luggage-mask-bottom.png );
-
-			position: absolute;
-			z-index: 9999;
-
-			top: 160px;
-			right: 0;
-			left: 0;
-			bottom: auto;
-
-			height: 30px;
 
 		}
 
@@ -115,8 +91,8 @@
 			height: 150px;
 			width: 150px;
 
-			&.right { .sprite( @luggage-arrows-right ); background: url( ../sprites/luggage-arrows.png ); }
-			&.left { .sprite( @luggage-arrows-left ); background: url( ../sprites/luggage-arrows.png ); }
+			&.right { .sprite( @luggage-arrows-right ); background: url( ../sprites/luggage-arrows-right.png ); }
+			&.left { .sprite( @luggage-arrows-left ); background: url( ../sprites/luggage-arrows-left.png ); }
 
 			#left, #right {
 
