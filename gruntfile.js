@@ -75,7 +75,6 @@ module.exports = function( grunt ) {
 					
 					paths.bower + 'fastclick/lib/fastclick.js',
 					paths.bower + 'underscore/underscore.js',
-					paths.bower + 'hammerjs/hammer.js',
 					paths.bower + 'jquery/dist/jquery.js',
 					paths.bower + 'jquery.browser/dist/jquery.browser.js',
 					paths.bower + 'slick.js/slick/slick.js',
@@ -301,13 +300,13 @@ module.exports = function( grunt ) {
 		
 		clean: {
 
-			images: [
+			// images: [
 
-				'assets/img/**',
-				'!assets/img',
-				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
+			// 	'assets/img/**',
+			// 	'!assets/img',
+			// 	'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
 
-			],
+			// ],
 
 			fonts: [
 				
@@ -398,7 +397,7 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'images', [
 
-		'clean:images',
+		// 'clean:images',
 		'sprites',
 		'imagemin',
 		'copy',
