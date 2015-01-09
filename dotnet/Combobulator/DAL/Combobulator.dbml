@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Combobulator" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\Combobulator.mdf;Initial Catalog=Combobulator;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CombobulatorConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Cars" Member="Cars">
+    <Type Name="Car" Id="ID1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModelCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Colour" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Engine" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DisplayName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CapacityScale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LuggageScale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Options" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PriceScale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Cost" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PerformanceScale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MPH" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EconomyScale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MPG" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UsageScale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Member="ImageURL" Type="System.String" CanBeNull="false" />
+      <Column Member="TermsConditions" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Titles" Member="Titles">
+    <Type Name="Title" Id="ID2">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dealers" Member="Dealers">
+    <Type Name="Dealer" Id="ID3">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetCar" Method="GetCar">
+    <Parameter Name="ModelCode" Parameter="modelCode" Type="System.String" DbType="VarChar(10)" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.GetCars" Method="GetCars">
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.GetTitles" Method="GetTitles">
+    <ElementType IdRef="ID2" />
+  </Function>
+  <Function Name="dbo.GetDealers" Method="GetDealers">
+    <ElementType IdRef="ID3" />
+  </Function>
+</Database>

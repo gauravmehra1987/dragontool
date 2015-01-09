@@ -1,0 +1,99 @@
+﻿@model Combobulator.Models.Customer
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm("NewCustomerSubmit","Results")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+        @Html.EditorFor(model => model.UserId, new { value = ViewBag.UserId })
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, "Name", "Name"), "Title")
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First names" })
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last name" })
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email address" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.TelephoneHome, new { placeholder = "Home telephone" })
+            @Html.ValidationMessageFor(model => model.TelephoneHome)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.TelephoneWork, new { placeholder = "Work telephone" })
+            @Html.ValidationMessageFor(model => model.TelephoneWork)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.TelephoneMobile, new { placeholder = "Mobile telephone" })
+            @Html.ValidationMessageFor(model => model.TelephoneMobile)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AddressLine1, new { placeholder = "Address line 1" })
+            @Html.ValidationMessageFor(model => model.AddressLine1)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AddressLine2, new { placeholder = "Address line 2" })
+            @Html.ValidationMessageFor(model => model.AddressLine2)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AddressLine3, new { placeholder = "Address line 3" })
+            @Html.ValidationMessageFor(model => model.AddressLine3)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AddressLine4, new { placeholder = "Address line 4" })
+            @Html.ValidationMessageFor(model => model.AddressLine4)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AddressPostcode, new { placeholder = "Postcode" })
+            @Html.ValidationMessageFor(model => model.AddressPostcode)
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Dealer, new SelectList(Model.Dealers, "Name", "Name"), "Dealer")
+            @Html.ValidationMessageFor(model => model.Dealer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequestCallback)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.RequestCallback)
+            @Html.ValidationMessageFor(model => model.RequestCallback)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailResults)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.EmailResults)
+            @Html.ValidationMessageFor(model => model.EmailResults)
+        </div>
+
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </fieldset>
+}

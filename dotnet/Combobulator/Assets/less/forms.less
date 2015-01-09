@@ -1,0 +1,175 @@
+// Form input wrapper
+
+.form-control {
+
+	.remove-last-margin;
+
+	&.full-width {
+
+		input:not( [type=checkbox] ):not( [type=radio] ),
+		.button,
+		button,
+		textarea { width: 100%; }
+
+	}
+
+	// This is for IE8 when we're not using fancy form controls
+
+	input[type=radio], input[type=checkbox] { margin-right: 0.5em; }
+
+}
+
+// Inputs
+
+input:not( [type=checkbox] ):not( [type=radio] ),
+textarea {
+
+	.form-input;
+	.placeholder( @grayLight );
+	.transition( all 0.2s );
+
+	background: @white;
+	border-color: @gray;
+	border-radius: 0;
+	box-shadow: 1px 1px 2px transparent inset, 0 0 0 3px transparent;
+	color: @grayDarker;
+
+	&:focus {
+
+		border-color: mix( @accent, @white, 60% );
+		box-shadow: 1px 1px 2px @gray inset, 0 0 0 3px mix( @accent, @white, 10% );
+
+	}
+
+	&.error {
+
+		border-color: @red;
+		box-shadow: 0 0 0 3px mix( @red, @white, 20% );
+
+		&:focus { box-shadow: 1px 1px 2px @gray inset, 0 0 0 3px mix( @red, @white, 20% ); }
+
+	}
+
+}
+
+// Textarea
+
+textarea { min-height: @margin * 6; }
+
+// Buttons
+
+.button,
+button,
+input[type=button],
+input[type=submit],
+input[type=cancel] {
+
+	&, &:visited { color: @white; }
+
+	.form-input;
+
+	background: @accent;
+	border-color: @accent;
+	border-radius: 0;
+	display: inline-block;
+	font-family: @fontAlt;
+	font-weight: normal;
+	line-height: 1;
+	padding-left: @margin * 2;
+	padding-right: @margin * 2;
+	text-shadow: 0 1px 0 @black;
+	text-transform: uppercase;
+
+	&:hover {
+
+		background: darken( @accent, 5% );
+		border-color: darken( @accent, 5% );
+		text-decoration: none;
+
+	}
+
+}
+
+// Now, checkboxes...
+
+.checkbox {
+
+	.clearfix;
+	.form-checkbox;
+
+	// Here you can change the icon - or you can overwrite it in the mixins file permanently
+
+	input + label:before { box-shadow: 0 0 0 1px @gray inset; }
+
+	input:checked + label {
+
+		&:after { .icon-ok; }
+
+	}
+
+	// Now the radio buttons
+
+	&.checkbox-radio {
+
+		label:before {
+
+			background: 0;
+			border-radius: 100%;
+			box-shadow: 0px 0px 0px 1px @gray inset;
+
+		}
+
+		input[type=radio] + label:after {
+
+			.icon-circle;
+
+			color: @black;
+			font-size: 0.5em;
+			visibility: hidden;
+
+			top: 0.5em;
+			left: 0.5em;
+
+		}
+
+		input[type=radio]:checked + label:after { visibility: visible; }
+
+	}
+
+}
+
+// and select elements - first for IE8
+
+select {
+
+	display: block;
+	margin: 0 0 ( @margin / 2 ) 0;
+	padding: @fontSize;
+
+	width: 100%;
+
+}
+
+// then for other browsers
+
+.select {
+
+	.transition( all 0.2s );
+
+	.form-select; // takes the following parameters: @bgColor, @textColor, @borderColor, @outlineColor, @optionBg, @optionColor, @optionHoverBg, @optionHoverColor, @optionActiveBg, @optionActiveColor, @fontSize
+
+	// Different states
+
+	&.error {
+
+		.form-select( @bgColor: @red, @borderColor: @red, @textColor: @white, @outlineColor:  mix( @red, @white, 20% ) );
+
+	}
+
+	&.focus {
+
+		.form-select( @bgColor: @accent, @borderColor: @accent, @textColor: @white, @outlineColor:  mix( @accent, @white, 20% ) );
+
+	}
+
+}

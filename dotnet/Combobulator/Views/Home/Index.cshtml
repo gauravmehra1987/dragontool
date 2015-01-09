@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "MINI Combobulator Dashboard";
+    string firstName = ViewBag.FirstName;
+}
+
+@if (firstName != "")
+{
+    @Html.Raw("Hi " + firstName);
+}

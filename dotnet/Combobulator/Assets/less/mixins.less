@@ -1,0 +1,370 @@
+.align-centers {
+
+	margin: auto;
+	position: absolute;			
+		
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	
+}
+
+// Font families
+
+.font-sans() { font-family: @fontSans; }
+.font-serif() { font-family: @fontSerif; }
+.font-simple-sans() { font-family: @fontSimpleSans; }
+.font-simple-serif() { font-family: @fontSimpleSerif; }
+.font-mono() { font-family: @fontMono; }
+.font-alt() { font-family: @fontAlt; }
+
+// Typography
+
+.tl() { text-align: left; }
+.tr() { text-align: right; }
+.tc() { text-align: center; }
+.tj() { text-align: justify; }
+
+// Removes margin from the last element
+
+.remove-last-margin() {
+
+	margin: 0 0 @margin 0;
+
+	&:last-of-type:not( :only-of-type ) {
+
+		margin-bottom: 0;
+
+		& + * { margin-top: @margin; }
+
+	}
+
+}
+
+// Lists - can be used as inline classes
+
+.list-remove-bullets() {
+
+	list-style-type: none;
+	padding: 0;
+
+}
+
+.list-inline() {
+
+	.clearfix;
+	.list-remove-bullets;
+
+	line-height: 1;
+
+	li {
+
+		display: inline-block;
+		float: left;
+		line-height: 1;
+
+	}
+
+}
+
+// Form mixins
+
+.form-input() {
+
+	.appearance;
+	.box-sizing( border-box );
+	.box-sizing-ie;
+	.transition( all 0.2s );
+
+	border: solid 1px @grayLight;
+	font-size: @fontSizeSmall;
+	outline: none; // Bloody Firefox!
+	padding: @margin / 2;
+
+	height: ( @fontSize ) + ( @margin );
+
+}
+
+.form-checkbox() {
+
+	input[type=checkbox],
+	input[type=radio] {
+
+		display: none;
+		line-height: 0;
+
+		height: 0;
+		width: 0;
+
+	}
+
+	label {
+
+		display: inline-block;
+		line-height: 0;
+		margin: 0;
+		position: relative;
+		padding-left: 2em;
+
+		&:before {
+
+			content: '';
+			display: inline-block;
+			line-height: 0;
+			margin: 0 1em 0 -2em;
+			position: relative;
+
+			height: 1em;
+			width: 1em;
+
+		}
+
+	}
+
+	input + label:after {
+
+		.icon;
+
+		line-height: 1;
+		position: absolute;
+		text-align: center;
+
+		height: 1em;
+		width: 1em;
+
+		top: 0;
+		left: 0;
+
+	}
+
+}
+
+.form-select(
+
+	@bgColor: @white,
+	@textColor: @grayDark,
+	@borderColor: @grayLighter,
+	@outlineColor: transparent,
+
+	@optionBorderColor: @white,
+	
+	@optionBg: darken( @white, 3% ),
+	@optionColor: @gray,
+
+	@optionHoverBg: spin( @bgColor, 180 ),
+	@optionHoverColor: spin( @textColor, 180 ),
+
+	@optionActiveBg: @grayDark,
+	@optionActiveColor: @white,
+
+	@fontSize: @fontSizeSmall
+
+) {
+
+	.clearfix;
+
+	background: @bgColor;
+	border: solid 1px @borderColor;
+	box-shadow: 0 0 0 3px @outlineColor;
+	display: block;
+	font-family: @fontSimpleSans;
+	font-size: @fontSize;
+	margin: 0;
+	overflow: visible;
+	position: relative;
+	padding: 0;
+
+	height: ( ( @fontSize ) + ( @margin ) );
+
+	&:after {
+
+		.icon;
+		.icon-down-thick;
+
+		color: fadeout( @textColor, 75% );
+		margin-top: -.5em;
+		position: absolute;
+		z-index: 999;
+
+		top: 50%;
+		right: @margin / 2;
+
+	}
+
+	& > select {
+
+		.appearance;
+		.transition( all 0.2s );
+
+		-moz-appearance: window !important; // Bloody Firefox!
+
+		background: 0;
+		border: 0;
+		border-radius: 0;
+		color: @textColor;
+		display: block;
+		outline: 0 !important;
+		overflow: hidden;
+		padding: 0 @margin / 2;
+		position: absolute;
+
+		height: 100%;
+
+		&:focus { color: @textColor; }
+
+	}
+	
+}
+
+// Triangles
+
+#triangle {
+
+	.base( @width, @height, @color ) {
+	
+		border-color: transparent;
+		border-style: solid;
+
+		height: 0px;
+		width: 0px;
+
+	}
+
+	.top( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: 0 @width / 2 @height @width / 2;
+		border-bottom-color: @color;
+		border-left-color: fade( @color, 0 );
+		border-right-color: fade( @color, 0 );
+
+	}
+
+	.top( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: 0 @width / 2 @height @width / 2;
+		border-bottom-color: @color;
+		border-left-color: fade( @color, 0 );
+		border-right-color: fade( @color, 0 );
+
+	}
+
+	.bottom( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: @height @width / 2 0 @width / 2;
+		border-top-color: @color;
+		border-left-color: fade( @color, 0 );
+		border-right-color: fade( @color, 0 );
+
+	}
+
+	.right( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: @height / 2 0 @height / 2 @width;
+		border-left-color: @color;
+		border-top-color: fade( @color, 0 );
+		border-bottom-color: fade( @color, 0 );
+
+	}
+
+	.left( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: @height / 2 @width @height / 2 0;
+		border-right-color: @color;
+		border-top-color: fade( @color, 0 );
+		border-bottom-color: fade( @color, 0 );
+
+	}
+
+	.top-right( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: 0 @width @height 0;
+		border-right-color: @color;
+		border-bottom-color: fade( @color, 0 );
+
+	}
+
+	.top-left( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: @height @width 0 0;
+		border-top-color: @color;
+		border-right-color: fade( @color, 0 );
+
+	}
+
+	.bottom-right( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: 0 0 @height @width;
+		border-bottom-color: @color;
+		border-left-color: fade( @color, 0 );
+
+	}
+
+	.bottom-left( @width, @height, @color ) {
+
+		.base( @width, @height, @color );
+
+		border-width: @height 0 0 @width;
+		border-left-color: @color;
+		border-top-color: fade( @color, 0 );
+
+	}
+
+}
+
+// Utilities
+
+.pseudo() {
+
+	content: '';
+	display: block;
+
+}
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+
+.clearfix() {
+
+	*zoom: 1;
+	
+	&:before,
+	&:after {
+		
+		content: '';
+		display: table;
+
+	}
+
+	&:after { clear:both; }
+
+}
+
+// Used mostly for icons or backgrounds
+
+.hide-text() {
+
+	display: inline-block;
+	text-indent: -999em;
+	white-space: nowrap;
+
+}
+
+// box-sizing polyfill for IE
+
+.box-sizing-ie() { *behavior:  url( @boxSizingHTCPath ); }

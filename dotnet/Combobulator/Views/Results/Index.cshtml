@@ -1,0 +1,15 @@
+﻿@model Combobulator.Models.Results
+
+@{
+    ViewBag.Title = "MINI Combobulator Results";
+}
+<div style="width:80%;display:inline;float:left">
+    @Html.Action("ResultDetail")
+</div>
+<div style="width:20%;display:inline;float:left">
+    @Html.Action("CustomerForm", new { id = ViewBag.UserId })
+</div>
+
+@section CustomScripts {
+    @Scripts.Render("~/bundles/jquery")
+}
