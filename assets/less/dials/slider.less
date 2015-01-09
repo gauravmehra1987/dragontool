@@ -12,11 +12,11 @@
 
 	.bg, .wrapper, .control-bg-wrapper, .mask, .handle { .align-centers; } // Center all layers
 
-	.bg { .sprite( @range-bg ); }
-	.mask { .sprite( @range-mask ); }	
+	.bg { .sprite( @range-bg ); background: url( ../sprites/range-bg.png ); }
+	.mask { .sprite( @range-mask ); background: url( ../sprites/range-mask.png ); }	
 	.handle {
 
-		.sprite( @range-handle );
+		.sprite( @range-handle ); background: url( ../sprites/range-handle.png );
 
 		margin-bottom: -( @handleHeight / 2 );
 

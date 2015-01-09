@@ -77,8 +77,6 @@
 
 	.slot {
 
-		.sprite( @slot-girl );
-
 		position: relative;
 
 		height: @slotH;
@@ -97,15 +95,15 @@
 
 		}
 
-		&.empty { .sprite( @slot-empty ); }
-		&.man { .sprite( @slot-man ); }
-		&.woman { .sprite( @slot-woman ); }
-		&.girl { .sprite( @slot-girl ); }
-		&.boy { .sprite( @slot-boy ); }
-		&.infant { .sprite( @slot-infant ); }
-		&.dog { .sprite( @slot-dog ); }
-		&.cat { .sprite( @slot-cat ); }
-		&.alien { .sprite( @slot-alien ); }
+		&.empty { .sprite( @slot-empty ); background: url( ../sprites/slot-empty.png ); }
+		&.man { .sprite( @slot-man ); background: url( ../sprites/slot-man.png ); }
+		&.woman { .sprite( @slot-woman ); background: url( ../sprites/slot-woman.png ); }
+		&.girl { .sprite( @slot-girl ); background: url( ../sprites/slot-girl.png ); }
+		&.boy { .sprite( @slot-boy ); background: url( ../sprites/slot-boy.png ); }
+		&.infant { .sprite( @slot-infant ); background: url( ../sprites/slot-infant.png ); }
+		&.dog { .sprite( @slot-dog ); background: url( ../sprites/slot-dog.png ); }
+		&.cat { .sprite( @slot-cat ); background: url( ../sprites/slot-cat.png ); }
+		&.alien { .sprite( @slot-alien ); background: url( ../sprites/slot-alien.png ); }
 
 	}
 

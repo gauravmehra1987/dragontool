@@ -51,7 +51,6 @@
 				&:after {
 
 					.pseudo;
-					.sprite( @opts-awd-on );
 					.transition( opacity 0.2s linear );
 
 					opacity: 0;
@@ -103,9 +102,9 @@
 
 		&.opts-awd input + label {
 
-			.sprite( @opts-awd-off );
+			.sprite( @opts-awd-off ); background: url( ../sprites/opts-awd-off.png );
 
-			&:after { .sprite( @opts-awd-on ); }
+			&:after { .sprite( @opts-awd-on ); background: url( ../sprites/opts-awd-on.png ); }
 
 		}
 
@@ -113,9 +112,9 @@
 
 		&.opts-hp input + label {
 
-			.sprite( @opts-awd-off ); // @opts-hp-off );
+			.sprite( @opts-hp-off ); background: url( ../sprites/opts-hp-off.png );
 
-			&:after { .sprite( @opts-awd-on ); } // @opts-hp-on ); }
+			&:after { .sprite( @opts-hp-on ); background: url( ../sprites/opts-hp-on.png ); }
 
 		}
 
@@ -123,9 +122,9 @@
 
 		&.opts-dt input + label {
 
-			.sprite( @opts-awd-off ); // @opts-dt-off );
+			.sprite( @opts-dt-off ); background: url( ../sprites/opts-dt-off.png );
 
-			&:after { .sprite( @opts-awd-on ); } // @opts-dt-on ); }
+			&:after { .sprite( @opts-dt-on ); background: url( ../sprites/opts-dt-on.png ); }
 
 		}
 
@@ -133,9 +132,9 @@
 
 		&.opts-tp input + label {
 
-			.sprite( @opts-awd-off ); // @opts-tp-off );
+			.sprite( @opts-tp-off ); background: url( ../sprites/opts-tp-off.png );
 
-			&:after { .sprite( @opts-awd-on ); } // @opts-tp-on ); }
+			&:after { .sprite( @opts-tp-on ); background: url( ../sprites/opts-tp-on.png ); }
 
 		}
 

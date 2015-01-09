@@ -1,4 +1,4 @@
-<?php require( 'inc/header.inc.php' ); ?>
+<?php if( __FILE__ == $_SERVER['SCRIPT_FILENAME' ] ) { require( 'inc/header.inc.php' ); } ?>
 
 	<div id="tools"><?php include( 'tools.php' ); ?></div>
 
@@ -10,7 +10,7 @@
 
 				<h5 class="control-title">Bums on seats</h5>
 
-				<div id="c-bums" class="control-wrapper"><?php include( 'control-bums.php' ); ?></div>
+				<div id="c-bums" class="control-wrapper"><div class="control-inner"><?php include( 'control-bums.php' ); ?></div></div>
 
 			</div><!-- end div.top -->
 
@@ -20,7 +20,7 @@
 
 					<h5 class="control-title">Mpg</h5>
 
-					<div class="control-wrapper"><?php include( 'control-mpg.php' ); ?></div>
+					<div class="control-wrapper"><div class="control-inner"><?php include( 'control-mpg.php' ); ?></div></div>
 
 				</div><!-- end div.inner-left -->
 
@@ -28,7 +28,7 @@
 
 					<h5 class="control-title">Lifestyle</h5>
 
-					<div class="control-wrapper"><?php include( 'control-lifestyle.php' ); ?></div>
+					<div id="c-lifestyle" class="control-wrapper"><div class="control-inner"><?php include( 'control-lifestyle.php' ); ?></div></div>
 
 				</div><!-- end div.inner-right -->
 
@@ -38,7 +38,7 @@
 
 				<h5 class="control-title">Luggage</h5>
 
-				<div class="control-wrapper"><?php include( 'control-luggage.php' ); ?></div>
+				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-luggage.php' ); ?></div></div>
 
 			</div><!-- end div.bottom -->
 
@@ -50,7 +50,7 @@
 
 				<h5 class="control-title">Options</h5>
 
-				<div class="control-wrapper"><?php include( 'control-options.php' ); ?></div>
+				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-options.php' ); ?></div></div>
 
 			</div><!-- end div.top -->
 
@@ -58,7 +58,7 @@
 
 				<h5 class="control-title">Speed</h5>
 
-				<div id="c-speed" class="control-wrapper"><?php include( 'control-speed.php' ); ?></div>
+				<div id="c-speed" class="control-wrapper"><div class="control-inner"><?php include( 'control-speed.php' ); ?></div></div>
 
 			</div><!-- end div.bottom -->
 
@@ -70,7 +70,7 @@
 
 				<h5 class="control-title">£ per month</h5>
 
-				<div class="control-wrapper"><?php include( 'control-price.php' ); ?></div>
+				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-price.php' ); ?></div></div>
 				
 			</div><!-- end div.top -->
 
@@ -78,7 +78,7 @@
 
 				<h5 class="control-title">Start</h5>
 
-				<div class="control-wrapper"><?php include( 'control-start.php' ); ?></div><!-- end div.bottom -->
+				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-start.php' ); ?></div><!-- end div.bottom --></div>
 
 			</div>
 
@@ -86,4 +86,4 @@
 
 	</div><!-- end div#dash -->
 
-<?php require( 'inc/footer.inc.php' ); ?>
+<?php if( __FILE__ == $_SERVER['SCRIPT_FILENAME' ] ) { require( 'inc/footer.inc.php' ); } ?>

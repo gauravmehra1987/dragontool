@@ -1,5 +1,18 @@
 .letter-spacing( @value ) { letter-spacing: ( @value / 1000 ) + 0em; }
 
+.align-middle() {
+
+	.transform( translateY( -50% ), translateX( -50% ) );
+
+	display: table;
+	overflow: auto;
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+
+}
+
 .align-centers {
 
 	margin: auto;

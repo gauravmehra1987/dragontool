@@ -173,6 +173,7 @@ function initSlot( slot ) {
 
 		type: 'y',
 		bounds: $( slot ).parent(),
+		edgeResistance: 1,
 		throwProps: true,
 		onThrowComplete: function() {
 			
@@ -318,14 +319,77 @@ $( '#mpg_value' ).text( mpg_knob._value );
 //
 // ################################################## //
 
-var lifestyle_el		= document.querySelector( '.control.lifestyle .labels' );
+var lifestyle_dial_el		= document.querySelector( '.control.lifestyle .dial' );
+var lifestyle_labels_el	= document.querySelector( '.control.lifestyle .labels' );
+var lifestyle_bounds	= 5;
 var lifestyle_steps		= 4;
-var lifestyle_knob		= new Draggable( lifestyle_el, {
 
-	type:	'rotation',
-	throwProps: true,
+var lifestyle_direction;
+var slick = $( '.items-wrapper' ).slick( {
+
+	arrows: false,
+	infinite: true,
+	slide: '.item',
+	onAfterChange: function() { lifestyle_dial.enable(); }
 
 } );
+
+var lifestyle_labels = new Draggable( lifestyle_labels_el, {
+
+	type: 'rotation',
+	throwProps: true
+
+} );
+
+var currentLabelPosition = lifestyle_labels.y;
+
+var lifestyle_dial		= new Draggable( lifestyle_dial_el, {
+
+	type:	'rotation',
+	bounds:	{ minRotation: -lifestyle_bounds, maxRotation: lifestyle_bounds },
+	throwProps: true,
+	dragResistance: 0.8,
+	onDragStart: function() { lifestyle_direction = Math.abs( this.y ); },
+	onDragEnd: function() {
+
+		// Determine direction
+
+		var direction = ( Math.abs( this.y ) > lifestyle_direction ) ? 'right' : 'left';		
+		var newLabelPosition;
+
+		// Temporarily disable dial
+
+		this.disable();
+
+		// Move content in the window
+
+		if( direction === 'right' ) {
+
+			slick.slickPrev();
+			newLabelPosition = currentLabelPosition + ( 360 / lifestyle_steps );
+
+		}
+
+		else {
+
+			slick.slickNext();
+			newLabelPosition = currentLabelPosition - ( 360 / lifestyle_steps );
+
+		}
+
+		// Update label
+
+		TweenLite.to( lifestyle_labels_el, 1, { rotation: newLabelPosition } );
+
+		// Update old position reference
+
+		currentLabelPosition = newLabelPosition;
+
+	},
+	snap: function( endValue ) { return true; }
+
+} );
+
 
 // ################################################## //
 //

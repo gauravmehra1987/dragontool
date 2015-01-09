@@ -300,13 +300,13 @@ module.exports = function( grunt ) {
 		
 		clean: {
 
-			// images: [
+			images: [
 
-			// 	'assets/img/**',
-			// 	'!assets/img',
-			// 	'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
+				'assets/img/**',
+				'!assets/img',
+				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
 
-			// ],
+			],
 
 			fonts: [
 				
@@ -397,7 +397,7 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'images', [
 
-		// 'clean:images',
+		'clean:images',
 		'sprites',
 		'imagemin',
 		'copy',

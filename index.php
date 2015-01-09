@@ -1,313 +1,74 @@
 <?php require( 'inc/header.inc.php' ); ?>
 
-		<div id="dashboard">
-
-			<div id="bgcontrol">
-
-				<h3>Debug tools</h3>
-
-				<span>Change background color to:</span>
-				
-				<input id="b" type="radio" name="bg" value="blue" checked /><label for="b">Blue</label>
-				<input id="r" type="radio" name="bg" value="red" /><label for="r">Red</label>
-				<input id="y" type="radio" name="bg" value="yellow" /><label for="y">Yellow</label>
-				<input id="l" type="radio" name="bg" value="lime" /><label for="l">Lime</label>
-				<input id="w" type="radio" name="bg" value="white" /><label for="w">White</label>
-
-				<button id="get">Generate JS object with values from the UI</button>
-
-			</div><!-- end div#bgcontrol -->
-
-			<div id="dials_left">
-
-				<div id="dial_s" class="dial-control">
-
-					<h3 class="control-title">Bums on seats</h3><!-- end h3.control-title -->
-
-					<div class="controls">
-						
-						<div class="control slot">
-
-							<div class="wrap">
-
-								<div class="control-bg"></div><!-- end div.control-bg -->
-
-								<div class="slots">
-
-									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
-
-								</div><!-- end div.slots -->
-
-							</div><!-- end div.wrap -->
-							
-						</div><!-- end div.control slot -->
-
-						<div class="control slot">
-
-							<div class="wrap">
-
-								<div class="control-bg"></div><!-- end div.control-bg -->
-
-								<div class="slots">
-
-									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
-									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->									
-
-								</div><!-- end div.slots -->
-
-							</div><!-- end div.wrap -->
-							
-						</div><!-- end div.control slot -->
-
-						<div class="control slot">
-
-							<div class="wrap">
-
-								<div class="control-bg"></div><!-- end div.control-bg -->
-
-								<div class="slots">
-								
-									<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
-									<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
-									<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
-									<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
-									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
-
-								</div><!-- end div.slots -->
-
-							</div><!-- end div.wrap -->
-							
-						</div><!-- end div.control slot -->
-
-						<div class="control slot">
-
-							<div class="wrap">
-
-								<div class="control-bg"></div><!-- end div.control-bg -->
-
-								<div class="slots">
-								
-									<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
-									<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
-									<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->									
-									<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
-									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
-
-								</div><!-- end div.slots -->
-
-							</div><!-- end div.wrap -->
-							
-						</div><!-- end div.control slot -->
-
-						<div class="control slot">
-
-							<div class="wrap">
-
-								<div class="control-bg"></div><!-- end div.control-bg -->
-
-								<div class="slots">
-								
-									<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
-									<div class="slot dog"><span>Dog</span></div><!-- end div.slot dog -->
-									<div class="slot cat"><span>Cat</span></div><!-- end div.slot cat -->
-									<div class="slot alien"><span>Alien</span></div><!-- end div.slot alien -->
-									<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
-									<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
-									<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
-									<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-									<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
-
-								</div><!-- end div.slots -->
-
-							</div><!-- end div.wrap -->
-							
-						</div><!-- end div.control slot -->
-
-						<button id="rnd">Randomize</button>
-						
-					</div><!-- end div.controls -->					
-
-				</div><!-- end div#dial_s -->
-
-				<div id="dial_m" class="dial-control">
-
-					<h3 class="control-title">MPG</h3><!-- end h3.control-title -->
-
-					<div class="control mpg">
-						
-						<div class="scale">
-							
-							<div class="control-bg"></div><!-- end div.control-bg -->
-							<div class="indicators"></div><!-- end div.indicators -->				
-							<div class="knob"></div><!-- end div.knob -->				
-							<div class="arrow"></div><!-- end div.arrow -->
-
-						</div><!-- end div.scale -->
-
-						<div id="mpg_value" class="value">0</div><!-- end div#mpg_value.value -->
-
-					</div><!-- end div.control mpg -->
-
-				</div><!-- end div#dial_m.dial -->
-
-				<div id="dial_l" class="dial-control">
-
-					<div class="control lifestyle">
-						
-						<div class="labels"></div><!-- end div.labels -->
-						<div class="dial-wrapper"><div class="dial"></div><!-- end div.dial --></div><!-- end div.dial-wrapper -->
-						<div class="bg bg-1"></div><!-- end div.bg -->
-						<div class="mask"></div><!-- end div.mask -->
-
-					</div><!-- end div.control lifestyle -->
-
-				</div><!-- end div#dial_l.dial -->
-
-				<div id="dial_b" class="dial-control">
-
-					<h3 class="control-title">Luggage</h3><!-- end h3.control-title -->
-
-					<div class="control luggage">
-						
-						<div class="base">
-							
-							<div class="control-bg"></div><!-- end div.control-bg -->
-							<div class="dial minimalist"></div><!-- end div.dial -->
-							<div class="arrows">
-
-								<a href="#" id="left">left</a>
-								<a href="#" id="right">right</a>
-
-							</div><!-- end div.arrows -->
-
-						</div><!-- end div.base -->
-
-					</div><!-- end div#control.luggage -->
-
-				</div><!-- end div#dial_b.dial -->
-				
-			</div><!-- end div#dials_left -->
-
-			<div id="dials_middle">			
-
-				<div id="dial_o" class="dial-control">
-
-					<h3 class="control-title">Options</h3><!-- end h3.control-title -->
-
-					<div class="control options">
-
-						<div class="option opts-awd">
-
-							<input id="4wd" name="4wd" value="1" type="checkbox" />
-							<label for="4wd"><span class="control-bg">4WD</span></label>
-							<div class="control-bg"></div><!-- end div.control-bg -->
-
-						</div><!-- end div.option -->
-
-						<div class="option opts-hp">
-
-							<input id="hp" name="hp" value="2" type="checkbox" />
-							<label for="hp"><span class="control-bg">High position</span></label>
-							<div class="control-bg"></div><!-- end div.control-bg -->
-
-						</div><!-- end div.option -->
-
-						<div class="option opts-dt">
-
-							<input id="dt" name="dt" value="3" type="checkbox" />
-							<label for="dt"><span class="control-bg">Drop top</span></label>
-							<div class="control-bg"></div><!-- end div.control-bg -->
-
-						</div><!-- end div.option -->
-
-						<div class="option opts-tp">
-
-							<input id="tp" name="tp" value="4" type="checkbox" />
-							<label for="tp"><span class="control-bg">Teleportation</span></label>
-							<div class="control-bg"></div><!-- end div.control-bg -->
-
-						</div><!-- end div.option -->
-
-					</div><!-- end div.control options -->
-
-				</div><!-- end div#dial_o.dial -->
-
-				<div id="dial_v" class="dial-control">
-
-					<h3 class="control-title">Speed</h3><!-- end h3.control-title -->
-
-					<div class="control slot slot-wide">
-
-						<div class="wrap">
-
-							<div class="slots">
-
-								<div class="slot nippy clone1" data-value="1"><span>Nippy</span></div>
-								<div class="slot nippier clone1" data-value="2"><span>Nippier</span></div>
-								<div class="slot quick clone1" data-value="3"><span>Quick</span></div>
-								<div class="slot woohoo clone1" data-value="4"><span>Woohoo</span></div>
-								<div class="slot lightspeed clone1" data-value="5"><span>Lightspeed</span></div>
-
-								<div class="slot nippy" data-value="1"><span>Nippy</span></div>
-								<div class="slot nippier" data-value="2"><span>Nippier</span></div>
-								<div class="slot quick" data-value="3"><span>Quick</span></div>
-								<div class="slot woohoo" data-value="4"><span>Woohoo</span></div>
-								<div class="slot lightspeed" data-value="5"><span>Lightspeed</span></div>
-
-								<div class="slot nippy clone2" data-value="1"><span>Nippy</span></div>
-								<div class="slot nippier clone2" data-value="2"><span>Nippier</span></div>
-								<div class="slot quick clone2" data-value="3"><span>Quick</span></div>
-								<div class="slot woohoo clone2" data-value="4"><span>Woohoo</span></div>
-								<div class="slot lightspeed clone2" data-value="5"><span>Lightspeed</span></div>
-
-							</div><!-- end div.slots -->
-
-						</div><!-- end div.wrap -->
-
-					</div><!-- end div.control slot -->
-
-				</div><!-- end div#dial_v.dial-control -->
-
-			</div><!-- end div#dials_middle -->
-
-			<div id="dials_right">
-
-				<div id="dial_p" class="dial-control">
-
-					<h3 class="control-title">£ per month</h3><!-- end h3.control-title -->
-				
-					<div class="control slider">
-								
-						<div class="bg"></div><!-- end div.bg -->
-						<div class="wrapper">
-						<div class="control-bg-wrapper">
-							
-							<div class="control-bg"></div><!-- end div.control-bg -->
-							<div class="mask"></div><!-- end div.mask -->
-							<div class="handle"></div><!-- end div.handle -->
-
-						</div><!-- end div.control-bg-wrapper -->
-						</div><!-- end div.wrapper -->
-
-					</div><!-- end div.control slider -->
-
-				</div><!-- end div#dial_p.dial-control -->
-
-				<div id="dial_c" class="dial-control">
-					
-					<div class="control start">
-						
-						<span class="control-bg">Combobulate</span>
-
-					</div><!-- end div.control start -->
-
-				</div><!-- end div#dial_c.dial-control -->
-
-			</div><!-- end div#dials_right -->
-
-		</div><!-- end div#dashboard -->
+<div id="pageWrap">
+
+	<div id="top-bar">
+		<div class="mini-logo"><img src="assets/img/mini_logo.png" alt="mini" class="img-responsive" /></div>
+		<div class="social">
+			<a href="#" title="facebook">Facebook</a>
+			<a href="#" title="twitter">Twitter</a>
+		</div>
+	</div>
+
+	<main role="main" id="main" class="row">
+
+		<div id="dashboard" class="column"><?php require( 'dashboard.php' ); ?></div><!-- end div#dashboard -->
+
+		<article class="panel welcome column">
+
+			<header>
+				<div class="ministry-logo">
+					<img src="assets/img/ministry_of_finance.png" alt="ministry of finance" class="img-responsive" />
+				</div>
+				<div class="hr text presents"><span>Presents</span><hr/></div>
+				<h2 class="title">The<br/>Combobulator</h2>
+				<div class="hr"><hr/></div>
+			</header>
+
+			<h3 class="title">Hi CustomerName</h3>
+			<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
+			<p>Choose now much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit Combobulate to get your tailor-made deal.</p>
+			<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>
+
+		</article>
+
+		<article class="panel results column">
+
+			<header>
+				<h2 class="title">Mini one 5-door hatch</h2>
+				<div class="sticker">
+					<span class="currency">£</span>
+					<span class="price">209</span>
+					<span class="">Per<br />month</span>
+				</div>
+				<a class="btn"><i class="icon chev"></i>Go see</a>
+				<div class="hr"><hr/></div>
+			</header>
+
+			<div class="car">
+				<img src="assets/cars/5-door-Cooper-D.jpg" alt="car" class="img-responsive" />
+			</div>
+
+			<div class="hr"><hr/></div>
+
+			<div class="related-cars">
+				<h2 class="title">Or for £200... You could buy <span class="highlight">102 watermelons</span></h2>
+				<ul class="nav-list">
+					<li><a href="#" title="Alt Car 1"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
+					<li class="active"><a href="#" title="Alt Car 2"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
+					<li><a href="#" title="Alt Car 3"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
+					<li><a href="#" title="Alt Car 4"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
+				</ul>
+			</div>
+
+		</article>
+
+	</main>
+
+	<footer id="footer">
+		<a><i class="icon chevron"></i>Terms and Conditions</a>
+	</footer>
+
+</div>
 
 <?php require( 'inc/footer.inc.php' ); ?>

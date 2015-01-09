@@ -4,8 +4,6 @@
 
 .control.start {
 
-	.align-centers;
-
 	z-index: 1;
 
 	height: @btnOuter;
@@ -50,7 +48,9 @@
 		&:after {
 
 			.pseudo;
-			.sprite( @combobulate );
+			
+			.sprite( @combobulate ); background: url( ../sprites/combobulate.png );
+
 			.transition( background-color 0.05s ease-in );
 
 			border: solid @btnBorder @trueBlack;

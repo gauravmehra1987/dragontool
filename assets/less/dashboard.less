@@ -49,7 +49,7 @@
 		.top, .middle, .bottom, .inner-left, .inner-right {
 
 			background: @dialGray;
-			box-shadow: 0 0 0 1px @black inset;
+			box-shadow: 0 0 0 2px @black inset;
 			color: @grayDarker;
 			position: relative;
 
@@ -57,12 +57,12 @@
 
 				.tc;
 
-				background: #1a1a1a;
+				background: lighten( @dialGray, 5% );
 				color: @grayDarker;
 				display: block;
 				font-size: 14px;
 				line-height: 30px;
-				margin: 0 1px;
+				margin: 0 2px;
 				text-transform: uppercase;
 
 			}
@@ -73,6 +73,12 @@
 				position: relative;
 
 				height: ~'calc( 100% - 30px )';
+
+				.control-inner {
+
+					.align-middle;
+
+				}
 
 			}
 

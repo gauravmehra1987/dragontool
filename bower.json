@@ -28,6 +28,5 @@
     "greensock": "~1.15.0",
     "jquery": "1.11.1",
     "underscore": "~1.7.0",
-    "hammerjs": "~2.0.4"
   }
 }
