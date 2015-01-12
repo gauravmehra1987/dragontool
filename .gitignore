@@ -1,3 +1,5 @@
+# ignore thumbnails created by windows
+Thumbs.db
 # front end packages
 /node_modules
 /bower_components
@@ -8,3 +10,25 @@
 /dotnet/Combobulator/bin
 /dotnet/Combobulator/App_Data
 /dotnet/Combobulator/obj
+# Visuak Studio build
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
