@@ -49,6 +49,7 @@ function getValues() {
 	var s_v = getSlotValue( speed_slot );
 	var o_v = getOptions();
 	var p_v = getPriceValue( price_slider.y )[ 1 ];
+	var x_v = getLifestyle();
 
 	var data = {
 
@@ -58,7 +59,7 @@ function getValues() {
 		options:	o_v,
 		speed:		s_v,
 		price:		p_v,
-		lifestyle:	'TBC'
+		lifestyle:	x_v
 
 	};
 
@@ -391,6 +392,8 @@ var lifestyle_dial		= new Draggable( lifestyle_dial_el, {
 	snap: function( endValue ) { return true; }
 
 } );
+
+function getLifestyle() { return $( '#c-lifestyle .slick-slide.slick-active' ).attr( 'data-value' ); }
 
 
 // ################################################## //
