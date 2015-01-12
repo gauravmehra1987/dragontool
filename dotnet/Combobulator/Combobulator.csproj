@@ -190,6 +190,93 @@
     <Content Include="App_Data\Combobulator_log.ldf">
       <DependentUpon>Combobulator.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\cars\5-door-Cooper-D.jpg" />
+    <Content Include="Assets\css\ie.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\fonts\css\animation.css" />
+    <Content Include="Assets\fonts\css\fontello-codes.css" />
+    <Content Include="Assets\fonts\css\fontello-embedded.css" />
+    <Content Include="Assets\fonts\css\fontello-ie7-codes.css" />
+    <Content Include="Assets\fonts\css\fontello-ie7.css" />
+    <Content Include="Assets\fonts\css\fontello.css" />
+    <Content Include="Assets\fonts\icons\fontello.svg" />
+    <Content Include="Assets\img\dashboard.png" />
+    <Content Include="Assets\img\ministry_of_finance.png" />
+    <Content Include="Assets\img\mini_logo.png" />
+    <Content Include="Assets\img\optimized\dashboard.png" />
+    <Content Include="Assets\img\optimized\ministry_of_finance.png" />
+    <Content Include="Assets\img\optimized\mini_logo.png" />
+    <Content Include="Assets\img\optimized\optimized\dashboard.png" />
+    <Content Include="Assets\img\optimized\optimized\ministry_of_finance.png" />
+    <Content Include="Assets\img\optimized\optimized\mini_logo.png" />
+    <Content Include="Assets\img\optimized\optimized\sprites\sprites.png" />
+    <Content Include="Assets\img\optimized\sprites\sprites.png" />
+    <Content Include="Assets\img\sprites\sprites.png" />
+    <Content Include="Assets\js\app.js" />
+    <Content Include="Assets\js\ie.js" />
+    <Content Include="Assets\js\lib.js" />
+    <Content Include="Assets\js\src\config.js" />
+    <Content Include="Assets\js\src\ie.js" />
+    <Content Include="Assets\js\src\logic.js" />
+    <Content Include="Assets\js\src\social.js" />
+    <Content Include="Assets\js\src\ThrowPropsPlugin.js" />
+    <Content Include="Assets\js\src\ui.js" />
+    <Content Include="Assets\sprites\combobulate.png" />
+    <Content Include="Assets\sprites\lifestyle-dial-shadow.png" />
+    <Content Include="Assets\sprites\lifestyle-dial.png" />
+    <Content Include="Assets\sprites\lifestyle-item-beach-bum.png" />
+    <Content Include="Assets\sprites\lifestyle-item-junglist.png" />
+    <Content Include="Assets\sprites\lifestyle-item-mountaineer.png" />
+    <Content Include="Assets\sprites\lifestyle-item-urbanite.png" />
+    <Content Include="Assets\sprites\lifestyle-label-window.png" />
+    <Content Include="Assets\sprites\lifestyle-labels.png" />
+    <Content Include="Assets\sprites\lifestyle-mask.png" />
+    <Content Include="Assets\sprites\luggage-arrows-left.png" />
+    <Content Include="Assets\sprites\luggage-arrows-right.png" />
+    <Content Include="Assets\sprites\luggage-arrows.png" />
+    <Content Include="Assets\sprites\luggage-dial-big-loader.png" />
+    <Content Include="Assets\sprites\luggage-dial-light-packer.png" />
+    <Content Include="Assets\sprites\luggage-dial-lugger.png" />
+    <Content Include="Assets\sprites\luggage-dial-minimalist.png" />
+    <Content Include="Assets\sprites\luggage-dial.png" />
+    <Content Include="Assets\sprites\luggage-mask-bottom.png" />
+    <Content Include="Assets\sprites\luggage-mask.png" />
+    <Content Include="Assets\sprites\mpg-00.png" />
+    <Content Include="Assets\sprites\mpg-01.png" />
+    <Content Include="Assets\sprites\mpg-02.png" />
+    <Content Include="Assets\sprites\mpg-03.png" />
+    <Content Include="Assets\sprites\mpg-04.png" />
+    <Content Include="Assets\sprites\mpg-05.png" />
+    <Content Include="Assets\sprites\mpg-06.png" />
+    <Content Include="Assets\sprites\mpg-07.png" />
+    <Content Include="Assets\sprites\mpg-08.png" />
+    <Content Include="Assets\sprites\mpg-09.png" />
+    <Content Include="Assets\sprites\mpg-10.png" />
+    <Content Include="Assets\sprites\mpg-11.png" />
+    <Content Include="Assets\sprites\mpg-12.png" />
+    <Content Include="Assets\sprites\mpg-13.png" />
+    <Content Include="Assets\sprites\mpg-knob-arrow.png" />
+    <Content Include="Assets\sprites\mpg-knob.png" />
+    <Content Include="Assets\sprites\opts-awd-off.png" />
+    <Content Include="Assets\sprites\opts-awd-on.png" />
+    <Content Include="Assets\sprites\opts-dt-off.png" />
+    <Content Include="Assets\sprites\opts-dt-on.png" />
+    <Content Include="Assets\sprites\opts-hp-off.png" />
+    <Content Include="Assets\sprites\opts-hp-on.png" />
+    <Content Include="Assets\sprites\opts-tp-off.png" />
+    <Content Include="Assets\sprites\opts-tp-on.png" />
+    <Content Include="Assets\sprites\range-bg.png" />
+    <Content Include="Assets\sprites\range-handle.png" />
+    <Content Include="Assets\sprites\range-mask.png" />
+    <Content Include="Assets\sprites\slot-alien.png" />
+    <Content Include="Assets\sprites\slot-boy.png" />
+    <Content Include="Assets\sprites\slot-cat.png" />
+    <Content Include="Assets\sprites\slot-dog.png" />
+    <Content Include="Assets\sprites\slot-empty.png" />
+    <Content Include="Assets\sprites\slot-girl.png" />
+    <Content Include="Assets\sprites\slot-infant.png" />
+    <Content Include="Assets\sprites\slot-man.png" />
+    <Content Include="Assets\sprites\slot-woman.png" />
     <Content Include="Content\EmailTemplate\EmailResults.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -198,6 +285,42 @@
       <LastGenOutput>Combobulator.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Assets\css\style.css.map" />
+    <Content Include="Assets\fonts\config.json" />
+    <Content Include="Assets\fonts\icons\fontello.eot" />
+    <Content Include="Assets\fonts\icons\fontello.ttf" />
+    <Content Include="Assets\fonts\icons\fontello.woff" />
+    <Content Include="Assets\less\colors.less" />
+    <Content Include="Assets\less\dashboard.less" />
+    <Content Include="Assets\less\dials.less" />
+    <Content Include="Assets\less\dials\button.less" />
+    <Content Include="Assets\less\dials\lifestyle.less" />
+    <Content Include="Assets\less\dials\luggage.less" />
+    <Content Include="Assets\less\dials\mpg.less" />
+    <Content Include="Assets\less\dials\options.less" />
+    <Content Include="Assets\less\dials\slider.less" />
+    <Content Include="Assets\less\dials\slots.less" />
+    <Content Include="Assets\less\fonts.less" />
+    <Content Include="Assets\less\forms.less" />
+    <Content Include="Assets\less\hacks.less" />
+    <Content Include="Assets\less\icon-codes.less" />
+    <Content Include="Assets\less\icons.less" />
+    <Content Include="Assets\less\ie.less" />
+    <Content Include="Assets\less\mixins.less" />
+    <Content Include="Assets\less\plugins.less" />
+    <Content Include="Assets\less\responsive.less" />
+    <Content Include="Assets\less\shell.less" />
+    <Content Include="Assets\less\skin.less" />
+    <Content Include="Assets\less\sprites.less" />
+    <Content Include="Assets\less\style.less" />
+    <Content Include="Assets\less\type.less" />
+    <Content Include="Assets\less\variables.less" />
+    <Content Include="Assets\sprites\psd\lifestyle.psd" />
+    <Content Include="Assets\sprites\psd\luggage.psd" />
+    <Content Include="Assets\sprites\psd\mpg.psd" />
+    <Content Include="Assets\sprites\psd\options.psd" />
+    <Content Include="Assets\sprites\psd\price.psd" />
+    <Content Include="Assets\sprites\psd\slots.psd" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -230,6 +353,15 @@
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Shared\ResultDetail.cshtml" />
     <Content Include="Views\Shared\ExistingCustomerForm.cshtml" />
+    <Content Include="Views\Home\_ControlBums.cshtml" />
+    <Content Include="Views\Home\_ControlLifestyle.cshtml" />
+    <Content Include="Views\Home\_ControlLuggage.cshtml" />
+    <Content Include="Views\Home\_ControlMpg.cshtml" />
+    <Content Include="Views\Home\_ControlOptions.cshtml" />
+    <Content Include="Views\Home\_ControlPrice.cshtml" />
+    <Content Include="Views\Home\_ControlSpeed.cshtml" />
+    <Content Include="Views\Home\_ControlStart.cshtml" />
+    <Content Include="Views\Home\_Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
@@ -275,13 +407,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

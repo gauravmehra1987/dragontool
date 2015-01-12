@@ -5,8 +5,9 @@ module.exports = function( grunt ) {
 	var projectName		= 'Mini Combobulator';
 	var paths			= {
 
-		fontello:	'assets/fonts/',
+		fontello:	'assets/fonts',
 		bower:		'bower_components/',
+		dotnetAssets:'dotnet/Combobulator/Assets/'
 
 	};
 
@@ -33,12 +34,12 @@ module.exports = function( grunt ) {
 
 				files: {
 
-					'assets/css/style.css':	[ 'assets/less/style.less' ],				
-					'assets/css/ie.css':	[ 'assets/less/ie.less' ],
+					'assets/css/style.css':	[ 'assets/less/style.less' ],
+					'assets/css/ie.css':	[ 'assets/less/ie.less' ]
 
 				}
 
-			
+
 			},
 
 			dist: {
@@ -46,16 +47,34 @@ module.exports = function( grunt ) {
 				options: {
 
 					cleancss: true,
-					paths: [ 'assets/less' ],
+					paths: [ 'assets/less' ]
 				
 				},
 
 				files: {
 
 					'assets/css/style.css':	[ 'assets/less/style.less' ],
-					'assets/css/ie.css':	[ 'assets/less/ie.less' ],
+					'assets/css/ie.css':	[ 'assets/less/ie.less' ]
 
 				}
+
+			},
+
+			"dotnet": {
+
+				options: {
+
+					paths: [ 'assets/less' ]
+
+				},
+
+				files: {
+
+					'dotnet/Combobulator/Assets/css/style.css':	[ 'assets/less/style.less' ],
+					'dotnet/Combobulator/Assets/css/ie.css':	[ 'assets/less/ie.less' ]
+
+				}
+
 
 			}
 
@@ -130,7 +149,7 @@ module.exports = function( grunt ) {
 
 					'assets/js/src/ie.js'
 
-				],
+				]
 
 			}
 
@@ -180,42 +199,58 @@ module.exports = function( grunt ) {
 		
 		copy: {
 
-			fancybox: {
+			local: {
 
-				files: [ {
+				fancybox: {
 
-					expand:	true,
-					cwd:	paths.bower + 'fancybox/source',
-					src:	[ '**/*.{png,jpg,gif,PNG,JPG,GIF,jpeg,JPEG}' ],
-					dest:	'assets/img/fancybox'
+					files: [ {
 
-				} ]
+						expand:	true,
+						cwd:	paths.bower + 'fancybox/source',
+						src:	[ '**/*.{png,jpg,gif,PNG,JPG,GIF,jpeg,JPEG}' ],
+						dest:	'assets/img/fancybox'
+
+					} ]
+
+				},
+
+				slick: {
+
+					files: [ {
+
+						expand:	true,
+						cwd:	paths.bower + 'slick.js/slick',
+						src:	[ '**/*.{gif,eot,svg,ttf,woff,GIF,EOT,SVG,TTF,WOFF}' ],
+						dest:	'assets/img/slick.js'
+
+					} ]
+
+				},
+
+				images: {
+
+					files: [ {
+
+						expand:	true,
+						cwd:	'assets/img/optimized',
+						src:	[ '**' ],
+						dest:	'assets/img'
+
+					} ]
+				}
 
 			},
 
-			slick: {
+			"dotnet": {
 
 				files: [ {
 
-					expand:	true,
-					cwd:	paths.bower + 'slick.js/slick',
-					src:	[ '**/*.{gif,eot,svg,ttf,woff,GIF,EOT,SVG,TTF,WOFF}' ],
-					dest:	'assets/img/slick.js'
+					expand: true,
+					src: ['Assets/**'],
+					dest: 'dotnet/Combobulator/'
 
 				} ]
 
-			},
-
-			images: {
-
-				files: [ {
-
-					expand:	true,
-					cwd:	'assets/img/optimized',
-					src:	[ '**' ],
-					dest:	'assets/img'
-
-				} ]
 			}
 
 		},
@@ -309,6 +344,26 @@ module.exports = function( grunt ) {
 		
 		clean: {
 
+			local: [
+
+				'assets/img/**',
+				'!assets/img',
+				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
+				paths.fontello + '/icons',
+				paths.fontello + '/css',
+				'!' + paths.fontello,
+				'!' + paths.fontello + '/config.json',
+				'assets/img/optimized',
+				'assets/js/app.js',
+				'assets/js/lib.js',
+				'assets/js/ie.js',
+				'assets/less/icon-codes.less',
+				'assets/less/sprites.less',
+				'assets/css',
+				'**/.DS_Store'
+
+			],
+
 			images: [
 
 				'assets/img/**',
@@ -345,7 +400,9 @@ module.exports = function( grunt ) {
 
 			css: [ 'assets/css' ],
 
-			other: [ '**/.DS_Store' ]
+			other: [ '**/.DS_Store' ],
+
+			"dotnet": [paths.dotnetAssets]
 
 		},
 
@@ -389,7 +446,7 @@ module.exports = function( grunt ) {
 	
 	grunt.registerTask( 'default',	[
 
-		'clean',
+		'clean:local',
 		'icons',
 		'images',
 		'dev',
@@ -412,7 +469,7 @@ module.exports = function( grunt ) {
 		'clean:images',
 		'sprites',
 		'imagemin',
-		'copy',
+		'copy:local',
 		'clean:optimized'
 
 	] );
@@ -427,12 +484,19 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'build', [
 		
-		'clean',
+		'clean:local',
 		'icons',
 		'less:dist',
 		'concat',
 		'uglify',
 		'images',
+
+	] );
+
+	grunt.registerTask( 'dotnet', [
+
+		'clean:dotnet',
+		'copy:dotnet'
 
 	] );
 

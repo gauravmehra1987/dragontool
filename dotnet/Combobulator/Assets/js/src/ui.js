@@ -26,12 +26,12 @@ FastClick.attach( document.body );
 
 // Variables
 
-var slot_1		= '#dial_s .control.slot:nth-of-type( 1 ) .slots';
-var slot_2		= '#dial_s .control.slot:nth-of-type( 2 ) .slots';
-var slot_3		= '#dial_s .control.slot:nth-of-type( 3 ) .slots';
-var slot_4		= '#dial_s .control.slot:nth-of-type( 4 ) .slots';
-var slot_5		= '#dial_s .control.slot:nth-of-type( 5 ) .slots';
-var speed_slot	= '#dial_v .control.slot .slots';
+var slot_1		= '#c-bums .control.slot:nth-of-type( 1 ) .slots';
+var slot_2		= '#c-bums .control.slot:nth-of-type( 2 ) .slots';
+var slot_3		= '#c-bums .control.slot:nth-of-type( 3 ) .slots';
+var slot_4		= '#c-bums .control.slot:nth-of-type( 4 ) .slots';
+var slot_5		= '#c-bums .control.slot:nth-of-type( 5 ) .slots';
+var speed_slot	= '#c-speed .control.slot .slots';
 
 // ################################################## //
 //
@@ -41,23 +41,30 @@ var speed_slot	= '#dial_v .control.slot .slots';
 
 function getValues() {
 
-	var $c = $( '#v_seats' );
-	var $m = $( '#v_mpg' );
-	var $l = $( '#v_luggage' );
-	var $o = $( '#v_options' );	
-	var $s = $( '#v_speed' );
-	var $p = $( '#v_price' );
+	var c_v = new Array( getSlotValue( slot_1 ), getSlotValue( slot_2 ), getSlotValue( slot_3 ), getSlotValue( slot_4 ), getSlotValue( slot_5 ) );
+	var m_v = mpg_knob._value;
+	var l_v = $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
+	var s_v = getSlotValue( speed_slot );
+	var o_v = getOptions();
+	var p_v = getPriceValue( price_slider.y )[ 1 ];
 
-	$c.val( getSlotValue( slot_1 ) + getSlotValue( slot_2 ) + getSlotValue( slot_3 ) + getSlotValue( slot_4 ) + getSlotValue( slot_5 ) );
-	$m.val( mpg_knob._value );
-	$l.val( $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim() );
-	$s.val( getSlotValue( speed_slot ) );
-	$o.val( getOptions() );
-	$p.val( getPriceValue( price_slider.y )[ 1 ] );
+	var data = {
+
+		seats:		c_v,
+		mpg:		m_v,
+		luggage:	l_v,
+		options:	o_v,
+		speed:		s_v,
+		price:		p_v,
+		lifestyle:	'TBC'
+
+	};
+
+	alert( "JSON.parse( '" + JSON.stringify(data ) + "' );" );
 
 }
 
-$( '#get' ).on( 'click', function( e ) { e.preventDefault(); getValues(); } );
+$( '#get, #start' ).on( 'click', function( e ) { e.preventDefault(); getValues(); } );
 
 function getOptions() {
 
@@ -113,31 +120,39 @@ var price_slider	= new Draggable( price_el, {
 //
 // ################################################## //
 
+function getSlotState( pos, height, padding ) {
+
+	var currentPosition = Math.abs( pos ) - padding;
+	var activeSlot		= Math.ceil( currentPosition / height );
+
+	return Math.ceil( activeSlot );
+
+}
+
 function getSlotValue( slot ) {
 
-	var slotHeight	= $( slot ).find( '.slot:first' ).height();
-	var draggableY	= parseInt( Draggable.get( slot ).y ) || 0;
-	var activeSlot	= Math.abs( draggableY ) / slotHeight;
+	var slotHeight		= $( slot ).find( '.slot:first' ).height();
+	var slotPadding 	= parseInt( $( slot ).css( 'padding-top' ) ).toFixed( 1 );
+	var draggableY		= Draggable.get( slot ).y || -slotPadding;
+	var activeSlot		= getSlotState( draggableY, slotHeight, slotPadding );
+	var $slot			= $( slot ).find( '.slot' ).eq( activeSlot );
+	var value			= $slot.data( 'value' ) || $slot.text();
 
-	return $( slot ).find( '.slot' ).eq( activeSlot ).text();
+	return ( value === 'Empty' ) ? false : value;
 
 }
 
 function setSlotValue( index, slot ) {
 
 	var slotHeight	= $( slot ).find( '.slot:first' ).height();
+	var slotPadding = slotHeight / 2;
 	var draggable	= Draggable.get( $( slot ) );
+	var newPosition = -( index * slotHeight + slotPadding );
 
 	TweenLite.to( $( slot ).get( 0 ), 0.6, {
 
-		y: -( index * slotHeight ),
-		onComplete: function() {
-
-			draggable.update();
-
-			console.log( draggable.y );
-
-		}
+		y: newPosition,
+		onComplete: function() { draggable.update(); }
 
 	} );
 
@@ -145,13 +160,78 @@ function setSlotValue( index, slot ) {
 
 function initSlot( slot ) {
 
+	function moveToFrame(amount){
+		// nippy -ori -440
+		// lightspeed -ori -760
+		TweenLite.set( speed_slot, { y: amount } );
+		Draggable.get( speed_slot ).update()
+	}
+
 	var slotHeight	= $( slot ).find( '.slot:first' ).height();
+	var slotPadding = parseInt( $( slot ).css( 'padding-top' ) );
 	var slot_dial	= new Draggable( slot, {
 
 		type: 'y',
 		bounds: $( slot ).parent(),
+		edgeResistance: 1,
 		throwProps: true,
-		snap: function( endValue ) { return Math.round( endValue / slotHeight ) * slotHeight; }
+		onThrowComplete: function() {
+			
+			console.log('onThrowComplete')
+
+			var endPosition	= Math.abs( this.endY + slotPadding );
+			var end			= Math.abs( this.minY + slotPadding );
+			var start		= Math.floor( this.maxY + slotPadding ); // do we really need to round it down?!
+
+			var $c = $( slot ).contents();
+
+			if( endPosition > end - ( slotHeight * 2 ) ) {
+
+				console.log( 'append at the bottom' );
+				moveToFrame(-760);
+
+			}
+
+			else if( endPosition < ( slotHeight * 2 ) ) {
+
+				console.log( 'append at the top' );
+				moveToFrame(-440);
+
+			}
+
+		},
+		onRelease: function() {
+
+			var endPosition	= Math.abs( this.endY + slotPadding );
+			var end			= Math.abs( this.minY + slotPadding );
+			var start		= Math.floor( this.maxY + slotPadding ); // do we really need to round it down?!
+
+			var $c = $( slot ).contents();
+
+			// Martin please help!
+
+			if( endPosition > end - ( slotHeight * 2 ) ) {
+
+				console.log( 'append at the bottom' );
+
+			}
+
+			else if( endPosition < ( slotHeight * 2 ) ) {
+
+				console.log( 'append at the top' );
+
+			}
+
+		},
+		snap: function( endValue ) {
+
+			var parents		= $( slot ).parentsUntil( '.dial-control' );
+			var $control	= $( parents[ parents.length - 1 ] );
+			var newPosition = ( Math.round( endValue / slotHeight ) * slotHeight ) - slotPadding; // + padding
+
+			return newPosition;
+
+		}
 
 	} );
 
@@ -165,6 +245,13 @@ initSlot( slot_3 );
 initSlot( slot_4 );
 initSlot( slot_5 );
 initSlot( speed_slot );
+
+// $( '.slot-wide .slots' ).slick( {
+
+// 	// vertical: true,
+// 	slide: '.slot'
+
+// } );
 
 // Randomize slots
 
@@ -225,6 +312,84 @@ mpg_knob.update();
 mpg_knob._value = mpg_min;
 
 $( '#mpg_value' ).text( mpg_knob._value );
+
+// ################################################## //
+//
+// Lifestyle dial
+//
+// ################################################## //
+
+var lifestyle_dial_el		= document.querySelector( '.control.lifestyle .dial' );
+var lifestyle_labels_el	= document.querySelector( '.control.lifestyle .labels' );
+var lifestyle_bounds	= 5;
+var lifestyle_steps		= 4;
+
+var lifestyle_direction;
+var slick = $( '.items-wrapper' ).slick( {
+
+	arrows: false,
+	infinite: true,
+	slide: '.item',
+	onAfterChange: function() { lifestyle_dial.enable(); }
+
+} );
+
+var lifestyle_labels = new Draggable( lifestyle_labels_el, {
+
+	type: 'rotation',
+	throwProps: true
+
+} );
+
+var currentLabelPosition = lifestyle_labels.y;
+
+var lifestyle_dial		= new Draggable( lifestyle_dial_el, {
+
+	type:	'rotation',
+	bounds:	{ minRotation: -lifestyle_bounds, maxRotation: lifestyle_bounds },
+	throwProps: true,
+	dragResistance: 0.8,
+	onDragStart: function() { lifestyle_direction = Math.abs( this.y ); },
+	onDragEnd: function() {
+
+		// Determine direction
+
+		var direction = ( Math.abs( this.y ) > lifestyle_direction ) ? 'right' : 'left';		
+		var newLabelPosition;
+
+		// Temporarily disable dial
+
+		this.disable();
+
+		// Move content in the window
+
+		if( direction === 'right' ) {
+
+			slick.slickPrev();
+			newLabelPosition = currentLabelPosition + ( 360 / lifestyle_steps );
+
+		}
+
+		else {
+
+			slick.slickNext();
+			newLabelPosition = currentLabelPosition - ( 360 / lifestyle_steps );
+
+		}
+
+		// Update label
+
+		TweenLite.to( lifestyle_labels_el, 1, { rotation: newLabelPosition } );
+
+		// Update old position reference
+
+		currentLabelPosition = newLabelPosition;
+
+	},
+	snap: function( endValue ) { return true; }
+
+} );
+
 
 // ################################################## //
 //
