@@ -2,11 +2,6 @@
 
 .control.options {
 
-	background: @dialGray;
-
-	padding-top: 40px;
-	padding-bottom: 20px;
-
 	.option {
 
 		position: relative;
@@ -21,7 +16,6 @@
 			& + label {
 
 				.box-sizing( border-box );
-				.sprite( @awd-off );
 				.transition( background 100ms ease-out );
 
 				display: block;
@@ -57,7 +51,6 @@
 				&:after {
 
 					.pseudo;
-					.sprite( @awd-on );
 					.transition( opacity 0.2s linear );
 
 					opacity: 0;
@@ -100,6 +93,48 @@
 				span { opacity: 1; }
 
 			}
+
+		}
+
+		// ############################## Sprites ############################## //
+
+		// 4-wheel drive
+
+		&.opts-awd input + label {
+
+			.sprite( @opts-awd-off ); background: url( ../sprites/opts-awd-off.png );
+
+			&:after { .sprite( @opts-awd-on ); background: url( ../sprites/opts-awd-on.png ); }
+
+		}
+
+		// High position
+
+		&.opts-hp input + label {
+
+			.sprite( @opts-hp-off ); background: url( ../sprites/opts-hp-off.png );
+
+			&:after { .sprite( @opts-hp-on ); background: url( ../sprites/opts-hp-on.png ); }
+
+		}
+
+		// Drop top
+
+		&.opts-dt input + label {
+
+			.sprite( @opts-dt-off ); background: url( ../sprites/opts-dt-off.png );
+
+			&:after { .sprite( @opts-dt-on ); background: url( ../sprites/opts-dt-on.png ); }
+
+		}
+
+		// Teleportation
+
+		&.opts-tp input + label {
+
+			.sprite( @opts-tp-off ); background: url( ../sprites/opts-tp-off.png );
+
+			&:after { .sprite( @opts-tp-on ); background: url( ../sprites/opts-tp-on.png ); }
 
 		}
 

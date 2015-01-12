@@ -1,51 +1,151 @@
+@from:	fadeout( @trueBlack, 20% );
+@to:	fadeout( @trueBlack, 100% );
+
+@slotW: 55px;
+@slotH: 80px;
+
+// Wide slot dimensions
+
+@wsT: 160px;
+@wsW: 130px;
+@wsH: @slotH;
+@wsP: ( @wsT - @wsH ) / 2;
+
 .control.slot {
 
 	background: black;
-	overflow: hidden;
 	
-	height: 75px;
-	width: 55px;
+	height: @slotH * 2;
+	width: @slotW;
 
-	.slots { overflow: hidden; }
+	.control-bg {
+
+		.align-centers;
+
+		height: 70px;
+
+	}
+
+	.wrap {
+
+		background: #3a3a3b;
+		overflow: hidden;
+		padding-top: @slotH / 2;
+		position: relative;
+
+		height: @slotH * 1.5;
+		width: 100%;
+
+		&:before, &:after {
+
+			.pseudo;
+
+			position: absolute;
+			z-index: 10;
+
+			left: 0;
+
+			height: @slotH / 2;
+			width: 100%;
+
+		}
+
+		&:before {
+
+			.background-image( linear-gradient( to bottom, @from 0%, @to 100% ) );
+
+			top: 0;
+
+		}
+
+		&:after {
+
+			.background-image( linear-gradient( to top, @from 0%, @to 100% ) );
+
+			bottom: 0;
+
+		}
+
+	}
+
+	.slots {
+
+		overflow: hidden;
+		padding: @slotH / 2 0;
+
+	}
 
 	.slot {
 
-		background: @gray;
 		position: relative;
 
-		height: 75px;
-		width: 55px;
+		height: @slotH;
+		width: 100%;
 
 		span {
 
 			.align-centers;
+			.letter-spacing( 50 );
 			.tc;
 
-			font-size: 24px;
+			font-size: 18px;
 			font-weight: bold;
-			line-height: 75px;
+			line-height: @slotH;
+			opacity: 0;
 
 		}
 
-		&:nth-child( odd ) { background: @grayLighter; }
-
-	}
-
-	&.slot-wide {
-
-		top: 30px !important;
-
-		&, .slot {
-
-			height: 160px;
-			width: 120px;
-
-			span { line-height: 160px; }
-
-		}
+		&.empty { .sprite( @slot-empty ); background: url( ../sprites/slot-empty.png ); }
+		&.man { .sprite( @slot-man ); background: url( ../sprites/slot-man.png ); }
+		&.woman { .sprite( @slot-woman ); background: url( ../sprites/slot-woman.png ); }
+		&.girl { .sprite( @slot-girl ); background: url( ../sprites/slot-girl.png ); }
+		&.boy { .sprite( @slot-boy ); background: url( ../sprites/slot-boy.png ); }
+		&.infant { .sprite( @slot-infant ); background: url( ../sprites/slot-infant.png ); }
+		&.dog { .sprite( @slot-dog ); background: url( ../sprites/slot-dog.png ); }
+		&.cat { .sprite( @slot-cat ); background: url( ../sprites/slot-cat.png ); }
+		&.alien { .sprite( @slot-alien ); background: url( ../sprites/slot-alien.png ); }
 
 	}
 
 	&.dragging .slots { .transition( none ); }
+
+	// Wide slot - for speed control
+
+	&.slot-wide {
+	
+		height: @wsT;
+		width: @wsW;
+
+		.wrap {
+
+			padding-top: @wsP;
+
+			height: @wsH + @wsP;
+			width: 100%;
+
+			&:before, &:after { height: @wsP; }
+
+		}
+
+		.slots { padding: @wsP 0; }
+
+		.slot {
+
+			background: #363636;
+			color: @white;
+
+			height: @wsH;
+
+			span {
+
+				line-height: @wsH;
+				opacity: 1;
+
+			}
+
+		}	
+
+	}
+	
 
 }

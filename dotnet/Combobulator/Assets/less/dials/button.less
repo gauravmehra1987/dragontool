@@ -1,0 +1,74 @@
+@btnRadius: 135px;
+@btnBorder: 5px;
+@btnOuter: @btnRadius + ( ( 2 * @btnBorder ) * 2 );
+
+.control.start {
+
+	z-index: 1;
+
+	height: @btnOuter;
+	width: @btnOuter;
+
+	span {
+
+		.hide-text;
+
+		border-radius: 100%;
+		cursor: pointer;
+		display: block;
+		margin-top: -( ( @btnOuter - ( @btnBorder * 2 ) ) / 2 );
+		margin-left: -( ( @btnOuter - ( @btnBorder * 2 ) ) / 2 );
+		position: absolute;
+
+		top: 50%;
+		left: 50%;
+
+		height: @btnOuter - ( @btnBorder * 2 );
+		width: @btnOuter - ( @btnBorder * 2 );
+
+		&:before {
+
+			.background-image( linear-gradient( to bottom, #010204 0%, #323337 100% ) );
+			.pseudo;
+
+			border-radius: 100%;
+			box-shadow: 0 -1px 0 0px lighten( @dialGray, 10% ) inset;
+			display: block;
+			position: absolute;
+			z-index: -1;
+
+			top: -@btnBorder;
+			left: -@btnBorder;
+
+			height: @btnOuter;
+			width: @btnOuter;
+
+		}
+
+		&:after {
+
+			.pseudo;
+			
+			.sprite( @combobulate ); background: url( ../sprites/combobulate.png );
+
+			.transition( background-color 0.05s ease-in );
+
+			border: solid @btnBorder @trueBlack;
+			border-radius: 100%;
+			margin-top: -( @btnRadius + @btnBorder * 2 ) / 2 ;
+			margin-left: -( @btnRadius + @btnBorder * 2 ) / 2 ;
+			position: absolute;
+
+			top: 50%;
+			left: 50%;
+
+			height: @btnRadius;
+			width: @btnRadius;
+
+		}
+
+	}
+
+	&:active span:after { background-color: fadeout( @trueBlack, 80% ); }
+
+}

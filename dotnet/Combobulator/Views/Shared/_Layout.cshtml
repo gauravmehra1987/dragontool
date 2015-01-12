@@ -8,7 +8,7 @@
 		<title>@ViewBag.Title</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
 
-		<link href="/assets/css/style.css" rel="stylesheet" />
+		<link href="/Assets/css/style.css" rel="stylesheet" />
 		<link type="text/plain" rel="author" href="humans.txt" />
 		<link rel="shortcut icon" href="favicon.png" />
 
@@ -27,20 +27,20 @@
 		<meta name="twitter:image" content="" />
 		
 		<!--[if lt IE 9]>
-		<link href="assets/css/ie.css" rel="stylesheet" />
+		<link href="Assets/css/ie.css" rel="stylesheet" />
 		<![endif]-->
 
 	</head>
 	<body>
-        <div>
-            @RenderBody()
-        </div>
-        @RenderSection("CustomScripts", required : false)
-		<script src="/assets/js/lib.js"></script>
-		<script src="/assets/js/app.js"></script>
-		
+
+		@RenderBody()
+
+		@RenderSection("CustomScripts", required : false)
+		<script src="/Assets/js/lib.js"></script>
+		<script src="/Assets/js/app.js"></script>
+
 		<!--[if lt IE 9]>
-		<script src="assets/js/ie.js"></script>
+		<script src="Assets/js/ie.js"></script>
 		<![endif]-->
 
 		<!-- Google Analytics -->

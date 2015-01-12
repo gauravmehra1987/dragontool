@@ -1,0 +1,64 @@
+.control.lifestyle {
+
+	position: relative;
+
+	height: 190px;
+	width: 190px;
+
+	.mask, .labels, .label-window, .window, .contents, .dial-shadow, .dial { .align-centers; }
+
+	.mask { .sprite( @lifestyle-mask ); background: url( ../sprites/lifestyle-mask.png ); };
+	.label-window { .sprite( @lifestyle-label-window ); background: url( ../sprites/lifestyle-label-window.png ); };
+	.labels { .sprite( @lifestyle-labels ); background: url( ../sprites/lifestyle-labels.png ); };
+	.dial-shadow { .sprite( @lifestyle-dial-shadow ); background: url( ../sprites/lifestyle-dial-shadow.png ); };
+	.dial { .sprite( @lifestyle-dial ); background: url( ../sprites/lifestyle-dial.png ); };
+
+	.dial, .dial-shadow { margin-top: 10px;}
+
+	.dial-shadow { height: 170px; }
+
+	.window {
+
+		.list-remove-bullets;
+
+		overflow: hidden;
+
+		top: auto;
+		bottom: 40px;
+
+		height: 105px;
+		width: 140px;
+
+		.items-wrapper {
+
+			height: 100%;
+			width: 100%;
+
+			.item {
+
+				display: block;
+				float: left;
+
+				height: 100%;
+				width: 50%;
+
+				&.urbanite { .sprite( @lifestyle-item-urbanite ); background: url( ../sprites/lifestyle-item-urbanite.png ); }
+				&.beach-bum { .sprite( @lifestyle-item-beach-bum ); background: url( ../sprites/lifestyle-item-beach-bum.png ); }
+				&.mountaineer { .sprite( @lifestyle-item-mountaineer ); background: url( ../sprites/lifestyle-item-mountaineer.png ); }
+				&.junglist { .sprite( @lifestyle-item-junglist ); background: url( ../sprites/lifestyle-item-junglist.png ); }
+
+			}
+
+		}
+
+	}
+
+	.mask {
+
+		bottom: auto;
+
+		height: 160px;
+
+	}
+	
+}
