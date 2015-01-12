@@ -19,11 +19,11 @@ namespace Combobulator
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "Results",
-                url: "Results/{id}",
-                defaults: new { controller = "Results", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "Results",
+            //    url: "Results/{id}",
+            //    defaults: new { controller = "Results", action = "Index", id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Default",

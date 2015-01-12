@@ -42,7 +42,7 @@ namespace Combobulator.DAL
     #endregion
 		
 		public CombobulatorDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CombobulatorConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CombobulatorConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
