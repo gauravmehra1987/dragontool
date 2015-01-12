@@ -1,5 +1,8 @@
-@mpgW: 150px;
-@mpgH: 180px;
+@baseW: 150px;
+@baseH: 180px;
+
+@mpgW: @baseW;
+@mpgH: @baseH;
 
 .control.mpg {
 
@@ -10,15 +13,10 @@
 
 	.scale, .control-bg, .indicators, .knob, .arrow { .align-centers; } // Center all layers
 
-	.knob { .sprite( @mpg-knob ); background: url( ../sprites/mpg-knob.png ); }
-	.arrow { .sprite( @mpg-knob-arrow ); background: url( ../sprites/mpg-knob-arrow.png ); }
+	.knob { .sprite-mpg-knob( @baseH, @baseW ); }
+	.arrow { .sprite-mpg-knob-arrow( @baseH, @baseW ); }
 
-	.control-bg {
-
-		height: 150px;
-		width: 150px;
-
-	}
+	.control-bg { .size_pct( @baseW, @baseW, @baseH, @baseW ); }
 
 	.value {
 
@@ -44,20 +42,31 @@
 
 	// ############################## Sprites ############################## //
 
-	.indicators { .sprite( @mpg-00 ); background: url( ../sprites/mpg-00.png ) }
+	.indicators { .sprite-mpg-00( @baseH, @baseW ); }
 
-	&.scale-1 .indicators { .sprite( @mpg-01 ); background: url( ../sprites/mpg-01.png ); }
-	&.scale-2 .indicators { .sprite( @mpg-02 ); background: url( ../sprites/mpg-02.png ); }
-	&.scale-3 .indicators { .sprite( @mpg-03 ); background: url( ../sprites/mpg-03.png ); }
-	&.scale-4 .indicators { .sprite( @mpg-04 ); background: url( ../sprites/mpg-04.png ); }
-	&.scale-5 .indicators { .sprite( @mpg-05 ); background: url( ../sprites/mpg-05.png ); }
-	&.scale-6 .indicators { .sprite( @mpg-06 ); background: url( ../sprites/mpg-06.png ); }
-	&.scale-7 .indicators { .sprite( @mpg-07 ); background: url( ../sprites/mpg-07.png ); }
-	&.scale-8 .indicators { .sprite( @mpg-08 ); background: url( ../sprites/mpg-08.png ); }
-	&.scale-9 .indicators { .sprite( @mpg-09 ); background: url( ../sprites/mpg-09.png ); }
-	&.scale-10 .indicators { .sprite( @mpg-10 ); background: url( ../sprites/mpg-10.png ); }
-	&.scale-11 .indicators { .sprite( @mpg-11 ); background: url( ../sprites/mpg-11.png ); }
-	&.scale-12 .indicators { .sprite( @mpg-12 ); background: url( ../sprites/mpg-12.png ); }
-	&.scale-13 .indicators { .sprite( @mpg-13 ); background: url( ../sprites/mpg-13.png ); }
+	&.scale-1 .indicators { .sprite-mpg-01( @baseH, @baseW ); }
+	&.scale-2 .indicators { .sprite-mpg-02( @baseH, @baseW ); }
+	&.scale-3 .indicators { .sprite-mpg-03( @baseH, @baseW ); }
+	&.scale-4 .indicators { .sprite-mpg-04( @baseH, @baseW ); }
+	&.scale-5 .indicators { .sprite-mpg-05( @baseH, @baseW ); }
+	&.scale-6 .indicators { .sprite-mpg-06( @baseH, @baseW ); }
+	&.scale-7 .indicators { .sprite-mpg-07( @baseH, @baseW ); }
+	&.scale-8 .indicators { .sprite-mpg-08( @baseH, @baseW ); }
+	&.scale-9 .indicators { .sprite-mpg-09( @baseH, @baseW ); }
+	&.scale-10 .indicators { .sprite-mpg-10( @baseH, @baseW ); }
+	&.scale-11 .indicators { .sprite-mpg-11( @baseH, @baseW ); }
+	&.scale-12 .indicators { .sprite-mpg-12( @baseH, @baseW ); }
+	&.scale-13 .indicators { .sprite-mpg-13( @baseH, @baseW ); }
+
+}
+
+@media ( max-width: 720px ) {
+
+	.control.mpg {
+
+		height: @mpgH * 1.5;
+		width: @mpgW * 1.5;
+
+	}	
 
 }

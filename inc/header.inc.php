@@ -11,7 +11,7 @@
 
 		<title>Mini Combobulator</title>
 
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<?php // To ensure assets are downloaded in parallel, always include external CSS before external JavaScript. ?>
 

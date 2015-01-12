@@ -285,9 +285,10 @@ module.exports = function( grunt ) {
 			
 				src: 'assets/sprites/*.png',
 				dest: 'assets/img/sprites/sprites.png',
-				destCss: 'assets/less/sprites.less'
+				destCss: 'assets/less/sprites.less',
+				cssTemplate: 'sprites.tpl.mustache'
 
-			}
+			},
 
 		},
 
@@ -376,6 +377,7 @@ module.exports = function( grunt ) {
 				
 				paths.fontello + '/icons',
 				paths.fontello + '/css',
+				'!' + paths.fontello + '/external/src',
 				'!' + paths.fontello,
 				'!' + paths.fontello + '/config.json'
 

@@ -1,3 +1,22 @@
+// Sprite stuff
+
+.sprite-base() { background-size: contain; }
+
+.height_pct( @value, @base ) { height: ( @value / @base ) * 100%; }
+.width_pct( @value, @base ) { width: ( @value / @base ) * 100%; }
+
+.height_px( @value, @base ) { height: ( @value / @base ) * @base; }
+.width_px( @value, @base ) { width: ( @value / @base ) * @base; }
+
+.size_pct( @height, @width, @baseH, @baseW ) {
+
+	height: ( @height / @baseH ) * 100%;
+	width: ( @width / @baseW ) * 100%;
+
+}
+
+// Things
+
 .letter-spacing( @value ) { letter-spacing: ( @value / 1000 ) + 0em; }
 
 .align-middle() {

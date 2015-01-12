@@ -1,12 +1,14 @@
-function scale( el, targetWidth ) {
+function scale( el, scale, targetWidth ) {
 
-	var elWidth	= $( el ).outerWidth();
-	var scale	= ( targetWidth / elWidth );
+	var targetWidth 	= targetWidth || $( '#dash' ).width();
+	var scale			= scale || false;
+	var elWidth			= $( el ).outerWidth();
+	var targetScale		= scale ? scale : ( targetWidth / elWidth );
 
 	$( el ).css( {
 
-		'transform': 'scale(' + scale + ')',
-		'transform-origin': '0 0',
+		'transform': 'scale(' + targetScale + ')',
+		// 'transform-origin': '0 0',
 
 	} );
 
@@ -185,19 +187,19 @@ function initSlot( slot ) {
 
 			var $c = $( slot ).contents();
 
-			if( endPosition > end - ( slotHeight * 2 ) ) {
+			// if( endPosition > end - ( slotHeight * 2 ) ) {
 
-				console.log( 'append at the bottom' );
-				moveToFrame(-760);
+			// 	console.log( 'append at the bottom' );
+			// 	moveToFrame(-760);
 
-			}
+			// }
 
-			else if( endPosition < ( slotHeight * 2 ) ) {
+			// else if( endPosition < ( slotHeight * 2 ) ) {
 
-				console.log( 'append at the top' );
-				moveToFrame(-440);
+			// 	console.log( 'append at the top' );
+			// 	moveToFrame(-440);
 
-			}
+			// }
 
 		},
 		onRelease: function() {

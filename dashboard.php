@@ -20,7 +20,7 @@
 
 					<h5 class="control-title">Mpg</h5>
 
-					<div class="control-wrapper"><div class="control-inner"><?php include( 'control-mpg.php' ); ?></div></div>
+					<div id="c-mpg" class="control-wrapper"><div class="control-inner"><?php include( 'control-mpg.php' ); ?></div></div>
 
 				</div><!-- end div.inner-left -->
 
@@ -38,7 +38,7 @@
 
 				<h5 class="control-title">Luggage</h5>
 
-				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-luggage.php' ); ?></div></div>
+				<div id="c-luggage" class="control-wrapper"><div class="control-inner"><?php include( 'control-luggage.php' ); ?></div></div>
 
 			</div><!-- end div.bottom -->
 

@@ -10,6 +10,7 @@ Thumbs.db
 /dotnet/Combobulator/bin
 /dotnet/Combobulator/App_Data
 /dotnet/Combobulator/obj
+/dotnet/Combobulator/Assets
 # Visuak Studio build
 *.obj
 *.exe

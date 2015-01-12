@@ -103,11 +103,7 @@
 
 				height: ~'calc( 100% - 30px )';
 
-				.control-inner {
-
-					.align-middle;
-
-				}
+				.control-inner { .align-middle; }
 
 			}
 
@@ -154,6 +150,8 @@
 
 @media ( max-width: 720px ) {
 
+	#tools { display: none; }
+
 	#dash {
 
 		height: auto;
@@ -175,13 +173,16 @@
 
 				.control-wrapper {
 
-					.control-inner {
+					height: 215px;
+					height: 800px;
 
-						.transform; // remove transform and make position static
+					// .control-inner {
 
-						position: static;
+					// 	.transform; // remove transform and make position static
 
-					}
+					// 	position: static;
+
+					// }
 
 				}
 
