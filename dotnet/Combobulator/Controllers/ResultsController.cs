@@ -18,42 +18,6 @@ namespace Combobulator.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult NewCustomerSubmit(FormCollection collection)
-        {
-            try
-            {
-                Customer customer = new Customer 
-                { 
-                    UserId = collection["UserId"],
-                    FirstName = collection["FirstName"],
-                    LastName = collection["LastName"],
-                    Email = collection["Email"],
-                    TelephoneHome = collection["TelephoneHome"],
-                    TelephoneMobile = collection["TelephoneMobile"],
-                    TelephoneWork = collection["TelephoneWork"],
-                    AddressLine1 = collection["AddressLine1"],
-                    AddressLine2 = collection["AddressLine2"],
-                    AddressLine3 = collection["AddressLine3"],
-                    AddressLine4 = collection["AddressLine4"],
-                    AddressPostcode = collection["AddressPostcode"],
-                    Dealer = collection["Dealer"],
-                    RequestCallback = collection["RequestCallback"].Contains("true"),
-                    EmailResults = collection["EmailResults"].Contains("true")
-                };
-
-                if (customer.EmailResults == true)
-                {
-                    Email.SendEmailResults(customer);
-                }
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         [ChildActionOnly]
         public ActionResult CustomerForm(string id)
         {
@@ -80,6 +44,7 @@ namespace Combobulator.Controllers
             PartialViewResult view = null;
             if (id != null)
             {
+                customer.UserId = id;
                 view = PartialView("ExistingCustomerForm", customer);
             }
             else

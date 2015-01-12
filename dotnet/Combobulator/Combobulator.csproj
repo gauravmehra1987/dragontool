@@ -165,6 +165,7 @@
     <Compile Include="Classes\Email.cs" />
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="DAL\Combobulator.cs">
