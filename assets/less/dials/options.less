@@ -30,8 +30,8 @@
 				top: 0;
 				left: 50%;
 				
-				.height_pct( 110px, @optionBaseH ) !important;
-				.width_pct( 160px, @optionBaseW ) !important;
+				height: 110px;
+				width: 160px;
 
 				&:before {
 
@@ -105,9 +105,9 @@
 
 		&.opts-awd input + label {
 
-			.sprite-opts-awd-off( @optionBaseH, @optionBaseW );
+			.sprite( @opts-awd-off );
 
-			&:after { .sprite-opts-awd-on( @optionBaseH, @optionBaseW ); }
+			&:after { .sprite( @opts-awd-on ); }
 
 		}
 
@@ -115,9 +115,9 @@
 
 		&.opts-hp input + label {
 
-			.sprite-opts-hp-off( @optionBaseH, @optionBaseW );
+			.sprite( @opts-hp-off );
 
-			&:after { .sprite-opts-hp-on( @optionBaseH, @optionBaseW ); }
+			&:after { .sprite( @opts-hp-on ); }
 
 		}
 
@@ -125,9 +125,9 @@
 
 		&.opts-dt input + label {
 
-			.sprite-opts-dt-off( @optionBaseH, @optionBaseW );
+			.sprite( @opts-dt-off );
 
-			&:after { .sprite-opts-dt-on( @optionBaseH, @optionBaseW ); }
+			&:after { .sprite( @opts-dt-on ); }
 
 		}
 
@@ -135,9 +135,9 @@
 
 		&.opts-tp input + label {
 
-			.sprite-opts-tp-off( @optionBaseH, @optionBaseW );
+			.sprite( @opts-tp-off );
 
-			&:after { .sprite-opts-tp-on( @optionBaseH, @optionBaseW ); }
+			&:after { .sprite( @opts-tp-on ); }
 
 		}
 
