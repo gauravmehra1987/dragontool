@@ -280,7 +280,7 @@ var mpg_el		= document.querySelector( '.control.mpg .arrow' );
 var mpg_bounds	= 120;
 var mpg_steps	= 13;
 var mpg_min		= 25;
-var mpg_max		= 69;
+var mpg_max		= 80;
 var mpg_knob	= new Draggable( mpg_el, {
 
 	type:	'rotation',
