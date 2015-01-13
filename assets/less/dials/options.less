@@ -1,3 +1,6 @@
+@optionBaseH: 110px;
+@optionBaseW: 200px;
+
 .keyframes( ~'glow, 0% { box-shadow: 0 0 5px red, 0 0 15px red; } 100% { box-shadow: none; }' );
 
 .control.options {
@@ -6,8 +9,8 @@
 
 		position: relative;
 
-		height: 110px;
-		width: 200px;
+		height: @optionBaseH;
+		width: @optionBaseH;
 
 		input {
 
@@ -27,8 +30,8 @@
 				top: 0;
 				left: 50%;
 				
-				height: 110px;
-				width: 160px;
+				.height_pct( 110px, @optionBaseH ) !important;
+				.width_pct( 160px, @optionBaseW ) !important;
 
 				&:before {
 
@@ -102,9 +105,9 @@
 
 		&.opts-awd input + label {
 
-			.sprite( @opts-awd-off ); background: url( ../sprites/opts-awd-off.png );
+			.sprite-opts-awd-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-awd-on ); background: url( ../sprites/opts-awd-on.png ); }
+			&:after { .sprite-opts-awd-on( @optionBaseH, @optionBaseW ); }
 
 		}
 
@@ -112,9 +115,9 @@
 
 		&.opts-hp input + label {
 
-			.sprite( @opts-hp-off ); background: url( ../sprites/opts-hp-off.png );
+			.sprite-opts-hp-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-hp-on ); background: url( ../sprites/opts-hp-on.png ); }
+			&:after { .sprite-opts-hp-on( @optionBaseH, @optionBaseW ); }
 
 		}
 
@@ -122,9 +125,9 @@
 
 		&.opts-dt input + label {
 
-			.sprite( @opts-dt-off ); background: url( ../sprites/opts-dt-off.png );
+			.sprite-opts-dt-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-dt-on ); background: url( ../sprites/opts-dt-on.png ); }
+			&:after { .sprite-opts-dt-on( @optionBaseH, @optionBaseW ); }
 
 		}
 
@@ -132,9 +135,9 @@
 
 		&.opts-tp input + label {
 
-			.sprite( @opts-tp-off ); background: url( ../sprites/opts-tp-off.png );
+			.sprite-opts-tp-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-tp-on ); background: url( ../sprites/opts-tp-on.png ); }
+			&:after { .sprite-opts-tp-on( @optionBaseH, @optionBaseW ); }
 
 		}
 

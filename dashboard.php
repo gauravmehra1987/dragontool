@@ -70,7 +70,7 @@
 
 				<h5 class="control-title">£ per month</h5>
 
-				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-price.php' ); ?></div></div>
+				<div id="c-price" class="control-wrapper"><div class="control-inner"><?php include( 'control-price.php' ); ?></div></div>
 				
 			</div><!-- end div.top -->
 

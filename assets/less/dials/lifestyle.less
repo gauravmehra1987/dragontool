@@ -1,6 +1,9 @@
 @lifestyleBaseH: 190px;
 @lifestyleBaseW: 190px;
 
+@lifestyleH: @lifestyleBaseH;
+@lifestyleW: @lifestyleBaseW;
+
 .control.lifestyle {
 
 	position: relative;
@@ -73,4 +76,15 @@
 
 	}
 	
+}
+
+@media ( max-width: 720px ) {
+
+	html body #dash #dash-left #c-lifestyle .control.lifestyle {
+
+		height: @lifestyleH * 1.5;
+		width: @lifestyleW * 1.5;
+
+	}
+
 }
