@@ -1,45 +1,64 @@
 // .handle - bottom controls position
 // .control-bg - height controls position
 
-@handleHeight: 56px;
+@rangeBaseH: 415px;
+@rangeBaseW: 200px;
+
+@sliderH: @rangeBaseH;
+@sliderW: @rangeBaseW;
 
 .control.slider {
 
 	position: relative;
 
-	height: 100%;
-	width: 200px;
+	height: @sliderH;
+	width: @sliderW;
 
 	.bg, .wrapper, .control-bg-wrapper, .mask, .handle { .align-centers; } // Center all layers
 
-	.bg { .sprite( @range-bg ); background: url( ../sprites/range-bg.png ); }
-	.mask { .sprite( @range-mask ); background: url( ../sprites/range-mask.png ); }	
+	.bg { .sprite-range-bg( @rangeBaseH, @rangeBaseW ); }
+	.mask {
+
+		.sprite-range-mask( @rangeBaseH, @rangeBaseW );
+
+		height: 100%;
+		width: 100%;
+
+	}
 	.handle {
 
-		.sprite( @range-handle ); background: url( ../sprites/range-handle.png );
+		@hH: ( @range-handle-height / @rangeBaseH ) * 100%;
 
-		margin-bottom: -( @handleHeight / 2 );
+		.sprite-range-handle( @rangeBaseH, @rangeBaseW );
 
 		top: auto;
-		bottom: 0%;
+		bottom: -( @hH / 2 );
+
+		width: 100%;
 
 	}
 
 	.wrapper {
 
+		@rH: @range-bg-height + @range-handle-height;
+		@rW: @range-bg-width;
+
 		overflow: hidden;
 
-		height: @range-bg-height + @handleHeight;
-		width: @range-bg-width;
+		.height_pct( @rH, @rangeBaseH );
+		.width_pct( @rW, @rangeBaseW );
 
 	}
 
 	.control-bg-wrapper {
 
-		max-height: @range-bg-height;
+		@mH: ( @range-bg-height / @rangeBaseH ) * @sliderH;
 
-		height: @range-bg-height;
-		width: @range-bg-width;
+		max-height: @mH;
+
+		width: 100%;
+
+		.height_pct( @range-bg-height, @rangeBaseH );
 
 		.control-bg {
 

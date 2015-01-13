@@ -1,8 +1,8 @@
-@baseW: 150px;
-@baseH: 180px;
+@mpgBaseW: 150px;
+@mpgBaseH: 180px;
 
-@mpgW: @baseW;
-@mpgH: @baseH;
+@mpgW: @mpgBaseW;
+@mpgH: @mpgBaseH;
 
 .control.mpg {
 
@@ -13,10 +13,10 @@
 
 	.scale, .control-bg, .indicators, .knob, .arrow { .align-centers; } // Center all layers
 
-	.knob { .sprite-mpg-knob( @baseH, @baseW ); }
-	.arrow { .sprite-mpg-knob-arrow( @baseH, @baseW ); }
+	.knob { .sprite-mpg-knob( @mpgBaseH, @mpgBaseW ); }
+	.arrow { .sprite-mpg-knob-arrow( @mpgBaseH, @mpgBaseW ); }
 
-	.control-bg { .size_pct( @baseW, @baseW, @baseH, @baseW ); }
+	.control-bg { .size_pct( @mpgBaseW, @mpgBaseW, @mpgBaseH, @mpgBaseW ); }
 
 	.value {
 
@@ -42,31 +42,20 @@
 
 	// ############################## Sprites ############################## //
 
-	.indicators { .sprite-mpg-00( @baseH, @baseW ); }
+	.indicators { .sprite-mpg-00( @mpgBaseH, @mpgBaseW ); }
 
-	&.scale-1 .indicators { .sprite-mpg-01( @baseH, @baseW ); }
-	&.scale-2 .indicators { .sprite-mpg-02( @baseH, @baseW ); }
-	&.scale-3 .indicators { .sprite-mpg-03( @baseH, @baseW ); }
-	&.scale-4 .indicators { .sprite-mpg-04( @baseH, @baseW ); }
-	&.scale-5 .indicators { .sprite-mpg-05( @baseH, @baseW ); }
-	&.scale-6 .indicators { .sprite-mpg-06( @baseH, @baseW ); }
-	&.scale-7 .indicators { .sprite-mpg-07( @baseH, @baseW ); }
-	&.scale-8 .indicators { .sprite-mpg-08( @baseH, @baseW ); }
-	&.scale-9 .indicators { .sprite-mpg-09( @baseH, @baseW ); }
-	&.scale-10 .indicators { .sprite-mpg-10( @baseH, @baseW ); }
-	&.scale-11 .indicators { .sprite-mpg-11( @baseH, @baseW ); }
-	&.scale-12 .indicators { .sprite-mpg-12( @baseH, @baseW ); }
-	&.scale-13 .indicators { .sprite-mpg-13( @baseH, @baseW ); }
-
-}
-
-@media ( max-width: 720px ) {
-
-	.control.mpg {
-
-		height: @mpgH * 1.5;
-		width: @mpgW * 1.5;
-
-	}	
+	&.scale-1 .indicators { .sprite-mpg-01( @mpgBaseH, @mpgBaseW ); }
+	&.scale-2 .indicators { .sprite-mpg-02( @mpgBaseH, @mpgBaseW ); }
+	&.scale-3 .indicators { .sprite-mpg-03( @mpgBaseH, @mpgBaseW ); }
+	&.scale-4 .indicators { .sprite-mpg-04( @mpgBaseH, @mpgBaseW ); }
+	&.scale-5 .indicators { .sprite-mpg-05( @mpgBaseH, @mpgBaseW ); }
+	&.scale-6 .indicators { .sprite-mpg-06( @mpgBaseH, @mpgBaseW ); }
+	&.scale-7 .indicators { .sprite-mpg-07( @mpgBaseH, @mpgBaseW ); }
+	&.scale-8 .indicators { .sprite-mpg-08( @mpgBaseH, @mpgBaseW ); }
+	&.scale-9 .indicators { .sprite-mpg-09( @mpgBaseH, @mpgBaseW ); }
+	&.scale-10 .indicators { .sprite-mpg-10( @mpgBaseH, @mpgBaseW ); }
+	&.scale-11 .indicators { .sprite-mpg-11( @mpgBaseH, @mpgBaseW ); }
+	&.scale-12 .indicators { .sprite-mpg-12( @mpgBaseH, @mpgBaseW ); }
+	&.scale-13 .indicators { .sprite-mpg-13( @mpgBaseH, @mpgBaseW ); }
 
 }
