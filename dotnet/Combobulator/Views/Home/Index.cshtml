@@ -3,10 +3,6 @@
     string firstName = ViewBag.FirstName;
 }
 
-@if (firstName != "")
-{
-    @Html.Raw("Hi " + firstName);
-}
 <div id="pageWrap">
 
 	<div id="top-bar">
@@ -34,7 +30,10 @@
 				<div class="hr"><hr/></div>
 			</header>
 
-			<h3 class="title">Hi CustomerName</h3>
+            @if (firstName != "")
+            {
+            <h3 class="title">Hi @firstName</h3>
+            }
 			<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
 			<p>Choose now much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit Combobulate to get your tailor-made deal.</p>
 			<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>

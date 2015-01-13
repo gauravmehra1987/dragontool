@@ -12,9 +12,14 @@ namespace Combobulator.Controllers
     {
         private Combobulator.DAL.CombobulatorDataContext dbContext = new Combobulator.DAL.CombobulatorDataContext();
 
-        public ActionResult Index(string id)
+        public ActionResult Index()
         {
-            ViewBag.UserId = id;
+            string userId = string.Empty;
+            if (!string.IsNullOrEmpty(Request.QueryString["c"]))
+            {
+                userId = Request.QueryString["c"];
+            }
+            ViewBag.UserId = userId;
             return View();
         }
 
@@ -42,14 +47,14 @@ namespace Combobulator.Controllers
             customer.Dealers = queryDealers.ToList();
 
             PartialViewResult view = null;
-            if (id != null)
+            if (id != string.Empty)
             {
                 customer.UserId = id;
-                view = PartialView("ExistingCustomerForm", customer);
+                view = PartialView("_ExistingCustomerForm", customer);
             }
             else
             {
-                view = PartialView("NewCustomerForm", customer);
+                view = PartialView("_NewCustomerForm", customer);
             }
 
             return view;
@@ -87,7 +92,7 @@ namespace Combobulator.Controllers
                 TermsConditions = dbCar.TermsConditions
             };
             
-            return PartialView("ResultDetail", car);
+            return PartialView("_ResultDetail", car);
         }
     }
 }

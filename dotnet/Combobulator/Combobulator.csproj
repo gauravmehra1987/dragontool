@@ -166,6 +166,7 @@
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="DAL\Combobulator.cs">
@@ -349,11 +350,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\NewCustomerForm.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Results\_NewCustomerForm.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
-    <Content Include="Views\Shared\ResultDetail.cshtml" />
-    <Content Include="Views\Shared\ExistingCustomerForm.cshtml" />
+    <Content Include="Views\Results\_ResultDetail.cshtml" />
+    <Content Include="Views\Results\_ExistingCustomerForm.cshtml" />
     <Content Include="Views\Home\_ControlBums.cshtml" />
     <Content Include="Views\Home\_ControlLifestyle.cshtml" />
     <Content Include="Views\Home\_ControlLuggage.cshtml" />

@@ -13,17 +13,17 @@ namespace Combobulator
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "ExistingCustomerDashboard",
-                url: "Dashboard/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "ExistingCustomerDashboard",
+            //    url: "Dashboard/{id}",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
 
-            routes.MapRoute(
-                name: "Results",
-                url: "Results/{id}",
-                defaults: new { controller = "Results", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "Results",
+            //    url: "Results/{id}",
+            //    defaults: new { controller = "Results", action = "Index", id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Default",

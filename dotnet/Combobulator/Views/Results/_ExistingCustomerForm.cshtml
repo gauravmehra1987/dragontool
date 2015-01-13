@@ -3,8 +3,17 @@
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-@using (Html.BeginForm("ExistingCustomerSubmit","Customer")) {
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function OnSuccess() {
+        alert("Form Submitted");
+    }
+    function OnFailure() {
+        alert("Form Failure");
+    }
+</script>
+@using (Ajax.BeginForm("ExistingCustomerSubmit", "Customer", new AjaxOptions { OnSuccess = "OnSuccess", OnFailure = "OnFailure", HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

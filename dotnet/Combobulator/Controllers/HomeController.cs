@@ -9,22 +9,20 @@ namespace Combobulator.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string id)
+        public ActionResult Index()
         {
+            string userId = string.Empty;
             Customer customer = null;
-            if (id != null)
-            {
-                // Call eMaster API to get user details
 
-                // Populate customer object
+            if (!string.IsNullOrEmpty(Request.QueryString["c"]))
+            {
                 customer = new Customer
                 {
-                    UserId = id,
-                    FirstName = "Keith",
-                    LastName = "Vong",
+                    UserId = Request.QueryString["c"],
+                    FirstName = "Customer",
+                    LastName = "Customer",
                     Email = "keith.vong@iris-worldwide.com",
                     TelephoneHome = "01234567890"
-
                 };
             }
 
