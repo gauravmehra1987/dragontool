@@ -3,13 +3,30 @@
 @{
     ViewBag.Title = "MINI Combobulator Results";
 }
-<div style="width:80%;display:inline;float:left">
-    @Html.Action("ResultDetail")
-</div>
-<div style="width:20%;display:inline;float:left">
-    @Html.Action("CustomerForm", new { id = ViewBag.UserId })
-</div>
 
 @section CustomScripts {
     @Scripts.Render("~/bundles/jquery")
 }
+<div id="pageWrap">
+
+	<div id="top-bar">
+		<div class="mini-logo"><img src="Assets/img/mini_logo.png" alt="mini" class="img-responsive" /></div>
+	</div>
+
+	<main role="main" id="main" class="row">
+
+		<div id="dashboard" class="column">
+			 @Html.Action("ResultDetail")
+		</div><!-- end div#dashboard -->
+
+		<article class="panel framed column">
+			@Html.Action("CustomerForm", new { id = ViewBag.UserId })
+		</article>
+
+	</main>
+
+	<footer id="footer">
+		<a><i class="icon chevron"></i>Terms and Conditions</a>
+	</footer>
+
+</div>

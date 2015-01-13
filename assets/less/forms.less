@@ -1,3 +1,16 @@
+// Local vars
+@formGrey: #a4a4a4;
+@addonGrey: #525252;
+
+// Reset fieldset
+
+fieldset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	min-width: 0;
+}
+
 // Form input wrapper
 
 .form-control {
@@ -13,6 +26,62 @@
 
 	}
 
+	.input-group {
+		position: relative;
+		display: table;
+		border-collapse: separate;
+
+		input {
+			float: left;
+			//width: 100%;
+			//margin-bottom: 0;
+			//border: 1px solid @formGrey;
+			border-top-left-radius: 0 !important;
+			border-bottom-left-radius: 0 !important;
+			display: table-cell;
+			position: relative;
+			z-index: 2;
+		}
+
+		&.error {
+			.input-group-addon {
+				border: 1px solid @red;
+				background-color: @red;
+			}
+			input {
+				border: 1px solid @red;
+			}
+		}
+	}
+
+	.input-group-addon {
+		background-color: @addonGrey;
+		border: 1px solid @addonGrey;
+
+		border-radius: 4px;
+		padding: 6px 12px;
+		width: 1%;
+
+		white-space: nowrap;
+		vertical-align: middle;
+		display: table-cell;
+
+		// remove radius where containers meet
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1;
+		color: @formGrey;
+		text-align: center;
+
+		&:first-child {
+			border-right: 0;
+		}
+
+	}
+
 	// This is for IE8 when we're not using fancy form controls
 
 	input[type=radio], input[type=checkbox] { margin-right: 0.5em; }
@@ -25,21 +94,21 @@ input:not( [type=checkbox] ):not( [type=radio] ),
 textarea {
 
 	.form-input;
-	.placeholder( @grayLight );
+	.placeholder( #000000 );
 	.transition( all 0.2s );
 
-	background: @white;
-	border-color: @gray;
-	border-radius: 0;
+	background: @formGrey;
+	border: none;
+	border-radius: 4px;
 	box-shadow: 1px 1px 2px transparent inset, 0 0 0 3px transparent;
-	color: @grayDarker;
+	color: @black;
 
-	&:focus {
+	// &:focus {
 
-		border-color: mix( @accent, @white, 60% );
-		box-shadow: 1px 1px 2px @gray inset, 0 0 0 3px mix( @accent, @white, 10% );
+	// 	border-color: mix( @accent, @white, 60% );
+	// 	box-shadow: 1px 1px 2px @gray inset, 0 0 0 3px mix( @accent, @white, 10% );
 
-	}
+	// }
 
 	&.error {
 
@@ -99,7 +168,9 @@ input[type=cancel] {
 
 	// Here you can change the icon - or you can overwrite it in the mixins file permanently
 
-	input + label:before { box-shadow: 0 0 0 1px @gray inset; }
+	input + label:before { 
+		background-color: @formGrey;
+	}
 
 	input:checked + label {
 
@@ -156,7 +227,23 @@ select {
 
 	.transition( all 0.2s );
 
-	.form-select; // takes the following parameters: @bgColor, @textColor, @borderColor, @outlineColor, @optionBg, @optionColor, @optionHoverBg, @optionHoverColor, @optionActiveBg, @optionActiveColor, @fontSize
+	//.form-select; // takes the following parameters: @bgColor, @textColor, @borderColor, @outlineColor, @optionBg, @optionColor, @optionHoverBg, @optionHoverColor, @optionActiveBg, @optionActiveColor, @fontSize
+
+	.form-select( @bgColor: @formGrey, @borderColor: @formGrey, @textColor: @black);
+	border-radius: 4px;
+
+	&:after {
+		background-color: @addonGrey;
+		width: auto;
+		height: auto;
+		padding: 11px 10px;
+		border-radius: 4px;
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+		top: 6px;
+		right: -1px;
+		color: @formGrey;
+	}
 
 	// Different states
 

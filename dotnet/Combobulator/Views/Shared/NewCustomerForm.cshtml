@@ -8,92 +8,131 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
+    <header>
+        <h1 class="title">Almost there.</h1>
+        <p>You've found your dream MINI. Now pop in your details so your MINI Dealer can help you get your hands on it.</p>
+    </header>
+
     <fieldset>
-        <legend></legend>
+        <legend class="sr-only">New customer form</legend>
         @Html.EditorFor(model => model.UserId, new { value = ViewBag.UserId })
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, "Name", "Name"), "Title")
+
+        <div class="form-control">
+            <div class="select">
+                @Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, "Name", "Name"),  "Title")
+            </div>
             @Html.ValidationMessageFor(model => model.Title)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First names" })
-            @Html.ValidationMessageFor(model => model.FirstName)
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First names"})
+            </div>
+            @Html.ValidationMessageFor(model =>  model.FirstName)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last name" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last name"})
+            </div>
             @Html.ValidationMessageFor(model => model.LastName)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email address" })
+        <div class="form-control full-width">
+           <div class="input-group">
+               <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.Email, new { placeholder = "Email address"})
+            </div>
             @Html.ValidationMessageFor(model => model.Email)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.TelephoneHome, new { placeholder = "Home telephone" })
+        <div class="form-control full-width">
+           <div class="input-group">
+               <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.TelephoneHome, new { placeholder = "Home telephone"})
+            </div>
             @Html.ValidationMessageFor(model => model.TelephoneHome)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.TelephoneWork, new { placeholder = "Work telephone" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.TelephoneWork, new { placeholder = "Work telephone"})
+            </div>
             @Html.ValidationMessageFor(model => model.TelephoneWork)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.TelephoneMobile, new { placeholder = "Mobile telephone" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.TelephoneMobile, new { placeholder = "Mobile telephone"})
+            </div>
             @Html.ValidationMessageFor(model => model.TelephoneMobile)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.AddressLine1, new { placeholder = "Address line 1" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.AddressLine1, new { placeholder = "Address line 1"})
+            </div>
             @Html.ValidationMessageFor(model => model.AddressLine1)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.AddressLine2, new { placeholder = "Address line 2" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.AddressLine2, new { placeholder = "Address line 2"})
+            </div>
             @Html.ValidationMessageFor(model => model.AddressLine2)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.AddressLine3, new { placeholder = "Address line 3" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.AddressLine3, new { placeholder = "Address line 3"})
+            </div>
             @Html.ValidationMessageFor(model => model.AddressLine3)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.AddressLine4, new { placeholder = "Address line 4" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.AddressLine4, new { placeholder = "Address line 4"})
+            </div>
             @Html.ValidationMessageFor(model => model.AddressLine4)
         </div>
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.AddressPostcode, new { placeholder = "Postcode" })
+        <div class="form-control full-width">
+            <div class="input-group">
+                <span class="input-group-addon" id="">$</span>
+                @Html.TextBoxFor(model => model.AddressPostcode, new { placeholder = "Postcode"})
+            </div>
             @Html.ValidationMessageFor(model => model.AddressPostcode)
         </div>
 
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.Dealer, new SelectList(Model.Dealers, "Name", "Name"), "Dealer")
-            @Html.ValidationMessageFor(model => model.Dealer)
+        <div class="form-control">
+            <div class="select">
+                @Html.DropDownListFor(model => model.Dealer, new SelectList(Model.Dealers, "Name", "Name"), "Dealer")
+                @Html.ValidationMessageFor(model => model.Dealer)
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.RequestCallback)
-        </div>
-        <div class="editor-field">
+        <div class="form-control checkbox">
             @Html.CheckBoxFor(model => model.RequestCallback)
+            @Html.LabelFor(model => model.RequestCallback)
             @Html.ValidationMessageFor(model => model.RequestCallback)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EmailResults)
-        </div>
-        <div class="editor-field">
+        <div class="form-control checkbox">
             @Html.CheckBoxFor(model => model.EmailResults)
+            @Html.LabelFor(model => model.EmailResults)
             @Html.ValidationMessageFor(model => model.EmailResults)
         </div>
 
-        <p>
+        <div class="form-control full-width">
             <input type="submit" value="Submit" />
-        </p>
+        </div>
     </fieldset>
 }

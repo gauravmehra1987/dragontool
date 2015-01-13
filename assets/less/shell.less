@@ -20,20 +20,18 @@
 		width: 780px;
 		height: 1728px;
 		margin-right: 6px;
+		color: #ffffff;
 	}
 
 	.panel {
 		width: 384px;
 		min-height: 728px;
 		overflow: hidden;
+		color: #ffffff;
 
 		&.welcome {
-			background-color: #000000;
-			border: 10px solid #888888;
-			padding: 30px;
-			text-align: center;
 			font-size: 14px;
-			color: #ffffff;
+			text-align: center;
 			.title {
 
 			}
@@ -57,7 +55,7 @@
 			}
 			.car {
 				img {
-					margin-left: -20%;
+					//margin-left: -20%;
 				}
 			}
 			.related-cars {
@@ -85,6 +83,12 @@
 					}
 				}
 			}
+		}
+
+		&.framed {
+			background-color: #000000;
+			border: 10px solid #888888;
+			padding: 30px;
 		}
 
 
@@ -139,6 +143,16 @@
 	width: 100% \9;
 	max-width: 100%;
 	height: auto;
+}
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
 
 //
