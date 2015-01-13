@@ -1,6 +1,7 @@
 ﻿using Combobulator.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -26,7 +27,7 @@ namespace Combobulator.Classes
             mail.To.Add(customer.Email);
             mail.From = new MailAddress(_fromAddress, _fromName);
             mail.Subject = _subject;
-            mail.Body = CreateEmailBody();
+            mail.Body = CreateEmailBody(customer);
             mail.IsBodyHtml = true;
 
             using (SmtpClient smtp = new SmtpClient())
@@ -48,9 +49,17 @@ namespace Combobulator.Classes
             }
         }
 
-        private static string CreateEmailBody()
+        private static string CreateEmailBody(Customer customer)
         {
-            return "";
+            string readFile = string.Empty;
+            string strBody = string.Empty;
+            using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(_template)))
+            {
+                readFile = reader.ReadToEnd();
+            }
+            strBody = readFile;
+            strBody = strBody.Replace("[[]]", "");
+            return strBody;
         }
     }
 }
