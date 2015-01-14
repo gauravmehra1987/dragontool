@@ -10,7 +10,7 @@
 
 				<h5 class="control-title">Bums on seats</h5>
 
-				<div id="c-bums" class="control-wrapper"><div class="control-inner"><?php include( 'control-bums.php' ); ?></div></div>
+				<div id="c-bums" class="control-wrapper backline"><div class="control-inner"><?php include( 'control-bums.php' ); ?></div></div>
 
 			</div><!-- end div.top -->
 
@@ -50,7 +50,7 @@
 
 				<h5 class="control-title">Options</h5>
 
-				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-options.php' ); ?></div></div>
+				<div id="c-options" class="control-wrapper"><div class="control-inner"><?php include( 'control-options.php' ); ?></div></div>
 
 			</div><!-- end div.top -->
 
@@ -58,7 +58,7 @@
 
 				<h5 class="control-title">Speed</h5>
 
-				<div id="c-speed" class="control-wrapper"><div class="control-inner"><?php include( 'control-speed.php' ); ?></div></div>
+				<div id="c-speed" class="control-wrapper backline"><div class="control-inner"><?php include( 'control-speed.php' ); ?></div></div>
 
 			</div><!-- end div.bottom -->
 
@@ -78,7 +78,7 @@
 
 				<h5 class="control-title">Start</h5>
 
-				<div class="control-wrapper"><div class="control-inner"><?php include( 'control-start.php' ); ?></div><!-- end div.bottom --></div>
+				<div id="c-button" class="control-wrapper"><div class="control-inner"><?php include( 'control-start.php' ); ?></div><!-- end div.bottom --></div>
 
 			</div>
 

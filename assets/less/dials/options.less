@@ -1,7 +1,9 @@
+// TODO
+
 @optionBaseH: 110px;
 @optionBaseW: 200px;
 
-.keyframes( ~'glow, 0% { box-shadow: 0 0 5px red, 0 0 15px red; } 100% { box-shadow: none; }' );
+.keyframes( ~'glow, 0% { box-shadow: 0 0 5px white, 0 0 15px white, 0 0 3px black inset; } 100% { box-shadow: 0 0 3px black inset; }' );
 
 .control.options {
 
@@ -33,13 +35,14 @@
 				height: 110px;
 				width: 160px;
 
-				&:before {
+				.light {
 
 					.pseudo;
 					.transition( box-shadow 1s linear, background 0.2s linear );
 
-					background: 0;
 					border-radius: 100%;
+					box-shadow: 0 0 3px black inset;
+					opacity: 0;
 					position: absolute;
 					z-index: 999;
 
@@ -89,7 +92,13 @@
 
 			&:checked + label {
 
-				&:before { .animation( glow 1ms 0.2s infinite linear ); }
+				.light {
+
+					.animation( glow 1ms 0.2s infinite linear );
+
+					opacity: 1;
+
+				}
 
 				&:after { opacity: 1; }
 

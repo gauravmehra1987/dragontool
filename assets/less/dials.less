@@ -12,14 +12,16 @@
 
 	.controls {
 
+		background: #161616;
 		display: table;
-		margin: auto;
+		margin: 15px auto 0;
+		padding: 0 10px;
 		position: relative;
 
 		.control {
 
 			float: left;
-			margin: 0 5px 0 0;
+			margin: 0 10px 0 0;
 
 			&:last-of-type { margin: 0; }
 
@@ -30,7 +32,11 @@
 			.box-sizing( content-box );
 			.hide-text;
 
-			background: @grayDarker;
+			background-color: @grayDarker;
+			background-image: url( ../sprites/slots-icon.png );
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			background-size: 100%;
 			border: solid 5px @trueBlack;
 			border-radius: 100%;
 			box-shadow: 0 1px 1px fadeout( @white, 80% ) inset, 0 -1px 2px @black inset;
@@ -78,16 +84,83 @@
 
 	.control-lifestyle { z-index: 1; }
 
+	// Mobile
+
+	@media ( max-width: 720px ) {
+
+		&:before { display: none; }
+
+		.control.lifestyle {
+
+			height: @lifestyleH * 1.5;
+			width: @lifestyleW * 1.5;
+
+		}
+
+	}
+
 }
 
-// Luggage
-#c-luggage {}
+// Options
 
-// Responsive
+#c-options { margin-top: 10px; }
 
-@media ( max-width: 720px ) {
+// Speed
 
-	#c-luggage {
+#c-speed .control-inner .control.slot {
+
+	&:before,
+	&:after {
+
+		.pseudo;
+
+		position: absolute;
+
+		top: 0;
+
+		height: 100%;
+
+		.width_pct( 10px, 130px );
+
+	}
+
+
+	&:before {
+
+		background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat;
+	
+		left: -10px;
+
+	}
+
+	&:after {
+
+		.rotate( 180 );
+
+		background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat;
+	
+		right: -10px;
+
+	}
+
+}
+
+// Start button
+
+#c-button {
+
+	// Mobile
+
+	@media ( max-width: 720px ) {
+
+		&:before { display: none; }
+
+		.control.button {
+
+			height: @btnBaseRadius * 1.5;
+			width: @btnBaseRadius * 1.5;
+
+		}
 
 	}
 

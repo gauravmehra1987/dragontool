@@ -1,5 +1,10 @@
-@btnRadius: 135px;
-@btnBorder: 5px;
+// TODO
+@btnBaseRadius: 135px;
+@btnBaseBorder: 5px;
+
+@btnBorder: @btnBaseBorder;
+@btnRadius: @btnBaseRadius;
+
 @btnOuter: @btnRadius + ( ( 2 * @btnBorder ) * 2 );
 
 .control.start {
@@ -49,7 +54,7 @@
 
 			.pseudo;
 			
-			.sprite( @combobulate ); background: url( ../sprites/combobulate.png );
+			.sprite-combobulate( @btnBaseRadius, @btnBaseRadius );
 
 			.transition( background-color 0.05s ease-in );
 

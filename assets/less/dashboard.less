@@ -1,3 +1,5 @@
+@dashGutter: 2px;
+
 #slick-test {
 
 	height: 400px;
@@ -24,8 +26,6 @@
 	}
 
 }
-
-
 
 // Tools
 
@@ -56,7 +56,7 @@
 
 	.transition( background-color 0.2s linear );
 
-	background-color: @accent;
+	background-color: #d71d24;
 
 }
 
@@ -67,7 +67,7 @@
 	max-width: 780px;
 	position: relative;
 
-	height: 735px;
+	height: 785px;
 
 	#dash-left, #dash-middle, #dash-right {
 
@@ -78,7 +78,7 @@
 		.top, .middle, .bottom, .inner-left, .inner-right {
 
 			background: @dialGray;
-			box-shadow: 0 0 0 2px @black inset;
+			box-shadow: 0 0 0 @dashGutter @black inset;
 			color: @grayDarker;
 			position: relative;
 
@@ -91,7 +91,7 @@
 				display: block;
 				font-size: 14px;
 				line-height: 30px;
-				margin: 0 2px;
+				margin: @dashGutter @dashGutter 0;
 				text-transform: uppercase;
 
 			}
@@ -174,7 +174,7 @@
 				.control-wrapper {
 
 					height: 215px;
-					height: 400px;
+					height: 600px;
 
 					// .control-inner {
 
