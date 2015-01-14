@@ -42,7 +42,6 @@
     <Node Id="Newtonsoft.Json 6.0.6" Label="Newtonsoft.Json 6.0.6" Category="Package" />
     <Node Id="RestSharp 105.0.1" Label="RestSharp 105.0.1" Category="Package" />
     <Node Id="System.Spatial 5.2.0" Label="System.Spatial 5.2.0" Category="Package" />
-    <Node Id="UrlRewritingNet 2.0.6.1" Label="UrlRewritingNet 2.0.6.1" Category="Package" />
     <Node Id="WebGrease 1.3.0" Label="WebGrease 1.3.0" Category="Package" />
   </Nodes>
   <Links>
@@ -100,7 +99,6 @@
     <Link Source="Combobulator" Target="Microsoft.AspNet.WebPages.WebData 2.0.20710.0" Category="Installed Package" />
     <Link Source="Combobulator" Target="Microsoft.jQuery.Unobtrusive.Ajax 2.0.30116.0" Category="Installed Package" />
     <Link Source="Combobulator" Target="Microsoft.jQuery.Unobtrusive.Validation 2.0.30116.0" Category="Installed Package" />
-    <Link Source="Combobulator" Target="UrlRewritingNet 2.0.6.1" Category="Installed Package" />
   </Links>
   <Categories>
     <Category Id="Project" />

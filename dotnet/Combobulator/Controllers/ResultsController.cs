@@ -26,8 +26,7 @@ namespace Combobulator.Controllers
         [ChildActionOnly]
         public ActionResult CustomerForm(string id)
         {
-            // Get customer from session
-
+            // Build drop downs
             IList<Combobulator.DAL.Title> dbTitles = dbContext.GetTitles().ToList();
             var queryTitles = from t in dbTitles select new Title
             {
@@ -42,18 +41,22 @@ namespace Combobulator.Controllers
                 Name = d.Name
             };
 
-            Customer customer = new Customer();
-            customer.Titles = queryTitles.ToList();
-            customer.Dealers = queryDealers.ToList();
-
             PartialViewResult view = null;
             if (id != string.Empty)
             {
-                customer.UserId = id;
+                // Get customer from id
+                Customer customer = Utils.GetCustomerById(id);
+                customer.Titles = queryTitles.ToList();
+                customer.Dealers = queryDealers.ToList();
+
                 view = PartialView("_ExistingCustomerForm", customer);
             }
             else
             {
+                Customer customer = new Customer();
+                customer.Titles = queryTitles.ToList();
+                customer.Dealers = queryDealers.ToList();
+
                 view = PartialView("_NewCustomerForm", customer);
             }
 
