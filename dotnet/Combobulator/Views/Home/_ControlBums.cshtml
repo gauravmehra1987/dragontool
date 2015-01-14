@@ -25,8 +25,11 @@
 
 			<div class="slots">
 
+				<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
 				<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
-				<div class="slot man"><span>Man</span></div><!-- end div.slot man -->									
+				<div class="slot man"><span>Man</span></div><!-- end div.slot man -->	
+				<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
+				<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->								
 
 			</div><!-- end div.slots -->
 

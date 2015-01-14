@@ -63,7 +63,7 @@ function getValues() {
 
 	};
 
-	alert( "JSON.parse( '" + JSON.stringify(data ) + "' );" );
+	$.publish('combobulate-raw', data);
 
 }
 

@@ -151,6 +151,23 @@ module.exports = function( grunt ) {
 
 				]
 
+			},
+
+			dotnet: {
+
+				dest: paths.dotnetAssets + '/js/app.js',
+
+				src: [
+
+					// List scripts
+					
+					'assets/js/src/config.js',
+					'assets/js/src/social.js',
+					'assets/js/src/logic.js',
+					'assets/js/src/ui.js',
+
+				],
+			
 			}
 
 		},
