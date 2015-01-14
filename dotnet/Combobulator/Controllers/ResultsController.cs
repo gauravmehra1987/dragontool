@@ -104,7 +104,6 @@ namespace Combobulator.Controllers
                     Alt1 = dbCar.Alt1,
                     Alt2 = dbCar.Alt2,
                     Alt3 = dbCar.Alt3,
-                    ImageURL = dbCar.ImageURL,
                     TermsConditions = dbCar.TermsConditions
                 };
                 return PartialView("_ResultDetail", car);

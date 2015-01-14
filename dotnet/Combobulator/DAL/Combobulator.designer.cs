@@ -170,8 +170,6 @@ namespace Combobulator.DAL
 		
 		private string _Alt3;
 		
-		private string _ImageURL;
-		
 		private string _TermsConditions;
 		
     #region Extensibility Method Definitions
@@ -218,8 +216,6 @@ namespace Combobulator.DAL
     partial void OnAlt2Changed();
     partial void OnAlt3Changing(string value);
     partial void OnAlt3Changed();
-    partial void OnImageURLChanging(string value);
-    partial void OnImageURLChanged();
     partial void OnTermsConditionsChanging(string value);
     partial void OnTermsConditionsChanged();
     #endregion
@@ -625,26 +621,6 @@ namespace Combobulator.DAL
 					this._Alt3 = value;
 					this.SendPropertyChanged("Alt3");
 					this.OnAlt3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageURL", CanBeNull=false)]
-		public string ImageURL
-		{
-			get
-			{
-				return this._ImageURL;
-			}
-			set
-			{
-				if ((this._ImageURL != value))
-				{
-					this.OnImageURLChanging(value);
-					this.SendPropertyChanging();
-					this._ImageURL = value;
-					this.SendPropertyChanged("ImageURL");
-					this.OnImageURLChanged();
 				}
 			}
 		}

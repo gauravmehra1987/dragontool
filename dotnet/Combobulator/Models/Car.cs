@@ -31,7 +31,6 @@ namespace Combobulator.Models
         public string Alt1 { get; set; }
         public string Alt2 { get; set; }
         public string Alt3 { get; set; }
-        public string ImageURL { get; set; }
         public string TermsConditions { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Combobulator" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=justforkix;Initial Catalog=MINI_Combobulator;persist security info=True; timeout=60;user id=keithvong;password=password1" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CombobulatorConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=justforkix;Initial Catalog=MINI_Combobulator;Persist Security Info=True;User ID=keithvong;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CombobulatorConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Cars" Member="Cars">
     <Type Name="Car" Id="ID1">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -22,8 +22,7 @@
       <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Member="ImageURL" Type="System.String" CanBeNull="false" />
-      <Column Member="TermsConditions" Type="System.String" CanBeNull="false" />
+      <Column Name="TermsConditions" Type="System.String" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Titles" Member="Titles">
