@@ -3,6 +3,9 @@
 @optionBaseH: 110px;
 @optionBaseW: 200px;
 
+@optionH: @optionBaseH;
+@optionW: @optionBaseW;
+
 .keyframes( ~'glow, 0% { box-shadow: 0 0 5px white, 0 0 15px white, 0 0 3px black inset; } 100% { box-shadow: 0 0 3px black inset; }' );
 
 .control.options {
@@ -11,8 +14,8 @@
 
 		position: relative;
 
-		height: @optionBaseH;
-		width: @optionBaseH;
+		height: @optionH;
+		width: @optionW;
 
 		input {
 
@@ -24,7 +27,7 @@
 				.transition( background 100ms ease-out );
 
 				display: block;
-				margin-left: -80px;
+				margin-left: -( ( 80px / @optionBaseW ) * 100% );
 				padding: 0;
 				position: absolute;
 				z-index: 1;
@@ -32,8 +35,8 @@
 				top: 0;
 				left: 50%;
 				
-				height: 110px;
-				width: 160px;
+				height: 100%;
+				.width_pct( 160px, @optionBaseW );
 
 				.light {
 
@@ -46,11 +49,11 @@
 					position: absolute;
 					z-index: 999;
 
-					top: 11px;
-					left: 17px;
+					top: ( ( 11px / @optionBaseH ) * 100% );
+					left: ( ( 22px / @optionBaseW ) * 100% );
 
-					height: 8px;
-					width: 8px;
+					.height_pct( 8px, @optionBaseH );
+					.width_pct( 8px, 160px );
 
 				}
 
@@ -79,12 +82,12 @@
 					display: block;
 					opacity: 0;
 
-					top: 18px; // where dis this come from?
-					left: 2px; // where dis this come from?
+					top: ( 18px / @optionBaseH ) * 100%; // where dis this come from?
+					left: ( 2px / @optionBaseW ) * 100%; // where dis this come from?
 					bottom: auto;
 
-					height: 35px;
-					width: 35px;
+					.height_pct( 35px, @optionBaseH );
+					.width_pct( 44px, @optionBaseW );
 
 				}
 
@@ -114,9 +117,18 @@
 
 		&.opts-awd input + label {
 
-			.sprite( @opts-awd-off );
+			.sprite-opts-awd-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-awd-on ); }
+			&:after {
+
+				.sprite-opts-awd-on( @optionBaseH, @optionBaseW );
+
+				background-size: auto 100%;
+
+				height: 100%;
+				width: 100%;
+
+			}
 
 		}
 
@@ -124,9 +136,18 @@
 
 		&.opts-hp input + label {
 
-			.sprite( @opts-hp-off );
+			.sprite-opts-hp-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-hp-on ); }
+			&:after {
+
+				.sprite-opts-hp-on( @optionBaseH, @optionBaseW );
+
+				background-size: auto 100%;
+
+				height: 100%;
+				width: 100%;
+
+			}
 
 		}
 
@@ -134,9 +155,18 @@
 
 		&.opts-dt input + label {
 
-			.sprite( @opts-dt-off );
+			.sprite-opts-dt-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-dt-on ); }
+			&:after {
+
+				.sprite-opts-dt-on( @optionBaseH, @optionBaseW );
+
+				background-size: auto 100%;
+
+				height: 100%;
+				width: 100%;
+
+			}
 
 		}
 
@@ -144,9 +174,18 @@
 
 		&.opts-tp input + label {
 
-			.sprite( @opts-tp-off );
+			.sprite-opts-tp-off( @optionBaseH, @optionBaseW );
 
-			&:after { .sprite( @opts-tp-on ); }
+			&:after {
+
+				.sprite-opts-tp-on( @optionBaseH, @optionBaseW );
+
+				background-size: auto 100%;
+
+				height: 100%;
+				width: 100%;
+
+			}
 
 		}
 

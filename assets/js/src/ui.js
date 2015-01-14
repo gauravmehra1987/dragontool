@@ -92,7 +92,7 @@ function getPriceValue( v ) {
 
 	var position	= Math.abs( parseInt( v ) );	
 	var level		= ( position / price_height ) * 100;
-	var max			= 400;
+	var max			= 315;
 	var value		= parseInt( ( max / 100 ) * level );
 
 	return [ level, value ];
