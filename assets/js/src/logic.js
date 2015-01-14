@@ -83,7 +83,7 @@ Mini.ResultsDOM = {
 			obj.Models = response;
 			$.publish('data-ready', obj);
 		}).error(function(jqXHR, textStatus, errorThrown){
-			alert(jqXHR.responseText);
+			console.log(jqXHR.responseText);
 			console.log("failed");
 		});
 	},
