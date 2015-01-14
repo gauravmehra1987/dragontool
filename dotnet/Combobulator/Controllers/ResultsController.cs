@@ -20,6 +20,14 @@ namespace Combobulator.Controllers
                 userId = Request.QueryString["c"];
             }
             ViewBag.UserId = userId;
+
+            string modelCode = string.Empty;
+            if (!string.IsNullOrEmpty(Request.QueryString["m"]))
+            {
+                modelCode = Request.QueryString["m"];
+            }
+            ViewBag.ModelCode = modelCode;
+
             return View();
         }
 
@@ -64,38 +72,47 @@ namespace Combobulator.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult ResultDetail()
+        public ActionResult ResultDetail(string modelCode)
         {
-            string modelCode = "XN12";
-
-            Combobulator.DAL.Car dbCar = dbContext.GetCar(modelCode).FirstOrDefault();
-            Car car = new Car
+            if (modelCode == null)
             {
-                Id = dbCar.Id,
-                Model = dbCar.Model,
-                ModelCode = dbCar.ModelCode,
-                Colour = dbCar.Colour,
-                Engine = dbCar.Engine,
-                DisplayName = dbCar.DisplayName,
-                Type = dbCar.Type,
-                CapacityScale = dbCar.CapacityScale,
-                LuggageScale = dbCar.LuggageScale,
-                Options = dbCar.Options,
-                PriceScale = dbCar.PriceScale,
-                Cost = dbCar.Cost,
-                PerformanceScale = dbCar.PerformanceScale,
-                MPH = dbCar.MPH,
-                EconomyScale = dbCar.EconomyScale,
-                MPG = dbCar.MPG,
-                UsageScale = dbCar.UsageScale,
-                Alt1 = dbCar.Alt1,
-                Alt2 = dbCar.Alt2,
-                Alt3 = dbCar.Alt3,
-                ImageURL = dbCar.ImageURL,
-                TermsConditions = dbCar.TermsConditions
-            };
-            
-            return PartialView("_ResultDetail", car);
+                modelCode = "XN12";
+            }
+
+            try
+            {
+                Combobulator.DAL.Car dbCar = dbContext.GetCar(modelCode).FirstOrDefault();
+                Car car = new Car
+                {
+                    Id = dbCar.Id,
+                    Model = dbCar.Model,
+                    ModelCode = dbCar.ModelCode,
+                    Colour = dbCar.Colour,
+                    Engine = dbCar.Engine,
+                    DisplayName = dbCar.DisplayName,
+                    Type = dbCar.Type,
+                    CapacityScale = dbCar.CapacityScale,
+                    LuggageScale = dbCar.LuggageScale,
+                    Options = dbCar.Options,
+                    PriceScale = dbCar.PriceScale,
+                    Cost = dbCar.Cost,
+                    PerformanceScale = dbCar.PerformanceScale,
+                    MPH = dbCar.MPH,
+                    EconomyScale = dbCar.EconomyScale,
+                    MPG = dbCar.MPG,
+                    UsageScale = dbCar.UsageScale,
+                    Alt1 = dbCar.Alt1,
+                    Alt2 = dbCar.Alt2,
+                    Alt3 = dbCar.Alt3,
+                    ImageURL = dbCar.ImageURL,
+                    TermsConditions = dbCar.TermsConditions
+                };
+                return PartialView("_ResultDetail", car);
+            }
+            catch (Exception ex)
+            {
+                return PartialView("_ResultError");
+            }
         }
     }
 }

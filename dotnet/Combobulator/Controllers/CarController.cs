@@ -59,6 +59,9 @@ namespace Combobulator.Controllers
 
             HttpResponseMessage response = new HttpResponseMessage();
             response.Content = sc;
+            //response.Headers.CacheControl = new CacheControlHeaderValue();
+            //response.Headers.CacheControl.MaxAge = new TimeSpan(24, 0, 0);
+            //response.Headers.CacheControl.Public = true;
             return response;
         }
 
@@ -103,6 +106,9 @@ namespace Combobulator.Controllers
 
             HttpResponseMessage response = new HttpResponseMessage();
             response.Content = sc;
+            //response.Headers.CacheControl = new CacheControlHeaderValue();
+            //response.Headers.CacheControl.MaxAge = new TimeSpan(24, 0, 0);
+            //response.Headers.CacheControl.Public = true;
             return response;
         }
     }

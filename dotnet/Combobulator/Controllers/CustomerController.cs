@@ -41,17 +41,19 @@ namespace Combobulator.Controllers
                         Email.SendEmailResults(customer);
                     }
 
+                    if (customer.RequestCallback == true)
+                    {
+                        Utils.RequestCallback(customer);
+                    }
+
                     Utils.SendNewCustomerData(customer);
                 }
-                return RedirectToAction("Index", "Results");
+                return View("~/Views/Results/_FormConfirmation.cshtml");
             }
             catch
             {
-                ModelState.AddModelError("", "");
-                Response.StatusCode = 400;
-                return RedirectToAction("Index", "Results");
+                return View("~/Views/Results/_FormError.cshtml");
             }
-            
         }
 
         [HttpPost]
@@ -78,13 +80,23 @@ namespace Combobulator.Controllers
                         Email.SendEmailResults(customer);
                     }
 
+                    if (customer.RequestCallback == true)
+                    {
+                        Utils.RequestCallback(customer);
+                    }
+
+                    if (customer.RequestEarlyRedemption == true)
+                    {
+                        Utils.RequestEarlyRedemption(customer);
+                    }
+
                     Utils.SendExistingCustomerData(customer);
                 }
-                return RedirectToAction("Index", "Results", new { c = customer.UserId });
+                return View("~/Views/Results/_FormConfirmation.cshtml");
             }
             catch
             {
-                return View();
+                return View("~/Views/Results/_FormError.cshtml");
             }
         }
     }

@@ -362,6 +362,9 @@
     <Content Include="Views\Home\_ControlSpeed.cshtml" />
     <Content Include="Views\Home\_ControlStart.cshtml" />
     <Content Include="Views\Home\_Dashboard.cshtml" />
+    <Content Include="Views\Results\_FormConfirmation.cshtml" />
+    <Content Include="Views\Results\_FormError.cshtml" />
+    <Content Include="Views\Results\_ResultError.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

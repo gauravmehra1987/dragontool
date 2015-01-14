@@ -16,7 +16,7 @@
 	<main role="main" id="main" class="row">
 
 		<div id="dashboard" class="column">
-			 @Html.Action("ResultDetail")
+			 @Html.Action("ResultDetail", new { modelCode = ViewBag.ModelCode })
 		</div><!-- end div#dashboard -->
 
 		<article class="panel framed column">

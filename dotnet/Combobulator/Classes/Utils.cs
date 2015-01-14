@@ -68,5 +68,15 @@ namespace Combobulator.Classes
         {
 
         }
+
+        public static void RequestCallback(Customer customer)
+        {
+
+        }
+
+        public static void RequestEarlyRedemption(Customer customer)
+        {
+
+        }
     }
 }
