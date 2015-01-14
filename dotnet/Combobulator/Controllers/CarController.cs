@@ -43,7 +43,8 @@ namespace Combobulator.Controllers
                 UsageScale = c.UsageScale,
                 Alt1 = c.Alt1,
                 Alt2 = c.Alt2,
-                Alt3 = c.Alt3
+                Alt3 = c.Alt3,
+                TermsConditions = c.TermsConditions
             };
 
             IEnumerable<Car> cars = query.ToList();
@@ -92,7 +93,8 @@ namespace Combobulator.Controllers
                 UsageScale = dbCar.UsageScale,
                 Alt1 = dbCar.Alt1,
                 Alt2 = dbCar.Alt2,
-                Alt3 = dbCar.Alt3
+                Alt3 = dbCar.Alt3,
+                TermsConditions = dbCar.TermsConditions
             };
 
             if (car == null)
