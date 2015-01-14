@@ -180,6 +180,7 @@ Iris.UILogic = {
 			},
 
 			matchSingleValueInArrary: function(array, userProp){
+
 				return array.indexOf(userProp) != -1;
 			},
 
@@ -189,20 +190,25 @@ Iris.UILogic = {
 
 				if (typeof userArray !== 'object') {return false;}
 
-				// console.log('we got a array')
+				// console.log('we got an array')
 				// console.log(array);
 				// console.log(userArray);
 
 				// Match all userArray values to pass
 				for (var i=0; i<len;i++) {
+
 					if(!Helpers.matchSingleValueInArrary(array, userArray[i])) {
 						return false;
 					}
+
 					count++;
+
 					if (len===count){
 						return true;
 					}
+
 				};
+
 			},
 
 			areValuesValid: function(dValue, qValue){
@@ -214,7 +220,6 @@ Iris.UILogic = {
 				// else match single value to target
 				return Helpers.matchArrayValuesInArrary(numberArray, qValue) || Helpers.matchSingleValueInArrary(numberArray, qValue)
 			},
-
 
 			isValueLegitimate: function(value){
 				return value !== 'n/a' && value !== 'TBC' && typeof value !== 'undefined' && value !== null && value != 0;
@@ -254,6 +259,7 @@ Iris.UILogic = {
 
 				// convert the dataset value into an array
 				var numberArray = Helpers.convertValueToArray(dValue);
+				var qValue = qValue.toString();
 
 				var matchAccept = function(){
 					Filter.addObjectToCollection(obj);
