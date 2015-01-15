@@ -1,32 +1,26 @@
-// TODO
-
 @from:	fadeout( @trueBlack, 20% );
 @to:	fadeout( @trueBlack, 100% );
 
-@slotW: 55px;
-@slotH: 80px;
+@slotBaseW: 55px;
+@slotBaseH: 80px;
 
-// Wide slot dimensions
+// Slot dimensions
 
-@wsT: 160px;
-@wsW: 130px;
-@wsH: @slotH;
-@wsP: ( @wsT - @wsH ) / 2;
+@slotW: @slotBaseW;
+@slotH: @slotBaseH;
 
-.control.slot {
+@wideSlotT: 160px;
+@wideSlotW: 130px;
+@wideSlotH: 80px;
+
+@wideSlotP: ( @wideSlotT - @wideSlotH ) / 2;
+
+.control.roller {
 
 	background: black;
 	
 	height: @slotH * 2;
 	width: @slotW;
-
-	.control-bg {
-
-		.align-centers;
-
-		height: 70px;
-
-	}
 
 	.wrap {
 
@@ -41,9 +35,10 @@
 		&:before, &:after {
 
 			.pseudo;
+			.translate3d;
 
 			position: absolute;
-			z-index: 10;
+			z-index: 9999;
 
 			left: 0;
 
@@ -68,12 +63,22 @@
 
 		}
 
+		.control-bg {
+
+			.align-centers;
+
+			height: @slotH * 0.9;
+			width: @slotW * 0.9;
+
+		}
+
 	}
 
 	.slots {
 
 		overflow: hidden;
 		padding: @slotH / 2 0;
+		position: relative;
 
 	}
 
@@ -81,7 +86,7 @@
 
 		position: relative;
 
-		height: @slotH;
+		height: @slotH !important;
 		width: 100%;
 
 		span {
@@ -98,15 +103,15 @@
 
 		}
 
-		&.empty { .sprite( @slot-empty ); background: url( ../sprites/slot-empty.png ); }
-		&.man { .sprite( @slot-man ); background: url( ../sprites/slot-man.png ); }
-		&.woman { .sprite( @slot-woman ); background: url( ../sprites/slot-woman.png ); }
-		&.girl { .sprite( @slot-girl ); background: url( ../sprites/slot-girl.png ); }
-		&.boy { .sprite( @slot-boy ); background: url( ../sprites/slot-boy.png ); }
-		&.infant { .sprite( @slot-infant ); background: url( ../sprites/slot-infant.png ); }
-		&.dog { .sprite( @slot-dog ); background: url( ../sprites/slot-dog.png ); }
-		&.cat { .sprite( @slot-cat ); background: url( ../sprites/slot-cat.png ); }
-		&.alien { .sprite( @slot-alien ); background: url( ../sprites/slot-alien.png ); }
+		&.empty { .sprite-slot-empty( @slotBaseH, @slotBaseW ); }
+		&.man { .sprite-slot-man( @slotBaseH, @slotBaseW ); }
+		&.woman { .sprite-slot-woman( @slotBaseH, @slotBaseW ); }
+		&.girl { .sprite-slot-girl( @slotBaseH, @slotBaseW ); }
+		&.boy { .sprite-slot-boy( @slotBaseH, @slotBaseW ); }
+		&.infant { .sprite-slot-infant( @slotBaseH, @slotBaseW ); }
+		&.dog { .sprite-slot-dog( @slotBaseH, @slotBaseW ); }
+		&.cat { .sprite-slot-cat( @slotBaseH, @slotBaseW ); }
+		&.alien { .sprite-slot-alien( @slotBaseH, @slotBaseW ); }
 
 	}
 
@@ -114,41 +119,40 @@
 
 	// Wide slot - for speed control
 
-	&.slot-wide {
+	&.roller-wide {
 	
-		height: @wsT;
-		width: @wsW;
+		height: @wideSlotT;
+		width: @wideSlotW;
 
 		.wrap {
 
-			padding-top: @wsP;
+			padding-top: @wideSlotP;
 
-			height: @wsH + @wsP;
+			height: @wideSlotH + @wideSlotP;
 			width: 100%;
 
-			&:before, &:after { height: @wsP; }
+			&:before, &:after { height: @wideSlotP; }
 
 		}
 
-		.slots { padding: @wsP 0; }
+		.slots { padding: @wideSlotP 0; }
 
 		.slot {
 
 			background: #363636;
 			color: @white;
 
-			height: @wsH;
+			height: @wideSlotH;
 
 			span {
 
-				line-height: @wsH;
+				line-height: @wideSlotH;
 				opacity: 1;
 
 			}
 
 		}	
 
-	}
-	
+	}	
 
 }

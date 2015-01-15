@@ -28,12 +28,12 @@ FastClick.attach( document.body );
 
 // Variables
 
-var slot_1		= '#c-bums .control.slot:nth-of-type( 1 ) .slots';
-var slot_2		= '#c-bums .control.slot:nth-of-type( 2 ) .slots';
-var slot_3		= '#c-bums .control.slot:nth-of-type( 3 ) .slots';
-var slot_4		= '#c-bums .control.slot:nth-of-type( 4 ) .slots';
-var slot_5		= '#c-bums .control.slot:nth-of-type( 5 ) .slots';
-var speed_slot	= '#c-speed .control.slot .slots';
+var slot_1		= '#c-bums .control.roller:nth-of-type( 1 ) .slots';
+var slot_2		= '#c-bums .control.roller:nth-of-type( 2 ) .slots';
+var slot_3		= '#c-bums .control.roller:nth-of-type( 3 ) .slots';
+var slot_4		= '#c-bums .control.roller:nth-of-type( 4 ) .slots';
+var slot_5		= '#c-bums .control.roller:nth-of-type( 5 ) .slots';
+var speed_slot	= '#c-speed .control.roller .slots';
 
 // ################################################## //
 //

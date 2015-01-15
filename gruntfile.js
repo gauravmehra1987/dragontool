@@ -5,7 +5,7 @@ module.exports = function( grunt ) {
 	var projectName		= 'Mini Combobulator';
 	var paths			= {
 
-		fontello:	'assets/fonts',
+		icons:	'assets/fonts/icons',
 		bower:		'bower_components/',
 		dotnetAssets:'dotnet/Combobulator/Assets/'
 
@@ -14,6 +14,34 @@ module.exports = function( grunt ) {
 	grunt.initConfig( {
 
 		pkg: grunt.file.readJSON( 'package.json' ),
+
+		// Icons
+
+		webfont: {
+
+			options: {
+
+				engine: 'fontforge',
+				stylesheet: 'less',
+				htmlDemo: false,
+				template: 'assets/icons/template.css',
+				templateOptions: {
+
+					classPrefix: 'icon-',
+
+				},
+
+			},
+		
+			icons: {
+				
+				src: 'assets/icons/*.svg',
+				dest: paths.icons,
+				destCss: 'assets/less',
+
+			},
+
+		},
 
 		// Compile LESS
 		
@@ -272,28 +300,6 @@ module.exports = function( grunt ) {
 
 		},
 
-		// Build fonts
-		
-		fontello: {
-
-			dist: {
-
-				options: {
-
-					config:	paths.fontello + '/config.json',
-
-					fonts:	paths.fontello + '/icons',
-
-					styles:	paths.fontello + '/css',
-
-					force:	true
-
-				}
-
-			}
-
-		},
-
 		// Sprites
 
 		sprite: {
@@ -328,7 +334,7 @@ module.exports = function( grunt ) {
 
 			icons: {
 
-				files: [ paths.fontello + '/config.json' ],
+				files: [ 'assets/icons/*.svg' ],
 
 				tasks: [ 'icons' ]
 			
@@ -364,13 +370,10 @@ module.exports = function( grunt ) {
 
 			local: [
 
+				paths.icons,
 				'assets/img/**',
 				'!assets/img',
-				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
-				paths.fontello + '/icons',
-				paths.fontello + '/css',
-				'!' + paths.fontello,
-				'!' + paths.fontello + '/config.json',
+				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',				
 				'assets/img/optimized',
 				'assets/js/app.js',
 				'assets/js/lib.js',
@@ -392,11 +395,8 @@ module.exports = function( grunt ) {
 
 			fonts: [
 				
-				paths.fontello + '/icons',
-				paths.fontello + '/css',
-				'!' + paths.fontello + '/external/src',
-				'!' + paths.fontello,
-				'!' + paths.fontello + '/config.json'
+				paths.icons,
+				'assets/less/icons.less',
 
 			],
 
@@ -456,7 +456,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
-	grunt.loadNpmTasks( 'grunt-fontello' );
+	grunt.loadNpmTasks( 'grunt-webfont' );
 	grunt.loadNpmTasks( 'grunt-spritesmith' );
 	grunt.loadNpmTasks( 'grunt-newer' );
 	grunt.loadNpmTasks( 'grunt-notify' );
@@ -478,8 +478,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'icons', [
 
 		'clean:fonts',
-		'fontello',
-		'fontello-less'
+		'webfont',
 
 	] );
 
@@ -524,35 +523,35 @@ module.exports = function( grunt ) {
 	
 	grunt.registerTask( 'fontello-less', 'This task converts fontello CSS to LESS mixins.', function() {
 
-		var file = paths.fontello + '/css/fontello.css';
+		// var file = paths.fontello + '/css/fontello.css';
 
-		if( grunt.file.exists( file ) ) {
+		// if( grunt.file.exists( file ) ) {
 
-			var css			= grunt.file.read( file );
-			var startIndex	= css.indexOf( '.icon' );
-			var endIndex	= css.lastIndexOf( '*/' );
-			var trimFile	= css.substring( startIndex, endIndex + 2 );
-			var less		= trimFile.split( ':before' ).join( '()' );
+		// 	var css			= grunt.file.read( file );
+		// 	var startIndex	= css.indexOf( '.icon' );
+		// 	var endIndex	= css.lastIndexOf( '*/' );
+		// 	var trimFile	= css.substring( startIndex, endIndex + 2 );
+		// 	var less		= trimFile.split( ':before' ).join( '()' );
 
-			if( grunt.file.write( 'assets/less/icon-codes.less', less ) ) {
+		// 	if( grunt.file.write( 'assets/less/icon-codes.less', less ) ) {
 
-				grunt.log.ok( file + ' processed successfully.' );
+		// 		grunt.log.ok( file + ' processed successfully.' );
 
-			}
+		// 	}
 
-			else {
+		// 	else {
 
-				grunt.fail.warn( 'Can\'t write ' + file + '. Aborting.' );
+		// 		grunt.fail.warn( 'Can\'t write ' + file + '. Aborting.' );
 
-			}
+		// 	}
 
-		}
+		// }
 
-		else {
+		// else {
 
-			grunt.fail.warn( 'File ' + file + ' does not exist. Aborting.' );
+		// 	grunt.fail.warn( 'File ' + file + ' does not exist. Aborting.' );
 
-		}
+		// }
 
 	} );
 

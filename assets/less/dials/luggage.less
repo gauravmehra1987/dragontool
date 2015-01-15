@@ -1,7 +1,8 @@
-// TODO
+@luggageBaseH: 190px;
+@luggageBaseW: 350px;
 
-@lH: 190px;
-@lW: 340px;
+@lH: @luggageBaseH;
+@lW: @luggageBaseW;
 
 .control.luggage {
 
@@ -13,24 +14,22 @@
 
 	.base {
 
-		.sprite( @luggage-mask ); background: url( ../sprites/luggage-mask.png );
+		// .sprite-luggage-mask( @luggageBaseH, @luggageBaseW );
 
-		margin-left: -( 350px / 2 );
 		position: absolute;
 
-		top: 0;
-		left: 50%;
-
-		height: 350px;
-		width: 350px;
+		width: 100%;
+		.height_pct( 350px, @luggageBaseH );
 
 		&:before {
 
 			.align-centers;
 			.pseudo;
-			.sprite( @luggage-mask ); background: url( ../sprites/luggage-mask.png );
+			.sprite-luggage-mask( @luggageBaseH, @luggageBaseW );
 
 			z-index: 999;
+
+			height: 100%;
 
 		}
 
@@ -38,23 +37,17 @@
 
 		.control-bg {
 
-			border-radius: 100%;
-			position: absolute;
-
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-
-			height: 300px;
-			width: 300px;
+			height: 98%;
+			width: 98%;
 
 		}
 
 		.dial {
 
-			.sprite( @luggage-dial ); background: url( ../sprites/luggage-dial.png );
+			.sprite-luggage-dial( @luggageBaseH, @luggageBaseW );
 			.translate3d;
+
+			height: 100%;
 
 			&:after {
 
@@ -72,29 +65,74 @@
 
 			}
 
-			&.light-packer:after {  .sprite( @luggage-dial-light-packer ); background: url( ../sprites/luggage-dial-light-packer.png ); opacity: 1; }
+			&.light-packer:after {
 
-			&.lugger:after {  .sprite( @luggage-dial-lugger ); background: url( ../sprites/luggage-dial-lugger.png ); opacity: 1; }
+				.sprite-luggage-dial-light-packer( @luggageBaseH, @luggageBaseW );
 
-			&.big-loader:after {  .sprite( @luggage-dial-big-loader ); background: url( ../sprites/luggage-dial-big-loader.png ); opacity: 1; }
+				opacity: 1;
 
-			&.minimalist:after {  .sprite( @luggage-dial-minimalist ); background: url( ../sprites/luggage-dial-minimalist.png ); opacity: 1; }
+				height: 100%;
+
+			}
+
+			&.lugger:after {
+
+				.sprite-luggage-dial-lugger( @luggageBaseH, @luggageBaseW );
+
+				opacity: 1;
+
+				height: 100%;
+
+			}
+
+			&.big-loader:after {
+
+				.sprite-luggage-dial-big-loader( @luggageBaseH, @luggageBaseW );
+
+				opacity: 1;
+
+				height: 100%;
+
+			}
+
+			&.minimalist:after {
+
+				.sprite-luggage-dial-minimalist( @luggageBaseH, @luggageBaseW );
+
+				opacity: 1;
+
+				height: 100%;
+
+			}
 
 		}
 
 		.arrows {
 
-			.sprite( @luggage-arrows ); background: url( ../sprites/luggage-arrows.png );
+			.sprite-luggage-arrows( @luggageBaseH, @luggageBaseW );
 
 			border-radius: 100% 100% 0 0;
 
 			z-index: 99999;
 
-			height: 150px;
-			width: 150px;
+			.height_pct( 150px, @luggageBaseW );
+			.width_pct( 150px, @luggageBaseW );
 
-			&.right { .sprite( @luggage-arrows-right ); background: url( ../sprites/luggage-arrows-right.png ); }
-			&.left { .sprite( @luggage-arrows-left ); background: url( ../sprites/luggage-arrows-left.png ); }
+			&.right {
+
+				.sprite-luggage-arrows-right( @luggageBaseH, @luggageBaseW );
+
+				.height_pct( 150px, @luggageBaseW );
+
+			}
+
+			&.left {
+
+				.sprite-luggage-arrows-left( @luggageBaseH, @luggageBaseW );
+
+				.height_pct( 150px, @luggageBaseW );
+
+			}
 
 			#left, #right {
 
@@ -121,8 +159,8 @@
 
 	html body #dash #dash-left #c-luggage .control.luggage {
 
-		height: @lH;
-		width: @lW;
+		height: @lH * 0.7;
+		width: @lW * 0.7;
 
 	}
 
