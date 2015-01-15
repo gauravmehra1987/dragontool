@@ -102,13 +102,15 @@ Mini.ResultsDOM = {
 		};
 
 		function price(pounds){
+			console.log(pounds)
 			var scale;
 			if (pounds == 0) { scale = 0 } else
-			if (pounds < 51) { scale = 5 } else
-			if (pounds < 210) { scale = 1 } else
-			if (pounds < 251) { scale = 2 } else
-			if (pounds < 301) { scale = 3 } else
-			if (pounds > 300) { scale = 4 } else {
+			if (pounds < 66) { scale = 6 } else
+			if (pounds < 216) { scale = 1 } else
+			if (pounds < 247) { scale = 2 } else
+			if (pounds < 270) { scale = 3 } else
+			if (pounds < 295) { scale = 4 } else
+			if (pounds >= 295) { scale = 5 } else {
 				scale = 0;
 			}
 			return scale;
@@ -142,15 +144,38 @@ Mini.ResultsDOM = {
 			return output;
 		};
 
-		// "1 = 1-2 people
-		// 2 = 1-2 adult + 1-2 children (w' car seat)
-		// 3 = 1-2 adults + 1-2 children
-		// 4 = 1 adult + 3 children
-		// 5 = 3-4 adults
-		// 6 = 5 people
-		// *Alien presents alien in results pane.
-		// **Cat presents cat in results pane.
-		// ***Dog presents dog in results pane."
+		// Build the easter egg array
+		function easterEggs(arr1, arr2){
+
+			var options = {
+				"Dog": 1,
+				"Alien": 1,
+				"Cat": 1,
+				"teleportation": 1
+			}
+
+			var o = {};
+			o.teleportation = arr2.indexOf("4") != -1;
+
+			for (var i = 0; i < arr1.length; i++) {
+				var string = arr1[i];
+				if (typeof string === 'string' && string === 'Dog' || string === 'Alien' || string === 'Cat'){
+					o[string] = 1;
+				}
+			}
+
+			return o;
+
+		}
+
+		// Remove teleportation from the options array
+		function carOptions(arr){
+			function pin() {
+				arr.pop()
+				return arr;
+			}
+			return (arr.indexOf("4") != -1) ? pin() : arr;
+		}
 
 		function capacity(arr){
 
@@ -165,41 +190,88 @@ Mini.ResultsDOM = {
 				"cat": 4
 			}
 
-			var people = 0;
-			var children = 0;
-			var infant = 0;
+			var o = {}
+			o.people = 0;
+			o.children = 0;
+			o.infant = 0;
+			var output;
 
-			function seatArrayToScale(arr) {
+			function seatArrayToObject(arr) {
 				// for (var prop in)
 				for (var i = 0; i < arr.length; i++) {
 					var string = arr[i];
-					console.log(string);
+					//console.log(string);
 
 					if (typeof string === 'string' && string == 'Man' || string == 'Woman'){
-						people = people + options[string];
+						o.people++;
 					} else if (typeof string === 'string' && string == 'Girl' || string == 'Boy'){
-						children = children + options[string];
+						o.children++;
 					} else if (typeof string === 'string' && string === 'Infant'){
-						infant = infant + options[string];
+						o.infant++;
 					}
 
 				};
-				console.log(people)
-				console.log(children)
-				console.log(infant)
+
+				return o;
+
+			};
+
+			function peopleObjectToScale(o){
+
+				o.family = o.people + o.children;
+
+				//console.log(o);
+
+				if (o.family <= 2 && o.infant === 0) {
+					//console.log('o.family <= 2 && o.infant === 0')
+					return 1;
+				}
+
+				if (o.people === 2 && (0 < o.children && o.children <= 2) && o.infant === 0) {
+					//console.log('o.people === 2 && (0 < o.children && o.children <= 2) && o.infant === 0')
+					return 3;
+				}
+				if (o.people === 1 && (0 < o.children && o.children <= 3) && o.infant === 0) {
+					//console.log('o.people === 1 && (0 < o.children && o.children <= 3) && o.infant === 0')
+					return 3;
+				}
+
+				if (o.family <= 4 && o.infant === 0){
+					//console.log('o.family <= 4 && o.infant === 0')
+					return 2;
+				}
+				if (o.family <= 3 && o.infant === 1){
+					//console.log('o.family <= 3 && o.infant === 1')
+					return 2;
+				}
+
+				if (o.family === 5) {
+					//console.log('o.family === 5')
+					return 4;
+				}
+
+				if (o.family === 4 && o.infant === 1) {
+					//console.log('o.family === 4 && o.infant === 1')
+					return 4;
+				}
+
+				if (o.family === 3 && o.infant === 2) {
+					//console.log('o.family === 3 && o.infant === 2')
+					return 4;
+				}
 
 			}
 
-			seatArrayToScale(arr);
+			return peopleObjectToScale( seatArrayToObject(arr) );
 
 		};
 
 		var query = {};
-		query.CapacityScale = 0;
+		query.CapacityScale = capacity(data.seats);
 		query.EconomyScale = mpg(data.mpg);
-		query.Eggs = "0";
+		query.Eggs = easterEggs(data.seats, data.options);
 		query.LuggageScale = luggage(data.luggage);
-		query.Options = data.options;
+		query.Options = carOptions( data.options );
 		query.PerformanceScale = data.speed;
 		query.PriceScale = price(data.price);
 		query.UsageScale = lifestyle(data.lifestyle);
@@ -298,7 +370,7 @@ Mini.UILogic = {
 			minNoResults: 2,
 			easterEggs : {
 				'PerformanceScale' : 5,
-				'PriceScale' : 5
+				'PriceScale' : 6
 			}
 		}
 
