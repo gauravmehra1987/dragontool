@@ -321,16 +321,21 @@ Mini.DOMCtrl = {
 			carToView: function(car){
 
 				var imageUrl = 'assets/cars/';
-				var resultsUrl = 'results/';
-				var $panel = self._$page.find('.panel.results');
+				var resultsUrl = 'results?';
 				var colour = Helpers.determineColour(car.Colour);
+				var $customerId = self._$page.find('#uid').attr('value');
+				var $panel = self._$page.find('.panel.results');
+
+				function resultsPageUrl(cId, url, mCode){
+					return (Helpers.isValueLegitimate(cId)) ? url + 'c=' + cId + '&m=' + mCode : url + 'm=' + mCode;
+				}
 
 				$panel.find('[data-model-name]').html(car.Model);
 				$panel.find('[data-model-code]').html(car.ModelCode);
 				$panel.find('[data-model-price]').html(car.Cost);
 				$panel.find('[data-model-image]').attr({src: imageUrl + car.ModelCode + '.jpg'});
 				$panel.find('[data-terms]').html(car.TermsConditions);
-				$panel.find('[data-results-link]').attr({href: resultsUrl});
+				$panel.find('[data-results-link]').attr({href: resultsPageUrl($customerId, resultsUrl, car.ModelCode)});
 
 				// Trigger the colour change function
 				$.publish('colour-change', colour);
@@ -432,9 +437,9 @@ Mini.UILogic = {
 
 				if (typeof userArray !== 'object') {return false;}
 
-				console.log('we got a array')
-				console.log(array);
-				console.log(userArray);
+				// console.log('we got an array')
+				// console.log(array);
+				// console.log(userArray);
 
 				// Match all userArray values to pass
 				for (var i=0; i<len;i++) {
@@ -481,10 +486,8 @@ Mini.UILogic = {
 				console.log(this.reduced)
 				if(this.reduced !== 0) {
 					console.log('reduced by : ' + (dataSet.length - this.reduced));
-					//Mini.DOMCtrl.renderProgressItem(queryProp + ' reduces data by : ' + (dataSet.length - this.reduced));
 				} else {
 					console.log('not reduced')
-					Filter.store = dataSet;
 				}
 				console.log(Filter.store);
 			},
@@ -506,7 +509,7 @@ Mini.UILogic = {
 				}
 
 				var matchReject = function(){
-					console.log('skipped value');
+					//console.log('skipped value');
 				}
 
 				return !!Helpers.areValuesValid(dValue, qValue) && ( Helpers.doValuesMatch(numberArray, qValue) ? matchAccept() : matchReject() );
@@ -522,7 +525,7 @@ Mini.UILogic = {
 			},
 
 			addObjectToCollection: function(obj){
-				console.log('added')
+				//console.log('added')
 				Filter.store.push(obj);
 				Filter.reduced++;
 			},
@@ -539,8 +542,8 @@ Mini.UILogic = {
 				}
 
 				var endLoopThenRender = function(){
-					console.log('endLoopThenRender')
-					console.log('Finished: Rendering results!')
+					// console.log('endLoopThenRender')
+					// console.log('Finished: Rendering results!')
 					self._collection.add(resultCollection);
 
 					// Filering complete return result to view controller
@@ -562,14 +565,18 @@ Mini.UILogic = {
 				// output console message
 				Filter.outputDatasetMessages(prop, dataSet);
 
+				if(this.reduced === 0) {
+					Filter.store = dataSet;
+				}
+
 				// if endpoint not reached recurse
 				// otherwise exit
 				Filter.haveWeReachedTheEnd(Filter.store, self._order);
 			},
 
 			renderSingleRecordThenExit: function(record){
-				console.log('renderSingleRecordThenExit')
-				console.log('Finished: Rendering results');
+				//console.log('renderSingleRecordThenExit')
+				//console.log('Finished: Rendering results');
 				console.log(record);
 				Filter.addObjectToCollection(record[0]);
 				self._collection.add(Filter.store);

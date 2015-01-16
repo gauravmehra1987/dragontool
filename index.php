@@ -1,5 +1,6 @@
 <?php require( 'inc/header.inc.php' ); ?>
 
+
 <div id="pageWrap">
 
 	<div id="top-bar">
@@ -12,9 +13,11 @@
 
 	<main role="main" id="main" class="row">
 
-		<div id="dashboard" class="column"><?php require( 'dashboard.php' ); ?></div><!-- end div#dashboard -->
+		<div id="dashboard" class="column">
+			<?php require( 'dashboard.php' ); ?>
+		</div><!-- end div#dashboard -->
 
-		<article class="panel welcome column">
+		<article class="panel welcome framed column" data-panel-name="welcome">
 
 			<header>
 				<div class="ministry-logo">
@@ -25,28 +28,33 @@
 				<div class="hr"><hr/></div>
 			</header>
 
-			<h3 class="title">Hi CustomerName</h3>
+<!-- 			@if (firstName != "")
+			{
+			<h3 class="title">Hi @firstName</h3>
+			} -->
 			<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
 			<p>Choose now much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit Combobulate to get your tailor-made deal.</p>
 			<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>
 
 		</article>
 
-		<article class="panel results column">
+		<article class="panel results column" data-panel-name="results">
 
 			<header>
-				<h2 class="title">Mini one 5-door hatch</h2>
+				<h2 class="title" data-model-name="true">model name</h2>
+				<h3 class="title" data-model-code="true">model code</h3>
+
 				<div class="sticker">
 					<span class="currency">£</span>
-					<span class="price">209</span>
+					<span class="price" data-model-price="true">model price</span>
 					<span class="">Per<br />month</span>
 				</div>
-				<a class="btn"><i class="icon chev"></i>Go see</a>
+				<a class="btn" href="#" data-results-link="true"><i class="icon chev"></i>Go see</a>
 				<div class="hr"><hr/></div>
 			</header>
 
 			<div class="car">
-				<img src="assets/cars/5-door-Cooper-D.jpg" alt="car" class="img-responsive" />
+				<img data-model-image="true" src="assets/cars/5-door-Cooper-D.jpg" alt="car" class="img-responsive" />
 			</div>
 
 			<div class="hr"><hr/></div>
@@ -54,11 +62,23 @@
 			<div class="related-cars">
 				<h2 class="title">Or for £200... You could buy <span class="highlight">102 watermelons</span></h2>
 				<ul class="nav-list">
-					<li><a href="#" title="Alt Car 1"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
-					<li class="active"><a href="#" title="Alt Car 2"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
-					<li><a href="#" title="Alt Car 3"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
-					<li><a href="#" title="Alt Car 4"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
+					<li>
+						<a href="#" data-alt1-name="true" title="Alt Car 1"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a>
+					</li>
+					<li class="active">
+						<a href="#" data-alt2-name="true" title="Alt Car 2"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a>
+					</li>
+					<li>
+						<a href="#" data-alt3-name="true" title="Alt Car 3"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a>
+					</li>
+					<li>
+						<a href="#" data-alt4-name="true" title="Alt Car 4"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a>
+					</li>
 				</ul>
+			</div>
+
+			<div class="extras">
+				<div class="terms" data-terms="true"></div>
 			</div>
 
 		</article>
@@ -70,5 +90,6 @@
 	</footer>
 
 </div>
+<!-- <input id="uid" type="hidden" value="@userId" /> -->
 
 <?php require( 'inc/footer.inc.php' ); ?>
