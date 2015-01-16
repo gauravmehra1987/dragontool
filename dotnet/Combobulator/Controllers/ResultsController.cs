@@ -50,6 +50,7 @@ namespace Combobulator.Controllers
             };
 
             PartialViewResult view = null;
+
             if (id != string.Empty)
             {
                 // Get customer from id

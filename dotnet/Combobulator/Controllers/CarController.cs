@@ -9,11 +9,15 @@ using System.Web.Http;
 using Combobulator.Models;
 using System.Web.Mvc;
 using System.Net.Http.Headers;
+using System.Web.UI;
+using System.Configuration;
 
 namespace Combobulator.Controllers
 {
     public class CarController : ApiController
     {
+        private int apiCacheDurationHours = Convert.ToInt32(ConfigurationManager.AppSettings["ApiCacheDurationHours"]);
+        private bool apiCacheEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["ApiCacheEnabled"]);
         private Combobulator.DAL.CombobulatorDataContext dbContext = new Combobulator.DAL.CombobulatorDataContext();
 
         // GET api/car
@@ -60,9 +64,12 @@ namespace Combobulator.Controllers
 
             HttpResponseMessage response = new HttpResponseMessage();
             response.Content = sc;
-            //response.Headers.CacheControl = new CacheControlHeaderValue();
-            //response.Headers.CacheControl.MaxAge = new TimeSpan(24, 0, 0);
-            //response.Headers.CacheControl.Public = true;
+            if (apiCacheEnabled)
+            {
+                response.Headers.CacheControl = new CacheControlHeaderValue();
+                response.Headers.CacheControl.MaxAge = new TimeSpan(apiCacheDurationHours, 0, 0);
+                response.Headers.CacheControl.Public = true;
+            }
             return response;
         }
 
@@ -108,9 +115,12 @@ namespace Combobulator.Controllers
 
             HttpResponseMessage response = new HttpResponseMessage();
             response.Content = sc;
-            //response.Headers.CacheControl = new CacheControlHeaderValue();
-            //response.Headers.CacheControl.MaxAge = new TimeSpan(24, 0, 0);
-            //response.Headers.CacheControl.Public = true;
+            if (apiCacheEnabled)
+            {
+                response.Headers.CacheControl = new CacheControlHeaderValue();
+                response.Headers.CacheControl.MaxAge = new TimeSpan(apiCacheDurationHours, 0, 0);
+                response.Headers.CacheControl.Public = true;
+            }
             return response;
         }
     }

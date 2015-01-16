@@ -1,4 +1,5 @@
-﻿using Combobulator.Models;
+﻿using Combobulator.Classes;
+using Combobulator.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,7 @@ namespace Combobulator.Controllers
 
             if (!string.IsNullOrEmpty(Request.QueryString["c"]))
             {
-                customer = new Customer
-                {
-                    UserId = Request.QueryString["c"],
-                    FirstName = "Customer",
-                    LastName = "Customer",
-                    Email = "keith.vong@iris-worldwide.com",
-                    TelephoneHome = "01234567890"
-                };
+                customer = Utils.GetCustomerById(Request.QueryString["c"]);
             }
 
             ViewBag.FirstName = customer != null ? customer.FirstName : "";
