@@ -21,6 +21,7 @@ namespace Combobulator.Controllers
             }
 
             ViewBag.FirstName = customer != null ? customer.FirstName : "";
+            ViewBag.UserId = Request.QueryString["c"];
 
             return View();
         }
