@@ -1,6 +1,6 @@
 <div class="controls">
 	
-	<div class="control slot">
+	<div class="control roller">
 
 		<div class="wrap">
 
@@ -15,9 +15,9 @@
 
 		</div><!-- end div.wrap -->
 		
-	</div><!-- end div.control slot -->
+	</div><!-- end div.control roller -->
 
-	<div class="control slot">
+	<div class="control roller">
 
 		<div class="wrap">
 
@@ -35,9 +35,9 @@
 
 		</div><!-- end div.wrap -->
 		
-	</div><!-- end div.control slot -->
+	</div><!-- end div.control roller -->
 
-	<div class="control slot">
+	<div class="control roller">
 
 		<div class="wrap">
 
@@ -56,9 +56,9 @@
 
 		</div><!-- end div.wrap -->
 		
-	</div><!-- end div.control slot -->
+	</div><!-- end div.control roller -->
 
-	<div class="control slot">
+	<div class="control roller">
 
 		<div class="wrap">
 
@@ -77,9 +77,9 @@
 
 		</div><!-- end div.wrap -->
 		
-	</div><!-- end div.control slot -->
+	</div><!-- end div.control roller -->
 
-	<div class="control slot">
+	<div class="control roller">
 
 		<div class="wrap">
 
@@ -101,7 +101,7 @@
 
 		</div><!-- end div.wrap -->
 		
-	</div><!-- end div.control slot -->
+	</div><!-- end div.control roller -->
 
 	<button id="rnd">Randomize</button>
 	

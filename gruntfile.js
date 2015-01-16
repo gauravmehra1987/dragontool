@@ -385,6 +385,22 @@ module.exports = function( grunt ) {
 
 			],
 
+			simple: [
+
+				'assets/img/**',
+				'!assets/img',
+				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',				
+				'assets/img/optimized',
+				'assets/js/app.js',
+				'assets/js/lib.js',
+				'assets/js/ie.js',
+				'assets/less/icon-codes.less',
+				'assets/less/sprites.less',
+				'assets/css',
+				'**/.DS_Store'
+
+			],
+
 			images: [
 
 				'assets/img/**',
@@ -473,6 +489,14 @@ module.exports = function( grunt ) {
 
 	] );
 
+	grunt.registerTask( 'simple',	[
+
+		'clean:simple',
+		'images',
+		'dev',
+		'watch'
+	]);
+
 	// Other tasks
 
 	grunt.registerTask( 'icons', [
@@ -480,7 +504,7 @@ module.exports = function( grunt ) {
 		'clean:fonts',
 		'webfont',
 
-	] );
+	]);
 
 	grunt.registerTask( 'images', [
 

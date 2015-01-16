@@ -330,6 +330,7 @@ Mini.DOMCtrl = {
 				$panel.find('[data-model-image]').attr({src: imageUrl + car.ModelCode + '.jpg'});
 				$panel.find('[data-terms]').html(car.TermsConditions);
 
+				// Trigger the colour change function
 				$.publish('colour-change', colour);
 
 			}
@@ -355,6 +356,7 @@ Mini.DOMCtrl = {
 
 	},
 
+	// jQuery Tiny Pub/Sub
 	pubsub: function() {
 
 		var o = $({});
