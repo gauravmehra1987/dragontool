@@ -19,7 +19,7 @@
 			@Html.Partial("_Dashboard")
 		</div><!-- end div#dashboard -->
 
-		<article class="panel welcome framed column">
+		<article class="panel welcome framed column" data-panel-name="welcome">
 
 			<header>
 				<div class="ministry-logo">
@@ -40,7 +40,7 @@
 
 		</article>
 
-		<article class="panel results column">
+		<article class="panel results column" data-panel-name="results">
 
 			<header>
 				<h2 class="title" data-model-name="true">model name</h2>
@@ -51,7 +51,7 @@
 					<span class="price" data-model-price="true">model price</span>
 					<span class="">Per<br />month</span>
 				</div>
-				<a class="btn" href="api/cars"><i class="icon chev"></i>Go see</a>
+				<a class="btn" href="#" data-results-link="true"><i class="icon chev"></i>Go see</a>
 				<div class="hr"><hr/></div>
 			</header>
 

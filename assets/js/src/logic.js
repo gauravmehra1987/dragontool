@@ -43,7 +43,7 @@ Mini.DOMCtrl = {
 
 		// dev options
 		console.log(this);
-		$.ajaxSetup({ cache:false });
+		//$.ajaxSetup({ cache:false });
 
 	},
 
@@ -70,9 +70,9 @@ Mini.DOMCtrl = {
 
 	},
 
-	panelControl: function(panelSelector){
-		this._$page.find('.panel').hide();
-		this._$page.find('.' + panelSelector).show();
+	panelControl: function(panel){
+		this._$page.find('[data-panel-name]').hide();
+		this._$page.find('[data-panel-name="' + panel + '"]').show();
 	},
 
 	// Contact the API and collect the data
@@ -321,6 +321,7 @@ Mini.DOMCtrl = {
 			carToView: function(car){
 
 				var imageUrl = 'assets/cars/';
+				var resultsUrl = 'results/';
 				var $panel = self._$page.find('.panel.results');
 				var colour = Helpers.determineColour(car.Colour);
 
@@ -329,6 +330,7 @@ Mini.DOMCtrl = {
 				$panel.find('[data-model-price]').html(car.Cost);
 				$panel.find('[data-model-image]').attr({src: imageUrl + car.ModelCode + '.jpg'});
 				$panel.find('[data-terms]').html(car.TermsConditions);
+				$panel.find('[data-results-link]').attr({href: resultsUrl});
 
 				// Trigger the colour change function
 				$.publish('colour-change', colour);
@@ -651,8 +653,12 @@ Mini.UILogic = {
 
 ( function( Mini ) {
 
+// need a better solution for triggering JS on correct page
+
+if ( $('#dash').length > 0 ){
 	Mini.DOMCtrl.init()
 	Mini.UILogic.init()
+}
 
 	// Write your stuff here. Before doing so, have a look at config.js.
 
