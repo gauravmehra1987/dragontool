@@ -14,9 +14,16 @@ function scale( el, scale, targetWidth ) {
 
 }
 
-// BG changer
+// BG changer events
 
-$( '#bgcontrol input' ).on( 'change', function( e ) { var color = $( this ).val(); $( '.control-bg' ).css( 'background-color', color ); } );
+$( '#bgcontrol input' ).on( 'change', function( e ) {
+ var color = $( this ).val();
+ $( '.control-bg' ).css( 'background-color', color );
+});
+
+$.subscribe('colour-change', function(e, color){
+	$( '.control-bg' ).css( 'background-color', color );
+});
 
 // ################################################## //
 //

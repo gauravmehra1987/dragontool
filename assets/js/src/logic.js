@@ -25,7 +25,7 @@ if (!Array.prototype.indexOf) {
   };
 }
 
-Mini.ResultsDOM = {
+Mini.DOMCtrl = {
 
 	_apiData: null,
 	_$page: $(document),
@@ -38,18 +38,16 @@ Mini.ResultsDOM = {
 		// show the welcome panel
 		this.panelControl('welcome');
 
-		//this.submitData();
 		this.registerDataEvents();
 		this.getData();
-
 
 		// dev options
 		console.log(this);
 		$.ajaxSetup({ cache:false });
 
-
 	},
 
+	// Set up listeners for async functions
 	registerDataEvents: function(){
 		var self = this;
 
@@ -77,6 +75,8 @@ Mini.ResultsDOM = {
 		this._$page.find('.' + panelSelector).show();
 	},
 
+	// Contact the API and collect the data
+	// Publish the results
 	getData: function(){
 		$.getJSON(Mini.UILogic._jsonUrl, function(response) {
 			var obj = {};
@@ -88,6 +88,7 @@ Mini.ResultsDOM = {
 		});
 	},
 
+	// Convert the raw combobulator data to search query format 
 	combobulateToQuery: function(data){
 
 		function mpg(mpg){
@@ -147,14 +148,12 @@ Mini.ResultsDOM = {
 		// Build the easter egg array
 		function easterEggs(arr1, arr2){
 
-			var options = {
-				"Dog": 1,
-				"Alien": 1,
-				"Cat": 1,
-				"teleportation": 1
-			}
+			// Possible values
+			// ["Dog","Alien","Cat","teleportation"];
 
 			var o = {};
+
+			// Set the value of teleportation
 			o.teleportation = arr2.indexOf("4") != -1;
 
 			for (var i = 0; i < arr1.length; i++) {
@@ -163,9 +162,7 @@ Mini.ResultsDOM = {
 					o[string] = 1;
 				}
 			}
-
 			return o;
-
 		}
 
 		// Remove teleportation from the options array
@@ -179,16 +176,8 @@ Mini.ResultsDOM = {
 
 		function capacity(arr){
 
-			var options = {
-				"Woman" : 1,
-				"Man": 1,
-				"Girl" : 1,
-				"Boy" : 1,
-				"Infant" : 1,
-				"Dog": 4,
-				"alien": 4,
-				"cat": 4
-			}
+			// Possible values
+			//["Woman", "Man", "Girl", "Boy", "Infant", "Dog","alien", "cat"]
 
 			var o = {}
 			o.people = 0;
@@ -197,7 +186,7 @@ Mini.ResultsDOM = {
 			var output;
 
 			function seatArrayToObject(arr) {
-				// for (var prop in)
+
 				for (var i = 0; i < arr.length; i++) {
 					var string = arr[i];
 					//console.log(string);
@@ -278,59 +267,92 @@ Mini.ResultsDOM = {
 		return query;
 	},
 
-	query: function(obj){
+	// Accepts the filtered car collection
+	// Randomises the collection
+	// Renders to the view
+	resultsViewCtrl: function(resultsCollection){
 		var self = this;
-		console.log(obj);
-	},
 
-	submitData: function() {
-		var self = this
-		$("#submit").on('click', function(e) {
-			e.preventDefault();
-			self.clearProgress();
-			self.getFormValues();
-		});
-	},
+		var Helpers = {
 
-	renderResultsToView: function(){
-		console.log('renderResultsToView')
+			shuffle: function(array) {
+				var m = array.length, t, i;
+				// While there remain elements to shuffle…
+				while (m) {
+					// Pick a remaining element…
+					i = Math.floor(Math.random() * m--);
+					// And swap it with the current element.
+					t = array[m];
+					array[m] = array[i];
+					array[i] = t;
+				}
+				return array;
+			},
 
-		// this will store each search as a new array
+			isValueLegitimate: function(value){
+				return value !== 'n/a' && typeof value !== 'undefined' && value !== null && value != 0;
+			},
+
+			determineColour: function(string){
+
+				var o = {
+					'Volcanic Orange': 'orange',
+					'Electric Blue': 'blue',
+					'Blazing Red': 'red',
+					'Jungle Green': 'green',
+					'Light white': 'white',
+					'Lightning Blue': 'blue',
+					'Chili red': 'red',
+					'Pepper white': 'white'
+				}
+
+				return (Helpers.isValueLegitimate(string)) ? o[string] : 'red';
+			}
+
+		};
+
+		var Render = {
+
+			finalCount: function(count){
+				var panel = $('#tools');
+				panel.find('h3').text('Debug tools - showing: ' + count);
+			},
+
+			carToView: function(car){
+
+				var imageUrl = 'assets/cars/';
+				var $panel = self._$page.find('.panel.results');
+				var colour = Helpers.determineColour(car.Colour);
+
+				$panel.find('[data-model-name]').html(car.Model);
+				$panel.find('[data-model-code]').html(car.ModelCode);
+				$panel.find('[data-model-price]').html(car.Cost);
+				$panel.find('[data-model-image]').attr({src: imageUrl + car.ModelCode + '.jpg'});
+				$panel.find('[data-terms]').html(car.TermsConditions);
+
+				$.publish('colour-change', colour);
+
+			}
+		}
+
+		// by default we store each search as a new array
 		// latest is last array
-		var resultsCollection = Mini.UILogic._collection.all();
 		var resultToShow = resultsCollection.slice(-1).pop();
-		var url = 'assets/cars/'
 
-		// plan to randomise final results but for now we choose one
-		console.log(resultToShow[0])
+		// debug only - show the number of cars returned
+		Render.finalCount(resultToShow.length);
 
-		// show the welcome panel
+		// More than one car we randomise
+		if(resultToShow.length >=2) {
+			// randomize the result
+			resultToShow = Helpers.shuffle(resultToShow);
+		}
+
+		// show the results panel
 		this.panelControl('results');
 
-		var model = resultToShow[0]['ModelCode'];
-		console.log(model)
+		Render.carToView(resultToShow[0]);
 
-		var panel = this._$page.find('.panel.results');
-		panel.find('header h2.title').text(model)
-		panel.find('.car img').attr({src: url + model + '.jpg'})
-
-		// $('#output').append( template( results.slice(-1).pop()) );
-		// $('#extras').html(Mini.UILogic._query.Eggs);
-	},
-
-	renderProgressItem: function(value){
-		var panel = $('#panel');
-		var html = $('<li/>', {'text': value});
-		panel.find('ul').append(html);
-	},
-
-	renderFinalCount: function(count){
-		var panel = $('#tools');
-		panel.find('h3').text('Debug tools - showing: ' + count);
-	},
-
-	clearProgress: function(){
-		$('#panel ul li').remove();
 	},
 
 	pubsub: function() {
@@ -455,7 +477,7 @@ Mini.UILogic = {
 				console.log(this.reduced)
 				if(this.reduced !== 0) {
 					console.log('reduced by : ' + (dataSet.length - this.reduced));
-					Mini.ResultsDOM.renderProgressItem(queryProp + ' reduces data by : ' + (dataSet.length - this.reduced));
+					//Mini.DOMCtrl.renderProgressItem(queryProp + ' reduces data by : ' + (dataSet.length - this.reduced));
 				} else {
 					console.log('not reduced')
 					Filter.store = dataSet;
@@ -515,10 +537,10 @@ Mini.UILogic = {
 				var endLoopThenRender = function(){
 					console.log('endLoopThenRender')
 					console.log('Finished: Rendering results!')
-
 					self._collection.add(resultCollection);
-					Mini.ResultsDOM.renderResultsToView();
-					Mini.ResultsDOM.renderFinalCount(resultCollection.length);
+
+					// Filering complete return result to view controller
+					Mini.DOMCtrl.resultsViewCtrl( Mini.UILogic._collection.all() );
 				}
 
 				return Helpers.shallWeContinueTheLoop( resultCollection, order[(counter.echo()+1)]) ? continueLoop() : endLoopThenRender();
@@ -547,8 +569,9 @@ Mini.UILogic = {
 				console.log(record);
 				Filter.addObjectToCollection(record[0]);
 				self._collection.add(Filter.store);
-				Mini.ResultsDOM.renderResultsToView();
-				Mini.ResultsDOM.renderFinalCount(Filter.store.length);
+
+				// Filering complete return result to view controller
+				Mini.DOMCtrl.resultsViewCtrl( Mini.UILogic._collection.all() );
 			}
 		}
 
@@ -626,7 +649,7 @@ Mini.UILogic = {
 
 ( function( Mini ) {
 
-	Mini.ResultsDOM.init()
+	Mini.DOMCtrl.init()
 	Mini.UILogic.init()
 
 	// Write your stuff here. Before doing so, have a look at config.js.
