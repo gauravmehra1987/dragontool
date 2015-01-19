@@ -1,3 +1,6 @@
+<!-- build:template
+<%= index.variables %>
+/build -->
 <!-- build:remove --><?php require( 'header.php' ); ?><!-- /build -->
 
 <div id="pageWrap">

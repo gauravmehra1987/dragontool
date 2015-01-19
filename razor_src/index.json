@@ -1,6 +1,7 @@
 {
 
 	"hi": "@if (firstName != \"\") { <h3 class=\"title\">Hi @firstName</h3> }",
-	"input": "<input id=\"uid\" type=\"hidden\" value=\"@userId\" />"
+	"input": "<input id=\"uid\" type=\"hidden\" value=\"@userId\" />",
+	"variables": "@{ ViewBag.Title = \"MINI Combobulator Dashboard\"; string firstName = ViewBag.FirstName; string userId = ViewBag.UserId;}"
 
 }

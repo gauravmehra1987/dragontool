@@ -40,7 +40,7 @@ module.exports = function( grunt ) {
 
 					// Dashboard
 
-					'razor_templates/Home/_Index.cshtml':							[ 'index.php' ],
+					'razor_templates/Home/Index.cshtml':							[ 'index.php' ],
 
 					'razor_templates/Home/_ControlBums.cshtml':						[ 'control-bums.php' ],
 					'razor_templates/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
@@ -53,7 +53,7 @@ module.exports = function( grunt ) {
 					
 					// Results
 
-					'razor_templates/Results/_Index.cshtml':						[ 'results.php' ],
+					'razor_templates/Results/Index.cshtml':						[ 'results.php' ],
 
 					'razor_templates/Results/_Details.cshtml':						[ 'details.php' ],
 					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'existing-customer.php' ],
@@ -76,7 +76,7 @@ module.exports = function( grunt ) {
 
 			options: {
 
-				engine: 'fontforge',
+				engine: 'node',
 				stylesheet: 'less',
 				htmlDemo: false,
 				template: 'assets/icons/template.css',
