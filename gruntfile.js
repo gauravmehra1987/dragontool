@@ -5,7 +5,7 @@ module.exports = function( grunt ) {
 	var projectName		= 'Mini Combobulator';
 	var paths			= {
 
-		icons:	'assets/fonts/icons',
+		icons:		'assets/fonts/icons',
 		bower:		'bower_components/',
 		dotnetAssets:'dotnet/Combobulator/Assets/'
 
@@ -40,9 +40,7 @@ module.exports = function( grunt ) {
 
 					// Dashboard
 
-					'razor_templates/Results/_Dashboard.cshtml':					[ 'dashboard.php' ],
-
-					// Controls
+					'razor_templates/Home/_Index.cshtml':							[ 'index.php' ],
 
 					'razor_templates/Home/_ControlBums.cshtml':						[ 'control-bums.php' ],
 					'razor_templates/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
@@ -55,16 +53,16 @@ module.exports = function( grunt ) {
 					
 					// Results
 
-					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'existing-customer.php' ],
-					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'new-customer.php' ],
+					'razor_templates/Results/_Index.cshtml':						[ 'results.php' ],
+
 					'razor_templates/Results/_Details.cshtml':						[ 'details.php' ],
-					'razor_templates/Results/_Results.cshtml':						[ 'results.php' ],
+					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'existing-customer.php' ],
+					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'new-customer.php' ],					
 
 					// Partials
 
 					'razor_templates/Shared/_Header.cshtml':						[ 'header.php' ],
 					'razor_templates/Shared/_Footer.cshtml':						[ 'footer.php' ],
-					'razor_templates/_Index.cshtml':								[ 'index.php' ],
 
 				}
 
@@ -78,7 +76,7 @@ module.exports = function( grunt ) {
 
 			options: {
 
-				engine: 'node',
+				engine: 'fontforge',
 				stylesheet: 'less',
 				htmlDemo: false,
 				template: 'assets/icons/template.css',
@@ -317,6 +315,34 @@ module.exports = function( grunt ) {
 				} ]
 			},
 
+			// For .net
+
+			assets: {
+				
+				files: [ {
+
+					expand:	true,
+					cwd:	'assets',
+					src:	[ '**' ],
+					dest:	'dotnet/Combobulator/Assets'
+
+				} ]
+
+			},
+
+			dotnet: {
+
+				files: [ {
+
+					expand:	true,
+					cwd:	'razor_templates',
+					src:	[ '**' ],
+					dest:	'dotnet/Combobulator/Views'
+
+				} ]
+
+			},
+
 		},
 
 		// Sprites
@@ -347,7 +373,21 @@ module.exports = function( grunt ) {
 					'**/*.html',
 					'**/*.php'
 
-				]
+				],
+
+				tasks: [ 'templates' ]
+			
+			},
+
+			json: {			
+
+				files: [
+
+					'razor_src/*.*',
+
+				],
+
+				tasks: [ 'templates' ]
 			
 			},
 
@@ -397,6 +437,24 @@ module.exports = function( grunt ) {
 
 			templates: [ 'razor_templates' ],
 
+			dotnet: [ 'dotnet/Combobulator/Assets', ],
+
+			dotnet_assets: [
+
+				'dotnet/Combobulator/Assets/less',
+				'dotnet/Combobulator/Assets/js/src',
+				'dotnet/Combobulator/Assets/sprites/psd',
+
+			],
+
+			dotnet_templates: [
+
+				'dotnet/Combobulator/Views/**/*.cshtml',
+				'!dotnet/Combobulator/Views/Shared/Error.cshtml',
+				'!dotnet/Combobulator/Views/**/Web.config',
+
+			],
+
 			fonts: [
 				
 				paths.icons,
@@ -424,6 +482,20 @@ module.exports = function( grunt ) {
 			css: [ 'assets/css' ],
 
 			other: [ '**/.DS_Store' ],
+
+		},
+
+		// Clean empty directories
+
+		cleanempty: {
+
+			options: {
+
+				files: false,
+
+			},
+
+			src: [ 'dotnet/Combobulator/Views/**/*' ],
 
 		},
 
@@ -458,24 +530,12 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
+	grunt.loadNpmTasks( 'grunt-cleanempty' );
 	grunt.loadNpmTasks( 'grunt-webfont' );
 	grunt.loadNpmTasks( 'grunt-spritesmith' );
 	grunt.loadNpmTasks( 'grunt-newer' );
 	grunt.loadNpmTasks( 'grunt-notify' );
 	grunt.loadNpmTasks( 'grunt-processhtml' );
-
-	// Default task 
-	
-	grunt.registerTask( 'default',	[
-
-		'clean',
-		'icons',
-		'images',
-		'dev',
-		'processhtml',
-		'watch'
-
-	] );
 
 	// Other tasks
 
@@ -506,13 +566,13 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'build', [
 		
-		'clean',
+		'tidy',
 		'icons',
+		'images',
 		'less:dist',
 		'concat',
 		'uglify',
-		'images',
-		'processhtml',
+		'dotnet',
 
 	] );
 
@@ -522,7 +582,24 @@ module.exports = function( grunt ) {
 
 	// Other tasks - to be updated with latest tasks
 	
+	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'copy:dotnet' ] );
 	grunt.registerTask( 'sprites', 'sprite' );
 	grunt.registerTask( 'styles', 'less:dev' );
+	grunt.registerTask( 'tidy', [ 'clean', 'cleanempty' ] );
+	grunt.registerTask( 'dotnet', [ 'templates', 'copy:assets', 'clean:dotnet_assets' ] );
+
+	// Default task 
+	
+	grunt.registerTask( 'default',	[
+
+		'tidy',
+		'icons',
+		'images',
+		'less:dev',
+		'concat',
+		'dotnet',
+		'watch',
+
+	] );
 
 };
