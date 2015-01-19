@@ -1,12 +1,8 @@
 var Mini = Mini || {};
-var assets_path = 'assets/cars/';
-var results_path = 'results?';
-var api_endpoint = 'api/car';
-var api_endpoint = 'api/car.json';
-
-	// Write your stuff here. Before doing so, have a look at config.js.
 
 "use strict";
+
+var path = ( location.href.indexOf( 'localhost' ) >= 0 ) ? system_paths.net : system_paths.php;
 
 // indexof polyfill for <ie9
 if (!Array.prototype.indexOf) {
@@ -324,8 +320,8 @@ Mini.DOMCtrl = {
 
 			carToView: function(car){
 
-				var imageUrl = assets_path;
-				var resultsUrl = results_path;
+				var imageUrl = path.assets;
+				var resultsUrl = path.results;
 				var colour = Helpers.determineColour(car.Colour);
 				var $customerId = self._$page.find('#uid').attr('value');
 				var $panel = self._$page.find('.panel.results');
@@ -392,7 +388,7 @@ Mini.UILogic = {
 	_query: null,
 	_collection: null,
 	_order: ['CapacityScale', 'LuggageScale', 'Options', 'PriceScale', 'PerformanceScale', 'EconomyScale', 'UsageScale' ],
-	_jsonUrl: api_endpoint,
+	_jsonUrl: path.api,
 
 	init: function(){
 		this._collection = this.CarsFactory();

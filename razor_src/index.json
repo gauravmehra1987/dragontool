@@ -1,0 +1,6 @@
+{
+
+	"hi": "@if (firstName != \"\") { <h3 class=\"title\">Hi @firstName</h3> }",
+	"input": "<input id=\"uid\" type=\"hidden\" value=\"@userId\" />"
+
+}

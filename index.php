@@ -101,6 +101,8 @@
 
 </div>
 
-<!-- <input id="uid" type="hidden" value="@userId" /> -->
+<!-- build:template
+<%= index.input %>
+/build -->
 
 <!-- build:remove --><?php require( 'footer.php' ); ?><!-- /build -->

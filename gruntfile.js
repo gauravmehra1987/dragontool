@@ -26,9 +26,9 @@ module.exports = function( grunt ) {
 
 				data: {
 
-					global:		grunt.file.readJSON( 'razor_replacements/global.json' ),
-					index:		grunt.file.readJSON( 'razor_replacements/index.json' ),
-					dashboard:	grunt.file.readJSON( 'razor_replacements/dashboard.json' ),
+					global:		grunt.file.readJSON( 'razor_src/global.json' ),
+					index:		grunt.file.readJSON( 'razor_src/index.json' ),
+					dashboard:	grunt.file.readJSON( 'razor_src/dashboard.json' ),
 
 				}
 
@@ -40,31 +40,31 @@ module.exports = function( grunt ) {
 
 					// Dashboard
 
-					'rendered/Results/_Dashboard.cshtml':					[ 'dashboard.php' ],
+					'razor_templates/Results/_Dashboard.cshtml':					[ 'dashboard.php' ],
 
 					// Controls
 
-					'rendered/Home/_ControlBums.cshtml':					[ 'control-bums.php' ],
-					'rendered/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
-					'rendered/Home/_ControlLuggage.cshtml':					[ 'control-luggage.php' ],
-					'rendered/Home/_ControlMpg.cshtml':						[ 'control-mpg.php' ],
-					'rendered/Home/_ControlOptions.cshtml':					[ 'control-options.php' ],
-					'rendered/Home/_ControlPrice.cshtml':					[ 'control-price.php' ],
-					'rendered/Home/_ControlSpeed.cshtml':					[ 'control-speed.php' ],
-					'rendered/Home/_ControlStart.cshtml':					[ 'control-start.php' ],
+					'razor_templates/Home/_ControlBums.cshtml':						[ 'control-bums.php' ],
+					'razor_templates/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
+					'razor_templates/Home/_ControlLuggage.cshtml':					[ 'control-luggage.php' ],
+					'razor_templates/Home/_ControlMpg.cshtml':						[ 'control-mpg.php' ],
+					'razor_templates/Home/_ControlOptions.cshtml':					[ 'control-options.php' ],
+					'razor_templates/Home/_ControlPrice.cshtml':					[ 'control-price.php' ],
+					'razor_templates/Home/_ControlSpeed.cshtml':					[ 'control-speed.php' ],
+					'razor_templates/Home/_ControlStart.cshtml':					[ 'control-start.php' ],
 					
 					// Results
 
-					'rendered/Results/_ExistingCustomerForm.cshtml':		[ 'existing-customer.php' ],
-					'rendered/Results/_NewCustomerForm.cshtml':				[ 'new-customer.php' ],
-					'rendered/Results/_Details.cshtml':						[ 'details.php' ],
-					'rendered/Results/_Results.cshtml':						[ 'results.php' ],
+					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'existing-customer.php' ],
+					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'new-customer.php' ],
+					'razor_templates/Results/_Details.cshtml':						[ 'details.php' ],
+					'razor_templates/Results/_Results.cshtml':						[ 'results.php' ],
 
 					// Partials
 
-					'rendered/Shared/_Header.cshtml':						[ 'header.php' ],
-					'rendered/Shared/_Footer.cshtml':						[ 'footer.php' ],
-					'rendered/_Index.cshtml':								[ 'index.php' ],
+					'razor_templates/Shared/_Header.cshtml':						[ 'header.php' ],
+					'razor_templates/Shared/_Footer.cshtml':						[ 'footer.php' ],
+					'razor_templates/_Index.cshtml':								[ 'index.php' ],
 
 				}
 
@@ -292,6 +292,19 @@ module.exports = function( grunt ) {
 
 			},
 
+			razor_templates: {
+
+				files: [ {
+
+					expand:	true,
+					cwd:	'razor_templates',
+					src:	[ '**/*.cshtml' ],
+					dest:	'dotnet/Combobulator/Views/'
+
+				} ]
+
+			},
+
 			images: {
 
 				files: [ {
@@ -382,7 +395,7 @@ module.exports = function( grunt ) {
 
 			],
 
-			templates: [ 'rendered' ],
+			templates: [ 'razor_templates' ],
 
 			fonts: [
 				
@@ -459,6 +472,7 @@ module.exports = function( grunt ) {
 		'icons',
 		'images',
 		'dev',
+		'processhtml',
 		'watch'
 
 	] );
@@ -498,44 +512,9 @@ module.exports = function( grunt ) {
 		'concat',
 		'uglify',
 		'images',
+		'processhtml',
 
 	] );
-
-	// Custom tasks
-	
-	grunt.registerTask( 'fontello-less', 'This task converts fontello CSS to LESS mixins.', function() {
-
-		// var file = paths.fontello + '/css/fontello.css';
-
-		// if( grunt.file.exists( file ) ) {
-
-		// 	var css			= grunt.file.read( file );
-		// 	var startIndex	= css.indexOf( '.icon' );
-		// 	var endIndex	= css.lastIndexOf( '*/' );
-		// 	var trimFile	= css.substring( startIndex, endIndex + 2 );
-		// 	var less		= trimFile.split( ':before' ).join( '()' );
-
-		// 	if( grunt.file.write( 'assets/less/icon-codes.less', less ) ) {
-
-		// 		grunt.log.ok( file + ' processed successfully.' );
-
-		// 	}
-
-		// 	else {
-
-		// 		grunt.fail.warn( 'Can\'t write ' + file + '. Aborting.' );
-
-		// 	}
-
-		// }
-
-		// else {
-
-		// 	grunt.fail.warn( 'File ' + file + ' does not exist. Aborting.' );
-
-		// }
-
-	} );
 
 	// Placeholder task
 	

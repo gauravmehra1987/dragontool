@@ -16,7 +16,7 @@
 
 		<?php // To ensure assets are downloaded in parallel, always include external CSS before external JavaScript. ?>
 
-		<link href="assets/css/style.css" rel="stylesheet" />
+		<!-- build:css Assets/css/style.css --><link href="assets/css/style.css" rel="stylesheet" /><!-- /build -->
 
 		<?php // Note about the authors of the document ?>
 

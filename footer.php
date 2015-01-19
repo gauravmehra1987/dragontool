@@ -1,5 +1,5 @@
-		<script src="assets/js/lib.js"></script>
-		<script src="assets/js/app.js"></script>
+		<!-- build:js Assets/js/lib.js --><script src="assets/js/lib.js"></script><!-- /build -->
+		<!-- build:js Assets/js/app.js --><script src="assets/js/app.js"></script><!-- /build -->
 		
 		<!--[if lt IE 9]>
 		<script src="assets/js/ie.js"></script>

@@ -1,3 +1,25 @@
+// Paths
+
+var system_paths = {
+
+	net: {
+
+		assets:		'Assets/cars/',
+		results:	'results?',
+		api:		'api/car',
+
+	},
+
+	php: {
+
+		assets:		'assets/cars/',
+		results:	'results.php',
+		api:		'api/car.json',
+
+	}
+
+};
+
 // Setup namespace and some global variables
 
 var $html	= $( 'html' );
