@@ -520,7 +520,7 @@ module.exports = function( grunt ) {
 	
 	grunt.registerTask( 'noop', 'Empty task.', function() {} );
 
-	// Other tasks 
+	// Other tasks - to be updated with latest tasks
 	
 	grunt.registerTask( 'sprites', 'sprite' );
 	grunt.registerTask( 'styles', 'less:dev' );
