@@ -129,7 +129,7 @@
 			</div>
 
 			<!-- build:template
-			<%= newCustomer.form_tel_work %>
+			<%= newCustomer.form_tel_work_msg %>
 			/build -->
 
 		</div>
@@ -147,7 +147,7 @@
 			</div>
 
 			<!-- build:template
-			<%= newCustomer.form_tel_mobile %>
+			<%= newCustomer.form_tel_mobile_msg %>
 			/build -->
 
 		</div>
