@@ -366,6 +366,12 @@
     <Content Include="Views\Results\_FormConfirmation.cshtml" />
     <Content Include="Views\Results\_FormError.cshtml" />
     <Content Include="Views\Results\_ResultError.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_Header.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

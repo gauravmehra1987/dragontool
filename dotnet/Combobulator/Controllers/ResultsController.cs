@@ -19,13 +19,19 @@ namespace Combobulator.Controllers
             {
                 userId = Request.QueryString["c"];
             }
-            ViewBag.UserId = userId;
 
             string modelCode = string.Empty;
             if (!string.IsNullOrEmpty(Request.QueryString["m"]))
             {
                 modelCode = Request.QueryString["m"];
             }
+            else
+            {
+                string cQuery = userId != string.Empty ? ("?c=" + userId) : "";
+                return Redirect(string.Format("~/{0}", cQuery));
+            }
+
+            ViewBag.UserId = userId;
             ViewBag.ModelCode = modelCode;
 
             return View();
@@ -75,9 +81,9 @@ namespace Combobulator.Controllers
         [ChildActionOnly]
         public ActionResult ResultDetail(string modelCode)
         {
-            if (modelCode == null)
+            if (string.IsNullOrEmpty(modelCode))
             {
-                modelCode = "XN12";
+                return PartialView("_ResultError");
             }
 
             try
