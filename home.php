@@ -104,12 +104,6 @@
 
 	</main>
 
-	<footer id="footer">
-
-		<a><i class="icon chevron"></i>Terms and Conditions</a>
-
-	</footer>
-
 </div>
 
 <!-- build:template

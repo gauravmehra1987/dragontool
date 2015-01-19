@@ -7,14 +7,12 @@
 <div class="details">
 
 	<div class="sticker">
+		
+		<!-- build:remove --><span class="currency">&pound;</span><span class="price">999</span><!-- /build -->
 
-		<span class="currency">&pound;</span>
-
-		<span class="price">
 		<!-- build:template
-		<%= details.cost %>
+		<span class="currency">&pound;</span><span class="price"><%= details.cost %></span>
 		/build -->
-		</span>
 
 		<span class="">Per<br />month</span>
 		
@@ -24,17 +22,19 @@
 
 	<div class="content">
 
+		<!-- build:remove --><h2>John</h2><!-- /build -->
+
 		<h2>
 		<!-- build:template
 		<%= details.name %>
 		/build -->
 		</h2>
+		
+		<!-- build:remove --><p>Terms and Conditions<br/> terms details.</p><!-- /build -->
 
-		<p>Terms and Conditions<br/>
 		<!-- build:template
-		<%= details.terms %>
+		<p>Terms and Conditions<br/><%= details.terms %></p>
 		/build -->
-		</p>
 
 	</div>
 

@@ -13,7 +13,7 @@ var system_paths = {
 	php: {
 
 		assets:		'assets/cars/',
-		results:	'results.php',
+		results:	'results.php?',
 		api:		'api/car.json',
 
 	}
