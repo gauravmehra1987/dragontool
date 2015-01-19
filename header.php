@@ -14,19 +14,19 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<?php // To ensure assets are downloaded in parallel, always include external CSS before external JavaScript. ?>
+		<!-- // To ensure assets are downloaded in parallel, always include external CSS before external JavaScript. -->
 
 		<!-- build:css Assets/css/style.css --><link href="assets/css/style.css" rel="stylesheet" /><!-- /build -->
 
-		<?php // Note about the authors of the document ?>
+		<!-- // Note about the authors of the document -->
 
 		<link type="text/plain" rel="author" href="humans.txt" />
 
-		<?php // Favicon ?>
+		<!-- // Favicon -->
 
 		<link rel="shortcut icon" href="favicon.png" />
 
-		<?php // Facebook Open Graph - http://developers.facebook.com/docs/opengraph ?>
+		<!-- // Facebook Open Graph - http://developers.facebook.com/docs/opengraph -->
 
 		<meta property="og:title" content="" />
 		<meta property="og:type" content="" />
@@ -35,7 +35,7 @@
 		<meta property="og:site_name" content="" />
 		<meta property="og:description" content="" />
 
-		<?php // Twitter Card - https://dev.twitter.com/docs/cards ?>
+		<!-- // Twitter Card - https://dev.twitter.com/docs/cards -->
 
 		<meta name="twitter:card" content="" />
 		<meta name="twitter:site" content="" />

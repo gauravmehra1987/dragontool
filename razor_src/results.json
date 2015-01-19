@@ -1,0 +1,9 @@
+{
+
+	"model":		"@model Combobulator.Models.Results",
+	"variables":	"@{ ViewBag.Title = \"MINI Combobulator Results\"; }",
+	"scripts":		"@section CustomScripts { @Scripts.Render(\"~/bundles/jquery\") }",
+	"details":		"@Html.Action(\"ResultDetail\", new { modelCode = ViewBag.ModelCode })",
+	"form":			"@Html.Action(\"CustomerForm\", new { id = ViewBag.UserId })"
+
+}

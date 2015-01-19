@@ -1,5 +1,5 @@
 <!-- build:template
-<%= index.variables %>
+<%= home.variables %>
 /build -->
 <!-- build:remove --><?php require( 'header.php' ); ?><!-- /build -->
 
@@ -20,7 +20,15 @@
 
 	<main role="main" id="main" class="row">
 
-		<div id="dashboard" class="column"><?php require( 'dashboard.php' ); ?></div><!-- end div#dashboard -->
+		<div id="dashboard" class="column">
+		
+		<!-- build:template
+		<%= home.dashboard %>
+		/build -->
+
+		<!-- build:remove --><?php require( 'dashboard.php' ); ?><!-- /build -->
+
+		</div><!-- end div#dashboard -->
 
 		<article class="panel welcome framed column" data-panel-name="welcome">
 
@@ -37,7 +45,7 @@
 			<!-- build:remove --><h3 class="title">Hi John</h3><!-- /build -->
 
 			<!-- build:template
-			<%= index.hi %>
+			<%= home.hi %>
 			/build -->
 			
 			<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
@@ -105,7 +113,7 @@
 </div>
 
 <!-- build:template
-<%= index.input %>
+<%= home.input %>
 /build -->
 
 <!-- build:remove --><?php require( 'footer.php' ); ?><!-- /build -->

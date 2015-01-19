@@ -1,0 +1,21 @@
+{
+
+	"model":				"@model Combobulator.Models.Customer",
+	"open":					"@using (Ajax.BeginForm(\"ExistingCustomerSubmit\", \"Customer\", new AjaxOptions { HttpMethod = \"POST\", InsertionMode = InsertionMode.Replace, UpdateTargetId = \"formContainer\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
+	"form_userid":			"@Html.EditorFor(model => model.UserId, new { value = Model.UserId })",
+	"form_title":			"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"),  \"Title\")",
+	"form_title_msg":		"@Html.ValidationMessageFor(model => model.Title)",
+	"form_name":			"@Html.TextBoxFor(model => model.FirstName, new { placeholder = \"First names\"})",
+	"form_name_msg":		"@Html.ValidationMessageFor(model =>  model.FirstName)",
+	"form_surname":			"@Html.TextBoxFor(model => model.LastName, new { placeholder = \"Last name\"})",
+	"form_surname_msg":		"@Html.ValidationMessageFor(model => model.LastName)",
+	"form_email":			"@Html.TextBoxFor(model => model.Email, new { placeholder = \"Email address\"})",
+	"form_email_msg":		"@Html.ValidationMessageFor(model => model.Email)",
+	"form_tel":				"@Html.TextBoxFor(model => model.TelephoneHome, new { placeholder = \"Home telephone\"})",
+	"form_tel_msg":			"@Html.ValidationMessageFor(model => model.TelephoneHome)",
+	"form_callback":		"@Html.LabelFor(model => model.RequestCallback)",
+	"form_redemption":		"@Html.LabelFor(model => model.RequestEarlyRedemption)",
+	"form_results":			"@Html.LabelFor(model => model.EmailResults)",
+	"close":				"}"
+
+}

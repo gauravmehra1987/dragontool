@@ -26,9 +26,13 @@ module.exports = function( grunt ) {
 
 				data: {
 
-					global:		grunt.file.readJSON( 'razor_src/global.json' ),
-					index:		grunt.file.readJSON( 'razor_src/index.json' ),
-					dashboard:	grunt.file.readJSON( 'razor_src/dashboard.json' ),
+					global:			grunt.file.readJSON( 'razor_src/global.json' ),
+					exCustomer:		grunt.file.readJSON( 'razor_src/existing-customer.json' ),
+					newCustomer:	grunt.file.readJSON( 'razor_src/new-customer.json' ),
+					details:		grunt.file.readJSON( 'razor_src/details.json' ),
+					results:		grunt.file.readJSON( 'razor_src/results.json' ),
+					home:			grunt.file.readJSON( 'razor_src/home.json' ),
+					dashboard:		grunt.file.readJSON( 'razor_src/dashboard.json' ),
 
 				}
 
@@ -41,6 +45,8 @@ module.exports = function( grunt ) {
 					// Dashboard
 
 					'razor_templates/Home/Index.cshtml':							[ 'index.php' ],
+					
+					'razor_templates/Home/_Dashboard.cshtml':						[ 'dashboard.php' ],
 
 					'razor_templates/Home/_ControlBums.cshtml':						[ 'control-bums.php' ],
 					'razor_templates/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
@@ -452,6 +458,7 @@ module.exports = function( grunt ) {
 				'dotnet/Combobulator/Views/**/*.cshtml',
 				'!dotnet/Combobulator/Views/Shared/_Layout.cshtml',
 				'!dotnet/Combobulator/Views/Shared/Error.cshtml',
+				'!dotnet/Combobulator/Views/**/_ViewStart.cshtml',
 				'!dotnet/Combobulator/Views/**/Web.config',
 
 			],
