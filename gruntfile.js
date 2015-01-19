@@ -44,7 +44,7 @@ module.exports = function( grunt ) {
 
 					// Dashboard
 
-					'razor_templates/Home/Index.cshtml':							[ 'index.php' ],
+					'razor_templates/Home/Index.cshtml':							[ 'home.php' ],
 					
 					'razor_templates/Home/_Dashboard.cshtml':						[ 'dashboard.php' ],
 
