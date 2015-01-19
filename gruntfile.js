@@ -78,7 +78,7 @@ module.exports = function( grunt ) {
 
 			options: {
 
-				engine: 'fontforge',
+				engine: 'node',
 				stylesheet: 'less',
 				htmlDemo: false,
 				template: 'assets/icons/template.css',
@@ -144,24 +144,6 @@ module.exports = function( grunt ) {
 				}
 
 			},
-
-			"dotnet": {
-
-				options: {
-
-					paths: [ 'assets/less' ]
-
-				},
-
-				files: {
-
-					'dotnet/Combobulator/Assets/css/style.css':	[ 'assets/less/style.less' ],
-					'dotnet/Combobulator/Assets/css/ie.css':	[ 'assets/less/ie.less' ]
-
-				}
-
-
-			}
 
 		},
 
@@ -238,23 +220,6 @@ module.exports = function( grunt ) {
 
 			},
 
-			dotnet: {
-
-				dest: paths.dotnetAssets + '/js/app.js',
-
-				src: [
-
-					// List scripts
-					
-					'assets/js/src/config.js',
-					'assets/js/src/social.js',
-					'assets/js/src/logic.js',
-					'assets/js/src/ui.js',
-
-				],
-			
-			}
-
 		},
 
 		// Compress JS
@@ -300,60 +265,44 @@ module.exports = function( grunt ) {
 		// Copy images
 		
 		copy: {
-
-			local: {
-
-				fancybox: {
-
-					files: [ {
-
-						expand:	true,
-						cwd:	paths.bower + 'fancybox/source',
-						src:	[ '**/*.{png,jpg,gif,PNG,JPG,GIF,jpeg,JPEG}' ],
-						dest:	'assets/img/fancybox'
-
-					} ]
-
-				},
-
-				slick: {
-
-					files: [ {
-
-						expand:	true,
-						cwd:	paths.bower + 'slick.js/slick',
-						src:	[ '**/*.{gif,eot,svg,ttf,woff,GIF,EOT,SVG,TTF,WOFF}' ],
-						dest:	'assets/img/slick.js'
-
-					} ]
-
-				},
-
-				images: {
-
-					files: [ {
-
-						expand:	true,
-						cwd:	'assets/img/optimized',
-						src:	[ '**' ],
-						dest:	'assets/img'
-
-					} ]
-				}
-
-			},
-
-			"dotnet": {
+		
+			fancybox: {
 
 				files: [ {
 
-					expand: true,
-					src: ['Assets/**'],
-					dest: 'dotnet/Combobulator/'
+					expand:	true,
+					cwd:	paths.bower + 'fancybox/source',
+					src:	[ '**/*.{png,jpg,gif,PNG,JPG,GIF,jpeg,JPEG}' ],
+					dest:	'assets/img/fancybox'
 
 				} ]
 
-			}
+			},
+
+			slick: {
+
+				files: [ {
+
+					expand:	true,
+					cwd:	paths.bower + 'slick.js/slick',
+					src:	[ '**/*.{gif,eot,svg,ttf,woff,GIF,EOT,SVG,TTF,WOFF}' ],
+					dest:	'assets/img/slick.js'
+
+				} ]
+
+			},
+
+			images: {
+
+				files: [ {
+
+					expand:	true,
+					cwd:	'assets/img/optimized',
+					src:	[ '**' ],
+					dest:	'assets/img'
+
+				} ]
+			},
 
 		},
 
@@ -463,8 +412,6 @@ module.exports = function( grunt ) {
 
 			other: [ '**/.DS_Store' ],
 
-			"dotnet": [ paths.dotnetAssets ]
-
 		},
 
 		// Notifications
@@ -508,21 +455,13 @@ module.exports = function( grunt ) {
 	
 	grunt.registerTask( 'default',	[
 
-		'clean:local',
+		'clean',
 		'icons',
 		'images',
 		'dev',
 		'watch'
 
 	] );
-
-	grunt.registerTask( 'simple',	[
-
-		'clean:simple',
-		'images',
-		'dev',
-		'watch'
-	]);
 
 	// Other tasks
 
@@ -538,7 +477,7 @@ module.exports = function( grunt ) {
 		'clean:images',
 		'sprites',
 		'imagemin',
-		'copy:local',
+		'copy',
 		'clean:optimized'
 
 	] );
@@ -546,7 +485,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'dev', [
 
 		'less:dev',
-		'less:dotnet',
 		'newer:concat',
 		'notify',
 
@@ -554,19 +492,12 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'build', [
 		
-		'clean:local',
+		'clean',
 		'icons',
 		'less:dist',
 		'concat',
 		'uglify',
 		'images',
-
-	] );
-
-	grunt.registerTask( 'dotnet', [
-
-		'clean:dotnet',
-		'copy:dotnet'
 
 	] );
 
