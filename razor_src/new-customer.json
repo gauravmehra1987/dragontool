@@ -2,9 +2,9 @@
 
 	"model":				"@model Combobulator.Models.Customer",
 	"open":					"@using (Ajax.BeginForm(\"NewCustomerSubmit\", \"Customer\", new AjaxOptions { HttpMethod = \"POST\", InsertionMode = InsertionMode.Replace, UpdateTargetId = \"formContainer\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
-	"form_UserId":			"@Html.EditorFor(model => model.UserId, new { value = ViewBag.UserId })",
-	"form_Title":			"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"),  \"Title\")",
-	"form_Title_msg":		"@Html.ValidationMessageFor(model => model.Title)",
+	"form_userid":			"@Html.EditorFor(model => model.UserId, new { value = ViewBag.UserId })",
+	"form_title":			"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"),  \"Title\")",
+	"form_title_msg":		"@Html.ValidationMessageFor(model => model.Title)",
 	"form_name":			"@Html.TextBoxFor(model => model.FirstName, new { placeholder = \"First names\"})",
 	"form_name_msg":		"@Html.ValidationMessageFor(model =>  model.FirstName)",
 	"form_surname":			"@Html.TextBoxFor(model => model.LastName, new { placeholder = \"Last name\"})",
@@ -14,9 +14,9 @@
 	"form_tel_home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { placeholder = \"Home telephone\"})",
 	"form_tel_home_msg":	"@Html.ValidationMessageFor(model => model.TelephoneHome)",
 	"form_tel_work":		"@Html.TextBoxFor(model => model.TelephoneWork, new { placeholder = \"Work telephone\"})",
-	"form_tel_work_msg":		"@Html.ValidationMessageFor(model => model.TelephoneWork)",
+	"form_tel_work_msg":	"@Html.ValidationMessageFor(model => model.TelephoneWork)",
 	"form_tel_mobile":		"@Html.TextBoxFor(model => model.TelephoneMobile, new { placeholder = \"Mobile telephone\"})",
-	"form_tel_mobile_msg":		"@Html.ValidationMessageFor(model => model.TelephoneMobile)",
+	"form_tel_mobile_msg":	"@Html.ValidationMessageFor(model => model.TelephoneMobile)",
 	"form_address_1":		"@Html.TextBoxFor(model => model.AddressLine1, new { placeholder = \"Address line 1\"})",
 	"form_address_1_msg":	"@Html.ValidationMessageFor(model => model.AddressLine1)",
 	"form_address_2":		"@Html.TextBoxFor(model => model.AddressLine2, new { placeholder = \"Address line 2\"})",
@@ -30,7 +30,7 @@
 	"form_dealer":			"@Html.DropDownListFor(model => model.Dealer, new SelectList(Model.Dealers, \"Name\", \"Name\"), \"Dealer\")",
 	"form_dealer_msg":		"@Html.ValidationMessageFor(model => model.Dealer)",
 	"form_callback":		"@Html.LabelFor(model => model.RequestCallback)",
-	"form_email":			"@Html.LabelFor(model => model.EmailResults)",
+	"form_email_results":	"@Html.LabelFor(model => model.EmailResults)",
 	"close":				"}"
 
 }

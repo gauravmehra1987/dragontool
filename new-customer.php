@@ -25,7 +25,7 @@
 		<legend class="sr-only">New customer form</legend>
 
 		<!-- build:template
-		<%= newCustomer.form_UserId %>
+		<%= newCustomer.form_userid %>
 		/build -->
 
 		<div class="form-control">
@@ -33,13 +33,13 @@
 			<div class="select">
 
 				<!-- build:template
-				<%= newCustomer.form_Title %>
+				<%= newCustomer.form_title %>
 				/build -->
 
 			</div>
 
 			<!-- build:template
-			<%= newCustomer.form_Title_msg %>
+			<%= newCustomer.form_title_msg %>
 			/build -->
 
 		</div>
@@ -275,7 +275,7 @@
 			<input id="EmailResults" type="checkbox" value="true" name="EmailResults">
 
 			<!-- build:template
-			<%= newCustomer.form_email %>
+			<%= newCustomer.form_email_results %>
 			/build -->
 
 		</div>
