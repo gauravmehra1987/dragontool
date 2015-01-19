@@ -13,7 +13,64 @@ module.exports = function( grunt ) {
 
 	grunt.initConfig( {
 
+		// Grunt variables
+
 		pkg: grunt.file.readJSON( 'package.json' ),
+		fixturesPath: "fixtures",
+
+		processhtml: {
+		
+			options: {
+
+				// Use the following file for string replacement inside HTML files
+
+				data: {
+
+					global:		grunt.file.readJSON( 'razor_replacements/global.json' ),
+					index:		grunt.file.readJSON( 'razor_replacements/index.json' ),
+					dashboard:	grunt.file.readJSON( 'razor_replacements/dashboard.json' ),
+
+				}
+
+			},
+
+			dist: {
+
+				files: {
+
+					// Dashboard
+
+					'rendered/Results/_Dashboard.cshtml':					[ 'dashboard.php' ],
+
+					// Controls
+
+					'rendered/Home/_ControlBums.cshtml':					[ 'control-bums.php' ],
+					'rendered/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
+					'rendered/Home/_ControlLuggage.cshtml':					[ 'control-luggage.php' ],
+					'rendered/Home/_ControlMpg.cshtml':						[ 'control-mpg.php' ],
+					'rendered/Home/_ControlOptions.cshtml':					[ 'control-options.php' ],
+					'rendered/Home/_ControlPrice.cshtml':					[ 'control-price.php' ],
+					'rendered/Home/_ControlSpeed.cshtml':					[ 'control-speed.php' ],
+					'rendered/Home/_ControlStart.cshtml':					[ 'control-start.php' ],
+					
+					// Results
+
+					'rendered/Results/_ExistingCustomerForm.cshtml':		[ 'existing-customer.php' ],
+					'rendered/Results/_NewCustomerForm.cshtml':				[ 'new-customer.php' ],
+					'rendered/Results/_Details.cshtml':						[ 'details.php' ],
+					'rendered/Results/_Results.cshtml':						[ 'results.php' ],
+
+					// Partials
+
+					'rendered/Shared/_Header.cshtml':						[ 'header.php' ],
+					'rendered/Shared/_Footer.cshtml':						[ 'footer.php' ],
+					'rendered/_Index.cshtml':								[ 'index.php' ],
+
+				}
+
+			},
+
+		},
 
 		// Icons
 
@@ -368,39 +425,6 @@ module.exports = function( grunt ) {
 		
 		clean: {
 
-			local: [
-
-				paths.icons,
-				'assets/img/**',
-				'!assets/img',
-				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',				
-				'assets/img/optimized',
-				'assets/js/app.js',
-				'assets/js/lib.js',
-				'assets/js/ie.js',
-				'assets/less/icon-codes.less',
-				'assets/less/sprites.less',
-				'assets/css',
-				'**/.DS_Store'
-
-			],
-
-			simple: [
-
-				'assets/img/**',
-				'!assets/img',
-				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',				
-				'assets/img/optimized',
-				'assets/js/app.js',
-				'assets/js/lib.js',
-				'assets/js/ie.js',
-				'assets/less/icon-codes.less',
-				'assets/less/sprites.less',
-				'assets/css',
-				'**/.DS_Store'
-
-			],
-
 			images: [
 
 				'assets/img/**',
@@ -408,6 +432,8 @@ module.exports = function( grunt ) {
 				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
 
 			],
+
+			templates: [ 'rendered' ],
 
 			fonts: [
 				
@@ -437,7 +463,7 @@ module.exports = function( grunt ) {
 
 			other: [ '**/.DS_Store' ],
 
-			"dotnet": [paths.dotnetAssets]
+			"dotnet": [ paths.dotnetAssets ]
 
 		},
 
@@ -476,6 +502,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-spritesmith' );
 	grunt.loadNpmTasks( 'grunt-newer' );
 	grunt.loadNpmTasks( 'grunt-notify' );
+	grunt.loadNpmTasks( 'grunt-processhtml' );
 
 	// Default task 
 	

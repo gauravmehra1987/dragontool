@@ -1,4 +1,8 @@
 var Mini = Mini || {};
+var assets_path = 'assets/cars/';
+var results_path = 'results?';
+var api_endpoint = 'api/car';
+var api_endpoint = 'api/car.json';
 
 	// Write your stuff here. Before doing so, have a look at config.js.
 
@@ -320,8 +324,8 @@ Mini.DOMCtrl = {
 
 			carToView: function(car){
 
-				var imageUrl = 'assets/cars/';
-				var resultsUrl = 'results?';
+				var imageUrl = assets_path;
+				var resultsUrl = results_path;
 				var colour = Helpers.determineColour(car.Colour);
 				var $customerId = self._$page.find('#uid').attr('value');
 				var $panel = self._$page.find('.panel.results');
@@ -388,7 +392,7 @@ Mini.UILogic = {
 	_query: null,
 	_collection: null,
 	_order: ['CapacityScale', 'LuggageScale', 'Options', 'PriceScale', 'PerformanceScale', 'EconomyScale', 'UsageScale' ],
-	_jsonUrl: 'api/car',
+	_jsonUrl: api_endpoint,
 
 	init: function(){
 		this._collection = this.CarsFactory();

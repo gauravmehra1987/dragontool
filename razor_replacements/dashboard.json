@@ -1,0 +1,12 @@
+{
+	
+	"bums":				"@Html.Partial(\"_ControlBums\")",
+	"mpg":				"@Html.Partial(\"_ControlMpg\")",
+	"lifestyle":		"@Html.Partial(\"_ControlLifestyle\")",
+	"luggage":			"@Html.Partial(\"_ControlLuggage\")",
+	"options":			"@Html.Partial(\"_ControlOptions\")",
+	"speed":			"@Html.Partial(\"_ControlSpeed\")",
+	"price":			"@Html.Partial(\"_ControlPrice\")",
+	"start":			"@Html.Partial(\"_ControlStart\")"
+
+}

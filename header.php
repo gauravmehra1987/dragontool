@@ -1,4 +1,3 @@
-<?php require( 'inc/helpers.inc.php' ); // Include helper PHP functions ?>
 <!DOCTYPE html>
 <!--[if lte IE 9]><html class="no-js ie" lang="en"><![endif]-->
 <!--[if gt IE 9]><!-->
@@ -9,7 +8,9 @@
 	
 		<meta charset="utf-8" />
 
-		<title>Mini Combobulator</title>
+		<!-- build:template
+		<title><%= global.title %></title>
+		/build -->
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
