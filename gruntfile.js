@@ -61,7 +61,7 @@ module.exports = function( grunt ) {
 
 					'razor_templates/Results/Index.cshtml':						[ 'results.php' ],
 
-					'razor_templates/Results/_Details.cshtml':						[ 'details.php' ],
+					'razor_templates/Results/_ResultDetail.cshtml':						[ 'details.php' ],
 					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'existing-customer.php' ],
 					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'new-customer.php' ],					
 

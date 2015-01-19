@@ -1,5 +1,5 @@
 {
 
-	"title": "@ViewBag2.Title"
+	"title": "@ViewBag.Title"
 
 }
