@@ -450,6 +450,7 @@ module.exports = function( grunt ) {
 			dotnet_templates: [
 
 				'dotnet/Combobulator/Views/**/*.cshtml',
+				'!dotnet/Combobulator/Views/Shared/_Layout.cshtml',
 				'!dotnet/Combobulator/Views/Shared/Error.cshtml',
 				'!dotnet/Combobulator/Views/**/Web.config',
 
