@@ -111,7 +111,7 @@
 	.box-sizing-ie;
 	.transition( all 0.2s );
 
-	border: solid 1px @grayLight;
+	border: solid 2px @formGray;
 	font-size: @fontSizeSmall;
 	outline: none; // Bloody Firefox!
 	padding: @margin / 2;
@@ -160,7 +160,7 @@
 
 		.icon;
 
-		line-height: 1;
+		line-height: 1em;
 		position: absolute;
 		text-align: center;
 
@@ -176,9 +176,9 @@
 
 .form-select(
 
-	@bgColor: @white,
-	@textColor: @grayDark,
-	@borderColor: @grayLighter,
+	@bgColor: @formGray,
+	@textColor: @black,
+	@borderColor: @formGray,
 	@outlineColor: transparent,
 
 	@optionBorderColor: @white,
@@ -192,14 +192,17 @@
 	@optionActiveBg: @grayDark,
 	@optionActiveColor: @white,
 
-	@fontSize: @fontSizeSmall
+	@fontSize: @fontSizeSmall,
+	@dropdownBg: @formGrayDark,
+	@dropdownColor: @formGray
 
 ) {
 
 	.clearfix;
 
 	background: @bgColor;
-	border: solid 1px @borderColor;
+	border: solid 2px @borderColor;
+	border-radius: 3px;
 	box-shadow: 0 0 0 3px @outlineColor;
 	display: block;
 	font-family: @fontSimpleSans;
@@ -214,15 +217,21 @@
 	&:after {
 
 		.icon;
-		.icon-down-thick;
+		.icon-down-block;
+		.transition( all 0.2s );
 
-		color: fadeout( @textColor, 75% );
-		margin-top: -.5em;
+		background: @dropdownBg;
+		border-radius: 0 3px 3px 0;
+		color: @dropdownColor;
+		line-height: ( ( @fontSize ) + ( @margin ) + 4px );
 		position: absolute;
 		z-index: 999;
 
-		top: 50%;
-		right: @margin / 2;
+		top: -2px;
+		right: -2px;
+
+		height: ( ( @fontSize ) + ( @margin ) + 4px );
+		width: ( ( @fontSize ) + ( @margin ) + 4px );
 
 	}
 
@@ -242,6 +251,7 @@
 		overflow: hidden;
 		padding: 0 @margin / 2;
 		position: absolute;
+		z-index: 1000;
 
 		height: 100%;
 

@@ -31,7 +31,7 @@
 
 		<article class="panel framed column">
 		
-		<!-- build:remove --><?php include( 'existing-customer.php' ); ?><!-- /build -->
+		<!-- build:remove --><?php include( 'form-new.php' ); ?><!-- /build -->
 		<!-- build:template
 		<%= results.form %>
 		/build -->

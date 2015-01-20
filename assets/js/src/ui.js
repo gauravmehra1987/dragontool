@@ -1,3 +1,5 @@
+$( 'form' ).validate();
+
 function scale( el, scale, targetWidth ) {
 
 	var targetWidth 	= targetWidth || $( '#dash' ).width();
@@ -116,9 +118,15 @@ var price_slider	= new Draggable( price_el, {
 	throwProps: false,
 	onDrag: function( e ) {
 
-		var level = getPriceValue( this.y );
+		var level = getPriceValue( this.endY );
 
 		$( '.control.slider .control-bg' ).css( 'height', level[ 0 ] + '%' );
+
+	},
+	liveSnap: true,
+	snap: {
+		
+		y: function( endValue ) { return Math.round( endValue / 50 ) * 50; }
 
 	}
 

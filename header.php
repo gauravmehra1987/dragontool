@@ -45,7 +45,7 @@
 		<meta name="twitter:image" content="" />
 		
 		<!--[if lt IE 9]>
-		<link href="assets/css/ie.css" rel="stylesheet" />
+		<!-- build:css Assets/css/ie.css --><link href="assets/css/ie.css" rel="stylesheet" /><!-- /build -->
 		<![endif]-->
 
 	</head>

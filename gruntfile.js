@@ -22,13 +22,14 @@ module.exports = function( grunt ) {
 		
 			options: {
 
+				strip:				true,
+
 				// Use the following file for string replacement inside HTML files
 
 				data: {
 
 					global:			grunt.file.readJSON( 'razor_src/global.json' ),
-					exCustomer:		grunt.file.readJSON( 'razor_src/existing-customer.json' ),
-					newCustomer:	grunt.file.readJSON( 'razor_src/new-customer.json' ),
+					form:			grunt.file.readJSON( 'razor_src/form.json' ),
 					details:		grunt.file.readJSON( 'razor_src/details.json' ),
 					results:		grunt.file.readJSON( 'razor_src/results.json' ),
 					home:			grunt.file.readJSON( 'razor_src/home.json' ),
@@ -38,7 +39,7 @@ module.exports = function( grunt ) {
 
 			},
 
-			dist: {
+			razor: {
 
 				files: {
 
@@ -59,11 +60,11 @@ module.exports = function( grunt ) {
 					
 					// Results
 
-					'razor_templates/Results/Index.cshtml':						[ 'results.php' ],
+					'razor_templates/Results/Index.cshtml':							[ 'results.php' ],
+					'razor_templates/Results/_ResultDetail.cshtml':					[ 'details.php' ],
 
-					'razor_templates/Results/_ResultDetail.cshtml':						[ 'details.php' ],
-					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'existing-customer.php' ],
-					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'new-customer.php' ],					
+					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'form-new.php' ],
+					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'form-existing.php' ],
 
 					// Partials
 
@@ -82,7 +83,7 @@ module.exports = function( grunt ) {
 
 			options: {
 
-				engine: 'node',
+				engine: 'fontforge',
 				stylesheet: 'less',
 				htmlDemo: false,
 				template: 'assets/icons/template.css',
@@ -176,8 +177,9 @@ module.exports = function( grunt ) {
 					paths.bower + 'underscore/underscore.js',
 					paths.bower + 'jquery/dist/jquery.js',
 					paths.bower + 'jquery.browser/dist/jquery.browser.js',
+					paths.bower + 'jquery-validation/dist/jquery.validate.js',
+					paths.bower + 'jquery-validation/dist/additional-methods.js',
 					paths.bower + 'slick.js/slick/slick.js',
-					// paths.bower + 'fancybox/source/jquery.fancybox.js',
 					
 					// Greensock
 					'assets/js/src/ThrowPropsPlugin.js',
@@ -198,6 +200,8 @@ module.exports = function( grunt ) {
 					// List scripts
 					
 					'assets/js/src/config.js',
+					'assets/js/src/validation-rules.js',
+					'assets/js/src/validation.js',
 					'assets/js/src/social.js',
 					'assets/js/src/logic.js',
 					'assets/js/src/ui.js',
