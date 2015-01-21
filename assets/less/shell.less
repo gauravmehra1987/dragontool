@@ -1,193 +1,210 @@
-// Temporary
-#debug {
-	display: none;
-}
-@theme: #30B6E9;
-//
-// Components
-// --------------------------------------
-#top-bar {
-	.mini-logo {
-		width: 92px;
-	}
-}
+.layout-wrapper {
 
-#main {
-	width: 1210px;
+	font-family: @fontR !important;
 
-	#dashboard {
-		//background: grey url('../../assets/img/dashboard.png') 0 0 no-repeat;
-		width: 780px;
-		height: 1728px;
-		margin-right: 6px;
-		color: #ffffff;
-	}
+	display: table;
+	margin: auto;
 
-	.panel {
-		width: 384px;
-		min-height: 728px;
-		overflow: hidden;
-		color: #ffffff;
+	.layout-header {
 
-		&.welcome {
-			font-size: 14px;
-			text-align: center;
-			.title {
+		.clearfix;
+
+		#logo {
+
+			display: block;
+			float: left;
+
+			a {
+
+				.hide-text;
+
+				background: url( ../img/mini-logo.png ) 50% 50% no-repeat;
+				background-size: 100%;
+
+				height: 55px;
+				width: 105px;
 
 			}
-			.ministry-logo {
-				width: 121px;
-				height: 112px;
-				display: inline-block;
-			}
-			.highlight {
-				color: @theme;
-			}
+
 		}
 
-		&.results {
-			color: #ffffff;
-			.title {
+		.social {
 
-			}
-			.highlight {
-				color: @theme;
-			}
-			.car {
-				img {
-					//margin-left: -20%;
-				}
-			}
-			.related-cars {
-				ul {
-					background-color: #303030;
-					padding: 10px 20px;
-					li {
-						width: 84px;
-						height: 61px;
-						margin-right: 2px;
-						position: relative;
-						a {
-							display: block;
-						}
-						&:last-child {
-							margin-right: 0;
-						}
-						&.active:before {
-							content: '';
-							width: 82px;
-							height: 59px;
-							position: absolute;
-							border: 1px solid @theme;
-						}
+			.list-inline;
+
+			display: table;
+			float: right;
+			margin: 0 auto;
+
+			li {
+
+				.hide-text;
+
+				background: orange;				
+				display: block;
+				margin-left: 4px;
+
+				a {
+
+					.hide-text;
+
+					background: @formGrayDark;
+					color: @white;
+					display: block;
+					padding: @margin;
+					position: relative;
+					text-decoration: none;
+
+					&:hover { background: @formGray; }
+
+					&:after {
+
+						.icon;
+
+						font-size: 16px;
+						margin-top: -8px;
+						margin-left: -8px;
+						position: absolute;
+
+						top: 50%;
+						left: 50%;
+
 					}
+
 				}
+
+				&.facebook a:after { .icon-facebook-letter; }
+				&.twitter a:after { .icon-twitter-bird; }
+
 			}
+
 		}
 
-		&.framed {
-			background-color: #000000;
-			border: 10px solid #888888;
-			padding: 30px;
+	}
+
+	.layout-footer {
+
+		font-size: @fontSizeSmaller;
+		margin: @margin 0;
+
+		p {
+
+			line-height: 1;
+
+			a {
+
+				color: @grayDark;
+
+				&:before {
+
+					.icon;
+					.icon-raquo;
+
+					font-size: @fontSizeSmaller * 0.8;
+					margin-right: 0.5em;
+
+				}
+
+			}
+
 		}
 
+	}
 
-	}
-}
+	.layout {
 
-//
-// Commonly used classes
-// --------------------------------------
-.row {
-	overflow: hidden;
-	zoom:1;
-	.column {
-		float: left;
-		box-sizing: border-box;
-	}
-}
-.hr {
-	margin: 20px 0;
-	hr {
-		height: 0;
-		margin: 0;
-		border: 0;
-		border-top: 1px solid #2F2E33;
-	}
-	span {
-		background-color: #000000;
-		padding: 2px 11px;
+		color: white;
+		max-width: 1180px;
+		overflow: hidden;
 		position: relative;
-		text-transform: uppercase;
-	}
-	&.presents {
-		margin: 10px 0 24px;
-		span {
-			bottom: -12px;
-			font-weight: bold;
+
+		height: calc( 785px - 4px );
+
+		.column {
+
+			float: left;
+
+			&.left { width: 780px; }
+
+			&.right {
+
+				.box-sizing( border-box );
+
+				border: solid 12px @grayFrame;
+				margin: 2px 0;
+				padding: @margin * 2;
+
+				height: 100%;
+				width: 400px;
+
+			}
+
+			.panel {
+
+				display: none;
+
+			}
+
 		}
+
 	}
+
 }
-.nav-list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	overflow: hidden;
-	zoom:1;
-	li {
-		float: left;
+
+// Specific
+
+#welcome {
+
+	.tc;
+
+	.header {
+
+		border-bottom: solid 1px @formGrayDark;
+		margin: 0 0 @margin 0;
+		text-transform: uppercase;
+
+		.ministry {
+
+			.hide-text;
+
+			background: url( ../img/ministry-of-finance.png ) 50% 50% no-repeat;
+			background-size: 100%;
+			display: table;
+			margin: 0 auto;
+
+			height: 100px;
+			width: 100px;
+
+		}
+
+		.strike-through {
+
+			margin: @margin 0;
+			position: relative;
+
+			&:before, &:after {
+
+				.pseudo;
+
+				background: @formGrayDark;
+				margin-top: -( 1px / 2 );
+				position: absolute;
+
+				top: 50%;
+
+				height: 1px;
+				width: 30%;
+
+			}
+
+			&:before { left: 0; }
+
+			&:after { right: 0; }
+
+		}
+
+		.title { text-transform: uppercase; }
+
 	}
-}
-.img-responsive {
-	display: block;
-	width: 100% \9;
-	max-width: 100%;
-	height: auto;
-}
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
 
-//
-// Typograpgy
-// --------------------------------------
-
-.title {
-	text-transform: uppercase;
 }
-
-//
-// Buttons
-// --------------------------------------
-.btn {
-	background-color: @theme;
-	display: inline-block;
-	padding: 6px 12px;
-	position: relative;
-	color: #ffffff;
-	font-size: 18px;
-	font-weight: bold;
-	text-transform: uppercase;
-}
-
-//
-// Icons
-// --------------------------------------
-.icon {
-	&.chev:before {
-		content:'>>';
-		display:inline-block;
-		margin-right: 5px;
-	}
-}
-
-// .icon.chev {
-// 	.icon-ok;
-// }

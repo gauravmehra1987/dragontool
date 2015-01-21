@@ -296,17 +296,21 @@ Mini.DOMCtrl = {
 			determineColour: function(string){
 
 				var o = {
-					'Volcanic Orange': 'orange',
-					'Electric Blue': 'blue',
-					'Blazing Red': 'red',
-					'Jungle Green': 'green',
-					'Light white': 'white',
-					'Lightning Blue': 'blue',
-					'Chili red': 'red',
-					'Pepper white': 'white'
+					
+					'Volcanic Orange':		'#f7941d',
+					'Electric Blue':		'#30b6e8',
+					'Lightning Blue':		'#1164ac',
+					'Jungle Green':			'#426046',
+					
+					'Chili red':			'#d71d24',
+					'Blazing Red':			'#d71d24',
+					
+					'Pepper white':			'#e4dfce',
+					'Light white':			'#e4dfce',
+
 				}
 
-				return (Helpers.isValueLegitimate(string)) ? o[string] : 'red';
+				return (Helpers.isValueLegitimate(string)) ? o[string] : o[ 'Chili red' ];
 			}
 
 		};
@@ -324,11 +328,13 @@ Mini.DOMCtrl = {
 				var resultsUrl = path.results;
 				var colour = Helpers.determineColour(car.Colour);
 				var $customerId = self._$page.find('#uid').attr('value');
-				var $panel = self._$page.find('.panel.results');
+				var $panel = self._$page.find('.panel[data-panel-name=results]');
 
 				function resultsPageUrl(cId, url, mCode){
 					return (Helpers.isValueLegitimate(cId)) ? url + 'c=' + cId + '&m=' + mCode : url + 'm=' + mCode;
 				}
+
+				console.warn( $panel );
 
 				$panel.find('[data-model-name]').html(car.Model);
 				$panel.find('[data-model-code]').html(car.ModelCode);

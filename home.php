@@ -3,108 +3,83 @@
 /build -->
 <!-- build:remove --><?php require( 'header.php' ); ?><!-- /build -->
 
-<div id="pageWrap">
+<div class="layout-wrapper">
 
-	<div id="top-bar">
-
-		<div class="mini-logo"><img src="assets/img/mini_logo.png" alt="mini" class="img-responsive" /></div>
-
-		<div class="social">
+	<header class="layout-header">
 		
-			<a href="#" title="facebook">Facebook</a>
-			<a href="#" title="twitter">Twitter</a>
+		<h2 id="logo"><a href="#">Mini</a></h2><!-- end h2#logo -->
 
-		</div>
+		<ul class="social">
 
-	</div>
-
-	<main role="main" id="main" class="row">
-
-		<div id="dashboard" class="column">
-		
-		<!-- build:template
-		<%= home.dashboard %>
-		/build -->
-
-		<!-- build:remove --><?php require( 'dashboard.php' ); ?><!-- /build -->
-
-		</div><!-- end div#dashboard -->
-
-		<article class="panel welcome framed column" data-panel-name="welcome">
-
-			<header>
-
-				<div class="ministry-logo"><img src="assets/img/ministry_of_finance.png" alt="ministry of finance" class="img-responsive" /></div>
-				<div class="hr text presents"><span>Presents</span><hr/></div>
-				<h2 class="title">The<br/>Combobulator</h2>
-				<div class="hr"><hr/></div>
+			<li class="facebook"><a href="#">Facebook</a></li><!-- end li.facebook -->
+			<li class="twitter"><a href="#">Twitter</a></li><!-- end li.twitter -->
 			
+		</ul><!-- end ul.social -->
 
-			</header>
+	</header><!-- end header.layout-header -->
 
-			<!-- build:remove --><h3 class="title">Hi John</h3><!-- /build -->
-
+	<main class="layout">
+		
+		<div class="column left">
+			
 			<!-- build:template
-			<%= home.hi %>
+			<%= home.dashboard %>
 			/build -->
+
+			<!-- build:remove --><?php require( 'dashboard.php' ); ?><!-- /build -->
+
+		</div><!-- end div.column left -->
+
+		<div class="column right">
+
+			<div id="welcome" class="panel" data-panel-name="welcome">
+
+				<header class="header">
+					
+					<p class="ministry">Ministry of Finance</p>
+					<p class="strike-through">Presents</p>
+					
+					<h1>The<br />Combobulator</h1>
+
+				</header><!-- end header.header -->
+
+				<!-- build:remove --><h3 class="title">Hi John</h3><!-- /build -->
+
+				<!-- build:template
+				<%= home.hi %>
+				/build -->
+				
+				<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
+				<p>Choose now much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit Combobulate to get your tailor-made deal.</p>
+				<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>
+
+			</div><!-- end div#welcome.panel -->
 			
-			<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
-			<p>Choose now much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit Combobulate to get your tailor-made deal.</p>
-			<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>
+			<div id="results" class="panel" data-panel-name="results">
 
-		</article>
+				<div><h3 data-model-name>model name</h3></div>
+				<div><span data-model-code>model code</span></div>
 
-		<article class="panel results column" data-panel-name="results">
+				<hr />
 
-			<header>
+				<div>£<span data-model-price>price</span></div>
+				<div><img src="http://placehold.it/300x200" data-model-image /></div>
+				<div><span data-terms>terms</span></div>
+				<div><a data-results-link>Show result</a></div>
+				
+			</div><!-- end div#results.panel -->
+			
+		</div><!-- end div.column right -->
 
-				<h2 class="title" data-model-name="true">model name</h2>
-				<h3 class="title" data-model-code="true">model code</h3>
+	</main><!-- end main.layout -->
 
-				<div class="sticker">
+	<footer class="layout-footer">
+			
+		<p><a href="#">Terms and Conditions</a></p>
 
-					<span class="currency">£</span>
-					<span class="price" data-model-price="true">model price</span>
-					<span class="">Per<br />month</span>
+	</footer><!-- end footer.layout-footer -->
 
-				</div>
-
-				<a class="btn" href="#" data-results-link="true"><i class="icon chev"></i>Go see</a>
-
-				<div class="hr"><hr/></div>
-
-			</header>
-
-			<div class="car"><img data-model-image="true" src="assets/cars/5-door-Cooper-D.jpg" alt="car" class="img-responsive" /></div>
-
-			<div class="hr"><hr/></div>
-
-			<div class="related-cars">
-
-				<h2 class="title">Or for £200... You could buy <span class="highlight">102 watermelons</span></h2>
-
-				<ul class="nav-list">
-
-					<li><a href="#" data-alt1-name="true" title="Alt Car 1"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
-					<li class="active"><a href="#" data-alt2-name="true" title="Alt Car 2"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
-					<li><a href="#" data-alt3-name="true" title="Alt Car 3"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
-					<li><a href="#" data-alt4-name="true" title="Alt Car 4"><img src="assets/cars/5-door-Cooper-D.jpg" class="img-responsive" alt="" /></a></li>
-
-				</ul>
-
-			</div>
-
-			<div class="extras">
-
-				<div class="terms" data-terms="true"></div>
-
-			</div>
-
-		</article>
-
-	</main>
-
-</div>
+</div><!-- end div.layout-wrapper -->
 
 <!-- build:template
 <%= home.input %>

@@ -35,7 +35,7 @@
 
 					$( elements ).each( function( i, el ) {
 
-						$( el.element ).closest( '.form-control' ).append( '<span class="form-error">' + el.message + '</span>' );
+						if( ! $( el.element ).closest( '.form-control' ).find( '.form-error' )[ 0 ] ) $( el.element ).closest( '.form-control' ).append( '<span class="form-error">' + el.message + '</span>' );
 
 					} );
 

@@ -105,6 +105,52 @@ module.exports = function( grunt ) {
 
 		},
 
+		// web fonts
+
+		ttf2woff: {
+
+			default: {
+			
+				src: [ 'assets/fonts/mini/*.ttf' ],
+				dest: 'assets/fonts'
+
+			}
+
+		},
+
+		ttf2eot: {
+
+			default: {
+			
+				src: [ 'assets/fonts/mini/*.ttf' ],
+				dest: 'assets/fonts'
+
+			}
+
+		},
+
+		fontface: {
+
+			dist: {
+			
+				options: {
+				
+					fontDir: 'assets/fonts/mini',
+					template: "@font-face {" +
+								"font-family: '{{font}}';" +
+								"src: url('../fonts/{{font}}.eot?#iefix') format('embedded-opentype')," +
+								"url('../fonts/{{font}}.woff') format('woff')," +
+								"url('../fonts/{{font}}.ttf')  format('truetype')," +
+								"url('../fonts/{{font}}.svg#{{font}}') format('svg');" +
+								"}",
+					outputFile: 'assets/less/fonts.less'
+
+				}
+
+			}
+
+		},	
+
 		// Compile LESS
 		
 		less: {
@@ -470,7 +516,7 @@ module.exports = function( grunt ) {
 			fonts: [
 				
 				paths.icons,
-				'assets/less/icons.less',
+				'assets/fonts/*.*',
 
 			],
 
@@ -488,6 +534,8 @@ module.exports = function( grunt ) {
 
 				'assets/less/icon-codes.less',
 				'assets/less/sprites.less',
+				'assets/less/icons.less',
+				'assets/less/fonts.less',
 
 			],
 
@@ -535,6 +583,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-php' );
 
 	// Load modules
+
 	grunt.loadNpmTasks( 'grunt-contrib-less' );
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
@@ -544,49 +593,13 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-cleanempty' );
 	grunt.loadNpmTasks( 'grunt-webfont' );
+	grunt.loadNpmTasks( 'grunt-ttf2woff' );
+	grunt.loadNpmTasks( 'grunt-ttf2eot' );
+	grunt.loadNpmTasks( 'grunt-fontface' );
 	grunt.loadNpmTasks( 'grunt-spritesmith' );
 	grunt.loadNpmTasks( 'grunt-newer' );
 	grunt.loadNpmTasks( 'grunt-notify' );
 	grunt.loadNpmTasks( 'grunt-processhtml' );
-
-	// Other tasks
-
-	grunt.registerTask( 'icons', [
-
-		'clean:fonts',
-		'webfont',
-
-	]);
-
-	grunt.registerTask( 'images', [
-
-		'clean:images',
-		'sprites',
-		'imagemin',
-		'copy',
-		'clean:optimized'
-
-	] );
-
-	grunt.registerTask( 'dev', [
-
-		'less:dev',
-		'newer:concat',
-		'notify',
-
-	] );
-
-	grunt.registerTask( 'build', [
-		
-		'tidy',
-		'icons',
-		'images',
-		'less:dist',
-		'concat',
-		'uglify',
-		'dotnet',
-
-	] );
 
 	// Placeholder task
 	
@@ -594,23 +607,49 @@ module.exports = function( grunt ) {
 
 	// Other tasks - to be updated with latest tasks
 	
-	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'copy:dotnet' ] );
+	grunt.registerTask( 'icons', [ 'webfont', ]);
 	grunt.registerTask( 'sprites', 'sprite' );
-	grunt.registerTask( 'styles', 'less:dev' );
+	grunt.registerTask( 'fonts', [ 'ttf2woff', 'ttf2eot', 'fontface' ] );
+	grunt.registerTask( 'images', [ 'imagemin', 'copy:images', 'clean:optimized' ] );
+	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'copy:dotnet' ] );
 	grunt.registerTask( 'tidy', [ 'clean', 'cleanempty' ] );
 	grunt.registerTask( 'dotnet', [ 'templates', 'copy:assets', 'clean:dotnet_assets' ] );
 
-	// Default task 
+	// Default task
 	
-	grunt.registerTask( 'default',	[
+	grunt.registerTask( 'generate',	[
 
-		'tidy',
+		'sprites',
 		'icons',
-		'images',
+		'fonts',
+
+	] );
+
+	grunt.registerTask( 'compile-dev',	[
+
 		'less:dev',
 		'concat',
+
+	] );
+
+	grunt.registerTask( 'compile-dist',	[
+
+		'less:dist',
+		'concat',
+		'uglify',
+
+	] );
+
+	grunt.registerTask( 'build',	[
+
 		'dotnet',
-		'watch',
+
+	] );
+
+	grunt.registerTask( 'default',	[
+
+		'compile-dev',
+		'watch'
 
 	] );
 
