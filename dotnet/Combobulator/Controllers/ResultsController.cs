@@ -60,7 +60,8 @@ namespace Combobulator.Controllers
             if (id != string.Empty)
             {
                 // Get customer from id
-                Customer customer = Utils.GetCustomerById(id);
+                Customer customer = Utils.Instance.GetCustomerById(id);
+                customer.UserId = id;
                 customer.Titles = queryTitles.ToList();
                 customer.Dealers = queryDealers.ToList();
 
@@ -69,10 +70,13 @@ namespace Combobulator.Controllers
             else
             {
                 Customer customer = new Customer();
+                customer.UserId = id;
                 customer.Titles = queryTitles.ToList();
                 customer.Dealers = queryDealers.ToList();
 
-                view = PartialView("_NewCustomerForm", customer);
+                view = PartialView("_ExistingCustomerForm", customer);
+                // For phase 2
+                //view = PartialView("_NewCustomerForm", customer);
             }
 
             return view;

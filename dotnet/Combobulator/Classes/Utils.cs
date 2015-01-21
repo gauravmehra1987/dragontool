@@ -9,19 +9,35 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace Combobulator.Classes
 {
-    public static class Utils
+    public class Utils
     {
-        public static Customer GetCustomerById(string id)
+        #region Private/Protected Members
+        private static readonly Utils _instance = new Utils();
+        #endregion
+
+        #region Public Properties
+        public static Utils Instance
         {
-            string checksum = GetChecksum(id); // "e5f941771d";
-            string systemId = "3491056";
+            get
+            {
+                return _instance;
+            }
+        }
+        #endregion
+
+        private string _systemId = "3491056";
+        private string _random = "01234564rf";
+        private string _secretKey = "NTRlODdhZTJkMzc3ZDgxMzVkOWNiYzQ1";
+
+        public Customer GetCustomerById(string customerId)
+        {
             string action = "getcustomerdetails";
-            string customerId = id;
-            string random = "01234564rf";
-            string url = string.Format("http://combobdev.emaster.me.uk/?script=EM/External&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&type=json", checksum, systemId, action, customerId, random);
+            string checksum = GetCustomerDetailsChecksum(_systemId, customerId, _secretKey, _random);
+            string url = string.Format("http://combobdev.emaster.me.uk/?script=EM/External&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&type=json", checksum, _systemId, action, customerId, _random);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
@@ -45,30 +61,34 @@ namespace Combobulator.Classes
             }
         }
 
-        public static void SendExistingCustomerData(Customer customer)
+        public void SendExistingCustomerData(Customer customer)
         {
-            string url = "";
-            UTF8Encoding encoding = new UTF8Encoding();
-            Byte[] byteArray = encoding.GetBytes(new JavaScriptSerializer().Serialize(customer));
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "POST";
-            request.ContentLength = byteArray.Length;
-            request.ContentType = @"application/json";
-
-            using (Stream dataStream = request.GetRequestStream())
+            string action = "recordoutcome";
+            string customerId = customer.UserId;
+            string checksum = GetCustomerDetailsChecksum(_systemId, customerId, _secretKey, _random);
+            string json = new JavaScriptSerializer().Serialize(new
             {
-                dataStream.Write(byteArray, 0, byteArray.Length);
-            }
-
-            long length = 0;
+                id = customer.UserId,
+                title = customer.Title,
+                first_name = customer.FirstName,
+                surname = customer.LastName,
+                email = customer.Email,
+                telephone = customer.TelephoneHome,
+                request_callback = "true",
+                request_early_redemption = "true"
+            });
+            string url = string.Format("http://combobdev.emaster.me.uk/?script=EM/External&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customerId, _random, json);
 
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                {
-                    length = response.ContentLength;
-                }
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "POST";
+                request.ContentType = @"application/json";
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader responseStream = new StreamReader(response.GetResponseStream());
+
+                string line = responseStream.ReadLine();
+                dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
             }
             catch (WebException ex)
             {
@@ -83,34 +103,39 @@ namespace Combobulator.Classes
             }
         }
 
-        private static string GetChecksum(string userId)
-        {
-            string url = string.Format("http://combobdev.emaster.me.uk/?script=EM/External&system_id=3491056&action=getMD5&random=01234564rf&de_id={0}", userId);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.ContentType = @"application/json";
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            StreamReader responseStream = new StreamReader(response.GetResponseStream());
-
-            string line = responseStream.ReadLine();
-
-            return line;
-        }
-
-        public static void SendNewCustomerData(Customer customer)
+        public void SendNewCustomerData(Customer customer)
         {
 
         }
 
-        public static void RequestCallback(Customer customer)
+        private string GetCustomerDetailsChecksum(string systemId, string userId, string secretKey, string random)
         {
-
+            string input = systemId + userId + secretKey + random;
+            return CalculateMD5Hash(input);
         }
 
-        public static void RequestEarlyRedemption(Customer customer)
+        private string CalculateMD5Hash(string input)
         {
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
 
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("x2"));
+            }
+
+            string s = sb.ToString();
+
+            if (s.Length > 10)
+            {
+                return s.Substring(s.Length - 10, 10);
+            }
+            else
+            {
+                return sb.ToString();
+            }
         }
     }
 }

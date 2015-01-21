@@ -38,15 +38,10 @@ namespace Combobulator.Controllers
                 {
                     if (customer.EmailResults == true)
                     {
-                        Email.SendEmailResults(customer);
+                        Email.Instance.SendEmailResults(customer);
                     }
 
-                    if (customer.RequestCallback == true)
-                    {
-                        Utils.RequestCallback(customer);
-                    }
-
-                    Utils.SendNewCustomerData(customer);
+                    Utils.Instance.SendNewCustomerData(customer);
                 }
                 return View("~/Views/Results/_FormConfirmation.cshtml");
             }
@@ -64,6 +59,7 @@ namespace Combobulator.Controllers
                 Customer customer = new Customer
                 {
                     UserId = collection["UserId"],
+                    Title = collection["Title"],
                     FirstName = collection["FirstName"],
                     LastName = collection["LastName"],
                     Email = collection["Email"],
@@ -77,20 +73,10 @@ namespace Combobulator.Controllers
                 {
                     if (customer.EmailResults == true)
                     {
-                        Email.SendEmailResults(customer);
+                        Email.Instance.SendEmailResults(customer);
                     }
 
-                    if (customer.RequestCallback == true)
-                    {
-                        Utils.RequestCallback(customer);
-                    }
-
-                    if (customer.RequestEarlyRedemption == true)
-                    {
-                        Utils.RequestEarlyRedemption(customer);
-                    }
-
-                    Utils.SendExistingCustomerData(customer);
+                    Utils.Instance.SendExistingCustomerData(customer);
                 }
                 return View("~/Views/Results/_FormConfirmation.cshtml");
             }

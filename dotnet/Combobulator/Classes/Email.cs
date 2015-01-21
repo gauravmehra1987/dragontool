@@ -11,17 +11,31 @@ namespace Combobulator.Classes
 {
     public class Email
     {
-        private static string _host = WebConfigurationManager.AppSettings["EmailHost"];
-        private static string _username = WebConfigurationManager.AppSettings["EmailUsername"];
-        private static string _password = WebConfigurationManager.AppSettings["EmailPassword"];
-        private static string _subject = WebConfigurationManager.AppSettings["EmailSubject"];
-        private static int _port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"]);
-        private static string _fromAddress = WebConfigurationManager.AppSettings["EmailFromAddress"];
-        private static string _fromName = WebConfigurationManager.AppSettings["EmailFromName"];
-        private static string _template = WebConfigurationManager.AppSettings["EmailTemplate"];
-        private static string _assetUrl = WebConfigurationManager.AppSettings["EmailAssetUrl"];
+        #region Private/Protected Members
+        private static readonly Email _instance = new Email();
+        #endregion
 
-        public static void SendEmailResults(Customer customer)
+        #region Public Properties
+        public static Email Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+        #endregion
+
+        private string _host = WebConfigurationManager.AppSettings["EmailHost"];
+        private string _username = WebConfigurationManager.AppSettings["EmailUsername"];
+        private string _password = WebConfigurationManager.AppSettings["EmailPassword"];
+        private string _subject = WebConfigurationManager.AppSettings["EmailSubject"];
+        private int _port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"]);
+        private string _fromAddress = WebConfigurationManager.AppSettings["EmailFromAddress"];
+        private string _fromName = WebConfigurationManager.AppSettings["EmailFromName"];
+        private string _template = WebConfigurationManager.AppSettings["EmailTemplate"];
+        private string _assetUrl = WebConfigurationManager.AppSettings["EmailAssetUrl"];
+
+        public void SendEmailResults(Customer customer)
         {
             MailMessage mail = new MailMessage();
             mail.To.Add(customer.Email);
@@ -49,7 +63,7 @@ namespace Combobulator.Classes
             }
         }
 
-        private static string CreateEmailBody(Customer customer)
+        private string CreateEmailBody(Customer customer)
         {
             string readFile = string.Empty;
             string strBody = string.Empty;

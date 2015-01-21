@@ -17,7 +17,7 @@ namespace Combobulator.Controllers
 
             if (!string.IsNullOrEmpty(Request.QueryString["c"]))
             {
-                customer = Utils.GetCustomerById(Request.QueryString["c"]);
+                customer = Utils.Instance.GetCustomerById(Request.QueryString["c"]);
             }
 
             ViewBag.FirstName = customer != null ? customer.FirstName : "";
