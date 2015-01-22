@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
+using System.Web.Configuration;
 
 namespace Combobulator.Classes
 {
@@ -29,9 +30,9 @@ namespace Combobulator.Classes
         }
         #endregion
 
-        private string _systemId = "3491056";
-        private string _random = "01234564rf";
-        private string _secretKey = "NTRlODdhZTJkMzc3ZDgxMzVkOWNiYzQ1";
+        private string _systemId = WebConfigurationManager.AppSettings["FiscSystemId"];
+        private string _random = WebConfigurationManager.AppSettings["FiscRandom"];
+        private string _secretKey = WebConfigurationManager.AppSettings["FiscSecretKey"];
 
         public Customer GetCustomerById(string customerId)
         {
