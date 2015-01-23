@@ -1,7 +1,5 @@
 .layout-wrapper {
 
-	font-family: @fontR !important;
-
 	display: table;
 	margin: auto;
 
@@ -84,7 +82,7 @@
 
 	.layout-footer {
 
-		font-size: @fontSizeSmaller;
+		font-size: @fontSizeSmall;
 		margin: @margin 0;
 
 		p {
@@ -118,21 +116,18 @@
 		overflow: hidden;
 		position: relative;
 
-		height: calc( 785px - 4px );
+		&.fixed { height: calc( 785px - 4px ); }
 
 		.column {
 
 			float: left;
+			position: relative;
 
 			&.left { width: 780px; }
 
 			&.right {
 
-				.box-sizing( border-box );
-
-				border: solid 12px @grayFrame;
 				margin: 2px 0;
-				padding: @margin * 2;
 
 				height: 100%;
 				width: 400px;
@@ -153,9 +148,82 @@
 
 // Specific
 
-#welcome {
+.panel {
 
-	.tc;
+	.box-sizing( border-box );
+
+	margin-left: 2px;
+	padding: @margin * 1.5;
+	position: relative;
+
+}
+
+.price-span {
+
+	.clearfix;
+
+	font-family: @fontAlt;
+	position: relative;
+
+	.currency, .price, .permonth, .car-link {
+
+		display: block;
+		float: left;
+		line-height: 1;
+		margin-right: 5px;
+
+	}
+
+	.currency {
+
+		font-size: @fontSizeLarge;
+		position: relative;
+
+		top: @fontSize / 2;
+
+	}
+	
+	.price { font-size: 56px; }
+
+	.permonth {
+
+		font-size: @fontSize;
+		position: relative;
+		top: 22px;
+
+	}
+
+}
+
+.terms {
+
+	&, p {
+
+		color: @grayDark;
+		font-size: @fontSizeSmaller;
+		line-height: @fontSize;
+		margin: 0;
+
+	}
+
+}
+
+#default {
+
+	&.centered { .tc; }
+
+	border: solid 12px @grayFrame;	
+
+	.fixed & {
+
+		position: absolute;
+
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+	}
 
 	.header {
 
@@ -204,6 +272,118 @@
 		}
 
 		.title { text-transform: uppercase; }
+
+	}
+
+}
+
+#results {
+
+	padding-top: 30px + ( @margin * 1.5 );
+
+	.control-title {
+
+		margin: 0;
+		position: absolute;
+
+		top: 0;
+		right: 0;
+		left: 0;
+
+	}
+	
+	.modelname { font-size: @fontSizeLarger; }
+
+	.car-link {
+
+		float: none;
+		margin: 0;
+
+		position: absolute;
+
+		right: 0;
+		bottom: 0;
+
+	}
+
+	.model-image { margin: auto -( @margin * 1.5 ); }
+
+	.gimmick {
+
+		font-family: @fontAlt;
+		font-size: @fontSizeMedium;
+		margin: @margin 0;
+
+	}
+
+	.related {
+
+		.list-inline;
+
+		background: @grayDark;
+		margin: auto -( @margin * 1.5 );
+		padding: @margin / 2 @margin * 1.5;
+
+		li {
+
+			.box-sizing( border-box );
+
+			display: block;
+
+			padding: 0 2px;
+
+			width: 25%;
+
+			a {
+
+				border: solid 2px transparent;
+				display: block;
+
+			}
+
+		}
+
+	}
+
+}
+
+#car {
+
+	background: url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
+	background-size: contain;
+	margin: 0;
+
+	.car-desc {
+
+		margin: 0 @margin;
+		overflow: hidden;
+		position: relative;
+
+		height: 150px;
+
+		.car-price {
+
+			position: absolute;
+
+			top: 0;
+			left: 0;
+
+			width: 220px;
+
+		}
+
+		.car-details {
+
+			position: absolute;
+
+			top: 0;
+			right: 0;
+
+			width: 740px - ( 220 + @margin );
+
+			h1 { font-size: @fontSizeLarge; }
+
+		}
 
 	}
 

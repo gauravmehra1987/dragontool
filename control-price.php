@@ -1,5 +1,6 @@
 <div class="control slider">
-			
+
+	<div class="bounds"></div><!-- end div.bounds -->			
 	<div class="bg"></div><!-- end div.bg -->
 	<div class="wrapper">
 	<div class="control-bg-wrapper">

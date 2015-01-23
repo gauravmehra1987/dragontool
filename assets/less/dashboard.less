@@ -56,7 +56,22 @@
 
 	.transition( background-color 0.2s linear );
 
-	background-color: #101010;
+	background-color: @red;
+	border-color: @red;
+
+}
+
+.control-title {
+
+	.tc;
+
+	background: lighten( @dialGray, 5% );
+	color: @grayDarker;
+	display: block;
+	font-size: 14px;
+	line-height: 30px;
+	margin: @dashGutter @dashGutter 0;
+	text-transform: uppercase;
 
 }
 
@@ -81,20 +96,6 @@
 			box-shadow: 0 0 0 @dashGutter @black inset;
 			color: @grayDarker;
 			position: relative;
-
-			.control-title {
-
-				.tc;
-
-				background: lighten( @dialGray, 5% );
-				color: @grayDarker;
-				display: block;
-				font-size: 14px;
-				line-height: 30px;
-				margin: @dashGutter @dashGutter 0;
-				text-transform: uppercase;
-
-			}
 
 			.control-wrapper {
 

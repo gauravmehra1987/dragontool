@@ -35,8 +35,8 @@ Mini.DOMCtrl = {
 		console.log(this)
 		this.pubsub();
 
-		// show the welcome panel
-		this.panelControl('welcome');
+		// show the default panel
+		this.panelControl('default');
 
 		this.registerDataEvents();
 		this.getData();
@@ -295,22 +295,7 @@ Mini.DOMCtrl = {
 
 			determineColour: function(string){
 
-				var o = {
-					
-					'Volcanic Orange':		'#f7941d',
-					'Electric Blue':		'#30b6e8',
-					'Lightning Blue':		'#1164ac',
-					'Jungle Green':			'#426046',
-					
-					'Chili red':			'#d71d24',
-					'Blazing Red':			'#d71d24',
-					
-					'Pepper white':			'#e4dfce',
-					'Light white':			'#e4dfce',
-
-				}
-
-				return (Helpers.isValueLegitimate(string)) ? o[string] : o[ 'Chili red' ];
+				return (Helpers.isValueLegitimate(string)) ? carColors[string] : carColors[ 'Chili red' ];
 			}
 
 		};

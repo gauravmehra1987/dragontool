@@ -12,34 +12,40 @@
 <%= results.scripts %>
 /build -->
 
-<div id="pageWrap">
+<div class="layout-wrapper">
 
-	<div id="top-bar">
-		<div class="mini-logo"><img src="Assets/img/mini_logo.png" alt="mini" class="img-responsive" /></div>
-	</div>
+	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
-	<main role="main" id="main" class="row">
-
-		<div id="dashboard" class="column">
-
-		<!-- build:remove --><?php include( 'details.php' ); ?><!-- /build -->
-		<!-- build:template
-		<%= results.details %>
-		/build -->			 
-
-		</div><!-- end div#dashboard -->
-
-		<article class="panel framed column">
+	<main class="layout">
 		
-		<!-- build:remove --><?php include( 'form-existing.php' ); ?><!-- /build -->
-		<!-- build:template
-		<%= results.form %>
-		/build -->
+		<div class="column left">
+			
+			<!-- build:template
+			<%= results.details %>
+			/build -->
 
-		</article>
+			<!-- build:remove --><?php include( 'details.php' ); ?><!-- /build -->
 
-	</main>
+		</div><!-- end div.column left -->
 
-</div>
+		<div class="column right">
+
+			<div id="default" class="panel" data-panel-name="default">
+
+				<!-- build:template
+				<%= results.form %>
+				/build -->
+
+				<!-- build:remove --><?php include( 'form-existing.php' ); ?><!-- /build -->
+
+			</div><!-- end div#results.panel -->
+
+		</div><!-- end div.column right -->
+
+	</main><!-- end main.layout -->
+
+	<!-- build:include bottom.php --><?php require( 'bottom.php' ); ?><!-- /build -->
+
+</div><!-- end div.layout-wrapper -->
 
 <!-- build:remove --><?php include( 'footer.php' ); ?><!-- /build -->

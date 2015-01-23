@@ -139,13 +139,13 @@
 
 	</div>
 
-	<div class="form-control append full-width">
+	<div class="form-control">
 
 		<!-- build:template
 		<%= form.field.submit %>
 		/build -->
 
-		<button type="submit">Submit</button>
+		<button class="control-bg" type="submit">Submit</button>
 
 	</div>
 

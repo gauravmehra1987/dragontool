@@ -35,9 +35,9 @@
 	color: @formRed;
 	clear: both;
 	display: block;
-	font-size: @fontSizeSmaller;
+	font-size: @fontSizeSmall;
 	line-height: 1;
-	margin-top: @margin;
+	margin-top: @margin / 2;
 
 	.append & {
 
@@ -128,22 +128,39 @@ input[type=cancel] {
 	.form-input;
 
 	background: @accent;
-	border-color: @accent;
+	border: 0;
 	border-radius: 0;
 	display: inline-block;
-	font-family: @fontAlt;
+	font-family: @fontMiniBold;
+	font-size: @fontSizeMedium;
 	font-weight: normal;
 	line-height: 1;
-	padding-left: @margin * 2;
-	padding-right: @margin * 2;
-	text-shadow: 0 1px 0 @black;
+	padding: @margin * 0.75;
+	text-decoration: none;
 	text-transform: uppercase;
+	height: auto;
+
+	&:before {
+
+		.icon;
+		.icon-raquo;
+
+		margin-right: 0.5em;
+
+	}
 
 	&:hover {
 
-		background: darken( @accent, 5% );
-		border-color: darken( @accent, 5% );
+		opacity: 0.9;
 		text-decoration: none;
+
+	}
+
+	&.gray {
+
+		background: @formGray;
+		color: @black;
+		font-size: @fontSize;
 
 	}
 

@@ -1,4 +1,36 @@
-﻿<!-- build:template
+﻿<figure id="car">
+
+	<img src="assets/img/mini-sample.png" />
+
+	<figcaption class="car-desc">
+		
+		<section class="car-price">
+
+			<p class="price-span"><span class="currency">£</span><span class="price" data-model-price>259</span><span class="permonth">per<br />month</span></p>
+
+			<div><a href="#" class="button gray">Go back</a></div>
+			
+		</section><!-- end section.car-price -->
+
+		<section class="car-details">
+
+			<h1 class="control-color">Mini Cooper S Hatch 5-Door</h1>
+
+			<div class="terms">
+				
+				<p>Terms and Conditions</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+			</div>
+			
+		</section><!-- end section.car-details -->
+
+	</figcaption><!-- end figcaption.car-desc -->
+	
+</figure><!-- end figure#car -->
+
+
+<?php /*<!-- build:template
 <%= details.model %>
 /build -->
 
@@ -38,4 +70,4 @@
 
 	</div>
 
-</div>
+</div>*/ ?>

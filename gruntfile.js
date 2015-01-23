@@ -140,8 +140,6 @@ module.exports = function( grunt ) {
 								"font-family: '{{font}}';" +
 								"src: url('../fonts/{{font}}.eot?#iefix') format('embedded-opentype')," +
 								"url('../fonts/{{font}}.woff') format('woff')," +
-								"url('../fonts/{{font}}.ttf')  format('truetype')," +
-								"url('../fonts/{{font}}.svg#{{font}}') format('svg');" +
 								"}",
 					outputFile: 'assets/less/fonts.less'
 
@@ -251,6 +249,7 @@ module.exports = function( grunt ) {
 					'assets/js/src/social.js',
 					'assets/js/src/logic.js',
 					'assets/js/src/ui.js',
+					'assets/js/src/animations.js',
 
 				],
 			
@@ -466,14 +465,14 @@ module.exports = function( grunt ) {
 			styles: {
 
 				files: [ 'assets/less/**/*.less' ],
-				tasks: [ 'dev' ]
+				tasks: [ 'less:dev' ]
 			
 			},
 
 			scripts: {
 
 				files: [ 'assets/js/src/*.js' ],
-				tasks: [ 'dev' ]
+				tasks: [ 'concat' ]
 
 			}
 
@@ -639,6 +638,8 @@ module.exports = function( grunt ) {
 		'uglify',
 
 	] );
+
+	grunt.registerTask( 'compile',	[ 'compile-dev' ] );
 
 	grunt.registerTask( 'build',	[
 

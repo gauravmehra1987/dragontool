@@ -20,6 +20,21 @@ var system_paths = {
 
 };
 
+var carColors = {
+					
+	'Volcanic Orange':		'#f7941d',
+	'Electric Blue':		'#30b6e8',
+	'Lightning Blue':		'#1164ac',
+	'Jungle Green':			'#426046',
+	
+	'Chili red':			'#d71d24',
+	'Blazing Red':			'#d71d24',
+	
+	'Pepper white':			'#e4dfce',
+	'Light white':			'#e4dfce',
+
+}
+
 // Setup namespace and some global variables
 
 var $html	= $( 'html' );

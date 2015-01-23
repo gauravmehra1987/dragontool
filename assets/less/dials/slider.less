@@ -11,7 +11,14 @@
 	height: @sliderH;
 	width: @sliderW;
 
-	.bg, .wrapper, .control-bg-wrapper, .mask, .handle { .align-centers; } // Center all layers
+	.bounds, .bg, .wrapper, .control-bg-wrapper, .mask, .handle { .align-centers; } // Center all layers
+
+	.bounds {
+
+		top: -27px;
+		bottom: -28px;
+
+	}
 
 	.bg { .sprite-range-bg( @rangeBaseH, @rangeBaseW ); }
 	.mask {
@@ -22,6 +29,7 @@
 		width: 100%;
 
 	}
+
 	.handle {
 
 		@hH: ( @range-handle-height / @rangeBaseH ) * 100%;
@@ -40,9 +48,10 @@
 		@rH: @range-bg-height + @range-handle-height;
 		@rW: @range-bg-width;
 
-		overflow: hidden;
+		overflow: visible;
 
-		.height_pct( @rH, @rangeBaseH );
+		// .height_pct( @rH, @rangeBaseH );
+		height: 100%; // firefox bug
 		.width_pct( @rW, @rangeBaseW );
 
 	}

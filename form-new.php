@@ -221,7 +221,7 @@
 
 	</div>
 
-	<div class="form-control append full-width">
+	<div class="form-control">
 
 		<button type="submit">Submit</button>
 
