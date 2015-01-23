@@ -145,7 +145,7 @@
 		<%= form.field.submit %>
 		/build -->
 
-		<button class="control-bg" type="submit">Submit</button>
+		<button id="form-submit" class="switch-bg" type="submit">Submit</button>
 
 	</div>
 

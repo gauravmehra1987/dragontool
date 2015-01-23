@@ -7,7 +7,7 @@
 
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
-	<main class="layout fixed">
+	<main class="layout">
 		
 		<div class="column left">
 			
@@ -21,7 +21,7 @@
 
 		<div class="column right">
 
-			<!-- build:include sink.php --><?php require( 'sink.php' ); ?><!-- /build -->
+			<!-- build:include welcome-panel.php --><?php require( 'home-panels.php' ); ?><!-- /build -->
 
 		</div><!-- end div.column right -->
 

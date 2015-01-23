@@ -2,7 +2,7 @@
 	
 	<div class="scale">
 		
-		<div class="control-bg"></div><!-- end div.control-bg -->
+		<div class="switch-bg"></div><!-- end div.switch-bg -->
 		<div class="indicators"></div><!-- end div.indicators -->				
 		<div class="knob"></div><!-- end div.knob -->				
 		<div class="arrow"></div><!-- end div.arrow -->

@@ -6,7 +6,7 @@
 		
 		<section class="car-price">
 
-			<p class="price-span"><span class="currency">£</span><span class="price" data-model-price>259</span><span class="permonth">per<br />month</span></p>
+			<p class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span></p>
 
 			<div><a href="#" class="button gray">Go back</a></div>
 			
@@ -14,7 +14,7 @@
 
 		<section class="car-details">
 
-			<h1 class="control-color">Mini Cooper S Hatch 5-Door</h1>
+			<h1 class="switch-color">Mini Cooper S Hatch 5-Door</h1>
 
 			<div class="terms">
 				

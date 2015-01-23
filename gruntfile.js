@@ -30,7 +30,7 @@ module.exports = function( grunt ) {
 
 					global:			grunt.file.readJSON( 'razor_src/global.json' ),
 					form:			grunt.file.readJSON( 'razor_src/form.json' ),
-					details:		grunt.file.readJSON( 'razor_src/details.json' ),
+					details:		grunt.file.readJSON( 'razor_src/results-details.json' ),
 					results:		grunt.file.readJSON( 'razor_src/results.json' ),
 					home:			grunt.file.readJSON( 'razor_src/home.json' ),
 					dashboard:		grunt.file.readJSON( 'razor_src/dashboard.json' ),
@@ -61,7 +61,7 @@ module.exports = function( grunt ) {
 					// Results
 
 					'razor_templates/Results/Index.cshtml':							[ 'results.php' ],
-					'razor_templates/Results/_ResultDetail.cshtml':					[ 'details.php' ],
+					'razor_templates/Results/_ResultDetail.cshtml':					[ 'results-details.php' ],
 
 					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'form-new.php' ],
 					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'form-existing.php' ],
@@ -74,6 +74,19 @@ module.exports = function( grunt ) {
 				}
 
 			},
+
+		},
+
+		prettify: {
+		
+			razor: {		
+				
+				expand:	true,
+				cwd:	'razor_templates',
+				src:	[ '**/*.{cshtml,CSHTML}' ],
+				dest:	'razor_templates',
+
+			}
 
 		},
 
@@ -599,6 +612,8 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-newer' );
 	grunt.loadNpmTasks( 'grunt-notify' );
 	grunt.loadNpmTasks( 'grunt-processhtml' );
+	grunt.loadNpmTasks( 'grunt-htmlclean' );
+	grunt.loadNpmTasks( 'grunt-prettify' );
 
 	// Placeholder task
 	
@@ -610,7 +625,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'sprites', 'sprite' );
 	grunt.registerTask( 'fonts', [ 'ttf2woff', 'ttf2eot', 'fontface' ] );
 	grunt.registerTask( 'images', [ 'imagemin', 'copy:images', 'clean:optimized' ] );
-	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'copy:dotnet' ] );
+	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'prettify', 'copy:dotnet' ] );
 	grunt.registerTask( 'tidy', [ 'clean', 'cleanempty' ] );
 	grunt.registerTask( 'dotnet', [ 'templates', 'copy:assets', 'clean:dotnet_assets' ] );
 
@@ -641,15 +656,11 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'compile',	[ 'compile-dev' ] );
 
-	grunt.registerTask( 'build',	[
-
-		'dotnet',
-
-	] );
+	grunt.registerTask( 'build',	[ 'compile-dist', 'dotnet' ] );
 
 	grunt.registerTask( 'default',	[
 
-		'compile-dev',
+		'compile',
 		'watch'
 
 	] );

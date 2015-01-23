@@ -116,7 +116,7 @@
 		overflow: hidden;
 		position: relative;
 
-		&.fixed { height: calc( 785px - 4px ); }
+		height: 785px;
 
 		.column {
 
@@ -136,7 +136,23 @@
 
 			.panel {
 
-				display: none;
+				.transition( all 0.2s );
+
+				opacity: 0;
+				position: absolute;
+				visibility: hidden;
+
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+
+				&.panel-active {
+
+					opacity: 1;
+					visibility: visible;
+
+				}
 
 			}
 
@@ -146,7 +162,7 @@
 
 }
 
-// Specific
+// Common elements
 
 .panel {
 
@@ -155,6 +171,8 @@
 	margin-left: 2px;
 	padding: @margin * 1.5;
 	position: relative;
+
+	&.panel-active {}
 
 }
 
@@ -195,6 +213,20 @@
 
 }
 
+.ministry {
+
+	.hide-text;
+
+	background: url( ../img/ministry-of-finance.png ) 50% 50% no-repeat;
+	background-size: 100%;
+	display: table;
+	margin: 0 auto;
+
+	height: 100px;
+	width: 100px;
+
+}
+
 .terms {
 
 	&, p {
@@ -208,42 +240,67 @@
 
 }
 
-#default {
+// Panel-specific
+
+.panel-framed {
 
 	&.centered { .tc; }
 
-	border: solid 12px @grayFrame;	
+	border: solid 12px @grayFrame;
 
-	.fixed & {
+}
 
-		position: absolute;
+// Results page
 
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+#car {
+
+	background: url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
+	background-size: contain;
+	margin: 0;
+
+	.car-desc {
+
+		margin: 0 @margin;
+		overflow: hidden;
+		position: relative;
+
+		height: 150px;
+
+		.car-price {
+
+			position: absolute;
+
+			top: 0;
+			left: 0;
+
+			width: 220px;
+
+		}
+
+		.car-details {
+
+			position: absolute;
+
+			top: 0;
+			right: 0;
+
+			width: 740px - ( 220 + @margin );
+
+			h1 { font-size: @fontSizeLarge; }
+
+		}
 
 	}
+
+}
+
+#welcome {
 
 	.header {
 
 		border-bottom: solid 1px @formGrayDark;
 		margin: 0 0 @margin 0;
 		text-transform: uppercase;
-
-		.ministry {
-
-			.hide-text;
-
-			background: url( ../img/ministry-of-finance.png ) 50% 50% no-repeat;
-			background-size: 100%;
-			display: table;
-			margin: 0 auto;
-
-			height: 100px;
-			width: 100px;
-
-		}
 
 		.strike-through {
 
@@ -274,12 +331,14 @@
 		.title { text-transform: uppercase; }
 
 	}
-
+	
 }
 
 #results {
 
 	padding-top: 30px + ( @margin * 1.5 );
+
+	hr { margin: 0; }
 
 	.control-title {
 
@@ -306,7 +365,7 @@
 
 	}
 
-	.model-image { margin: auto -( @margin * 1.5 ); }
+	.model-image { margin: @margin -( @margin * 1.5 ); }
 
 	.gimmick {
 
@@ -347,41 +406,39 @@
 
 }
 
-#car {
+#thanks {
 
-	background: url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
-	background-size: contain;
-	margin: 0;
+	header, footer { .tc; }
 
-	.car-desc {
+	header h3 { margin-top: @margin; }
 
-		margin: 0 @margin;
-		overflow: hidden;
-		position: relative;
+	footer {
 
-		height: 150px;
+		margin: @margin * 2 0 0;
 
-		.car-price {
+		.form-control { margin: 0; }
 
-			position: absolute;
+	}
 
-			top: 0;
-			left: 0;
+	.item {
 
-			width: 220px;
+		font-size: @fontSizeMedium;
+		margin: 0 0 @margin / 2;
+
+		&:before {
+
+			.icon;
+			.icon-raquo;
+
+			margin-right: 0.5em;
 
 		}
 
-		.car-details {
+		& + p {
 
-			position: absolute;
-
-			top: 0;
-			right: 0;
-
-			width: 740px - ( 220 + @margin );
-
-			h1 { font-size: @fontSizeLarge; }
+			font-size: @fontSizeSmall;
+			line-height: 1.5em;
+			margin: 0 0 0 @fontSizeMedium * 1.5;
 
 		}
 

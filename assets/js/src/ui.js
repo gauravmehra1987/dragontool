@@ -16,9 +16,9 @@ FastClick.attach( document.body );
 
 $.subscribe( 'colour-change', function( e, color) {
 
-	$( '.control-bg' ).css( 'background-color', color );
-	$( '.control-bg' ).css( 'border-color', color );
-	$( '.control-color' ).css( 'color', color );
+	$( '.switch-bg' ).css( 'background-color', color );
+	$( '.switch-bg' ).css( 'border-color', color );
+	$( '.switch-color' ).css( 'color', color );
 
 } );
 
@@ -122,7 +122,7 @@ function ui(){
 	}
 
 	var price_el		= document.querySelector( '.control.slider .handle' );
-	var price_height	= parseInt( $( '.control.slider .control-bg-wrapper' ).height() );
+	var price_height	= parseInt( $( '.control.slider .switch-bg-wrapper' ).height() );
 	var price_slider	= new Draggable( price_el, {
 
 		type: 'y',
@@ -133,7 +133,7 @@ function ui(){
 
 			var level = getPriceValue( this.endY );
 
-			$( '.control.slider .control-bg' ).css( 'height', level[ 0 ] + '%' );
+			$( '.control.slider .switch-bg' ).css( 'height', level[ 0 ] + '%' );
 
 		},
 		// liveSnap: true,
@@ -480,17 +480,49 @@ function ui(){
 
 // Dashboard
 
-if( $( '#dash' )[ 0 ] ) { ui(); }
+if( $( '#dash' )[ 0 ] ) {
+
+	ui();
+
+	$( '.car-link' ).click( function( e ) {
+
+		e.preventDefault();
+
+		$( '.layout' ).addClass( 'animated fadeOutLeftBig' );
+
+		setTimeout( function() {
+
+			$.get( 'results.php', function( data ) {
+
+				$( '.layout' ).replaceWith( $( data ).find( '.layout' ) );
+
+				Mini.DOMCtrl.panelControl( 'default' );
+
+				$( 'form' ).validate();
+
+				$.publish('colour-change', carColors[ 'Electric Blue' ] );
+
+				$( '#form-submit' ).click( function( e ) {
+
+					e.preventDefault();
+
+					Mini.DOMCtrl.panelControl( 'thanks' );
+
+				} );
+
+			} );
+
+		}, 250 );
+
+	} );
+
+}
 
 // Results page
 
 else {
 
-	Mini.DOMCtrl.panelControl( 'default' );
-
-	$( 'form' ).validate();
-
-	$.publish('colour-change', carColors[ 'Electric Blue' ] );
+	
 
 }
 

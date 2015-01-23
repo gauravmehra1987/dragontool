@@ -2,7 +2,7 @@
 	
 	<div class="base">
 		
-		<div class="control-bg"></div><!-- end div.control-bg -->
+		<div class="switch-bg"></div><!-- end div.switch-bg -->
 		<div class="dial minimalist"></div><!-- end div.dial -->
 		<div class="arrows">
 

@@ -71,8 +71,8 @@ Mini.DOMCtrl = {
 	},
 
 	panelControl: function(panel){
-		this._$page.find('[data-panel-name]').hide();
-		this._$page.find('[data-panel-name="' + panel + '"]').show();
+		this._$page.find('[data-panel-name]').removeClass( 'panel-active' );
+		this._$page.find('[data-panel-name="' + panel + '"]').addClass( 'panel-active' );
 	},
 
 	// Contact the API and collect the data
@@ -324,7 +324,9 @@ Mini.DOMCtrl = {
 				$panel.find('[data-model-name]').html(car.Model);
 				$panel.find('[data-model-code]').html(car.ModelCode);
 				$panel.find('[data-model-price]').html(car.Cost);
-				$panel.find('[data-model-image]').attr({src: imageUrl + car.ModelCode + '.jpg'});
+				
+				$panel.find('[data-model-image]').hide().attr( { src: imageUrl + car.ModelCode + '.jpg' } ).fadeIn( 200 );
+
 				$panel.find('[data-terms]').html(car.TermsConditions);
 				$panel.find('[data-results-link]').attr({href: resultsPageUrl($customerId, resultsUrl, car.ModelCode)});
 

@@ -1,4 +1,4 @@
-<div id="default" class="panel centered" data-panel-name="default">
+<div id="welcome" class="panel panel-framed centered" data-panel-name="default">
 
 	<header class="header">
 		
@@ -21,12 +21,12 @@
 
 </div><!-- end div#welcome.panel -->
 
-<div id="results" class="panel" data-panel-name="results">
+<div id="results" class="panel panel-results" data-panel-name="results">
 
 	<h5 class="control-title">Your results</h5>
 
-	<h3 class="modelname control-color" data-model-name>model name</h3>
-	<div class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span><a href="results.php?m=XM72" class="button control-bg car-link" data-results-link-x>Go see</a></div>
+	<h3 class="modelname switch-color" data-model-name>model name</h3>
+	<div class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span><a href="results.php?m=XM72" class="button switch-bg car-link" data-results-link-x>Go see</a></div>
 	
 	<div class="model-image">
 
@@ -42,14 +42,14 @@
 
 	<div>
 		
-		<p class="gimmick">Or for £<span data-model-price>0</span>...<br />you could buy <span class="control-color">102 watermelons</span>.</p>
+		<p class="gimmick">Or for £<span data-model-price>0</span>...<br />you could buy <span class="switch-color">102 watermelons</span>.</p>
 
 		<ul class="related">
 
-			<li><a href="#" class="control-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
-			<li><a href="#" class="control-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
-			<li><a href="#" class="control-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
-			<li><a href="#" class="control-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
 
 		</ul><!-- end ul.related -->
 

@@ -4,7 +4,7 @@
 
 		<div class="wrap">
 
-			<div class="control-bg"></div><!-- end div.control-bg -->
+			<div class="switch-bg"></div><!-- end div.switch-bg -->
 
 			<div class="slots">
 
@@ -21,7 +21,7 @@
 
 		<div class="wrap">
 
-			<div class="control-bg"></div><!-- end div.control-bg -->
+			<div class="switch-bg"></div><!-- end div.switch-bg -->
 
 			<div class="slots">
 
@@ -41,7 +41,7 @@
 
 		<div class="wrap">
 
-			<div class="control-bg"></div><!-- end div.control-bg -->
+			<div class="switch-bg"></div><!-- end div.switch-bg -->
 
 			<div class="slots">
 			
@@ -62,7 +62,7 @@
 
 		<div class="wrap">
 
-			<div class="control-bg"></div><!-- end div.control-bg -->
+			<div class="switch-bg"></div><!-- end div.switch-bg -->
 
 			<div class="slots">
 			
@@ -83,7 +83,7 @@
 
 		<div class="wrap">
 
-			<div class="control-bg"></div><!-- end div.control-bg -->
+			<div class="switch-bg"></div><!-- end div.switch-bg -->
 
 			<div class="slots">
 			
