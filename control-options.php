@@ -1,31 +1,55 @@
 <div class="control options">
 
-	<div class="option opts-awd">
+	<div class="res-wrap">
 
-		<input id="4wd" name="4wd" value="1" type="checkbox" />
-		<label for="4wd"><span class="switch-bg">4WD</span><div class="light switch-bg"></div><!-- end div.light --></label>
+		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+	
+		<div class="option opts-awd">
 
-	</div><!-- end div.option -->
+			<input id="4wd" name="4wd" value="1" type="checkbox" />
+			<label for="4wd"><span class="switch-bg">4WD</span><div class="light switch-bg"></div><!-- end div.light --></label>
 
-	<div class="option opts-hp">
+		</div><!-- end div.option -->
 
-		<input id="hp" name="hp" value="2" type="checkbox" />
-		<label for="hp"><span class="switch-bg">High position</span><div class="light switch-bg"></div><!-- end div.light --></label>
+	</div><!-- end div.res-wrap -->
 
-	</div><!-- end div.option -->
+	<div class="res-wrap">
 
-	<div class="option opts-dt">
+		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+	
+		<div class="option opts-hp">
 
-		<input id="dt" name="dt" value="3" type="checkbox" />
-		<label for="dt"><span class="switch-bg">Drop top</span><div class="light switch-bg"></div><!-- end div.light --></label>
+			<input id="hp" name="hp" value="2" type="checkbox" />
+			<label for="hp"><span class="switch-bg">High position</span><div class="light switch-bg"></div><!-- end div.light --></label>
 
-	</div><!-- end div.option -->
+		</div><!-- end div.option -->
 
-	<div class="option opts-tp">
+	</div><!-- end div.res-wrap -->
 
-		<input id="tp" name="tp" value="4" type="checkbox" />
-		<label for="tp"><span class="switch-bg">Teleportation</span><div class="light switch-bg"></div><!-- end div.light --></label>
+	<div class="res-wrap">
 
-	</div><!-- end div.option -->
+		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+	
+		<div class="option opts-dt">
+
+			<input id="dt" name="dt" value="3" type="checkbox" />
+			<label for="dt"><span class="switch-bg">Drop top</span><div class="light switch-bg"></div><!-- end div.light --></label>
+
+		</div><!-- end div.option -->
+
+	</div><!-- end div.res-wrap -->
+
+	<div class="res-wrap">
+
+		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+	
+		<div class="option opts-tp">
+
+			<input id="tp" name="tp" value="4" type="checkbox" />
+			<label for="tp"><span class="switch-bg">Teleportation</span><div class="light switch-bg"></div><!-- end div.light --></label>
+
+		</div><!-- end div.option -->
+
+	</div><!-- end div.res-wrap -->
 
 </div><!-- end div.control options -->

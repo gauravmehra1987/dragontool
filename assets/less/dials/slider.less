@@ -11,12 +11,14 @@
 	height: @sliderH;
 	width: @sliderW;
 
+	.responsive;
+
 	.bounds, .bg, .wrapper, .switch-bg-wrapper, .mask, .handle { .align-centers; } // Center all layers
 
 	.bounds {
 
-		top: -27px;
-		bottom: -28px;
+		top: -( 27px / @rangeBaseH ) * 100%;
+		bottom: -( 28px / @rangeBaseH ) * 100%;
 
 	}
 
@@ -49,19 +51,16 @@
 		@rW: @range-bg-width;
 
 		overflow: visible;
-
-		// .height_pct( @rH, @rangeBaseH );
+		
 		height: 100%; // firefox bug
+
 		.width_pct( @rW, @rangeBaseW );
 
 	}
 
 	.switch-bg-wrapper {
 
-		@mH: ( @range-bg-height / @rangeBaseH ) * @sliderH;
-
-		max-height: @mH;
-
+		max-height: 100%;
 		width: 100%;
 
 		.height_pct( @range-bg-height, @rangeBaseH );
@@ -80,14 +79,3 @@
 	}
 
 }
-
-// @media ( max-width: 720px ) {
-
-// 	html body #dash #dash-right #c-price .control.slider {
-
-// 		height: @sliderH * 0.7;
-// 		width: @sliderW * 0.7;
-
-// 	}
-
-// }

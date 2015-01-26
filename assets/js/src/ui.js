@@ -1,5 +1,45 @@
 // TODO: convert to OO
 
+$( '.control-title' ).click( function( e ) {
+
+	e.preventDefault();
+	
+	$( this ).siblings( '.control-wrapper' ).toggle();
+
+	//.closest( '.control-wrapper' ).show();
+
+} );
+
+// Preload images to avoid nasty visual glitches
+
+$.get( 'preload.php', function( images ){
+
+	var loaded = 0;
+
+	$.map( images, function( el ) {
+
+		var imagePreload = new Image();
+
+		imagePreload.src = el;
+
+		imagePreload.addEventListener( 'load', function() {
+
+			loaded++;
+
+			var unit = images.length / 100;
+			var percentage = ( loaded / images.length ) * 100;
+			var progress;
+
+			progress = Math.floor( percentage );
+
+			// console.log( progress );
+
+		}, false);
+
+	} );
+
+} );
+
 // ################################################## //
 //
 // FastClick & some global variables
@@ -271,10 +311,13 @@ function ui(){
 	var mpg_steps	= 13;
 	var mpg_min		= 25;
 	var mpg_max		= 80;
+	var mpg_snap	= 360 / 18;
 	var mpg_knob	= new Draggable( mpg_el, {
 
 		type:	'rotation',
 		bounds:	{ minRotation: -mpg_bounds, maxRotation: mpg_bounds },
+		liveSnap: true,
+		throwProps: true,
 		onDrag:	function() {
 
 			var actual_value	= ( this.rotation + mpg_bounds ) / ( mpg_bounds * 2 );
@@ -292,6 +335,8 @@ function ui(){
 			$( '#mpg_value' ).text( v );
 
 		},
+
+		snap: function( endValue ) { return Math.round( endValue / mpg_snap ) * mpg_snap; }
 
 	} );
 

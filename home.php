@@ -9,19 +9,19 @@
 
 	<main class="layout">
 		
-		<div class="column left">
+		<div class="column right">
 			
+			<!-- build:include welcome-panel.php --><?php require( 'home-panels.php' ); ?><!-- /build -->
+
+		</div><!-- end div.column left -->
+
+		<div class="column left">
+
 			<!-- build:template
 			<%= home.dashboard %>
 			/build -->
 
 			<!-- build:remove --><?php require( 'dashboard.php' ); ?><!-- /build -->
-
-		</div><!-- end div.column left -->
-
-		<div class="column right">
-
-			<!-- build:include welcome-panel.php --><?php require( 'home-panels.php' ); ?><!-- /build -->
 
 		</div><!-- end div.column right -->
 

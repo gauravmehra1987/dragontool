@@ -120,7 +120,7 @@
 
 		.column {
 
-			float: left;
+			float: right;
 			position: relative;
 
 			&.left { width: 780px; }
@@ -445,3 +445,93 @@
 	}
 
 }
+
+// Responsive
+
+@media ( max-width: 720px ) {
+
+	html > body .layout-wrapper {
+
+		.layout-header, .layout-footer, #c-bums, #c-speed { display: none; }
+
+		.layout {
+
+			max-width: 800px;
+
+			height: auto;
+
+			.column {
+
+				&.left, &.right {
+
+					clear: both;
+					float: none;
+					overflow: hidden;
+
+					height: auto;
+					width: auto;
+
+					.panel {
+
+						position: static;
+
+						width: auto;
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	html > body .layout-wrapper {
+
+		.panel {
+
+			&#welcome header h1 { font-size: 24px; }
+
+			&#results { display: none; }
+
+		}
+
+		.control-wrapper { display: none; }
+
+		.control-title {
+
+			.tl;
+
+			color: @white;
+			padding: @margin;
+			position: relative;
+
+			&:before {
+
+				.icon;
+				.icon-circle-empty;
+
+				color: fadeout( @white, 50% );
+				margin-right: 0.5em;
+
+			}
+
+			&:after {
+
+				.icon;
+				.icon-down-thick;
+
+				margin-top: -0.5em;
+				position: absolute;
+
+				top: 50%;
+				right: @margin;
+
+			}
+		}
+
+	}
+
+}
+

@@ -1,5 +1,16 @@
 @dashGutter: 2px;
 
+.res-wrap {
+
+	position: relative;
+
+	width: 100%;
+	height: auto;
+
+	.img-base { opacity: 0; }
+
+}
+
 // Background switcher
 
 .switch-bg {
@@ -54,7 +65,24 @@
 
 				height: ~'calc( 100% - 30px )';
 
-				.control-inner { .align-middle; }
+				.control-inner {
+
+					.align-middle;
+
+					// This is to create responsive images
+
+					@media ( max-width: 720px ) {
+
+						.transform;
+
+						position: static;
+
+						height: auto;
+						width: 100%;
+
+					}
+
+				}
 
 			}
 
@@ -101,8 +129,6 @@
 
 @media ( max-width: 720px ) {
 
-	#tools { display: none; }
-
 	#dash {
 
 		height: auto;
@@ -124,16 +150,13 @@
 
 				.control-wrapper {
 
-					height: 215px;
-					height: 600px;
+					.control-inner {
 
-					// .control-inner {
+						.transform; // remove transform and make position static
 
-					// 	.transform; // remove transform and make position static
+						position: static;
 
-					// 	position: static;
-
-					// }
+					}
 
 				}
 

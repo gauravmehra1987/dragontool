@@ -331,19 +331,6 @@ module.exports = function( grunt ) {
 		// Copy images
 		
 		copy: {
-		
-			fancybox: {
-
-				files: [ {
-
-					expand:	true,
-					cwd:	paths.bower + 'fancybox/source',
-					src:	[ '**/*.{png,jpg,gif,PNG,JPG,GIF,jpeg,JPEG}' ],
-					dest:	'assets/img/fancybox'
-
-				} ]
-
-			},
 
 			slick: {
 

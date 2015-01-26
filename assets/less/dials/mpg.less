@@ -11,6 +11,8 @@
 	height: @mpgH;
 	width: @mpgW;
 
+	.responsive;
+
 	.scale, .switch-bg, .indicators, .knob, .arrow { .align-centers; } // Center all layers
 
 	.knob { .sprite-mpg-knob( @mpgBaseH, @mpgBaseW ); }
@@ -24,19 +26,19 @@
 
 		background: darken( @dialGray, 10% );
 		border: solid 1px darken( @white, 85% );
-		border-radius: 3px;
+		border-radius: 10%;
 		box-shadow: 0 6px 10px @black inset;
 		color: @white;
 		font-weight: bold;
 		margin: 0 auto;
-		padding: 3px;
+		padding: 3% 0;
 		position: absolute;
 
 		left: 0;
 		bottom: 0;
 		right: 0;
 
-		width: 2em;
+		width: 25%;
 
 	}
 
@@ -57,16 +59,5 @@
 	&.scale-11 .indicators { .sprite-mpg-11( @mpgBaseH, @mpgBaseW ); }
 	&.scale-12 .indicators { .sprite-mpg-12( @mpgBaseH, @mpgBaseW ); }
 	&.scale-13 .indicators { .sprite-mpg-13( @mpgBaseH, @mpgBaseW ); }
-
-}
-
-@media ( max-width: 720px ) {
-
-	html body #dash #dash-left #c-mpg .control.mpg {
-
-		height: @mpgH * 1.5;
-		width: @mpgW * 1.5;
-
-	}
 
 }
