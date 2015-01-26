@@ -71,7 +71,7 @@ namespace Combobulator.Classes
             }
             catch (Exception ex)
             {
-                log.Debug("GetCustomerById", ex);
+                log.Error("GetCustomerById", ex);
                 return new Customer();
             }
         }
