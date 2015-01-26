@@ -3,6 +3,7 @@ using Combobulator.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +11,8 @@ namespace Combobulator.Controllers
 {
     public class CustomerController : Controller
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [HttpPost]
         public ActionResult NewCustomerSubmit(FormCollection collection)
         {
@@ -38,15 +41,16 @@ namespace Combobulator.Controllers
                 {
                     if (customer.EmailResults == true)
                     {
-                        Email.Instance.SendEmailResults(customer);
+                        Email.Instance.EmailMeResults(customer);
                     }
 
                     Utils.Instance.SendNewCustomerData(customer);
                 }
                 return View("~/Views/Results/_FormConfirmation.cshtml");
             }
-            catch
+            catch (Exception ex)
             {
+                log.Error("NewCustomerSubmit", ex);
                 return View("~/Views/Results/_FormError.cshtml");
             }
         }
@@ -73,15 +77,26 @@ namespace Combobulator.Controllers
                 {
                     if (customer.EmailResults == true)
                     {
-                        Email.Instance.SendEmailResults(customer);
+                        Email.Instance.EmailMeResults(customer);
                     }
 
-                    Utils.Instance.SendExistingCustomerData(customer);
+                    if (!string.IsNullOrEmpty(customer.UserId))
+                    {
+                        // Send to API
+                        Action action = () => Utils.Instance.SendExistingCustomerData(customer);
+                        Utils.Instance.DoWithRetry(action, TimeSpan.FromSeconds(2));
+                    }
+                    else
+                    {
+                        // Email customer details
+                        Email.Instance.EmailCustomerDetails(customer);
+                    }
                 }
                 return View("~/Views/Results/_FormConfirmation.cshtml");
             }
-            catch
+            catch (Exception ex)
             {
+                log.Error("ExistingCustomerSubmit", ex);
                 return View("~/Views/Results/_FormError.cshtml");
             }
         }

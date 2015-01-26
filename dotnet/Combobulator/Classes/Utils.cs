@@ -11,6 +11,8 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Web.Configuration;
+using System.ComponentModel;
+using System.Threading;
 
 namespace Combobulator.Classes
 {
@@ -33,12 +35,13 @@ namespace Combobulator.Classes
         private string _systemId = WebConfigurationManager.AppSettings["FiscSystemId"];
         private string _random = WebConfigurationManager.AppSettings["FiscRandom"];
         private string _secretKey = WebConfigurationManager.AppSettings["FiscSecretKey"];
+        private string _hostUrl = WebConfigurationManager.AppSettings["FiscURL"];
 
         public Customer GetCustomerById(string customerId)
         {
             string action = "getcustomerdetails";
             string checksum = GetCustomerDetailsChecksum(_systemId, customerId, _secretKey, _random);
-            string url = string.Format("http://combobdev.emaster.me.uk/?script=EM/External&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&type=json", checksum, _systemId, action, customerId, _random);
+            string url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&type=json", checksum, _systemId, action, customerId, _random);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
@@ -78,29 +81,25 @@ namespace Combobulator.Classes
                 request_callback = "true",
                 request_early_redemption = "true"
             });
-            string url = string.Format("http://combobdev.emaster.me.uk/?script=EM/External&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customerId, _random, json);
+            string url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customerId, _random, json);
 
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "POST";
-                request.ContentType = @"application/json";
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                StreamReader responseStream = new StreamReader(response.GetResponseStream());
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = @"application/json";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader responseStream = new StreamReader(response.GetResponseStream());
 
-                string line = responseStream.ReadLine();
-                dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
-            }
-            catch (WebException ex)
+            string line = responseStream.ReadLine();
+            dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
+            if (obj.Error != null)
             {
-                WebResponse errorResponse = ex.Response;
-                using (Stream responseStream = errorResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
-                    String errorText = reader.ReadToEnd();
-                    // log errorText
-                }
-                throw;
+                eMasterResponseCode responseCode = (eMasterResponseCode)(Convert.ToInt32(obj.Error));
+                var type = typeof(eMasterResponseCode);
+                var member = type.GetMember(responseCode.ToString());
+                var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                var description = ((DescriptionAttribute)attributes[0]).Description;
+
+                throw new Exception("eMaster recordoutcome method - " + description);
             }
         }
 
@@ -137,6 +136,61 @@ namespace Combobulator.Classes
             {
                 return sb.ToString();
             }
+        }
+
+        public void DoWithRetry(Action action, TimeSpan sleepPeriod, int retryCount = 3)
+        {
+            while (true)
+            {
+                try
+                {
+                    action();
+                    break; // success!
+                }
+                catch
+                {
+                    if (--retryCount == 0) throw;
+                    else Thread.Sleep(sleepPeriod);
+                }
+            }
+        }
+
+        private enum eMasterResponseCode
+        {
+            [Description("System ID is invalid")]
+            SystemIdInvalid = 101,
+            [Description("Checksum is invalid – Either not 10 characters or incorrect")]
+            ChecksumInvalid = 102,
+            [Description("Customer reference is unknown")]
+            CustomerReferenceUnknown = 103,
+            [Description("Random value is invalid – Either not 10 characters or alphanumeric")]
+            RandomValueInvalid = 104,
+            [Description("System ID parameter not supplied")]
+            SystemIdNotSupplied = 201,
+            [Description("Checksum parameter not supplied")]
+            ChecksumNotSupplied = 202,
+            [Description("Random parameter not supplied")]
+            RandomNotSupplied = 203,
+            [Description("Customer reference parameter not supplied")]
+            CustomerReferenceNotSupplied = 204,
+            [Description("Outcome parameter not supplied")]
+            OutcomeNotSupplied = 205,
+            [Description("Received parameter not supplied")]
+            ReceivedParameterNotSupplied = 206,
+            [Description("Outcome successfully saved")]
+            OutSuccessfullySaved = 301,
+            [Description("Missing outcome parameters")]
+            MissingOutcomeParameter = 302,
+            [Description("Invalid parameter values")]
+            ParameterValuesInvalid = 303,
+            [Description("Unable to save outcome data")]
+            UnableToSaveOutcomeData = 304,
+            [Description("Unable to decode outcome")]
+            UnableToDecodeOutcome = 305,
+            [Description("Invalid action")]
+            InvalidAction = 401,
+            [Description("Action parameter not supplied")]
+            ActionParameterNotSupplied = 402
         }
     }
 }

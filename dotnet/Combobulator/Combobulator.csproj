@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Mandrill">
       <HintPath>..\packages\Mandrill.1.0.103.0\lib\net40\Mandrill.dll</HintPath>
     </Reference>
@@ -277,7 +280,8 @@
     <Content Include="Assets\sprites\slot-infant.png" />
     <Content Include="Assets\sprites\slot-man.png" />
     <Content Include="Assets\sprites\slot-woman.png" />
-    <Content Include="Content\EmailTemplate\EmailResults.htm" />
+    <Content Include="Content\EmailTemplate\EmailCustomerDetailsTemplate.htm" />
+    <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="DAL\Combobulator.dbml">

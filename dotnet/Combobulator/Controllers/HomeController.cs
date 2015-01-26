@@ -10,6 +10,8 @@ namespace Combobulator.Controllers
 {
     public class HomeController : Controller
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ActionResult Index()
         {
             string userId = string.Empty;
@@ -17,7 +19,14 @@ namespace Combobulator.Controllers
 
             if (!string.IsNullOrEmpty(Request.QueryString["c"]))
             {
-                customer = Utils.Instance.GetCustomerById(Request.QueryString["c"]);
+                try
+                {
+                    customer = Utils.Instance.GetCustomerById(Request.QueryString["c"]);
+                }
+                catch (Exception ex)
+                {
+                    log.Error("GetCustomerById", ex);
+                }
             }
 
             ViewBag.FirstName = customer != null ? customer.FirstName : "";

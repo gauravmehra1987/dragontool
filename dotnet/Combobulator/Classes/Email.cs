@@ -28,20 +28,50 @@ namespace Combobulator.Classes
         private string _host = WebConfigurationManager.AppSettings["EmailHost"];
         private string _username = WebConfigurationManager.AppSettings["EmailUsername"];
         private string _password = WebConfigurationManager.AppSettings["EmailPassword"];
-        private string _subject = WebConfigurationManager.AppSettings["EmailSubject"];
         private int _port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"]);
         private string _fromAddress = WebConfigurationManager.AppSettings["EmailFromAddress"];
         private string _fromName = WebConfigurationManager.AppSettings["EmailFromName"];
-        private string _template = WebConfigurationManager.AppSettings["EmailTemplate"];
         private string _assetUrl = WebConfigurationManager.AppSettings["EmailAssetUrl"];
 
-        public void SendEmailResults(Customer customer)
+        public void EmailMeResults(Customer customer)
+        {
+            string readFile = string.Empty;
+            string strBody = string.Empty;
+            string subject = "My MINI Combobulator Results";
+            string template = WebConfigurationManager.AppSettings["EmailMeResultsTemplate"];
+            using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(template)))
+            {
+                readFile = reader.ReadToEnd();
+            }
+            strBody = readFile;
+            strBody = strBody.Replace("[[]]", "");
+
+            SendEmail(customer.Email, subject, strBody);
+        }
+
+        public void EmailCustomerDetails(Customer customer)
+        {
+            string readFile = string.Empty;
+            string strBody = string.Empty;
+            string subject = "MINI Combobulator Customer Details";
+            string template = WebConfigurationManager.AppSettings["EmailCustomerDetailsTemplate"];
+            using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(template)))
+            {
+                readFile = reader.ReadToEnd();
+            }
+            strBody = readFile;
+            strBody = strBody.Replace("[[]]", "");
+
+            SendEmail(customer.Email, subject, strBody);
+        }
+
+        public void SendEmail(string to, string subject, string body)
         {
             MailMessage mail = new MailMessage();
-            mail.To.Add(customer.Email);
+            mail.To.Add(to);
             mail.From = new MailAddress(_fromAddress, _fromName);
-            mail.Subject = _subject;
-            mail.Body = CreateEmailBody(customer);
+            mail.Subject = subject;
+            mail.Body = body;
             mail.IsBodyHtml = true;
 
             using (SmtpClient smtp = new SmtpClient())
@@ -61,19 +91,6 @@ namespace Combobulator.Classes
                     string err = ex.Message;
                 }
             }
-        }
-
-        private string CreateEmailBody(Customer customer)
-        {
-            string readFile = string.Empty;
-            string strBody = string.Empty;
-            using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(_template)))
-            {
-                readFile = reader.ReadToEnd();
-            }
-            strBody = readFile;
-            strBody = strBody.Replace("[[]]", "");
-            return strBody;
         }
     }
 }
