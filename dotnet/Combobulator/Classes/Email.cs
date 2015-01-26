@@ -32,12 +32,15 @@ namespace Combobulator.Classes
         private string _fromAddress = WebConfigurationManager.AppSettings["EmailFromAddress"];
         private string _fromName = WebConfigurationManager.AppSettings["EmailFromName"];
         private string _assetUrl = WebConfigurationManager.AppSettings["EmailAssetUrl"];
+        private string _emailAddressTo = WebConfigurationManager.AppSettings["EmailAddressTo"];
+        private string _emailCustomerDetailsSubject = WebConfigurationManager.AppSettings["EmailCustomerDetailsSubject"];
+        private string _emailMeResultsSubject = WebConfigurationManager.AppSettings["EmailMeResultsSubject"];
 
         public void EmailMeResults(Customer customer)
         {
             string readFile = string.Empty;
             string strBody = string.Empty;
-            string subject = "My MINI Combobulator Results";
+            string subject = _emailMeResultsSubject;
             string template = WebConfigurationManager.AppSettings["EmailMeResultsTemplate"];
             using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(template)))
             {
@@ -53,7 +56,7 @@ namespace Combobulator.Classes
         {
             string readFile = string.Empty;
             string strBody = string.Empty;
-            string subject = "MINI Combobulator Customer Details";
+            string subject = _emailCustomerDetailsSubject;
             string template = WebConfigurationManager.AppSettings["EmailCustomerDetailsTemplate"];
             using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(template)))
             {
@@ -62,7 +65,7 @@ namespace Combobulator.Classes
             strBody = readFile;
             strBody = strBody.Replace("[[]]", "");
 
-            SendEmail(customer.Email, subject, strBody);
+            SendEmail(_emailAddressTo, subject, strBody);
         }
 
         public void SendEmail(string to, string subject, string body)
@@ -76,20 +79,13 @@ namespace Combobulator.Classes
 
             using (SmtpClient smtp = new SmtpClient())
             {
-                try
-                {
-                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    smtp.Host = _host;
-                    smtp.Port = _port;
-                    smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new System.Net.NetworkCredential(_username, _password);
-                    smtp.Send(mail);
-                }
-                catch (Exception ex)
-                {
-                    string err = ex.Message;
-                }
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Host = _host;
+                smtp.Port = _port;
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential(_username, _password);
+                smtp.Send(mail);
             }
         }
     }

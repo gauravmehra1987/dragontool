@@ -83,8 +83,17 @@ namespace Combobulator.Controllers
                     if (!string.IsNullOrEmpty(customer.UserId))
                     {
                         // Send to API
-                        Action action = () => Utils.Instance.SendExistingCustomerData(customer);
-                        Utils.Instance.DoWithRetry(action, TimeSpan.FromSeconds(2));
+                        Func<Customer, bool> func = new Func<Customer, bool>(Utils.Instance.SendExistingCustomerDataApi);
+                        bool success = Utils.Instance.DoFuncWithRetry(func, customer, TimeSpan.FromSeconds(2));
+
+                        //Action action = () => Utils.Instance.SendExistingCustomerData(customer);
+                        //Utils.Instance.DoWithRetry(action, TimeSpan.FromSeconds(2));
+
+                        // If send api fails then send to fallback email
+                        if (!success)
+                        {
+                            Email.Instance.EmailCustomerDetails(customer);
+                        }
                     }
                     else
                     {

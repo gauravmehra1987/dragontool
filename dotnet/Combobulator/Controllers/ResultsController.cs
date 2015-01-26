@@ -11,6 +11,7 @@ namespace Combobulator.Controllers
     public class ResultsController : Controller
     {
         private Combobulator.DAL.CombobulatorDataContext dbContext = new Combobulator.DAL.CombobulatorDataContext();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ActionResult Index()
         {
@@ -40,43 +41,50 @@ namespace Combobulator.Controllers
         [ChildActionOnly]
         public ActionResult CustomerForm(string id)
         {
-            // Build drop downs
-            IList<Combobulator.DAL.Title> dbTitles = dbContext.GetTitles().ToList();
-            var queryTitles = from t in dbTitles select new Title
-            {
-                Id = t.Id,
-                Name = t.Name
-            };
-
-            IList<Combobulator.DAL.Dealer> dbDealers = dbContext.GetDealers().ToList();
-            var queryDealers = from d in dbDealers select new Dealer
-            {
-                Id = d.Id,
-                Name = d.Name
-            };
-
             PartialViewResult view = null;
 
-            if (id != string.Empty)
+            try
             {
-                // Get customer from id
-                Customer customer = Utils.Instance.GetCustomerById(id);
-                customer.UserId = id;
-                customer.Titles = queryTitles.ToList();
-                customer.Dealers = queryDealers.ToList();
+                // Build drop downs
+                IList<Combobulator.DAL.Title> dbTitles = dbContext.GetTitles().ToList();
+                var queryTitles = from t in dbTitles
+                                  select new Title
+                                      {
+                                          Id = t.Id,
+                                          Name = t.Name
+                                      };
 
-                view = PartialView("_ExistingCustomerForm", customer);
+                IList<Combobulator.DAL.Dealer> dbDealers = dbContext.GetDealers().ToList();
+                var queryDealers = from d in dbDealers
+                                   select new Dealer
+                                       {
+                                           Id = d.Id,
+                                           Name = d.Name
+                                       };
+
+                if (id != string.Empty)
+                {
+                    // Get customer from id
+                    Customer customer = Utils.Instance.GetCustomerById(id);
+                    customer.Titles = queryTitles.ToList();
+                    customer.Dealers = queryDealers.ToList();
+
+                    view = PartialView("_ExistingCustomerForm", customer);
+                }
+                else
+                {
+                    Customer customer = new Customer();
+                    customer.Titles = queryTitles.ToList();
+                    customer.Dealers = queryDealers.ToList();
+
+                    view = PartialView("_ExistingCustomerForm", customer);
+                    // For phase 2
+                    //view = PartialView("_NewCustomerForm", customer);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Customer customer = new Customer();
-                customer.UserId = id;
-                customer.Titles = queryTitles.ToList();
-                customer.Dealers = queryDealers.ToList();
-
-                view = PartialView("_ExistingCustomerForm", customer);
-                // For phase 2
-                //view = PartialView("_NewCustomerForm", customer);
+                log.Error("CustomerForm", ex);
             }
 
             return view;
