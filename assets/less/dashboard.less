@@ -1,21 +1,10 @@
 @dashGutter: 2px;
 
-.res-wrap {
-
-	position: relative;
-
-	width: 100%;
-	height: auto;
-
-	.img-base { opacity: 0; }
-
-}
-
 // Background switcher
 
 .switch-bg {
 
-	.transition( background-color 0.2s linear );
+	// .transition( background-color 0.2s linear );
 
 	background-color: @red;
 	border-color: @red;
@@ -26,13 +15,59 @@
 
 	.tc;
 
-	background: lighten( @dialGray, 5% );
-	color: @grayDarker;
+	background: @dialGrayDark;
+	color: @dialGrayText;
 	display: block;
 	font-size: 14px;
 	line-height: 30px;
 	margin: @dashGutter @dashGutter 0;
 	text-transform: uppercase;
+
+	@media ( max-width: 720px ) {
+
+		.tl;
+
+		background: @dialGrayDark;
+		color: @white !important;
+		margin-bottom: @dashGutter !important;
+		padding: @margin;
+		padding-left: @margin * 2.5;
+		position: relative;
+
+		&.open + .control-wrapper { max-height: 600px !important; }
+
+		.light {
+
+			background: 0;
+			border: solid 4px @black;
+			border-radius: 100%;
+			box-shadow: 0 1px 0 fadeout( @grayDarker, 50% );
+			margin-top: -8px;
+			margin-left: -4px;
+			position: absolute;
+			
+			top: 50%;
+			left: @margin;
+
+			height: 8px;
+			width: 8px;
+
+		}
+
+		&:after {
+
+			.icon;
+			.icon-down-thick;
+
+			margin-top: -0.5em;
+			position: absolute;
+
+			top: 50%;
+			right: @margin;
+
+		}
+
+	}
 
 }
 
@@ -54,7 +89,7 @@
 		.top, .middle, .bottom, .inner-left, .inner-right {
 
 			background: @dialGray;
-			box-shadow: 0 0 0 @dashGutter @black inset;
+			box-shadow: 0 0 0 @dashGutter @trueBlack inset;
 			color: @grayDarker;
 			position: relative;
 
@@ -65,24 +100,7 @@
 
 				height: ~'calc( 100% - 30px )';
 
-				.control-inner {
-
-					.align-middle;
-
-					// This is to create responsive images
-
-					@media ( max-width: 720px ) {
-
-						.transform;
-
-						position: static;
-
-						height: auto;
-						width: 100%;
-
-					}
-
-				}
+				.control-inner { .align-middle; }
 
 			}
 
@@ -150,11 +168,23 @@
 
 				.control-wrapper {
 
+					.transition( all 0.2s linear );
+
+					margin: 0 !important;
+					max-height: 0;
+					overflow: hidden;
+
+					height: auto;
+
 					.control-inner {
 
 						.transform; // remove transform and make position static
 
+						margin: @margin 0;
 						position: static;
+
+						height: auto;
+						width: 100%;
 
 					}
 

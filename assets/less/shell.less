@@ -1,3 +1,33 @@
+// Responsive controls
+
+.res-wrap {
+
+	position: relative;
+
+	width: 100%;
+	height: auto;
+
+	.img-base {
+
+		opacity: 0;
+
+		height: auto;
+		width: auto;
+
+	}
+
+	@media ( max-width: 720px ) {
+
+		margin: auto;
+
+		width: ~'calc( 100% - 80px )';
+
+		.img-base { width: 100%; } // Stupid Firefox!
+
+	}
+
+}
+
 .layout-wrapper {
 
 	display: table;
@@ -11,6 +41,7 @@
 
 			display: block;
 			float: left;
+			margin: 0;
 
 			a {
 
@@ -136,9 +167,12 @@
 
 			.panel {
 
-				.transition( all 0.2s );
+				.box-sizing( border-box );
 
+				display: none;
+				margin-left: 2px;
 				opacity: 0;
+				padding: @margin * 1.5;
 				position: absolute;
 				visibility: hidden;
 
@@ -148,6 +182,8 @@
 				left: 0;
 
 				&.panel-active {
+
+					display: block;
 
 					opacity: 1;
 					visibility: visible;
@@ -162,19 +198,7 @@
 
 }
 
-// Common elements
-
-.panel {
-
-	.box-sizing( border-box );
-
-	margin-left: 2px;
-	padding: @margin * 1.5;
-	position: relative;
-
-	&.panel-active {}
-
-}
+// Common elements}
 
 .price-span {
 
@@ -452,13 +476,21 @@
 
 	html > body .layout-wrapper {
 
-		.layout-header, .layout-footer, #c-bums, #c-speed { display: none; }
-
 		.layout {
 
 			max-width: 800px;
 
 			height: auto;
+
+			.top, .middle, .bottom, .inner-left, .inner-right, .control-title {
+
+				display: block !important;
+				text-indent: 0 !important;
+
+				box-shadow: none;
+				margin: 0;
+
+			}
 
 			.column {
 
@@ -493,42 +525,6 @@
 
 			&#welcome header h1 { font-size: 24px; }
 
-			&#results { display: none; }
-
-		}
-
-		.control-wrapper { display: none; }
-
-		.control-title {
-
-			.tl;
-
-			color: @white;
-			padding: @margin;
-			position: relative;
-
-			&:before {
-
-				.icon;
-				.icon-circle-empty;
-
-				color: fadeout( @white, 50% );
-				margin-right: 0.5em;
-
-			}
-
-			&:after {
-
-				.icon;
-				.icon-down-thick;
-
-				margin-top: -0.5em;
-				position: absolute;
-
-				top: 50%;
-				right: @margin;
-
-			}
 		}
 
 	}

@@ -6,6 +6,7 @@
 
 .control.lifestyle {
 
+	background: @trueBlack;
 	position: relative;
 
 	height: @lifestyleBaseH;
@@ -13,7 +14,33 @@
 
 	.responsive;
 
-	.mask, .labels, .label-window, .window, .contents, .dial-shadow, .dial { .align-centers; }
+	left: -1px;
+
+	width: auto;
+
+	&:after {
+
+		.pseudo;
+
+		background: inherit;
+		position: absolute;
+		z-index: 0;
+
+		bottom: -( 20px - @dashGutter );
+		right: 0;
+		left: 0;
+
+		.height_pct( ( 20px - @dashGutter ), @lifestyleBaseH );
+
+	}	
+
+	.mask, .labels, .label-window, .window, .contents, .dial-shadow, .dial {
+
+		.align-centers;
+
+		z-index: 1;
+
+	}
 
 	.mask { .sprite-lifestyle-mask( @lifestyleBaseH, @lifestyleBaseW ); }
 	.label-window { .sprite-lifestyle-label-window( @lifestyleBaseH, @lifestyleBaseW ); }

@@ -22,23 +22,26 @@
 
 	.value {
 
+		.align-middle;
 		.tc;
+		.letter-spacing( 50 );
+		.transform( translateX( -50% ) );
 
-		background: darken( @dialGray, 10% );
-		border: solid 1px darken( @white, 85% );
-		border-radius: 10%;
+		border: solid 1px darken( @grayDarker, 24% );
+		border-radius: 15%; // about 5px
 		box-shadow: 0 6px 10px @black inset;
 		color: @white;
+		display: table;
+		font-family: @fontMiniHD;
+		font-size: @fontSizeMedium;
 		font-weight: bold;
 		margin: 0 auto;
-		padding: 3% 0;
-		position: absolute;
+		padding: 3% 6%;
 
-		left: 0;
+		top: auto;
 		bottom: 0;
-		right: 0;
 
-		width: 25%;
+		width: 1.5em;
 
 	}
 

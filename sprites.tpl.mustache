@@ -25,7 +25,8 @@
 	.sprite-base;
 	.width_pct( {{px.width}}, @baseW );
 
-	background-image: url( ../sprites/{{name}}.png );
+  background-image: ~'url( ../sprites/{{name}}.png )\9';
+	background-image: url( ../sprites/svg/{{name}}.svg );
 
 }
 

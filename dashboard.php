@@ -6,7 +6,7 @@
 			
 			<div class="top">
 
-				<h5 class="control-title">Bums on seats</h5>
+				<h5 class="control-title"><span class="light switch-light"></span>Bums on seats</h5>
 
 				<div id="c-bums" class="control-wrapper backline"><div class="control-inner">
 
@@ -24,7 +24,7 @@
 
 				<div class="inner-left">
 
-					<h5 class="control-title">Mpg</h5>
+					<h5 class="control-title"><span class="light switch-light"></span>Mpg</h5>
 
 					<div id="c-mpg" class="control-wrapper"><div class="control-inner">
 
@@ -40,7 +40,7 @@
 
 				<div class="inner-right">
 
-					<h5 class="control-title">Lifestyle</h5>
+					<h5 class="control-title"><span class="light switch-light"></span>Lifestyle</h5>
 
 					<div id="c-lifestyle" class="control-wrapper"><div class="control-inner">
 
@@ -58,7 +58,7 @@
 
 			<div class="bottom">
 
-				<h5 class="control-title">Luggage</h5>
+				<h5 class="control-title"><span class="light switch-light"></span>Luggage</h5>
 
 				<div id="c-luggage" class="control-wrapper"><div class="control-inner">
 
@@ -78,7 +78,7 @@
 			
 			<div class="top">
 
-				<h5 class="control-title">Options</h5>
+				<h5 class="control-title"><span class="light switch-light"></span>Options</h5>
 
 				<div id="c-options" class="control-wrapper"><div class="control-inner">
 
@@ -94,7 +94,7 @@
 
 			<div class="bottom">
 
-				<h5 class="control-title">Speed</h5>
+				<h5 class="control-title"><span class="light switch-light"></span>Speed</h5>
 
 				<div id="c-speed" class="control-wrapper backline"><div class="control-inner">
 
@@ -114,7 +114,7 @@
 			
 			<div class="top">
 
-				<h5 class="control-title">£ per month</h5>
+				<h5 class="control-title"><span class="light switch-light"></span>£ per month</h5>
 
 				<div id="c-price" class="control-wrapper"><div class="control-inner">
 
@@ -130,7 +130,7 @@
 
 			<div class="bottom">
 
-				<h5 class="control-title">Start</h5>
+				<h5 class="control-title"><span class="light switch-light"></span>Start</h5>
 
 				<div id="c-button" class="control-wrapper"><div class="control-inner">
 

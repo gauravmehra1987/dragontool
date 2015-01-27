@@ -24,7 +24,7 @@
 			& + label {
 
 				.box-sizing( border-box );
-				.transition( background 100ms ease-out );
+				// .transition( background 100ms ease-out );
 
 				display: block;
 				margin-left: -( ( 80px / @optionBaseW ) * 100% );
@@ -41,16 +41,18 @@
 				.light {
 
 					.pseudo;
-					.transition( box-shadow 1s linear, background 0.2s linear );
+					// .transition( box-shadow 1s linear, background 0.2s linear );
 
 					border-radius: 100%;
-					box-shadow: 0 0 3px black inset;
 					opacity: 0;
 					position: absolute;
 					z-index: 999;
 
 					top: ( ( 11px / @optionBaseH ) * 100% );
 					left: ( ( 22px / @optionBaseW ) * 100% );
+					
+					top: 10.4%;
+					left: 10.65%;
 
 					.height_pct( 8px, @optionBaseH );
 					.width_pct( 8px, 160px );
@@ -76,7 +78,7 @@
 
 					.align-centers;
 					.hide-text;
-					.transition( opacity 0.2s linear, background-color 0.2s linear );
+					// .transition( opacity 0.2s linear, background-color 0.2s linear );
 
 					border-radius: 100%;
 					display: block;

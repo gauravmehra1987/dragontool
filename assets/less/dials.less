@@ -60,73 +60,9 @@
 
 }
 
-// Lifestyle
-
-#c-lifestyle {
-
-	background: @trueBlack;
-	box-shadow: 0 -2px 0 0 @black inset, -2px -2px 0 0 @black inset, 2px -2px 0 0 @black inset;
-
-	&:before {
-
-		.pseudo;
-		.box-sizing( border-box );
-
-		background: @dialGray;
-		position: absolute;
-		z-index: 0;
-
-		height: 173px;
-
-		left: 2px;
-		right: 2px;
-
-
-	}
-
-	.control-lifestyle { z-index: 1; }
-
-	// Mobile
-
-	@media ( max-width: 720px ) {
-
-		// &:before { display: none; }
-
-		// .control.lifestyle {
-
-		// 	height: @lifestyleH * 1.5;
-		// 	width: @lifestyleW * 1.5;
-
-		// }
-
-	}
-
-}
-
 // Options
 
-#c-options {
-
-	margin-top: 10px;
-
-	// Mobile
-
-	@media ( max-width: 720px ) {
-
-		// .option {
-
-		// 	float: left;
-
-		// 	height: @optionH * 0.7;
-		// 	width: @optionW * 0.7;
-
-		// 	&:nth-of-type( 3 ) { clear: left; }
-
-		// }
-
-	}
-
-}
+#c-options { margin-top: 10px; }
 
 // Speed
 
@@ -165,5 +101,21 @@
 		right: -10px;
 
 	}
+
+}
+
+html body #dash #dash-right .bottom {
+
+	background: @dialGrayDark;
+
+	.control-title {
+
+		.hide-text;
+
+		background: @dialGrayDark;
+		color: transparent;
+
+	}
+
 
 }
