@@ -12,6 +12,7 @@ namespace Combobulator.Controllers
     public class CustomerController : Controller
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private Combobulator.DAL.CombobulatorDataContext dbContext = new Combobulator.DAL.CombobulatorDataContext();
 
         [HttpPost]
         public ActionResult NewCustomerSubmit(FormCollection collection)
@@ -37,11 +38,38 @@ namespace Combobulator.Controllers
                     EmailResults = collection["EmailResults"].Contains("true")
                 };
 
+                string modelCode = "XN12";
+                Combobulator.DAL.Car dbCar = dbContext.GetCar(modelCode).FirstOrDefault();
+                Car car = new Car
+                {
+                    Id = dbCar.Id,
+                    Model = dbCar.Model,
+                    ModelCode = dbCar.ModelCode,
+                    Colour = dbCar.Colour,
+                    Engine = dbCar.Engine,
+                    DisplayName = dbCar.DisplayName,
+                    Type = dbCar.Type,
+                    CapacityScale = dbCar.CapacityScale,
+                    LuggageScale = dbCar.LuggageScale,
+                    Options = dbCar.Options,
+                    PriceScale = dbCar.PriceScale,
+                    Cost = dbCar.Cost,
+                    PerformanceScale = dbCar.PerformanceScale,
+                    MPH = dbCar.MPH,
+                    EconomyScale = dbCar.EconomyScale,
+                    MPG = dbCar.MPG,
+                    UsageScale = dbCar.UsageScale,
+                    Alt1 = dbCar.Alt1,
+                    Alt2 = dbCar.Alt2,
+                    Alt3 = dbCar.Alt3,
+                    TermsConditions = dbCar.TermsConditions
+                };
+
                 if (ViewData.ModelState.IsValid)
                 {
                     if (customer.EmailResults == true)
                     {
-                        Email.Instance.EmailMeResults(customer);
+                        Email.Instance.EmailMeResults(customer, car);
                     }
 
                     Utils.Instance.SendNewCustomerData(customer);
@@ -73,11 +101,38 @@ namespace Combobulator.Controllers
                     EmailResults = collection["EmailResults"].Contains("true")
                 };
 
+                string modelCode = collection["ModelCode"];
+                Combobulator.DAL.Car dbCar = dbContext.GetCar(modelCode).FirstOrDefault();
+                Car car = new Car
+                {
+                    Id = dbCar.Id,
+                    Model = dbCar.Model,
+                    ModelCode = dbCar.ModelCode,
+                    Colour = dbCar.Colour,
+                    Engine = dbCar.Engine,
+                    DisplayName = dbCar.DisplayName,
+                    Type = dbCar.Type,
+                    CapacityScale = dbCar.CapacityScale,
+                    LuggageScale = dbCar.LuggageScale,
+                    Options = dbCar.Options,
+                    PriceScale = dbCar.PriceScale,
+                    Cost = dbCar.Cost,
+                    PerformanceScale = dbCar.PerformanceScale,
+                    MPH = dbCar.MPH,
+                    EconomyScale = dbCar.EconomyScale,
+                    MPG = dbCar.MPG,
+                    UsageScale = dbCar.UsageScale,
+                    Alt1 = dbCar.Alt1,
+                    Alt2 = dbCar.Alt2,
+                    Alt3 = dbCar.Alt3,
+                    TermsConditions = dbCar.TermsConditions
+                };
+
                 if (ViewData.ModelState.IsValid)
                 {
                     if (customer.EmailResults == true)
                     {
-                        Email.Instance.EmailMeResults(customer);
+                        Email.Instance.EmailMeResults(customer, car);
                     }
 
                     if (!string.IsNullOrEmpty(customer.UserId))

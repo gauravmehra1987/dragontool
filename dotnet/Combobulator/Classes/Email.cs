@@ -36,7 +36,7 @@ namespace Combobulator.Classes
         private string _emailCustomerDetailsSubject = WebConfigurationManager.AppSettings["EmailCustomerDetailsSubject"];
         private string _emailMeResultsSubject = WebConfigurationManager.AppSettings["EmailMeResultsSubject"];
 
-        public void EmailMeResults(Customer customer)
+        public void EmailMeResults(Customer customer, Car car)
         {
             string readFile = string.Empty;
             string strBody = string.Empty;
@@ -47,7 +47,13 @@ namespace Combobulator.Classes
                 readFile = reader.ReadToEnd();
             }
             strBody = readFile;
-            strBody = strBody.Replace("[[]]", "");
+            strBody = strBody.Replace("[[Title]]", customer.Title)
+                     .Replace("[[Firstname]]", customer.FirstName)
+                     .Replace("[[Lastname]]", customer.LastName)
+                     .Replace("[[ModelCode]]", car.ModelCode)
+                     .Replace("[[Model]]", car.Model)
+                     .Replace("[[Cost]]", car.Cost)
+                     .Replace("[[TermsConditions]]", car.TermsConditions);
 
             SendEmail(customer.Email, subject, strBody);
         }
@@ -63,7 +69,13 @@ namespace Combobulator.Classes
                 readFile = reader.ReadToEnd();
             }
             strBody = readFile;
-            strBody = strBody.Replace("[[]]", "");
+            strBody = strBody.Replace("[[Title]]", customer.Title)
+                     .Replace("[[Firstname]]", customer.FirstName)
+                     .Replace("[[Lastname]]", customer.LastName)
+                     .Replace("[[Telephone]]", customer.TelephoneHome)
+                     .Replace("[[Email]]", customer.Email)
+                     .Replace("[[Requestcallback]]", customer.RequestCallback ? "true" : "false")
+                     .Replace("[[RequestEarlyRedemption]]", customer.RequestEarlyRedemption ? "true" : "false");
 
             SendEmail(_emailAddressTo, subject, strBody);
         }
