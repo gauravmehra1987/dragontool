@@ -1,108 +1,119 @@
-<div class="controls">
-	
-	<div class="control roller">
+<div id="bums">
 
-		<div class="wrap">
+	<div id="reset"></div><!-- end div#reset -->
 
-			<div class="switch-bg"></div><!-- end div.switch-bg -->
+	<div id="rollers">
 
-			<div class="slots">
+		<div id="roller1" class="roller">
 
-				<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-				<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+			<div class="list">
 
-			</div><!-- end div.slots -->
+				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
+				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
+				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
+				<div class="item" data-value="Alien"><span class="svg" data-src="assets/sprites/svg/figure-alien.svg">Alien</span></div>
+				<div class="item" data-value="Boy"><span class="svg" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
+				<div class="item" data-value="Girl"><span class="svg" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
+				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
+				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
+				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
+				<div class="item bumper"><span>Bumper</span></div>
 
-		</div><!-- end div.wrap -->
-		
-	</div><!-- end div.control roller -->
+			</div>
 
-	<div class="control roller">
+			<div class="fake-list"></div><!-- end div.fake-list -->
 
-		<div class="wrap">
+		</div>
 
-			<div class="switch-bg"></div><!-- end div.switch-bg -->
+		<div id="roller2" class="roller">
 
-			<div class="slots">
+			<div class="list">
 
-				<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
-				<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
-				<div class="slot man"><span>Man</span></div><!-- end div.slot man -->	
-				<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
-				<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->								
+				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
+				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
+				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
+				<div class="item" data-value="Alien"><span class="svg" data-src="assets/sprites/svg/figure-alien.svg">Alien</span></div>
+				<div class="item" data-value="Boy"><span class="svg" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
+				<div class="item" data-value="Girl"><span class="svg" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
+				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
+				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
+				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
+				<div class="item bumper"><span>Bumper</span></div>
 
-			</div><!-- end div.slots -->
+			</div>
 
-		</div><!-- end div.wrap -->
-		
-	</div><!-- end div.control roller -->
+			<div class="fake-list"></div><!-- end div.fake-list -->
 
-	<div class="control roller">
+		</div>
 
-		<div class="wrap">
+		<div id="roller3" class="roller">
 
-			<div class="switch-bg"></div><!-- end div.switch-bg -->
+			<div class="list">
 
-			<div class="slots">
-			
-				<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
-				<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
-				<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
-				<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
-				<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-				<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
+				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
+				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
+				<div class="item" data-value="Alien"><span class="svg" data-src="assets/sprites/svg/figure-alien.svg">Alien</span></div>
+				<div class="item" data-value="Boy"><span class="svg" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
+				<div class="item" data-value="Girl"><span class="svg" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
+				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
+				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
+				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
+				<div class="item bumper"><span>Bumper</span></div>
 
-			</div><!-- end div.slots -->
+			</div>
 
-		</div><!-- end div.wrap -->
-		
-	</div><!-- end div.control roller -->
+			<div class="fake-list"></div><!-- end div.fake-list -->
 
-	<div class="control roller">
+		</div>
 
-		<div class="wrap">
+		<div id="roller4" class="roller">
 
-			<div class="switch-bg"></div><!-- end div.switch-bg -->
+			<div class="list">
 
-			<div class="slots">
-			
-				<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
-				<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
-				<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->									
-				<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
-				<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-				<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
+				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
+				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
+				<div class="item" data-value="Alien"><span class="svg" data-src="assets/sprites/svg/figure-alien.svg">Alien</span></div>
+				<div class="item" data-value="Boy"><span class="svg" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
+				<div class="item" data-value="Girl"><span class="svg" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
+				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
+				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
+				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
+				<div class="item bumper"><span>Bumper</span></div>
 
-			</div><!-- end div.slots -->
+			</div>
 
-		</div><!-- end div.wrap -->
-		
-	</div><!-- end div.control roller -->
+			<div class="fake-list"></div><!-- end div.fake-list -->
 
-	<div class="control roller">
+		</div>
 
-		<div class="wrap">
+		<div id="roller5" class="roller">
 
-			<div class="switch-bg"></div><!-- end div.switch-bg -->
+			<div class="list">
 
-			<div class="slots">
-			
-				<div class="slot empty"><span>Empty</span></div><!-- end div.slot boy -->
-				<div class="slot dog"><span>Dog</span></div><!-- end div.slot dog -->
-				<div class="slot cat"><span>Cat</span></div><!-- end div.slot cat -->
-				<div class="slot alien"><span>Alien</span></div><!-- end div.slot alien -->
-				<div class="slot boy"><span>Boy</span></div><!-- end div.slot boy -->
-				<div class="slot girl"><span>Girl</span></div><!-- end div.slot girl -->
-				<div class="slot infant"><span>Infant</span></div><!-- end div.slot infant -->
-				<div class="slot man"><span>Man</span></div><!-- end div.slot man -->
-				<div class="slot woman"><span>Woman</span></div><!-- end div.slot woman -->
+				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
+				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
+				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
+				<div class="item" data-value="Alien"><span class="svg" data-src="assets/sprites/svg/figure-alien.svg">Alien</span></div>
+				<div class="item" data-value="Boy"><span class="svg" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
+				<div class="item" data-value="Girl"><span class="svg" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
+				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
+				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
+				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
+				<div class="item bumper"><span>Bumper</span></div>
 
-			</div><!-- end div.slots -->
+			</div>
 
-		</div><!-- end div.wrap -->
-		
-	</div><!-- end div.control roller -->
+			<div class="fake-list"></div><!-- end div.fake-list -->
 
-	<button id="rnd">Randomize</button>
-	
-</div><!-- end div.controls -->
+		</div>
+
+	</div><!-- end div#rollers -->
+
+</div><!-- end div#bums -->

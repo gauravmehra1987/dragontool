@@ -1,64 +1,11 @@
 @import 'dials/slots';
+@import 'dials/rollers';
 @import 'dials/mpg';
 @import 'dials/lifestyle';
 @import 'dials/luggage';
 @import 'dials/options';
 @import 'dials/slider';
 @import 'dials/button';
-
-// Bums on seats
-
-#c-bums {
-
-	.controls {
-
-		background: #161616;
-		display: table;
-		margin: 15px auto 0;
-		padding: 0 10px;
-		position: relative;
-
-		width: 315px;
-
-		.control {
-
-			float: left;
-			margin: 0 10px 0 0;
-
-			&:last-of-type { margin: 0; }
-
-		}
-
-		#rnd {
-
-			.box-sizing( content-box );
-			.hide-text;
-
-			background-color: @grayDarker;
-			background-image: url( ../sprites/slots-icon.png );
-			background-position: 50% 50%;
-			background-repeat: no-repeat;
-			background-size: 100%;
-			border: solid 5px @trueBlack;
-			border-radius: 100%;
-			box-shadow: 0 1px 1px fadeout( @white, 80% ) inset, 0 -1px 2px @black inset;
-			display: block;
-			margin-left: -25px;
-			padding: 0;
-			position: absolute;
-			z-index: 99999;
-
-			top: -25px;
-			left: 50%;
-
-			height: 45px;
-			width: 45px;
-
-		}
-
-	}	
-
-}
 
 // Options
 
@@ -117,5 +64,19 @@ html body #dash #dash-right .bottom {
 
 	}
 
+
+}
+
+@media ( max-width: 720px ) {
+
+	#c-mpg .res-wrap { width: ~'calc( 100% - 80px )'; }
+
+	#c-luggage .res-wrap { width: ~'calc( 100% - 40px )'; }
+
+	#t-price { margin: 0 !important; }
+
+	#t-button { display: none !important; }
+
+	#c-button .res-wrap { width: ~'calc( 100% - 180px )'; }
 
 }
