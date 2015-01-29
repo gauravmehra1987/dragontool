@@ -14,6 +14,8 @@
 
 		// Do your stuff here
 
+		alert( "fucking IE" );
+
 	}
 
 }( Mini ) );

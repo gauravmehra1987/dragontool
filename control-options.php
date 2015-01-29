@@ -2,7 +2,7 @@
 
 	<div class="res-wrap">
 
-		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+		<img src="assets/img/tpl-option.gif" class="img-base" />
 	
 		<div class="option opts-awd">
 
@@ -15,7 +15,7 @@
 
 	<div class="res-wrap">
 
-		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+		<img src="assets/img/tpl-option.gif" class="img-base" />
 	
 		<div class="option opts-hp">
 
@@ -28,7 +28,7 @@
 
 	<div class="res-wrap">
 
-		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+		<img src="assets/img/tpl-option.gif" class="img-base" />
 	
 		<div class="option opts-dt">
 
@@ -41,7 +41,7 @@
 
 	<div class="res-wrap">
 
-		<img src="assets/img/tpl-option.gif" alt="" class="img-base" />
+		<img src="assets/img/tpl-option.gif" class="img-base" />
 	
 		<div class="option opts-tp">
 

@@ -32,7 +32,6 @@ Mini.DOMCtrl = {
 
 	init: function () {
 		var self = this;
-		console.log(this)
 		this.pubsub();
 
 		// show the default panel
@@ -42,7 +41,6 @@ Mini.DOMCtrl = {
 		this.getData();
 
 		// dev options
-		console.log(this);
 		//$.ajaxSetup({ cache:false });
 
 	},

@@ -1,0 +1,47 @@
+@priceBaseH: 415px;
+@priceBaseW: 140px;
+
+@sliderH: @priceBaseH;
+@sliderW: @priceBaseW;
+
+.control.price {
+
+	background: lime;
+	position: relative;
+
+	height: @sliderH;
+	width: @sliderW;
+
+	.responsive;
+
+	.bounds, .bg, .mask, .handle, .switch-bg { .align-centers; }
+
+	.bounds {
+
+		top: -10px;
+		bottom: -10px;
+
+	}
+
+	.bg { .sprite-range-bg( @priceBaseH, @priceBaseW ); }
+
+	.switch-bg { top: auto; }
+
+	.mask {
+
+		.sprite-range-mask( @priceBaseH, @priceBaseW );
+
+		height: 100%;
+
+	}
+
+	.handle {
+
+		.sprite-range-handle( @priceBaseH, @priceBaseW );
+
+		top: auto;
+		bottom: -10px;
+
+	}
+
+}

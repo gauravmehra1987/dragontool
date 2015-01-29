@@ -118,6 +118,20 @@ module.exports = function( grunt ) {
 
 		},
 
+		// Sprites
+
+		svg2png: {
+
+			default: {
+			
+				cwd: 'assets/sprites/svg/',
+				src: [ '*.svg '],
+				dest: 'assets/sprites'
+
+			}
+
+		},
+
 		// web fonts
 
 		ttf2woff: {
@@ -269,9 +283,9 @@ module.exports = function( grunt ) {
 			
 			},
 
-			ie: {
+			ielib: {
 
-				dest: 'assets/js/ie.js',
+				dest: 'assets/js/ie-lib.js',
 
 				src: [
 
@@ -279,7 +293,15 @@ module.exports = function( grunt ) {
 
 					paths.bower + 'html5shiv/dist/html5shiv.js',
 
-					// Then the script
+				]
+
+			},
+
+			ie: {
+
+				dest: 'assets/js/ie.js',
+
+				src: [
 
 					'assets/js/src/ie.js'
 
@@ -302,6 +324,7 @@ module.exports = function( grunt ) {
 					'assets/js/app.js':	[ 'assets/js/app.js' ],
 					'assets/js/lib.js':	[ 'assets/js/lib.js' ],
 					'assets/js/ie.js':	[ 'assets/js/ie.js' ],
+					'assets/js/ie-lib.js':	[ 'assets/js/ie-lib.js' ],
 
 				}
 
@@ -491,6 +514,12 @@ module.exports = function( grunt ) {
 
 			],
 
+			sprites: [
+
+				'assets/sprites/*.{png,PNG}',
+
+			],
+
 			templates: [ 'razor_templates' ],
 
 			dotnet: [ 'dotnet/Combobulator/Assets', ],
@@ -527,6 +556,7 @@ module.exports = function( grunt ) {
 				'assets/js/app.js',
 				'assets/js/lib.js',
 				'assets/js/ie.js',
+				'assets/js/ie-lib.js',
 
 			],
 
@@ -606,6 +636,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-webfont' );
 	grunt.loadNpmTasks( 'grunt-ttf2woff' );
 	grunt.loadNpmTasks( 'grunt-ttf2eot' );
+	grunt.loadNpmTasks( 'grunt-svg2png' );
 	grunt.loadNpmTasks( 'grunt-fontface' );
 	grunt.loadNpmTasks( 'grunt-spritesmith' );
 	grunt.loadNpmTasks( 'grunt-newer' );
@@ -632,6 +663,8 @@ module.exports = function( grunt ) {
 	
 	grunt.registerTask( 'generate',	[
 
+		'tidy',
+		'svg2png',
 		'sprites',
 		'icons',
 		'fonts',

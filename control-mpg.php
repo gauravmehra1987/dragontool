@@ -1,6 +1,6 @@
 <div class="res-wrap">
 
-	<img src="assets/img/tpl-mpg.gif" alt="" class="img-base" />
+	<img src="assets/img/tpl-mpg.gif" class="img-base" />
 
 	<div class="control mpg">
 		

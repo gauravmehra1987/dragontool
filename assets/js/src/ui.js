@@ -15,6 +15,8 @@ var svgs = document.querySelectorAll( '.svg' );
 
 SVGInjector( svgs, {
 
+	pngFallback: 'assets/sprites',
+
 	each: function( svg ) {
 
 		$( svg ).hide().fadeIn( 600 );
@@ -43,66 +45,70 @@ sysMsg( 'Loading: 0%' );
 
 // Remove 'type' to preload PNGs instead
 
-$.get( 'preload.php', { type: 'svg' }, function( images ){
+function preloadImages() {
 
-	var loaded = 0;
-	var $preloader = $( '<div>', { id: 'preloader' } );
+	$.get( 'preload.php', { type: 'svg' }, function( images ){
 
-	$body.append( $preloader );
+		var loaded = 0;
+		var $preloader = $( '<div>', { id: 'preloader' } );
 
-	$.map( images, function( el ) {
+		$body.append( $preloader );
 
-		// SVGs
-
-		var imgPreload = document.createElementNS( 'http://www.w3.org/2000/svg','image' );
-		
-		imgPreload.setAttributeNS( 'http://www.w3.org/1999/xlink', 'href', el );
-		imgPreload.setAttributeNS( null, 'height', 0 );
-		imgPreload.setAttributeNS( null, 'width', 0 );
-
-		// Regular images
-
-		// var imgPreload = new Image();
-
-		// imgPreload.src = el;
-
-		// This is needed because of the SVGs - they need to be injected in to the DOM for the load event to work
-		
-		$preloader.append( imgPreload );
-
-		imgPreload.addEventListener( 'load', function() {
-
-			loaded++;
-
-			var unit = images.length / 100;
-			var percentage = ( loaded / images.length ) * 100;
-			var progress;
-
-			progress = Math.floor( percentage );
+		$.map( images, function( el ) {
 
 			// SVGs
 
-			console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
+			var imgPreload = document.createElementNS( 'http://www.w3.org/2000/svg','image' );
 			
+			imgPreload.setAttributeNS( 'http://www.w3.org/1999/xlink', 'href', el );
+			imgPreload.setAttributeNS( null, 'height', 0 );
+			imgPreload.setAttributeNS( null, 'width', 0 );
+
 			// Regular images
 
-			// console.debug( imgPreload.src + ' preloaded sucessfully.' );
+			// var imgPreload = new Image();
 
-			sysMsg( 'Loading: '+ progress + '%' );
+			// imgPreload.src = el;
 
-			if( progress === 100 ) {
+			// This is needed because of the SVGs - they need to be injected in to the DOM for the load event to work
+			
+			$preloader.append( imgPreload );
 
-				$sys.toggleClass( 'hidden' );
+			imgPreload.addEventListener( 'load', function() {
 
-				$preloader.remove();
+				loaded++;
 
-			}
+				var unit = images.length / 100;
+				var percentage = ( loaded / images.length ) * 100;
+				var progress;
 
-		}, false );
+				progress = Math.floor( percentage );
+
+				// SVGs
+
+				// console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
+				
+				// Regular images
+
+				// console.debug( imgPreload.src + ' preloaded sucessfully.' );
+
+				sysMsg( 'Loading: '+ progress + '%' );
+
+				if( progress === 100 ) {
+
+					$sys.toggleClass( 'hidden' );
+
+					$preloader.remove();
+
+				}
+
+			}, false );
+
+		} );
 
 	} );
 
-} );
+}
 
 // ################################################## //
 //
@@ -175,9 +181,9 @@ function ui(){
 		var c_v = new Array( getSlotValue( slot_1 ), getSlotValue( slot_2 ), getSlotValue( slot_3 ), getSlotValue( slot_4 ), getSlotValue( slot_5 ) );
 		var m_v = mpg_knob._value;
 		var l_v = $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
-		var s_v = getSlotValue( speed_control );
+		var s_v = 000;//getSlotValue( speed_control );
 		var o_v = getOptions();
-		var p_v = getPriceValue( price_slider.y )[ 1 ];
+		var p_v = getPriceValue( price_control.y )[ 1 ];
 		var x_v = getLifestyle();
 
 		var data = {
@@ -213,16 +219,16 @@ function ui(){
 
 	// ################################################## //
 	//
-	// Price slider
+	// Price price
 	//
 	// ################################################## //
 
 	function getPriceValue( v ) {
 
 		var position	= Math.abs( parseInt( v ) );	
-		var level		= ( position / price_height ) * 100;
-		var min			= 50;
-		var max			= 315;
+		var level		= Math.abs( ( position / price_control.minY ) * 100 );
+		var min			= 190;
+		var max			= 300;
 		var range		= max - min;
 		var value		= parseInt( ( range / 100 ) * level ) + min;
 
@@ -230,19 +236,19 @@ function ui(){
 
 	}
 
-	var price_el		= document.querySelector( '.control.slider .handle' );
-	var price_height	= parseInt( $( '.control.slider .switch-bg-wrapper' ).height() );
-	var price_slider	= new Draggable( price_el, {
+	var price_el		= document.querySelector( '.control.price .handle' );
+	var price_height	= parseInt( $( '.control.price .bounds' ).height() );
+	var price_control	= new Draggable( price_el, {
 
 		type: 'y',
 		edgeResistance: 1,
-		bounds: '.control.slider .bounds',
+		bounds: '.control.price .bounds',
 		throwProps: false,
 		onDrag: function( e ) {
 
 			var level = getPriceValue( this.endY );
 
-			$( '.control.slider .switch-bg' ).css( 'height', level[ 0 ] + '%' );
+			$( '.control.price .switch-bg' ).css( 'height', level[ 0 ] + '%' );
 
 		},
 		// liveSnap: true,
@@ -397,7 +403,6 @@ function ui(){
 	// ################################################## //
 
 	var lifestyle_el		= document.querySelector( '.control.lifestyle .dial' );
-	var lifestyle_labels_el	= document.querySelector( '.control.lifestyle .labels' );
 	var lifestyle_bounds	= 5;
 	var lifestyle_steps		= 4;
 
@@ -411,65 +416,36 @@ function ui(){
 
 	} );
 
-	var lifestyle_labels = new Draggable( lifestyle_labels_el, {
-
-		type: 'rotation',
-		throwProps: true
-
-	} );
-
-	var currentLabelPosition = lifestyle_labels.y;
-
 	function updateLifestyleDial() {
 
 		// Determine direction
 
-		var direction = ( Math.abs( this.y ) > lifestyle_direction ) ? 'right' : 'left';		
-		var newLabelPosition;
+		var direction = ( Math.abs( this.y ) > lifestyle_direction ) ? 'right' : 'left';
 
 		// Temporarily disable dial
 
-		lifestyle_dial.disable();
+		// lifestyle_dial.disable();
 
 		// Move content in the window
 
-		if( direction === 'right' ) {
-
-			slick.slickPrev();
-			newLabelPosition = currentLabelPosition + ( 360 / lifestyle_steps );
-
-		}
-
-		else {
-
-			slick.slickNext();
-			newLabelPosition = currentLabelPosition - ( 360 / lifestyle_steps );
-
-		}
-
-		// Update label
-
-		TweenLite.to( lifestyle_labels_el, 1, { rotation: newLabelPosition } );
-
-		// Update old position reference
-
-		currentLabelPosition = newLabelPosition;
+		( direction === 'right' ) ? slick.slickPrev() : slick.slickNext();
 
 	};
 
+	var lifestyle_snap		= 360 / 4;
 	var lifestyle_dial		= new Draggable( lifestyle_el, {
 
 		type:	'rotation',
-		bounds:	{ minRotation: -lifestyle_bounds, maxRotation: lifestyle_bounds },
+		// bounds:	{ minRotation: -lifestyle_bounds, maxRotation: lifestyle_bounds },
 		throwProps: true,
-		dragResistance: 0.8,
+		// dragResistance: 0.8,
 		onDragStart: function() { lifestyle_direction = Math.abs( this.y ); },
 		onDragEnd: function() {
 
 			updateLifestyleDial();
 
 		},
-		snap: function( endValue ) { return true; }
+		snap: function( endValue ) { return Math.round( endValue / lifestyle_snap ) * lifestyle_snap; }
 
 	} );
 
@@ -564,43 +540,47 @@ function ui(){
 
 }
 
+if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) preloadImages();
+
 // Dashboard
 
 if( $( '#dash' )[ 0 ] ) {
 
 	var z = new ui();
 
-	$( '.car-link' ).click( function( e ) {
+	// AJAX results page
 
-		e.preventDefault();
+	// $( '.car-link' ).click( function( e ) {
 
-		$( '.layout' ).addClass( 'animated fadeOutLeftBig' );
+	// 	e.preventDefault();
 
-		setTimeout( function() {
+	// 	$( '.layout' ).addClass( 'animated fadeOutLeftBig' );
 
-			$.get( 'results.php', function( data ) {
+	// 	setTimeout( function() {
 
-				$( '.layout' ).replaceWith( $( data ).find( '.layout' ) );
+	// 		$.get( 'results.php', function( data ) {
 
-				Mini.DOMCtrl.panelControl( 'default' );
+	// 			$( '.layout' ).replaceWith( $( data ).find( '.layout' ) );
 
-				$( 'form' ).validate();
+	// 			Mini.DOMCtrl.panelControl( 'default' );
 
-				$.publish('colour-change', carColors[ 'Electric Blue' ] );
+	// 			$( 'form' ).validate();
 
-				$( '#form-submit' ).click( function( e ) {
+	// 			$.publish('colour-change', carColors[ 'Electric Blue' ] );
 
-					e.preventDefault();
+	// 			$( '#form-submit' ).click( function( e ) {
 
-					Mini.DOMCtrl.panelControl( 'thanks' );
+	// 				e.preventDefault();
 
-				} );
+	// 				Mini.DOMCtrl.panelControl( 'thanks' );
 
-			} );
+	// 			} );
 
-		}, 250 );
+	// 		} );
 
-	} );
+	// 	}, 250 );
+
+	// } );
 
 }
 

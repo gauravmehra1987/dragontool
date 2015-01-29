@@ -2,7 +2,7 @@
 		<!-- build:js Assets/js/app.js --><script src="assets/js/app.js"></script><!-- /build -->
 		
 		<!--[if lt IE 9]>
-		<!-- build:js Assets/js/ie.css --><script src="assets/js/ie.js"></script><!-- /build -->
+		<!-- build:js Assets/js/ie.js --><script src="assets/js/ie.js"></script><!-- /build -->
 		<![endif]-->
 
 		<!-- Google Analytics -->

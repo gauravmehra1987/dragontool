@@ -4,11 +4,12 @@
 
 	<div class="control lifestyle">
 		
-		<div class="label-window"></div><!-- end div.label-window -->
-		<div class="labels"></div><!-- end div.labels -->
 		<div class="dial"></div><!-- end div.dial -->
 		<div class="dial-shadow"></div><!-- end div.dial-shadow -->
-		<div class="window switch-bg">
+		<div class="label-window"></div><!-- end div.label-window -->
+		<div class="window">
+
+			<div class="switch-bg"></div><!-- end div.switch-bg -->
 
 			<div class="items-wrapper">
 

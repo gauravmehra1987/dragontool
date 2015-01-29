@@ -34,7 +34,7 @@
 
 	}	
 
-	.mask, .labels, .label-window, .window, .contents, .dial-shadow, .dial {
+	.mask, .label-window, .window, .dial-shadow, .dial {
 
 		.align-centers;
 
@@ -43,12 +43,18 @@
 	}
 
 	.mask { .sprite-lifestyle-mask( @lifestyleBaseH, @lifestyleBaseW ); }
-	.label-window { .sprite-lifestyle-label-window( @lifestyleBaseH, @lifestyleBaseW ); }
-	.labels { .sprite-lifestyle-labels( @lifestyleBaseH, @lifestyleBaseW ); }
 	.dial-shadow { .sprite-lifestyle-dial-shadow( @lifestyleBaseH, @lifestyleBaseW ); }
 	.dial { .sprite-lifestyle-dial( @lifestyleBaseH, @lifestyleBaseW ); }
 
-	.dial, .dial-shadow { margin-top: ( 10px / @lifestyleBaseH ) * 100%; }
+	.label-window {
+
+		.sprite-lifestyle-label-window( @lifestyleBaseH, @lifestyleBaseW );
+
+		background-size: cover;
+
+		.height_pct( 135px, @lifestyleBaseH );
+
+	}
 
 	.dial-shadow {
 
@@ -64,13 +70,26 @@
 
 		overflow: hidden;
 
-		top: auto;
-		bottom: ( 40px / @lifestyleBaseH ) * 100%;
+		bottom: auto;
 
-		.height_pct( 105px, @lifestyleBaseH );
-		.width_pct( 140px, @lifestyleBaseW );
+		.height_pct( 135px, @lifestyleBaseH );
+		.width_pct( 150px, @lifestyleBaseW );
+
+		.switch-bg {
+
+			position: absolute;
+
+			top: 0;
+			right: 0;
+			left: 0;
+
+			height: 100px;
+
+		}
 
 		.items-wrapper {
+
+			position: absolute;
 
 			height: 100%;
 			width: 100%;
@@ -81,11 +100,38 @@
 
 				display: block;
 				float: left;
+				
+				&.urbanite { 
 
-				&.urbanite { .sprite-lifestyle-item-urbanite( @lifestyleBaseH, @lifestyleBaseW ); }
-				&.beach-bum { .sprite-lifestyle-item-beach-bum( @lifestyleBaseH, @lifestyleBaseW ); }
-				&.mountaineer { .sprite-lifestyle-item-mountaineer( @lifestyleBaseH, @lifestyleBaseW ); }
-				&.junglist { .sprite-lifestyle-item-junglist( @lifestyleBaseH, @lifestyleBaseW ); }
+					.sprite-lifestyle-item-urbanite( @lifestyleBaseH, @lifestyleBaseW );
+
+					width: 100%;
+
+				}
+				
+				&.beach-bum {
+
+					.sprite-lifestyle-item-beach-bum( @lifestyleBaseH, @lifestyleBaseW );
+
+					width: 100%;
+
+				}
+				
+				&.mountaineer {
+
+					.sprite-lifestyle-item-mountaineer( @lifestyleBaseH, @lifestyleBaseW );
+
+					width: 100%;
+
+				}
+				
+				&.junglist {
+
+					.sprite-lifestyle-item-junglist( @lifestyleBaseH, @lifestyleBaseW );
+
+					width: 100%;
+
+				}
 
 				height: 100% !important;
 

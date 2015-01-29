@@ -1,6 +1,6 @@
 <div class="res-wrap">
 
-	<img src="assets/img/tpl-luggage.gif" alt="" class="img-base" />
+	<img src="assets/img/tpl-luggage.gif" class="img-base" />
 
 	<div class="control luggage">
 		

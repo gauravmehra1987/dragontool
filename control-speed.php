@@ -1,29 +1,27 @@
-<div class="control roller roller-wide">
+<?php /*<div class="control speed">
 
-	<div class="wrap">
+	<div class="res-wrap">
 
-		<div class="slots">
+		<img src="assets/img/tpl-speed.gif" class="img-base" />
 
-			<!-- <div class="slot nippy clone1" data-value="1"><span>Nippy</span></div>
-			<div class="slot nippier clone1" data-value="2"><span>Nippier</span></div>
-			<div class="slot quick clone1" data-value="3"><span>Quick</span></div>
-			<div class="slot woohoo clone1" data-value="4"><span>Woohoo</span></div>
-			<div class="slot lightspeed clone1" data-value="5"><span>Lightspeed</span></div> -->
+		<div id="speed" class="roller">
 
-			<div class="slot nippy" data-value="1"><span>Nippy</span></div>
-			<div class="slot nippier" data-value="2"><span>Nippier</span></div>
-			<div class="slot quick" data-value="3"><span>Quick</span></div>
-			<div class="slot woohoo" data-value="4"><span>Woohoo</span></div>
-			<div class="slot lightspeed" data-value="5"><span>Lightspeed</span></div>
+			<div class="list">
 
-			<!-- <div class="slot nippy clone2" data-value="1"><span>Nippy</span></div>
-			<div class="slot nippier clone2" data-value="2"><span>Nippier</span></div>
-			<div class="slot quick clone2" data-value="3"><span>Quick</span></div>
-			<div class="slot woohoo clone2" data-value="4"><span>Woohoo</span></div>
-			<div class="slot lightspeed clone2" data-value="5"><span>Lightspeed</span></div> -->
+				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item active" data-value="Nippy"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Nippy</span></div>
+				<div class="item" data-value="Nippier"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Nippier</span></div>
+				<div class="item" data-value="Quick"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Quick</span></div>
+				<div class="item" data-value="Woohoo"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Woohoo</span></div>
+				<div class="item" data-value="Lightspeed"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Lightspeed</span></div>
+				<div class="item bumper"><span>Bumper</span></div>
 
-		</div><!-- end div.slots -->
+			</div>
 
-	</div><!-- end div.wrap -->
+			<div class="fake-list"></div><!-- end div.fake-list -->
 
-</div><!-- end div.control roller roller-wide -->
+		</div>
+
+	</div>
+
+</div><!-- end div.control speed -->*/ ?>
