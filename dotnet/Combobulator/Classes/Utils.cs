@@ -57,6 +57,7 @@ namespace Combobulator.Classes
                 dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
                 if (obj.Error != null)
                 {
+                    log.Error("GetCustomerById Error - " + obj.Error);
                     return new Customer();
                 }
                 else
