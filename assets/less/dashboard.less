@@ -11,6 +11,21 @@
 
 }
 
+.switch-light {
+
+	// .transition( background-color 0.2s linear );
+
+	background-color: @red;
+	box-shadow: 0 0 5px @red, 0 0 15px @red,
+
+}
+
+.switch-color {
+
+	color: @red;
+
+}
+
 .control-title {
 
 	.tc;
@@ -168,13 +183,17 @@
 
 				.control-wrapper {
 
-					.transition( all 0.2s linear );
+					&:not( .dont-hide ) {
 
-					margin: 0 !important;
-					max-height: 0;
-					overflow: hidden;
+						.transition( all 0.2s linear );
 
-					height: auto;
+						margin: 0 !important;
+						max-height: 0;
+						overflow: hidden;
+
+						height: auto;
+						
+					}
 
 					.control-inner {
 

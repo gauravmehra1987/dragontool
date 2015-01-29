@@ -1,5 +1,5 @@
-@optionBaseH: 110px;
-@optionBaseW: 200px;
+@optionBaseH: 100px;
+@optionBaseW: 160px;
 
 @optionH: @optionBaseH;
 @optionW: @optionBaseW;
@@ -7,6 +7,8 @@
 // .keyframes( ~'glow, 0% { box-shadow: 0 0 5px white, 0 0 15px white, 0 0 3px black inset; } 100% { box-shadow: 0 0 3px black inset; }' );
 
 .control.options {
+
+	.res-wrap { margin: @margin / 2 0; }
 
 	.option {
 
@@ -23,171 +25,75 @@
 
 			& + label {
 
-				.box-sizing( border-box );
-				// .transition( background 100ms ease-out );
-
-				display: block;
-				margin-left: -( ( 80px / @optionBaseW ) * 100% );
-				padding: 0;
-				position: absolute;
-				z-index: 1;
-
-				top: 0;
-				left: 50%;
-				
-				height: 100%;
-				.width_pct( 160px, @optionBaseW );
-
-				.light {
-
-					.pseudo;
-					// .transition( box-shadow 1s linear, background 0.2s linear );
-
-					border-radius: 100%;
-					opacity: 0;
-					position: absolute;
-					z-index: 999;
-
-					top: ( ( 11px / @optionBaseH ) * 100% );
-					left: ( ( 22px / @optionBaseW ) * 100% );
-					
-					top: 10.4%;
-					left: 10.65%;
-
-					.height_pct( 8px, @optionBaseH );
-					.width_pct( 8px, 160px );
-
-				}
-
-				&:after {
-
-					.pseudo;
-					// .transition( opacity 0.2s linear );
-
-					opacity: 0;
-					position: absolute;
-
-					top: 0;
-					right: 0;
-					bottom: 0;
-					left: 0;
-
-				}
+				// bg
 
 				span {
 
-					.align-centers;
 					.hide-text;
-					// .transition( opacity 0.2s linear, background-color 0.2s linear );
 
 					border-radius: 100%;
-					display: block;
-					opacity: 0;
+					margin-top: -20px;
+					margin-left: -20px;
+					position: absolute;
+					z-index: -1;
 
-					top: ( 18px / @optionBaseH ) * 100%; // where dis this come from?
-					left: ( 2px / @optionBaseW ) * 100%; // where dis this come from?
-					bottom: auto;
+					top: 35%;
+					left: 50%;
 
-					.height_pct( 35px, @optionBaseH );
-					.width_pct( 44px, @optionBaseW );
+					height: 40px;
+					width: 40px;
 
 				}
-
-			}
-
-			&:checked + label {
 
 				.light {
 
-					.animation( glow 1ms 0.2s infinite linear );
+					border-radius: 100%;
+					opacity: 0;
+					position: absolute;
 
-					opacity: 1;
+					top: 11px;
+					left: 18px;
+
+					height: 8px;
+					width: 8px;
 
 				}
 
-				&:after { opacity: 1; }
-
-				span { opacity: 1; }
-
 			}
+
+			&:checked + label { .light { opacity: 1; } }
 
 		}
 
-		// ############################## Sprites ############################## //
+		&.opts-awd input {
 
-		// 4-wheel drive
+			& + label { .sprite-opts-awd-off( @optionBaseH, @optionBaseW ); }
 
-		&.opts-awd input + label {
-
-			.sprite-opts-awd-off( @optionBaseH, @optionBaseW );
-
-			&:after {
-
-				.sprite-opts-awd-on( @optionBaseH, @optionBaseW );
-
-				background-size: auto 100%;
-
-				height: 100%;
-				width: 100%;
-
-			}
+			&:checked + label { .sprite-opts-awd-on( @optionBaseH, @optionBaseW ); }
 
 		}
 
-		// High position
+		&.opts-hp input {
 
-		&.opts-hp input + label {
+			& + label { .sprite-opts-hp-off( @optionBaseH, @optionBaseW ); }
 
-			.sprite-opts-hp-off( @optionBaseH, @optionBaseW );
-
-			&:after {
-
-				.sprite-opts-hp-on( @optionBaseH, @optionBaseW );
-
-				background-size: auto 100%;
-
-				height: 100%;
-				width: 100%;
-
-			}
+			&:checked + label { .sprite-opts-hp-on( @optionBaseH, @optionBaseW ); }
 
 		}
 
-		// Drop top
+		&.opts-dt input {
 
-		&.opts-dt input + label {
+			& + label { .sprite-opts-dt-off( @optionBaseH, @optionBaseW ); }
 
-			.sprite-opts-dt-off( @optionBaseH, @optionBaseW );
-
-			&:after {
-
-				.sprite-opts-dt-on( @optionBaseH, @optionBaseW );
-
-				background-size: auto 100%;
-
-				height: 100%;
-				width: 100%;
-
-			}
+			&:checked + label { .sprite-opts-dt-on( @optionBaseH, @optionBaseW ); }
 
 		}
 
-		// Teleportation
+		&.opts-tp input {
 
-		&.opts-tp input + label {
+			& + label { .sprite-opts-tp-off( @optionBaseH, @optionBaseW ); }
 
-			.sprite-opts-tp-off( @optionBaseH, @optionBaseW );
-
-			&:after {
-
-				.sprite-opts-tp-on( @optionBaseH, @optionBaseW );
-
-				background-size: auto 100%;
-
-				height: 100%;
-				width: 100%;
-
-			}
+			&:checked + label { .sprite-opts-tp-on( @optionBaseH, @optionBaseW ); }
 
 		}
 

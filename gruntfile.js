@@ -230,6 +230,7 @@ module.exports = function( grunt ) {
 
 					// List bower components
 					
+					paths.bower + 'svg-injector/svg-injector.js',
 					paths.bower + 'fastclick/lib/fastclick.js',
 					paths.bower + 'underscore/underscore.js',
 					paths.bower + 'jquery/dist/jquery.js',
@@ -465,14 +466,14 @@ module.exports = function( grunt ) {
 			styles: {
 
 				files: [ 'assets/less/**/*.less' ],
-				tasks: [ 'less:dev' ]
+				tasks: [ 'less:dev', 'notify:css' ]
 			
 			},
 
 			scripts: {
 
 				files: [ 'assets/js/src/*.js' ],
-				tasks: [ 'concat' ]
+				tasks: [ 'concat', 'notify:js' ]
 
 			}
 
@@ -562,12 +563,23 @@ module.exports = function( grunt ) {
 		
 		notify: {
 			
-			dev: {
+			js: {
 			
 				options: {
 				
 					title: projectName,					
-					message: 'JavaScript and LESS have been recompiled.',
+					message: 'JavaScript finished compiling.',
+				
+				}
+
+			},
+
+			css: {
+			
+				options: {
+				
+					title: projectName,					
+					message: 'LESS finished compiling.',
 				
 				}
 

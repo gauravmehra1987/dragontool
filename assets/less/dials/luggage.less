@@ -14,6 +14,8 @@
 
 	.responsive;
 
+	.switch-bg, .dial, .touch-dial, .arrows { .align-centers; } // Center all layers
+
 	.base {
 
 		// .sprite-luggage-mask( @luggageBaseH, @luggageBaseW );
@@ -34,8 +36,6 @@
 			height: 100%;
 
 		}
-
-		.switch-bg, .dial, .touch-dial, .arrows { .align-centers; } // Center all layers
 
 		.switch-bg {
 
@@ -109,49 +109,56 @@
 
 		}
 
-		.arrows {
+	}
 
-			.sprite-luggage-arrows( @luggageBaseH, @luggageBaseW );
+	.arrows {
 
-			border-radius: 100% 100% 0 0;
+		.sprite-luggage-arrows( @luggageBaseH, @luggageBaseW );
 
-			z-index: 99999;
+		background-size: cover;
+		border-radius: 100% 100% 0 0;
+
+		z-index: 99999;
+
+		top: auto;
+
+		.height_pct( 150px, @luggageBaseW );
+		.width_pct( 150px, @luggageBaseW );
+
+		&.right {
+
+			.sprite-luggage-arrows-right( @luggageBaseH, @luggageBaseW );
+
+			background-size: cover;
 
 			.height_pct( 150px, @luggageBaseW );
-			.width_pct( 150px, @luggageBaseW );
-
-			&.right {
-
-				.sprite-luggage-arrows-right( @luggageBaseH, @luggageBaseW );
-
-				.height_pct( 150px, @luggageBaseW );
-
-			}
-
-			&.left {
-
-				.sprite-luggage-arrows-left( @luggageBaseH, @luggageBaseW );
-
-				.height_pct( 150px, @luggageBaseW );
-
-			}
-
-			#left, #right {
-
-				.hide-text;
-
-				position: absolute;
-
-				top: 0;
-
-				height: 50%;
-				width: 50%;
-
-			}
-
-			#right { right: 0; }
 
 		}
+
+		&.left {
+
+			.sprite-luggage-arrows-left( @luggageBaseH, @luggageBaseW );
+
+			background-size: cover;
+
+			.height_pct( 150px, @luggageBaseW );
+
+		}
+
+		#left, #right {
+
+			.hide-text;
+
+			position: absolute;
+
+			top: 0;
+
+			height: 100%;
+			width: 50%;
+
+		}
+
+		#right { right: 0; }
 
 	}
 

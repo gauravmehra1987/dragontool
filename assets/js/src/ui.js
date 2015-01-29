@@ -1,3 +1,28 @@
+// Variables
+
+var slot_1		= '#c-bums #roller1 .fake-list';
+var slot_2		= '#c-bums #roller2 .fake-list';
+var slot_3		= '#c-bums #roller3 .fake-list';
+var slot_4		= '#c-bums #roller4 .fake-list';
+var slot_5		= '#c-bums #roller5 .fake-list';
+var speed_control	= '#c-speed .control.roller .slots';
+
+// Elements to inject
+
+var svgs = document.querySelectorAll( '.svg' );
+
+// Do the injection
+
+SVGInjector( svgs, {
+
+	each: function( svg ) {
+
+		$( svg ).hide().fadeIn( 600 );
+
+	}
+
+} );
+
 // TODO: convert to OO
 
 var $sys = $( '#system ' );
@@ -95,9 +120,13 @@ FastClick.attach( document.body );
 
 $.subscribe( 'colour-change', function( e, color) {
 
-	$( '.switch-bg' ).css( 'background-color', color );
-	$( '.switch-bg' ).css( 'border-color', color );
-	$( '.switch-color' ).css( 'color', color );
+	$( '.switch-bg' ).css( {
+
+		'background-color': color,
+		'border-color': color
+
+	} );
+
 	$( '.switch-light' ).css( {
 
 		'-webkit-box-shadow': '0 0 5px ' + color + ', 0 0 15px ' + color,
@@ -107,18 +136,11 @@ $.subscribe( 'colour-change', function( e, color) {
 
 	} );
 
+	$( '.switch-color' ).css( 'color', color );
+
 } );
 
 function ui(){
-
-	// Variables
-
-	var slot_1		= '#c-bums .control.roller:nth-of-type( 1 ) .slots';
-	var slot_2		= '#c-bums .control.roller:nth-of-type( 2 ) .slots';
-	var slot_3		= '#c-bums .control.roller:nth-of-type( 3 ) .slots';
-	var slot_4		= '#c-bums .control.roller:nth-of-type( 4 ) .slots';
-	var slot_5		= '#c-bums .control.roller:nth-of-type( 5 ) .slots';
-	var speed_control	= '#c-speed .control.roller .slots';
 
 	// ################################################## //
 	//
@@ -238,81 +260,61 @@ function ui(){
 	//
 	// ################################################## //
 
+	this.gss = getSlotState;
+
 	function getSlotState( pos, height, padding ) {
 
-		var currentPosition = Math.abs( pos ) - padding;
+		var currentPosition = Math.abs( pos );
 		var activeSlot		= Math.ceil( currentPosition / height );
 
-		return Math.ceil( activeSlot );
+		return Math.ceil( activeSlot ) + 1;
 
 	}
+
+	this.gsv = getSlotValue;
 
 	function getSlotValue( slot ) {
 
-		var slotHeight		= $( slot ).find( '.slot:first' ).height();
-		var slotPadding 	= parseInt( $( slot ).css( 'padding-top' ) ).toFixed( 1 );
-		var draggableY		= Draggable.get( slot ).y || -slotPadding;
-		var activeSlot		= getSlotState( draggableY, slotHeight, slotPadding );
-		var $slot			= $( slot ).find( '.slot' ).eq( activeSlot );
+		var slotHeight		= 80;
+		var draggableY		= Draggable.get( slot ).y;
+		var activeSlot		= getSlotState( draggableY, slotHeight, 0 );
+		var $slot			= $( slot ).siblings( '.list' ).find( '.item' ).eq( activeSlot );
 		var value			= $slot.data( 'value' ) || $slot.text();
 
-		return ( value === 'Empty' ) ? false : value;
+		console.log( $slot );
 
-	}
-
-	function setSlotValue( index, slot ) {
-
-		var slotHeight	= $( slot ).find( '.slot:first' ).height();
-		var slotPadding = slotHeight / 2;
-		var draggable	= Draggable.get( $( slot ) );
-		var newPosition = -( index * slotHeight + slotPadding );
-
-		TweenLite.to( $( slot ).get( 0 ), 0.6, {
-
-			y: newPosition,
-			onComplete: function() { draggable.update(); }
-
-		} );
+		return ( value === 'empty' ) ? false : value;
 
 	}
 
 	function initSlot( slot ) {
 
-		function moveToFrame(amount){
-			// nippy -ori -440
-			// lightspeed -ori -760
-			TweenLite.set( speed_control, { y: amount } );
-			Draggable.get( speed_control ).update()
-		}
+		var slotHeight	= 80;
 
-		var slotHeight	= $( slot ).find( '.slot:first' ).height();
-		var slotPadding = parseInt( $( slot ).css( 'padding-top' ) );
+		var $list = $( slot ).siblings( '.list' );
+
+		$( slot ).height( $list.height() );
+
 		var slot_dial	= new Draggable( slot, {
 
 			type: 'y',
 			bounds: $( slot ).parent(),
 			edgeResistance: 1,
 			throwProps: true,
-			onThrowComplete: function() {
-				
-				console.log('onThrowComplete')
+			onDrag: function() {
 
-				var endPosition	= Math.abs( this.endY + slotPadding );
-				var end			= Math.abs( this.minY + slotPadding );
-				var start		= Math.floor( this.maxY + slotPadding ); // do we really need to round it down?!
+				var activeSlot		= getSlotState( this.y + 40, slotHeight, 0 );
+				var $active			= $( slot ).siblings( '.list' ).find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
 
-				var $c = $( slot ).contents();
+				$list.addClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.y + 'px, 0px )' } );
 
 			},
-			snap: function( endValue ) {
+			onDragEnd: function() {
 
-				var parents		= $( slot ).parentsUntil( '.dial-control' );
-				var $control	= $( parents[ parents.length - 1 ] );
-				var newPosition = ( Math.round( endValue / slotHeight ) * slotHeight ) - slotPadding; // + padding
+				$list.removeClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.endY + 'px, 0px )' } );
 
-				return newPosition;
-
-			}
+			},
+			snap: function( endValue ) { var v = Math.round( endValue / slotHeight ) * slotHeight; return v; }
 
 		} );
 
@@ -325,25 +327,15 @@ function ui(){
 	initSlot( slot_3 );
 	initSlot( slot_4 );
 	initSlot( slot_5 );
-	initSlot( speed_control );
+	// initSlot( speed_control );
 
 	// Randomize slots
 
-	$( '#rnd' ).on( 'click', function( e ) {
+	$( '#reset' ).on( 'click', function( e ) {
 
 		e.preventDefault();
 
-		// setSlotValue( _.random( 0, $( slot_1 ).find( '.slot' ).length - 1 ), slot_1 );
-		// setSlotValue( _.random( 0, $( slot_2 ).find( '.slot' ).length - 1 ), slot_2 );
-		// setSlotValue( _.random( 0, $( slot_3 ).find( '.slot' ).length - 1 ), slot_3 );
-		// setSlotValue( _.random( 0, $( slot_4 ).find( '.slot' ).length - 1 ), slot_4 );
-		// setSlotValue( _.random( 0, $( slot_5 ).find( '.slot' ).length - 1 ), slot_5 );
-
-		setSlotValue( 0, slot_1 );
-		setSlotValue( 0, slot_2 );
-		setSlotValue( 0, slot_3 );
-		setSlotValue( 0, slot_4 );
-		setSlotValue( 0, slot_5 );
+		alert( 'TODO' );
 
 	} );
 
@@ -541,7 +533,9 @@ function ui(){
 
 		e.preventDefault();
 
-		( e.type === 'mousedown' ) ? $( '.control.luggage .arrows' ).removeClass( 'right left' ).addClass( e.target.id ): $( '.control.luggage .arrows' ).removeClass( 'right left' );
+		var className = e.target.id;
+
+		( e.type === 'mousedown' ) ? $( this ).removeClass( 'right left' ).addClass( className ): $( this ).removeClass( 'right left' );
 
 	} );
 
@@ -574,7 +568,7 @@ function ui(){
 
 if( $( '#dash' )[ 0 ] ) {
 
-	ui();
+	var z = new ui();
 
 	$( '.car-link' ).click( function( e ) {
 

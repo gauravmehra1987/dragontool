@@ -8,14 +8,15 @@
 			
 			<div class="switch-bg"></div><!-- end div.switch-bg -->
 			<div class="dial minimalist"></div><!-- end div.dial -->
-			<div class="arrows">
-
-				<a href="#" id="left">left</a>
-				<a href="#" id="right">right</a>
-
-			</div><!-- end div.arrows -->
 
 		</div><!-- end div.base -->
+
+		<div class="arrows">
+
+			<a href="#" id="left">left</a>
+			<a href="#" id="right">right</a>
+
+		</div><!-- end div.arrows -->
 
 	</div><!-- end div#control.luggage -->
 
