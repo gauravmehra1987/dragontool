@@ -1,5 +1,7 @@
 #bums {
 
+	display: table;
+	margin: 0 auto;
 	position: relative;
 
 	#reset {
@@ -51,87 +53,132 @@
 	position: relative;
 	padding: 0 5px;
 
-	.roller {
+}
 
-		background: @slotGray;
-		float: left;
-		margin: 0 5px;
-		overflow: hidden;
-		position: relative;
+@rollerBaseW: 50px;
+@rollerBaseH: 160px;
 
-		height: 160px;
-		width: 50px;
+@speedBaseW: 130px;
+@speedBaseH: @rollerBaseH;
 
-		&:after {
+#c-speed {
 
-			.align-centers;
-			.background-image( linear-gradient( to bottom, @black 0%, transparent 25%, transparent 75%, @black 100% ) );
-			.pseudo;
+	background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat !important;
+
+	.backline { .align-centers; }
+
+	@media ( max-width: 720px ) {
+
+		.backline {
+
+			position: static;
 
 		}
 
-		.list {
+		.control-inner {
 
-			.list-remove-bullets;
-			.transition( transform 0.6s ease-out );
+			background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat !important;
+			background-size: auto 100% !important;
 
-			&.dragging { .transition; }
+		}
 
-			.item {
+	}
 
-				box-shadow: 0 -1px 0 fadeout( @trueBlack, 90% ) inset;
+}
+
+.roller {
+
+	background: @slotGray;
+	float: left;
+	margin: 0 5px; // what do we do with this?!
+	overflow: hidden;
+	position: relative;
+
+	height: @rollerBaseH;
+	width: @rollerBaseW;
+
+	&:after {
+
+		.align-centers;
+		.background-image( linear-gradient( to bottom, @black 0%, transparent 25%, transparent 75%, @black 100% ) );
+		.pseudo;
+
+	}
+
+	&.roller-wide {
+
+		margin: 0;
+
+		width: @speedBaseW;
+
+		.responsive;
+
+		.list .item {
+
+			box-shadow: none;
+			margin: 0 !important;;
+			padding: 0 !important;
+
+			width: 100%;
+
+		}
+
+	}
+
+	.list {
+
+		.list-remove-bullets;
+		.transition( transform 0.6s ease-out );
+
+		&.dragging { .transition; }
+
+		.item {
+
+			box-shadow: 0 -1px 0 fadeout( @trueBlack, 90% ) inset;
+			display: block !important;
+			position: relative;
+
+			height: auto;
+			width: 100%;
+
+			&.active svg { fill: @red; }
+
+			&.bumper {
+
+				.hide-text;
+
+				box-shadow: none;
+
+				height: auto;
+				width: 100%;
+
+				& ~ .item.woman { box-shadow: none; }
+
+			}
+
+			span, svg {
+
+				.hide-text;
+
 				display: block;
-				position: relative;
+				margin: 0 auto;
 
-				height: 80px;
-				width: 50px;
-
-				&.bumper {
-
-					.hide-text;
-
-					box-shadow: none;
-
-					height: 80px / 2;
-
-					& ~ .item.woman { box-shadow: none; }
-
-				}
-
-				span, svg {
-
-					.align-centers;
-					.hide-text;
-					.tc;
-
-					color: @black;
-					line-height: 80px;
-
-					path {
-
-						.transition( fill 0.6s );
-
-						fill: @dialGray;
-
-					}
-
-				}
-
-				&.active svg path { fill: @red; }
+				height: 100%;
+				width: 100%;
 
 			}
 
 		}
 
-		.fake-list {
+	}
 
-			.align-centers;
+	.fake-list {
 
-			z-index: 999;
+		.align-centers;
 
-			width: 100%;
+		z-index: 999;
 
-		}
+		width: 100%;
 
 	}
 

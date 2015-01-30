@@ -1,20 +1,20 @@
-<?php /*<div class="control speed">
+<div class="res-wrap">
+	
+	<img src="assets/img/tpl-speed.gif" class="img-base" />
 
-	<div class="res-wrap">
+	<div class="control speed">
 
-		<img src="assets/img/tpl-speed.gif" class="img-base" />
-
-		<div id="speed" class="roller">
+		<div id="speed" class="roller roller-wide">
 
 			<div class="list">
 
-				<div class="item bumper"><span>Bumper</span></div>
-				<div class="item active" data-value="Nippy"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Nippy</span></div>
-				<div class="item" data-value="Nippier"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Nippier</span></div>
-				<div class="item" data-value="Quick"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Quick</span></div>
-				<div class="item" data-value="Woohoo"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Woohoo</span></div>
-				<div class="item" data-value="Lightspeed"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Lightspeed</span></div>
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper-wide.gif" class="img-base" /></div>
+				<div class="item active" data-value="Nippy"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-nippy.svg" /></div>
+				<div class="item" data-value="Nippier"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-nippier.svg" /></div>
+				<div class="item" data-value="Quick"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-quick.svg" /></div>
+				<div class="item" data-value="Woohoo"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-woohoo.svg" /></div>
+				<div class="item" data-value="Lightspeed"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-lightspeed.svg" /></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper-wide.gif" class="img-base" /></div>
 
 			</div>
 
@@ -22,6 +22,6 @@
 
 		</div>
 
-	</div>
+	</div><!-- end div.control speed -->
 
-</div><!-- end div.control speed -->*/ ?>
+</div>

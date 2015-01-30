@@ -8,7 +8,7 @@
 
 			<div class="list">
 
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
 				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
 				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
@@ -18,7 +18,7 @@
 				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
 				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
 				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
 
@@ -30,7 +30,7 @@
 
 			<div class="list">
 
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
 				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
 				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
@@ -40,7 +40,7 @@
 				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
 				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
 				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
 
@@ -52,7 +52,7 @@
 
 			<div class="list">
 
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
 				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
 				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
@@ -62,7 +62,7 @@
 				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
 				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
 				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
 
@@ -74,7 +74,7 @@
 
 			<div class="list">
 
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
 				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
 				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
@@ -84,7 +84,7 @@
 				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
 				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
 				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
 
@@ -96,7 +96,7 @@
 
 			<div class="list">
 
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 				<div class="item active" data-value="Empty"><span class="svg" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
 				<div class="item" data-value="Dog"><span class="svg" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
 				<div class="item" data-value="Cat"><span class="svg" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
@@ -106,7 +106,7 @@
 				<div class="item" data-value="Infant"><span class="svg" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
 				<div class="item" data-value="Man"><span class="svg" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
 				<div class="item" data-value="Woman"><span class="svg" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item bumper"><span>Bumper</span></div>
+				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
 

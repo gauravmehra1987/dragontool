@@ -8,7 +8,7 @@
 
 .control.options {
 
-	.res-wrap { margin: @margin / 2 0; }
+	.res-wrap { margin: @margin / 2 auto; }
 
 	.option {
 
@@ -32,16 +32,16 @@
 					.hide-text;
 
 					border-radius: 100%;
-					margin-top: -20px;
-					margin-left: -20px;
+					margin-top: -( ( 20px / @optionBaseW ) * 100% );
+					margin-left: -( ( 20px / @optionBaseW ) * 100% );
 					position: absolute;
 					z-index: -1;
 
 					top: 35%;
 					left: 50%;
 
-					height: 40px;
-					width: 40px;
+					.height_pct( 40px, @optionBaseH );
+					.width_pct( 40px, @optionBaseW );
 
 				}
 
@@ -51,11 +51,11 @@
 					opacity: 0;
 					position: absolute;
 
-					top: 11px;
-					left: 18px;
+					top: ( 11px /@optionBaseH ) * 100%;
+					left: ( 17.5px /@optionBaseW ) * 100%;
 
-					height: 8px;
-					width: 8px;
+					.height_pct( 8px, @optionBaseH );
+					.width_pct( 8px, @optionBaseW );
 
 				}
 

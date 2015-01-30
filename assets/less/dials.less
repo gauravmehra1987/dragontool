@@ -6,46 +6,6 @@
 @import 'dials/price';
 @import 'dials/button';
 
-// Speed
-
-#c-speed .control-inner .control.slot {
-
-	&:before,
-	&:after {
-
-		.pseudo;
-
-		position: absolute;
-
-		top: 0;
-
-		height: 100%;
-
-		.width_pct( 10px, 130px );
-
-	}
-
-
-	&:before {
-
-		background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat;
-	
-		left: -10px;
-
-	}
-
-	&:after {
-
-		.rotate( 180 );
-
-		background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat;
-	
-		right: -10px;
-
-	}
-
-}
-
 html body #dash #dash-right .bottom {
 
 	background: @dialGrayDark;
@@ -67,8 +27,38 @@ html body #dash #dash-right .bottom {
 	#c-mpg .res-wrap { width: ~'calc( 100% - 80px )'; }
 
 	#c-luggage .res-wrap { width: ~'calc( 100% - 40px )'; }
+	
+	#c-lifestyle .res-wrap { width: ~'calc( 100% - 80px )'; }
+	
+	#c-options {
+
+		.control-inner {
+
+			.box-sizing( border-box );
+
+			padding: 0 @margin;
+
+		}
+
+		.res-wrap {
+
+			float: left;
+
+			width: 50%;
+
+		}
+
+	}
 
 	#t-price { margin: 0 !important; }
+	
+	#c-price .res-wrap { max-width: 140px; }
+
+	#c-speed {
+
+		.res-wrap { width: ~'calc( 100% - 80px )'; }
+
+	}
 
 	#t-button { display: none !important; }
 

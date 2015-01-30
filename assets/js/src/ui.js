@@ -5,7 +5,7 @@ var slot_2		= '#c-bums #roller2 .fake-list';
 var slot_3		= '#c-bums #roller3 .fake-list';
 var slot_4		= '#c-bums #roller4 .fake-list';
 var slot_5		= '#c-bums #roller5 .fake-list';
-var speed_control	= '#c-speed .control.roller .slots';
+var speed_control	= '#c-speed .control.speed .fake-list';
 
 // Elements to inject
 
@@ -86,7 +86,7 @@ function preloadImages() {
 
 				// SVGs
 
-				// console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
+				console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
 				
 				// Regular images
 
@@ -281,13 +281,12 @@ function ui(){
 
 	function getSlotValue( slot ) {
 
-		var slotHeight		= 80;
+		var $list = $( slot ).siblings( '.list' );
+		var slotHeight	= 80;
 		var draggableY		= Draggable.get( slot ).y;
 		var activeSlot		= getSlotState( draggableY, slotHeight, 0 );
-		var $slot			= $( slot ).siblings( '.list' ).find( '.item' ).eq( activeSlot );
+		var $slot			= $list.find( '.item' ).eq( activeSlot );
 		var value			= $slot.data( 'value' ) || $slot.text();
-
-		console.log( $slot );
 
 		return ( value === 'empty' ) ? false : value;
 
@@ -295,11 +294,16 @@ function ui(){
 
 	function initSlot( slot ) {
 
+		var $list = $( slot ).siblings( '.list' );
 		var slotHeight	= 80;
 
-		var $list = $( slot ).siblings( '.list' );
+		// Make fake list the same height as the real one
 
-		$( slot ).height( $list.height() );
+		var listHeight = slotHeight * ( $list.find( '.item' ).length - 1 ) ;
+
+		$( slot ).height( listHeight );
+
+		// Initialize Draggable
 
 		var slot_dial	= new Draggable( slot, {
 
@@ -320,7 +324,13 @@ function ui(){
 				$list.removeClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.endY + 'px, 0px )' } );
 
 			},
-			snap: function( endValue ) { var v = Math.round( endValue / slotHeight ) * slotHeight; return v; }
+			snap: function( endValue ) {
+
+				var v = Math.round( endValue / slotHeight ) * slotHeight;
+
+				return v;
+
+			}
 
 		} );
 
@@ -333,7 +343,7 @@ function ui(){
 	initSlot( slot_3 );
 	initSlot( slot_4 );
 	initSlot( slot_5 );
-	// initSlot( speed_control );
+	initSlot( speed_control );
 
 	// Randomize slots
 
@@ -544,52 +554,56 @@ if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) preloadImages();
 
 // Dashboard
 
-if( $( '#dash' )[ 0 ] ) {
+$( document ).ready( function() {
 
-	var z = new ui();
+	if( $( '#dash' )[ 0 ] ) {
 
-	// AJAX results page
+		var z = new ui();
 
-	// $( '.car-link' ).click( function( e ) {
+		// AJAX results page
 
-	// 	e.preventDefault();
+		// $( '.car-link' ).click( function( e ) {
 
-	// 	$( '.layout' ).addClass( 'animated fadeOutLeftBig' );
+		// 	e.preventDefault();
 
-	// 	setTimeout( function() {
+		// 	$( '.layout' ).addClass( 'animated fadeOutLeftBig' );
 
-	// 		$.get( 'results.php', function( data ) {
+		// 	setTimeout( function() {
 
-	// 			$( '.layout' ).replaceWith( $( data ).find( '.layout' ) );
+		// 		$.get( 'results.php', function( data ) {
 
-	// 			Mini.DOMCtrl.panelControl( 'default' );
+		// 			$( '.layout' ).replaceWith( $( data ).find( '.layout' ) );
 
-	// 			$( 'form' ).validate();
+		// 			Mini.DOMCtrl.panelControl( 'default' );
 
-	// 			$.publish('colour-change', carColors[ 'Electric Blue' ] );
+		// 			$( 'form' ).validate();
 
-	// 			$( '#form-submit' ).click( function( e ) {
+		// 			$.publish('colour-change', carColors[ 'Electric Blue' ] );
 
-	// 				e.preventDefault();
+		// 			$( '#form-submit' ).click( function( e ) {
 
-	// 				Mini.DOMCtrl.panelControl( 'thanks' );
+		// 				e.preventDefault();
 
-	// 			} );
+		// 				Mini.DOMCtrl.panelControl( 'thanks' );
 
-	// 		} );
+		// 			} );
 
-	// 	}, 250 );
+		// 		} );
 
-	// } );
+		// 	}, 250 );
 
-}
+		// } );
 
-// Results page
+	}
 
-else {
+	// Results page
 
-	
+	else {
 
-}
+		
 
-// $.subscribe('combobulate-raw', function( e, data ) { alert( data.price ); } );
+	}
+
+	// $.subscribe('combobulate-raw', function( e, data ) { alert( data.price ); } );
+
+} );

@@ -96,15 +96,23 @@
 
 				<h5 id="t-speed" class="control-title"><span class="light switch-light"></span>Speed</h5>
 
-				<div id="c-speed" class="control-wrapper backline"><div class="control-inner">
+				<div id="c-speed" class="control-wrapper">
+					
+					<div class="backline">
+						
+						<div class="control-inner">
 
-				<!-- build:remove --><?php include( 'control-speed.php' ); ?><!-- /build -->
-				
-				<!-- build:template
-				<%= dashboard.speed %>
-				/build -->
+						<!-- build:remove --><?php include( 'control-speed.php' ); ?><!-- /build -->
+						
+						<!-- build:template
+						<%= dashboard.speed %>
+						/build -->
 
-				</div></div>
+						</div>
+						
+					</div><!-- end div.backline -->
+
+				</div>
 
 			</div><!-- end div.bottom -->
 
