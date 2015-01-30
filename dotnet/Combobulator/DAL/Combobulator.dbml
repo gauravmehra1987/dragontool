@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Combobulator" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MINI_Combobulator" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=justforkix;Initial Catalog=MINI_Combobulator;Persist Security Info=True;User ID=keithvong;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CombobulatorConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Cars" Member="Cars">
     <Type Name="Car" Id="ID1">
@@ -49,5 +49,11 @@
   </Function>
   <Function Name="dbo.GetDealers" Method="GetDealers">
     <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="dbo.GetLookups" Method="GetLookups">
+    <ElementType Name="GetLookupsResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

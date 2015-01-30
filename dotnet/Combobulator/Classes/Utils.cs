@@ -77,44 +77,6 @@ namespace Combobulator.Classes
             }
         }
 
-        //public void SendExistingCustomerData(Customer customer)
-        //{
-        //    string action = "recordoutcome";
-        //    string customerId = customer.UserId;
-        //    string checksum = GetCustomerDetailsChecksum(_systemId, customerId, _secretKey, _random);
-        //    string json = new JavaScriptSerializer().Serialize(new
-        //    {
-        //        id = customer.UserId,
-        //        title = customer.Title,
-        //        first_name = customer.FirstName,
-        //        surname = customer.LastName,
-        //        email = customer.Email,
-        //        telephone = customer.TelephoneHome,
-        //        request_callback = "true",
-        //        request_early_redemption = "true"
-        //    });
-        //    string url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customerId, _random, json);
-
-        //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-        //    request.Method = "GET";
-        //    request.ContentType = @"application/json";
-        //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        //    StreamReader responseStream = new StreamReader(response.GetResponseStream());
-
-        //    string line = responseStream.ReadLine();
-        //    dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
-        //    if (obj.Error != null)
-        //    {
-        //        eMasterResponseCode responseCode = (eMasterResponseCode)(Convert.ToInt32(obj.Error));
-        //        var type = typeof(eMasterResponseCode);
-        //        var member = type.GetMember(responseCode.ToString());
-        //        var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-        //        var description = ((DescriptionAttribute)attributes[0]).Description;
-
-        //        throw new Exception("eMaster recordoutcome method - " + description);
-        //    }
-        //}
-
         public bool SendExistingCustomerDataApi(Customer customer)
         {
             bool success = false;
@@ -195,23 +157,6 @@ namespace Combobulator.Classes
             }
         }
 
-        //public void DoWithRetry(Action action, TimeSpan sleepPeriod, int retryCount = 3)
-        //{
-        //    while (true)
-        //    {
-        //        try
-        //        {
-        //            action();
-        //            break; // success!
-        //        }
-        //        catch
-        //        {
-        //            if (--retryCount == 0) throw;
-        //            else Thread.Sleep(sleepPeriod);
-        //        }
-        //    }
-        //}
-
         public bool DoFuncWithRetry(Func<Customer, bool> func, Customer customer, TimeSpan sleepPeriod, int retryCount = 3)
         {
             bool success = false;
@@ -220,12 +165,18 @@ namespace Combobulator.Classes
                 try
                 {
                     success = func(customer);
-                    break; // success!
+                    break; // success
                 }
                 catch
                 {
-                    if (--retryCount == 0) break;
-                    else Thread.Sleep(sleepPeriod);
+                    if (--retryCount == 0)
+                    {
+                        break;
+                    }
+                    else
+                    { 
+                        Thread.Sleep(sleepPeriod); 
+                    }
                 }
             }
             return success;

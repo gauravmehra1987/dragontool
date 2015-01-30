@@ -2,6 +2,7 @@
 using Combobulator.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -46,21 +47,9 @@ namespace Combobulator.Controllers
             try
             {
                 // Build drop downs
-                IList<Combobulator.DAL.Title> dbTitles = dbContext.GetTitles().ToList();
-                var queryTitles = from t in dbTitles
-                                  select new Title
-                                      {
-                                          Id = t.Id,
-                                          Name = t.Name
-                                      };
-
-                IList<Combobulator.DAL.Dealer> dbDealers = dbContext.GetDealers().ToList();
-                var queryDealers = from d in dbDealers
-                                   select new Dealer
-                                       {
-                                           Id = d.Id,
-                                           Name = d.Name
-                                       };
+                IMultipleResults dbLookups = dbContext.GetLookupsResults();
+                var queryTitles = dbLookups.GetResult<Title>().ToList<Title>();
+                var queryDealers = dbLookups.GetResult<Dealer>().ToList<Dealer>();  
 
                 if (id != string.Empty)
                 {
@@ -78,13 +67,12 @@ namespace Combobulator.Controllers
                     customer.Dealers = queryDealers.ToList();
 
                     view = PartialView("_ExistingCustomerForm", customer);
-                    // For phase 2
-                    //view = PartialView("_NewCustomerForm", customer);
                 }
             }
             catch (Exception ex)
             {
                 log.Error("CustomerForm", ex);
+                view = PartialView("_FormError");
             }
 
             return view;
@@ -129,6 +117,7 @@ namespace Combobulator.Controllers
             }
             catch (Exception ex)
             {
+                log.Error("ResultDetail", ex);
                 return PartialView("_ResultError");
             }
         }
