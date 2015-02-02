@@ -18,28 +18,28 @@ namespace Combobulator.Classes
 {
     public class Utils
     {
-        #region Private/Protected Members
-        private static readonly Utils _instance = new Utils();
-        #endregion
+        //#region Private/Protected Members
+        //private static readonly Utils _instance = new Utils();
+        //#endregion
 
-        #region Public Properties
-        public static Utils Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
-        #endregion
+        //#region Public Properties
+        //public static Utils Instance
+        //{
+        //    get
+        //    {
+        //        return _instance;
+        //    }
+        //}
+        //#endregion
 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private string _systemId = WebConfigurationManager.AppSettings["FiscSystemId"];
-        private string _random = WebConfigurationManager.AppSettings["FiscRandom"];
-        private string _secretKey = WebConfigurationManager.AppSettings["FiscSecretKey"];
-        private string _hostUrl = WebConfigurationManager.AppSettings["FiscURL"];
+        private static string _systemId = WebConfigurationManager.AppSettings["FiscSystemId"];
+        private static string _random = WebConfigurationManager.AppSettings["FiscRandom"];
+        private static string _secretKey = WebConfigurationManager.AppSettings["FiscSecretKey"];
+        private static string _hostUrl = WebConfigurationManager.AppSettings["FiscURL"];
 
-        public Customer GetCustomerById(string customerId)
+        public static Customer GetCustomerById(string customerId)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace Combobulator.Classes
             }
         }
 
-        public bool SendExistingCustomerDataApi(Customer customer)
+        public static bool SendExistingCustomerDataApi(Customer customer)
         {
             bool success = false;
             string action = "recordoutcome";
@@ -127,13 +127,13 @@ namespace Combobulator.Classes
 
         }
 
-        private string GetCustomerDetailsChecksum(string systemId, string userId, string secretKey, string random)
+        private static string GetCustomerDetailsChecksum(string systemId, string userId, string secretKey, string random)
         {
             string input = systemId + userId + secretKey + random;
             return CalculateMD5Hash(input);
         }
 
-        private string CalculateMD5Hash(string input)
+        private static string CalculateMD5Hash(string input)
         {
             MD5 md5 = System.Security.Cryptography.MD5.Create();
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
@@ -157,7 +157,7 @@ namespace Combobulator.Classes
             }
         }
 
-        public bool DoFuncWithRetry(Func<Customer, bool> func, Customer customer, TimeSpan sleepPeriod, int retryCount = 3)
+        public static bool DoFuncWithRetry(Func<Customer, bool> func, Customer customer, TimeSpan sleepPeriod, int retryCount = 3)
         {
             bool success = false;
             while (true)

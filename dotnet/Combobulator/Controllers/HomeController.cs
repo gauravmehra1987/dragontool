@@ -21,7 +21,7 @@ namespace Combobulator.Controllers
             {
                 try
                 {
-                    customer = Utils.Instance.GetCustomerById(Request.QueryString["c"]);
+                    customer = Utils.GetCustomerById(Request.QueryString["c"]);
                 }
                 catch (Exception ex)
                 {

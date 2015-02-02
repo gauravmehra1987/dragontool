@@ -64,21 +64,21 @@ namespace Combobulator.Controllers
                     if (!string.IsNullOrEmpty(customer.UserId))
                     {
                         // Send to API
-                        Func<Customer, bool> func = new Func<Customer, bool>(Utils.Instance.SendExistingCustomerDataApi);
-                        bool sent = Utils.Instance.DoFuncWithRetry(func, customer, TimeSpan.FromSeconds(2));
+                        Func<Customer, bool> func = new Func<Customer, bool>(Utils.SendExistingCustomerDataApi);
+                        bool sent = Utils.DoFuncWithRetry(func, customer, TimeSpan.FromSeconds(2));
                         //Action action = () => Utils.Instance.SendExistingCustomerData(customer);
                         //Utils.Instance.DoWithRetry(action, TimeSpan.FromSeconds(2));
 
                         // If send api fails then send to fallback email
                         if (!sent)
                         {
-                            Email.Instance.EmailCustomerDetails(customer);
+                            Email.EmailCustomerDetails(customer);
                         }
                     }
                     else
                     {
                         // Email customer details
-                        Email.Instance.EmailCustomerDetails(customer);
+                        Email.EmailCustomerDetails(customer);
                     }
 
                     // Email results to customer
@@ -86,7 +86,7 @@ namespace Combobulator.Controllers
                     {
                         try
                         {
-                            Email.Instance.EmailMeResults(customer, car);
+                            Email.EmailMeResults(customer, car);
                         }
                         catch (Exception ex)
                         {

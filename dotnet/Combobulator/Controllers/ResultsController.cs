@@ -54,7 +54,7 @@ namespace Combobulator.Controllers
                 if (id != string.Empty)
                 {
                     // Get customer from id
-                    Customer customer = Utils.Instance.GetCustomerById(id);
+                    Customer customer = Utils.GetCustomerById(id);
                     customer.Titles = queryTitles.ToList();
                     customer.Dealers = queryDealers.ToList();
 

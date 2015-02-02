@@ -11,32 +11,32 @@ namespace Combobulator.Classes
 {
     public class Email
     {
-        #region Private/Protected Members
-        private static readonly Email _instance = new Email();
-        #endregion
+        //#region Private/Protected Members
+        //private static readonly Email _instance = new Email();
+        //#endregion
 
-        #region Public Properties
-        public static Email Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
-        #endregion
+        //#region Public Properties
+        //public static Email Instance
+        //{
+        //    get
+        //    {
+        //        return _instance;
+        //    }
+        //}
+        //#endregion
 
-        private string _host = WebConfigurationManager.AppSettings["EmailHost"];
-        private string _username = WebConfigurationManager.AppSettings["EmailUsername"];
-        private string _password = WebConfigurationManager.AppSettings["EmailPassword"];
-        private int _port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"]);
-        private string _fromAddress = WebConfigurationManager.AppSettings["EmailFromAddress"];
-        private string _fromName = WebConfigurationManager.AppSettings["EmailFromName"];
-        private string _assetUrl = WebConfigurationManager.AppSettings["EmailAssetUrl"];
-        private string _emailAddressTo = WebConfigurationManager.AppSettings["EmailAddressTo"];
-        private string _emailCustomerDetailsSubject = WebConfigurationManager.AppSettings["EmailCustomerDetailsSubject"];
-        private string _emailMeResultsSubject = WebConfigurationManager.AppSettings["EmailMeResultsSubject"];
+        private static string _host = WebConfigurationManager.AppSettings["EmailHost"];
+        private static string _username = WebConfigurationManager.AppSettings["EmailUsername"];
+        private static string _password = WebConfigurationManager.AppSettings["EmailPassword"];
+        private static int _port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"]);
+        private static string _fromAddress = WebConfigurationManager.AppSettings["EmailFromAddress"];
+        private static string _fromName = WebConfigurationManager.AppSettings["EmailFromName"];
+        private static string _assetUrl = WebConfigurationManager.AppSettings["EmailAssetUrl"];
+        private static string _emailAddressTo = WebConfigurationManager.AppSettings["EmailAddressTo"];
+        private static string _emailCustomerDetailsSubject = WebConfigurationManager.AppSettings["EmailCustomerDetailsSubject"];
+        private static string _emailMeResultsSubject = WebConfigurationManager.AppSettings["EmailMeResultsSubject"];
 
-        public void EmailMeResults(Customer customer, Car car)
+        public static void EmailMeResults(Customer customer, Car car)
         {
             string readFile = string.Empty;
             string strBody = string.Empty;
@@ -58,7 +58,7 @@ namespace Combobulator.Classes
             SendEmail(customer.Email, subject, strBody);
         }
 
-        public void EmailCustomerDetails(Customer customer)
+        public static void EmailCustomerDetails(Customer customer)
         {
             string readFile = string.Empty;
             string strBody = string.Empty;
@@ -80,7 +80,7 @@ namespace Combobulator.Classes
             SendEmail(_emailAddressTo, subject, strBody);
         }
 
-        public void SendEmail(string to, string subject, string body)
+        public static void SendEmail(string to, string subject, string body)
         {
             MailMessage mail = new MailMessage();
             mail.To.Add(to);
