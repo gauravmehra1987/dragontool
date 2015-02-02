@@ -36,6 +36,25 @@ $( '.control-title' ).click( function( e ) {
 	e.preventDefault();
 	
 	$( this ).toggleClass( 'open' );
+	
+	// Light
+
+	var $light = $( this ).find( '.light' );
+	var color = $( '.car-link' ).css( 'border-color' );
+
+	if( $( this ).hasClass( 'open' ) ) {
+
+		$light.addClass( 'switch-light' );
+		$.publish( 'colour-change', color );
+
+	}
+
+	else {
+
+		$light.removeClass( 'switch-light' );
+		$light.removeAttr( 'style' );
+
+	}
 
 } );
 
@@ -116,7 +135,11 @@ function preloadImages() {
 //
 // ################################################## //
 
-FastClick.attach( document.body );
+if( 'addEventListener' in document ) {
+
+	document.addEventListener('DOMContentLoaded', function() { FastClick.attach( document.body ); }, false );
+
+}
 
 // ################################################## //
 //
@@ -130,6 +153,12 @@ $.subscribe( 'colour-change', function( e, color) {
 
 		'background-color': color,
 		'border-color': color
+
+	} );
+
+	$( '.switch-fill path' ).css( {
+
+		'fill': color,
 
 	} );
 
@@ -414,6 +443,7 @@ function ui(){
 
 	var lifestyle_el		= document.querySelector( '.control.lifestyle .dial' );
 	var lifestyle_bounds	= 5;
+	var lifestyle_bounds	= 45;
 	var lifestyle_steps		= 4;
 
 	var lifestyle_direction;
@@ -446,7 +476,7 @@ function ui(){
 	var lifestyle_dial		= new Draggable( lifestyle_el, {
 
 		type:	'rotation',
-		// bounds:	{ minRotation: -lifestyle_bounds, maxRotation: lifestyle_bounds },
+		bounds:	{ minRotation: -lifestyle_bounds, maxRotation: lifestyle_bounds },
 		throwProps: true,
 		// dragResistance: 0.8,
 		onDragStart: function() { lifestyle_direction = Math.abs( this.y ); },
@@ -455,7 +485,7 @@ function ui(){
 			updateLifestyleDial();
 
 		},
-		snap: function( endValue ) { return Math.round( endValue / lifestyle_snap ) * lifestyle_snap; }
+		snap: function( endValue ) { return true; }
 
 	} );
 
@@ -600,7 +630,19 @@ $( document ).ready( function() {
 
 	else {
 
-		
+		Mini.DOMCtrl.panelControl( 'default' );
+
+		$( 'form' ).validate();
+
+		$.publish('colour-change', carColors[ 'Electric Blue' ] );
+
+		$( '#form-submit' ).click( function( e ) {
+
+			e.preventDefault();
+
+			Mini.DOMCtrl.panelControl( 'thanks' );
+
+		} );
 
 	}
 

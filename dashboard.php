@@ -6,7 +6,7 @@
 			
 			<div class="top">
 
-				<h5 id="t-bums" class="control-title"><span class="light switch-light"></span>Bums on seats</h5>
+				<h5 id="t-bums" class="control-title"><span class="light"></span>Bums on seats</h5>
 
 				<div id="c-bums" class="control-wrapper backline"><div class="control-inner">
 
@@ -24,7 +24,7 @@
 
 				<div class="inner-left">
 
-					<h5 id="t-mpg" class="control-title"><span class="light switch-light"></span>Mpg</h5>
+					<h5 id="t-mpg" class="control-title"><span class="light"></span>Mpg</h5>
 
 					<div id="c-mpg" class="control-wrapper"><div class="control-inner">
 
@@ -40,7 +40,7 @@
 
 				<div class="inner-right">
 
-					<h5 id="t-lifestyle" class="control-title"><span class="light switch-light"></span>Lifestyle</h5>
+					<h5 id="t-lifestyle" class="control-title"><span class="light"></span>Lifestyle</h5>
 
 					<div id="c-lifestyle" class="control-wrapper"><div class="control-inner">
 
@@ -58,7 +58,7 @@
 
 			<div class="bottom">
 
-				<h5 id="t-luggage" class="control-title"><span class="light switch-light"></span>Luggage</h5>
+				<h5 id="t-luggage" class="control-title"><span class="light"></span>Luggage</h5>
 
 				<div id="c-luggage" class="control-wrapper"><div class="control-inner">
 
@@ -78,7 +78,7 @@
 			
 			<div class="top">
 
-				<h5 id="t-options" class="control-title"><span class="light switch-light"></span>Options</h5>
+				<h5 id="t-options" class="control-title"><span class="light"></span>Options</h5>
 
 				<div id="c-options" class="control-wrapper"><div class="control-inner">
 
@@ -94,7 +94,7 @@
 
 			<div class="bottom">
 
-				<h5 id="t-speed" class="control-title"><span class="light switch-light"></span>Speed</h5>
+				<h5 id="t-speed" class="control-title"><span class="light"></span>Speed</h5>
 
 				<div id="c-speed" class="control-wrapper">
 					
@@ -122,7 +122,7 @@
 			
 			<div class="top">
 
-				<h5 id="t-price" class="control-title"><span class="light switch-light"></span>£ per month</h5>
+				<h5 id="t-price" class="control-title"><span class="light"></span>£ per month</h5>
 
 				<div id="c-price" class="control-wrapper"><div class="control-inner">
 
@@ -138,7 +138,7 @@
 
 			<div class="bottom">
 
-				<h5 id="t-button" class="control-title"><span class="light switch-light"></span>Start</h5>
+				<h5 id="t-button" class="control-title"><span class="light"></span>Start</h5>
 
 				<div id="c-button" class="control-wrapper dont-hide"><div class="control-inner">
 
