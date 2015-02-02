@@ -205,12 +205,14 @@ function ui(){
 	//
 	// ################################################## //
 
-	function getValues() {
+	this.rv = readValues;
+
+	function readValues() {
 
 		var c_v = new Array( getSlotValue( slot_1 ), getSlotValue( slot_2 ), getSlotValue( slot_3 ), getSlotValue( slot_4 ), getSlotValue( slot_5 ) );
 		var m_v = mpg_knob._value;
 		var l_v = $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
-		var s_v = 000;//getSlotValue( speed_control );
+		var s_v = getSlotValue( speed_control );
 		var o_v = getOptions();
 		var p_v = getPriceValue( price_control.y )[ 1 ];
 		var x_v = getLifestyle();
@@ -227,7 +229,15 @@ function ui(){
 
 		};
 
-		$.publish('combobulate-raw', data);
+		return data;
+
+	}
+
+	function getValues( publish ) {
+
+		var data = readValues();
+
+		$.publish('combobulate-raw', data );
 
 	}
 
@@ -295,7 +305,25 @@ function ui(){
 	//
 	// ################################################## //
 
-	this.gss = getSlotState;
+	function resetSlot( slot ) {
+
+		var $list = $( slot ).siblings( '.list' );
+
+		var slotInstance = Draggable.get( slot );
+
+		TweenLite.to( $( slot ).get( 0 ), 0.6, {
+
+			y: 0,
+			onComplete: function() { slotInstance.update(); }
+
+		} );
+
+		$list.find( '.item' ).removeClass( 'active' );
+		$list.removeClass( 'dragging' ).removeAttr( 'style' );
+
+		slotInstance.update();
+
+	}
 
 	function getSlotState( pos, height, padding ) {
 
@@ -306,12 +334,10 @@ function ui(){
 
 	}
 
-	this.gsv = getSlotValue;
-
 	function getSlotValue( slot ) {
 
-		var $list = $( slot ).siblings( '.list' );
-		var slotHeight	= 80;
+		var $list			= $( slot ).siblings( '.list' );
+		var slotHeight		= 80;
 		var draggableY		= Draggable.get( slot ).y;
 		var activeSlot		= getSlotState( draggableY, slotHeight, 0 );
 		var $slot			= $list.find( '.item' ).eq( activeSlot );
@@ -343,7 +369,7 @@ function ui(){
 			onDrag: function() {
 
 				var activeSlot		= getSlotState( this.y + 40, slotHeight, 0 );
-				var $active			= $( slot ).siblings( '.list' ).find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
+				var $active			= $list.find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
 
 				$list.addClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.y + 'px, 0px )' } );
 
@@ -380,7 +406,11 @@ function ui(){
 
 		e.preventDefault();
 
-		alert( 'TODO' );
+		resetSlot( slot_1 );
+		resetSlot( slot_2 );
+		resetSlot( slot_3 );
+		resetSlot( slot_4 );
+		resetSlot( slot_5 );
 
 	} );
 
@@ -584,11 +614,13 @@ if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) preloadImages();
 
 // Dashboard
 
+var ui;
+
 $( document ).ready( function() {
 
 	if( $( '#dash' )[ 0 ] ) {
 
-		var z = new ui();
+		ui = new ui();
 
 		// AJAX results page
 
