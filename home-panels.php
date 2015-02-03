@@ -26,7 +26,7 @@
 	<h5 class="control-title">Your results</h5>
 
 	<h3 class="modelname switch-color" data-model-name>model name</h3>
-	<div class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span><a href="results.php?m=XM72" class="button switch-bg car-link" data-results-link-x>Go see</a></div>
+	<div class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span><a href="#" class="button switch-bg car-link" data-results-link="#">Go see</a></div>
 	
 	<div class="model-image">
 
