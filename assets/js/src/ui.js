@@ -68,68 +68,67 @@ sysMsg( 'Loading: 0%' );
 
 function preloadImages() {
 
-	$sys.toggleClass( 'hidden' );
+	// $.get( path.preload, { type: 'svg' }, function( images ){
+	$.get( path.preload, function( images ){
 
-	// $.get( 'preload.php', { type: 'svg' }, function( images ){
+		var loaded = 0;
+		var $preloader = $( '<div>', { id: 'preloader' } );
 
-	// 	var loaded = 0;
-	// 	var $preloader = $( '<div>', { id: 'preloader' } );
+		$body.append( $preloader );
 
-	// 	$body.append( $preloader );
+		$.map( images, function( el ) {
 
-	// 	$.map( images, function( el ) {
+			// SVGs
 
-	// 		// SVGs
-
-	// 		var imgPreload = document.createElementNS( 'http://www.w3.org/2000/svg','image' );
+			var imgPreload = document.createElementNS( 'http://www.w3.org/2000/svg','image' );
 			
-	// 		imgPreload.setAttributeNS( 'http://www.w3.org/1999/xlink', 'href', el );
-	// 		imgPreload.setAttributeNS( null, 'height', 0 );
-	// 		imgPreload.setAttributeNS( null, 'width', 0 );
+			imgPreload.setAttributeNS( 'http://www.w3.org/1999/xlink', 'href', el );
+			imgPreload.setAttributeNS( null, 'height', 0 );
+			imgPreload.setAttributeNS( null, 'width', 0 );
 
-	// 		// Regular images
+			// Regular images
 
-	// 		// var imgPreload = new Image();
+			// var imgPreload = new Image();
 
-	// 		// imgPreload.src = el;
+			// imgPreload.src = el;
 
-	// 		// This is needed because of the SVGs - they need to be injected in to the DOM for the load event to work
+			// This is needed because of the SVGs - they need to be injected in to the DOM for the load event to work
 			
-	// 		$preloader.append( imgPreload );
+			$preloader.append( imgPreload );
 
-	// 		imgPreload.addEventListener( 'load', function() {
+			imgPreload.addEventListener( 'load', function() {
 
-	// 			loaded++;
+				loaded++;
 
-	// 			var unit = images.length / 100;
-	// 			var percentage = ( loaded / images.length ) * 100;
-	// 			var progress;
+				var unit = images.length / 100;
+				var percentage = ( loaded / images.length ) * 100;
+				var progress;
 
-	// 			progress = Math.floor( percentage );
+				progress = Math.floor( percentage );
 
-	// 			// SVGs
+				// SVGs
 
-	// 			console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
+				console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
 				
-	// 			// Regular images
+				// Regular images
 
-	// 			// console.debug( imgPreload.src + ' preloaded sucessfully.' );
+				// console.debug( imgPreload.src + ' preloaded sucessfully.' );
 
-	// 			sysMsg( 'Loading: '+ progress + '%' );
+				sysMsg( 'Loading: '+ progress + '%' );
 
-	// 			if( progress === 100 ) {
+				if( progress === 100 ) {
 
-	// 				$sys.toggleClass( 'hidden' );
+					$sys.toggleClass( 'hidden' );
 
-	// 				$preloader.remove();
+					$preloader.remove();
 
-	// 			}
+				}
 
-	// 		}, false );
+			}, false );
 
-	// 	} );
+		} );
 
-	// } );
+	} );
 
 }
 

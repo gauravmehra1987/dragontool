@@ -2,8 +2,6 @@ var Mini = Mini || {};
 
 "use strict";
 
-var path = ( location.href.indexOf( 'localhost' ) >= 0 ) ? system_paths.net : system_paths.php;
-
 // indexof polyfill for <ie9
 if (!Array.prototype.indexOf) {
   Array.prototype.indexOf = function(elt /*, from*/) {

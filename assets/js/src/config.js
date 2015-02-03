@@ -7,6 +7,7 @@ var system_paths = {
 		assets:		'Assets/cars/',
 		results:	'results?',
 		api:		'api/car',
+		preload:	'api/assets/svg',
 
 	},
 
@@ -15,10 +16,13 @@ var system_paths = {
 		assets:		'assets/cars/',
 		results:	'results.php?',
 		api:		'api/car.json',
+		preload:	'preload.php',
 
 	}
 
 };
+
+var path = ( location.href.indexOf( 'localhost' ) >= 0 ) ? system_paths.net : system_paths.php;
 
 var carColors = {
 					
