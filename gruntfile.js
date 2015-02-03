@@ -652,11 +652,19 @@ module.exports = function( grunt ) {
 	// Other tasks - to be updated with latest tasks
 	
 	grunt.registerTask( 'icons', [ 'webfont', ]);
+
+	
 	grunt.registerTask( 'sprites', 'sprite' );
+	
 	grunt.registerTask( 'fonts', [ 'ttf2woff', 'ttf2eot', 'fontface' ] );
+	
 	grunt.registerTask( 'images', [ 'imagemin', 'copy:images', 'clean:optimized' ] );
-	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'prettify', 'copy:dotnet' ] );
+	
+	// grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'prettify', 'copy:dotnet' ] );
+	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'copy:dotnet' ] );
+	
 	grunt.registerTask( 'tidy', [ 'clean', 'cleanempty' ] );
+	
 	grunt.registerTask( 'dotnet', [ 'templates', 'copy:assets', 'clean:dotnet_assets' ] );
 
 	// Default task

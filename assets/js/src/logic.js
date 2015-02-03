@@ -104,12 +104,12 @@ Mini.DOMCtrl = {
 			console.log(pounds)
 			var scale;
 			if (pounds == 0) { scale = 0 } else
-			if (pounds < 66) { scale = 6 } else
+			if (pounds < 191) { scale = 6 } else
 			if (pounds < 216) { scale = 1 } else
-			if (pounds < 247) { scale = 2 } else
+			if (pounds < 246) { scale = 2 } else
 			if (pounds < 270) { scale = 3 } else
 			if (pounds < 295) { scale = 4 } else
-			if (pounds >= 295) { scale = 5 } else {
+			if (pounds > 295) { scale = 5 } else {
 				scale = 0;
 			}
 			return scale;

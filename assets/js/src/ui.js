@@ -1,11 +1,13 @@
 // Variables
 
-var slot_1		= '#c-bums #roller1 .fake-list';
-var slot_2		= '#c-bums #roller2 .fake-list';
-var slot_3		= '#c-bums #roller3 .fake-list';
-var slot_4		= '#c-bums #roller4 .fake-list';
-var slot_5		= '#c-bums #roller5 .fake-list';
+var slot_1			= '#c-bums #roller1 .fake-list';
+var slot_2			= '#c-bums #roller2 .fake-list';
+var slot_3			= '#c-bums #roller3 .fake-list';
+var slot_4			= '#c-bums #roller4 .fake-list';
+var slot_5			= '#c-bums #roller5 .fake-list';
 var speed_control	= '#c-speed .control.speed .fake-list';
+
+var priceChanged	= false;
 
 // Elements to inject
 
@@ -224,7 +226,7 @@ function ui(){
 			luggage:	l_v,
 			options:	o_v,
 			speed:		s_v,
-			price:		p_v,
+			price:		( priceChanged ) ? p_v : '999',
 			lifestyle:	x_v
 
 		};
@@ -283,6 +285,7 @@ function ui(){
 		edgeResistance: 1,
 		bounds: '.control.price .bounds',
 		throwProps: false,
+		onDragStart: function() { priceChanged = true; },
 		onDrag: function( e ) {
 
 			var level = getPriceValue( this.endY );
