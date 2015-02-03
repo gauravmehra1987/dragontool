@@ -11,7 +11,7 @@
 		
 		<div class="column right">
 			
-			<!-- build:include welcome-panel.php --><?php require( 'home-panels.php' ); ?><!-- /build -->
+			<!-- build:include home-panels.php --><?php require( 'home-panels.php' ); ?><!-- /build -->
 
 		</div><!-- end div.column left -->
 
