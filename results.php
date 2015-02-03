@@ -8,10 +8,6 @@
 <%= results.variables %>
 /build -->
 
-<!-- build:template
-<%= results.scripts %>
-/build -->
-
 <div class="layout-wrapper">
 
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->

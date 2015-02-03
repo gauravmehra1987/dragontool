@@ -1,6 +1,6 @@
 <header class="layout-header">
 		
-	<h2 id="logo"><a href="home.php">Mini</a></h2><!-- end h2#logo -->
+	<h2 id="logo"><a href="./">Mini</a></h2><!-- end h2#logo -->
 
 	<ul class="social">
 
