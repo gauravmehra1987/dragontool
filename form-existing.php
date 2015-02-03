@@ -6,7 +6,7 @@
 <%= form.open.existing %>
 /build -->
 
-<!-- build:remove --><form><!-- /build -->
+<!-- build:remove --><form action="ajax.php"><!-- /build -->
 
 	<header>
 
@@ -18,6 +18,8 @@
 	<!-- build:template
 	<%= form.userid.existing %>
 	/build -->
+
+	<!-- build:remove --><input type="hidden" id="form-user-id" name="UserId" value="999" /><!-- /build -->
 
 	<div class="form-control">
 

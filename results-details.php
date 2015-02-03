@@ -8,7 +8,7 @@
 
 			<p class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span></p>
 
-			<div><a href="home.php" class="button gray">Go back</a></div>
+			<div><a href="./" class="button gray">Go back</a></div>
 			
 		</section><!-- end section.car-price -->
 

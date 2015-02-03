@@ -108,7 +108,7 @@ function preloadImages() {
 
 				// SVGs
 
-				console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
+				// console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
 				
 				// Regular images
 
@@ -670,17 +670,21 @@ $( document ).ready( function() {
 
 		$( 'form' ).validate();
 
-		$.publish('colour-change', carColors[ 'Electric Blue' ] );
+	}
 
-		$( '#form-submit' ).click( function( e ) {
+	$.subscribe( 'form-ajax-results', function( e, data ) {
 
-			e.preventDefault();
+		console.warn( JSON.stringify( data ) );
+
+		if( data.success ) {
 
 			Mini.DOMCtrl.panelControl( 'thanks' );
 
-		} );
+			$.publish('colour-change', carColors[ 'Electric Blue' ] );
 
-	}
+		}
+
+	} );
 
 	// $.subscribe('combobulate-raw', function( e, data ) { alert( data.price ); } );
 

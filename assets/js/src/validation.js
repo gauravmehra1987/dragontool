@@ -27,19 +27,9 @@
 
 					// Validate the fields here
 
+					console.log( el );
+
 				} );
-
-				if( Mini.settings.debug ) {
-
-					console.warn( 'The following form inputs have errors:' );
-
-					$( elements ).each( function( i, el ) {
-
-						if( ! $( el.element ).closest( '.form-control' ).find( '.form-error' )[ 0 ] ) $( el.element ).closest( '.form-control' ).append( '<span class="form-error">' + el.message + '</span>' );
-
-					} );
-
-				}
 
 			}
 
@@ -55,7 +45,7 @@
 				$.ajax( {
 
 					type: 'POST',
-					async: false,
+					// async: false,
 					url: ajaxURL,
 					data: $( form ).serialize(),
 					dataType: 'json',
@@ -64,34 +54,11 @@
 						$( form ).toggleClass( 'busy' );
 
 					},
-					success: function( data ) {
-
-						if( Mini.settings.debug ) {
-
-							console.log( 'Successfully submitted form to: ' + ajaxURL );
-							console.log( data );
-
-						}
-
-						// Process data here
-
-						// This is for mobile, so the form stays in view
-
-						$( 'html, body' ).animate( {
-
-							scrollTop: $( form ).offset().top
-
-						}, 200 );
-
-					},
+					success: function( data ) { $.publish( 'form-ajax-results', data ); },
 					error: function( xhr ) {
 
-						if( Mini.settings.debug ) {
-
-							console.log( 'Couldn\'t submit the form with AJAX, returning XHR object:' );
-							console.log( xhr );
-
-						}
+						alert( 'Couldn\'t submit the form with AJAX, returning XHR object in console.' );
+						console.log( xhr );
 
 					},
 					beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
