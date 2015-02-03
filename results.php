@@ -1,4 +1,4 @@
-﻿<!-- build:remove --><?php include( 'header.php' ); ?><!-- /build -->
+<!-- build:remove --><?php include( 'header.php' ); ?><!-- /build -->
 
 <!-- build:template
 <%= results.model %>
