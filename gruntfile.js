@@ -23,6 +23,7 @@ module.exports = function( grunt ) {
 			options: {
 
 				strip:				true,
+				recursive:			true,
 
 				// Use the following file for string replacement inside HTML files
 
