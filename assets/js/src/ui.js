@@ -8,6 +8,7 @@ var slot_5			= '#c-bums #roller5 .fake-list';
 var speed_control	= '#c-speed .control.speed .fake-list';
 
 var priceChanged	= false;
+var currentColor;
 
 // Elements to inject
 
@@ -68,8 +69,7 @@ sysMsg( 'Loading: 0%' );
 
 function preloadImages() {
 
-	// $.get( path.preload, { type: 'svg' }, function( images ){
-	$.get( path.preload, function( images ){
+	$.get( path.preload, { type: 'svg' }, function( images ){
 
 		var loaded = 0;
 		var $preloader = $( '<div>', { id: 'preloader' } );
@@ -108,7 +108,7 @@ function preloadImages() {
 
 				// SVGs
 
-				// console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
+				console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
 				
 				// Regular images
 
@@ -175,6 +175,8 @@ $.subscribe( 'colour-change', function( e, color) {
 	} );
 
 	$( '.switch-color' ).css( 'color', color );
+
+	currentColor = color;
 
 } );
 
@@ -354,7 +356,7 @@ function ui(){
 	function initSlot( slot ) {
 
 		var $list = $( slot ).siblings( '.list' );
-		var slotHeight	= 80;
+		var slotHeight	= $list.find( '.item:nth-child( 2 )' ).height();
 
 		// Make fake list the same height as the real one
 
@@ -481,7 +483,7 @@ function ui(){
 	var lifestyle_steps		= 4;
 
 	var lifestyle_direction;
-	var slick = $( '.items-wrapper' ).slick( {
+	var $slick = $( '.items-wrapper' ).slick( {
 
 		arrows: false,
 		infinite: true,
@@ -490,19 +492,17 @@ function ui(){
 
 	} );
 
-	function updateLifestyleDial() {
+	function updateLifestyleDial( dial ) {
 
 		// Determine direction
 
-		var direction = ( Math.abs( this.y ) > lifestyle_direction ) ? 'right' : 'left';
+		var dir = ( Math.abs( dial.y ) > lifestyle_direction );
 
-		// Temporarily disable dial
-
-		// lifestyle_dial.disable();
+		var direction = dir ? 'right' : 'left';;
 
 		// Move content in the window
 
-		( direction === 'right' ) ? slick.slickPrev() : slick.slickNext();
+		( direction === 'right' ) ? $slick.slick( 'slickPrev' ) : $slick.slick( 'slickNext' );
 
 	};
 
@@ -514,11 +514,7 @@ function ui(){
 		throwProps: true,
 		// dragResistance: 0.8,
 		onDragStart: function() { lifestyle_direction = Math.abs( this.y ); },
-		onDragEnd: function() {
-
-			updateLifestyleDial();
-
-		},
+		onDragEnd: function() { updateLifestyleDial( this ); },
 		snap: function( endValue ) { return true; }
 
 	} );
@@ -614,51 +610,21 @@ function ui(){
 
 }
 
+// IE
+
 if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) preloadImages();
 
 // Dashboard
 
 var ui;
 
-$( document ).ready( function() {
+$( window ).load( function() {
 
 	if( $( '#dash' )[ 0 ] ) {
 
 		ui = new ui();
 
-		// AJAX results page
-
-		// $( '.car-link' ).click( function( e ) {
-
-		// 	e.preventDefault();
-
-		// 	$( '.layout' ).addClass( 'animated fadeOutLeftBig' );
-
-		// 	setTimeout( function() {
-
-		// 		$.get( 'results.php', function( data ) {
-
-		// 			$( '.layout' ).replaceWith( $( data ).find( '.layout' ) );
-
-		// 			Mini.DOMCtrl.panelControl( 'default' );
-
-		// 			$( 'form' ).validate();
-
-		// 			$.publish('colour-change', carColors[ 'Electric Blue' ] );
-
-		// 			$( '#form-submit' ).click( function( e ) {
-
-		// 				e.preventDefault();
-
-		// 				Mini.DOMCtrl.panelControl( 'thanks' );
-
-		// 			} );
-
-		// 		} );
-
-		// 	}, 250 );
-
-		// } );
+		$.publish( 'colour-change', carColors[ 'Electric Blue' ] );
 
 	}
 
@@ -671,21 +637,5 @@ $( document ).ready( function() {
 		$( 'form' ).validate();
 
 	}
-
-	$.subscribe( 'form-ajax-results', function( e, data ) {
-
-		console.warn( JSON.stringify( data ) );
-
-		if( data.success ) {
-
-			Mini.DOMCtrl.panelControl( 'thanks' );
-
-			$.publish('colour-change', carColors[ 'Electric Blue' ] );
-
-		}
-
-	} );
-
-	// $.subscribe('combobulate-raw', function( e, data ) { alert( data.price ); } );
 
 } );

@@ -22,7 +22,7 @@ var system_paths = {
 
 };
 
-var path = ( location.href.indexOf( 'localhost' ) >= 0 ) ? system_paths.net : system_paths.php;
+var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
 
 var carColors = {
 					

@@ -24,7 +24,7 @@
     "lesshat": "*",
     "modernizr": "*",
     "normalize-css": "*",
-    "slick.js": "~1.3.7",
+    "slick.js": "1.4.0",
     "greensock": "~1.15.0",
     "jquery": "1.11.1",
     "underscore": "~1.7.0",

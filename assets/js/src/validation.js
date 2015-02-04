@@ -96,4 +96,16 @@
 
 	} );
 
+	$.subscribe( 'form-ajax-results', function( e, data ) {
+
+		if( data.success ) {
+
+			Mini.DOMCtrl.panelControl( 'thanks' );
+
+			$.publish('colour-change', carColors[ 'Electric Blue' ] );
+
+		}
+
+	} );
+
 } )( Mini );
