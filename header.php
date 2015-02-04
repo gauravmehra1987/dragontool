@@ -24,7 +24,7 @@
 
 		<!-- // Favicon -->
 
-		<link rel="shortcut icon" href="favicon.png" />
+		<link rel="shortcut icon" href="favicon.ico" />
 
 		<!-- // Facebook Open Graph - http://developers.facebook.com/docs/opengraph -->
 

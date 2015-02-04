@@ -69,6 +69,10 @@ sysMsg( 'Loading: 0%' );
 
 function preloadImages() {
 
+	$sys.toggleClass( 'hidden' );
+
+	return;
+
 	$.get( path.preload, { type: 'svg' }, function( images ){
 
 		var loaded = 0;
