@@ -1,8 +1,8 @@
 {
 
-	"hi":			"@if (firstName != \"\") { <h3 class=\"title\">Hi @firstName</h3> }",
+	"variables":	"@{\r\nViewBag.Title = \"MINI Combobulator Dashboard\";\r\nstring firstName = string.Empty;\r\nstring userId = ViewBag.UserId;\r\n\r\nif (!string.IsNullOrEmpty(ViewBag.FirstName))\r\n{\r\nfirstName = \"<h2>Hi \" + ViewBag.FirstName + \"<\/h2>\";\r\n}\r\n}",
+	"hi":			"@Html.Raw(firstName)",
 	"input":		"<input id=\"uid\" type=\"hidden\" value=\"@userId\" />",
-	"variables":	"@{ ViewBag.Title = \"MINI Combobulator Dashboard\"; string firstName = ViewBag.FirstName; string userId = ViewBag.UserId;}",
 	"dashboard":	"@Html.Partial(\"_Dashboard\")"
 
 }

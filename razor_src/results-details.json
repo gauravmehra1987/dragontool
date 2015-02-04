@@ -1,8 +1,8 @@
 {
 
 	"model": "@model Combobulator.Models.Car",
-	"cost": "@Model.Cost",
 	"name": "@Model.DisplayName",
+	"cost": "@Model.Cost",
 	"terms": "@Model.TermsConditions"
 
 }
