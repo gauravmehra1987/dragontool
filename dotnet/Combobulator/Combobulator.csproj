@@ -48,9 +48,12 @@
       <HintPath>..\packages\Mandrill.1.0.103.0\lib\net40\Mandrill.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
@@ -60,12 +63,24 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -76,30 +91,17 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -163,12 +165,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Classes\Email.cs" />
+    <Compile Include="Classes\Enums.cs" />
     <Compile Include="Classes\JsonUtils.cs" />
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Controllers\CarController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="DAL\Combobulator.cs">
@@ -183,6 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Selections.cs" />
     <Compile Include="Models\Lookups.cs" />
     <Compile Include="Models\ErrorResponse.cs" />
     <Compile Include="Models\Dealer.cs" />
@@ -192,97 +196,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Combobulator.mdf" />
-    <Content Include="App_Data\Combobulator_log.ldf">
-      <DependentUpon>Combobulator.mdf</DependentUpon>
-    </Content>
-    <Content Include="Assets\cars\5-door-Cooper-D.jpg" />
-    <Content Include="Assets\css\ie.css" />
-    <Content Include="Assets\css\style.css" />
-    <Content Include="Assets\fonts\css\animation.css" />
-    <Content Include="Assets\fonts\css\fontello-codes.css" />
-    <Content Include="Assets\fonts\css\fontello-embedded.css" />
-    <Content Include="Assets\fonts\css\fontello-ie7-codes.css" />
-    <Content Include="Assets\fonts\css\fontello-ie7.css" />
-    <Content Include="Assets\fonts\css\fontello.css" />
-    <Content Include="Assets\fonts\icons\fontello.svg" />
-    <Content Include="Assets\img\dashboard.png" />
-    <Content Include="Assets\img\ministry_of_finance.png" />
-    <Content Include="Assets\img\mini_logo.png" />
-    <Content Include="Assets\img\optimized\dashboard.png" />
-    <Content Include="Assets\img\optimized\ministry_of_finance.png" />
-    <Content Include="Assets\img\optimized\mini_logo.png" />
-    <Content Include="Assets\img\optimized\optimized\dashboard.png" />
-    <Content Include="Assets\img\optimized\optimized\ministry_of_finance.png" />
-    <Content Include="Assets\img\optimized\optimized\mini_logo.png" />
-    <Content Include="Assets\img\optimized\optimized\sprites\sprites.png" />
-    <Content Include="Assets\img\optimized\sprites\sprites.png" />
-    <Content Include="Assets\img\sprites\sprites.png" />
-    <Content Include="Assets\js\app.js" />
-    <Content Include="Assets\js\ie.js" />
-    <Content Include="Assets\js\lib.js" />
-    <Content Include="Assets\js\src\config.js" />
-    <Content Include="Assets\js\src\ie.js" />
-    <Content Include="Assets\js\src\logic.js" />
-    <Content Include="Assets\js\src\social.js" />
-    <Content Include="Assets\js\src\ThrowPropsPlugin.js" />
-    <Content Include="Assets\js\src\ui.js" />
-    <Content Include="Assets\sprites\combobulate.png" />
-    <Content Include="Assets\sprites\lifestyle-dial-shadow.png" />
-    <Content Include="Assets\sprites\lifestyle-dial.png" />
-    <Content Include="Assets\sprites\lifestyle-item-beach-bum.png" />
-    <Content Include="Assets\sprites\lifestyle-item-junglist.png" />
-    <Content Include="Assets\sprites\lifestyle-item-mountaineer.png" />
-    <Content Include="Assets\sprites\lifestyle-item-urbanite.png" />
-    <Content Include="Assets\sprites\lifestyle-label-window.png" />
-    <Content Include="Assets\sprites\lifestyle-labels.png" />
-    <Content Include="Assets\sprites\lifestyle-mask.png" />
-    <Content Include="Assets\sprites\luggage-arrows-left.png" />
-    <Content Include="Assets\sprites\luggage-arrows-right.png" />
-    <Content Include="Assets\sprites\luggage-arrows.png" />
-    <Content Include="Assets\sprites\luggage-dial-big-loader.png" />
-    <Content Include="Assets\sprites\luggage-dial-light-packer.png" />
-    <Content Include="Assets\sprites\luggage-dial-lugger.png" />
-    <Content Include="Assets\sprites\luggage-dial-minimalist.png" />
-    <Content Include="Assets\sprites\luggage-dial.png" />
-    <Content Include="Assets\sprites\luggage-mask-bottom.png" />
-    <Content Include="Assets\sprites\luggage-mask.png" />
-    <Content Include="Assets\sprites\mpg-00.png" />
-    <Content Include="Assets\sprites\mpg-01.png" />
-    <Content Include="Assets\sprites\mpg-02.png" />
-    <Content Include="Assets\sprites\mpg-03.png" />
-    <Content Include="Assets\sprites\mpg-04.png" />
-    <Content Include="Assets\sprites\mpg-05.png" />
-    <Content Include="Assets\sprites\mpg-06.png" />
-    <Content Include="Assets\sprites\mpg-07.png" />
-    <Content Include="Assets\sprites\mpg-08.png" />
-    <Content Include="Assets\sprites\mpg-09.png" />
-    <Content Include="Assets\sprites\mpg-10.png" />
-    <Content Include="Assets\sprites\mpg-11.png" />
-    <Content Include="Assets\sprites\mpg-12.png" />
-    <Content Include="Assets\sprites\mpg-13.png" />
-    <Content Include="Assets\sprites\mpg-knob-arrow.png" />
-    <Content Include="Assets\sprites\mpg-knob.png" />
-    <Content Include="Assets\sprites\opts-awd-off.png" />
-    <Content Include="Assets\sprites\opts-awd-on.png" />
-    <Content Include="Assets\sprites\opts-dt-off.png" />
-    <Content Include="Assets\sprites\opts-dt-on.png" />
-    <Content Include="Assets\sprites\opts-hp-off.png" />
-    <Content Include="Assets\sprites\opts-hp-on.png" />
-    <Content Include="Assets\sprites\opts-tp-off.png" />
-    <Content Include="Assets\sprites\opts-tp-on.png" />
-    <Content Include="Assets\sprites\range-bg.png" />
-    <Content Include="Assets\sprites\range-handle.png" />
-    <Content Include="Assets\sprites\range-mask.png" />
-    <Content Include="Assets\sprites\slot-alien.png" />
-    <Content Include="Assets\sprites\slot-boy.png" />
-    <Content Include="Assets\sprites\slot-cat.png" />
-    <Content Include="Assets\sprites\slot-dog.png" />
-    <Content Include="Assets\sprites\slot-empty.png" />
-    <Content Include="Assets\sprites\slot-girl.png" />
-    <Content Include="Assets\sprites\slot-infant.png" />
-    <Content Include="Assets\sprites\slot-man.png" />
-    <Content Include="Assets\sprites\slot-woman.png" />
     <Content Include="Content\EmailTemplate\EmailCustomerDetailsTemplate.htm" />
     <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.htm" />
     <Content Include="favicon.ico" />
@@ -292,42 +205,7 @@
       <LastGenOutput>Combobulator.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Assets\css\style.css.map" />
-    <Content Include="Assets\fonts\config.json" />
-    <Content Include="Assets\fonts\icons\fontello.eot" />
-    <Content Include="Assets\fonts\icons\fontello.ttf" />
-    <Content Include="Assets\fonts\icons\fontello.woff" />
-    <Content Include="Assets\less\colors.less" />
-    <Content Include="Assets\less\dashboard.less" />
-    <Content Include="Assets\less\dials.less" />
-    <Content Include="Assets\less\dials\button.less" />
-    <Content Include="Assets\less\dials\lifestyle.less" />
-    <Content Include="Assets\less\dials\luggage.less" />
-    <Content Include="Assets\less\dials\mpg.less" />
-    <Content Include="Assets\less\dials\options.less" />
-    <Content Include="Assets\less\dials\slider.less" />
-    <Content Include="Assets\less\dials\slots.less" />
-    <Content Include="Assets\less\fonts.less" />
-    <Content Include="Assets\less\forms.less" />
-    <Content Include="Assets\less\hacks.less" />
-    <Content Include="Assets\less\icon-codes.less" />
-    <Content Include="Assets\less\icons.less" />
-    <Content Include="Assets\less\ie.less" />
-    <Content Include="Assets\less\mixins.less" />
-    <Content Include="Assets\less\plugins.less" />
-    <Content Include="Assets\less\responsive.less" />
-    <Content Include="Assets\less\shell.less" />
-    <Content Include="Assets\less\skin.less" />
-    <Content Include="Assets\less\sprites.less" />
-    <Content Include="Assets\less\style.less" />
-    <Content Include="Assets\less\type.less" />
-    <Content Include="Assets\less\variables.less" />
-    <Content Include="Assets\sprites\psd\lifestyle.psd" />
-    <Content Include="Assets\sprites\psd\luggage.psd" />
-    <Content Include="Assets\sprites\psd\mpg.psd" />
-    <Content Include="Assets\sprites\psd\options.psd" />
-    <Content Include="Assets\sprites\psd\price.psd" />
-    <Content Include="Assets\sprites\psd\slots.psd" />
+    <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -350,40 +228,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Results\_NewCustomerForm.cshtml" />
-    <Content Include="Views\Results\Index.cshtml" />
-    <Content Include="Views\Results\_ResultDetail.cshtml" />
-    <Content Include="Views\Results\_ExistingCustomerForm.cshtml" />
-    <Content Include="Views\Home\_ControlBums.cshtml" />
-    <Content Include="Views\Home\_ControlLifestyle.cshtml" />
-    <Content Include="Views\Home\_ControlLuggage.cshtml" />
-    <Content Include="Views\Home\_ControlMpg.cshtml" />
-    <Content Include="Views\Home\_ControlOptions.cshtml" />
-    <Content Include="Views\Home\_ControlPrice.cshtml" />
-    <Content Include="Views\Home\_ControlSpeed.cshtml" />
-    <Content Include="Views\Home\_ControlStart.cshtml" />
-    <Content Include="Views\Home\_Dashboard.cshtml" />
-    <Content Include="Views\Results\_FormConfirmation.cshtml" />
-    <Content Include="Views\Results\_FormError.cshtml" />
-    <Content Include="Views\Results\_ResultError.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Views\Shared\_Header.cshtml">
-      <SubType>Code</SubType>
-    </Content>
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>

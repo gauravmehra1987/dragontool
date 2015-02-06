@@ -17,11 +17,11 @@ namespace Combobulator.Controllers
             string userId = string.Empty;
             Customer customer = null;
 
-            if (!string.IsNullOrEmpty(Request.QueryString["c"]))
+            if (!string.IsNullOrEmpty(Request.QueryString["cid"]))
             {
                 try
                 {
-                    customer = Utils.GetCustomerById(Request.QueryString["c"]);
+                    customer = Utils.GetCustomerById(Request.QueryString["cid"]);
                 }
                 catch (Exception ex)
                 {
@@ -30,7 +30,7 @@ namespace Combobulator.Controllers
             }
 
             ViewBag.FirstName = customer != null ? customer.FirstName : "";
-            ViewBag.UserId = Request.QueryString["c"];
+            ViewBag.UserId = Request.QueryString["cid"];
 
             return View();
         }

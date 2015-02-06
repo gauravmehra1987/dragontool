@@ -11,6 +11,9 @@ namespace Combobulator.Models
 {
     public class Customer
     {
+        public Car Car { get; set; }
+        public Selections Selections { get; set; }
+
         public List<Title> Titles { get; set; }
         public List<Dealer> Dealers { get; set; }
 

@@ -17,30 +17,69 @@ namespace Combobulator.Controllers
         public ActionResult Index()
         {
             string userId = string.Empty;
-            if (!string.IsNullOrEmpty(Request.QueryString["c"]))
-            {
-                userId = Request.QueryString["c"];
-            }
-
             string modelCode = string.Empty;
-            if (!string.IsNullOrEmpty(Request.QueryString["m"]))
+            Selections selections = new Selections();
+
+            // customer id
+            if (!string.IsNullOrEmpty(Request.QueryString["cid"]))
             {
-                modelCode = Request.QueryString["m"];
+                userId = Request.QueryString["cid"];
+            }
+            // model code
+            if (!string.IsNullOrEmpty(Request.QueryString["model"]))
+            {
+                modelCode = Request.QueryString["model"];
             }
             else
             {
-                string cQuery = userId != string.Empty ? ("?c=" + userId) : "";
+                string cQuery = userId != string.Empty ? ("?cid=" + userId) : "";
                 return Redirect(string.Format("~/{0}", cQuery));
+            }
+            // capacity
+            if (!string.IsNullOrEmpty(Request.QueryString["capacity"]))
+            {
+                selections.Capacity = Request.QueryString["capacity"];
+            }
+            // luggage
+            if (!string.IsNullOrEmpty(Request.QueryString["luggage"]))
+            {
+                selections.Luggage = Request.QueryString["luggage"];
+            }
+            // options
+            if (!string.IsNullOrEmpty(Request.QueryString["options"]))
+            {
+                selections.Options = Request.QueryString["options"];
+            }
+            // price
+            if (!string.IsNullOrEmpty(Request.QueryString["price"]))
+            {
+                selections.PriceRange = Request.QueryString["price"];
+            }
+            // performance
+            if (!string.IsNullOrEmpty(Request.QueryString["performance"]))
+            {
+                selections.Performance = Request.QueryString["performance"];
+            }
+            // economny
+            if (!string.IsNullOrEmpty(Request.QueryString["economy"]))
+            {
+                selections.Economy = Request.QueryString["economy"];
+            }
+            // use
+            if (!string.IsNullOrEmpty(Request.QueryString["use"]))
+            {
+                selections.Use = Request.QueryString["use"];
             }
 
             ViewBag.UserId = userId;
             ViewBag.ModelCode = modelCode;
+            ViewBag.Selections = selections;
 
             return View();
         }
 
         [ChildActionOnly]
-        public ActionResult CustomerForm(string id)
+        public ActionResult CustomerForm(string id, string modelCode, Selections selections)
         {
             PartialViewResult view = null;
 
@@ -49,12 +88,23 @@ namespace Combobulator.Controllers
                 // Build drop downs
                 IMultipleResults dbLookups = dbContext.GetLookupsResults();
                 var queryTitles = dbLookups.GetResult<Title>().ToList<Title>();
-                var queryDealers = dbLookups.GetResult<Dealer>().ToList<Dealer>();  
+                var queryDealers = dbLookups.GetResult<Dealer>().ToList<Dealer>();
+
+                Car car = null;
+                if (!string.IsNullOrEmpty(modelCode))
+                {
+                    car = new Car
+                    {
+                        ModelCode = modelCode
+                    };
+                }
 
                 if (id != string.Empty)
                 {
                     // Get customer from id
                     Customer customer = Utils.GetCustomerById(id);
+                    customer.Car = car;
+                    customer.Selections = selections;
                     customer.Titles = queryTitles.ToList();
                     customer.Dealers = queryDealers.ToList();
 
@@ -63,6 +113,8 @@ namespace Combobulator.Controllers
                 else
                 {
                     Customer customer = new Customer();
+                    customer.Car = car;
+                    customer.Selections = selections;
                     customer.Titles = queryTitles.ToList();
                     customer.Dealers = queryDealers.ToList();
 

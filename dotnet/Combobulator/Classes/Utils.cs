@@ -13,25 +13,12 @@ using System.Security.Cryptography;
 using System.Web.Configuration;
 using System.ComponentModel;
 using System.Threading;
+using Combobulator.Classes;
 
 namespace Combobulator.Classes
 {
     public class Utils
     {
-        //#region Private/Protected Members
-        //private static readonly Utils _instance = new Utils();
-        //#endregion
-
-        //#region Public Properties
-        //public static Utils Instance
-        //{
-        //    get
-        //    {
-        //        return _instance;
-        //    }
-        //}
-        //#endregion
-
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static string _systemId = WebConfigurationManager.AppSettings["FiscSystemId"];
@@ -85,15 +72,25 @@ namespace Combobulator.Classes
             string checksum = GetCustomerDetailsChecksum(_systemId, customerId, _secretKey, _random);
             string json = new JavaScriptSerializer().Serialize(new
             {
-                id = customer.UserId,
-                title = customer.Title,
-                first_name = customer.FirstName,
-                surname = customer.LastName,
-                email = customer.Email,
-                telephone = customer.TelephoneHome,
-                request_callback = "true",
-                request_early_redemption = "true"
+                id = customer.UserId == null ? "" : customer.UserId,
+                title = customer.Title == null ? "" : customer.Title,
+                first_name = customer.FirstName == null ? "" : customer.FirstName,
+                surname = customer.LastName == null ? "" : customer.LastName,
+                email = customer.Email == null ? "" : customer.Email,
+                telephone = customer.TelephoneHome == null ? "" : customer.TelephoneHome,
+                request_callback = customer.RequestCallback == true ? "true" : "false",
+                request_early_redemption = customer.RequestEarlyRedemption == true ? "true" : "false",
+                model_name = customer.Car.Model == null ? "" : customer.Car.DisplayName,
+                model_code = customer.Car.ModelCode == null ? "" : customer.Car.ModelCode,
+                capacity = customer.Selections.Capacity == null ? "" : Utils.SelectionsDescription(customer.Selections.Capacity, "CapacityScale"),
+                luggage = customer.Selections.Luggage == null ? "" : Utils.SelectionsDescription(customer.Selections.Luggage, "LuggageLevel"),
+                options = customer.Selections.Options == null ? "" : Utils.SelectionsDescription(customer.Selections.Options, "Options"),
+                price_range = customer.Selections.PriceRange == null ? "" : Utils.SelectionsDescription(customer.Selections.PriceRange, "PriceRange"),
+                performance = customer.Selections.Performance == null ? "" : Utils.SelectionsDescription(customer.Selections.Performance, "PerformanceScale"),
+                economy = customer.Selections.Economy == null ? "" : Utils.SelectionsDescription(customer.Selections.Economy, "EconomyScale"),
+                use = customer.Selections.Use == null ? "" : Utils.SelectionsDescription(customer.Selections.Use, "Use")
             });
+
             string url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customerId, _random, json);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -106,8 +103,8 @@ namespace Combobulator.Classes
             dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
             if (obj.Error != null)
             {
-                eMasterResponseCode responseCode = (eMasterResponseCode)(Convert.ToInt32(obj.Error));
-                var type = typeof(eMasterResponseCode);
+                Enums.eMasterResponseCode responseCode = (Enums.eMasterResponseCode)(Convert.ToInt32(obj.Error));
+                var type = typeof(Enums.eMasterResponseCode);
                 var member = type.GetMember(responseCode.ToString());
                 var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                 var description = ((DescriptionAttribute)attributes[0]).Description;
@@ -182,42 +179,63 @@ namespace Combobulator.Classes
             return success;
         }
 
-        private enum eMasterResponseCode
+        public static string SelectionsDescription(string id, string stype)
         {
-            [Description("System ID is invalid")]
-            SystemIdInvalid = 101,
-            [Description("Checksum is invalid – Either not 10 characters or incorrect")]
-            ChecksumInvalid = 102,
-            [Description("Customer reference is unknown")]
-            CustomerReferenceUnknown = 103,
-            [Description("Random value is invalid – Either not 10 characters or alphanumeric")]
-            RandomValueInvalid = 104,
-            [Description("System ID parameter not supplied")]
-            SystemIdNotSupplied = 201,
-            [Description("Checksum parameter not supplied")]
-            ChecksumNotSupplied = 202,
-            [Description("Random parameter not supplied")]
-            RandomNotSupplied = 203,
-            [Description("Customer reference parameter not supplied")]
-            CustomerReferenceNotSupplied = 204,
-            [Description("Outcome parameter not supplied")]
-            OutcomeNotSupplied = 205,
-            [Description("Received parameter not supplied")]
-            ReceivedParameterNotSupplied = 206,
-            [Description("Outcome successfully saved")]
-            OutSuccessfullySaved = 301,
-            [Description("Missing outcome parameters")]
-            MissingOutcomeParameter = 302,
-            [Description("Invalid parameter values")]
-            ParameterValuesInvalid = 303,
-            [Description("Unable to save outcome data")]
-            UnableToSaveOutcomeData = 304,
-            [Description("Unable to decode outcome")]
-            UnableToDecodeOutcome = 305,
-            [Description("Invalid action")]
-            InvalidAction = 401,
-            [Description("Action parameter not supplied")]
-            ActionParameterNotSupplied = 402
+            string description = string.Empty;
+            switch (stype)
+            {
+                case "CapacityScale":
+                    Enums.CapacityScale selection1 = (Enums.CapacityScale)(Convert.ToInt32(id));
+                    var type1 = typeof(Enums.CapacityScale);
+                    var member1 = type1.GetMember(selection1.ToString());
+                    var attributes1 = member1[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    description = ((DescriptionAttribute)attributes1[0]).Description;
+                    break;
+                case "EconomyScale":
+                    Enums.EconomyScale selection2 = (Enums.EconomyScale)(Convert.ToInt32(id));
+                    var type2 = typeof(Enums.EconomyScale);
+                    var member2 = type2.GetMember(selection2.ToString());
+                    var attributes2 = member2[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    description = ((DescriptionAttribute)attributes2[0]).Description;
+                    break;
+                case "LuggageLevel":
+                    Enums.LuggageLevel selection3 = (Enums.LuggageLevel)(Convert.ToInt32(id));
+                    var type3 = typeof(Enums.LuggageLevel);
+                    var member3 = type3.GetMember(selection3.ToString());
+                    var attributes3 = member3[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    description = ((DescriptionAttribute)attributes3[0]).Description;
+                    break;
+                case "Options":
+                    Enums.Options selection4 = (Enums.Options)(Convert.ToInt32(id));
+                    var type4 = typeof(Enums.Options);
+                    var member4 = type4.GetMember(selection4.ToString());
+                    var attributes4 = member4[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    description = ((DescriptionAttribute)attributes4[0]).Description;
+                    break;
+                case "PerformanceScale":
+                    Enums.PerformanceScale selection5 = (Enums.PerformanceScale)(Convert.ToInt32(id));
+                    var type5 = typeof(Enums.PerformanceScale);
+                    var member5 = type5.GetMember(selection5.ToString());
+                    var attributes5 = member5[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    description = ((DescriptionAttribute)attributes5[0]).Description;
+                    break;
+                case "PriceRange":
+                    Enums.PriceRange selection6 = (Enums.PriceRange)(Convert.ToInt32(id));
+                    var type6 = typeof(Enums.PriceRange);
+                    var member6 = type6.GetMember(selection6.ToString());
+                    var attributes6 = member6[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    description = ((DescriptionAttribute)attributes6[0]).Description;
+                    break;
+                case "Use":
+                    Enums.Use selection7 = (Enums.Use)(Convert.ToInt32(id));
+                    var type7 = typeof(Enums.Use);
+                    var member7 = type7.GetMember(selection7.ToString());
+                    var attributes7 = member7[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    description = ((DescriptionAttribute)attributes7[0]).Description;
+                    break;
+            }
+
+            return description;
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Combobulator.Controllers
             }
             catch (Exception ex)
             {
-                log.Error("", ex);
+                log.Error("api/assets", ex);
 
                 StringContent sc = new StringContent(serializer.Serialize(files).ToString());
                 sc.Headers.ContentType = new MediaTypeHeaderValue("application/json");
