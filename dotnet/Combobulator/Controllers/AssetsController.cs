@@ -21,7 +21,6 @@ namespace Combobulator.Controllers
         {
             var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
             HttpResponseMessage response = new HttpResponseMessage();
-
             IEnumerable<string> files = null;
 
             try

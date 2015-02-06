@@ -119,11 +119,6 @@ namespace Combobulator.Classes
             return success;
         }
 
-        public void SendNewCustomerData(Customer customer)
-        {
-
-        }
-
         private static string GetCustomerDetailsChecksum(string systemId, string userId, string secretKey, string random)
         {
             string input = systemId + userId + secretKey + random;
