@@ -3,6 +3,6 @@
 	"model":		"@model Combobulator.Models.Results",
 	"variables":	"@{ ViewBag.Title = \"MINI Combobulator Results\"; }",
 	"details":		"@Html.Action(\"ResultDetail\", new { modelCode = ViewBag.ModelCode })",
-	"form":			"@Html.Action(\"CustomerForm\", new { id = ViewBag.UserId })"
+	"form":			"@Html.Action(\"CustomerForm\", new { id = ViewBag.UserId, modelCode = ViewBag.ModelCode, selections = ViewBag.Selections })"
 
 }

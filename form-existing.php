@@ -16,6 +16,14 @@
 	</header>
 
 	<!-- build:template
+	<%= form.hiddenfields.modelcode %>
+	<%= form.hiddenfields.capacity %>
+	<%= form.hiddenfields.economy %>
+	<%= form.hiddenfields.luggage %>
+	<%= form.hiddenfields.options %>
+	<%= form.hiddenfields.performance %>
+	<%= form.hiddenfields.price %>
+	<%= form.hiddenfields.use %>
 	<%= form.userid.existing %>
 	/build -->
 
@@ -104,8 +112,8 @@
 			<%= form.field.callback %>
 			/build -->
 
-			<input id="callback" name="callback" type="checkbox" value="1" checked="checked" />
-			<!-- build:remove --><label for="callback">Request callback</label><!-- /build -->
+			<input id="callback" name="RequestCallback" type="checkbox" value="1" checked="checked" />
+			<!-- build:remove --><label for="RequestCallback">Request callback</label><!-- /build -->
 
 		</div>
 
@@ -119,8 +127,8 @@
 			<%= form.field.redemption %>
 			/build -->
 
-			<input id="redemption" name="redemption" type="checkbox" value="1" />
-			<!-- build:remove --><label for="redemption">Request early redemption</label><!-- /build -->
+			<input id="redemption" name="RequestEarlyRedemption" type="checkbox" value="1" />
+			<!-- build:remove --><label for="RequestEarlyRedemption">Request early redemption</label><!-- /build -->
 
 		</div>
 
@@ -134,8 +142,8 @@
 			<%= form.field.results %>
 			/build -->
 
-			<input id="results" name="results" type="checkbox" value="1" />
-			<!-- build:remove --><label for="results">E-mail me my results</label><!-- /build -->
+			<input id="results" name="EmailResults" type="checkbox" value="1" />
+			<!-- build:remove --><label for="EmailResults">E-mail me my results</label><!-- /build -->
 
 		</div>
 
