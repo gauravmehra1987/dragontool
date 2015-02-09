@@ -1,124 +1,126 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="assets/main.css">
-	
+
 </head>
-<body><h1>Mini Dataset Logic test</h1>
+
+<body>
+	<h1>Mini Dataset Logic test</h1>
 	<form>
 		<p>Q1: Who will be travelling most often in your MINI?</p>
 		<select name="capacity" id="capacity">
 			<option value="0">Select</option>
 			<option value="1">1 - 2 people</option>
-			<option value="2">1-2 adults/1-2 children (w' car seat)</option>
-			<option value="3">1-2 adults/1-2 children</option>
-			<option value="4">1 adult + 3 children</option>
-			<option value="5">3 - 4 adults</option>
-			<option value="6">5 people / family</option>
+			<option value="2">1 - 4 people (including car seat)</option>
+			<option value="3">1 - 2 adults + 1 - 2 children / 1 adult + 3 children</option>
+			<option value="4">5 people</option>
 		</select>
 
 		<select name="eggs" id="eggs">
-			<option value="0">Select</option>
 			<option value="Alien">Alien</option>
 			<option value="Cat">Cat</option>
 			<option value="Dog">Dog</option>
-		</select><br />
+		</select>
+		<br />
 
-		<br /><br />
+		<br />
+		<br />
 
 		<p>Q2: How would you describe the typical use of the car?</p>
 		<select name="luggage" id="luggage">
-			<option value="0">Select</option>
 			<option value="1">Minimalist</option>
 			<option value="2">Light packer</option>
 			<option value="3">Lugger</option>
 			<option value="4">Big loader</option>
 		</select>
-		<br /><br />
+		<br />
+		<br />
 
 		<p>Q3: Which options would you like to have:</p>
-			<input type="checkbox" name="options" value="1">4WD<br>
-			<input type="checkbox" name="options" value="2">Drop top<br>
-			<input type="checkbox" name="options" value="3">Elevated driving position<br>
-			<input type="checkbox" name="options" value="4">Teleportation<br>
-		<br />
-		<br />
+		<div><label><input type="checkbox" id="awd" name="awd" value="1">4WD</label></div>
+		<div><label><input type="checkbox" id="high" name="high" value="2">High driving position</label></div>
+		<div><label><input type="checkbox" id="convertible" name="convertible" value="3">Drop top</label></div>
+		<div><label><input type="checkbox" id="teleportation" name="teleportation" value="4">Teleportation</label></div>
 
 		<p>Q4: What is your budget for your new MINI?</p>
-		<select name="price_scale" id="price_scale">
-			<option value="0">Select</option>
-			<option value="5">up to 50</option>
-			<option value="1">1 Up to 200</option>
-			<option value="2">2 Up to 250</option>
-			<option value="3">3 Up to 300</option>
-			<option value="4">4 300 +</option>
+		<select name="price" id="price">
+			<option value="0">up to 190</option>
+			<option value="1">191 up to 215</option>
+			<option value="2">216 up to 245</option>
+			<option value="3">246 up to 269</option>
+			<option value="4">270 up to 294</option>
+			<option value="5">295+</option>
 		</select>
-		<br /><br />
+		<br />
+		<br />
 
 		<p>Q5: Performance for your new MINI?</p>
-		<select name="performance" id="performance">
-			<option value="0">Select</option>
+		<select name="speed" id="speed">
 			<option value="1">1 = 105 - 120mph (nippy)</option>
 			<option value="2">2 = 121 - 130 (nippier)</option>
 			<option value="3">3 = 131 - 140 (quick)</option>
 			<option value="4">4 = 141 - 145 + (woohooo)</option>
 			<option value="5">Lightspeed</option>
 		</select>
-		<br /><br />
+		<br />
+		<br />
 
 		<p>Q6: Economy for your new MINI?</p>
 		<select name="economy" id="economy">
-			<option value="0">Select</option>
-			<option value="1">1 = 25 - 45 (min economic)</option>
-			<option value="2">2 = 46 - 60</option>
-			<option value="3">3 = 61 - 69</option>
-			<option value="4">4 = 70 - 80 + (max economic)</option>
+			<option value="1">25 - 45 (min economic)</option>
+			<option value="2">46 - 60</option>
+			<option value="3">61 - 69</option>
+			<option value="4">70 - 80 + (max economic)</option>
 		</select>
-		<br /><br />
+		<br />
+		<br />
 
 		<p>Q7: How would you describe the typical use of the car?</p>
-		<select name="useofcar" id="useofcar">
-			<option value="0">Select</option>
-			<option value="1">Urbanite</option>
+		<select name="lifestyle" id="lifestyle">
 			<option value="2">Beach Bum</option>
-			<option value="3">Mountain ranger</option>
+			<option value="1">Urbanite</option>			
+			<option value="3">Mountaineer</option>
 			<option value="4">Junglist</option>
 		</select>
-		<br /><br />
+		<br />
+		<br />
 
 		<input type="submit" value="Submit" id="submit">
 	</form>
 	<div id="panel">
 		<h3><b>Showing <span></span> Cars </b></h3>
 		<ul></ul>
-		<p>extras: <span  id="extras"></span> </p>
+		<p>extras: <span id="extras"></span> </p>
 	</div>
 	<div id="output">
 		<script id="template" type="text/x-handlebars-template">
 			<div class="output-cont">
 				{{#each this}}
 
-					<div style="overflow:hidden; width:600px; margin-bottom:10px;">
-						<p style="float: left; width:226px; margin-right:30px;">
-							name: {{DisplayName}}<br/>
-							model: {{ModelCode}}<br/>
-							capacity : {{CapacityScale}}<br/>
-							luggage: {{LuggageScale}}<br/>
-							options: {{Options}}<br/>
-							price scale: {{PriceScale}}<br/>
-							performance: {{PerformanceScale}}<br/>
-							economy: {{EconomyScale}}<br/>
-							useofcar: {{UsageScale}}<br/>
-						</p>
+				<div style="overflow:hidden; width:600px; margin-bottom:10px;">
+					<p style="float: left; width:226px; margin-right:30px;">
+						name: {{name}}
+						<br/> model: {{code}}
+						<br/> capacity : {{capacity}}
+						<br/> luggage: {{luggage}}
+						<br/> price scale: {{price}}
+						<br/> speed: {{speed}}
+						<br/> economy: {{economy}}
+						<br/> lifestyle: {{lifestyle}}
+						<br/>
+					</p>
 
-						<p style="float: left; width:300px; margin-right:30px; clear:right;">
-							Alternative 1: {{Alt1}}<br/>
-							Alternative 2: {{Alt2}}<br/>
-							Alternative 3: {{Alt3}}<br/>
-						</p>
-					</div>
+					<p style="float: left; width:300px; margin-right:30px; clear:right;">
+						Alternative 1: {{alt_1}}
+						<br/> Alternative 2: {{alt_2}}
+						<br/> Alternative 3: {{alt_3}}
+						<br/>
+					</p>
+				</div>
 
 				{{/each}}
 
@@ -127,15 +129,64 @@
 	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="assets/handlebars.js"></script>
-	<script src="assets/master.v2.js"></script>
-		<script type="text/javascript">
-			if (typeof jQuery !== "undefined") {
-				$(document).ready(function () {
-					Iris.testPage.init();
-					Iris.UILogic.init();
+	<script src="../bower_components/underscore/underscore.js"></script>    
+	<script src="../bower_components/taffydb/taffy.js"></script>    
+	<script src="../assets/js/src/logic.js"></script>    
+	<script type="text/javascript">
 
-				});
-			}
-		</script>
+	// Local variables for prototype
+
+	var path	= path || {};
+
+	if( ! path.hasOwnProperty( 'api' ) ) path.api = '../api/car.json';
+	
+	var logic	= new Logic();
+	var query	= new logic.query();
+
+	function getObj() {
+
+		var obj = {		
+		
+			capacity:		( $( '#capacity' ).val() === '0' ) ? false : $( '#capacity' ).val(),
+			luggage:		$( '#luggage' ).val(),
+			lifestyle:		$( '#lifestyle' ).val(),
+			
+			price:			parseInt( $( '#price' ).val() ),
+			speed:			parseInt( $( '#speed' ).val() ),
+			economy:		parseInt( $( '#economy' ).val() ),
+
+			awd:			parseInt( $( '#awd:checked' ).val() ) || 0,
+			high:			parseInt( $( '#high:checked' ).val() ) || 0,
+			convertible:	parseInt( $( '#convertible:checked' ).val() ) || 0,
+
+		};
+
+		return query.filter( obj );
+
+	};
+
+	function getResults() {
+
+		var $output     = $( '#output' );
+		var template    = Handlebars.compile( $('#template').html() );
+		var data		= logic.getCars( query.build( getObj() ) );
+
+		$output.find( '.output-cont' ).remove();
+		$output.append( template( data.cars ) );
+		
+		$('#extras').html( 'test' );
+
+	}
+
+	$( '#submit' ).on( 'click', function( e ) {
+
+		e.preventDefault();
+
+		getResults();
+
+	} );
+
+	</script>
 </body>
+
 </html>

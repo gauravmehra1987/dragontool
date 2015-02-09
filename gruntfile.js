@@ -246,9 +246,11 @@ module.exports = function( grunt ) {
 					// List bower components
 					
 					paths.bower + 'svg-injector/svg-injector.js',
+					paths.bower + 'taffydb/taffy.js',
 					paths.bower + 'fastclick/lib/fastclick.js',
 					paths.bower + 'underscore/underscore.js',
 					paths.bower + 'jquery/dist/jquery.js',
+					paths.bower + 'jquery-tiny-pubsub/dist/ba-tiny-pubsub.js',
 					paths.bower + 'jquery.browser/dist/jquery.browser.js',
 					paths.bower + 'jquery-validation/dist/jquery.validate.js',
 					paths.bower + 'jquery-validation/dist/additional-methods.js',
@@ -275,10 +277,11 @@ module.exports = function( grunt ) {
 					'assets/js/src/config.js',
 					'assets/js/src/validation-rules.js',
 					'assets/js/src/validation.js',
-					'assets/js/src/social.js',
 					'assets/js/src/logic.js',
+					'assets/js/src/dials.js',
+					'assets/js/src/dashboard.js',
 					'assets/js/src/ui.js',
-					'assets/js/src/animations.js',
+					'assets/js/src/script.js',
 
 				],
 			

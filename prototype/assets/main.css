@@ -95,7 +95,7 @@ article, figcaption, figure, footer, header, nav, section {
 }
 
 body {
-	width: 100%;
+	/*width: 100%;*/
 	min-width: 320px;
 	font: 100% Verdana, Geneva, sans-serif #000;
   padding:30px;

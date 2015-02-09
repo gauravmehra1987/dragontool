@@ -141,6 +141,7 @@ Iris.UILogic = {
 	_collection: null,
 	_order: ['CapacityScale', 'LuggageScale', 'Options', 'PriceScale', 'PerformanceScale', 'EconomyScale', 'UsageScale' ],
 	_jsonUrl: 'assets/data.v2.json',
+	_jsonUrl: '../api/car.json',
 
 	init: function(){
 		this._collection = this.CarsFactory();

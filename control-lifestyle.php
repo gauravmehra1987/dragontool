@@ -13,10 +13,10 @@
 
 			<div class="items-wrapper">
 
-				<div class="item beach-bum" data-value="Beach bum"></div><!-- end div.item -->
-				<div class="item urbanite" data-value="Urbanite"></div><!-- end div.item -->
-				<div class="item mountaineer" data-value="Mountaineer"></div><!-- end div.item -->
-				<div class="item junglist" data-value="Junglist"></div><!-- end div.item -->
+				<div class="item beach-bum" data-value="2"></div><!-- end div.item -->
+				<div class="item urbanite" data-value="1"></div><!-- end div.item -->
+				<div class="item mountaineer" data-value="3"></div><!-- end div.item -->
+				<div class="item junglist" data-value="4"></div><!-- end div.item -->
 
 			</div><!-- end div.items-wrapper -->
 			

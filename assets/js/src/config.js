@@ -41,7 +41,13 @@ var carColors = {
 
 var $html	= $( 'html' );
 var	$body	= $( 'body' );
+var $sys	= $( '#system' );
+
 var	w		= window;
+
+// System messages
+
+function sysMsg( message ) { $sys.attr( 'data-system-message', message ); }
 
 var Mini	= {
 
@@ -53,7 +59,7 @@ var Mini	= {
 
 	thirdParty: {
 
-		facebookID:		892580704115737,
+		facebookID:		000000000000000,
 		analyticsID:	'UA-000000-01'
 
 	},
@@ -124,19 +130,4 @@ jQuery.fn.removeClassExcept = function ( val ) {
 	
 	} );
 
-};
-
-
-var o = $({});
-
-$.subscribe = function() {
-	o.on.apply(o, arguments);
-};
-
-$.unsubscribe = function() {
-	o.off.apply(o, arguments);
-};
-
-$.publish = function() {
-	o.trigger.apply(o, arguments);
 };

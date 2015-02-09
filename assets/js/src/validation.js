@@ -100,7 +100,7 @@
 
 		if( data.success ) {
 
-			Mini.DOMCtrl.panelControl( 'thanks' );
+			ui.showPanel( 'thanks' );
 
 			$.publish('colour-change', carColors[ 'Electric Blue' ] );
 
