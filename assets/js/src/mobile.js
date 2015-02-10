@@ -4,7 +4,7 @@ if( 'addEventListener' in document ) { document.addEventListener('DOMContentLoad
 
 // Mobile
 
-if( $.browser.mobile ) {
+if( Mini.browser.mobile ) {
 
 	$( '.control-title' ).click( function( e ) {
 
