@@ -104,45 +104,21 @@ function Logic() {
 			var q				= queryObj;
 			var obj;
 
-			if( q.speed === 'lightspeed' || q.teleportation === 1 || q.capacity === 'alien' ) {
-
-				var eggs = {
-
-					spaceship: false,
-					teleportation: false,
-					alien: false,
-
-				};
-
-				if( q.speed === 'lightspeed' )	eggs.spaceship = true;
-				if( q.teleportation === 1 )		eggs.teleportation = true;
-				if( q.capacity === 'alien' )	eggs.alien = true;
-
-				return { eggs: eggs };
-
-			}
-
-			// We don't really need an else statement here, but let's include for clarity
+			if( q.capacity ) dbQuery.capacity			= { likenocase: q.capacity };
+			if( q.luggage ) dbQuery.luggage				= { likenocase: q.luggage };
+			if( q.lifestyle ) dbQuery.lifestyle			= { likenocase: q.lifestyle };
 			
-			else {
+			if( q.awd ) dbQuery.awd						= q.awd;
+			if( q.high ) dbQuery.high					= q.high;
+			if( q.convertible ) dbQuery.convertible		= q.convertible;
 
-				if( q.capacity ) dbQuery.capacity			= { likenocase: q.capacity };
-				if( q.luggage ) dbQuery.luggage				= { likenocase: q.luggage };
-				if( q.lifestyle ) dbQuery.lifestyle			= { likenocase: q.lifestyle };
-				
-				if( q.awd ) dbQuery.awd						= q.awd;
-				if( q.high ) dbQuery.high					= q.high;
-				if( q.convertible ) dbQuery.convertible		= q.convertible;
+			if( q.price ) dbQuery.price					= { lt: q.price };
+			if( q.speed ) dbQuery.speed					= { gt: q.speed };
+			if( q.economy ) dbQuery.economy				= { gt: q.economy };
 
-				if( q.price ) dbQuery.price					= { lt: q.price };
-				if( q.speed ) dbQuery.speed					= { gt: q.speed };
-				if( q.economy ) dbQuery.economy				= { gt: q.economy };
+			obj = { prepared: dbQuery, raw: queryObj };
 
-				obj = { prepared: dbQuery, raw: queryObj };
-
-				return obj;
-
-			}
+			return obj;
 
 		}
 
@@ -186,8 +162,7 @@ function Logic() {
 
 					people:		0,
 					children:	0,
-					infants:	0,
-					alien:		false
+					infants:	0
 
 				}
 
@@ -201,10 +176,9 @@ function Logic() {
 
 					var person = arr[ i ];
 
-					if( person === 'Man' || person === 'Woman') o.people++;
-					if( person === 'Girl' || person === 'Boy' ) o.children++;
-					if( person === 'Infant' ) o.infants++;
-					if( person === 'Alien' ) return 'alien';
+					if( person === 'Man' || person === 'Woman')	o.people++;
+					if( person === 'Girl' || person === 'Boy' )	o.children++;
+					if( person === 'Infant' )					o.infants++;
 
 				}
 
@@ -233,8 +207,7 @@ function Logic() {
 
 				awd:			data.options.awd || false,
 				high:			data.options.hp || false,
-				convertible:	data.options.dt || false,
-				teleportation:	data.options.tp || false,
+				convertible:	data.options.dt || false
 
 			}
 

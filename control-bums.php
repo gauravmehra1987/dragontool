@@ -67,9 +67,6 @@
 				<div class="item" data-value="Boy"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
 				<div class="item" data-value="Girl"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
 				<div class="item" data-value="Infant"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
-				<div class="item" data-value="Dog"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
-				<div class="item" data-value="Cat"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
-				<div class="item" data-value="Alien"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-alien.svg">Alien</span></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
