@@ -2,31 +2,37 @@
 
 if( 'addEventListener' in document ) { document.addEventListener('DOMContentLoaded', function() { FastClick.attach( document.body ); }, false ); }
 
-// Mobile toggling
+// Mobile
 
-$( '.control-title' ).click( function( e ) {
+if( $.browser.mobile ) {
 
-	e.preventDefault();
-	
-	$( this ).toggleClass( 'open' );
-	
-	// Light
+	$( '.control-title' ).click( function( e ) {
 
-	var $light	= $( this ).find( '.light' );
-	var color	= $( '.car-link' ).css( 'border-color' );
+		e.preventDefault();
+		
+		$( this ).toggleClass( 'open' );
+		
+		// Light
 
-	if( $( this ).hasClass( 'open' ) ) {
+		var $light	= $( this ).find( '.light' );
+		var color	= $( '.car-link' ).css( 'border-color' );
 
-		$light.addClass( 'switch-light' );
-		$.publish( 'colour-change', color );
+		if( $( this ).hasClass( 'open' ) ) {
 
-	}
+			$light.addClass( 'switch-light' );
+			$.publish( 'colour-change', color );
 
-	else {
+		}
 
-		$light.removeClass( 'switch-light' );
-		$light.removeAttr( 'style' );
+		else {
 
-	}
+			$light.removeClass( 'switch-light' );
+			$light.removeAttr( 'style' );
 
-} );
+		}
+
+	} );
+
+}
+
+// Tablet

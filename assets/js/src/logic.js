@@ -10,41 +10,63 @@ function Logic() {
 
 	// Public functions
 
+	this.eggs = function( egg ) {
+
+		// console.log( egg );
+
+	}
+
 	this.getCars = function( q ) {
 
-		var results = db( q.prepared ).get();
+		// Handle easter eggs
 
-		if( results.length > 0 ) {
+		if( typeof q.eggs === 'object' ) {
 
-			// Reset filters
+			console.warn( 'easter eggs triggered' );
 
-			droppedFilters = [];
-
-			console.debug( 'Found ' + results.length + ' matches' );
-
-			var obj = {
-
-				queryPrepared:		q.prepared,
-				queryRaw:			q.raw,
-				data:				results,
-
-			};
-
-			return obj;
+			return { data: 'easter egg' };
 
 		}
 
+		// Return cars
+
 		else {
 
-			droppedFilters.push( filters[ droppedFilters.length ] );
+			var results = db( q.prepared ).get();
 
-			console.debug( 'No results, dropping ' + droppedFilters[ droppedFilters.length - 1 ] );
+			if( results.length > 0 ) {
 
-			// Construct a new query
+				// Reset filters
 
-			var query = new _this.query();
+				droppedFilters = [];
 
-			return this.getCars( query.build( query.filter( q.raw, droppedFilters ) ) );
+				console.debug( 'Found ' + results.length + ' matches' );
+
+				var obj = {
+
+					queryPrepared:		q.prepared,
+					queryRaw:			q.raw,
+					data:				results,
+
+				};
+
+				return obj;
+
+			}
+
+			else {
+
+				droppedFilters.push( filters[ droppedFilters.length ] );
+
+				console.debug( 'No results, dropping ' + droppedFilters[ droppedFilters.length - 1 ] );
+
+				// Construct a new query
+
+				var query = new _this.query();
+
+				return this.getCars( query.build( query.filter( q.raw, droppedFilters ) ) );
+
+			}
 
 		}
 
@@ -82,21 +104,45 @@ function Logic() {
 			var q				= queryObj;
 			var obj;
 
-			if( q.capacity ) dbQuery.capacity			= { likenocase: q.capacity };
-			if( q.luggage ) dbQuery.luggage				= { likenocase: q.luggage };
-			if( q.lifestyle ) dbQuery.lifestyle			= { likenocase: q.lifestyle };
+			if( q.speed === 'lightspeed' || q.teleportation === 1 || q.capacity === 'alien' ) {
+
+				var eggs = {
+
+					spaceship: false,
+					teleportation: false,
+					alien: false,
+
+				};
+
+				if( q.speed === 'lightspeed' )	eggs.spaceship = true;
+				if( q.teleportation === 1 )		eggs.teleportation = true;
+				if( q.capacity === 'alien' )	eggs.alien = true;
+
+				return { eggs: eggs };
+
+			}
+
+			// We don't really need an else statement here, but let's include for clarity
 			
-			if( q.awd ) dbQuery.awd						= q.awd;
-			if( q.high ) dbQuery.high					= q.high;
-			if( q.convertible ) dbQuery.convertible		= q.convertible;
+			else {
 
-			if( q.price ) dbQuery.price					= { lt: q.price };
-			if( q.speed ) dbQuery.speed					= { gt: q.speed };
-			if( q.economy ) dbQuery.economy				= { gt: q.economy };
+				if( q.capacity ) dbQuery.capacity			= { likenocase: q.capacity };
+				if( q.luggage ) dbQuery.luggage				= { likenocase: q.luggage };
+				if( q.lifestyle ) dbQuery.lifestyle			= { likenocase: q.lifestyle };
+				
+				if( q.awd ) dbQuery.awd						= q.awd;
+				if( q.high ) dbQuery.high					= q.high;
+				if( q.convertible ) dbQuery.convertible		= q.convertible;
 
-			obj = { prepared: dbQuery, raw: queryObj };
+				if( q.price ) dbQuery.price					= { lt: q.price };
+				if( q.speed ) dbQuery.speed					= { gt: q.speed };
+				if( q.economy ) dbQuery.economy				= { gt: q.economy };
 
-			return obj;
+				obj = { prepared: dbQuery, raw: queryObj };
+
+				return obj;
+
+			}
 
 		}
 
@@ -140,7 +186,8 @@ function Logic() {
 
 					people:		0,
 					children:	0,
-					infants:	0
+					infants:	0,
+					alien:		false
 
 				}
 
@@ -154,9 +201,10 @@ function Logic() {
 
 					var person = arr[ i ];
 
-					if( person === 'Man' || person === 'Woman') { o.people++; }
-					if( person === 'Girl' || person === 'Boy' ) { o.children++; }
-					if( person === 'Infant' ) { o.infants++; }
+					if( person === 'Man' || person === 'Woman') o.people++;
+					if( person === 'Girl' || person === 'Boy' ) o.children++;
+					if( person === 'Infant' ) o.infants++;
+					if( person === 'Alien' ) return 'alien';
 
 				}
 
@@ -180,12 +228,13 @@ function Logic() {
 				lifestyle:		parseInt( data.lifestyle ).toString(),
 				
 				price:			price( data.price ),
-				speed:			parseInt( data.speed ),
+				speed:			( data.speed === 'lightspeed' ) ? data.speed : parseInt( data.speed ),
 				economy:		mpg( data.mpg ),
 
 				awd:			data.options.awd || false,
 				high:			data.options.hp || false,
 				convertible:	data.options.dt || false,
+				teleportation:	data.options.tp || false,
 
 			}
 

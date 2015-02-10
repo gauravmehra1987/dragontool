@@ -13,7 +13,7 @@
 				<div class="item" data-value="2"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-nippier.svg" /></div>
 				<div class="item" data-value="3"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-quick.svg" /></div>
 				<div class="item" data-value="4"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-woohoo.svg" /></div>
-				<div class="item" data-value="5"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-lightspeed.svg" /></div>
+				<div class="item" data-value="lightspeed"><img src="assets/img/tpl-roller-wide.gif" class="svg" data-src="assets/sprites/svg/speed-lightspeed.svg" /></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper-wide.gif" class="img-base" /></div>
 
 			</div>
