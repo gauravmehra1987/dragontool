@@ -1,13 +1,12 @@
 function Dashboard() {
 
-	var dials		= new Dials();
-
-	var price		= new dials.price();
-	var mpg			= new dials.mpg();
-	var luggage		= new dials.luggage();
-	var options		= new dials.options();
-	var lifestyle	= new dials.lifestyle();
-	var speed		= new dials.roller( '#c-speed .control.speed .fake-list' );
+	var dials;
+	var price;
+	var mpg;
+	var luggage;
+	var options;
+	var lifestyle;
+	var speed;
 
 	// BG changer
 
@@ -103,6 +102,19 @@ function Dashboard() {
 
 	}
 
-	this.seats();
+	this.init = function() {
+
+		dials		= new Dials();
+
+		price		= new dials.price();
+		mpg			= new dials.mpg();
+		luggage		= new dials.luggage();
+		options		= new dials.options();
+		lifestyle	= new dials.lifestyle();
+		speed		= new dials.roller( '#c-speed .control.speed .fake-list' );
+
+		this.seats();
+
+	}
 
 }

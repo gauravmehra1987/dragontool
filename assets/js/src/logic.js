@@ -10,9 +10,36 @@ function Logic() {
 
 	// Public functions
 
-	this.eggs = function( egg ) {
+	this.eggs = function( data ) {
 
-		// console.log( egg );
+		var seatTriggers	= [ 'Alien', 'Dog', 'Cat' ];
+		var extraSeat		= data.seats[ 4 ];
+		var eggs			= [];
+		var i				= $.inArray( extraSeat, seatTriggers );
+
+		// Alien, cat, dog
+
+		if( i >= 0 ) { eggs.push( seatTriggers[ i ].toLowerCase() ); }
+
+		// Teleportation
+
+		if( data.options.tp ) { eggs.push( 'teleport' ); }
+
+		// Rocket car
+
+		if( data.speed === 5 ) { eggs.push( 'rocket' ); }
+
+		// Toy car
+
+		if( priceChanged && data.price <= 190 ) { eggs.push( 'toy' ); }
+
+		// No eggs at all
+
+		if( eggs.length <= 0 ) eggs = false;
+
+		// Return the array
+
+		return eggs;
 
 	}
 

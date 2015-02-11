@@ -79,6 +79,14 @@ module.exports = function( grunt ) {
 		},
 
 		prettify: {
+
+			options: {
+
+				condense: false,
+				indent: 1,
+				indent_char: '	',
+
+			},
 		
 			razor: {		
 				
@@ -450,6 +458,12 @@ module.exports = function( grunt ) {
 		watch: {
 
 			options: { livereload: true },
+
+			self: {
+
+				files: [ 'gruntfile.js' ],
+			
+			},
 
 			html: {			
 

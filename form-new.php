@@ -197,12 +197,12 @@
 		
 		<div class="checkbox">
 
+			<input id="callback" name="callback" type="checkbox" value="1" checked="checked" />
+			<!-- build:remove --><label for="callback">Request callback</label><!-- /build -->
+
 			<!-- build:template
 			<%= form.field.callback %>
 			/build -->
-
-			<input id="callback" name="callback" type="checkbox" value="1" checked="checked" />
-			<!-- build:remove --><label for="callback">Request callback</label><!-- /build -->
 
 		</div>
 
@@ -212,12 +212,12 @@
 		
 		<div class="checkbox">
 
+			<input id="results" name="results" type="checkbox" value="1" />
+			<!-- build:remove --><label for="results">E-mail me my results</label><!-- /build -->
+
 			<!-- build:template
 			<%= form.field.results %>
 			/build -->
-
-			<input id="results" name="results" type="checkbox" value="1" />
-			<!-- build:remove --><label for="results">E-mail me my results</label><!-- /build -->
 
 		</div>
 
