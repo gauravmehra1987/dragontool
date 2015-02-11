@@ -80,7 +80,7 @@ $( window ).load( function() {
 
 				// Take the first car only
 
-				var car				= cars[ 0 ];
+				var car				= cars[ _.random( cars.length - 1 ) ];
 				var $panel			= $body.find( '.panel-results' );
 				var customerId		= $body.find( '#uid' ).val()
 				var resultsPageUrl	= function( url, user, code ) {
