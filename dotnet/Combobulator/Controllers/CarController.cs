@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
-using System.Web.Http;
-using Combobulator.Models;
-using System.Web.Mvc;
 using System.Net.Http.Headers;
-using System.Web.UI;
-using System.Configuration;
+using System.Reflection;
+using System.Web.Http;
+using System.Web.Script.Serialization;
+using Combobulator.DAL;
+using Combobulator.Helpers;
+using Combobulator.Models;
+using log4net;
+using Newtonsoft.Json;
+using Car = Combobulator.DAL.Car;
+using NewCar = Combobulator.Models.NewCar;
 
 namespace Combobulator.Controllers
 {
@@ -18,54 +22,56 @@ namespace Combobulator.Controllers
     {
         private int apiCacheDurationHours = Convert.ToInt32(ConfigurationManager.AppSettings["ApiCacheDurationHours"]);
         private bool apiCacheEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["ApiCacheEnabled"]);
-        private Combobulator.DAL.CombobulatorDataContext dbContext = new Combobulator.DAL.CombobulatorDataContext();
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private CombobulatorDataContext dbContext = new CombobulatorDataContext();
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         // GET api/car
         // Gets all cars
         [System.Web.Mvc.HttpGet]
         public HttpResponseMessage GetCars()
         {
-            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var serializer = new JavaScriptSerializer();
+            
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                IList<Combobulator.DAL.Car> dbCar = dbContext.GetCars().ToList();
+                IList<GetNewCarsResult> dbCar = dbContext.GetNewCars().ToList();
                 var query = from c in dbCar
-                            select new Car
+                            select new NewCar
                                 {
-                                    Id = c.Id,
-                                    Model = c.Model,
-                                    ModelCode = c.ModelCode,
-                                    Colour = c.Colour,
+                                    Code = c.Code,
+                                    Color = c.Color,
                                     Engine = c.Engine,
-                                    DisplayName = c.DisplayName,
-                                    Type = c.Type,
-                                    CapacityScale = c.CapacityScale,
-                                    LuggageScale = c.LuggageScale,
-                                    Options = c.Options,
-                                    PriceScale = c.PriceScale,
+                                    Name = c.Name,
+                                    Capacity = c.Capacity,
+                                    Luggage = c.Luggage,
+                                    Lifestyle = c.Lifestyle,
+                                    Awd = c.Awd,
+                                    High = c.High,
+                                    Convertible = c.Convertible,
+                                    Price = c.Price,
                                     Cost = c.Cost,
-                                    PerformanceScale = c.PerformanceScale,
-                                    MPH = c.MPH,
-                                    EconomyScale = c.EconomyScale,
-                                    MPG = c.MPG,
-                                    UsageScale = c.UsageScale,
-                                    Alt1 = c.Alt1,
-                                    Alt2 = c.Alt2,
-                                    Alt3 = c.Alt3,
-                                    TermsConditions = c.TermsConditions
+                                    Speed = c.Speed,
+                                    Mph = c.Mph,
+                                    Economy = c.Economy,
+                                    Alt_1 = c.Alt1,
+                                    Alt_2 = c.Alt2,
+                                    Alt_3 = c.Alt3,
                                 };
 
-                IEnumerable<Car> cars = query.ToList();
+                IEnumerable<NewCar> cars = query.ToList();
 
                 if (cars == null)
                 {
                     throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
                 }
 
-                StringContent sc = new StringContent(serializer.Serialize(cars).ToString());
+                var settings = new JsonSerializerSettings();
+                settings.ContractResolver = new LowercaseContractResolver();
+                var json = JsonConvert.SerializeObject(cars, Formatting.Indented, settings);
+
+                StringContent sc = new StringContent(json);
                 sc.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response.Content = sc;
 
@@ -96,13 +102,13 @@ namespace Combobulator.Controllers
         [System.Web.Mvc.HttpGet]
         public HttpResponseMessage GetCar(string id)
         {
-            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var serializer = new JavaScriptSerializer();
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                Combobulator.DAL.Car dbCar = dbContext.GetCar(id).FirstOrDefault();
-                Car car = new Car
+                Car dbCar = dbContext.GetCar(id).FirstOrDefault();
+                Models.Car car = new Models.Car
                 {
                     Id = dbCar.Id,
                     Model = dbCar.Model,

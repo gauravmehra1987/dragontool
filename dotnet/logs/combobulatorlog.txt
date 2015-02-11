@@ -1,0 +1,276 @@
+2015-02-11 15:43:20,764 [6] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:45:36,274 [15] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:46:09,635 [17] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:51:52,562 [8] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:51:55,272 [9] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:54:13,600 [7] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:54:21,634 [9] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:55:10,428 [6] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 15:55:18,756 [7] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CarViewModel
+System.Collections.Generic.List`1[[Combobulator.Models.Car, Combobulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+System.Collections.Generic.List`1[Combobulator.Models.Car]
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TDestination](Object source, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 71
+   at AutoMapper.MappingEngine.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 60
+   at AutoMapper.Mapper.Map[TDestination](Object source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 49
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 70
+2015-02-11 16:03:23,866 [6] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Car -> CarViewModel
+Combobulator.Models.Car -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+Combobulator.Models.Car
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 81
+   at AutoMapper.Mapper.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 73
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 71
+2015-02-11 16:03:44,265 [7] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Car -> CarViewModel
+Combobulator.Models.Car -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+Combobulator.Models.Car
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 81
+   at AutoMapper.Mapper.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 73
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 71
+2015-02-11 16:03:48,961 [8] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Car -> CarViewModel
+Combobulator.Models.Car -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+Combobulator.Models.Car
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 81
+   at AutoMapper.Mapper.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 73
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 71
+2015-02-11 16:04:23,227 [8] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Car -> CarViewModel
+Combobulator.Models.Car -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+Combobulator.Models.Car
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 81
+   at AutoMapper.Mapper.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 73
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 71
+2015-02-11 16:29:50,263 [8] ERROR Combobulator.Controllers.CarController - GetCars
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Car -> CarViewModel
+Combobulator.Models.Car -> Combobulator.ViewModels.CarViewModel
+
+Destination path:
+CarViewModel
+
+Source value:
+Combobulator.Models.Car
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 250
+   at AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 131
+   at AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 122
+   at AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\MappingEngine.cs:line 81
+   at AutoMapper.Mapper.Map[TSource,TDestination](TSource source) in c:\dev\AutoMapper\src\AutoMapper\Mapper.cs:line 73
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Combobulator.Controllers.CarController.GetCars() in c:\Projects\Combo\dotnet\Combobulator\Controllers\CarController.cs:line 71

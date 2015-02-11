@@ -39,6 +39,9 @@ namespace Combobulator.DAL
     partial void InsertDealer(Dealer instance);
     partial void UpdateDealer(Dealer instance);
     partial void DeleteDealer(Dealer instance);
+    partial void InsertNewCar(NewCar instance);
+    partial void UpdateNewCar(NewCar instance);
+    partial void DeleteNewCar(NewCar instance);
     #endregion
 		
 		public CombobulatorDataContext() : 
@@ -95,6 +98,14 @@ namespace Combobulator.DAL
 			}
 		}
 		
+		public System.Data.Linq.Table<NewCar> NewCars
+		{
+			get
+			{
+				return this.GetTable<NewCar>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCar")]
 		public ISingleResult<Car> GetCar([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ModelCode", DbType="VarChar(10)")] string modelCode)
 		{
@@ -128,6 +139,13 @@ namespace Combobulator.DAL
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetLookupsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetNewCars")]
+		public ISingleResult<GetNewCarsResult> GetNewCars()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<GetNewCarsResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -845,6 +863,524 @@ namespace Combobulator.DAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NewCars")]
+	public partial class NewCar : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Code;
+		
+		private string _Color;
+		
+		private string _Engine;
+		
+		private string _Name;
+		
+		private string _Capacity;
+		
+		private string _Luggage;
+		
+		private string _Lifestyle;
+		
+		private int _Awd;
+		
+		private int _High;
+		
+		private int _Convertible;
+		
+		private int _Price;
+		
+		private int _Cost;
+		
+		private int _Speed;
+		
+		private int _Mph;
+		
+		private int _Economy;
+		
+		private decimal _Mpg;
+		
+		private string _Alt1;
+		
+		private string _Alt2;
+		
+		private string _Alt3;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCodeChanging(string value);
+    partial void OnCodeChanged();
+    partial void OnColorChanging(string value);
+    partial void OnColorChanged();
+    partial void OnEngineChanging(string value);
+    partial void OnEngineChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnCapacityChanging(string value);
+    partial void OnCapacityChanged();
+    partial void OnLuggageChanging(string value);
+    partial void OnLuggageChanged();
+    partial void OnLifestyleChanging(string value);
+    partial void OnLifestyleChanged();
+    partial void OnAwdChanging(int value);
+    partial void OnAwdChanged();
+    partial void OnHighChanging(int value);
+    partial void OnHighChanged();
+    partial void OnConvertibleChanging(int value);
+    partial void OnConvertibleChanged();
+    partial void OnPriceChanging(int value);
+    partial void OnPriceChanged();
+    partial void OnCostChanging(int value);
+    partial void OnCostChanged();
+    partial void OnSpeedChanging(int value);
+    partial void OnSpeedChanged();
+    partial void OnMphChanging(int value);
+    partial void OnMphChanged();
+    partial void OnEconomyChanging(int value);
+    partial void OnEconomyChanged();
+    partial void OnMpgChanging(decimal value);
+    partial void OnMpgChanged();
+    partial void OnAlt1Changing(string value);
+    partial void OnAlt1Changed();
+    partial void OnAlt2Changing(string value);
+    partial void OnAlt2Changed();
+    partial void OnAlt3Changing(string value);
+    partial void OnAlt3Changed();
+    #endregion
+		
+		public NewCar()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Code
+		{
+			get
+			{
+				return this._Code;
+			}
+			set
+			{
+				if ((this._Code != value))
+				{
+					this.OnCodeChanging(value);
+					this.SendPropertyChanging();
+					this._Code = value;
+					this.SendPropertyChanged("Code");
+					this.OnCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Color", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Color
+		{
+			get
+			{
+				return this._Color;
+			}
+			set
+			{
+				if ((this._Color != value))
+				{
+					this.OnColorChanging(value);
+					this.SendPropertyChanging();
+					this._Color = value;
+					this.SendPropertyChanged("Color");
+					this.OnColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Engine", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Engine
+		{
+			get
+			{
+				return this._Engine;
+			}
+			set
+			{
+				if ((this._Engine != value))
+				{
+					this.OnEngineChanging(value);
+					this.SendPropertyChanging();
+					this._Engine = value;
+					this.SendPropertyChanged("Engine");
+					this.OnEngineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capacity", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Capacity
+		{
+			get
+			{
+				return this._Capacity;
+			}
+			set
+			{
+				if ((this._Capacity != value))
+				{
+					this.OnCapacityChanging(value);
+					this.SendPropertyChanging();
+					this._Capacity = value;
+					this.SendPropertyChanged("Capacity");
+					this.OnCapacityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Luggage", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Luggage
+		{
+			get
+			{
+				return this._Luggage;
+			}
+			set
+			{
+				if ((this._Luggage != value))
+				{
+					this.OnLuggageChanging(value);
+					this.SendPropertyChanging();
+					this._Luggage = value;
+					this.SendPropertyChanged("Luggage");
+					this.OnLuggageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lifestyle", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Lifestyle
+		{
+			get
+			{
+				return this._Lifestyle;
+			}
+			set
+			{
+				if ((this._Lifestyle != value))
+				{
+					this.OnLifestyleChanging(value);
+					this.SendPropertyChanging();
+					this._Lifestyle = value;
+					this.SendPropertyChanged("Lifestyle");
+					this.OnLifestyleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Awd", DbType="Int NOT NULL")]
+		public int Awd
+		{
+			get
+			{
+				return this._Awd;
+			}
+			set
+			{
+				if ((this._Awd != value))
+				{
+					this.OnAwdChanging(value);
+					this.SendPropertyChanging();
+					this._Awd = value;
+					this.SendPropertyChanged("Awd");
+					this.OnAwdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_High", DbType="Int NOT NULL")]
+		public int High
+		{
+			get
+			{
+				return this._High;
+			}
+			set
+			{
+				if ((this._High != value))
+				{
+					this.OnHighChanging(value);
+					this.SendPropertyChanging();
+					this._High = value;
+					this.SendPropertyChanged("High");
+					this.OnHighChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Convertible", DbType="Int NOT NULL")]
+		public int Convertible
+		{
+			get
+			{
+				return this._Convertible;
+			}
+			set
+			{
+				if ((this._Convertible != value))
+				{
+					this.OnConvertibleChanging(value);
+					this.SendPropertyChanging();
+					this._Convertible = value;
+					this.SendPropertyChanged("Convertible");
+					this.OnConvertibleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
+		public int Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cost", DbType="Int NOT NULL")]
+		public int Cost
+		{
+			get
+			{
+				return this._Cost;
+			}
+			set
+			{
+				if ((this._Cost != value))
+				{
+					this.OnCostChanging(value);
+					this.SendPropertyChanging();
+					this._Cost = value;
+					this.SendPropertyChanged("Cost");
+					this.OnCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Speed", DbType="Int NOT NULL")]
+		public int Speed
+		{
+			get
+			{
+				return this._Speed;
+			}
+			set
+			{
+				if ((this._Speed != value))
+				{
+					this.OnSpeedChanging(value);
+					this.SendPropertyChanging();
+					this._Speed = value;
+					this.SendPropertyChanged("Speed");
+					this.OnSpeedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mph", DbType="Int NOT NULL")]
+		public int Mph
+		{
+			get
+			{
+				return this._Mph;
+			}
+			set
+			{
+				if ((this._Mph != value))
+				{
+					this.OnMphChanging(value);
+					this.SendPropertyChanging();
+					this._Mph = value;
+					this.SendPropertyChanged("Mph");
+					this.OnMphChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Economy", DbType="Int NOT NULL")]
+		public int Economy
+		{
+			get
+			{
+				return this._Economy;
+			}
+			set
+			{
+				if ((this._Economy != value))
+				{
+					this.OnEconomyChanging(value);
+					this.SendPropertyChanging();
+					this._Economy = value;
+					this.SendPropertyChanged("Economy");
+					this.OnEconomyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mpg", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Mpg
+		{
+			get
+			{
+				return this._Mpg;
+			}
+			set
+			{
+				if ((this._Mpg != value))
+				{
+					this.OnMpgChanging(value);
+					this.SendPropertyChanging();
+					this._Mpg = value;
+					this.SendPropertyChanged("Mpg");
+					this.OnMpgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alt1", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Alt1
+		{
+			get
+			{
+				return this._Alt1;
+			}
+			set
+			{
+				if ((this._Alt1 != value))
+				{
+					this.OnAlt1Changing(value);
+					this.SendPropertyChanging();
+					this._Alt1 = value;
+					this.SendPropertyChanged("Alt1");
+					this.OnAlt1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alt2", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Alt2
+		{
+			get
+			{
+				return this._Alt2;
+			}
+			set
+			{
+				if ((this._Alt2 != value))
+				{
+					this.OnAlt2Changing(value);
+					this.SendPropertyChanging();
+					this._Alt2 = value;
+					this.SendPropertyChanged("Alt2");
+					this.OnAlt2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alt3", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Alt3
+		{
+			get
+			{
+				return this._Alt3;
+			}
+			set
+			{
+				if ((this._Alt3 != value))
+				{
+					this.OnAlt3Changing(value);
+					this.SendPropertyChanging();
+					this._Alt3 = value;
+					this.SendPropertyChanged("Alt3");
+					this.OnAlt3Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class GetLookupsResult
 	{
 		
@@ -884,6 +1420,374 @@ namespace Combobulator.DAL
 				if ((this._Name != value))
 				{
 					this._Name = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetNewCarsResult
+	{
+		
+		private int _Id;
+		
+		private string _Code;
+		
+		private string _Color;
+		
+		private string _Engine;
+		
+		private string _Name;
+		
+		private string _Capacity;
+		
+		private string _Luggage;
+		
+		private string _Lifestyle;
+		
+		private int _Awd;
+		
+		private int _High;
+		
+		private int _Convertible;
+		
+		private int _Price;
+		
+		private int _Cost;
+		
+		private int _Speed;
+		
+		private int _Mph;
+		
+		private int _Economy;
+		
+		private decimal _Mpg;
+		
+		private string _Alt1;
+		
+		private string _Alt2;
+		
+		private string _Alt3;
+		
+		public GetNewCarsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Code
+		{
+			get
+			{
+				return this._Code;
+			}
+			set
+			{
+				if ((this._Code != value))
+				{
+					this._Code = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Color", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Color
+		{
+			get
+			{
+				return this._Color;
+			}
+			set
+			{
+				if ((this._Color != value))
+				{
+					this._Color = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Engine", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Engine
+		{
+			get
+			{
+				return this._Engine;
+			}
+			set
+			{
+				if ((this._Engine != value))
+				{
+					this._Engine = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capacity", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Capacity
+		{
+			get
+			{
+				return this._Capacity;
+			}
+			set
+			{
+				if ((this._Capacity != value))
+				{
+					this._Capacity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Luggage", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Luggage
+		{
+			get
+			{
+				return this._Luggage;
+			}
+			set
+			{
+				if ((this._Luggage != value))
+				{
+					this._Luggage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lifestyle", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Lifestyle
+		{
+			get
+			{
+				return this._Lifestyle;
+			}
+			set
+			{
+				if ((this._Lifestyle != value))
+				{
+					this._Lifestyle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Awd", DbType="Int NOT NULL")]
+		public int Awd
+		{
+			get
+			{
+				return this._Awd;
+			}
+			set
+			{
+				if ((this._Awd != value))
+				{
+					this._Awd = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_High", DbType="Int NOT NULL")]
+		public int High
+		{
+			get
+			{
+				return this._High;
+			}
+			set
+			{
+				if ((this._High != value))
+				{
+					this._High = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Convertible", DbType="Int NOT NULL")]
+		public int Convertible
+		{
+			get
+			{
+				return this._Convertible;
+			}
+			set
+			{
+				if ((this._Convertible != value))
+				{
+					this._Convertible = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
+		public int Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cost", DbType="Int NOT NULL")]
+		public int Cost
+		{
+			get
+			{
+				return this._Cost;
+			}
+			set
+			{
+				if ((this._Cost != value))
+				{
+					this._Cost = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Speed", DbType="Int NOT NULL")]
+		public int Speed
+		{
+			get
+			{
+				return this._Speed;
+			}
+			set
+			{
+				if ((this._Speed != value))
+				{
+					this._Speed = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mph", DbType="Int NOT NULL")]
+		public int Mph
+		{
+			get
+			{
+				return this._Mph;
+			}
+			set
+			{
+				if ((this._Mph != value))
+				{
+					this._Mph = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Economy", DbType="Int NOT NULL")]
+		public int Economy
+		{
+			get
+			{
+				return this._Economy;
+			}
+			set
+			{
+				if ((this._Economy != value))
+				{
+					this._Economy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mpg", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Mpg
+		{
+			get
+			{
+				return this._Mpg;
+			}
+			set
+			{
+				if ((this._Mpg != value))
+				{
+					this._Mpg = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alt1", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Alt1
+		{
+			get
+			{
+				return this._Alt1;
+			}
+			set
+			{
+				if ((this._Alt1 != value))
+				{
+					this._Alt1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alt2", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Alt2
+		{
+			get
+			{
+				return this._Alt2;
+			}
+			set
+			{
+				if ((this._Alt2 != value))
+				{
+					this._Alt2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alt3", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Alt3
+		{
+			get
+			{
+				return this._Alt3;
+			}
+			set
+			{
+				if ((this._Alt3 != value))
+				{
+					this._Alt3 = value;
 				}
 			}
 		}

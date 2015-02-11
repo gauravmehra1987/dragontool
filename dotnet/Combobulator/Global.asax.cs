@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Combobulator.Config;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -23,6 +27,12 @@ namespace Combobulator
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            CarAutoMapperConfig.Configure();
+
+            // JSON Formatting
+            var jsonFormatter = new JsonMediaTypeFormatter();
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }
