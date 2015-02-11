@@ -16,19 +16,6 @@
 		"new_user":		"@Html.EditorFor(model => model.UserId, new { id=\"form-user-id\", value = ViewBag.UserId })"
 
 	},
-	
-	"hiddenfields": {
-	
-		"modelcode":	"<input type=\"hidden\" id=\"Car_ModelCode\" name=\"Car.ModelCode\" value=\"@Model.Car.ModelCode\" />",
-		"capacity":		"<input type=\"hidden\" id=\"Selections_Capacity\" name=\"Selections.Capacity\" value=\"@Model.Selections.Capacity\" />",
-		"economy":		"<input type=\"hidden\" id=\"Selections_Economy\" name=\"Selections.Economy\" value=\"@Model.Selections.Economy\" />",
-		"luggage":		"<input type=\"hidden\" id=\"Selections_Luggage\" name=\"Selections.Luggage\" value=\"@Model.Selections.Luggage\" />",
-		"options":		"<input type=\"hidden\" id=\"Selections_Options\" name=\"Selections.Options\" value=\"@Model.Selections.Options\" />",
-		"performance":	"<input type=\"hidden\" id=\"Selections_Performance\" name=\"Selections.Performance\" value=\"@Model.Selections.Performance\" />",
-		"price":		"<input type=\"hidden\" id=\"Selections_PriceRange\" name=\"Selections.PriceRange\" value=\"@Model.Selections.PriceRange\" />",
-		"use":			"<input type=\"hidden\" id=\"Selections_Use\" name=\"Selections.Use\" value=\"@Model.Selections.Use\" />"
-
-	},
 
 	"field": {
 

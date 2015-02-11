@@ -10,6 +10,26 @@ function Logic() {
 
 	// Public functions
 
+	this.str2int = function() {
+
+		$( cars ).each( function( i, el ) {
+
+			cars[ i ].awd			= parseInt( el.awd );
+			cars[ i ].high			= parseInt( el.high );
+			cars[ i ].convertible	= parseInt( el.convertible );
+			cars[ i ].price			= parseInt( el.price );
+			cars[ i ].cost			= parseInt( el.cost );
+			cars[ i ].speed			= parseInt( el.speed );
+			cars[ i ].mph			= parseInt( el.mph );
+			cars[ i ].economy		= parseInt( el.economy );
+			cars[ i ].mpg			= parseFloat( el.mpg );
+
+		} );
+
+		return cars;
+
+	}
+
 	this.eggs = function( data ) {
 
 		var seatTriggers	= [ 'Alien', 'Dog', 'Cat' ];
@@ -248,8 +268,8 @@ function Logic() {
 
 		$.get( path.api, function( data ) {
 
-			cars	= JSON.stringify( data );
-			db		= TAFFY( cars );
+			cars	= data;
+			db		= TAFFY( JSON.stringify( cars ) );
 
 			console.debug( data.length + ' rows loaded successfully to the database' );
 

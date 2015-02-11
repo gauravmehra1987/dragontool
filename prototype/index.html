@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="assets/main.css">
@@ -9,124 +10,184 @@
 </head>
 
 <body>
-	<h1>Mini Dataset Logic test</h1>
-	<form>
-		<p>Q1: Who will be travelling most often in your MINI?</p>
-		<select name="capacity" id="capacity">
-			<option value="0">Select</option>
-			<option value="1">1 - 2 people</option>
-			<option value="2">1 - 4 people (including car seat)</option>
-			<option value="3">1 - 2 adults + 1 - 2 children / 1 adult + 3 children</option>
-			<option value="4">5 people</option>
-		</select>
 
-		<select name="eggs" id="eggs">
-			<option value="Alien">Alien</option>
-			<option value="Cat">Cat</option>
-			<option value="Dog">Dog</option>
-		</select>
-		<br />
+	<div class="wrapper">
 
-		<br />
-		<br />
+		<h1>Mini Dataset Logic test</h1>
 
-		<p>Q2: How would you describe the typical use of the car?</p>
-		<select name="luggage" id="luggage">
-			<option value="1">Minimalist</option>
-			<option value="2">Light packer</option>
-			<option value="3">Lugger</option>
-			<option value="4">Big loader</option>
-		</select>
-		<br />
-		<br />
+		<form>
+			
+			<fieldset>
 
-		<p>Q3: Which options would you like to have:</p>
-		<div><label><input type="checkbox" id="awd" name="awd" value="1">4WD</label></div>
-		<div><label><input type="checkbox" id="high" name="high" value="2">High driving position</label></div>
-		<div><label><input type="checkbox" id="convertible" name="convertible" value="3">Drop top</label></div>
-		<div><label><input type="checkbox" id="teleportation" name="teleportation" value="4">Teleportation</label></div>
+				<legend>Who will be travelling most often in your MINI?</legend>
 
-		<p>Q4: What is your budget for your new MINI?</p>
-		<select name="price" id="price">
-			<option value="0">up to 190</option>
-			<option value="1">191 up to 215</option>
-			<option value="2">216 up to 245</option>
-			<option value="3">246 up to 269</option>
-			<option value="4">270 up to 294</option>
-			<option value="5">295+</option>
-		</select>
-		<br />
-		<br />
+				<div class="input">
+					
+					<select name="capacity" id="capacity">
 
-		<p>Q5: Performance for your new MINI?</p>
-		<select name="speed" id="speed">
-			<option value="1">1 = 105 - 120mph (nippy)</option>
-			<option value="2">2 = 121 - 130 (nippier)</option>
-			<option value="3">3 = 131 - 140 (quick)</option>
-			<option value="4">4 = 141 - 145 + (woohooo)</option>
-			<option value="5">Lightspeed</option>
-		</select>
-		<br />
-		<br />
+						<option value="0">Select</option>
+						<option value="1">1 - 2 people</option>
+						<option value="2">1 - 4 people (including car seat)</option>
+						<option value="3">1 - 2 adults + 1 - 2 children / 1 adult + 3 children</option>
+						<option value="4">5 people</option>
 
-		<p>Q6: Economy for your new MINI?</p>
-		<select name="economy" id="economy">
-			<option value="1">25 - 45 (min economic)</option>
-			<option value="2">46 - 60</option>
-			<option value="3">61 - 69</option>
-			<option value="4">70 - 80 + (max economic)</option>
-		</select>
-		<br />
-		<br />
+					</select>
 
-		<p>Q7: How would you describe the typical use of the car?</p>
-		<select name="lifestyle" id="lifestyle">
-			<option value="2">Beach Bum</option>
-			<option value="1">Urbanite</option>			
-			<option value="3">Mountaineer</option>
-			<option value="4">Junglist</option>
-		</select>
-		<br />
-		<br />
+				</div><!-- end div.input -->
 
-		<input type="submit" value="Submit" id="submit">
-	</form>
-	<div id="panel">
-		<h3><b>Showing <span></span> Cars </b></h3>
-		<ul></ul>
-		<p>extras: <span id="extras"></span> </p>
-	</div>
-	<div id="output">
-		<script id="template" type="text/x-handlebars-template">
-			<div class="output-cont">
-				{{#each this}}
+			</fieldset>	
 
-				<div style="overflow:hidden; width:600px; margin-bottom:10px;">
-					<p style="float: left; width:226px; margin-right:30px;">
-						name: {{name}}
-						<br/> model: {{code}}
-						<br/> capacity : {{capacity}}
-						<br/> luggage: {{luggage}}
-						<br/> price scale: {{price}}
-						<br/> speed: {{speed}}
-						<br/> economy: {{economy}}
-						<br/> lifestyle: {{lifestyle}}
-						<br/>
-					</p>
+			<fieldset>
+					
+					<legend>How much luggage will you carry?</legend>
 
-					<p style="float: left; width:300px; margin-right:30px; clear:right;">
-						Alternative 1: {{alt_1}}
-						<br/> Alternative 2: {{alt_2}}
-						<br/> Alternative 3: {{alt_3}}
-						<br/>
-					</p>
+					<div class="input">
+						
+						<select name="luggage" id="luggage">
+
+							<option value="1">Minimalist</option>
+							<option value="2">Light packer</option>
+							<option value="3">Lugger</option>
+							<option value="4">Big loader</option>
+
+						</select>
+
+					</div><!-- end div.input -->
+			
+			</fieldset>
+
+			<fieldset>
+					
+				<legend>Which options would you like to have:</legend>
+
+				<div class="input">
+					
+					<div><label><input type="checkbox" id="awd" name="awd" value="1">4WD</label></div>
+					<div><label><input type="checkbox" id="high" name="high" value="2">High driving position</label></div>
+					<div><label><input type="checkbox" id="convertible" name="convertible" value="3">Drop top</label></div>
+					<div><label><input type="checkbox" id="teleportation" name="teleportation" value="4">Teleportation</label></div>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>What is your budget for your new MINI?</legend>
+
+				<div class="input">
+					
+					<select name="price" id="price">
+
+						<option value="0">up to 190</option>
+						<option value="1">191 up to 215</option>
+						<option value="2">216 up to 245</option>
+						<option value="3">246 up to 269</option>
+						<option value="4">270 up to 294</option>
+						<option value="5">295+</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>		
+
+			<fieldset>
+
+				<legend>Performance for your new MINI?</legend>
+
+				<div class="input">
+					
+					<select name="speed" id="speed">
+
+						<option value="1">1 = 105 - 120mph (nippy)</option>
+						<option value="2">2 = 121 - 130 (nippier)</option>
+						<option value="3">3 = 131 - 140 (quick)</option>
+						<option value="4">4 = 141 - 145 + (woohooo)</option>
+						<option value="5">Lightspeed</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>Economy for your new MINI?</legend>
+
+				<div class="input">
+					
+					<select name="economy" id="economy">
+
+						<option value="1">25 - 45 (min economic)</option>
+						<option value="2">46 - 60</option>
+						<option value="3">61 - 69</option>
+						<option value="4">70 - 80 + (max economic)</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>How would you describe the typical use of the car?</legend>
+
+				<div class="input">
+					
+					<select name="lifestyle" id="lifestyle">
+
+						<option value="2">Beach Bum</option>
+						<option value="1">Urbanite</option>			
+						<option value="3">Mountaineer</option>
+						<option value="4">Junglist</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<button type="submit"id="submit">Submit</button>
+
+		</form>
+
+		<div id="output">
+
+			<script id="template" type="text/x-handlebars-template">
+
+				<div class="output-content">
+
+					<h2>{{cars.length}} results</h2>
+
+					<p>Searched for: </p>
+
+					<pre>{{query}}</pre>
+
+					{{#each cars}}
+
+						<h3>{{name}} ({{code}})</h3>
+						
+						<ul class="alternatives">
+						
+							<li><b>Alternative 1:</b> {{alt_1}}</li>
+							<li><b>Alternative 2:</b> {{alt_2}}</li>
+							<li><b>Alternative 3:</b> {{alt_3}}</li>
+
+						</ul>
+
+					{{/each}}
+
 				</div>
 
-				{{/each}}
+			</script>
 
-			</div>
-		</script>
-	</div>
+		</div>
+
+	</div><!-- end div.wrapper -->
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="assets/handlebars.js"></script>
 	<script src="../bower_components/underscore/underscore.js"></script>    
@@ -165,24 +226,22 @@
 
 	};
 
-	function getResults() {
-
-		var $output     = $( '#output' );
-		var template    = Handlebars.compile( $('#template').html() );
-		var data		= logic.getCars( query.build( getObj() ) );
-
-		$output.find( '.output-cont' ).remove();
-		$output.append( template( data.cars ) );
-		
-		$('#extras').html( 'test' );
-
-	}
-
 	$( '#submit' ).on( 'click', function( e ) {
 
 		e.preventDefault();
 
-		getResults();
+		var $output     = $( '#output' );
+		var template    = Handlebars.compile( $('#template').html() );
+		var search		= getObj();
+		var data		= logic.getCars( query.build( search ) );
+
+		$output.find( '.output-content' ).remove();
+		$output.append( template( {
+
+			query: JSON.stringify( search ),
+			cars: data.data
+
+		} ) );
 
 	} );
 
