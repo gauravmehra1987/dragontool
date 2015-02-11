@@ -1,3 +1,5 @@
+/*! by John Przeslakowski - visit me at http://goodpixels.co.uk */
+
 var system_paths = {
 
 	net: {
@@ -20,7 +22,7 @@ var system_paths = {
 
 };
 
-var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
+var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
 
 var carColors = {
 					
@@ -30,10 +32,15 @@ var carColors = {
 	'Jungle Green':			'#426046',
 	
 	'Chili red':			'#d71d24',
-	'Blazing Red':			'#d71d24',
+	'Blazing Red':			'#c10000',
 	
 	'Pepper white':			'#e4dfce',
 	'Light white':			'#e4dfce',
+
+	// Extra colors
+
+	'Toy brown':			'#47322e',
+	'Rocket gold':			'gold'
 
 }
 

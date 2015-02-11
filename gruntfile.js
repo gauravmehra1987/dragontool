@@ -331,7 +331,11 @@ module.exports = function( grunt ) {
 
 			dist: {
 
-				options: { preserveComments: false },
+				options: {
+
+					preserveComments: 'some'
+
+				},
 
 				files: {
 

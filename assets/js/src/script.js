@@ -23,9 +23,15 @@ $( window ).load( function() {
 
 	$.subscribe( 'colour-change', function( e, color) { dashboard.colors( color ); } );
 
+	// Show first panel on a page
+
 	ui.showPanel( 'default' );
 
+	// Load initial color
+
 	dashboard.colors( carColors[ 'Electric Blue' ] );
+
+	// Validate forms
 
 	$( 'form' ).validate();
 
@@ -46,23 +52,11 @@ $( window ).load( function() {
 
 		) {
 
-			if( $.inArray( 'rocket', eggs ) >= 0 && $.inArray( 'toy', eggs ) >= 0 ) {
+			if( $.inArray( 'rocket', eggs ) >= 0 && $.inArray( 'toy', eggs ) >= 0 ) { ui.eggs( 'rocket', eggs ); }
 
-				alert( 'Trigger a rocket.' );
+			else if( $.inArray( 'toy', eggs ) >= 0 ) { ui.eggs( 'toy', eggs ); }
 
-			}
-
-			else if( $.inArray( 'toy', eggs ) >= 0 ) {
-
-				alert( 'Trigger a toy.' );
-
-			}
-
-			else {
-
-				alert( 'Trigger a rocket.' );
-
-			}
+			else { ui.eggs( 'rocket', eggs ); }
 
 			return;
 
@@ -80,16 +74,8 @@ $( window ).load( function() {
 
 				// Take the first car only
 
-				var car				= cars[ _.random( cars.length - 1 ) ];
-				var $panel			= $body.find( '.panel-results' );
-				var customerId		= $body.find( '#uid' ).val()
-				var resultsPageUrl	= function( url, user, code ) {
-
-					var link = ( typeof user === 'undefined' ) ? url + 'm=' + code : url + 'c=' + user + '&m=' + code;
-
-					return link;
-
-				};
+				var car		= cars[ _.random( cars.length - 1 ) ];
+				var user	= $body.find( '#uid' ).val()
 
 				// Easter eggs
 
@@ -99,30 +85,13 @@ $( window ).load( function() {
 					$.inArray( 'cat', eggs ) >= 0 ||
 					$.inArray( 'alien', eggs ) >= 0
 
-				) {
+				) { ui.eggs( 'creature', eggs ); }
 
-					alert( 'These search results will show one of the creatures.' );
-
-				}
-
-				else if( $.inArray( 'teleport', eggs ) >= 0 ) {
-
-					alert( 'Trigger teleportation.' );
-
-				}
+				else if( $.inArray( 'teleport', eggs ) >= 0 ) { ui.eggs( 'teleport', eggs ); }
 
 				// Populate results
 
-				$panel.find( '[data-model-name]' ).html (car.name );
-				$panel.find( '[data-model-code]' ).html( car.code );
-				$panel.find( '[data-model-price]' ).html( car.cost );				
-				$panel.find( '[data-terms]' ).html( car.terms );
-				$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, customerId, car.code ) } );
-				$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.jpg' } ).fadeIn( 200 );
-
-				dashboard.colors( carColors[ car.color ] );
-
-				ui.showPanel( 'results' );
+				ui.render( car, user );
 
 			}
 		}

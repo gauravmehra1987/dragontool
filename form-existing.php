@@ -19,17 +19,6 @@
 	<%= form.userid.existing %>
 	/build -->
 
-	<!-- build:template
-	<%= form.hiddenfields.modelcode %>
-	<%= form.hiddenfields.capacity %>
-	<%= form.hiddenfields.economy %>
-	<%= form.hiddenfields.luggage %>
-	<%= form.hiddenfields.options %>
-	<%= form.hiddenfields.performance %>
-	<%= form.hiddenfields.price %>
-	<%= form.hiddenfields.use %>
-	/build -->
-
 	<!-- build:remove --><input type="hidden" id="form-user-id" name="UserId" value="999" /><!-- /build -->
 
 	<div class="form-control">

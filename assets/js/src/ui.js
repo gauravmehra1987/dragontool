@@ -1,13 +1,30 @@
 function UI() {
 
-	// Panels
+	var eggsData = {
 
-	this.showPanel = function( panel ) {
+		rocket: {
 
-		$body.find( '[data-panel-name]' ).removeClass( 'panel-active' );
-		$body.find( '[data-panel-name="' + panel + '"]' ).addClass( 'panel-active' );
+			'code':		'RKT',
+			'color':	'Rocket gold',
+			'name':		'Rocket Car!',
 
-	}
+		},
+
+		toy: {
+
+			'code':		'TOY',
+			'color':	'Toy brown',
+			'name':		'Toy Car',
+
+		}
+
+	};
+
+	this.$panel= $body.find( '.panel-results' );
+
+	// Results URL generator
+
+	var resultsPageUrl	= function( url, user, code ) { return ( typeof user === 'undefined' ) ? url + 'm=' + code : url + 'c=' + user + '&m=' + code; };
 
 	// SVG loader
 
@@ -25,6 +42,15 @@ function UI() {
 
 	}
 
+	// Panels
+
+	this.showPanel = function( panel ) {
+
+		$body.find( '[data-panel-name]' ).removeClass( 'panel-active' );
+		$body.find( '[data-panel-name="' + panel + '"]' ).addClass( 'panel-active' );
+
+	}
+
 	// Image preloader
 
 	this.preloadImages = function() {
@@ -37,8 +63,8 @@ function UI() {
 
 		$.get( path.preload, { type: 'svg' }, function( images ){
 
-			var loaded = 0;
-			var $preloader = $( '<div>', { id: 'preloader' } );
+			var loaded		= 0;
+			var $preloader	= $( '<div>', { id: 'preloader' } );
 
 			$body.append( $preloader );
 
@@ -60,8 +86,8 @@ function UI() {
 
 					loaded++;
 
-					var unit = images.length / 100;
-					var percentage = ( loaded / images.length ) * 100;
+					var unit		= images.length / 100;
+					var percentage	= ( loaded / images.length ) * 100;
 					var progress;
 
 					progress = Math.floor( percentage );
@@ -85,6 +111,53 @@ function UI() {
 			} );
 
 		} );
+
+	}
+
+	// Render results
+
+	this.render = function( car, user ) {
+
+		this.$panel.find( '[data-model-name]' ).html (car.name );
+		this.$panel.find( '[data-model-code]' ).html( car.code );
+		this.$panel.find( '[data-model-price]' ).html( car.cost );				
+		this.$panel.find( '[data-terms]' ).html( car.terms );
+		this.$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, user, car.code ) } );
+		this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.jpg' } ).fadeIn( 200 );
+
+		// Change dashboard color
+
+		dashboard.colors( carColors[ car.color ] );
+
+		// Reveal results
+
+		this.showPanel( 'results' );
+
+	}
+
+	// Easter eggs
+
+	this.eggs = function( trigger, eggs ) {
+
+		switch( trigger ) {
+
+			case 'toy': this.render( eggsData.toy ); break;
+			
+			case 'rocket': this.render( eggsData.rocket ); break;
+
+			case 'creature':
+
+				alert( 'These search results will show one of the creatures.' );
+
+			break;
+
+			case 'teleport':
+
+				alert( 'Trigger teleportation.' );
+
+			break;
+
+		}
 
 	}
 

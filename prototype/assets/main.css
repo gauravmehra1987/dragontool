@@ -5,6 +5,45 @@ html body {
   background: white;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  margin: 0;
+  padding: 20px;
+
+}
+
+h1, h2 { margin: 0; }
+h3 { margin: 20px 0; }
+
+.wrapper {
+
+	margin: 0 auto;
+	max-width: 960px;
+	overflow: hidden;
+
+}
+
+#output, form {
+
+	float: left;
+	max-width: 480px;
+
+}
+
+.output-content { padding: 20px; }
+
+pre {
+
+	background: floralwhite;
+	padding: 20px;
+	word-wrap: break-word;
+
+}
+
+.alternatives {
+
+	font-size: 13px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 
 }
 
