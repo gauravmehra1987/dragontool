@@ -10,7 +10,7 @@ function Logic() {
 
 	// Public functions
 
-	this.str2int = function() {
+	this.optimizeData = function() {
 
 		$( cars ).each( function( i, el ) {
 

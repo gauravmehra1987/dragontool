@@ -9,11 +9,23 @@ var dashboard;
 
 if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) ui.preloadImages();
 
+// Start dashboard
+
+dashboard = new Dashboard();
+
+// Load initial color
+
+var dashColor = ( location.hash.length > 0 ) ? atob( location.hash.substring( 1 ) ) : 'Electric Blue';
+
+dashboard.colors( carColors[ dashColor ] );
+
 // Initialize everything after the page has fully loaded (otherwise dashboard values will be off!)
 
 $( window ).load( function() {
 
-	dashboard	= new Dashboard();
+	// We need to update dashboard color once the SVGs have been loaded
+
+	dashboard.colors( carColors[ dashColor ] );
 
 	// Initialize controls on the homepage
 
@@ -27,13 +39,17 @@ $( window ).load( function() {
 
 	ui.showPanel( 'default' );
 
-	// Load initial color
-
-	dashboard.colors( carColors[ 'Electric Blue' ] );
-
 	// Validate forms
 
 	$( 'form' ).validate();
+
+	// Handle successful form submission
+
+	$.subscribe( 'form-ajax-results', function( e, data ) {
+
+		if( data.success ) { ui.showPanel( 'thanks' ); }
+
+	} );
 
 	// Execute search
 

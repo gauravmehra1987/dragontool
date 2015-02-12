@@ -1,9 +1,14 @@
 # ignore thumbnails created by windows
 Thumbs.db
+
+# and mac
+.DS_Store
+
 # front end packages
 /node_modules
 /bower_components
 /prototype/assets/_archive.js
+
 # back end
 /dotnet/packages
 /dotnet/Combobulator.Tests
@@ -11,6 +16,8 @@ Thumbs.db
 /dotnet/Combobulator/App_Data
 /dotnet/Combobulator/obj
 /dotnet/Combobulator/Assets
+/dotnet/logs/combobulatorlog.txt
+
 # Visuak Studio build
 *.obj
 *.exe

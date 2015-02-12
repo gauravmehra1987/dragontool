@@ -4,19 +4,21 @@ var system_paths = {
 
 	net: {
 
-		assets:		'Assets/cars/',
-		results:	'results?',
-		api:		'api/car',
-		preload:	'api/assets/svg',
+		assets:			'Assets/cars/',
+		results:		'results?',
+		spriteFallback:	'Assets/sprites',
+		api:			'api/car',
+		preload:		'api/assets/svg',		
 
 	},
 
 	php: {
 
-		assets:		'assets/cars/',
-		results:	'results.php?',
-		api:		'api/car.json',
-		preload:	'preload.php',
+		assets:			'assets/cars/',
+		results:		'results.php?',
+		spriteFallback:	'assets/sprites',
+		api:			'json/car.json',
+		preload:		'preload.php',
 
 	}
 

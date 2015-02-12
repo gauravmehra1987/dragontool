@@ -19,7 +19,7 @@
 	<%= form.userid.existing %>
 	/build -->
 
-	<!-- build:remove --><input type="hidden" id="form-user-id" name="UserId" value="999" /><!-- /build -->
+	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
 
 	<div class="form-control">
 

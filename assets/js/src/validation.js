@@ -96,16 +96,4 @@
 
 	} );
 
-	$.subscribe( 'form-ajax-results', function( e, data ) {
-
-		if( data.success ) {
-
-			ui.showPanel( 'thanks' );
-
-			$.publish('colour-change', carColors[ 'Electric Blue' ] );
-
-		}
-
-	} );
-
 } )( Mini );

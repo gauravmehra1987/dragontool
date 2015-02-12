@@ -12,8 +12,8 @@
 
 	"userid": {
 
-		"existing":		"@Html.EditorFor(model => model.UserId, new { id=\"form-user-id\", value = Model.UserId })",
-		"new_user":		"@Html.EditorFor(model => model.UserId, new { id=\"form-user-id\", value = ViewBag.UserId })"
+		"existing":		"@Html.EditorFor(model => model.UserId, new { id=\"uid\", value = Model.UserId })",
+		"new_user":		"@Html.EditorFor(model => model.UserId, new { id=\"uid\", value = ViewBag.UserId })"
 
 	},
 

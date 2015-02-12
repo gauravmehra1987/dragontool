@@ -7,6 +7,8 @@ function UI() {
 			'code':		'RKT',
 			'color':	'Rocket gold',
 			'name':		'Rocket Car!',
+			'cost':		'n/a',
+			'terms':	'A ro-ro-ro-rocket car!'
 
 		},
 
@@ -15,6 +17,8 @@ function UI() {
 			'code':		'TOY',
 			'color':	'Toy brown',
 			'name':		'Toy Car',
+			'cost':		'n/a',
+			'terms':	'Just a silly toy...'
 
 		}
 
@@ -24,7 +28,13 @@ function UI() {
 
 	// Results URL generator
 
-	var resultsPageUrl	= function( url, user, code ) { return ( typeof user === 'undefined' ) ? url + 'm=' + code : url + 'c=' + user + '&m=' + code; };
+	var resultsPageUrl	= function( url, user, code, color ) {
+
+		var color = btoa( color ); // pass the color
+
+		return ( typeof user === 'undefined' ) ? url + 'm=' + code + '#' + color : url + 'c=' + user + '&m=' + code + '#' + color;
+
+	};
 
 	// SVG loader
 
@@ -34,7 +44,7 @@ function UI() {
 
 		SVGInjector( svgs, {
 
-			pngFallback: 'assets/sprites',
+			pngFallback: path.spriteFallback,
 
 			each: function( svg ) { $( svg ).hide().fadeIn( 600 ); }
 
@@ -122,7 +132,7 @@ function UI() {
 		this.$panel.find( '[data-model-code]' ).html( car.code );
 		this.$panel.find( '[data-model-price]' ).html( car.cost );				
 		this.$panel.find( '[data-terms]' ).html( car.terms );
-		this.$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, user, car.code ) } );
+		this.$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, user, car.code, car.color ) } );
 		this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.jpg' } ).fadeIn( 200 );
 
 		// Change dashboard color
