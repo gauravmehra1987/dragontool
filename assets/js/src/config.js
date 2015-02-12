@@ -1,5 +1,28 @@
 /*! by John Przeslakowski - visit me at http://goodpixels.co.uk */
 
+var social = {
+
+	facebook: {
+
+		link:			'http://google.com',
+		message:		'This is the message which will be posted to the user\'s wall.',
+		name:			'Image name',
+		caption:		'Image caption',
+		picture:		'http://placehold.it/200x200',
+		description:	'Just a test description.'
+
+	},
+	
+	twitter: {
+
+		url:			'http://sony.com',
+		text:			'This is the message which will be posted to the user\'s wall.',
+		hashtags:		'mini,cooper'
+
+	}
+
+};
+
 var system_paths = {
 
 	net: {
@@ -68,7 +91,7 @@ var Mini	= {
 
 	thirdParty: {
 
-		facebookID:		000000000000000,
+		facebookID:		892580704115737,
 		analyticsID:	'UA-000000-01'
 
 	},

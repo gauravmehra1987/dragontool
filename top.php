@@ -4,8 +4,8 @@
 
 	<ul class="social js-sharer">
 
-		<li class="facebook"><a href="#">Facebook</a></li><!-- end li.facebook -->
-		<li class="twitter"><a href="#">Twitter</a></li><!-- end li.twitter -->
+		<li class="facebook" data-fb-mode="direct"><a href="https://www.facebook.com/MINI.uk">Facebook</a></li><!-- end li.facebook -->
+		<li class="twitter"><a href="https://twitter.com/miniuk">Twitter</a></li><!-- end li.twitter -->
 		
 	</ul><!-- end ul.social -->
 

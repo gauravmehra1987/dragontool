@@ -13,57 +13,77 @@
 
 			case 'facebook':
 
-				FB.ui( {
+				// Direct post
+
+				if( $( website ).data( 'fb-mode' ) === 'direct' ) {
+
+					FB.login( function( data ) {
 					
-					method: 'share',
-					href: currentURL,
+						if( data.authResponse ) {
 
-				},
+							FB.api(
 
-				function( response ) {
+								'/me/feed',
+								'POST',
+								social.facebook,
+								function ( data ) {					
 
-					console.log( response );
+									console.log( data );
 
-				} );
+									( data.error ) ? alert( data.error.error_user_msg ) : alert( 'Thanks! Posting completed.' );
+
+								}
+
+							);
+
+						}
+
+						else { alert( 'We couldn\'t authorise you. Sorry for the inconvenience.' ); }
+
+					}, {
+
+						scope: 'publish_actions',
+						return_scopes: true
+
+					} );
+
+				}
+
+				// Or just a share dialog
+
+				else {
+
+					FB.ui( {
+
+						method:	'share',
+						href:	social.facebook.link,
+
+					},
+					function( response ) {
+					
+						if( response && ! response.error_code ) {
+						
+							alert( 'Thanks! Posting completed.' );
+
+						}
+
+						else {
+
+							alert( 'We couldn\'t post to your wall.' );
+						}
+
+					} );
+
+				}
 
 			break;
 
 			case 'twitter':
 
-				var hashtags = website.data( 'hashtags' );
+				var hashtags		= ( social.twitter.hashtags !== undefined ) ? social.twitter.hashtags : '';
+				var twitterShareURL	= 'https://twitter.com/intent/tweet?' + 'hashtags=' + hashtags + '&text=' + social.twitter.text + '&url=' + social.twitter.url;
 
-				if( hashtags === undefined ) hashtags = '';
-
-				window.open( 'https://twitter.com/intent/tweet?url=' + currentURL + '&hashtags=' + hashtags, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );
-
-			break;
-
-			case 'gplus':
-
-				window.open( 'http://plus.google.com/share?url=' + currentURL, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );
-
-			break;
-
-			case 'print': window.print(); break;
-			
-			case 'mail':
-
-				dialog( 'Please enter your friend\'s e-mail address.', 'prompt', function() {
-
-					var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				
-					if( regex.test( this ) ) {
-
-						window.location.href = 'mailto:' + this + '?subject=Check this out&body=Hello there, I thought you\'ll find it interesting: ' + currentURL;
-
-					}
-					else{
-
-						dialog( 'The e-mail address seems invalid. Please try again.' );
-
-					}
-
-				} );
+				window.open( twitterShareURL, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );
 
 			break;
 
