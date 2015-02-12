@@ -293,6 +293,7 @@ module.exports = function( grunt ) {
 					'assets/js/src/script.js',
 					'assets/js/src/tablet.js',
 					'assets/js/src/mobile.js',
+					'assets/js/src/backdrop.js',
 
 				],
 			
