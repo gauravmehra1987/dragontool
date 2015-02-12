@@ -65,7 +65,6 @@
 					<div><label><input type="checkbox" id="awd" name="awd" value="1">4WD</label></div>
 					<div><label><input type="checkbox" id="high" name="high" value="2">High driving position</label></div>
 					<div><label><input type="checkbox" id="convertible" name="convertible" value="3">Drop top</label></div>
-					<div><label><input type="checkbox" id="teleportation" name="teleportation" value="4">Teleportation</label></div>
 
 				</div><!-- end div.input -->
 
@@ -199,7 +198,7 @@
 
 	var path	= path || {};
 
-	if( ! path.hasOwnProperty( 'api' ) ) path.api = '../api/car.json';
+	if( ! path.hasOwnProperty( 'api' ) ) path.api = '../json/car.json';
 	
 	var logic	= new Logic();
 	var query	= new logic.query();

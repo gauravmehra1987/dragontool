@@ -2,7 +2,7 @@
 		
 	<h2 id="logo"><a href="./">Mini</a></h2><!-- end h2#logo -->
 
-	<ul class="social">
+	<ul class="social js-sharer">
 
 		<li class="facebook"><a href="#">Facebook</a></li><!-- end li.facebook -->
 		<li class="twitter"><a href="#">Twitter</a></li><!-- end li.twitter -->

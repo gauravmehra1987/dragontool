@@ -289,6 +289,7 @@ module.exports = function( grunt ) {
 					'assets/js/src/dials.js',
 					'assets/js/src/dashboard.js',
 					'assets/js/src/ui.js',
+					'assets/js/src/social.js',
 					'assets/js/src/script.js',
 					'assets/js/src/tablet.js',
 					'assets/js/src/mobile.js',
