@@ -32,7 +32,17 @@ if( Mini.browser.mobile ) {
 		}
 
 	} );
-
-}
-
 // Tablet
+$(".tablet-only.arrow").click(function() {
+	
+    $(this).toggleClass("chevron-first chevron");      //toggle second section up and down
+    $(".column.left").toggleClass("slideup");
+    if ($('.column.left').hasClass('slideup') === true) {
+	$(".layer").css('opacity', '0.5'); 
+ } else {
+ 	$(".layer").css('opacity', '0');
+ }
+
+});
+ }
+

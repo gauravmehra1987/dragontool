@@ -1,14 +1,16 @@
 <!-- build:template
-<%= dhrubo.variables %>
+<%= home.variables %>
 /build -->
 
 <!-- build:remove --><?php require( 'header.php' ); ?><!-- /build -->
 
-<div class="layout-wrapper">
+<div class="layer"></div>
 
+<div class="layout-wrapper">
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
 	<main class="layout">
+
 		
 		<div class="column right">
 			
@@ -17,6 +19,7 @@
 		</div><!-- end div.column left -->
 
 		<div class="column left">
+			<a class="tablet-only arrow chevron-first"></a>
 
 			<!-- build:template
 			<%= home.dashboard %>

@@ -10,14 +10,187 @@
 
 // Have a look at animate.css - http://daneden.github.io/animate.css/
 
-html > body {
 
-	// put your stuff here
+@media ( min-width: 721px ) and ( max-width: 1023px ) {
 
+	html > body {
+		overflow:hidden;
+
+		.layer{
+		    width: 100%;
+		    height: 100%;
+		    display: block;
+		    background: #000;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    opacity:0;
+		    z-index:1;
+		}
+		.layout-wrapper{
+				width:97%;
+				display:block;
+
+			.layout-header{
+				.social li a:after{
+					font-size:23px;
+					margin-top:-11px;
+					margin-left:-11px;
+				}
+			}
+
+			.layout-footer{
+				a {
+					color:#131313;
+				}
+				display:none;
+			}
+
+			.layout{
+				height:840px;
+				overflow:visible;
+
+
+				.column.left{
+					float:none;
+					width:100%;
+					background-color:#131313;
+					margin-top:20px;
+					width:103%;
+    				margin-left:-12px;
+    				transition: transform 0.3s ease-out;
+    				z-index:2;
+					
+
+    				a.tablet-only{
+    					width:100%;
+						height:110px;
+						background-color:#131313;
+						display:block;
+						background-repeat: no-repeat;
+	    				background-position: center; 
+	    				background-size: 60px 70px;
+    				}
+
+					#dash{
+						max-width:40000px;
+					}
+				}
+
+				.column.right{
+					width:100%;
+					float:none;
+
+					#welcome{
+						.header{
+							margin:0 0 20px 0;
+
+							.strike-through{
+								margin:20px 0;
+							}
+						}
+						p{
+							line-height:30px;
+						}
+						padding:25px 120px;
+					}
+					#results{
+						padding:29px;
+
+						.price-span{
+							.currency{
+								font-size:35px;
+							}
+							.price{
+								font-size:65px;
+							}
+							.permonth{
+								font-size:20px;
+							}
+							.button{
+								font-size:22px;
+								padding:15px 29px;
+							}
+						}
+
+						.model-image{
+							margin:-125px -30px;
+						}
+						.terms{
+							margin-top:55px;
+							font-size:20px;
+						}
+						.gimmick{
+							font-size:30px;
+							line-height:30px;
+						}
+						.related{
+							width:103%;
+							margin-left:-6%;
+						}
+					}
+				}
+			}
+		}
+
+		.ministry{
+			height:150px;
+			width:150px;
+		}
+		h1{
+			font-size:55px;
+		}
+		h6{
+			font-size:23px;
+		}
+		h3 {
+			font-size: 34px;
+		}
+		p{
+			font-size:22px;
+		}
+
+		h1, h2, h3, h4, h5, h6, p, ul, ol, dl form, figure, blockquote, pre{
+			margin: 0 0 20px 0;
+
+		}
+
+		.slideup { transform: translateY(-87%); 
+				   -ms-transform: translateY(-87%); 
+				   -webkit-transform: translateY(-87%); 
+		}
+
+		.chevron{
+			background-image:url('../img/chevron-white.png');
+		}
+		.chevron-first{
+			background-image:url('../img/chevron.png');
+		}
+
+	}
 }
 
-@media ( min-width: 721px ) and ( max-width: 1024px ) {
+	@media ( min-width: 1024px ) and ( max-width: 1180px ) {
 
-	html > body {}
+		html > body {
+			.layer{
+			display:none;
+			}
 
-}
+			.layout-wrapper{
+				width:100%;
+
+				.layout{
+					margin: 0 auto;
+
+					.column.right{
+						width:39%;
+					}
+
+					.column.left{
+						width:61%;
+					}
+				}
+			}
+		}
+	} 
