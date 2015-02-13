@@ -253,6 +253,7 @@ module.exports = function( grunt ) {
 
 					// List bower components
 					
+					paths.bower + 'pixi.js/bin/pixi.js',
 					paths.bower + 'svg-injector/svg-injector.js',
 					paths.bower + 'taffydb/taffy.js',
 					paths.bower + 'fastclick/lib/fastclick.js',
@@ -294,6 +295,7 @@ module.exports = function( grunt ) {
 					'assets/js/src/tablet.js',
 					'assets/js/src/mobile.js',
 					'assets/js/src/backdrop.js',
+					'assets/js/src/teleport.js',
 
 				],
 			

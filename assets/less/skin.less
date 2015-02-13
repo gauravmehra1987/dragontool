@@ -20,7 +20,7 @@ html {
 
 #terms {
 
-	background: fadeout( @white, 3% );
+	background: fadeout( @white, 1% );
 	box-shadow: 0 25px 100px -15px @trueBlack;
 	margin-top: -240px;
 	margin-left: -320px;	
@@ -38,15 +38,35 @@ html {
 	width: 640px;
 
 	.close {
+
+		.hide-text;
 		
-		color: @black;
+		color: @grayDark;
 		float: right;
 		font-size: @fontSizeSmall;
 		position: relative;
+		text-decoration: none;
 		text-transform: uppercase;
 
 		top: @margin;
 		right: @margin;
+
+		height: 1em;
+		width: 1em;
+
+		&:before {
+
+			.icon;
+			.icon-cross;
+
+			position: absolute;
+
+			top: 0;
+			left: 0;
+
+		}
+
+		&:hover { color: @black; }
 
 	}
 

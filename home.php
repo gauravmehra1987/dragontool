@@ -1,5 +1,5 @@
 <!-- build:template
-<%= home.variables %>
+<%= dhrubo.variables %>
 /build -->
 
 <!-- build:remove --><?php require( 'header.php' ); ?><!-- /build -->

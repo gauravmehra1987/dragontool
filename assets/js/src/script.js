@@ -57,6 +57,10 @@ $( window ).load( function() {
 
 		e.preventDefault();	
 
+		// Remove rotten eggs
+
+		$html.removeClassBeginningWith( 'egg' );
+
 		// Check if there are any easter eggs being triggered
 
 		var eggs = logic.eggs( dashboard.values() );
@@ -88,7 +92,7 @@ $( window ).load( function() {
 
 			if( cars.length > 0 ) {
 
-				// Take the first car only
+				// Randomly choose a car
 
 				var car		= cars[ _.random( cars.length - 1 ) ];
 				var user	= $body.find( '#uid' ).val()
@@ -101,13 +105,35 @@ $( window ).load( function() {
 					$.inArray( 'cat', eggs ) >= 0 ||
 					$.inArray( 'alien', eggs ) >= 0
 
-				) { ui.eggs( 'creature', eggs ); }
+				) {
 
-				else if( $.inArray( 'teleport', eggs ) >= 0 ) { ui.eggs( 'teleport', eggs ); }
+					ui.eggs( 'creature', eggs );
 
-				// Populate results
+					// Populate results
 
-				ui.render( car, user );
+					ui.render( car, user );
+
+				}
+
+				else if( $.inArray( 'teleport', eggs ) >= 0 ) {
+
+					ui.eggs( 'teleport', {
+
+						eggs:	eggs,
+						car:	car,
+						user:	user
+
+					} );
+
+				}
+
+				else {
+
+					// Populate results
+
+					ui.render( car, user );
+					
+				}
 
 			}
 		}

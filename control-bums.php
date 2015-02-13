@@ -9,7 +9,6 @@
 			<div class="list">
 
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
-				<div class="item active" data-value="Empty"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
 				<div class="item" data-value="Man"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
 				<div class="item" data-value="Woman"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>

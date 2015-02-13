@@ -1,5 +1,10 @@
 		<!-- build:js Assets/js/lib.js --><script src="assets/js/lib.js"></script><!-- /build -->
 		<!-- build:js Assets/js/app.js --><script src="assets/js/app.js"></script><!-- /build -->
+        <script src="https://cdn.rawgit.com/niklasvh/html2canvas/master/dist/html2canvas.min.js"></script>
+        <script src="https://cdn.rawgit.com/sjhewitt/glitch.js/master/glitch.js"></script>
+        <script>
+        
+        </script>
 		
 		<!--[if lt IE 9]>
 		<!-- build:js Assets/js/ie.js --><script src="assets/js/ie.js"></script><!-- /build -->

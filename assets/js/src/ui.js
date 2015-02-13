@@ -1,29 +1,5 @@
 function UI() {
 
-	var eggsData = {
-
-		rocket: {
-
-			'code':		'RKT',
-			'color':	'Rocket gold',
-			'name':		'Rocket Car!',
-			'cost':		'n/a',
-			'terms':	'A ro-ro-ro-rocket car!'
-
-		},
-
-		toy: {
-
-			'code':		'TOY',
-			'color':	'Toy brown',
-			'name':		'Toy Car',
-			'cost':		'n/a',
-			'terms':	'Just a silly toy...'
-
-		}
-
-	};
-
 	this.$panel= $body.find( '.panel-results' );
 
 	// Results URL generator
@@ -126,14 +102,29 @@ function UI() {
 
 	// Render results
 
-	this.render = function( car, user ) {
+	this.render = function( car, user, animated ) {
+
+		$( '#car-teleport' ).remove();
 
 		this.$panel.find( '[data-model-name]' ).html (car.name );
 		this.$panel.find( '[data-model-code]' ).html( car.code );
 		this.$panel.find( '[data-model-price]' ).html( car.cost );				
 		this.$panel.find( '[data-terms]' ).html( car.terms );
 		this.$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, user, car.code, car.color ) } );
-		this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.jpg' } ).fadeIn( 200 );
+		
+		if( animated ) {
+
+			var carImg = new teleport( path.assets + car.code + '.jpg' );
+
+			this.$panel.find( '[data-model-image]' ).hide().before( carImg );			
+
+		}
+
+		else {
+
+			this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.jpg' } ).fadeIn( 200 );
+
+		}
 
 		// Change dashboard color
 
@@ -147,7 +138,33 @@ function UI() {
 
 	// Easter eggs
 
-	this.eggs = function( trigger, eggs ) {
+	this.eggs = function( trigger, data ) {
+
+		var eggsData = {
+
+			rocket: {
+
+				'code':		'RKT',
+				'color':	'Rocket gold',
+				'name':		'Rocket Car!',
+				'cost':		'n/a',
+				'terms':	'A ro-ro-ro-rocket car!'
+
+			},
+
+			toy: {
+
+				'code':		'TOY',
+				'color':	'Toy brown',
+				'name':		'Toy Car',
+				'cost':		'n/a',
+				'terms':	'Just a silly toy...'
+
+			}
+
+		};
+
+		$html.removeClassBeginningWith( 'egg' ).addClass( 'egg-' + trigger );
 
 		switch( trigger ) {
 
@@ -163,7 +180,7 @@ function UI() {
 
 			case 'teleport':
 
-				alert( 'Trigger teleportation.' );
+				ui.render( data.car, data.user, true );
 
 			break;
 
