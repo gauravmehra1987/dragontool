@@ -65,6 +65,8 @@ function Logic() {
 
 	this.getCars = function( q ) {
 
+		console.log( q );
+
 		// Handle easter eggs
 
 		if( typeof q.eggs === 'object' ) {
@@ -159,9 +161,9 @@ function Logic() {
 			if( q.high ) dbQuery.high					= q.high;
 			if( q.convertible ) dbQuery.convertible		= q.convertible;
 
-			if( q.price ) dbQuery.price					= { lt: q.price };
-			if( q.speed ) dbQuery.speed					= { gt: q.speed };
-			if( q.economy ) dbQuery.economy				= { gt: q.economy };
+			if( q.price ) dbQuery.price					= { lt: q.price + 1 };
+			if( q.speed ) dbQuery.speed					= { gt: q.speed - 1 };
+			if( q.economy ) dbQuery.economy				= { gt: q.economy - 1};
 
 			obj = { prepared: dbQuery, raw: queryObj };
 
@@ -270,6 +272,9 @@ function Logic() {
 
 			cars	= data;
 			db		= TAFFY( JSON.stringify( cars ) );
+
+			_this.c = cars;
+			_this.d = db;
 
 			console.debug( data.length + ' rows loaded successfully to the database' );
 

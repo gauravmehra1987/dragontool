@@ -1,6 +1,8 @@
 <!-- build:remove --><?php if( __FILE__ == $_SERVER['SCRIPT_FILENAME' ] ) { require( 'header.php' ); } ?><!-- /build -->
 
 	<div id="dash">
+
+		<a id="tablet-toggle" class="tablet-only">Reveal dashboard</a>
 		
 		<div id="dash-left">
 			

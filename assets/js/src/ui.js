@@ -104,7 +104,19 @@ function UI() {
 
 	this.render = function( car, user, animated ) {
 
+		// Remove telpoert canvas
+
 		$( '#car-teleport' ).remove();
+
+		// Hide the dashboard on mobile
+
+		if( Mini.browser.mobile ) setTimeout( function() {
+
+			$( '.layout > .column.left' ).removeClass( 'open' );
+
+		}, 0 );
+
+		// Rengder actual results
 
 		this.$panel.find( '[data-model-name]' ).html (car.name );
 		this.$panel.find( '[data-model-code]' ).html( car.code );
@@ -114,7 +126,7 @@ function UI() {
 		
 		if( animated ) {
 
-			var carImg = new teleport( path.assets + car.code + '.jpg' );
+			var carImg = new teleport( path.assets + car.code + '.png' );
 
 			this.$panel.find( '[data-model-image]' ).hide().before( carImg );			
 
@@ -122,7 +134,7 @@ function UI() {
 
 		else {
 
-			this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.jpg' } ).fadeIn( 200 );
+			this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.png' } ).fadeIn( 200 );
 
 		}
 

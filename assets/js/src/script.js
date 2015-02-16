@@ -19,6 +19,12 @@ var dashColor = ( location.hash.length > 0 ) ? atob( location.hash.substring( 1 
 
 dashboard.colors( carColors[ dashColor ] );
 
+// Load car onto the results page - this should be done with .NET
+
+var carModel = location.search.split( '?m=' )[ 1 ];
+
+$( '#results-car' ).attr( 'src', path.assets + carModel + '.png' );
+
 // Initialize everything after the page has fully loaded (otherwise dashboard values will be off!)
 
 $( window ).load( function() {

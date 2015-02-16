@@ -196,7 +196,7 @@
 
 }
 
-// Common elements}
+// Common elements
 
 .price-span {
 
@@ -262,6 +262,39 @@
 
 }
 
+.model-image {
+
+	background: @black url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
+	background-size: cover;
+	margin: @margin -( @margin * 1.5 );
+	overflow: hidden;
+	position: relative;
+
+	img {
+
+		&.img-base {
+
+			height: auto;
+			width: 100%;
+
+		}
+
+		& + canvas,
+		&.img-content {
+
+			position: absolute;
+
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+
+		}
+
+	}
+
+}
+
 // Panel-specific
 
 .panel-framed {
@@ -276,8 +309,6 @@
 
 #car {
 
-	background: url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
-	background-size: contain;
 	margin: 0;
 
 	.car-desc {
@@ -373,7 +404,13 @@
 
 	}
 	
-	.modelname { font-size: @fontSizeLarger; }
+	.model-name {
+
+		font-size: @fontSizeLarger;
+
+		height: 2em;
+
+	}	
 
 	.car-link {
 
@@ -383,11 +420,11 @@
 		position: absolute;
 
 		right: 0;
-		bottom: 0;
+		bottom: 0;		
 
 	}
 
-	.model-image { margin: @margin -( @margin * 1.5 ); }
+	
 
 	.gimmick {
 

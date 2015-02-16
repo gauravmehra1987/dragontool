@@ -2,9 +2,10 @@
 <%= details.model %>
 /build -->
 
-<figure id="car">
+<figure id="car" class="model-image">
 
-	<img src="assets/img/mini-sample.png" />
+	<img src="assets/cars/none.png" class="img-base" />
+	<img src="assets/cars/none.png" id="results-car" class="img-content" />
 
 	<figcaption class="car-desc">
 		

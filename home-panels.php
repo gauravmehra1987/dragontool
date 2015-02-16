@@ -25,14 +25,16 @@
 
 	<h5 class="control-title">Your results</h5>
 
-	<h3 class="modelname switch-color" data-model-name>model name</h3>
+	<h3 class="model-name switch-color" data-model-name>model name</h3>
 	<div class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span><a href="#" class="button switch-bg car-link" data-results-link="#">Go see</a></div>
 	
 	<div class="model-image">
 
 		<hr />
 
-		<img src="http://placehold.it/300x200" data-model-image />
+		<img src="assets/cars/none.png" width="760" height="540" class="img-base" />
+
+		<img src="assets/cars/none.png" width="760" height="540" class="img-content" data-model-image />
 
 		<hr />
 

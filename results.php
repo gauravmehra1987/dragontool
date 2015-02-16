@@ -8,7 +8,7 @@
 <%= results.variables %>
 /build -->
 
-<div class="layout-wrapper">
+<div id="results-page" class="layout-wrapper">
 
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
