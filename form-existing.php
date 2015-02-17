@@ -21,7 +21,7 @@
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
 
-	<div class="fields">
+	<div class="fields-left">
 
 		<div class="form-control">
 
@@ -98,9 +98,9 @@
 
 		</div>
 
-	</div><!-- end div.fields -->
+	</div><!-- end div.fields-left -->
 
-	<div class="checkboxes">
+	<div class="fields-right">
 
 		<div class="form-control">
 			
@@ -147,7 +147,7 @@
 
 		</div>
 
-	</div><!-- end div.checkboxes -->
+	</div><!-- end div.fields-right -->
 
 	<div class="form-control">
 

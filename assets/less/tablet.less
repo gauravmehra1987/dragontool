@@ -10,7 +10,7 @@
 
 // Have a look at animate.css - http://daneden.github.io/animate.css/
 
-@media ( min-width: 721px ) and ( max-width: 1024px ) and ( orientation: portrait ) {
+@media ( min-width: 721px ) and ( max-width: 1179px ) and ( orientation: portrait ) {
 
 	html > body {
 
@@ -27,7 +27,6 @@
 				overflow: hidden;
 				position: relative;
 
-				height: 966px;
 				width: 100%;
 
 				.column {
@@ -63,7 +62,7 @@
 
 						.transition( top 0.6s );
 
-						top: 846px;
+						top: ~'calc( 100% - ( 120px ) )';
 
 						height: ~'calc( 100% + 120px )';
 
@@ -83,7 +82,7 @@
 
 						#dash {
 
-							height: 965px;
+							max-width: 1179px;
 
 							#tablet-toggle {
 
@@ -117,11 +116,7 @@
 
 							#dash-left,
 							#dash-middle,
-							#dash-right {
-
-								height: ~'calc( 100% - 120px )';
-
-							}
+							#dash-right { height: ~'calc( 100% - 120px )'; }
 
 						}
 
@@ -133,7 +128,7 @@
 
 		}
 
-		#results-page {
+		#page-results {
 
 			.layout {
 
@@ -163,8 +158,8 @@
 
 								.clearfix;
 								
-								.fields,
-								.checkboxes {
+								.fields-left,
+								.fields-right {
 
 									float: left;
 									margin: 0 0 @margin;
@@ -173,7 +168,7 @@
 
 								}
 
-								.checkboxes {
+								.fields-right {
 
 									margin-left: 5%;
 

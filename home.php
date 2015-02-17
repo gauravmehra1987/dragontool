@@ -4,7 +4,7 @@
 
 <!-- build:remove --><?php require( 'header.php' ); ?><!-- /build -->
 
-<div class="layout-wrapper">
+<div id="page-home" class="layout-wrapper">
 
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
