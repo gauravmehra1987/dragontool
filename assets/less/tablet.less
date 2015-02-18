@@ -1,16 +1,43 @@
 // Tablet styles go here
 
-// http://lesscss.org/features/
-// use mixins for referencing re-usable blocks of code
-// use arguments in mixins, if you need to dynamically change their properties (for example color)
-// use variables to store often used values and reference them in your css
-// you can use math operations to calculate stuff
-// nest your css rules accorging to the hierarchy of the HTML elements
-// ampersand references the parent selector in the nestedd LESS style
+html {
 
-// Have a look at animate.css - http://daneden.github.io/animate.css/
+	#disabled { display: none; }
 
-@media ( min-width: 721px ) and ( max-width: 1179px ) and ( orientation: portrait ) {
+	&.page-disabled {
+
+		.layout-wrapper { display: block; }
+
+		.layout-wrapper .layout, .layout-wrapper .layout-footer { display: none; }
+
+		body {
+			background: url(../img/skid-marks.jpg ) 50% 50% no-repeat;
+			background-size: cover;
+		}
+
+		#disabled {
+
+			.align-middle;
+			.tc;
+			
+			padding: @margin * 5 0 @margin * 2;
+			
+			h2 { color: #ffffff; }
+			
+			p {
+
+				color: #aaaaaa;
+				font-family: @fontMini;
+			
+			}
+
+		}
+
+	}
+
+}
+
+@media ( min-width: 768px ) and ( max-width: 1179px ) {
 
 	html > body {
 

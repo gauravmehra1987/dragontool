@@ -49,50 +49,33 @@ function UI() {
 
 		$.get( path.preload, { type: 'svg' }, function( images ){
 
-			var loaded		= 0;
-			var $preloader	= $( '<div>', { id: 'preloader' } );
-
-			$body.append( $preloader );
+			var loaded = 0;
 
 			$.map( images, function( el ) {
 
-				// Create SVG
+				$.get( el, function() {
 
-				var imgPreload = document.createElementNS( 'http://www.w3.org/2000/svg','image' );
-				
-				imgPreload.setAttributeNS( 'http://www.w3.org/1999/xlink', 'href', el );
-				imgPreload.setAttributeNS( null, 'height', 0 );
-				imgPreload.setAttributeNS( null, 'width', 0 );
+					var img	= new Image();
 
-				// This is needed because of the SVGs - they need to be injected in to the DOM for the load event to work
-				
-				$preloader.append( imgPreload );
+					img.src = el;
 
-				imgPreload.addEventListener( 'load', function() {
+					$( img ).on( 'load', function() {
 
-					loaded++;
+						loaded++;
 
-					var unit		= images.length / 100;
-					var percentage	= ( loaded / images.length ) * 100;
-					var progress;
+						var unit		= images.length / 100;
+						var percentage	= ( loaded / images.length ) * 100;
+						var progress	= 0;
 
-					progress = Math.floor( percentage );
+						progress = Math.floor( percentage );
 
-					// SVGs
+						sysMsg( 'Loading: '+ progress + '%' );
 
-					// console.debug( imgPreload.href.baseVal + ' preloaded sucessfully (' + progress + '%)' );
+						if( progress === 100 ) $sys.toggleClass( 'hidden' );
 
-					sysMsg( 'Loading: '+ progress + '%' );
+					} );
 
-					if( progress === 100 ) {
-
-						$sys.toggleClass( 'hidden' );
-
-						$preloader.remove();
-
-					}
-
-				}, false );
+				} );
 
 			} );
 

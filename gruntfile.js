@@ -205,7 +205,6 @@ module.exports = function( grunt ) {
 				files: {
 
 					'assets/css/style.css':	[ 'assets/less/style.less' ],
-					'assets/css/ie.css':	[ 'assets/less/ie.less' ]
 
 				}
 
@@ -266,6 +265,7 @@ module.exports = function( grunt ) {
 					paths.bower + 'slick.js/slick/slick.js',
 					
 					// Greensock
+
 					'assets/js/src/ThrowPropsPlugin.js',
 					paths.bower + 'greensock/src/uncompressed/plugins/CSSPlugin.js',
 					paths.bower + 'greensock/src/uncompressed/TweenLite.js',
@@ -292,8 +292,7 @@ module.exports = function( grunt ) {
 					'assets/js/src/ui.js',
 					'assets/js/src/social.js',
 					'assets/js/src/script.js',
-					'assets/js/src/tablet.js',
-					'assets/js/src/mobile.js',
+					'assets/js/src/responsive.js',
 					'assets/js/src/backdrop.js',
 					'assets/js/src/teleport.js',
 
@@ -337,7 +336,20 @@ module.exports = function( grunt ) {
 
 				options: {
 
-					preserveComments: 'some'
+					preserveComments:	'some',
+					mangle:				true,
+					compress: {
+
+						sequences:		true,
+						dead_code:		true,
+						conditionals:	true,
+						booleans:		true,
+						unused:			true,
+						if_return:		true,
+						join_vars:		true,
+						drop_console:	true
+
+					}
 
 				},
 

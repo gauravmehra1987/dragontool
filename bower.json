@@ -24,13 +24,14 @@
     "lesshat": "*",
     "modernizr": "*",
     "normalize-css": "*",
-    "slick.js": "1.4.0",
+    "slick.js": "~1.4.1",
     "greensock": "~1.15.0",
     "jquery": "1.11.1",
     "underscore": "~1.7.0",
     "jquery-validation": "~1.13.1",
     "svg-injector": "~1.1.2",
     "taffydb": "*",
-    "jquery-tiny-pubsub": "cowboy/jquery-tiny-pubsub#~0.7.0"
+    "jquery-tiny-pubsub": "cowboy/jquery-tiny-pubsub#~0.7.0",
+    "pixi.js": "~2.2.5"
   }
 }

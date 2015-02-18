@@ -3,11 +3,22 @@ var ui				= new UI();
 var logic			= new Logic();
 var query			= new logic.query();
 
+var responsive;
 var dashboard;
 
-// Preload images if it's not IE
+// Some not IE-friendly stuff
 
-if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) ui.preloadImages();
+if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
+
+	// Preload images
+
+	ui.preloadImages();
+
+	// Make everything responsive
+
+	responsive = new Responsive();
+
+}
 
 // Start dashboard
 

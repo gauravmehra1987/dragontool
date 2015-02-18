@@ -10,3 +10,10 @@
 	</ul><!-- end ul.social -->
 
 </header><!-- end header.layout-header -->
+
+<div id="disabled">
+	
+	<h2>Please rotate your device</h2>
+	<p>This app has been optimised for portrait mode.</p>
+
+</div><!-- end div#disabled -->
