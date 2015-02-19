@@ -1,11 +1,12 @@
+@import 'variables';
+@import 'colors';
+@import 'mixins';
+
 // IE specific fixes here
 
 html.ie > body {
 
-	// Place your fixes here	
-	
-	background: red;
-
+	// Place your fixes here
 
 }
 
@@ -14,5 +15,29 @@ html.ie > body {
 html.ie.oldie > body {
 
 	// Place your fixes here
+
+	.layout-wrapper .layout #dash {
+
+		#dash-left,
+		#dash-middle,
+		#dash-right {
+
+			.control-wrapper {
+
+				height: 100%;
+				width: 100%;
+
+				.control-inner {
+
+					margin: @margin auto;
+					position: static;
+
+				}
+
+			}
+
+		}
+
+	}
 
 }

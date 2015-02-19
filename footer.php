@@ -1,14 +1,5 @@
 		<!-- build:js Assets/js/lib.js --><script src="assets/js/lib.js"></script><!-- /build -->
 		<!-- build:js Assets/js/app.js --><script src="assets/js/app.js"></script><!-- /build -->
-        <script src="https://cdn.rawgit.com/niklasvh/html2canvas/master/dist/html2canvas.min.js"></script>
-        <script src="https://cdn.rawgit.com/sjhewitt/glitch.js/master/glitch.js"></script>
-        <script>
-        
-        </script>
-		
-		<!--[if lt IE 9]>
-		<!-- build:js Assets/js/ie.js --><script src="assets/js/ie.js"></script><!-- /build -->
-		<![endif]-->
 
 		<!-- Google Analytics -->
 
@@ -22,7 +13,7 @@
         </script>
 
         <script>window.fbAsyncInit=function(){FB.init({appId:Mini.thirdParty.facebookID,xfbml:!0,version:"v2.1"})},function(a,b,c){var d,e=a.getElementsByTagName(b)[0];a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
-        <script>window.twttr=function(a,b,c){var d,e=a.getElementsByTagName(b)[0],f=window.twttr||{};if(!a.getElementById(c))return d=a.createElement(b),d.id=c,d.src="https://platform.twitter.com/widgets.js",e.parentNode.insertBefore(d,e),f._e=[],f.ready=function(a){f._e.push(a)},f}(document,"script","twitter-wjs");</script>
+        <!--[if gt IE 8]><!--><script>window.twttr=function(a,b,c){var d,e=a.getElementsByTagName(b)[0],f=window.twttr||{};if(!a.getElementById(c))return d=a.createElement(b),d.id=c,d.src="https://platform.twitter.com/widgets.js",e.parentNode.insertBefore(d,e),f._e=[],f.ready=function(a){f._e.push(a)},f}(document,"script","twitter-wjs");</script><!--<![endif]-->
 
 	</body>
 

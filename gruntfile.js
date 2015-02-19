@@ -204,6 +204,7 @@ module.exports = function( grunt ) {
 
 				files: {
 
+					'assets/css/ie.css':	[ 'assets/less/ie.less' ],
 					'assets/css/style.css':	[ 'assets/less/style.less' ],
 
 				}
@@ -252,7 +253,7 @@ module.exports = function( grunt ) {
 
 					// List bower components
 					
-					paths.bower + 'pixi.js/bin/pixi.js',
+					// paths.bower + 'pixi.js/bin/pixi.js',
 					paths.bower + 'svg-injector/svg-injector.js',
 					paths.bower + 'taffydb/taffy.js',
 					paths.bower + 'fastclick/lib/fastclick.js',
@@ -291,10 +292,11 @@ module.exports = function( grunt ) {
 					'assets/js/src/dashboard.js',
 					'assets/js/src/ui.js',
 					'assets/js/src/social.js',
-					'assets/js/src/script.js',
-					'assets/js/src/responsive.js',
 					'assets/js/src/backdrop.js',
 					'assets/js/src/teleport.js',
+					'assets/js/src/script.js',
+					'assets/js/src/responsive.js',
+					'assets/js/src/ie.js',
 
 				],
 			

@@ -14,7 +14,7 @@ function UI() {
 
 	// SVG loader
 
-	var loadSVGs = function() {
+	this.loadSVGs = function() {
 
 		var svgs = document.querySelectorAll( '.svg' );
 
@@ -22,7 +22,11 @@ function UI() {
 
 			pngFallback: path.spriteFallback,
 
-			each: function( svg ) { $( svg ).hide().fadeIn( 600 ); }
+			each: function( svg ) {
+				
+				$( svg ).hide().fadeIn( 600 );
+
+			}
 
 		} );
 
@@ -41,7 +45,7 @@ function UI() {
 
 	this.preloadImages = function() {
 
-		loadSVGs();
+		this.loadSVGs();
 
 		// Preload images to avoid nasty visual glitches
 

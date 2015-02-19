@@ -86,7 +86,11 @@ function Dials() {
 		var luggage_el		= document.querySelector( '.control.luggage .dial' );
 		var luggage_snap	= 360 / 4;
 
-		var getLuggage = function() { return $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim(); }
+		var getLuggage = function() {
+
+			return $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
+
+		}
 
 		var bindEvents = function() {
 
@@ -166,7 +170,7 @@ function Dials() {
 
 			$inputs.each( function( i, el ) { values[ $( this ).attr( 'id' ) ] = parseInt( $( this ).val() ); } );
 
-			if( Object.keys( values ).length <= 0 ) values = false;
+			if( $.isEmptyObject( values ) ) values = false;
 
 			return values;
 

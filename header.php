@@ -45,6 +45,8 @@
 		<meta name="twitter:image" content="" />
 		
 		<!--[if lt IE 9]>
+		<script src="https://cdn.rawgit.com/termi/ES5-DOM-SHIM/0.8/__COMPILED/a.js"></script>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 		<!-- build:css Assets/css/ie.css --><link href="assets/css/ie.css" rel="stylesheet" /><!-- /build -->
 		<!-- build:js Assets/js/ie-lib.js --><script src="assets/js/ie-lib.js"></script><!-- /build -->
 		<![endif]-->

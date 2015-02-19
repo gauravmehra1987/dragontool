@@ -1,21 +1,35 @@
-( function( Mini ) {
+// Polyfills
 
-	// If lower than IE 9...
+if( typeof String.prototype.trim !== 'function' ) {
 
-	if( Mini.browser.isIE( '<=8' ) ) {
+	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); };
 
-		// Mark document with browser version
+}
 
-		document.querySelector( 'html' ).className += ' oldie ie' + parseInt( Mini.browser.version );
+// IE class
 
-		// Unwrap select elements
-		
-		$( '.select > select, .checkbox > input' ).unwrap();
+function IE() {
 
-		// Do your stuff here
+	
 
-		alert( "fucking IE" );
+}
 
-	}
+// If lower than IE 9...
 
-}( Mini ) );
+if( Mini.browser.isIE( '<=8' ) ) {
+
+	// Mark document with browser version
+
+	document.querySelector( 'html' ).className += ' oldie ie' + parseInt( Mini.browser.version );
+
+	// Unwrap select elements
+	
+	$( '.select > select, .checkbox > input' ).unwrap();
+
+	// Do your stuff here
+
+	ui.loadSVGs();
+
+	$sys.toggleClass( 'hidden' );
+
+}

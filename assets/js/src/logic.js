@@ -89,7 +89,7 @@ function Logic() {
 
 				droppedFilters = [];
 
-				console.debug( 'Found ' + results.length + ' matches' );
+				console.log( 'Found ' + results.length + ' matches' );
 
 				var obj = {
 
@@ -107,7 +107,7 @@ function Logic() {
 
 				droppedFilters.push( filters[ droppedFilters.length ] );
 
-				console.debug( 'No results, dropping ' + droppedFilters[ droppedFilters.length - 1 ] );
+				console.log( 'No results, dropping ' + droppedFilters[ droppedFilters.length - 1 ] );
 
 				// Construct a new query
 
@@ -207,6 +207,8 @@ function Logic() {
 
 			function seats( arr ) {
 
+				var obj = {};
+
 				var o = {
 
 					people:		0,
@@ -244,7 +246,7 @@ function Logic() {
 
 			}
 
-			var obj = {		
+			obj = {		
 				
 				capacity:		( _.compact( data.seats ).length > 0 ) ? seats( data.seats ).toString() : false,
 				luggage:		luggage( data.luggage ).toString(),
@@ -276,7 +278,7 @@ function Logic() {
 			_this.c = cars;
 			_this.d = db;
 
-			console.debug( data.length + ' rows loaded successfully to the database' );
+			console.log( data.length + ' rows loaded successfully to the database' );
 
 		} );
 		
