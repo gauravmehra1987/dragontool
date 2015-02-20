@@ -9,8 +9,8 @@
 			<div class="list">
 
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
-				<div class="item" data-value="Man"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
-				<div class="item" data-value="Woman"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
+				<div class="item" data-value="Man"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg" /></div>
+				<div class="item" data-value="Woman"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg" /></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
@@ -24,11 +24,11 @@
 			<div class="list">
 
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
-				<div class="item active" data-value="Empty"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
-				<div class="item" data-value="Man"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
-				<div class="item" data-value="Woman"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item" data-value="Boy"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
-				<div class="item" data-value="Girl"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
+				<div class="item active" data-value="Empty"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg" /></div>
+				<div class="item" data-value="Man"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg" /></div>
+				<div class="item" data-value="Woman"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg" /></div>
+				<div class="item" data-value="Boy"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg" /></div>
+				<div class="item" data-value="Girl"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg" /></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
@@ -42,11 +42,11 @@
 			<div class="list">
 
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
-				<div class="item active" data-value="Empty"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
-				<div class="item" data-value="Man"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
-				<div class="item" data-value="Woman"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item" data-value="Boy"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
-				<div class="item" data-value="Girl"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
+				<div class="item active" data-value="Empty"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg" /></div>
+				<div class="item" data-value="Man"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg" /></div>
+				<div class="item" data-value="Woman"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg" /></div>
+				<div class="item" data-value="Boy"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg" /></div>
+				<div class="item" data-value="Girl"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg" /></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
@@ -60,12 +60,12 @@
 			<div class="list">
 
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
-				<div class="item active" data-value="Empty"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
-				<div class="item" data-value="Man"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
-				<div class="item" data-value="Woman"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item" data-value="Boy"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
-				<div class="item" data-value="Girl"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
-				<div class="item" data-value="Infant"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
+				<div class="item active" data-value="Empty"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg" /></div>
+				<div class="item" data-value="Man"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg" /></div>
+				<div class="item" data-value="Woman"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg" /></div>
+				<div class="item" data-value="Boy"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg" /></div>
+				<div class="item" data-value="Girl"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg" /></div>
+				<div class="item" data-value="Infant"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-infant.svg" /></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>
@@ -79,15 +79,15 @@
 			<div class="list">
 
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
-				<div class="item active" data-value="Empty"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg">Plus</span></div>
-				<div class="item" data-value="Man"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg">Man</span></div>
-				<div class="item" data-value="Woman"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg">Woman</span></div>
-				<div class="item" data-value="Boy"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg">Boy</span></div>
-				<div class="item" data-value="Girl"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg">Girl</span></div>
-				<div class="item" data-value="Infant"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-infant.svg">Infant</span></div>
-				<div class="item" data-value="Dog"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-dog.svg">Dog</span></div>
-				<div class="item" data-value="Cat"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-cat.svg">Cat</span></div>
-				<div class="item" data-value="Alien"><span class="svg switch-fill" data-src="assets/sprites/svg/figure-alien.svg">Alien</span></div>
+				<div class="item active" data-value="Empty"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-plus.svg" /></div>
+				<div class="item" data-value="Man"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-man.svg" /></div>
+				<div class="item" data-value="Woman"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-woman.svg" /></div>
+				<div class="item" data-value="Boy"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg" /></div>
+				<div class="item" data-value="Girl"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg" /></div>
+				<div class="item" data-value="Infant"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-infant.svg" /></div>
+				<div class="item" data-value="Dog"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-dog.svg" /></div>
+				<div class="item" data-value="Cat"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-cat.svg" /></div>
+				<div class="item" data-value="Alien"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-alien.svg" /></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>

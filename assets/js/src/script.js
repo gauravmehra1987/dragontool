@@ -1,5 +1,5 @@
 var priceChanged	= false;
-var ie				= ( Mini.browser.isIE( '<=8' ) && Mini.browser.isIE() ) ? new IE() : {};
+var ie				= new IE();
 var ui				= new UI();
 var logic			= new Logic();
 var query			= new logic.query();

@@ -6,7 +6,7 @@
 	
 		<div class="option opts-awd">
 
-			<input id="awd" name="awd" value="1" type="checkbox" />
+			<input id="awd" name="awd" value="1" type="checkbox" checked="checked" />
 			<label for="awd"><span class="switch-bg">4WD</span><div class="light switch-light"></div><!-- end div.light --></label>
 
 		</div><!-- end div.option -->

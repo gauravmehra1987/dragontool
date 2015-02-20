@@ -5,7 +5,8 @@
 	<div class="control luggage">
 		
 		<div class="base">
-			
+
+			<div class="before"></div><!-- end div.before // This is because of the stupid IE! -->			
 			<div class="switch-bg"></div><!-- end div.switch-bg -->
 			<div class="dial minimalist"></div><!-- end div.dial -->
 

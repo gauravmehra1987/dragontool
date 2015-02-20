@@ -111,9 +111,21 @@ function Dashboard() {
 		luggage		= new dials.luggage();
 		options		= new dials.options();
 		lifestyle	= new dials.lifestyle();
-		speed		= new dials.roller( '#c-speed .control.speed .fake-list' );
+		
+		if( ie.loadFallbacks() ) {
 
-		this.seats();
+			ie.rollers();
+			ie.speed();
+
+		}
+		
+		else {
+
+			speed = new dials.roller( '#c-speed .control.speed .fake-list' );
+
+			this.seats();
+
+		}
 
 	}
 

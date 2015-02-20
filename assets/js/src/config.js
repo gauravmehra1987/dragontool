@@ -129,7 +129,15 @@ document.querySelector( 'html' ).className += ' ' + Mini.browser.platform;
 
 // Add browser name via JavaScript if it's not IE
 
-if( ! Mini.browser.isIE() ) document.querySelector( 'html' ).className += ' ' + Mini.browser.name;
+if( ! Mini.browser.isIE() ) {
+
+	document.querySelector( 'html' ).className += ' ' + Mini.browser.name;
+
+	// Remove IE
+
+	$html.removeClass( 'ie' );
+
+}
 
 // We have to manually append .js class to the <html> element if modernizr isn't used
 

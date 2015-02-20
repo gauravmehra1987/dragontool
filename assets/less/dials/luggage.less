@@ -25,10 +25,9 @@
 		width: 100%;
 		.height_pct( 350px, @luggageBaseH );
 
-		&:before {
+		.before {
 
 			.align-centers;
-			.pseudo;
 			.sprite-luggage-mask( @luggageBaseH, @luggageBaseW );
 
 			z-index: 999;
@@ -116,7 +115,7 @@
 
 		.sprite-luggage-arrows( @luggageBaseH, @luggageBaseW );
 
-		background-size: cover;
+		background-size: cover; // We're not using the background-size mixin here, becuase it screws up interaction
 		border-radius: 100% 100% 0 0;
 
 		z-index: 99999;
@@ -130,7 +129,7 @@
 
 			.sprite-luggage-arrows-right( @luggageBaseH, @luggageBaseW );
 
-			background-size: cover;
+			background-size: cover; // We're not using the background-size mixin here, becuase it screws up interaction
 
 			.height_pct( 150px, @luggageBaseW );
 
@@ -140,7 +139,7 @@
 
 			.sprite-luggage-arrows-left( @luggageBaseH, @luggageBaseW );
 
-			background-size: cover;
+			background-size: cover; // We're not using the background-size mixin here, becuase it screws up interaction
 
 			.height_pct( 150px, @luggageBaseW );
 

@@ -10,6 +10,8 @@
 
 		</div>
 
+		<div class="shape"></div><!-- end div.shape -->
+
 	</div><!-- end div.control start -->
 
 </div><!-- end div.res-wrap -->

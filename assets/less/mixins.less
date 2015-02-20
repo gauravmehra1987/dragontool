@@ -1,3 +1,11 @@
+.background-size( @size ) {
+
+	background-size: @size;
+
+	-ms-behavior: url( http://mini.fs/bower_components/background-size-polyfill/backgroundsize.min.htc );
+
+}
+
 .responsive() {
 
 	.align-centers;
@@ -38,6 +46,11 @@
 
 	top: 50%;
 	left: 50%;
+
+	// IE!
+
+	margin: 20px auto 0\9;
+	position: static\9;
 
 }
 
