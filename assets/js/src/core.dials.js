@@ -1,5 +1,3 @@
-var sl;
-
 function Dials() {
 
 	// Rollers
@@ -200,8 +198,6 @@ function Dials() {
 			onAfterChange:		function() { lifestyle_dial.enable(); }
 
 		} );
-
-		sl = $slick;
 
 		var lifestyle_dial = new Draggable( lifestyle_el, {
 

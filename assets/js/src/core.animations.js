@@ -1,3 +1,7 @@
+// ( function( Mini ) {
+	
+// } )( Mini );
+
 // // Intro animations
 
 // function animate() {

@@ -71,7 +71,7 @@ function Logic() {
 
 		if( typeof q.eggs === 'object' ) {
 
-			console.warn( 'easter eggs triggered' );
+			console.log( 'Easter eggs triggered' );
 
 			return { data: 'easter egg' };
 

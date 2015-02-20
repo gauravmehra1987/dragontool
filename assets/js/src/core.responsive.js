@@ -15,7 +15,7 @@ function Responsive() {
 
 		this.on = function() {
 
-			console.log( 'disabled on' );
+			console.log( 'Responsive: disabled mode on' );
 
 			$html.addClass( 'page-disabled' );
 
@@ -23,7 +23,7 @@ function Responsive() {
 
 		this.off = function() {
 
-			console.log( 'disabled off' );
+			console.log( 'Responsive: disabled mode off' );
 
 			$html.removeClass( 'page-disabled' );
 
@@ -37,7 +37,7 @@ function Responsive() {
 
 		this.on = function() {
 
-			console.log( 'mobile on' );
+			console.log( 'Responsive: mobile mode on' );
 
 			// Show / hide controls on tap
 
@@ -74,7 +74,7 @@ function Responsive() {
 
 		this.off = function() {
 
-			console.log( 'mobile off' );
+			console.log( 'Responsive: mobile mode off' );
 
 			// Remove all appended classes and inline CSS
 
@@ -91,7 +91,7 @@ function Responsive() {
 
 		this.on = function() {
 
-			console.log( 'tablet on' );
+			console.log( 'Responsive: tablet mode on' );
 
 			// Handle toggle arrow
 
@@ -111,7 +111,7 @@ function Responsive() {
 
 		this.off = function() {
 
-			console.log( 'tablet off' );
+			console.log( 'Responsive: tablet mode off' );
 
 			// Unbind events and inline CSS
 
@@ -162,7 +162,5 @@ function Responsive() {
 	}
 
 	init();
-
-	this.z = new handleTablet(tablet);
 
 }

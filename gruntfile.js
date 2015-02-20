@@ -272,6 +272,10 @@ module.exports = function( grunt ) {
 					paths.bower + 'greensock/src/uncompressed/TweenLite.js',
 					paths.bower + 'greensock/src/uncompressed/utils/Draggable.js',
 
+					// Plugins
+
+					'assets/js/src/jquery.plugins.js',
+
 				],
 			
 			},
@@ -285,18 +289,16 @@ module.exports = function( grunt ) {
 					// List scripts
 					
 					'assets/js/src/config.js',
-					'assets/js/src/validation-rules.js',
+					'assets/js/src/validation.rules.js',
 					'assets/js/src/validation.js',
-					'assets/js/src/logic.js',
-					'assets/js/src/dials.js',
-					'assets/js/src/dashboard.js',
-					'assets/js/src/ui.js',
-					'assets/js/src/social.js',
-					'assets/js/src/backdrop.js',
-					'assets/js/src/teleport.js',
+					'assets/js/src/core.logic.js',
+					'assets/js/src/core.dials.js',
+					'assets/js/src/core.dashboard.js',
+					'assets/js/src/core.ui.js',
+					'assets/js/src/core.utils.js',
+					'assets/js/src/core.responsive.js',
 					'assets/js/src/script.js',
-					'assets/js/src/responsive.js',
-					'assets/js/src/ie.js',
+					'assets/js/src/core.ie.js',
 
 				],
 			

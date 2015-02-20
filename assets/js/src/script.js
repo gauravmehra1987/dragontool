@@ -69,6 +69,32 @@ $( window ).load( function() {
 
 	} );
 
+	// Handle social media
+
+	sharing();
+
+	// Events - let's start with the backdrop
+
+	$( '#terms-link' ).on( 'click', function( e ) {
+
+		e.preventDefault();
+
+		var _this	= this;
+		var target	= $( this ).attr( 'href' );
+		var $close	= $( target ).find( '.close' );
+
+		$( 'html' ).removeClass( 'terms-visible' ).addClass( 'terms-visible' );
+
+		$close.on( 'click', function( e ) {
+
+			e.preventDefault();
+
+			$( 'html' ).removeClass( 'terms-visible' );
+
+		} );
+
+	} );
+
 	// Execute search
 
 	$( '#start' ).on( 'click', function( e ) {
