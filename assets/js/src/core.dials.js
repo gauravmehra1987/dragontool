@@ -190,14 +190,22 @@ function Dials() {
 
 		var lifestyle_direction;
 		
-		var $slick = $( '.items-wrapper' ).slick( {
+		// Load slick.js only for not IE browsers
 
-			arrows:				false,
-			infinite:			true,
-			slide:				'.item',
-			onAfterChange:		function() { lifestyle_dial.enable(); }
+		if( ! ie.loadFallbacks() ) {
 
-		} );
+			var $slick = $( '.items-wrapper' ).slick( {
+
+				arrows:				false,
+				infinite:			true,
+				slide:				'.item',
+				onAfterChange:		function() { lifestyle_dial.enable(); }
+
+			} );
+
+		}
+
+		// Initialize draggable
 
 		var lifestyle_dial = new Draggable( lifestyle_el, {
 
@@ -214,7 +222,17 @@ function Dials() {
 
 				// Move content in the window
 
-				( direction === 'right' ) ? $slick.slick( 'slickPrev' ) : $slick.slick( 'slickNext' );
+				if( ie.loadFallbacks() ) {
+
+					( direction === 'right' ) ? ie.lifestyle.prev() : ie.lifestyle.next();
+
+				}
+
+				else {
+
+					( direction === 'right' ) ? $slick.slick( 'slickPrev' ) : $slick.slick( 'slickNext' );
+
+				}
 
 			}
 

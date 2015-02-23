@@ -49,4 +49,67 @@ html.ie.oldie > body {
 
 	}
 
+	#page-home .layout { 
+
+		&,
+		#dash { overflow: visible; }
+
+	}
+
+	#c-speed { background: 0 !important; }
+
+	#page-home { padding-bottom: 300px; }
+
+	#dash.ie-fallbacks #dash-left .top,
+	#dash.ie-fallbacks #dash-middle .bottom {
+
+		z-index: 999;
+
+		.control-wrapper { overflow: visible !important; }
+
+		#rollers { overflow: visible; height: 100%; }
+
+		.roller {
+
+			overflow: visible;
+
+			&:after { display: none; }
+
+			.list-static {
+
+				background: lime;
+				cursor: pointer;
+				overflow: hidden;
+				position: relative;
+
+				top: 25%;
+				height: 50%;
+
+				.active {
+
+					position: absolute; top: 0;left: 0;
+					z-index: 999;
+
+				}
+
+				&.open {
+
+					overflow: visible;
+
+					.item {
+
+						&.active { position: static; }
+
+						&:hover { background: lighten( @slotGray, 5% ); }
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
 }

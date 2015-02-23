@@ -85,9 +85,9 @@
 				<div class="item" data-value="Boy"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-boy.svg" /></div>
 				<div class="item" data-value="Girl"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-girl.svg" /></div>
 				<div class="item" data-value="Infant"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-infant.svg" /></div>
-				<div class="item" data-value="Dog"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-dog.svg" /></div>
-				<div class="item" data-value="Cat"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-cat.svg" /></div>
-				<div class="item" data-value="Alien"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-alien.svg" /></div>
+				<div class="item item-extra" data-value="Dog"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-dog.svg" /></div>
+				<div class="item item-extra" data-value="Cat"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-cat.svg" /></div>
+				<div class="item item-extra" data-value="Alien"><img class="svg switch-fill" data-src="assets/sprites/svg/figure-alien.svg" /></div>
 				<div class="item bumper"><img src="assets/img/tpl-bumper.gif" class="img-base" /></div>
 
 			</div>

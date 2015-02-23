@@ -2,68 +2,202 @@
 
 function IE() {
 
-	this.loadFallbacks = function() {
+	// Some variables
 
-		return ( Mini.browser.isIE( '<=8' ) && Mini.browser.isIE() );
+	var slots	= [
 
-	}
+		'#c-bums #roller1',
+		'#c-bums #roller2',
+		'#c-bums #roller3',
+		'#c-bums #roller4',
+		'#c-bums #roller5',
+		'#c-speed .control.speed'
 
-	this.rollers = function() {
+	];
 
-		console.log( 'rollers' );
+	// Actual functions
 
-	},
+	var obj = {
 
-	this.speed = function() {
+		loadFallbacks: function() {
 
-		console.log( 'speed' );
+			return true;
+			return ( Mini.browser.isIE( '<=8' ) && Mini.browser.isIE() );
 
-	}
+		},
 
-	// Polyfills
+		polyfills: function() {
 
-	this.polyfills = function() {
+			console.log( 'Loading IE polyfills' );
 
-		console.log( 'Loading IE polyfills' );
+			$( '#dash' ).addClass( 'ie-fallbacks' );
 
-		if( typeof String.prototype.trim !== 'function' ) {
+			if( typeof String.prototype.trim !== 'function' ) {
 
-			String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); };
+				String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); };
+
+			}
+
+		},
+
+		flow: function() {
+
+			// Mark document with browser version
+
+			document.querySelector( 'html' ).className += ' oldie ie' + parseInt( Mini.browser.version );
+
+			// Unwrap select elements
+			
+			$( '.select > select, .checkbox > input' ).unwrap();
+
+			// Do your stuff here
+
+			ui.loadSVGs();
+
+			$sys.remove();
+
+			$( '.option' ).on( 'click', function() {
+
+				var $input = $( this ).find( 'input' );
+
+				( $input.prop( 'checked' ) === true ) ? $input.prop( 'checked', false ) : $input.prop( 'checked', true );
+
+			} );
+
+			$( '.control.start .shape' ).on( 'click', function() { $( '#start' ).trigger( 'click' ); } );
+
+		},
+
+		rollers: {
+
+			getSeats: function() {
+
+				var values = [];
+
+				$( _.initial( slots ) ).each( function( i, slot ) {
+
+					var value	= $( slot ).find( '.active' ).data( 'value' ) || $( slot ).find( '.active' ).text();
+					var v		= ( value === 'Empty' ) ? 0 : value;
+
+					values.push( v );
+
+				} );
+
+				return values;
+
+			},
+
+			getSpeed: function() {
+
+				return $( _.last( slots ) ).find( '.active' ).data( 'value' );
+
+			},
+
+			init: function() {
+
+				// Remove reset button
+
+				$( '#reset' ).remove();
+
+				$( slots ).each( function( i, slot ) {
+
+					var $slot = $( slot );
+					var $list = $slot.find( '.list' );
+
+					// Remove unnecessary elements
+
+					$slot.find( '.fake-list, .item-extra, .bumper' ).remove();
+
+					// Change slot class
+
+					$list.addClass( 'list-static' ).removeClass( 'list' );
+
+					// Set active items
+
+					$slot.find( '.item:first' ).addClass( 'active' );
+
+					// Bind events
+
+					$list.on( 'click', function() {
+
+						$( '.list-static' ).not( this ).removeClass( 'open' );
+
+						$( this ).toggleClass( 'open' );
+
+					} );
+
+					$list.find( '.item' ).on( 'click', function( e ) {
+
+						e.preventDefault();
+
+						$( this ).addClass( 'active' ).siblings().removeClass( 'active' );
+
+					} );
+
+				} );
+
+			}
+
+		},
+
+		speed: {
+
+			init: function() {}
+
+		},
+
+		lifestyle: {
+
+			w: $( '#c-lifestyle .window .items-wrapper' ),
+
+			init: function() {
+
+				console.log( 'test' );
+
+				this.w.addClass( 'ie-friendly' );
+
+			},
+
+			next: function() {
+
+				console.log( 'next' );
+
+				var $items	= this.w.find( '.item' );
+				var $first	= $items.filter( ':first' );
+				var $last	= $items.filter( ':last' );
+
+				$first.insertAfter( $last );
+
+			},
+
+			prev: function() {
+
+				console.log( 'prev' );
+
+				var $items	= this.w.find( '.item' );
+				var $first	= $items.filter( ':first' );
+				var $last	= $items.filter( ':last' );
+
+				$last.insertBefore( $first );
+
+			},
 
 		}
 
-	}
+	};
 
-	if( this.loadFallbacks() ) this.polyfills();
+	// Initialize class
 
-}
+	if( obj.loadFallbacks() ) {
 
-if( ie.loadFallbacks() ) {
-
-	// If lower than IE 9...
-
-	if( Mini.browser.isIE( '<=8' ) ) {
-
-		// Mark document with browser version
-
-		document.querySelector( 'html' ).className += ' oldie ie' + parseInt( Mini.browser.version );
-
-		// Unwrap select elements
+		obj.polyfills();
 		
-		$( '.select > select, .checkbox > input' ).unwrap();
-
-		// Do your stuff here
-
-		ui.loadSVGs();
-
-		$sys.toggleClass( 'hidden' );
-
-		$( '.control.start .shape' ).on( 'click', function() {
-
-			$( '#start' ).trigger( 'click' );
-
-		} );
+		$( document ).on( 'ready', function() { obj.flow(); } );
 
 	}
-	
+
+	// Return function
+
+	return obj;
+
 }

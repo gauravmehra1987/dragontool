@@ -157,7 +157,7 @@ function Responsive() {
 		tablet.addListener( handleTablet );
 		desktop.addListener( handleDesktop );
 
-		$( window ).on( 'orientationchange', detectMedia );
+		$( window ).on( 'load orientationchange', detectMedia );
 
 	}
 

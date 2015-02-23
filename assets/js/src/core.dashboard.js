@@ -84,7 +84,8 @@ function Dashboard() {
 
 	this.values = function() {
 
-		var seats = this.seats();
+		var seats = ( ie.loadFallbacks() ) ? ie.rollers.getSeats() : this.seats();
+		var speedRoller = ( ie.loadFallbacks() ) ? ie.rollers.getSpeed() : speed.getValue();
 
 		var data = {
 
@@ -92,7 +93,7 @@ function Dashboard() {
 			mpg:		mpg.getMpg(),
 			luggage:	luggage.getLuggage(),
 			options:	options.getOptions(),
-			speed:		speed.getValue(),
+			speed:		speedRoller,
 			price:		price.getPrice(),
 			lifestyle:	lifestyle.getLifestyle()
 
@@ -114,8 +115,12 @@ function Dashboard() {
 		
 		if( ie.loadFallbacks() ) {
 
-			ie.rollers();
-			ie.speed();
+			ie.rollers.init();
+			ie.speed.init();
+
+			// In addition to new dials.lifestyle()
+
+			ie.lifestyle.init();
 
 		}
 		

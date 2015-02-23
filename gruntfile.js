@@ -16,7 +16,6 @@ module.exports = function( grunt ) {
 		// Grunt variables
 
 		pkg: grunt.file.readJSON( 'package.json' ),
-		fixturesPath: "fixtures",
 
 		processhtml: {
 		
