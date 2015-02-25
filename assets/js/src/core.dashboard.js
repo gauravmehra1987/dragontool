@@ -84,18 +84,24 @@ function Dashboard() {
 
 	this.values = function() {
 
-		var seats = ( ie.loadFallbacks() ) ? ie.rollers.getSeats() : this.seats();
-		var speedRoller = ( ie.loadFallbacks() ) ? ie.rollers.getSpeed() : speed.getValue();
+		var ctrl_seats			= ( ie.loadFallbacks() ) ? ie.rollers.getSeats() : this.seats();
+		var ctrl_speedRoller	= ( ie.loadFallbacks() ) ? ie.rollers.getSpeed() : speed.getValue();
+		var ctrl_lifestyle		= ( ie.loadFallbacks() ) ? ie.lifestyle.get() : lifestyle.getLifestyle();
 
 		var data = {
 
-			seats:		seats,
+			// The first two (in no particular order) fall back to other functions for IE 8
+
+			seats:		ctrl_seats,
+			lifestyle:	ctrl_lifestyle,
+			speed:		ctrl_speedRoller,
+			
+			// The rest stays the same across all browsers
+
 			mpg:		mpg.getMpg(),
 			luggage:	luggage.getLuggage(),
 			options:	options.getOptions(),
-			speed:		speedRoller,
 			price:		price.getPrice(),
-			lifestyle:	lifestyle.getLifestyle()
 
 		};
 

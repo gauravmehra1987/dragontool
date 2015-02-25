@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+            "http://www.w3.org/TR/html4/loose.dtd">
 <html class="no-js ie" lang="en">
-<!--<![endif]-->
 
 	<head>
 
@@ -47,7 +47,6 @@
 		<meta name="twitter:image" content="" />
 		
 		<!--[if lt IE 9]>
-		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 		<script src="https://cdn.rawgit.com/davidchambers/Base64.js/master/base64.min.js"></script>
 		<!-- build:css Assets/css/ie.css --><link href="assets/css/ie.css" rel="stylesheet" /><!-- /build -->
 		<!-- build:js Assets/js/ie-lib.js --><script src="assets/js/ie-lib.js"></script><!-- /build -->

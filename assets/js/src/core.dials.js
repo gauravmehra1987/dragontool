@@ -176,6 +176,18 @@ function Dials() {
 
 		}
 
+		// Normally we wouldn't need it, because in all normal browsers we can just use input:checked + label, but because of the stupid IE we need to do a fallback on click...
+
+		$( '.option' ).on( 'click', function( e ) {
+
+			e.preventDefault();
+
+			var $input = $( this ).find( 'input' );
+
+			$input.toggleClass( 'checked' );
+
+		} );
+
 	}
 
 	// Lifestyle

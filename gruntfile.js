@@ -393,6 +393,24 @@ module.exports = function( grunt ) {
 		
 		copy: {
 
+			htc: {
+
+				files: [ {
+				
+					expand:		true,
+					flatten:	true,
+					src:		[
+
+									paths.bower + 'background-size-polyfill/backgroundsize.htc',
+									paths.bower + 'box-sizing-polyfill/boxsizing.htc'
+
+								],
+					dest:		'assets/js/htc/'
+
+				} ]
+
+			},
+
 			slick: {
 
 				files: [ {
@@ -548,6 +566,8 @@ module.exports = function( grunt ) {
 		// Clean repo
 		
 		clean: {
+
+			htc: [ 'assets/js/htc' ],
 
 			images: [
 

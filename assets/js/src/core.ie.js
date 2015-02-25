@@ -21,7 +21,6 @@ function IE() {
 
 		loadFallbacks: function() {
 
-			return true;
 			return ( Mini.browser.isIE( '<=8' ) && Mini.browser.isIE() );
 
 		},
@@ -55,14 +54,6 @@ function IE() {
 			ui.loadSVGs();
 
 			$sys.remove();
-
-			$( '.option' ).on( 'click', function() {
-
-				var $input = $( this ).find( 'input' );
-
-				( $input.prop( 'checked' ) === true ) ? $input.prop( 'checked', false ) : $input.prop( 'checked', true );
-
-			} );
 
 			$( '.control.start .shape' ).on( 'click', function() { $( '#start' ).trigger( 'click' ); } );
 
@@ -152,9 +143,15 @@ function IE() {
 
 			init: function() {
 
-				console.log( 'test' );
-
 				this.w.addClass( 'ie-friendly' );
+
+			},
+
+			get: function() {
+
+				var className = $( '.items-wrapper .item:first' ).attr( 'class' ).replace( 'item ', '' );
+
+				return className;
 
 			},
 

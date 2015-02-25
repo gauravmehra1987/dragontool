@@ -2,7 +2,7 @@
 
 	background-size: @size;
 
-	-ms-behavior: url( http://mini.fs/bower_components/background-size-polyfill/backgroundsize.min.htc );
+	*behavior: url( @htcBackgroundSize );
 
 }
 
@@ -433,4 +433,4 @@
 
 // box-sizing polyfill for IE
 
-.box-sizing-ie() { *behavior:  url( @boxSizingHTCPath ); }
+.box-sizing-ie() { *behavior:  url( @htcBoxSizing ); }
