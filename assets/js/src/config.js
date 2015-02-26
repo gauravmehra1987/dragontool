@@ -15,7 +15,7 @@ var social = {
 	
 	twitter: {
 
-		url:			'http://sony.com',
+		url:			'http://google.com',
 		text:			'This is the message which will be posted to the user\'s wall.',
 		hashtags:		'mini,cooper'
 

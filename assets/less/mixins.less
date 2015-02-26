@@ -1,3 +1,5 @@
+// background-size polyfill for IE
+
 .background-size( @size ) {
 
 	background-size: @size;
@@ -5,6 +7,10 @@
 	*behavior: url( @htcBackgroundSize );
 
 }
+
+// box-sizing polyfill for IE
+
+.box-sizing-ie() { -ms-behavior: url( @htcBoxSizing ); }
 
 .responsive() {
 
@@ -430,7 +436,3 @@
 	white-space: nowrap;
 
 }
-
-// box-sizing polyfill for IE
-
-.box-sizing-ie() { *behavior:  url( @htcBoxSizing ); }

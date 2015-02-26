@@ -2,20 +2,14 @@
 
 module.exports = function( grunt ) {
 
-	var projectName		= 'Mini Combobulator';
-	var paths			= {
-
-		icons:		'assets/fonts/icons',
-		bower:		'bower_components/',
-		dotnetAssets:'dotnet/Combobulator/Assets/'
-
-	};
+	var razor = 'razor_src'; // why does <%= project.paths.razor %> not work in grunt.file.readJSON()?!
 
 	grunt.initConfig( {
 
 		// Grunt variables
 
-		pkg: grunt.file.readJSON( 'package.json' ),
+		pkg:		grunt.file.readJSON( 'package.json' ),
+		project:	grunt.file.readJSON( 'combobulator.json' ),		
 
 		processhtml: {
 		
@@ -28,12 +22,12 @@ module.exports = function( grunt ) {
 
 				data: {
 
-					global:			grunt.file.readJSON( 'razor_src/global.json' ),
-					form:			grunt.file.readJSON( 'razor_src/form.json' ),
-					details:		grunt.file.readJSON( 'razor_src/results-details.json' ),
-					results:		grunt.file.readJSON( 'razor_src/results.json' ),
-					home:			grunt.file.readJSON( 'razor_src/home.json' ),
-					dashboard:		grunt.file.readJSON( 'razor_src/dashboard.json' ),
+					global:			grunt.file.readJSON( razor + '/global.json' ),
+					form:			grunt.file.readJSON( razor + '/form.json' ),
+					details:		grunt.file.readJSON( razor + '/results-details.json' ),
+					results:		grunt.file.readJSON( razor + '/results.json' ),
+					home:			grunt.file.readJSON( razor + '/home.json' ),
+					dashboard:		grunt.file.readJSON( razor + '/dashboard.json' ),
 
 				}
 
@@ -45,31 +39,31 @@ module.exports = function( grunt ) {
 
 					// Dashboard
 
-					'razor_templates/Home/Index.cshtml':							[ 'home.php' ],
+					'<%= project.paths.templates %>/Home/Index.cshtml':							[ 'home.php' ],
 					
-					'razor_templates/Home/_Dashboard.cshtml':						[ 'dashboard.php' ],
+					'<%= project.paths.templates %>/Home/_Dashboard.cshtml':					[ 'dashboard.php' ],
 
-					'razor_templates/Home/_ControlBums.cshtml':						[ 'control-bums.php' ],
-					'razor_templates/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
-					'razor_templates/Home/_ControlLuggage.cshtml':					[ 'control-luggage.php' ],
-					'razor_templates/Home/_ControlMpg.cshtml':						[ 'control-mpg.php' ],
-					'razor_templates/Home/_ControlOptions.cshtml':					[ 'control-options.php' ],
-					'razor_templates/Home/_ControlPrice.cshtml':					[ 'control-price.php' ],
-					'razor_templates/Home/_ControlSpeed.cshtml':					[ 'control-speed.php' ],
-					'razor_templates/Home/_ControlStart.cshtml':					[ 'control-start.php' ],
+					'<%= project.paths.templates %>/Home/_ControlBums.cshtml':					[ 'control-bums.php' ],
+					'<%= project.paths.templates %>/Home/_ControlLifestyle.cshtml':				[ 'control-lifestyle.php' ],
+					'<%= project.paths.templates %>/Home/_ControlLuggage.cshtml':				[ 'control-luggage.php' ],
+					'<%= project.paths.templates %>/Home/_ControlMpg.cshtml':					[ 'control-mpg.php' ],
+					'<%= project.paths.templates %>/Home/_ControlOptions.cshtml':				[ 'control-options.php' ],
+					'<%= project.paths.templates %>/Home/_ControlPrice.cshtml':					[ 'control-price.php' ],
+					'<%= project.paths.templates %>/Home/_ControlSpeed.cshtml':					[ 'control-speed.php' ],
+					'<%= project.paths.templates %>/Home/_ControlStart.cshtml':					[ 'control-start.php' ],
 					
 					// Results
 
-					'razor_templates/Results/Index.cshtml':							[ 'results.php' ],
-					'razor_templates/Results/_ResultDetail.cshtml':					[ 'results-details.php' ],
+					'<%= project.paths.templates %>/Results/Index.cshtml':						[ 'results.php' ],
+					'<%= project.paths.templates %>/Results/_ResultDetail.cshtml':				[ 'results-details.php' ],
 
-					'razor_templates/Results/_NewCustomerForm.cshtml':				[ 'form-new.php' ],
-					'razor_templates/Results/_ExistingCustomerForm.cshtml':			[ 'form-existing.php' ],
+					'<%= project.paths.templates %>/Results/_NewCustomerForm.cshtml':			[ 'form-new.php' ],
+					'<%= project.paths.templates %>/Results/_ExistingCustomerForm.cshtml':		[ 'form-existing.php' ],
 
 					// Partials
 
-					'razor_templates/Shared/_Header.cshtml':						[ 'header.php' ],
-					'razor_templates/Shared/_Footer.cshtml':						[ 'footer.php' ],
+					'<%= project.paths.templates %>/Shared/_Header.cshtml':						[ 'header.php' ],
+					'<%= project.paths.templates %>/Shared/_Footer.cshtml':						[ 'footer.php' ],
 
 				}
 
@@ -90,9 +84,9 @@ module.exports = function( grunt ) {
 			razor: {		
 				
 				expand:	true,
-				cwd:	'razor_templates',
+				cwd:	'<%= project.paths.templates %>',
 				src:	[ '**/*.{cshtml,CSHTML}' ],
-				dest:	'razor_templates',
+				dest:	'<%= project.paths.templates %>',
 
 			}
 
@@ -104,13 +98,13 @@ module.exports = function( grunt ) {
 
 			options: {
 
-				engine: 'fontforge',
+				engine: '<%= project.settings.iconEngine %>',
 				stylesheet: 'less',
 				htmlDemo: false,
-				template: 'assets/icons/template.css',
+				template: '<%= project.paths.icons %>/template.css',
 				templateOptions: {
 
-					classPrefix: 'icon-',
+					classPrefix: '<%= project.settings.iconPrefix %>',
 
 				},
 
@@ -118,9 +112,9 @@ module.exports = function( grunt ) {
 		
 			icons: {
 				
-				src: 'assets/icons/*.svg',
-				dest: paths.icons,
-				destCss: 'assets/less',
+				src: '<%= project.paths.icons %>/*.svg',
+				dest: '<%= project.paths.icons %>',
+				destCss: '<%= project.paths.less %>',
 
 			},
 
@@ -132,9 +126,9 @@ module.exports = function( grunt ) {
 
 			default: {
 			
-				cwd: 'assets/sprites/svg/',
+				cwd: '<%= project.paths.sprites %>/svg/',
 				src: [ '*.svg '],
-				dest: 'assets/sprites'
+				dest: '<%= project.paths.sprites %>'
 
 			}
 
@@ -146,8 +140,8 @@ module.exports = function( grunt ) {
 
 			default: {
 			
-				src: [ 'assets/fonts/mini/*.ttf' ],
-				dest: 'assets/fonts'
+				src: [ '<%= project.paths.fonts %>/mini/*.ttf' ],
+				dest: '<%= project.paths.fonts %>'
 
 			}
 
@@ -157,8 +151,8 @@ module.exports = function( grunt ) {
 
 			default: {
 			
-				src: [ 'assets/fonts/mini/*.ttf' ],
-				dest: 'assets/fonts'
+				src: [ '<%= project.paths.fonts %>/mini/*.ttf' ],
+				dest: '<%= project.paths.fonts %>'
 
 			}
 
@@ -170,13 +164,13 @@ module.exports = function( grunt ) {
 			
 				options: {
 				
-					fontDir: 'assets/fonts/mini',
+					fontDir: '<%= project.paths.fonts %>/mini',
 					template: "@font-face {" +
 								"font-family: '{{font}}';" +
 								"src: url('../fonts/{{font}}.eot?#iefix') format('embedded-opentype')," +
 								"url('../fonts/{{font}}.woff') format('woff')," +
 								"}",
-					outputFile: 'assets/less/fonts.less'
+					outputFile: '<%= project.paths.less %>/fonts.less'
 
 				}
 
@@ -192,9 +186,9 @@ module.exports = function( grunt ) {
 
 				options: {
 
-					paths:				[ 'assets/less' ],
+					paths:				[ '<%= project.paths.less %>' ],
 					sourceMap:			true,
-					sourceMapFilename: 	'assets/css/style.css.map',
+					sourceMapFilename: 	'<%= project.paths.css %>/style.css.map',
 					sourceMapURL:		'style.css.map',
 					sourceMapRootpath:	'../../'
 
@@ -203,8 +197,8 @@ module.exports = function( grunt ) {
 
 				files: {
 
-					'assets/css/ie.css':	[ 'assets/less/ie.less' ],
-					'assets/css/style.css':	[ 'assets/less/style.less' ],
+					'<%= project.paths.css %>/ie.css':	[ '<%= project.paths.less %>/ie.less' ],
+					'<%= project.paths.css %>/style.css':	[ '<%= project.paths.less %>/style.less' ],
 
 				}
 
@@ -216,14 +210,14 @@ module.exports = function( grunt ) {
 				options: {
 
 					cleancss: true,
-					paths: [ 'assets/less' ]
+					paths: [ '<%= project.paths.less %>' ]
 				
 				},
 
 				files: {
 
-					'assets/css/style.css':	[ 'assets/less/style.less' ],
-					'assets/css/ie.css':	[ 'assets/less/ie.less' ]
+					'<%= project.paths.css %>/style.css':	[ '<%= project.paths.less %>/style.less' ],
+					'<%= project.paths.css %>/ie.css':	[ '<%= project.paths.less %>/ie.less' ]
 
 				}
 
@@ -246,34 +240,34 @@ module.exports = function( grunt ) {
 
 			lib: {
 
-				dest: 'assets/js/lib.js',
+				dest: '<%= project.paths.js %>/lib.js',
 
 				src: [
 
 					// List bower components
 					
-					// paths.bower + 'pixi.js/bin/pixi.js',
-					paths.bower + 'svg-injector/svg-injector.js',
-					paths.bower + 'taffydb/taffy.js',
-					paths.bower + 'fastclick/lib/fastclick.js',
-					paths.bower + 'underscore/underscore.js',
-					paths.bower + 'jquery/dist/jquery.js',
-					paths.bower + 'jquery-tiny-pubsub/dist/ba-tiny-pubsub.js',
-					paths.bower + 'jquery.browser/dist/jquery.browser.js',
-					paths.bower + 'jquery-validation/dist/jquery.validate.js',
-					paths.bower + 'jquery-validation/dist/additional-methods.js',
-					paths.bower + 'slick.js/slick/slick.js',
+					// '<%= project.paths.bower %>/pixi.js/bin/pixi.js',
+					'<%= project.paths.bower %>/svg-injector/svg-injector.js',
+					'<%= project.paths.bower %>/taffydb/taffy.js',
+					'<%= project.paths.bower %>/fastclick/lib/fastclick.js',
+					'<%= project.paths.bower %>/underscore/underscore.js',
+					'<%= project.paths.bower %>/jquery/dist/jquery.js',
+					'<%= project.paths.bower %>/jquery-tiny-pubsub/dist/ba-tiny-pubsub.js',
+					'<%= project.paths.bower %>/jquery.browser/dist/jquery.browser.js',
+					'<%= project.paths.bower %>/jquery-validation/dist/jquery.validate.js',
+					'<%= project.paths.bower %>/jquery-validation/dist/additional-methods.js',
+					'<%= project.paths.bower %>/slick.js/slick/slick.js',
 					
 					// Greensock
 
-					'assets/js/src/ThrowPropsPlugin.js',
-					paths.bower + 'greensock/src/uncompressed/plugins/CSSPlugin.js',
-					paths.bower + 'greensock/src/uncompressed/TweenLite.js',
-					paths.bower + 'greensock/src/uncompressed/utils/Draggable.js',
+					'<%= project.paths.js %>/src/ThrowPropsPlugin.js',
+					'<%= project.paths.bower %>/greensock/src/uncompressed/plugins/CSSPlugin.js',
+					'<%= project.paths.bower %>/greensock/src/uncompressed/TweenLite.js',
+					'<%= project.paths.bower %>/greensock/src/uncompressed/utils/Draggable.js',
 
 					// Plugins
 
-					'assets/js/src/jquery.plugins.js',
+					'<%= project.paths.js %>/src/jquery.plugins.js',
 
 				],
 			
@@ -281,23 +275,23 @@ module.exports = function( grunt ) {
 
 			js: {
 
-				dest: 'assets/js/app.js',
+				dest: '<%= project.paths.js %>/app.js',
 
 				src: [
 
 					// List scripts
 					
-					'assets/js/src/config.js',
-					'assets/js/src/validation.rules.js',
-					'assets/js/src/validation.js',
-					'assets/js/src/core.logic.js',
-					'assets/js/src/core.dials.js',
-					'assets/js/src/core.dashboard.js',
-					'assets/js/src/core.ui.js',
-					'assets/js/src/core.utils.js',
-					'assets/js/src/core.responsive.js',
-					'assets/js/src/script.js',
-					'assets/js/src/core.ie.js',
+					'<%= project.paths.js %>/src/config.js',
+					'<%= project.paths.js %>/src/validation.rules.js',
+					'<%= project.paths.js %>/src/validation.js',
+					'<%= project.paths.js %>/src/core.logic.js',
+					'<%= project.paths.js %>/src/core.dials.js',
+					'<%= project.paths.js %>/src/core.dashboard.js',
+					'<%= project.paths.js %>/src/core.ui.js',
+					'<%= project.paths.js %>/src/core.utils.js',
+					'<%= project.paths.js %>/src/core.responsive.js',
+					'<%= project.paths.js %>/src/script.js',
+					'<%= project.paths.js %>/src/core.ie.js',
 
 				],
 			
@@ -305,13 +299,13 @@ module.exports = function( grunt ) {
 
 			ielib: {
 
-				dest: 'assets/js/ie-lib.js',
+				dest: '<%= project.paths.js %>/ie-lib.js',
 
 				src: [
 
 					// First IE-specific libraries
 
-					paths.bower + 'html5shiv/dist/html5shiv.js',
+					'<%= project.paths.bower %>/html5shiv/dist/html5shiv.js',
 
 				]
 
@@ -319,11 +313,11 @@ module.exports = function( grunt ) {
 
 			ie: {
 
-				dest: 'assets/js/ie.js',
+				dest: '<%= project.paths.js %>/ie.js',
 
 				src: [
 
-					'assets/js/src/ie.js'
+					'<%= project.paths.js %>/src/ie.js'
 
 				]
 
@@ -358,10 +352,10 @@ module.exports = function( grunt ) {
 
 				files: {
 
-					'assets/js/app.js':	[ 'assets/js/app.js' ],
-					'assets/js/lib.js':	[ 'assets/js/lib.js' ],
-					'assets/js/ie.js':	[ 'assets/js/ie.js' ],
-					'assets/js/ie-lib.js':	[ 'assets/js/ie-lib.js' ],
+					'<%= project.paths.js %>/app.js':	[ '<%= project.paths.js %>/app.js' ],
+					'<%= project.paths.js %>/lib.js':	[ '<%= project.paths.js %>/lib.js' ],
+					'<%= project.paths.js %>/ie.js':	[ '<%= project.paths.js %>/ie.js' ],
+					'<%= project.paths.js %>/ie-lib.js':	[ '<%= project.paths.js %>/ie-lib.js' ],
 
 				}
 
@@ -380,9 +374,9 @@ module.exports = function( grunt ) {
 				files: [ {
 
 					expand:	true,
-					cwd:	'assets/img',
+					cwd:	'<%= project.paths.img %>',
 					src:	[ '**/*.{png,jpg,gif,PNG,JPG,GIF,jpeg,JPEG}' ],
-					dest:	'assets/img/optimized',
+					dest:	'<%= project.paths.img %>/optimized',
 
 				} ]
 			}
@@ -401,11 +395,11 @@ module.exports = function( grunt ) {
 					flatten:	true,
 					src:		[
 
-									paths.bower + 'background-size-polyfill/backgroundsize.htc',
-									paths.bower + 'box-sizing-polyfill/boxsizing.htc'
+									'<%= project.paths.bower %>/background-size-polyfill/backgroundsize.htc',
+									'<%= project.paths.bower %>/box-sizing-polyfill/boxsizing.htc'
 
 								],
-					dest:		'assets/js/htc/'
+					dest:		'<%= project.paths.js %>/htc/'
 
 				} ]
 
@@ -416,20 +410,20 @@ module.exports = function( grunt ) {
 				files: [ {
 
 					expand:	true,
-					cwd:	paths.bower + 'slick.js/slick',
+					cwd:	'<%= project.paths.bower %>/slick.js/slick',
 					src:	[ '**/*.{gif,eot,svg,ttf,woff,GIF,EOT,SVG,TTF,WOFF}' ],
-					dest:	'assets/img/slick.js'
+					dest:	'<%= project.paths.img %>/slick.js'
 
 				} ]
 
 			},
 
-			razor_templates: {
+			templates: {
 
 				files: [ {
 
 					expand:	true,
-					cwd:	'razor_templates',
+					cwd:	'<%= project.paths.templates %>',
 					src:	[ '**/*.cshtml' ],
 					dest:	'dotnet/Combobulator/Views/'
 
@@ -442,9 +436,9 @@ module.exports = function( grunt ) {
 				files: [ {
 
 					expand:	true,
-					cwd:	'assets/img/optimized',
+					cwd:	'<%= project.paths.img %>/optimized',
 					src:	[ '**' ],
-					dest:	'assets/img'
+					dest:	'<%= project.paths.img %>'
 
 				} ]
 			},
@@ -469,7 +463,7 @@ module.exports = function( grunt ) {
 				files: [ {
 
 					expand:	true,
-					cwd:	'razor_templates',
+					cwd:	'<%= project.paths.templates %>',
 					src:	[ '**' ],
 					dest:	'dotnet/Combobulator/Views'
 
@@ -485,9 +479,9 @@ module.exports = function( grunt ) {
 
 			all: {
 			
-				src: 'assets/sprites/*.png',
-				dest: 'assets/img/sprites/sprites.png',
-				destCss: 'assets/less/sprites.less',
+				src: '<%= project.paths.sprites %>/*.png',
+				dest: '<%= project.paths.img %>/sprites/sprites.png',
+				destCss: '<%= project.paths.less %>/sprites.less',
 				cssTemplate: 'sprites.tpl.mustache'
 
 			},
@@ -523,7 +517,7 @@ module.exports = function( grunt ) {
 
 				files: [
 
-					'razor_src/*.*',
+					razor + '/*.*',
 
 				],
 
@@ -533,7 +527,7 @@ module.exports = function( grunt ) {
 
 			icons: {
 
-				files: [ 'assets/icons/*.svg' ],
+				files: [ '<%= project.paths.icons %>/*.svg' ],
 
 				tasks: [ 'icons' ]
 			
@@ -541,7 +535,7 @@ module.exports = function( grunt ) {
 
 			sprites: {
 
-				files: [ 'assets/sprites/*.*' ],
+				files: [ '<%= project.paths.sprites %>/*.*' ],
 
 				tasks: [ 'images' ]
 			
@@ -549,14 +543,14 @@ module.exports = function( grunt ) {
 
 			styles: {
 
-				files: [ 'assets/less/**/*.less' ],
+				files: [ '<%= project.paths.less %>/**/*.less' ],
 				tasks: [ 'less:dev', 'notify:css' ]
 			
 			},
 
 			scripts: {
 
-				files: [ 'assets/js/src/*.js' ],
+				files: [ '<%= project.paths.js %>/src/*.js' ],
 				tasks: [ 'concat', 'notify:js' ]
 
 			}
@@ -567,31 +561,31 @@ module.exports = function( grunt ) {
 		
 		clean: {
 
-			htc: [ 'assets/js/htc' ],
+			htc: [ '<%= project.paths.js %>/htc' ],
 
 			images: [
 
-				'assets/img/**',
-				'!assets/img',
-				'!assets/img/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
+				'<%= project.paths.img %>/**',
+				'!<%= project.paths.img %>',
+				'!<%= project.paths.img %>/*.{png,PNG,jpg,JPG,gif,GIF,jpeg,JPEG,svg,SVG}',
 
 			],
 
 			sprites: [
 
-				'assets/sprites/*.{png,PNG}',
+				'<%= project.paths.sprites %>/*.{png,PNG}',
 
 			],
 
-			templates: [ 'razor_templates' ],
+			templates: [ '<%= project.paths.templates %>' ],
 
 			dotnet: [ 'dotnet/Combobulator/Assets', ],
 
 			dotnet_assets: [
 
-				'dotnet/Combobulator/Assets/less',
-				'dotnet/Combobulator/Assets/js/src',
-				'dotnet/Combobulator/Assets/sprites/psd',
+				'dotnet/Combobulator/<%= project.paths.less %>',
+				'dotnet/Combobulator/<%= project.paths.js %>/src',
+				'dotnet/Combobulator/<%= project.paths.sprites %>/psd',
 
 			],
 
@@ -607,32 +601,32 @@ module.exports = function( grunt ) {
 
 			fonts: [
 				
-				paths.icons,
-				'assets/fonts/*.*',
+				'<%= project.paths.fonts %>/icons',
+				'<%= project.paths.fonts %>/*.*',
 
 			],
 
-			optimized: [ 'assets/img/optimized' ],
+			optimized: [ '<%= project.paths.img %>/optimized' ],
 
 			js: [
 				
-				'assets/js/app.js',
-				'assets/js/lib.js',
-				'assets/js/ie.js',
-				'assets/js/ie-lib.js',
+				'<%= project.paths.js %>/app.js',
+				'<%= project.paths.js %>/lib.js',
+				'<%= project.paths.js %>/ie.js',
+				'<%= project.paths.js %>/ie-lib.js',
 
 			],
 
 			less: [
 
-				'assets/less/icon-codes.less',
-				'assets/less/sprites.less',
-				'assets/less/icons.less',
-				'assets/less/fonts.less',
+				'<%= project.paths.less %>/icon-codes.less',
+				'<%= project.paths.less %>/sprites.less',
+				'<%= project.paths.less %>/icons.less',
+				'<%= project.paths.less %>/fonts.less',
 
 			],
 
-			css: [ 'assets/css' ],
+			css: [ '<%= project.paths.css %>' ],
 
 			other: [ '**/.DS_Store' ],
 
@@ -660,7 +654,7 @@ module.exports = function( grunt ) {
 			
 				options: {
 				
-					title: projectName,					
+					title: '<%= project.name %>',					
 					message: 'JavaScript finished compiling.',
 				
 				}
@@ -671,7 +665,7 @@ module.exports = function( grunt ) {
 			
 				options: {
 				
-					title: projectName,					
+					title: '<%= project.name %>',					
 					message: 'LESS finished compiling.',
 				
 				}
@@ -739,6 +733,7 @@ module.exports = function( grunt ) {
 		'sprites',
 		'icons',
 		'fonts',
+		'copy:htc',
 
 	] );
 
