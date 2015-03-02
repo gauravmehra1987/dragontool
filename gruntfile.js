@@ -113,7 +113,7 @@ module.exports = function( grunt ) {
 			icons: {
 				
 				src: '<%= project.paths.icons %>/*.svg',
-				dest: '<%= project.paths.icons %>',
+				dest: '<%= project.paths.fonts %>/icons',
 				destCss: '<%= project.paths.less %>',
 
 			},
