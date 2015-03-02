@@ -306,6 +306,7 @@ module.exports = function( grunt ) {
 					// First IE-specific libraries
 
 					'<%= project.paths.bower %>/html5shiv/dist/html5shiv.js',
+					'<%= project.paths.bower %>/base64/base64.js',
 
 				]
 

@@ -34,6 +34,7 @@
     "jquery-tiny-pubsub": "cowboy/jquery-tiny-pubsub#~0.7.0",
     "pixi.js": "~2.2.5",
     "background-size-polyfill": "*",
-    "box-sizing-polyfill": "*"
+    "box-sizing-polyfill": "*",
+    "base64": "davidchambers/Base64.js#~0.3.0"
   }
 }
