@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Combobulator.Models
+﻿namespace Combobulator.Models
 {
     public class NewCar
     {
@@ -23,8 +18,10 @@ namespace Combobulator.Models
         public int Mph { get; set; }
         public int Economy { get; set; }
         public double Mpg { get; set; }
+	    // ReSharper disable InconsistentNaming
         public string Alt_1 { get; set; }
         public string Alt_2 { get; set; }
         public string Alt_3 { get; set; }
+	    // ReSharper restore InconsistentNaming
     }
 }

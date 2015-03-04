@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Globalization;
-using System.Web.Mvc;
-using System.Web.Security;
-
-namespace Combobulator.Models
+﻿namespace Combobulator.Models
 {
     public class Car
     {
@@ -24,13 +15,16 @@ namespace Combobulator.Models
         public string PriceScale { get; set; }
         public string Cost { get; set; }
         public string PerformanceScale { get; set; }
-        public string MPH { get; set; }
+		// ReSharper disable once InconsistentNaming
+		public string MPH { get; set; }
         public string EconomyScale { get; set; }
+	    // ReSharper disable once InconsistentNaming
         public string MPG { get; set; }
         public string UsageScale { get; set; }
         public string Alt1 { get; set; }
         public string Alt2 { get; set; }
         public string Alt3 { get; set; }
         public string TermsConditions { get; set; }
+		public FinanceDetails FinanceDetails { get; set; }
     }
 }
