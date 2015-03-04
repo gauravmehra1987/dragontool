@@ -1,0 +1,165 @@
+@luggageBaseH: 190px;
+@luggageBaseW: 350px;
+
+@lH: @luggageBaseH;
+@lW: @luggageBaseW;
+
+.control.luggage {
+
+	overflow: hidden;
+	position: relative;
+
+	height: @lH;
+	width: @lW;
+
+	.responsive;
+
+	.switch-bg, .dial, .touch-dial, .arrows { .align-centers; } // Center all layers
+
+	.base {
+
+		// .sprite-luggage-mask( @luggageBaseH, @luggageBaseW );
+
+		position: absolute;
+
+		width: 100%;
+		.height_pct( 350px, @luggageBaseH );
+
+		.before {
+
+			.align-centers;
+			.sprite-luggage-mask( @luggageBaseH, @luggageBaseW );
+
+			z-index: 999;
+
+			height: 100%;
+
+		}
+
+		.switch-bg {
+
+			width: 98%;
+
+			.height_pct( 180px, @luggageBaseW );
+
+		}
+
+		.dial {
+
+			.sprite-luggage-dial( @luggageBaseH, @luggageBaseW );
+			.translate3d;
+
+			height: 100%;
+
+			&:after {
+
+				.pseudo;
+				// .transition( opacity 0.2s linear );
+
+				border-radius: 100%;
+				opacity: 0;
+				position: absolute;
+
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+
+			}
+
+			&.light-packer:after {
+
+				.sprite-luggage-dial-light-packer( @luggageBaseH, @luggageBaseW );
+
+				opacity: 1;
+
+				height: 100%;
+
+			}
+
+			&.lugger:after {
+
+				.sprite-luggage-dial-lugger( @luggageBaseH, @luggageBaseW );
+
+				opacity: 1;
+
+				height: 100%;
+
+			}
+
+			&.big-loader:after {
+
+				.sprite-luggage-dial-big-loader( @luggageBaseH, @luggageBaseW );
+
+				opacity: 1;
+
+				height: 100%;
+
+			}
+
+			&.minimalist:after {
+
+				.sprite-luggage-dial-minimalist( @luggageBaseH, @luggageBaseW );
+
+				opacity: 1;
+
+				height: 100%;
+
+			}
+
+		}
+
+	}
+
+	.arrows {
+
+		.sprite-luggage-arrows( @luggageBaseH, @luggageBaseW );
+
+		background-size: cover; // We're not using the background-size mixin here, becuase it screws up interaction
+		border-radius: 100% 100% 0 0;
+
+		z-index: 99999;
+
+		top: auto;
+
+		.height_pct( 150px, @luggageBaseW );
+		.width_pct( 150px, @luggageBaseW );
+
+		&.right {
+
+			.sprite-luggage-arrows-right( @luggageBaseH, @luggageBaseW );
+
+			background-size: cover; // We're not using the background-size mixin here, becuase it screws up interaction
+
+			.height_pct( 150px, @luggageBaseW );
+
+		}
+
+		&.left {
+
+			.sprite-luggage-arrows-left( @luggageBaseH, @luggageBaseW );
+
+			background-size: cover; // We're not using the background-size mixin here, becuase it screws up interaction
+
+			.height_pct( 150px, @luggageBaseW );
+
+		}
+
+		#left, #right {
+
+			.hide-text;
+
+			position: absolute;
+
+			top: 0;
+
+			height: 100%;
+			width: 50%;
+
+		}
+
+		#right { right: 0; }
+
+	}
+
+}

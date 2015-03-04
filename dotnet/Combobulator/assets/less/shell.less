@@ -1,0 +1,576 @@
+// Responsive controls
+
+.res-wrap {
+
+	position: relative;
+
+	width: 100%;
+	height: auto;
+
+	@media ( max-width: @breakpointMobile ) {
+
+		margin: auto;
+
+		.img-base { width: 100%; } // Stupid Firefox!
+
+	}
+
+}
+
+.img-base {
+
+	opacity: 0;
+	visibility: hidden;
+
+	height: auto;
+	width: auto;
+
+}
+
+.layout-wrapper {
+
+	display: table;
+	margin: auto;
+	max-width: 1180px;
+
+	.layout-header {
+
+		.clearfix;
+
+		#logo {
+
+			display: block;
+			float: left;
+			margin: 0;
+
+			a {
+
+				.hide-text;
+
+				background: url( ../img/mini-logo.png ) 50% 50% no-repeat;
+				.background-size( 100% );
+
+				height: 55px;
+				width: 105px;
+
+			}
+
+		}
+
+		.social {
+
+			.list-inline;
+
+			display: table;
+			float: right;
+			margin: 0 auto;
+
+			li {
+
+				.hide-text;
+
+				background: orange;				
+				display: block;
+				margin-left: 4px;
+
+				a {
+
+					.hide-text;
+
+					background: @formGrayDark;
+					color: @white;
+					display: block;
+					padding: @margin;
+					position: relative;
+					text-decoration: none;
+
+					&:hover { background: @formGray; }
+
+					&:after {
+
+						.icon;
+
+						font-size: 16px;
+						margin-top: -8px;
+						margin-left: -8px;
+						position: absolute;
+
+						top: 50%;
+						left: 50%;
+
+					}
+
+				}
+
+				&.facebook a:after { .icon-facebook-letter; }
+				&.twitter a:after { .icon-twitter-bird; }
+
+			}
+
+		}
+
+	}
+
+	.layout-footer {
+
+		font-size: @fontSizeSmall;
+		margin: @margin 0;
+
+		p {
+
+			line-height: 1;
+
+			a {
+
+				color: @grayDark;
+
+				&:before {
+
+					.icon;
+					.icon-raquo;
+
+					font-size: @fontSizeSmaller * 0.8;
+					margin-right: 0.5em;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	.layout {
+
+		color: white;
+		max-width: 1180px;
+		overflow: hidden;
+		position: relative;
+
+		height: 785px;
+
+		.column {
+
+			float: right;
+			position: relative;
+
+			&.left { width: 780px; }
+
+			&.right {
+
+				margin: 2px 0;
+
+				height: 100%;
+				width: 400px;
+
+			}
+
+			.panel {
+
+				.box-sizing( border-box );
+
+				display: none;
+				margin-left: 2px;
+				opacity: 0;
+				padding: @margin * 1.5;
+				position: absolute;
+				visibility: hidden;
+
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+
+				&.panel-active {
+
+					display: block;
+
+					opacity: 1;
+					visibility: visible;
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+// Common elements
+
+.price-span {
+
+	.clearfix;
+
+	font-family: @fontAlt;
+	position: relative;
+
+	.currency, .price, .permonth, .car-link {
+
+		display: block;
+		float: left;
+		line-height: 1;
+		margin-right: 5px;
+
+	}
+
+	.currency {
+
+		font-size: @fontSizeLarge;
+		position: relative;
+
+		top: @fontSize / 2;
+
+	}
+	
+	.price { font-size: 56px; }
+
+	.permonth {
+
+		font-size: @fontSize;
+		position: relative;
+		top: 22px;
+
+	}
+
+}
+
+.ministry {
+
+	.hide-text;
+
+	background: url( ../img/ministry-of-finance.png ) 50% 50% no-repeat;
+	.background-size( 100% );
+	display: table;
+	margin: 0 auto;
+
+	height: 100px;
+	width: 100px;
+
+}
+
+.terms {
+
+	&, p {
+
+		color: @grayDark;
+		font-size: @fontSizeSmaller;
+		line-height: @fontSize;
+		margin: 0;
+
+	}
+
+}
+
+.model-image {
+
+	background: @black url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
+	.background-size( cover );
+	margin: @margin -( @margin * 1.5 );
+	overflow: hidden;
+	position: relative;
+
+	img {
+
+		&.img-base {
+
+			height: auto;
+			width: 100%;
+
+		}
+
+		& + canvas,
+		&.img-content {
+
+			position: absolute;
+
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+
+		}
+
+	}
+
+}
+
+// Panel-specific
+
+.panel-framed {
+
+	&.centered { .tc; }
+
+	border: solid 12px @grayFrame;
+
+}
+
+// Results page
+
+#car {
+
+	margin: 0;
+
+	.car-desc {
+
+		margin: 0 @margin;
+		overflow: hidden;
+		position: relative;
+
+		height: 150px;
+
+		.car-price {
+
+			position: absolute;
+
+			top: 0;
+			left: 0;
+
+			width: 220px;
+
+		}
+
+		.car-details {
+
+			position: absolute;
+
+			top: 0;
+			right: 0;
+
+			width: 740px - ( 220 + @margin );
+
+			h1 { font-size: @fontSizeLarge; }
+
+		}
+
+	}
+
+}
+
+#welcome {
+
+	.header {
+
+		border-bottom: solid 1px @formGrayDark;
+		margin: 0 0 @margin 0;
+		text-transform: uppercase;
+
+		.strike-through {
+
+			margin: @margin 0;
+			position: relative;
+
+			&:before, &:after {
+
+				.pseudo;
+
+				background: @formGrayDark;
+				margin-top: -( 1px / 2 );
+				position: absolute;
+
+				top: 50%;
+
+				height: 1px;
+				width: 30%;
+
+			}
+
+			&:before { left: 0; }
+
+			&:after { right: 0; }
+
+		}
+
+		.title { text-transform: uppercase; }
+
+	}
+	
+}
+
+#results {
+
+	padding-top: 30px + ( @margin * 1.5 );
+
+	hr { margin: 0; }
+
+	.control-title {
+
+		margin: 0;
+		position: absolute;
+
+		top: 0;
+		right: 0;
+		left: 0;
+
+	}
+	
+	.model-name {
+
+		font-size: @fontSizeLarger;
+
+		height: 2em;
+
+	}	
+
+	.car-link {
+
+		float: none;
+		margin: 0;
+
+		position: absolute;
+
+		right: 0;
+		bottom: 0;		
+
+	}
+
+	
+
+	.gimmick {
+
+		font-family: @fontAlt;
+		font-size: @fontSizeMedium;
+		margin: @margin 0;
+
+	}
+
+	.related {
+
+		.list-inline;
+
+		background: @grayDark;
+		margin: auto -( @margin * 1.5 );
+		padding: @margin / 2 @margin * 1.5;
+
+		li {
+
+			.box-sizing( border-box );
+
+			display: block;
+
+			padding: 0 2px;
+
+			width: 25%;
+
+			a {
+
+				border: solid 2px transparent;
+				display: block;
+
+			}
+
+		}
+
+	}
+
+}
+
+#thanks {
+
+	header, footer { .tc; }
+
+	header h3 { margin-top: @margin; }
+
+	footer {
+
+		margin: @margin * 2 0 0;
+
+		.form-control { margin: 0; }
+
+	}
+
+	.item {
+
+		font-size: @fontSizeMedium;
+		margin: 0 0 @margin / 2;
+
+		&:before {
+
+			.icon;
+			.icon-raquo;
+
+			margin-right: 0.5em;
+
+		}
+
+		& + p {
+
+			font-size: @fontSizeSmall;
+			line-height: 1.5em;
+			margin: 0 0 0 @fontSizeMedium * 1.5;
+
+		}
+
+	}
+
+}
+
+// Responsive
+
+@media ( max-width: @breakpointMobile ) {
+
+	html > body .layout-wrapper {
+
+		.layout {
+
+			max-width: 800px;
+
+			height: auto;
+
+			.top, .middle, .bottom, .inner-left, .inner-right, .control-title {
+
+				display: block !important;
+				text-indent: 0 !important;
+
+				box-shadow: none;
+				margin: 0;
+
+			}
+
+			.column {
+
+				&.left, &.right {
+
+					clear: both;
+					float: none;
+					overflow: hidden;
+
+					height: auto;
+					width: auto;
+
+					.panel {
+
+						position: static;
+
+						width: auto;
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	html > body .layout-wrapper {
+
+		.panel {
+
+			&#welcome header h1 { font-size: 24px; }
+			&#results {
+
+				padding-top: 30px;
+
+				.control-title { display: none !important; }
+
+			}
+
+		}
+
+	}
+
+}
