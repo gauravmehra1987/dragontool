@@ -147,6 +147,7 @@ namespace Combobulator.Controllers
 			{
 				DAL.Car dbCar = dbContext.GetCar(modelCode).FirstOrDefault();
 				// ReSharper disable once PossibleNullReferenceException
+				CarsFinance dbFinance = dbCar.CarsFinances.First();
 				Car car = new Car
 				{
 					Id = dbCar.Id,
@@ -169,7 +170,21 @@ namespace Combobulator.Controllers
 					Alt1 = dbCar.Alt1,
 					Alt2 = dbCar.Alt2,
 					Alt3 = dbCar.Alt3,
-					TermsConditions = dbCar.TermsConditions
+					TermsConditions = dbCar.TermsConditions,
+					FinanceDetails = new FinanceDetails
+					{
+						Term = dbFinance.Term ?? -1,
+						MonthlyPayments = dbFinance.MonthlyPayments ?? -1.0m,
+						OnTheRoad = dbFinance.OnTheRoad ?? -1.0m,
+						CustomerDeposit = dbFinance.CustomerDeposit ?? -1.0m,
+						RetailerDeposit = dbFinance.RetailerDeposit ?? -1.0m,
+						OptionToPurchase = dbFinance.OptionToPurchase ?? -1.0m,
+						OptionalFinalPayment = dbFinance.OptionalFinalPayment ?? -1.0m,
+						TotalPayable = dbFinance.TotalPayable ?? -1.0m,
+						TotalCredit = dbFinance.TotalCredit ?? -1.0m,
+						InterestRate = dbFinance.InterestRate ?? -1.0m,
+						RepresentativeApr = dbFinance.RepresentativeApr ?? -1.0m,
+					},
 				};
 				return PartialView("_ResultDetail", car);
 			}

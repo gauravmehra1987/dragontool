@@ -199,6 +199,7 @@
     </Compile>
     <Compile Include="Helpers\LowercaseContractResolver.cs" />
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\FinanceDetails.cs" />
     <Compile Include="Models\NewCar.cs" />
     <Compile Include="Models\Selections.cs" />
     <Compile Include="Models\Lookups.cs" />

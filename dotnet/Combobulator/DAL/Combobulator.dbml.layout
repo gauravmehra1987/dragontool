@@ -26,5 +26,18 @@
         <elementListCompartment Id="ca5efe33-2553-4699-a38e-fd90f596e3b2" absoluteBounds="3.7649999999999997, 5.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="43c60109-441c-4116-a93b-43dc04a96249" absoluteBounds="1.125, 6, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/CombobulatorDataContext/CarsFinance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="693f6fdc-c256-4fb9-a85f-4941a13e60aa" absoluteBounds="1.1400000000000001, 6.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.9375 : 5.5977197265625); (1.9375 : 6)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CombobulatorDataContext/Car/Car_CarsFinance" />
+      <nodes>
+        <classShapeMoniker Id="cc863620-5f24-44cc-ac40-3ba5f23ed97f" />
+        <classShapeMoniker Id="43c60109-441c-4116-a93b-43dc04a96249" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
