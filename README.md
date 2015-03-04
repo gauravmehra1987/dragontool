@@ -17,9 +17,12 @@ The following also used to be involved, but might be out of date:
 Install Node and any relevant dependencies, then, from the Node command-line:
 
 	npm i
+	npm install -g bower
 	bower install
+	npm install -g grunt-cli
+	npm install grunt-webfont --save-dev
 
 To build the FE files
 
-	grunt generate
-	grunt build
+	grunt generate --force
+	grunt build --force
