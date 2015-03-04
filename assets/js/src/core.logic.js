@@ -41,10 +41,6 @@ function Logic() {
 
 		if( i >= 0 ) { eggs.push( seatTriggers[ i ].toLowerCase() ); }
 
-		// Teleportation
-
-		if( data.options.tp ) { eggs.push( 'teleport' ); }
-
 		// Rocket car
 
 		if( data.speed === 5 ) { eggs.push( 'rocket' ); }
