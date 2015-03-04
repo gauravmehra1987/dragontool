@@ -159,18 +159,6 @@ $( window ).load( function() {
 
 				}
 
-				else if( $.inArray( 'teleport', eggs ) >= 0 ) {
-
-					ui.eggs( 'teleport', {
-
-						eggs:	eggs,
-						car:	car,
-						user:	user
-
-					} );
-
-				}
-
 				else {
 
 					// Populate results
