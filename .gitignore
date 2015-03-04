@@ -8,14 +8,13 @@ Thumbs.db
 /node_modules
 /bower_components
 /prototype/assets/_archive.js
+/assets
 
 # back end
-/dotnet/packages
 /dotnet/Combobulator.Tests
 /dotnet/Combobulator/bin
 /dotnet/Combobulator/App_Data
 /dotnet/Combobulator/obj
-/dotnet/Combobulator/Assets
 /dotnet/logs/combobulatorlog.txt
 
 # Visuak Studio build
