@@ -1,0 +1,106 @@
+﻿@model Combobulator.Models.Customer
+
+@using (Html.BeginForm("form", "api", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+
+	<header>
+
+		<h1 class="title">Almost there.</h1>
+		<p>You've found your dream MINI. Now pop in your details so your MINI Dealer can help you get your hands on it.</p>
+
+	</header>
+
+	@Html.EditorFor(model => model.UserId, new { id="uid", value = Model.UserId })
+
+	<div class="fields-left">
+
+		<div class="form-control">
+
+			<div class="select">
+
+				@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, "Name", "Name"),  "Title")
+
+			</div>
+
+		</div>
+
+		<div class="form-control append user full-width">
+
+			@Html.TextBoxFor( model => model.FirstName, new { id="field-name", name="name", placeholder="First name" } )​
+			<span class="field-icon"></span>
+
+		</div>
+
+		<div class="form-control append user full-width">
+
+			@Html.TextBoxFor( model => model.LastName, new { id="field-surname", name="surname", placeholder="Last name" } )​
+			<span class="field-icon"></span>
+
+		</div>
+
+		<div class="form-control append mail full-width">
+
+			@Html.TextBoxFor( model => model.Email, new { type="email", id="field-email", name="email", placeholder="E-mail address" } )​
+			<span class="field-icon"></span>
+
+		</div>
+
+		<div class="form-control append phone full-width">
+
+			@Html.TextBoxFor( model => model.TelephoneHome, new { type="tel", id="field-home", name="home", placeholder="Home telephone" } )​
+			<span class="field-icon"></span>
+
+		</div>
+
+	</div><!-- end div.fields-left -->
+
+	<div class="fields-right">
+
+		<div class="form-control">
+			
+			<div class="checkbox">
+
+				@Html.LabelFor(model => model.RequestCallback)
+
+				<input id="callback" name="callback" type="checkbox" value="1" checked="checked" />
+			</div>
+
+		</div>
+
+		<div class="form-control">
+			
+			<div class="checkbox">
+
+				@Html.LabelFor(model => model.RequestEarlyRedemption)
+
+				<input id="redemption" name="redemption" type="checkbox" value="1" />
+			</div>
+
+		</div>
+
+		<div class="form-control">
+			
+			<div class="checkbox">
+
+				@Html.LabelFor(model => model.EmailResults)
+
+				<input id="results" name="results" type="checkbox" value="1" />
+			</div>
+
+		</div>
+
+	</div><!-- end div.fields-right -->
+
+	<div class="form-control">
+
+		
+
+		<button id="form-submit" class="switch-bg" type="submit">Submit</button>
+
+	</div>
+
+}
+
+<!-- build:remove --></form><!-- /build -->

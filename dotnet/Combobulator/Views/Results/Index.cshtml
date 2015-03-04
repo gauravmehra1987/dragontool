@@ -1,0 +1,119 @@
+<!-- build:remove --><?php include( 'header.php' ); ?><!-- /build -->
+
+@model Combobulator.Models.Results
+
+@{ ViewBag.Title = "MINI Combobulator Results"; }
+
+<div id="page-results" class="layout-wrapper">
+
+	<header class="layout-header">
+		
+	<h2 id="logo"><a href="./">Mini</a></h2><!-- end h2#logo -->
+
+	<ul class="social js-sharer">
+
+		<li class="facebook" data-fb-mode="direct"><a href="https://www.facebook.com/MINI.uk">Facebook</a></li><!-- end li.facebook -->
+		<li class="twitter"><a href="https://twitter.com/miniuk">Twitter</a></li><!-- end li.twitter -->
+		
+	</ul><!-- end ul.social -->
+
+</header><!-- end header.layout-header -->
+
+<div id="disabled">
+	
+	<h2>Please rotate your device</h2>
+	<p>This app has been optimised for portrait mode.</p>
+
+</div><!-- end div#disabled -->
+
+	<main class="layout">
+		
+		<div class="column right">
+			
+			<div id="form" class="panel panel-framed" data-panel-name="default">
+
+			@Html.Action("CustomerForm", new { id = ViewBag.UserId, modelCode = ViewBag.ModelCode, selections = ViewBag.Selections })
+
+		</div><!-- end div#form.panel -->
+
+		<div id="thanks" class="panel panel-framed" data-panel-name="thanks">
+
+			<header>
+
+				<p class="ministry">Ministry of Finance</p>
+
+				<h3>Nice one.</h3>
+				
+				<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
+
+			</header>
+
+			<hr />
+
+			<h4 class="item switch-color">Mollycoddle your Mini.</h4>
+			<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
+
+			<hr />
+
+			<h4 class="item switch-color">Keep it covered.</h4>
+			<p>Protect your MINI’s working parts with a MINI Warranty.</p>
+
+			<hr />
+
+			<h4 class="item switch-color">Get connected.</h4>
+			<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
+
+			<hr />
+
+			<footer>
+
+				<div class="form-control full-width">
+
+					<a href="#" class="button switch-bg">Configure my Mini</a>
+
+				</div>
+
+			</footer>
+
+		</div><!-- end div#thanks.panel -->
+
+		</div><!-- end div.column left -->
+
+		<div class="column left">
+
+			@Html.Action("ResultDetail", new { modelCode = ViewBag.ModelCode })
+
+		</div><!-- end div.column right -->
+
+	</main><!-- end main.layout -->
+
+	<footer class="layout-footer">
+		
+	<p><a id="terms-link" href="#terms">Terms and Conditions</a></p>
+
+</footer><!-- end footer.layout-footer -->
+
+<div id="terms">
+
+	<a href="#" class="close">Close</a>
+	
+	<div class="inner">
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+
+	</div><!-- end div.inner -->
+
+</div><!-- end div#terms -->
+
+</div><!-- end div.layout-wrapper -->
+
+<!-- build:remove --><?php include( 'footer.php' ); ?><!-- /build -->

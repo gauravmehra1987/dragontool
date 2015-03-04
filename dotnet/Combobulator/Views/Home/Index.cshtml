@@ -1,0 +1,135 @@
+@{
+ViewBag.Title = "MINI Combobulator Dashboard";
+string firstName = string.Empty;
+string userId = ViewBag.UserId;
+if (!string.IsNullOrEmpty(ViewBag.FirstName))
+{
+firstName = "<h2>Hi " + ViewBag.FirstName + "</h2>";
+}
+}
+
+<div id="page-home" class="layout-wrapper">
+
+	<header class="layout-header">
+		
+	<h2 id="logo"><a href="./">Mini</a></h2><!-- end h2#logo -->
+
+	<ul class="social js-sharer">
+
+		<li class="facebook" data-fb-mode="direct"><a href="https://www.facebook.com/MINI.uk">Facebook</a></li><!-- end li.facebook -->
+		<li class="twitter"><a href="https://twitter.com/miniuk">Twitter</a></li><!-- end li.twitter -->
+		
+	</ul><!-- end ul.social -->
+
+</header><!-- end header.layout-header -->
+
+<div id="disabled">
+	
+	<h2>Please rotate your device</h2>
+	<p>This app has been optimised for portrait mode.</p>
+
+</div><!-- end div#disabled -->
+
+	<main class="layout">
+		
+		<div class="column right">
+			
+			<div id="welcome" class="panel panel-framed centered" data-panel-name="default">
+
+	<header class="header">
+		
+		<p class="ministry">Ministry of Finance</p>
+		<h6 class="strike-through">Presents</h6>
+		
+		<h1>The<br />Combobulator</h1>
+
+	</header><!-- end header.header -->
+
+	@Html.Raw(firstName)
+	
+	<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
+	<p>Choose now much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit Combobulate to get your tailor-made deal.</p>
+	<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>
+
+</div><!-- end div#welcome.panel -->
+
+<div id="results" class="panel panel-results" data-panel-name="results">
+
+	<h5 class="control-title">Your results</h5>
+
+	<h3 class="model-name switch-color" data-model-name>model name</h3>
+	<div class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span><a href="#" class="button switch-bg car-link" data-results-link="#">Go see</a></div>
+	
+	<div class="model-image">
+
+		<hr />
+
+		<img src="assets/cars/none.png" width="760" height="540" class="img-base" />
+
+		<img src="assets/cars/none.png" width="760" height="540" class="img-content" data-model-image />
+
+		<hr />
+
+	</div>
+
+	<div class="terms" data-terms>terms</div>
+
+	<div>
+		
+		<p class="gimmick">Or for £<span data-model-price>0</span>...<br />you could buy <span class="switch-color">102 watermelons</span>.</p>
+
+		<ul class="related">
+
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+
+		</ul><!-- end ul.related -->
+
+	</div>
+	
+</div><!-- end div#results.panel -->
+
+		</div><!-- end div.column left -->
+
+		<div class="column left">
+
+			@Html.Partial("_Dashboard")
+
+		</div><!-- end div.column right -->
+
+	</main><!-- end main.layout -->
+
+	<footer class="layout-footer">
+		
+	<p><a id="terms-link" href="#terms">Terms and Conditions</a></p>
+
+</footer><!-- end footer.layout-footer -->
+
+<div id="terms">
+
+	<a href="#" class="close">Close</a>
+	
+	<div class="inner">
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
+
+	</div><!-- end div.inner -->
+
+</div><!-- end div#terms -->
+
+</div><!-- end div.layout-wrapper -->
+
+<input id="uid" type="hidden" value="@userId" />
+
+<!-- build:remove --><?php require( 'footer.php' ); ?><!-- /build -->

@@ -1,0 +1,34 @@
+﻿@model Combobulator.Models.Car
+
+<figure id="car" class="model-image">
+
+	<img src="assets/cars/none.png" class="img-base" />
+	<img src="assets/cars/none.png" id="results-car" class="img-content" />
+
+	<figcaption class="car-desc">
+		
+		<section class="car-price">
+
+			<p class="price-span"><span class="currency">£</span><span class="price" data-model-price>@Model.Cost</span><span class="permonth">per<br />month</span></p>
+
+			<div><a href="./" class="button gray">Go back</a></div>
+			
+		</section><!-- end section.car-price -->
+
+		<section class="car-details">
+
+			<h1 class="switch-color">@Model.DisplayName</h1>
+
+			<div class="terms">
+				
+				<p>Terms and Conditions</p>
+				
+				<p>@Model.TermsConditions</p>
+
+			</div>
+			
+		</section><!-- end section.car-details -->
+
+	</figcaption><!-- end figcaption.car-desc -->
+	
+</figure><!-- end figure#car -->
