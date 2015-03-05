@@ -602,7 +602,6 @@ module.exports = function( grunt ) {
 
 			fonts: [
 				
-				'!<%= project.paths.fonts %>/icons', // Remove exclamation mark to clean
 				'<%= project.paths.fonts %>/*.*',
 
 			],
@@ -622,7 +621,6 @@ module.exports = function( grunt ) {
 
 				'<%= project.paths.less %>/icon-codes.less',
 				'<%= project.paths.less %>/sprites.less',
-				'<%= project.paths.less %>/icons.less',
 				'<%= project.paths.less %>/fonts.less',
 
 			],
@@ -630,6 +628,15 @@ module.exports = function( grunt ) {
 			css: [ '<%= project.paths.css %>' ],
 
 			other: [ '**/.DS_Store' ],
+
+			windows: [
+
+
+				'<%= project.paths.fonts %>/icons', // Remove exclamation mark to clean
+				'<%= project.paths.less %>/icons.less', // Remove exclamation mark to clean
+
+
+			]
 
 		},
 
@@ -709,8 +716,7 @@ module.exports = function( grunt ) {
 
 	// Other tasks - to be updated with latest tasks
 	
-	grunt.registerTask( 'icons', [ 'webfont', ]);
-
+	grunt.registerTask( 'icons', [ 'webfont', ] );
 	
 	grunt.registerTask( 'sprites', 'sprite' );
 	
@@ -721,13 +727,48 @@ module.exports = function( grunt ) {
 	// grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'prettify', 'copy:dotnet' ] );
 	grunt.registerTask( 'templates', [ 'clean:templates', 'clean:dotnet_templates', 'cleanempty', 'processhtml', 'copy:dotnet' ] );
 	
-	grunt.registerTask( 'tidy', [ 'clean', 'cleanempty' ] );
+	grunt.registerTask( 'tidy', [
+
+		'clean:htc',
+		'clean:images',
+		'clean:sprites',
+		'clean:templates',
+		'clean:dotnet',
+		'clean:dotnet_assets',
+		'clean:dotnet_templates',
+		'clean:fonts',
+		'clean:optimized',
+		'clean:js',
+		'clean:less',
+		'clean:css',
+		'clean:other',
+		'cleanempty'
+
+	] );
+
+	grunt.registerTask( 'squeaky-clean', [
+
+		'clean',
+		'cleanempty'
+
+	] );
 	
 	grunt.registerTask( 'dotnet', [ 'templates', 'copy:assets', 'clean:dotnet_assets' ] );
 
 	// Default task
 	
 	grunt.registerTask( 'generate',	[
+
+		'squeaky-clean',
+		'svg2png',
+		'sprites',
+		'icons',
+		'fonts',
+		'copy:htc',
+
+	] );
+
+	grunt.registerTask( 'windows',	[
 
 		'tidy',
 		'svg2png',
