@@ -7,7 +7,6 @@ Thumbs.db
 # front end packages
 node_modules/
 bower_components/
-assets/
 /prototype/assets/_archive.js
 
 # back end

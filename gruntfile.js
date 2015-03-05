@@ -602,7 +602,7 @@ module.exports = function( grunt ) {
 
 			fonts: [
 				
-				'<%= project.paths.fonts %>/icons',
+				'!<%= project.paths.fonts %>/icons', // Remove exclamation mark to clean
 				'<%= project.paths.fonts %>/*.*',
 
 			],
