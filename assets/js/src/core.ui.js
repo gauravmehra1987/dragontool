@@ -91,6 +91,10 @@ function UI() {
 
 	this.render = function( car, user, animated ) {
 
+		// Remove telpoert canvas
+
+		$( '#car-teleport' ).remove();
+
 		// Hide the dashboard on mobile
 
 		if( Mini.browser.mobile ) setTimeout( function() {
@@ -99,7 +103,7 @@ function UI() {
 
 		}, 0 );
 
-		// Render actual results
+		// Rengder actual results
 
 		this.$panel.find( '[data-model-name]' ).html (car.name );
 		this.$panel.find( '[data-model-code]' ).html( car.code );
@@ -107,7 +111,19 @@ function UI() {
 		this.$panel.find( '[data-terms]' ).html( car.terms );
 		this.$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, user, car.code, car.color ) } );
 		
-		this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.png' } ).fadeIn( 200 );
+		if( animated ) {
+
+			var carImg = new teleport( path.assets + car.code + '.png' );
+
+			this.$panel.find( '[data-model-image]' ).hide().before( carImg );			
+
+		}
+
+		else {
+
+			this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.png' } ).fadeIn( 200 );
+
+		}
 
 		// Change dashboard color
 
@@ -158,6 +174,12 @@ function UI() {
 			case 'creature':
 
 				alert( 'These search results will show one of the creatures.' );
+
+			break;
+
+			case 'teleport':
+
+				ui.render( data.car, data.user, true );
 
 			break;
 
