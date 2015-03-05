@@ -1,17 +1,15 @@
 # Mini Combobulator
 
-<small>&copy; 2014-2015 by [John Przeslakowski](http://goodpixels.co.uk)</small>
-
 A car picker tool for Mini.
 
 1. [Requirements](#requirements)
 2. [Installation](#installation)
 3. [Grunt tasks](#grunt-tasks)
-	1. OS X workflow
-	2. Windows workflow
-	3. Rendering Razor views and copying assets
+	1. [OS X workflow](#os-x-workflow)
+	2. [Windows workflow](#windows-workflow)
+	3. [Rendering Razor views and copying assets](#rendering-razor-views-and-copying-assets)
 4. [.NET integration](#net-integration)
-5. [Addendum](#addendum)
+5. [Troubleshooting](#troubleshooting)
 
 > ##### Disclaimer
 > This document assumes you're using a Mac. If you're on Windows, you will not be able to generate web fonts. For production, always build the project on an Apple machine.
@@ -73,16 +71,16 @@ And you're done!
 
 This website makes extensive used of the *Grunt.js* build tool. There's a bunch of things happening in the background, but all you need to know, are just a few tasks:
 
-Task			| Description
+Task				| Description
 --------------------| -----------
-`squeaky-clean` | this task removes all generated content such as `*.css` and minified `*.js` files, .NET views and temporary images. You **must** run this command before committing any changes to the repo.
-`tidy` 			| same as above except it does not remove icon files - as they can't be generated on a Windows machine.
-`generate` 		| generates web fonts, PNG fallbacks for SVGs, image sprites, icons, etc. This task references `tidy` at the very beginning, so running it will remove any generated content along with the .NET views.
-`windows` 		| same as above but does not generate icons.
-`templates` 	| generates .NET views and copies them into the `dotnet/` folder.
-`dotnet` 		| same as above but also copies the assets over to the `dotnet/` folder.
-`compile` 		| compiles JavaScript and LESS files without minification.
-`build`			| compiles, then minifies JavaScript and LESS and runs `grunt dotnet` afterwards.
+`squeaky-clean` 	| this task removes all generated content such as `*.css` and minified `*.js` files, .NET views and temporary images. You **must** run this command before committing any changes to the repo.
+`tidy` 				| same as above except it does not remove icon files - as they can't be generated on a Windows machine.
+`generate` 			| generates web fonts, PNG fallbacks for SVGs, image sprites, icons, etc. This task references `tidy` at the very beginning, so running it will remove any generated content along with the .NET views.
+`generate-windows` 	| same as above but does not generate icons.
+`templates` 		| generates .NET views and copies them into the `dotnet/` folder.
+`dotnet` 			| same as above but also copies the assets over to the `dotnet/` folder.
+`compile` 			| compiles JavaScript and LESS files without minification.
+`build`				| compiles, then minifies JavaScript and LESS and runs `grunt dotnet` afterwards.
 
 Typing `grunt` will run `grunt compile` and then `grunt watch`.
 
@@ -193,7 +191,7 @@ The last thing we need to do, is to remove the static HTML / PHP code, by wrappi
 > ##### <span style="color: firebrick">Warning</span>
 > **Never** make direct changes to any files in the `dotnet/Combobulator/Views/` as they will be removed each time `grunt generate` is run. Moreover, making changes inside that folder will make it difficult to keep both the front-end and the back-end in sync. Feel free to write and test *Razor* syntax in those files, but once you're finished, copy them over to a corresponding `*.json` file before committing your changes.
 
-## Addendum
+## Troubleshooting
 
 ##### grunt-processhtml problems
 
@@ -209,10 +207,14 @@ npm install grunt-processhtml@0.3.6 -save
 
 If you happen to run `grunt squeaky-clean` on a Windows machine, you will need to generate icons in order to compile the app.
 
+> ##### <span style="color: firebrick">Warning</span>
+> **Always** remember to revert back to `fontforge` in production.
+> **Never** commit `settings.iconEngine` set to `node`. It will fail to generate proper fonts.
+
 To do so, **change temporarily** the font-hinting engine used by `grunt-webfont`.
 
 You can do it by changing `settings.iconEngine` to `node` in `combobulator.json`.
 
-> ##### <span style="color: firebrick">Warning</span>
-> **Always** remember to revert back to `fontforge` in production.
-> **Never** commit `settings.iconEngine` set to `node`. It will fail to generate proper fonts.
+---
+
+<small>&copy; 2014-2015 by [John Przeslakowski](http://goodpixels.co.uk).</small>
