@@ -773,7 +773,6 @@ module.exports = function( grunt ) {
 		'tidy',
 		'svg2png',
 		'sprites',
-		'icons',
 		'fonts',
 		'copy:htc',
 
