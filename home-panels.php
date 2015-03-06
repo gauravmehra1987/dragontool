@@ -26,34 +26,29 @@
 	<h5 class="control-title">Your results</h5>
 
 	<h3 class="model-name switch-color" data-model-name>model name</h3>
-	<div class="price-span"><span class="currency">£</span><span class="price" data-model-price>0</span><span class="permonth">per<br />month</span><a href="#" class="button switch-bg car-link" data-results-link="#">Go see</a></div>
+	
+	<div class="price-span"><a href="#" class="button car-link" data-results-link="#">See how it works out</a></div>
 	
 	<div class="model-image">
-
-		<hr />
 
 		<img src="assets/cars/none.png" width="760" height="540" class="img-base" />
 
 		<img src="assets/cars/none.png" width="760" height="540" class="img-content" data-model-image />
 
-		<hr />
-
 	</div>
-
-	<div class="terms" data-terms>terms</div>
 
 	<div>
 		
-		<p class="gimmick">Or for £<span data-model-price>0</span>...<br />you could buy <span class="switch-color">102 watermelons</span>.</p>
-
 		<ul class="related">
 
-			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
-			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
-			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
-			<li><a href="#" class="switch-bg"><img src="http://placehold.it/90x60" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/85x85" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/85x85" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/85x85" alt="Mini Copper S" /></a></li>
+			<li><a href="#" class="switch-bg"><img src="http://placehold.it/85x85" alt="Mini Copper S" /></a></li>
 
 		</ul><!-- end ul.related -->
+
+		<p class="gimmick">Or you could buy <span class="switch-color">98 tickets to the National Stamp Museum.</span></p>
 
 	</div>
 	

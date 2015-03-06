@@ -103,8 +103,6 @@ function UI() {
 
 		this.$panel.find( '[data-model-name]' ).html (car.name );
 		this.$panel.find( '[data-model-code]' ).html( car.code );
-		this.$panel.find( '[data-model-price]' ).html( car.cost );				
-		this.$panel.find( '[data-terms]' ).html( car.terms );
 		this.$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, user, car.code, car.color ) } );		
 		this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.png' } ).fadeIn( 200 );
 

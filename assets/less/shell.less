@@ -149,6 +149,13 @@
 
 		height: 785px;
 
+		&.full-width {
+
+			height: auto;
+			width: 1180px;
+
+		}
+
 		.column {
 
 			float: right;
@@ -205,6 +212,7 @@
 	.clearfix;
 
 	font-family: @fontAlt;
+	overflow: hidden;
 	position: relative;
 
 	.currency, .price, .permonth, .car-link {
@@ -313,11 +321,17 @@
 
 	margin: 0;
 
+	// This is a remainder of the old, two-column layout left here just in case they decide to use it...
+
 	.car-desc {
 
 		margin: 0 @margin;
 		overflow: hidden;
-		position: relative;
+		position: absolute;
+
+		right: 0;
+		bottom: 0;
+		left: 0;
 
 		height: 150px;
 
@@ -346,6 +360,71 @@
 		}
 
 	}
+
+	// New, single-column layout
+
+	figcaption {
+
+		position: absolute;
+		
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		.car-layout {
+
+			position: absolute;
+
+			right: 0;
+			left: 0;
+
+			&.top {
+
+				top: 0;
+			}
+
+			&.bottom {
+
+				bottom: 0;
+
+			}
+
+		}
+
+		#payment-plan {
+
+			width: 100%;
+
+			tbody {
+
+				float: left;
+
+				width: 100% / 3;
+
+				tr {
+
+					display: block;
+
+					td {
+
+						display: block;
+						float: left;
+
+						width: 50%;
+
+						&:nth-child( even ) { .tr; }
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+	
 
 }
 
@@ -416,17 +495,13 @@
 
 	.car-link {
 
-		float: none;
-		margin: 0;
-
-		position: absolute;
-
-		right: 0;
-		bottom: 0;		
+		background-color: transparent;
+		border-color: transparent;
+		padding: 0;
 
 	}
 
-	
+	.model-image { margin-bottom: 2px; }
 
 	.gimmick {
 
@@ -440,9 +515,9 @@
 
 		.list-inline;
 
-		background: @grayDark;
+		background: @dialGray;
 		margin: auto -( @margin * 1.5 );
-		padding: @margin / 2 @margin * 1.5;
+		padding: @margin * 1.5;
 
 		li {
 
