@@ -5,8 +5,8 @@ function Logic() {
 	var _this			= this;	
 	var filters			= [ 'lifestyle', 'economy', 'speed', 'price', 'convertible', 'high', 'awd', 'luggage', 'capacity' ];
 	var droppedFilters	= [];
-	var cars;
 	var db;
+	var cars;	
 
 	// Public functions
 
@@ -116,6 +116,10 @@ function Logic() {
 		}
 
 	}
+
+	this.getCarByName = function( name ) { return db( { name: name } ).first(); }
+	
+	this.getCarByCode = function( code ) { return db( { code: code } ).first(); }
 
 	this.query = function() {
 
@@ -264,19 +268,54 @@ function Logic() {
 
 	}
 
+	var populateDB = function( data ) {
+
+		cars			= data;
+		db				= TAFFY( JSON.stringify( cars ) );
+		_this.database	= db;
+
+		console.log( data.length + ' rows loaded successfully to the database' );
+
+		return db;
+
+	}
+
 	var loadData = function() {
 
-		$.get( path.api, function( data ) {
+		var data = store.get( 'miniData' ) || false;
 
-			cars	= data;
-			db		= TAFFY( JSON.stringify( cars ) );
+		if( data ) {
 
-			_this.c = cars;
-			_this.d = db;
+			console.log( 'loading database from local storage' );
 
-			console.log( data.length + ' rows loaded successfully to the database' );
+			populateDB( data ); }
+		
+		else {
 
-		} );
+			console.log( 'requesting data to populate the database' );
+
+			$.ajax( {
+
+				url:		path.api,
+				async:		false, // Deprecated, but in reality not for a looong time! :)
+				error:		function(){ alert( 'There\'s been a problem obtaining the results.' ); },
+				success:	function( data ) {
+
+					if( data.Error ) { alert( data.Error ); }
+
+					else {
+
+						populateDB( data );
+
+						store.set( 'miniData', data );
+
+					}
+
+				},
+
+			} );
+
+		}
 		
 	}
 
