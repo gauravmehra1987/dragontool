@@ -18,7 +18,19 @@
         "mpg": 61.4,
         "alt_1": "3-door Hatch Cooper",
         "alt_2": "5-door Hatch Cooper",
-        "alt_3": "Paceman Cooper"
+        "alt_3": "Paceman Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XN12",
@@ -39,7 +51,19 @@
         "mpg": 83.1,
         "alt_1": "3-door Hatch Cooper D",
         "alt_2": "5-door Hatch Cooper D",
-        "alt_3": "Paceman Cooper D"
+        "alt_3": "Paceman Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XM52",
@@ -60,7 +84,19 @@
         "mpg": 62.8,
         "alt_1": "3-door Hatch Cooper S",
         "alt_2": "5-door Hatch Cooper",
-        "alt_3": "Paceman Cooper"
+        "alt_3": "Paceman Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XN32",
@@ -81,7 +117,19 @@
         "mpg": 80.7,
         "alt_1": "3-door Hatch Cooper SD",
         "alt_2": "5-door Hatch Cooper D",
-        "alt_3": "Paceman Cooper D"
+        "alt_3": "Paceman Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XM72",
@@ -102,7 +150,19 @@
         "mpg": 49.6,
         "alt_1": "3-door Hatch JCW",
         "alt_2": "5-door Hatch Cooper S",
-        "alt_3": "Paceman Cooper S"
+        "alt_3": "Paceman Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XN92",
@@ -123,7 +183,19 @@
         "mpg": 70.6,
         "alt_1": "3-door Hatch Cooper S",
         "alt_2": "5-door Hatch Cooper SD",
-        "alt_3": "Paceman Cooper SD"
+        "alt_3": "Paceman Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XS12",
@@ -144,7 +216,19 @@
         "mpg": 59,
         "alt_1": "5-door Hatch Cooper",
         "alt_2": "Countryman Cooper",
-        "alt_3": "Paceman Cooper"
+        "alt_3": "Paceman Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XT12",
@@ -165,7 +249,19 @@
         "mpg": 80.7,
         "alt_1": "5-door Hatch Cooper D",
         "alt_2": "Countryman Cooper D",
-        "alt_3": "Paceman Cooper D"
+        "alt_3": "Paceman Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XS52",
@@ -186,7 +282,19 @@
         "mpg": 60.1,
         "alt_1": "5-door Hatch Cooper S",
         "alt_2": "Countryman Cooper",
-        "alt_3": "Paceman Cooper"
+        "alt_3": "Paceman Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XT32",
@@ -207,7 +315,19 @@
         "mpg": 78.5,
         "alt_1": "5-door Hatch Cooper SD",
         "alt_2": "Countryman Cooper D",
-        "alt_3": "Paceman Cooper D"
+        "alt_3": "Paceman Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XS72",
@@ -228,7 +348,19 @@
         "mpg": 47.9,
         "alt_1": "5-door Hatch Cooper SD",
         "alt_2": "Countryman Cooper S",
-        "alt_3": "Paceman Cooper S"
+        "alt_3": "Paceman Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XT72",
@@ -249,7 +381,19 @@
         "mpg": 68.9,
         "alt_1": "5-door Hatch Cooper S",
         "alt_2": "Countryman Cooper SD",
-        "alt_3": "Paceman Cooper SD"
+        "alt_3": "Paceman Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SS12",
@@ -270,7 +414,19 @@
         "mpg": 47.1,
         "alt_1": "Paceman Cooper S",
         "alt_2": "5-door Hatch Cooper",
-        "alt_3": "Countryman Cooper"
+        "alt_3": "Countryman Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SS32",
@@ -291,7 +447,19 @@
         "mpg": 39.8,
         "alt_1": "Paceman Cooper S ALL 4",
         "alt_2": "Countryman Cooper ALL 4 ",
-        "alt_3": "5-door Hatch Cooper"
+        "alt_3": "5-door Hatch Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "RJ52",
@@ -312,7 +480,19 @@
         "mpg": 64.2,
         "alt_1": "Paceman Cooper SD",
         "alt_2": "Countryman Cooper D",
-        "alt_3": "5-door Hatch Cooper D"
+        "alt_3": "5-door Hatch Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "RS52",
@@ -333,7 +513,19 @@
         "mpg": 57.6,
         "alt_1": "Paceman Cooper SD ALL 4",
         "alt_2": "Countryman Cooper D ALL 4 ",
-        "alt_3": "5-door Hatch Cooper D"
+        "alt_3": "5-door Hatch Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SS52",
@@ -354,7 +546,19 @@
         "mpg": 42.2,
         "alt_1": "Paceman Cooper SD",
         "alt_2": "5-door Hatch Cooper S",
-        "alt_3": "Countryman Cooper S"
+        "alt_3": "Countryman Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SS72",
@@ -375,7 +579,19 @@
         "mpg": 42.2,
         "alt_1": "Paceman Cooper SD ALL 4",
         "alt_2": "Countryman Cooper S ALL 4 ",
-        "alt_3": "5-door Hatch Cooper S"
+        "alt_3": "5-door Hatch Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "RS72",
@@ -396,7 +612,19 @@
         "mpg": 61.4,
         "alt_1": "Paceman Cooper S",
         "alt_2": "5-door Hatch Cooper SD",
-        "alt_3": "Countryman Cooper SD"
+        "alt_3": "Countryman Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "RS92",
@@ -417,7 +645,19 @@
         "mpg": 57.6,
         "alt_1": "Paceman Cooper S ALL 4",
         "alt_2": "Countryman Cooper SD ALL 4 ",
-        "alt_3": "5-door Hatch Cooper SD"
+        "alt_3": "5-door Hatch Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SS92",
@@ -438,7 +678,19 @@
         "mpg": 38.2,
         "alt_1": "3-door Hatch JCW",
         "alt_2": "Countryman JCW",
-        "alt_3": "Coupe JCW"
+        "alt_3": "Coupe JCW",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZM38",
@@ -459,7 +711,19 @@
         "mpg": 47.1,
         "alt_1": "Countryman Cooper",
         "alt_2": "5-door Hatch Cooper",
-        "alt_3": "Paceman Cooper"
+        "alt_3": "Paceman Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZB32",
@@ -480,7 +744,19 @@
         "mpg": 47.1,
         "alt_1": "Countryman Cooper S",
         "alt_2": "5-door Hatch Cooper",
-        "alt_3": "Paceman Cooper"
+        "alt_3": "Paceman Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZB52",
@@ -501,7 +777,19 @@
         "mpg": 39.8,
         "alt_1": "Countryman Cooper S ALL 4",
         "alt_2": "5-door Hatch Cooper",
-        "alt_3": "Paceman Cooper ALL 4"
+        "alt_3": "Paceman Cooper ALL 4",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZM39",
@@ -522,7 +810,19 @@
         "mpg": 64.2,
         "alt_1": "Countryman Cooper SD",
         "alt_2": "5-door Hatch Cooper D",
-        "alt_3": "Paceman Cooper D"
+        "alt_3": "Paceman Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZD52",
@@ -543,7 +843,19 @@
         "mpg": 57.6,
         "alt_1": "Countryman Cooper SD ALL 4",
         "alt_2": "Paceman Cooper D ALL 4",
-        "alt_3": "5-door Hatch Cooper D"
+        "alt_3": "5-door Hatch Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZM43",
@@ -564,7 +876,19 @@
         "mpg": 46.3,
         "alt_1": "Countryman Cooper SD",
         "alt_2": "5-door Hatch Cooper S",
-        "alt_3": "Paceman Cooper S"
+        "alt_3": "Paceman Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZC52",
@@ -585,7 +909,19 @@
         "mpg": 26.7,
         "alt_1": "Countryman Cooper SD ALL 4",
         "alt_2": "Paceman Cooper S ALL 4",
-        "alt_3": "5-door Hatch Cooper S"
+        "alt_3": "5-door Hatch Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZB72",
@@ -606,7 +942,19 @@
         "mpg": 61.4,
         "alt_1": "Countryman Cooper S",
         "alt_2": "5-door Hatch Cooper SD",
-        "alt_3": "Paceman Cooper SD"
+        "alt_3": "Paceman Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZD72",
@@ -627,7 +975,19 @@
         "mpg": 57.6,
         "alt_1": "Countryman Cooper S ALL 4",
         "alt_2": "Paceman Cooper SD ALL 4",
-        "alt_3": "5-door Hatch Cooper SD"
+        "alt_3": "5-door Hatch Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "XD12",
@@ -648,7 +1008,19 @@
         "mpg": 38.2,
         "alt_1": "Paceman JCW",
         "alt_2": "3-door Hatch JCW",
-        "alt_3": "Countryman Cooper S ALL 4"
+        "alt_3": "Countryman Cooper S ALL 4",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SX12",
@@ -669,7 +1041,19 @@
         "mpg": 52.3,
         "alt_1": "Coupe Cooper S",
         "alt_2": "Roadster Cooper",
-        "alt_3": "3-door Hatch Cooper"
+        "alt_3": "3-door Hatch Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SX32",
@@ -690,7 +1074,19 @@
         "mpg": 48.7,
         "alt_1": "Coupe Cooper SD",
         "alt_2": "Roadster Cooper S",
-        "alt_3": "3-door Hatch Cooper S"
+        "alt_3": "3-door Hatch Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SX72",
@@ -711,7 +1107,19 @@
         "mpg": 65.7,
         "alt_1": "Coupe Cooper S",
         "alt_2": "Roadster Cooper SD",
-        "alt_3": "3-door Hatch Cooper SD"
+        "alt_3": "3-door Hatch Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SX92",
@@ -732,7 +1140,19 @@
         "mpg": 42.8,
         "alt_1": "Roadster JCW",
         "alt_2": "3-door Hatch JCW",
-        "alt_3": "Paceman JCW"
+        "alt_3": "Paceman JCW",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SY12",
@@ -753,7 +1173,19 @@
         "mpg": 49.6,
         "alt_1": "Roadster Cooper S",
         "alt_2": "Coupe Cooper",
-        "alt_3": "Convertible Cooper"
+        "alt_3": "Convertible Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SY32",
@@ -774,7 +1206,19 @@
         "mpg": 47.1,
         "alt_1": "Roadster Cooper SD",
         "alt_2": "Coupe Cooper S",
-        "alt_3": "Convertible Cooper S"
+        "alt_3": "Convertible Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SY72",
@@ -795,7 +1239,19 @@
         "mpg": 62.8,
         "alt_1": "Roadster Cooper S",
         "alt_2": "Coupe Cooper SD",
-        "alt_3": "Convertible Cooper SD"
+        "alt_3": "Convertible Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "SY92",
@@ -816,7 +1272,19 @@
         "mpg": 41.5,
         "alt_1": "Convertible JCW",
         "alt_2": "Coupe JCW",
-        "alt_3": "3-door Hatch JCW"
+        "alt_3": "3-door Hatch JCW",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZM32",
@@ -837,7 +1305,19 @@
         "mpg": 49.6,
         "alt_1": "Convertible Cooper",
         "alt_2": "Roadster Cooper",
-        "alt_3": "3-door Hatch One"
+        "alt_3": "3-door Hatch One",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZN32",
@@ -858,7 +1338,19 @@
         "mpg": 49.6,
         "alt_1": "Convertible Cooper S",
         "alt_2": "Roadster Cooper",
-        "alt_3": "3-door Hatch Cooper"
+        "alt_3": "3-door Hatch Cooper",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZR32",
@@ -879,7 +1371,19 @@
         "mpg": 74.3,
         "alt_1": "Convertible Cooper SD",
         "alt_2": "Roadster Cooper D",
-        "alt_3": "3-door Hatch Cooper D"
+        "alt_3": "3-door Hatch Cooper D",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZM28",
@@ -900,7 +1404,19 @@
         "mpg": 47.1,
         "alt_1": "Convertible Cooper SD",
         "alt_2": "Roadster Cooper S",
-        "alt_3": "3-door Hatch Cooper S"
+        "alt_3": "3-door Hatch Cooper S",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "ZM56",
@@ -921,7 +1437,19 @@
         "mpg": 62.8,
         "alt_1": "Convertible Cooper S",
         "alt_2": "Roadster Cooper SD",
-        "alt_3": "3-door Hatch Cooper SD"
+        "alt_3": "3-door Hatch Cooper SD",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     },
     {
         "code": "MR92",
@@ -942,6 +1470,18 @@
         "mpg": 41.5,
         "alt_1": "Roadster JCW",
         "alt_2": "3-door Hatch JCW",
-        "alt_3": "Paceman JCW"
+        "alt_3": "Paceman JCW",
+        "finance": {
+            "term": 36,
+            "payment": 295,
+            "price": 18975,
+            "deposit": 2999,
+            "contribution": 500,
+            "purchase_fee": 150,
+            "final_payment": 4850,
+            "credit_charge": 3500,
+            "roi": "5.90%",
+            "apr": "28%"
+        }
     }
 ]

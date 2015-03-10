@@ -1,16 +1,17 @@
 var priceChanged	= false;
 var ie				= new IE();
-var ui				= new UI();
+var ui				= new UI( [ 'results', 'finance' ] );
 var logic			= new Logic();
 var query			= new logic.query();
 
-// Deteremine car color - otherwise fall back to a generic blue color
-
-var color			= logic.getCarByCode( location.search.split( '?m=' )[ 1 ] ).color;
-var dashColor		= ( color !== undefined ) ? color : 'Electric Blue';
-
 var responsive;
 var dashboard;
+
+// Deteremine car color - otherwise fall back to a generic blue color
+
+var carCode			= location.search.split( '?m=' )[ 1 ] || false;
+var color			= logic.getCarByCode( carCode ).color;
+var dashColor		= ( color !== undefined ) ? color : 'Electric Blue';
 
 // Some not IE-friendly stuff
 
@@ -59,7 +60,7 @@ $( window ).load( function() {
 	$( 'form' ).validate();
 
 	// Handle successful form submission
-
+	
 	$.subscribe( 'form-ajax-results', function( e, data ) {
 
 		if( data.success ) { ui.showPanel( 'thanks' ); }
@@ -92,15 +93,11 @@ $( window ).load( function() {
 
 	} );
 
+	// Render finance template
+
+	if( $( '#tpl-finance' ).length > 0 ) $( '#tpl-finance' ).replaceWith( ui.renderTpl( 'finance', logic.getFinance( carCode ) ) );
+
 	// Execute search
-
-	$( '.car-changer' ).on( 'click', function( e ) {
-
-		e.preventDefault();
-
-		ui.render( logic.getCarByCode( $( this ).attr( 'href' ).substring( 1 ) ), false );
-
-	} );
 
 	$( '#start' ).on( 'click', function( e ) {
 
@@ -144,7 +141,6 @@ $( window ).load( function() {
 				// Randomly choose a car
 
 				var car		= cars[ _.random( cars.length - 1 ) ];
-				var user	= $body.find( '#uid' ).val()
 
 				// Easter eggs
 
@@ -160,7 +156,7 @@ $( window ).load( function() {
 
 					// Populate results
 
-					ui.render( car, user );
+					ui.render( car );
 
 				}
 
@@ -168,12 +164,27 @@ $( window ).load( function() {
 
 					// Populate results
 
-					ui.render( car, user );
+					ui.render( car );
 					
 				}
 
 			}
 		}
+
+	} );
+
+	// Show alternative cars
+
+	$body.on( 'click', '.car-changer', function( e ) {
+
+		e.preventDefault();
+
+		var link	= $( this ).attr( 'href' );
+		var car		= logic.getCarByCode( link.substring( 1 ) );
+
+		$( '.car-changer' ).removeClass( 'active' ).filter( this ).addClass( 'active' );
+
+		ui.render( car, true );
 
 	} );
 

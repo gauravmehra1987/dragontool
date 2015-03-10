@@ -30,6 +30,18 @@ function Logic() {
 
 	}
 
+	this.getFinance = function( code ) {
+
+		var car			= this.getCarByCode( code );
+		var finance		= car.finance;
+
+		finance.total_deposit	= finance.deposit + finance.contribution;
+		finance.total_amount	= finance.price + finance.credit_charge;
+
+		return finance;
+
+	}
+
 	this.eggs = function( data ) {
 
 		var seatTriggers	= [ 'Alien', 'Dog', 'Cat' ];
