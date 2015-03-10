@@ -16,14 +16,14 @@ using Newtonsoft.Json;
 using Car = Combobulator.DAL.Car;
 using NewCar = Combobulator.Models.NewCar;
 
-namespace Combobulator.Controllers
+namespace Combobulator.ApiControllers
 {
-    public class CarController : ApiController
+    public class CarController : Combobulator.ApiControllers.BaseController
     {
         private int apiCacheDurationHours = Convert.ToInt32(ConfigurationManager.AppSettings["ApiCacheDurationHours"]);
         private bool apiCacheEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["ApiCacheEnabled"]);
         private CombobulatorDataContext dbContext = new CombobulatorDataContext();
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        //private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         // GET api/car
         // Gets all cars

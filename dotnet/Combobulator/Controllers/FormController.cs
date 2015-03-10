@@ -1,89 +1,194 @@
-﻿using Combobulator.Classes;
-using Combobulator.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Data.Linq;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Reflection;
+using System.Web.Mvc;
+using log4net;
+using Combobulator.Classes;
+using Combobulator.DAL;
+using Combobulator.Models;
+using Car = Combobulator.Models.Car;
+using Dealer = Combobulator.Models.Dealer;
+using Title = Combobulator.Models.Title;
 
 namespace Combobulator.Controllers
 {
-    public class FormController : ApiController
+    public class FormController : BaseController
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private Combobulator.DAL.CombobulatorDataContext dbContext = new Combobulator.DAL.CombobulatorDataContext();
+		private CombobulatorDataContext dbContext = new CombobulatorDataContext();
 
-        // POST api/form
-        [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Customer customer)
+        public ActionResult Index()
         {
+            string userId = String.Empty;
+            string modelCode = String.Empty;
+            Selections selections = new Selections();
+
+            // customer id
+            if (!String.IsNullOrEmpty(Request.QueryString["c"]))
+            {
+                userId = Request.QueryString["c"];
+            }
+            // model code
+            if (!String.IsNullOrEmpty(Request.QueryString["m"]))
+            {
+                modelCode = Request.QueryString["m"];
+            }
+            else
+            {
+                string cQuery = userId != String.Empty ? ("?c=" + userId) : "";
+                return Redirect(String.Concat("~/", cQuery));
+            }
+            // capacity
+            if (!String.IsNullOrEmpty(Request.QueryString["capacity"]))
+            {
+                selections.Capacity = Request.QueryString["capacity"];
+            }
+            // luggage
+            if (!String.IsNullOrEmpty(Request.QueryString["luggage"]))
+            {
+                selections.Luggage = Request.QueryString["luggage"];
+            }
+            // options
+            if (!String.IsNullOrEmpty(Request.QueryString["options"]))
+            {
+                selections.Options = Request.QueryString["options"];
+            }
+            // price
+            if (!String.IsNullOrEmpty(Request.QueryString["price"]))
+            {
+                selections.PriceRange = Request.QueryString["price"];
+            }
+            // performance
+            if (!String.IsNullOrEmpty(Request.QueryString["performance"]))
+            {
+                selections.Performance = Request.QueryString["performance"];
+            }
+            // economny
+            if (!String.IsNullOrEmpty(Request.QueryString["economy"]))
+            {
+                selections.Economy = Request.QueryString["economy"];
+            }
+            // use
+            if (!String.IsNullOrEmpty(Request.QueryString["use"]))
+            {
+                selections.Use = Request.QueryString["use"];
+            }
+
+            ViewBag.UserId = userId;
+            ViewBag.ModelCode = modelCode;
+            ViewBag.Selections = selections;
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult CustomerForm(string id, string modelCode, Selections selections)
+        {
+            PartialViewResult view;
             try
             {
-                Combobulator.DAL.Car dbCar = dbContext.GetCar(customer.Car.ModelCode).FirstOrDefault();
-                Car car = new Car
-                {
-                    Id = dbCar.Id,
-                    Model = dbCar.Model,
-                    ModelCode = dbCar.ModelCode,
-                    Colour = dbCar.Colour,
-                    Engine = dbCar.Engine,
-                    DisplayName = dbCar.DisplayName,
-                    Type = dbCar.Type,
-                    CapacityScale = dbCar.CapacityScale,
-                    LuggageScale = dbCar.LuggageScale,
-                    Options = dbCar.Options,
-                    PriceScale = dbCar.PriceScale,
-                    Cost = dbCar.Cost,
-                    PerformanceScale = dbCar.PerformanceScale,
-                    MPH = dbCar.MPH,
-                    EconomyScale = dbCar.EconomyScale,
-                    MPG = dbCar.MPG,
-                    UsageScale = dbCar.UsageScale,
-                    Alt1 = dbCar.Alt1,
-                    Alt2 = dbCar.Alt2,
-                    Alt3 = dbCar.Alt3,
-                    TermsConditions = dbCar.TermsConditions
-                };
-                customer.Car = car;
+                // Build drop downs
+                IMultipleResults dbLookups = dbContext.GetLookupsResults();
+                var queryTitles = dbLookups.GetResult<Title>().ToList<Title>();
+                var queryDealers = dbLookups.GetResult<Dealer>().ToList<Dealer>();
 
-                if (customer != null && !string.IsNullOrEmpty(customer.UserId))
+                Combobulator.Models.NewCar car = null;
+                if (!String.IsNullOrEmpty(modelCode))
                 {
-                    // Send to API
-                    Func<Customer, bool> func = new Func<Customer, bool>(Utils.SendExistingCustomerDataApi);
-                    bool sent = Utils.DoFuncWithRetry(func, customer, TimeSpan.FromSeconds(2));
-
-                    // If send api fails then send to fallback email
-                    if (!sent)
+                    DAL.NewCar dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
+                    car = new Combobulator.Models.NewCar
                     {
-                        Email.EmailCustomerDetails(customer);
-                    }
+                        Code = dbCar.Code
+                    };
+                }
+
+                if (id != String.Empty)
+                {
+                    // Get customer from id
+                    Customer customer = Utils.GetCustomerById(id);
+                    customer.Car = car;
+                    customer.Selections = selections;
+                    customer.Titles = queryTitles.ToList();
+                    customer.Dealers = queryDealers.ToList();
+
+                    view = PartialView("_ExistingCustomerForm", customer);
                 }
                 else
                 {
-                    // Email customer details
-                    Email.EmailCustomerDetails(customer);
-                }
+                    Customer customer = new Customer();
+                    customer.Car = car;
+                    customer.Selections = selections;
+                    customer.Titles = queryTitles.ToList();
+                    customer.Dealers = queryDealers.ToList();
 
-                // Email results to customer
-                if (customer.EmailResults == true)
-                {
-                    try
-                    {
-                        Email.EmailMeResults(customer, car);
-                    }
-                    catch (Exception ex)
-                    {
-                        log.Error("EmailMeResults", ex);
-                    }
+                    view = PartialView("_ExistingCustomerForm", customer);
+                    //view = PartialView("_NewCustomerForm", customer);
                 }
-
-                return Request.CreateResponse(HttpStatusCode.OK, "success");
             }
             catch (Exception ex)
             {
-                log.Error("api/form", ex);
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                log.Error("CustomerForm", ex);
+                view = PartialView("_FormError");
+            }
+
+            return view;
+        }
+
+        [ChildActionOnly]
+        public ActionResult ResultDetail(string modelCode)
+        {
+            if (String.IsNullOrEmpty(modelCode))
+            {
+                return PartialView("_ResultError");
+            }
+
+            try
+            {
+                DAL.NewCar dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
+                // ReSharper disable once PossibleNullReferenceException
+                var dbFinance = new CarsFinance();
+                //dbFinance = dbCar.CarsFinances.First();
+                Combobulator.Models.NewCar car = new Combobulator.Models.NewCar
+                {
+                    Code = dbCar.Code,
+                    Color = dbCar.Color,
+                    Engine = dbCar.Engine,
+                    Name = dbCar.Name,
+                    Capacity = dbCar.Capacity,
+                    Luggage = dbCar.Luggage,
+                    Lifestyle = dbCar.Lifestyle,
+                    Awd = dbCar.Awd,
+                    High = dbCar.High,
+                    Convertible = dbCar.Convertible,
+                    Price = dbCar.Price,
+                    Cost = dbCar.Cost,
+                    Speed = dbCar.Speed,
+                    Mph = dbCar.Mph,
+                    Economy = dbCar.Economy,
+                    Terms = dbCar.Terms,
+                    Alt_1 = dbCar.Alt1,
+                    Alt_2 = dbCar.Alt2,
+                    Alt_3 = dbCar.Alt3,
+                    FinanceDetails = new FinanceDetails
+                    {
+                        Term = dbFinance.Term ?? -1,
+                        MonthlyPayments = dbFinance.MonthlyPayments ?? -1.0m,
+                        OnTheRoad = dbFinance.OnTheRoad ?? -1.0m,
+                        CustomerDeposit = dbFinance.CustomerDeposit ?? -1.0m,
+                        RetailerDeposit = dbFinance.RetailerDeposit ?? -1.0m,
+                        OptionToPurchase = dbFinance.OptionToPurchase ?? -1.0m,
+                        OptionalFinalPayment = dbFinance.OptionalFinalPayment ?? -1.0m,
+                        TotalPayable = dbFinance.TotalPayable ?? -1.0m,
+                        TotalCredit = dbFinance.TotalCredit ?? -1.0m,
+                        InterestRate = dbFinance.InterestRate ?? -1.0m,
+                        RepresentativeApr = dbFinance.RepresentativeApr ?? -1.0m,
+                    },
+                };
+                return PartialView("_ResultDetail", car);
+            }
+            catch (Exception ex)
+            {
+                log.Error("ResultDetail", ex);
+                return PartialView("_ResultError");
             }
         }
     }

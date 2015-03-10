@@ -8,12 +8,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web;
 
-namespace Combobulator.Controllers
+namespace Combobulator.ApiControllers
 {
-    public class AssetsController : ApiController
+    public class AssetsController : Combobulator.ApiControllers.BaseController
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         // GET api/assets/svg
         // GET api/assets/png
         [System.Web.Mvc.HttpGet]

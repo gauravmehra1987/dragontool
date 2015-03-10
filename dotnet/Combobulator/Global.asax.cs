@@ -10,6 +10,7 @@ using System.Web.Routing;
 using Combobulator.Config;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Combobulator.Helpers;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -32,7 +33,9 @@ namespace Combobulator
             // JSON Formatting
             var jsonFormatter = new JsonMediaTypeFormatter();
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IContentNegotiator), new JsonContentNegotiator(jsonFormatter));
         }
     }
 }

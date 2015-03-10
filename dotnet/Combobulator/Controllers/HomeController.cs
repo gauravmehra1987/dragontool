@@ -8,20 +8,18 @@ using System.Web.Mvc;
 
 namespace Combobulator.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         public ActionResult Index()
         {
             string userId = string.Empty;
             Customer customer = null;
 
-            if (!string.IsNullOrEmpty(Request.QueryString["cid"]))
+            if (!string.IsNullOrEmpty(Request.QueryString["c"]))
             {
                 try
                 {
-                    customer = Utils.GetCustomerById(Request.QueryString["cid"]);
+                    customer = Utils.GetCustomerById(Request.QueryString["c"]);
                 }
                 catch (Exception ex)
                 {
@@ -30,7 +28,7 @@ namespace Combobulator.Controllers
             }
 
             ViewBag.FirstName = customer != null ? customer.FirstName : "";
-            ViewBag.UserId = Request.QueryString["cid"];
+            ViewBag.UserId = Request.QueryString["c"];
 
             return View();
         }

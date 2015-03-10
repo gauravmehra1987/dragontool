@@ -2,7 +2,7 @@
 {
     public class Results
     {
-        public Car Car { get; set; }
+        public NewCar Car { get; set; }
         public Customer CustomerForm { get; set; }
     }
 }

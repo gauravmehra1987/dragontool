@@ -11,20 +11,6 @@ namespace Combobulator.Classes
 {
     public class Email
     {
-        //#region Private/Protected Members
-        //private static readonly Email _instance = new Email();
-        //#endregion
-
-        //#region Public Properties
-        //public static Email Instance
-        //{
-        //    get
-        //    {
-        //        return _instance;
-        //    }
-        //}
-        //#endregion
-
         private static string _host = WebConfigurationManager.AppSettings["EmailHost"];
         private static string _username = WebConfigurationManager.AppSettings["EmailUsername"];
         private static string _password = WebConfigurationManager.AppSettings["EmailPassword"];
@@ -36,7 +22,7 @@ namespace Combobulator.Classes
         private static string _emailCustomerDetailsSubject = WebConfigurationManager.AppSettings["EmailCustomerDetailsSubject"];
         private static string _emailMeResultsSubject = WebConfigurationManager.AppSettings["EmailMeResultsSubject"];
 
-        public static void EmailMeResults(Customer customer, Car car)
+        public static void EmailMeResults(Customer customer, NewCar car)
         {
             string readFile = string.Empty;
             string strBody = string.Empty;
@@ -50,10 +36,10 @@ namespace Combobulator.Classes
             strBody = strBody.Replace("[[Title]]", customer.Title)
                      .Replace("[[Firstname]]", customer.FirstName)
                      .Replace("[[Lastname]]", customer.LastName)
-                     .Replace("[[ModelCode]]", car.ModelCode)
-                     .Replace("[[Model]]", car.Model)
-                     .Replace("[[Cost]]", car.Cost)
-                     .Replace("[[TermsConditions]]", car.TermsConditions);
+                     .Replace("[[ModelCode]]", car.Code)
+                     .Replace("[[Model]]", car.Name)
+                     .Replace("[[Cost]]", car.Cost.ToString())
+                     .Replace("[[TermsConditions]]", car.Terms);
 
             SendEmail(customer.Email, subject, strBody);
         }

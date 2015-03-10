@@ -11,11 +11,11 @@ using Combobulator.Models;
 
 namespace Combobulator.Controllers
 {
-    public class ImportController : Controller
+    public class ImportController : BaseController
     {
         private DAL.CombobulatorDataContext dbContext = new DAL.CombobulatorDataContext();
 
-        private TextReader fileReader;
+        //private TextReader fileReader;
 
         public ActionResult Index()
         {

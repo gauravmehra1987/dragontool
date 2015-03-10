@@ -4,21 +4,15 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 using log4net;
-
 using Combobulator.Classes;
 using Combobulator.DAL;
 using Combobulator.Models;
 
-using Car = Combobulator.Models.Car;
-using Dealer = Combobulator.Models.Dealer;
-using Title = Combobulator.Models.Title;
-
 namespace Combobulator.Controllers
 {
-	public class ResultsController : Controller
+	public class ResultsController : BaseController
 	{
 		private CombobulatorDataContext dbContext = new CombobulatorDataContext();
-		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
 		public ActionResult Index()
 		{
@@ -27,18 +21,18 @@ namespace Combobulator.Controllers
 			Selections selections = new Selections();
 
 			// customer id
-			if (!String.IsNullOrEmpty(Request.QueryString["cid"]))
+			if (!String.IsNullOrEmpty(Request.QueryString["c"]))
 			{
-				userId = Request.QueryString["cid"];
+				userId = Request.QueryString["c"];
 			}
 			// model code
-			if (!String.IsNullOrEmpty(Request.QueryString["model"]))
+			if (!String.IsNullOrEmpty(Request.QueryString["m"]))
 			{
-				modelCode = Request.QueryString["model"];
+				modelCode = Request.QueryString["m"];
 			}
 			else
 			{
-				string cQuery = userId != String.Empty ? ("?cid=" + userId) : "";
+				string cQuery = userId != String.Empty ? ("?c=" + userId) : "";
 				return Redirect(String.Concat("~/", cQuery));
 			}
 			// capacity
@@ -80,119 +74,7 @@ namespace Combobulator.Controllers
 			ViewBag.UserId = userId;
 			ViewBag.ModelCode = modelCode;
 			ViewBag.Selections = selections;
-
 			return View();
-		}
-
-		[ChildActionOnly]
-		public ActionResult CustomerForm(string id, string modelCode, Selections selections)
-		{
-			PartialViewResult view;
-			try
-			{
-				// Build drop downs
-				IMultipleResults dbLookups = dbContext.GetLookupsResults();
-				var queryTitles = dbLookups.GetResult<Title>().ToList<Title>();
-				var queryDealers = dbLookups.GetResult<Dealer>().ToList<Dealer>();
-
-				Car car = null;
-				if (!String.IsNullOrEmpty(modelCode))
-				{
-					car = new Car
-					{
-						ModelCode = modelCode
-					};
-				}
-
-				if (id != String.Empty)
-				{
-					// Get customer from id
-					Customer customer = Utils.GetCustomerById(id);
-					customer.Car = car;
-					customer.Selections = selections;
-					customer.Titles = queryTitles.ToList();
-					customer.Dealers = queryDealers.ToList();
-
-					view = PartialView("_ExistingCustomerForm", customer);
-				}
-				else
-				{
-					Customer customer = new Customer();
-					customer.Car = car;
-					customer.Selections = selections;
-					customer.Titles = queryTitles.ToList();
-					customer.Dealers = queryDealers.ToList();
-
-					view = PartialView("_ExistingCustomerForm", customer);
-				}
-			}
-			catch (Exception ex)
-			{
-				log.Error("CustomerForm", ex);
-				view = PartialView("_FormError");
-			}
-
-			return view;
-		}
-
-		[ChildActionOnly]
-		public ActionResult ResultDetail(string modelCode)
-		{
-			if (String.IsNullOrEmpty(modelCode))
-			{
-				return PartialView("_ResultError");
-			}
-
-			try
-			{
-				DAL.Car dbCar = dbContext.GetCar(modelCode).FirstOrDefault();
-				// ReSharper disable once PossibleNullReferenceException
-				CarsFinance dbFinance = dbCar.CarsFinances.First();
-				Car car = new Car
-				{
-					Id = dbCar.Id,
-					Model = dbCar.Model,
-					ModelCode = dbCar.ModelCode,
-					Colour = dbCar.Colour,
-					Engine = dbCar.Engine,
-					DisplayName = dbCar.DisplayName,
-					Type = dbCar.Type,
-					CapacityScale = dbCar.CapacityScale,
-					LuggageScale = dbCar.LuggageScale,
-					Options = dbCar.Options,
-					PriceScale = dbCar.PriceScale,
-					Cost = dbCar.Cost,
-					PerformanceScale = dbCar.PerformanceScale,
-					MPH = dbCar.MPH,
-					EconomyScale = dbCar.EconomyScale,
-					MPG = dbCar.MPG,
-					UsageScale = dbCar.UsageScale,
-					Alt1 = dbCar.Alt1,
-					Alt2 = dbCar.Alt2,
-					Alt3 = dbCar.Alt3,
-					TermsConditions = dbCar.TermsConditions,
-					FinanceDetails = new FinanceDetails
-					{
-						Term = dbFinance.Term ?? -1,
-						MonthlyPayments = dbFinance.MonthlyPayments ?? -1.0m,
-						OnTheRoad = dbFinance.OnTheRoad ?? -1.0m,
-						CustomerDeposit = dbFinance.CustomerDeposit ?? -1.0m,
-						RetailerDeposit = dbFinance.RetailerDeposit ?? -1.0m,
-						OptionToPurchase = dbFinance.OptionToPurchase ?? -1.0m,
-						OptionalFinalPayment = dbFinance.OptionalFinalPayment ?? -1.0m,
-						TotalPayable = dbFinance.TotalPayable ?? -1.0m,
-						TotalCredit = dbFinance.TotalCredit ?? -1.0m,
-						InterestRate = dbFinance.InterestRate ?? -1.0m,
-						RepresentativeApr = dbFinance.RepresentativeApr ?? -1.0m,
-					},
-				};
-				return PartialView("_ResultDetail", car);
-			}
-			catch (Exception ex)
-			{
-				log.Error("ResultDetail", ex);
-				return PartialView("_ResultError");
-			}
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.625" name="Combobulator">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.875" name="Combobulator">
   <DataContextMoniker Name="/CombobulatorDataContext" />
   <nestedChildShapes>
     <classShape Id="cc863620-5f24-44cc-ac40-3ba5f23ed97f" absoluteBounds="0.75, 0.75, 2, 4.8477197265625">
@@ -8,36 +8,42 @@
         <elementListCompartment Id="9ffc37f8-628c-4d28-9a7d-46737536be42" absoluteBounds="0.76499999999999968, 1.21, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="944607fe-64aa-4774-a085-2b781db2d84a" absoluteBounds="3.75, 0.75, 2.125, 1.1939925130208327">
+    <classShape Id="944607fe-64aa-4774-a085-2b781db2d84a" absoluteBounds="3.625, 0.75, 2.125, 1.1939925130208327">
       <DataClassMoniker Name="/CombobulatorDataContext/Title" />
       <nestedChildShapes>
-        <elementListCompartment Id="9f1d60e3-123a-4044-929d-31a40e4ee533" absoluteBounds="3.7649999999999997, 1.21, 2.0949999999999998, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9f1d60e3-123a-4044-929d-31a40e4ee533" absoluteBounds="3.6399999999999997, 1.21, 2.0949999999999998, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1aecda75-3339-4c65-a067-8c68fc40f7d9" absoluteBounds="3.75, 2.75, 2, 1.1939925130208327">
+    <classShape Id="1aecda75-3339-4c65-a067-8c68fc40f7d9" absoluteBounds="3.625, 2.75, 2, 1.1939925130208327">
       <DataClassMoniker Name="/CombobulatorDataContext/Dealer" />
       <nestedChildShapes>
-        <elementListCompartment Id="a32bcf86-2b59-499a-b2ae-065040886efd" absoluteBounds="3.7649999999999997, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a32bcf86-2b59-499a-b2ae-065040886efd" absoluteBounds="3.6399999999999997, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a2bc8872-ec09-4446-8f07-e51f8c90ff59" absoluteBounds="3.75, 4.75, 2, 4.6554182942708326">
-      <DataClassMoniker Name="/CombobulatorDataContext/NewCar" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ca5efe33-2553-4699-a38e-fd90f596e3b2" absoluteBounds="3.7649999999999997, 5.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="43c60109-441c-4116-a93b-43dc04a96249" absoluteBounds="1.125, 6, 2, 3.3093082682291666">
+    <classShape Id="9dfd19ec-89ce-4b25-b832-5ac51881553d" absoluteBounds="0.75, 6.375, 2, 3.3093082682291666">
       <DataClassMoniker Name="/CombobulatorDataContext/CarsFinance" />
       <nestedChildShapes>
-        <elementListCompartment Id="693f6fdc-c256-4fb9-a85f-4941a13e60aa" absoluteBounds="1.1400000000000001, 6.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0e6c9e3d-b977-4cf0-b136-56c1abc72fd1" absoluteBounds="0.76500000000000057, 6.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.9375 : 5.5977197265625); (1.9375 : 6)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 5.5977197265625); (1.75 : 6.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CombobulatorDataContext/Car/Car_CarsFinance" />
       <nodes>
         <classShapeMoniker Id="cc863620-5f24-44cc-ac40-3ba5f23ed97f" />
-        <classShapeMoniker Id="43c60109-441c-4116-a93b-43dc04a96249" />
+        <classShapeMoniker Id="9dfd19ec-89ce-4b25-b832-5ac51881553d" />
       </nodes>
     </associationConnector>
+    <classShape Id="7b927ca2-fa15-4aae-9505-a55f58f608c3" absoluteBounds="3.625, 4.625, 2, 4.8477197265625">
+      <DataClassMoniker Name="/CombobulatorDataContext/NewCar" />
+      <nestedChildShapes>
+        <elementListCompartment Id="585e3e1b-66ad-4032-b5a8-901e1ed5ae5f" absoluteBounds="3.6399999999999997, 5.085, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ceaf07ee-e4d3-4f7a-aaf0-fdd15d8510b5" absoluteBounds="6.5, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/CombobulatorDataContext/PostcodeLookUp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cd15b9f0-4589-493c-aee6-2981db072ea7" absoluteBounds="6.515, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

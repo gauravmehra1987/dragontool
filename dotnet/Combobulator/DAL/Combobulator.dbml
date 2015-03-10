@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MINI_Combobulator" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=justforkix;Initial Catalog=MINI_Combobulator;User ID=mini" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MINI_CombobulatorConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=JUSTFORKIX;Initial Catalog=MINI_Combobulator;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MINI_CombobulatorConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Cars" Member="Cars">
     <Type Name="Car" Id="ID1">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -38,6 +38,24 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CarsFinance" Member="CarsFinances">
+    <Type Name="CarsFinance">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MonthlyPayments" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="OnTheRoad" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="CustomerDeposit" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="RetailerDeposit" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="OptionToPurchase" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="OptionalFinalPayment" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="TotalPayable" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="TotalCredit" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="InterestRate" Type="System.Decimal" DbType="Decimal(9,4)" CanBeNull="true" />
+      <Column Name="RepresentativeApr" Type="System.Decimal" DbType="Decimal(9,4)" CanBeNull="true" />
+      <Association Name="Car_CarsFinance" Member="Car" ThisKey="CarID" OtherKey="Id" Type="Car" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.NewCars" Member="NewCars">
     <Type Name="NewCar">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -60,24 +78,18 @@
       <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.CarsFinance" Member="CarsFinances">
-    <Type Name="CarsFinance">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MonthlyPayments" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="OnTheRoad" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="CustomerDeposit" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="RetailerDeposit" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="OptionToPurchase" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="OptionalFinalPayment" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="TotalPayable" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="TotalCredit" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
-      <Column Name="InterestRate" Type="System.Decimal" DbType="Decimal(9,4)" CanBeNull="true" />
-      <Column Name="RepresentativeApr" Type="System.Decimal" DbType="Decimal(9,4)" CanBeNull="true" />
-      <Association Name="Car_CarsFinance" Member="Car" ThisKey="CarID" OtherKey="Id" Type="Car" IsForeignKey="true" />
+  <Table Name="dbo.PostcodeLookUp" Member="PostcodeLookUps">
+    <Type Name="PostcodeLookUp">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Postcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.GetCar" Method="GetCar">
@@ -101,6 +113,30 @@
   </Function>
   <Function Name="dbo.GetNewCars" Method="GetNewCars">
     <ElementType Name="GetNewCarsResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Engine" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Capacity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Luggage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Lifestyle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Awd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="High" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Convertible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Speed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mph" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Economy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mpg" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNewCar" Method="GetNewCar">
+    <ElementType Name="GetNewCarResult">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />

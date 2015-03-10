@@ -23,5 +23,7 @@
         public string Alt_2 { get; set; }
         public string Alt_3 { get; set; }
 	    // ReSharper restore InconsistentNaming
+        public string Terms { get; set; }
+        public FinanceDetails FinanceDetails { get; set; }
     }
 }
