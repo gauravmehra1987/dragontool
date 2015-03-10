@@ -12,6 +12,8 @@ function Dashboard() {
 
 	this.colors = function( color ) {
 
+		console.log( 'changing color to: ' + color );
+
 		// Backgrounds
 
 		$( '.switch-bg' ).css( {

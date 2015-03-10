@@ -27,6 +27,7 @@
     "grunt-ttf2eot": "^1.0.0",
     "grunt-ttf2woff": "^1.0.0",
     "grunt-webfont": "^0.5.1",
+    "load-grunt-tasks": "^3.1.0",
     "npm-check-updates": "^1.5.1"
   }
 }

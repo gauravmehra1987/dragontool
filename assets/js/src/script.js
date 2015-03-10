@@ -4,6 +4,11 @@ var ui				= new UI();
 var logic			= new Logic();
 var query			= new logic.query();
 
+// Deteremine car color - otherwise fall back to a generic blue color
+
+var color			= logic.getCarByCode( location.search.split( '?m=' )[ 1 ] ).color;
+var dashColor		= ( color !== undefined ) ? color : 'Electric Blue';
+
 var responsive;
 var dashboard;
 
@@ -27,15 +32,7 @@ dashboard = new Dashboard();
 
 // Load initial color
 
-var dashColor = ( location.hash.length > 0 ) ? atob( location.hash.substring( 1 ) ) : 'Electric Blue';
-
 dashboard.colors( carColors[ dashColor ] );
-
-// Load car onto the results page - this should be done with .NET
-
-var carModel = location.search.split( '?m=' )[ 1 ];
-
-$( '#results-car' ).attr( 'src', path.assets + carModel + '.png' );
 
 // Initialize everything after the page has fully loaded (otherwise dashboard values will be off!)
 
@@ -96,6 +93,14 @@ $( window ).load( function() {
 	} );
 
 	// Execute search
+
+	$( '.car-changer' ).on( 'click', function( e ) {
+
+		e.preventDefault();
+
+		ui.render( logic.getCarByCode( $( this ).attr( 'href' ).substring( 1 ) ), false );
+
+	} );
 
 	$( '#start' ).on( 'click', function( e ) {
 

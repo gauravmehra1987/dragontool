@@ -379,16 +379,9 @@
 			right: 0;
 			left: 0;
 
-			&.top {
+			&.top { top: 0; }
 
-				top: 0;
-			}
-
-			&.bottom {
-
-				bottom: 0;
-
-			}
+			&.bottom { bottom: 0; }
 
 		}
 
@@ -524,15 +517,18 @@
 			.box-sizing( border-box );
 
 			display: block;
-
 			padding: 0 2px;
 
 			width: 25%;
 
 			a {
 
-				border: solid 2px transparent;
+				background: url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
+				background-size: cover;
+				border: solid 1px transparent;
 				display: block;
+
+				&:hover { border-color: @white !important; }
 
 			}
 
