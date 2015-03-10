@@ -31,7 +31,8 @@ var system_paths = {
 		results:		'results?',
 		spriteFallback:	'Assets/sprites',
 		api:			'api/car',
-		preload:		'api/assets/svg',		
+		preload:		'api/assets/svg',
+		templates:		'Assets/js/tpl'
 
 	},
 
@@ -42,6 +43,7 @@ var system_paths = {
 		spriteFallback:	'assets/sprites',
 		api:			'json/car.json',
 		preload:		'preload.php',
+		templates:		'assets/js/tpl'
 
 	}
 

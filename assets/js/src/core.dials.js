@@ -165,12 +165,18 @@ function Dials() {
 
 		this.getOptions = function() {
 
-			var $inputs	= $( '.control.options input:checked' );
+			var $inputs	= $( '.control.options input' );
 			var values	= {};
 
-			$inputs.each( function( i, el ) { values[ $( this ).attr( 'id' ) ] = parseInt( $( this ).val() ); } );
+			// $inputs.each( function( i, el ) { values[ $( this ).attr( 'id' ) ] = parseInt( $( this ).val() ); } );
 
-			if( $.isEmptyObject( values ) ) values = false;
+			// if( $.isEmptyObject( values ) ) values = false;
+
+			$inputs.each( function( i, el ) {
+
+				values[ $( this ).attr( 'id' ) ] = $( this ).hasClass( 'checked' );
+
+			} );
 
 			return values;
 

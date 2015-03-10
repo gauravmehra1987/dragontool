@@ -1,10 +1,51 @@
-function UI() {
+function UI( templates ) {
 
-	this.$panel= $body.find( '.panel-results' );
+	var _this		= this;
+	var templates	= templates || false;
+
+	this.$panel		= $body.find( '.panel-results' );
+	this.templates	= {};
+
+	// Template loader
+
+	var getTpl = function( name ) {
+
+		console.log( 'Loading ' + name + '.json template' );
+
+		var tpl;
+
+		$.ajax( {
+
+			url: path.templates + '/' + name + '.tpl',
+			async: false,
+			success: function( data ) { tpl = data; },
+			error: function() { tpl = false; }
+
+		} );
+
+		return tpl;
+
+	}
+
+	// Template renderer
+
+	this.renderTpl = function( tpl, data ) {
+
+		console.log( 'rendering ' + tpl + '.json' );
+
+		return Mustache.render( _this.templates[ tpl ], data );
+
+	}
 
 	// Results URL generator
 
-	var resultsPageUrl	= function( url, user, code ) { return ( typeof user === 'undefined' ) ? url + 'm=' + code : url + 'c=' + user + '&m=' + code; };
+	var resultsPageUrl	= function( url, code ) {
+
+		var user = $body.find( '#uid' ).val();
+
+		return ( typeof user === 'undefined' ) ? url + 'm=' + code : url + 'c=' + user + '&m=' + code;
+
+	};
 
 	// SVG loader
 
@@ -83,56 +124,81 @@ function UI() {
 
 	// Render results
 
-	this.render = function( car, user, animated ) {
+	this.render = function( car, related ) {
 
-		var $cars = this.$panel.find( '#related' );
+		var _this	= this;
+		var related	= related || false;		
+
+		var renderRelatedCars = function( car, related ) {
+
+			var $cars		= _this.$panel.find( '.car-changer' );
+			var related		= related || false;
+
+			var alt_1 = logic.getCarByName( car.alt_1 );
+			var alt_2 = logic.getCarByName( car.alt_2 );
+			var alt_3 = logic.getCarByName( car.alt_3 );
+
+			if( alt_1 === false || alt_2 === false || alt_3 === false ) {
+
+				alert( 'John Cooper Works is missing - please update the dataset with that car.' )
+
+				console.log( 'Original car:' );
+				console.log( car );
+
+				var alt_1_status = _.isObject( alt_1 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
+				var alt_2_status = _.isObject( alt_2 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
+				var alt_3_status = _.isObject( alt_3 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
+				
+				console.log( 'Alternative 1 - ' + car.alt_1 + alt_1_status );
+				console.log( 'Alternative 2 - ' + car.alt_2 + alt_2_status );
+				console.log( 'Alternative 3 - ' + car.alt_3 + alt_3_status );
+
+			}
+			
+			else {
+
+				if( related ) {
+
+					console.log( 'replacing only related cars' );
+
+					$cars.not( '.active' ).eq( 0 ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + alt_1.code + '.png' );
+					$cars.not( '.active' ).eq( 1 ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + alt_2.code + '.png' );
+					$cars.not( '.active' ).eq( 2 ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + alt_3.code + '.png' );
+
+				}
+
+				else {
+
+					console.log( 'replacing all cars' );
+
+					$cars.removeClass( 'active' ).filter( ':first' ).addClass( 'active' );
+
+					$cars.eq( 0 ).attr( 'href', '#' + car.code ).find( 'img' ).attr( 'src', path.assets + car.code + '.png' );
+					$cars.eq( 1 ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + alt_1.code + '.png' );
+					$cars.eq( 2 ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + alt_2.code + '.png' );
+					$cars.eq( 3 ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + alt_3.code + '.png' );
+
+				}
+
+			}
+
+		}
 
 		// Hide the dashboard on mobile
 
-		if( Mini.browser.mobile ) setTimeout( function() {
+		if( Mini.browser.mobile ) setTimeout( function() { $( '.layout > .column.left' ).removeClass( 'open' ); }, 0 );
 
-			$( '.layout > .column.left' ).removeClass( 'open' );
+		// Render actual results
 
-		}, 0 );
+		car.url = resultsPageUrl( path.results, car.code );
+		car.img = path.assets + car.code + '.png';
 
-		// Rengder actual results
+		// Render car template
 
-		this.$panel.find( '[data-model-name]' ).html (car.name );
-		this.$panel.find( '[data-model-code]' ).html( car.code );
-		this.$panel.find( '[data-results-link]' ).attr( { href: resultsPageUrl( path.results, user, car.code ) } );		
-		this.$panel.find( '[data-model-image]' ).hide().attr( { src: path.assets + car.code + '.png' } ).fadeIn( 200 );
+		$( '#tpl-results' ).contents().remove();
+		$( '#tpl-results' ).append( _this.renderTpl( 'results', car ) );
 
-		// Render related cars
-
-		var alt_1 = logic.getCarByName( car.alt_1 );
-		var alt_2 = logic.getCarByName( car.alt_2 );
-		var alt_3 = logic.getCarByName( car.alt_3 );
-
-		if( alt_1 === false || alt_2 === false || alt_3 === false ) {
-
-			alert( 'John Cooper Works is missing - please update the dataset with that car.' )
-
-			console.log( 'Original car:' );
-			console.log( car );
-
-			var alt_1_status = _.isObject( alt_1 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
-			var alt_2_status = _.isObject( alt_2 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
-			var alt_3_status = _.isObject( alt_3 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
-			
-			console.log( 'Alternative 1 - ' + car.alt_1 + alt_1_status );
-			console.log( 'Alternative 2 - ' + car.alt_2 + alt_2_status );
-			console.log( 'Alternative 3 - ' + car.alt_3 + alt_3_status );
-
-		}
-		
-		else {
-
-			$cars.find( '#related_1' ).attr( 'href', '#' + car.code ).find( 'img' ).attr( 'src', path.assets + car.code + '.png' );
-			$cars.find( '#related_2' ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + alt_1.code + '.png' );
-			$cars.find( '#related_3' ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + alt_2.code + '.png' );
-			$cars.find( '#related_4' ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + alt_3.code + '.png' );
-
-		}
+		renderRelatedCars( car, related );
 
 		// Change dashboard color
 
@@ -189,5 +255,9 @@ function UI() {
 		}
 
 	}
+
+	// Load templates upon initialization
+
+	if( templates ) $.each( templates, function( i, tpl ) { _this.templates[ tpl ] = getTpl( tpl ); } );
 
 }

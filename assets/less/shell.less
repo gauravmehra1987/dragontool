@@ -289,7 +289,6 @@
 
 		}
 
-		& + canvas,
 		&.img-content {
 
 			position: absolute;
@@ -319,6 +318,8 @@
 
 #car {
 
+	background: url( ../img/skid-marks-faded.png ) 50% 0% no-repeat;
+	background-size: 80% auto;
 	margin: 0;
 
 	// This is a remainder of the old, two-column layout left here just in case they decide to use it...
@@ -363,6 +364,13 @@
 
 	// New, single-column layout
 
+	#results-car {
+
+		margin: 0 auto;
+		width: 80%;
+
+	}
+
 	figcaption {
 
 		position: absolute;
@@ -381,28 +389,60 @@
 
 			&.top { top: 0; }
 
-			&.bottom { bottom: 0; }
+			&.bottom {
+
+				background: @trueBlack;
+				border-top: solid 1px @grayDarker;
+				padding: 0;
+
+				bottom: 0;
+
+				p {
+
+					font-size: @fontSizeSmall;
+					margin: @margin 0 @margin / 2;
+
+				}
+
+			}
 
 		}
 
 		#payment-plan {
 
+			display: block;
+			margin: 0 auto @margin;
+			overflow: hidden;
+
 			width: 100%;
 
 			tbody {
 
+				display: block;
 				float: left;
+				margin-right: @margin;
 
-				width: 100% / 3;
+				width: ~'calc( ( 100% - 40px ) / 3 )';
+
+				&:last-of-type { margin-right: 0; }
 
 				tr {
 
+					border-bottom: solid 1px @white;
 					display: block;
+					overflow: hidden;
+					padding: 5px 0;
+
+					&:last-of-type { border: 0; }
 
 					td {
 
 						display: block;
 						float: left;
+						font-family: @fontMini;
+						font-size: @fontSizeSmall;
+						line-height: 1;
+						padding: 0;
 
 						width: 50%;
 
@@ -484,14 +524,6 @@
 
 		height: 2em;
 
-	}	
-
-	.car-link {
-
-		background-color: transparent;
-		border-color: transparent;
-		padding: 0;
-
 	}
 
 	.model-image { margin-bottom: 2px; }
@@ -528,7 +560,9 @@
 				border: solid 1px transparent;
 				display: block;
 
-				&:hover { border-color: @white !important; }
+				&.active { border-color: @white !important; }
+				
+				&:hover { background: none; }
 
 			}
 

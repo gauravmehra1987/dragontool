@@ -23,22 +23,10 @@
 
 <div id="results" class="panel panel-results" data-panel-name="results">
 
-	<h5 class="control-title">Your results</h5>
-
-	<h3 class="model-name switch-color" data-model-name>model name</h3>
+	<div id="tpl-results">Loading...</div>
 	
-	<div class="price-span"><a href="#" class="button car-link" data-results-link="#">See how it works out</a></div>
-	
-	<div class="model-image">
-
-		<img src="assets/cars/none.png" width="760" height="540" class="img-base" />
-
-		<img src="assets/cars/none.png" width="760" height="540" class="img-content" data-model-image />
-
-	</div>
-
 	<div>
-		
+	
 		<ul id="related" class="related">
 
 			<li><a href="#" id="related_1" class="switch-bg car-changer"><img src="assets/img/blank.png" /></a></li>

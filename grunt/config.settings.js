@@ -237,6 +237,7 @@ grunt.config.merge( {
 
 				// List bower components
 				
+				'<%= project.paths.bower %>/mustache.js/mustache.js',
 				'<%= project.paths.bower %>/store/store.js',
 				'<%= project.paths.bower %>/svg-injector/svg-injector.js',
 				'<%= project.paths.bower %>/taffydb/taffy.js',
