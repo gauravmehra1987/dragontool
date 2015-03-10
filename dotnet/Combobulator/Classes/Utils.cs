@@ -64,6 +64,36 @@ namespace Combobulator.Classes
             }
         }
 
+        public static List<Customer> GetCustomers()
+        {
+            try
+            {
+                string action = "getnewrecords";
+                string checksum = GetCustomerChecksum(_systemId, _secretKey, _random);
+                string url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&random={3}&type=json", checksum, _systemId, action, _random);
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "GET";
+                request.ContentType = @"application/json";
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader responseStream = new StreamReader(response.GetResponseStream());
+
+                string line = responseStream.ReadLine();
+                dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
+                if (obj.Error != null)
+                {
+                    log.Error("GetCustomers Error - " + obj.Error);
+                    return null;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                log.Error("GetCustomerById", ex);
+                return null;
+            }
+        }
+
         public static bool SendExistingCustomerDataApi(Customer customer)
         {
             bool success = false;
@@ -103,8 +133,8 @@ namespace Combobulator.Classes
             dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
             if (obj.Error != null)
             {
-                Enums.eMasterResponseCode responseCode = (Enums.eMasterResponseCode)(Convert.ToInt32(obj.Error));
-                var type = typeof(Enums.eMasterResponseCode);
+                Common.Enums.eMasterResponseCode responseCode = (Common.Enums.eMasterResponseCode)(Convert.ToInt32(obj.Error));
+                var type = typeof(Common.Enums.eMasterResponseCode);
                 var member = type.GetMember(responseCode.ToString());
                 var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                 var description = ((DescriptionAttribute)attributes[0]).Description;
@@ -122,6 +152,12 @@ namespace Combobulator.Classes
         private static string GetCustomerDetailsChecksum(string systemId, string userId, string secretKey, string random)
         {
             string input = systemId + userId + secretKey + random;
+            return CalculateMD5Hash(input);
+        }
+
+        private static string GetCustomerChecksum(string systemId, string secretKey, string random)
+        {
+            string input = systemId + secretKey + random;
             return CalculateMD5Hash(input);
         }
 
@@ -180,50 +216,50 @@ namespace Combobulator.Classes
             switch (stype)
             {
                 case "CapacityScale":
-                    Enums.CapacityScale selection1 = (Enums.CapacityScale)(Convert.ToInt32(id));
-                    var type1 = typeof(Enums.CapacityScale);
+                    Common.Enums.CapacityScale selection1 = (Common.Enums.CapacityScale)(Convert.ToInt32(id));
+                    var type1 = typeof(Common.Enums.CapacityScale);
                     var member1 = type1.GetMember(selection1.ToString());
                     var attributes1 = member1[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes1[0]).Description;
                     break;
                 case "EconomyScale":
-                    Enums.EconomyScale selection2 = (Enums.EconomyScale)(Convert.ToInt32(id));
-                    var type2 = typeof(Enums.EconomyScale);
+                    Common.Enums.EconomyScale selection2 = (Common.Enums.EconomyScale)(Convert.ToInt32(id));
+                    var type2 = typeof(Common.Enums.EconomyScale);
                     var member2 = type2.GetMember(selection2.ToString());
                     var attributes2 = member2[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes2[0]).Description;
                     break;
                 case "LuggageLevel":
-                    Enums.LuggageLevel selection3 = (Enums.LuggageLevel)(Convert.ToInt32(id));
-                    var type3 = typeof(Enums.LuggageLevel);
+                    Common.Enums.LuggageLevel selection3 = (Common.Enums.LuggageLevel)(Convert.ToInt32(id));
+                    var type3 = typeof(Common.Enums.LuggageLevel);
                     var member3 = type3.GetMember(selection3.ToString());
                     var attributes3 = member3[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes3[0]).Description;
                     break;
                 case "Options":
-                    Enums.Options selection4 = (Enums.Options)(Convert.ToInt32(id));
-                    var type4 = typeof(Enums.Options);
+                    Common.Enums.Options selection4 = (Common.Enums.Options)(Convert.ToInt32(id));
+                    var type4 = typeof(Common.Enums.Options);
                     var member4 = type4.GetMember(selection4.ToString());
                     var attributes4 = member4[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes4[0]).Description;
                     break;
                 case "PerformanceScale":
-                    Enums.PerformanceScale selection5 = (Enums.PerformanceScale)(Convert.ToInt32(id));
-                    var type5 = typeof(Enums.PerformanceScale);
+                    Common.Enums.PerformanceScale selection5 = (Common.Enums.PerformanceScale)(Convert.ToInt32(id));
+                    var type5 = typeof(Common.Enums.PerformanceScale);
                     var member5 = type5.GetMember(selection5.ToString());
                     var attributes5 = member5[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes5[0]).Description;
                     break;
                 case "PriceRange":
-                    Enums.PriceRange selection6 = (Enums.PriceRange)(Convert.ToInt32(id));
-                    var type6 = typeof(Enums.PriceRange);
+                    Common.Enums.PriceRange selection6 = (Common.Enums.PriceRange)(Convert.ToInt32(id));
+                    var type6 = typeof(Common.Enums.PriceRange);
                     var member6 = type6.GetMember(selection6.ToString());
                     var attributes6 = member6[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes6[0]).Description;
                     break;
                 case "Use":
-                    Enums.Use selection7 = (Enums.Use)(Convert.ToInt32(id));
-                    var type7 = typeof(Enums.Use);
+                    Common.Enums.Use selection7 = (Common.Enums.Use)(Convert.ToInt32(id));
+                    var type7 = typeof(Common.Enums.Use);
                     var member7 = type7.GetMember(selection7.ToString());
                     var attributes7 = member7[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes7[0]).Description;

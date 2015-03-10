@@ -19,7 +19,7 @@ namespace Combobulator.Controllers
 
         public ActionResult Index()
         {
-            var fileName = Server.MapPath("~/App_Data/mini_data_latest.csv");
+            var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v25.csv");
             using (var fileReader = System.IO.File.OpenText(fileName))
             using (var csv = new CsvReader(fileReader))
             {
@@ -59,7 +59,8 @@ namespace Combobulator.Controllers
                             Mpg = record.Mph,
                             Alt1 = record.Alt_1,
                             Alt2 = record.Alt_2,
-                            Alt3 = record.Alt_3
+                            Alt3 = record.Alt_3,
+                            Terms = ""
                         });
                         context.SubmitChanges();
                     }

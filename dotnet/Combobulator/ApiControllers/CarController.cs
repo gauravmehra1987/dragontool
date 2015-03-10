@@ -27,6 +27,7 @@ namespace Combobulator.ApiControllers
 
         // GET api/car
         // Gets all cars
+        [DeflateCompression]
         [System.Web.Mvc.HttpGet]
         public HttpResponseMessage GetCars()
         {
@@ -99,6 +100,7 @@ namespace Combobulator.ApiControllers
 
         // GET api/car/XN12
         // Get single car by model code
+        [DeflateCompression]
         [System.Web.Mvc.HttpGet]
         public HttpResponseMessage GetCar(string id)
         {

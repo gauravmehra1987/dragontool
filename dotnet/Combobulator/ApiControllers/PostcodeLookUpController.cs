@@ -8,11 +8,13 @@ using Combobulator.Common;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common.Extensions;
 using Newtonsoft.Json;
+using Combobulator.Helpers;
 
 namespace Combobulator.ApiControllers
 {
     public class PostcodeLookUpController : BaseController
     {
+        [DeflateCompression]
         public List<PostcodeLookUp> Get(string postcode)
         {
             bool isCacheEnabled;

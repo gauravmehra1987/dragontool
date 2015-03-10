@@ -100,36 +100,23 @@ namespace Combobulator.Controllers
                         Code = dbCar.Code
                     };
                 }
-
+                var customer = new Customer();
                 if (id != String.Empty)
                 {
                     // Get customer from id
-                    Customer customer = Utils.GetCustomerById(id);
-                    customer.Car = car;
-                    customer.Selections = selections;
-                    customer.Titles = queryTitles.ToList();
-                    customer.Dealers = queryDealers.ToList();
-
-                    view = PartialView("_ExistingCustomerForm", customer);
+                    customer = Utils.GetCustomerById(id);
                 }
-                else
-                {
-                    Customer customer = new Customer();
-                    customer.Car = car;
-                    customer.Selections = selections;
-                    customer.Titles = queryTitles.ToList();
-                    customer.Dealers = queryDealers.ToList();
-
-                    view = PartialView("_ExistingCustomerForm", customer);
-                    //view = PartialView("_NewCustomerForm", customer);
-                }
+                customer.Car = car;
+                customer.Selections = selections;
+                customer.Titles = queryTitles.ToList();
+                customer.Dealers = queryDealers.ToList();
+                view = PartialView("_CustomerForm", customer);
             }
             catch (Exception ex)
             {
                 log.Error("CustomerForm", ex);
                 view = PartialView("_FormError");
             }
-
             return view;
         }
 
