@@ -387,7 +387,83 @@
 			right: 0;
 			left: 0;
 
-			&.top { top: 0; }
+			&.top {
+
+				top: 0;
+
+				h2 {
+
+					font-size: @fontSizeLarger;
+					max-width: 480px;
+
+				}
+
+				.actions {
+
+					.list-inline;
+
+					#results-back {
+
+						float: left;
+
+						a {
+
+							font-family: @fontMiniBold;
+							color: @grayDarker;
+							text-decoration: none;
+							text-transform: uppercase;
+
+							&:before {
+
+								.icon;
+								.icon-raquo;
+								.rotate( 180deg );
+
+								margin-right: 0.5em;
+
+							}
+
+						}
+
+					}
+					
+					#results-close {
+
+						float: right;
+
+						a {
+
+							.hide-text;
+
+							color: @white;
+							display: block;
+							float: right;
+							font-size: @fontSizeLarge;
+							position: relative;
+							text-decoration: none;
+
+							height: 1em;
+							width: 1em;
+
+							&:before {
+
+								.icon;
+								.icon-cross;
+
+								position: absolute;
+
+								top: 0;
+								left: 0;
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
 
 			&.bottom {
 

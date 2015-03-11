@@ -101,7 +101,11 @@ $( window ).load( function() {
 
 	$( '#start' ).on( 'click', function( e ) {
 
-		e.preventDefault();	
+		e.preventDefault();
+
+		var userSelection = dashboard.values();
+
+		store.set( 'miniInput', userSelection );
 
 		// Remove rotten eggs
 
@@ -109,7 +113,7 @@ $( window ).load( function() {
 
 		// Check if there are any easter eggs being triggered
 
-		var eggs = logic.eggs( dashboard.values() );
+		var eggs = logic.eggs( userSelection );
 
 		if(
 
@@ -189,3 +193,13 @@ $( window ).load( function() {
 	} );
 
 } );
+
+$.subscribe( 'form-ajax-results', function( e, data ) {
+
+	console.log( data );
+
+} );
+
+
+
+
