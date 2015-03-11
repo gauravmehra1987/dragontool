@@ -35,6 +35,8 @@ $.validator.setDefaults( {
 
 	submitHandler: function( form ) {
 
+		console.log( carCode );
+
 		var ajaxURL = $( form ).attr( 'action' ),
 			ajaxDelay = 1000; // Not needed but included here to illustrate the loading DIV behaviour
 
@@ -45,7 +47,13 @@ $.validator.setDefaults( {
 				type: 'POST',
 				// async: false,
 				url: ajaxURL,
-				data: $( form ).serialize(),
+				data: {
+
+					form: $( 'form' ).serializeObject(),
+					car: carCode,
+					input: store.get( 'miniInput' )
+
+				},
 				dataType: 'json',
 				complete: function() {
 

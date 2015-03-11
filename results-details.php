@@ -18,20 +18,18 @@
 			
 			<ul class="actions">
 			
-				<li><a href="#">Go back</a></li>
-				<li><a hred="#">Close</a></li>
+				<li id="results-back"><a href="./">Go back</a></li>
+				<li id="results-close"><a href="./">Close</a></li>
 
 			</ul>
 			
-			<h2 class="switch-color">Mini Countryman Cooper SD ALL4</h2>
+			<h2 class="switch-color">CAR NAME</h2>
 
-			<a href="#" class="button transparent">Call to action</a>
+			<a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">Call to action</a>
 
 		</div>
 
 		<div class="car-layout bottom">
-
-			<p>MINI Select Representative example including extras of PEPPER Pack and †MINI tlc service cover. *Terms and Conditions apply.</p>
 
 			<div id="tpl-finance">Loading...</div>
 

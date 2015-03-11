@@ -180,6 +180,7 @@
 				<select id="field-dealer" name="dealer">
 
 					<option value="">Dealer</option>
+					<option value="dealer_name">Dealer name</option>
 
 				</select>
 				<!-- /build -->
