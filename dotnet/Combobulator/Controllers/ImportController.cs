@@ -60,7 +60,7 @@ namespace Combobulator.Controllers
                             Alt1 = record.Alt_1,
                             Alt2 = record.Alt_2,
                             Alt3 = record.Alt_3,
-                            Terms = ""
+                            Terms = record.Terms
                         });
                         context.SubmitChanges();
                     }

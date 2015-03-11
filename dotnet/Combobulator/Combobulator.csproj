@@ -221,7 +221,6 @@
       <LastGenOutput>Combobulator1.designer.cs</LastGenOutput>
     </Content>
     <Content Include="App_Data\mini_data_latest.csv" />
-    <Content Include="App_Data\MINI_FS_logic_v25.csv" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

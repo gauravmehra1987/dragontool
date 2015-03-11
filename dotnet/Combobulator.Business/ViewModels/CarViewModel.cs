@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Web;
+using Combobulator.Models;
 
 namespace Combobulator.ViewModels
 {
@@ -27,5 +28,7 @@ namespace Combobulator.ViewModels
         public string Alt_1 { get; set; }
         public string Alt_2 { get; set; }
         public string Alt_3 { get; set; }
+        public string Terms { get; set; }
+        public FinanceDetails FinanceDetails { get; set; }
     }
 }

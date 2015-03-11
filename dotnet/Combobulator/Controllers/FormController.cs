@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web.Mvc;
 using log4net;
 using Combobulator.Classes;
+using Combobulator.Business.ViewModels;
 using Combobulator.DAL;
 using Combobulator.Models;
 using Car = Combobulator.Models.Car;
@@ -131,10 +132,8 @@ namespace Combobulator.Controllers
             try
             {
                 DAL.NewCar dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
-                // ReSharper disable once PossibleNullReferenceException
-                var dbFinance = new CarsFinance();
-                //dbFinance = dbCar.CarsFinances.First();
-                Combobulator.Models.NewCar car = new Combobulator.Models.NewCar
+                //var dbFinance = dbCar.Finances
+                var viewModel = new ViewModels.CarViewModel
                 {
                     Code = dbCar.Code,
                     Color = dbCar.Color,
@@ -151,26 +150,27 @@ namespace Combobulator.Controllers
                     Speed = dbCar.Speed,
                     Mph = dbCar.Mph,
                     Economy = dbCar.Economy,
-                    Terms = dbCar.Terms,
                     Alt_1 = dbCar.Alt1,
                     Alt_2 = dbCar.Alt2,
                     Alt_3 = dbCar.Alt3,
+                    Terms = dbCar.Terms
+                    /*
                     FinanceDetails = new FinanceDetails
                     {
                         Term = dbFinance.Term ?? -1,
-                        MonthlyPayments = dbFinance.MonthlyPayments ?? -1.0m,
-                        OnTheRoad = dbFinance.OnTheRoad ?? -1.0m,
-                        CustomerDeposit = dbFinance.CustomerDeposit ?? -1.0m,
-                        RetailerDeposit = dbFinance.RetailerDeposit ?? -1.0m,
-                        OptionToPurchase = dbFinance.OptionToPurchase ?? -1.0m,
-                        OptionalFinalPayment = dbFinance.OptionalFinalPayment ?? -1.0m,
-                        TotalPayable = dbFinance.TotalPayable ?? -1.0m,
-                        TotalCredit = dbFinance.TotalCredit ?? -1.0m,
-                        InterestRate = dbFinance.InterestRate ?? -1.0m,
-                        RepresentativeApr = dbFinance.RepresentativeApr ?? -1.0m,
-                    },
+                        Payment = dbFinance.Payment ?? -1.0m,
+                        FinancePrice = dbFinance.FinancePrice ?? -1.0m,
+                        Deposit = dbFinance.Deposit ?? -1.0m,
+                        Contribution = dbFinance.Contribution ?? -1.0m,
+                        PurchaseFee = dbFinance.PurchaseFee ?? -1.0m,
+                        FinalPayment = dbFinance.FinalPayment ?? -1.0m,
+                        CreditCharge = dbFinance.CreditCharge ?? -1.0m,
+                        ROI = dbFinance.ROI ?? -1.0m,
+                        APR = dbFinance.APR ?? -1.0m,
+                    }
+                    */
                 };
-                return PartialView("_ResultDetail", car);
+                return PartialView("_ResultDetail", viewModel);
             }
             catch (Exception ex)
             {

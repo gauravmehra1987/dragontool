@@ -26,6 +26,17 @@ namespace Combobulator.Config
             Map(m => m.Alt_1).Name("alt_1");
             Map(m => m.Alt_2).Name("alt_2");
             Map(m => m.Alt_3).Name("alt_3");
+            Map(m => m.Terms).Name("info");
+            Map(m => m.Term).Name("term");
+            Map(m => m.Payment).Name("payment");
+            Map(m => m.FinancePrice).Name("finance_price");
+            Map(m => m.Deposit).Name("deposit");
+            Map(m => m.Contribution).Name("contribution");
+            Map(m => m.PurchaseFee).Name("purchase_fee");
+            Map(m => m.FinalPayment).Name("final_payment");
+            Map(m => m.CreditCharge).Name("credit_charge");
+            Map(m => m.ROI).Name("roi");
+            Map(m => m.APR).Name("apr");
         }
     }
 }
