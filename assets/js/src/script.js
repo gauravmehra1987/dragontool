@@ -9,9 +9,9 @@ var dashboard;
 
 // Determine car color - otherwise fall back to a generic blue color
 
-var carCode			= queryParameter( 'm' ) || false;
-var color			= logic.getCarByCode( carCode ).color;
-var dashColor		= ( color !== undefined ) ? color : 'Electric Blue';
+var carCode			= getQueryParameter( 'm' ) || false;
+var color			= ( carCode ) ? logic.getCarByCode( carCode ).color : false;
+var dashColor		= ( color ) ? color : 'Electric Blue';
 
 // Some not IE-friendly stuff
 
@@ -95,7 +95,15 @@ $( window ).load( function() {
 
 	// Render finance template
 
-	if( $( '#tpl-finance' ).length > 0 ) $( '#tpl-finance' ).replaceWith( ui.renderTpl( 'finance', logic.getFinance( carCode ) ) );
+	if( $( '#tpl-finance' ).length > 0 ) {
+
+		ui.getTpl( 'finance' ).then( function( tpl ) {
+
+			$( '#tpl-finance' ).replaceWith( ui.renderTpl( tpl, logic.getFinance( carCode ) ) );
+
+		} );
+
+	}
 
 	// Execute search
 
@@ -194,11 +202,30 @@ $( window ).load( function() {
 
 } );
 
+// Postcode
+
+$( '#field-postcode' ).on( 'change', function( e ) {
+
+	var postcode = $( this ).val();
+
+	logic.getPostcode( postcode ).then( function( addresses ) {
+
+		var addr = _.first( addresses );
+
+		$( '#field-address-1' ).val( addr.Address1 );
+		$( '#field-address-2' ).val( addr.Address2 );
+		$( '#field-address-3' ).val( addr.Address3 );
+
+	} );
+
+} );
+
 $.subscribe( 'form-ajax-results', function( e, data ) {
 
 	console.log( data );
 
 } );
+
 
 
 

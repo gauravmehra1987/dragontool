@@ -31,6 +31,7 @@ var system_paths = {
 		results:		'results?',
 		spriteFallback:	'Assets/sprites',
 		api:			'api/car',
+		apiPostcode:	'api/postcodelookup',
 		preload:		'api/assets/svg',
 		templates:		'Assets/js/tpl'
 
@@ -42,6 +43,7 @@ var system_paths = {
 		results:		'results.php?',
 		spriteFallback:	'assets/sprites',
 		api:			'json/car.json',
+		apiPostcode:	'postcode.php',
 		preload:		'preload.php',
 		templates:		'assets/js/tpl'
 

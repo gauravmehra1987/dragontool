@@ -26,9 +26,7 @@
 	}
 	else {
 
-		$homeURL = project_dir();
-
-		header( 'Location: ' . $homeURL );
+		header( 'Location: /' );
 
 	}
 
