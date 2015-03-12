@@ -248,10 +248,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
-    <Content Include="Views\Form\_CustomerForm.cshtml" />
-    <Content Include="Views\Form\_ResultDetail.cshtml" />
-    <Content Include="Views\Form\Index.cshtml" />
     <Content Include="Views\Results\_ResultDetail.cshtml" />
+    <Content Include="Views\Form\_Form.cshtml" />
+    <Content Include="Views\Form\_Index.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

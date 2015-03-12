@@ -48,8 +48,10 @@ grunt.config.merge( {
 				'<%= project.paths.templates %>/Results/Index.cshtml':						[ 'results.php' ],
 				'<%= project.paths.templates %>/Results/_ResultDetail.cshtml':				[ 'results-details.php' ],
 
-				'<%= project.paths.templates %>/Results/_NewCustomerForm.cshtml':			[ 'form-new.php' ],
-				'<%= project.paths.templates %>/Results/_ExistingCustomerForm.cshtml':		[ 'form-existing.php' ],
+				// Form
+
+				'<%= project.paths.templates %>/Form/_Index.cshtml':						[ 'form.php' ],
+				'<%= project.paths.templates %>/Form/_Form.cshtml':							[ 'form-new-customer.php' ],
 
 				// Partials
 

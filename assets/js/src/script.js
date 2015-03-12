@@ -7,9 +7,9 @@ var query			= new logic.query();
 var responsive;
 var dashboard;
 
-// Deteremine car color - otherwise fall back to a generic blue color
+// Determine car color - otherwise fall back to a generic blue color
 
-var carCode			= location.search.split( '?m=' )[ 1 ] || false;
+var carCode			= queryParameter( 'm' ) || false;
 var color			= logic.getCarByCode( carCode ).color;
 var dashColor		= ( color !== undefined ) ? color : 'Electric Blue';
 

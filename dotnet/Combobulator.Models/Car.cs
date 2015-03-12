@@ -25,6 +25,6 @@
         public string Alt2 { get; set; }
         public string Alt3 { get; set; }
         public string TermsConditions { get; set; }
-		public FinanceDetails FinanceDetails { get; set; }
+		public Finance Finance { get; set; }
     }
 }

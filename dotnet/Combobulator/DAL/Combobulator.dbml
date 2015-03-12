@@ -88,6 +88,7 @@
       <Column Name="ROI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="NewCar_Finance" Member="NewCar" ThisKey="NewCarId" OtherKey="Id" Type="NewCar" IsForeignKey="true" />
     </Type>
   </Table>
@@ -110,8 +111,27 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetNewCars" Method="GetNewCars">
-    <ElementType Name="GetNewCarsResult">
+  <Function Name="dbo.GetCarFinance" Method="GetCarFinance">
+    <Parameter Name="NewCardId" Parameter="newCardId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCarFinanceResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Payment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Deposit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Contribution" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PurchaseFee" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinalPayment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CreditCharge" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ROI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNewCar" Method="GetNewCar">
+    <Parameter Name="ModelCode" Parameter="modelCode" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetNewCarResult">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
@@ -132,11 +152,11 @@
       <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetNewCar" Method="GetNewCar">
-    <Parameter Name="ModelCode" Parameter="modelCode" Type="System.String" DbType="VarChar(10)" />
-    <ElementType Name="GetNewCarResult">
+  <Function Name="dbo.GetNewCars" Method="GetNewCars">
+    <ElementType Name="GetNewCarsResult">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />

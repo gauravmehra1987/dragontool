@@ -7,7 +7,7 @@
 	<img src="assets/cars/none.png" class="img-base" />
 
 	<!-- build:template
-	<img src="assets/cars/<%= details.code %>.png" id="results-car" class="img-content" />
+	<img src="<%= details.carImage %>" id="results-car" class="img-content" />
 	/build -->
 
 	<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="results-car" class="img-content" /><!-- /build -->

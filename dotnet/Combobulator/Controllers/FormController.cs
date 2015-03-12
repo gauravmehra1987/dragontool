@@ -95,7 +95,7 @@ namespace Combobulator.Controllers
                 Combobulator.Models.NewCar car = null;
                 if (!String.IsNullOrEmpty(modelCode))
                 {
-                    DAL.NewCar dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
+                    var dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
                     car = new Combobulator.Models.NewCar
                     {
                         Code = dbCar.Code
@@ -131,8 +131,8 @@ namespace Combobulator.Controllers
 
             try
             {
-                DAL.NewCar dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
-                var dbFinance = dbCar.Finances.First();
+                var dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
+                var dbFinance = dbContext.GetCarFinance(dbCar.Id).FirstOrDefault();
                 var viewModel = new CarViewModel
                 {
                     Code = dbCar.Code,
@@ -154,18 +154,18 @@ namespace Combobulator.Controllers
                     Alt_2 = dbCar.Alt2,
                     Alt_3 = dbCar.Alt3,
                     Terms = dbCar.Terms,
-                    FinanceDetails = new FinanceDetails
-                    {
+                    Finance = new Combobulator.Models.Finance {
+                        Info = dbFinance.Info,
                         Term = dbFinance.Term ?? 0,
                         Payment = dbFinance.Payment ?? 0.0,
-                        FinancePrice = dbFinance.FinancePrice ?? 0.0,
+                        Price = dbFinance.FinancePrice ?? 0.0,
                         Deposit = dbFinance.Deposit ?? 0.0,
                         Contribution = dbFinance.Contribution ?? 0.0,
-                        PurchaseFee = dbFinance.PurchaseFee ?? 0.0,
-                        FinalPayment = dbFinance.FinalPayment ?? 0.0,
-                        CreditCharge = dbFinance.CreditCharge ?? 0.0,
+                        Purchase_Fee = dbFinance.PurchaseFee ?? 0.0,
+                        Final_Payment = dbFinance.FinalPayment ?? 0.0,
+                        Credit_Charge = dbFinance.CreditCharge ?? 0.0,
                         ROI = dbFinance.ROI,
-                        APR = dbFinance.APR,
+                        APR = dbFinance.APR
                     }
                 };
                 return PartialView("_ResultDetail", viewModel);

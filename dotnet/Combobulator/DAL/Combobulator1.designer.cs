@@ -163,18 +163,25 @@ namespace Combobulator.DAL
 			return ((ISingleResult<GetLookupsResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCarFinance")]
+		public ISingleResult<GetCarFinanceResult> GetCarFinance([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewCardId", DbType="Int")] System.Nullable<int> newCardId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), newCardId);
+			return ((ISingleResult<GetCarFinanceResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetNewCar")]
+		public ISingleResult<GetNewCarResult> GetNewCar([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ModelCode", DbType="VarChar(10)")] string modelCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), modelCode);
+			return ((ISingleResult<GetNewCarResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetNewCars")]
 		public ISingleResult<GetNewCarsResult> GetNewCars()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetNewCarsResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetNewCar")]
-		public ISingleResult<NewCar> GetNewCar([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ModelCode", DbType="VarChar(10)")] string modelCode)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), modelCode);
-            return ((ISingleResult<NewCar>)(result.ReturnValue));
 		}
 	}
 	
@@ -1698,6 +1705,8 @@ namespace Combobulator.DAL
 		
 		private System.Nullable<int> _NewCarId;
 		
+		private string _Info;
+		
 		private EntityRef<NewCar> _NewCar;
 		
     #region Extensibility Method Definitions
@@ -1728,6 +1737,8 @@ namespace Combobulator.DAL
     partial void OnAPRChanged();
     partial void OnNewCarIdChanging(System.Nullable<int> value);
     partial void OnNewCarIdChanged();
+    partial void OnInfoChanging(string value);
+    partial void OnInfoChanged();
     #endregion
 		
 		public Finance()
@@ -1980,6 +1991,26 @@ namespace Combobulator.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Info", DbType="NVarChar(MAX)")]
+		public string Info
+		{
+			get
+			{
+				return this._Info;
+			}
+			set
+			{
+				if ((this._Info != value))
+				{
+					this.OnInfoChanging(value);
+					this.SendPropertyChanging();
+					this._Info = value;
+					this.SendPropertyChanged("Info");
+					this.OnInfoChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewCar_Finance", Storage="_NewCar", ThisKey="NewCarId", OtherKey="Id", IsForeignKey=true)]
 		public NewCar NewCar
 		{
@@ -2079,7 +2110,249 @@ namespace Combobulator.DAL
 		}
 	}
 	
-	public partial class GetNewCarsResult
+	public partial class GetCarFinanceResult
+	{
+		
+		private int _Id;
+		
+		private System.Nullable<int> _Term;
+		
+		private System.Nullable<double> _Payment;
+		
+		private System.Nullable<double> _FinancePrice;
+		
+		private System.Nullable<double> _Deposit;
+		
+		private System.Nullable<double> _Contribution;
+		
+		private System.Nullable<double> _PurchaseFee;
+		
+		private System.Nullable<double> _FinalPayment;
+		
+		private System.Nullable<double> _CreditCharge;
+		
+		private string _ROI;
+		
+		private string _APR;
+		
+		private System.Nullable<int> _NewCarId;
+		
+		private string _Info;
+		
+		public GetCarFinanceResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Term", DbType="Int")]
+		public System.Nullable<int> Term
+		{
+			get
+			{
+				return this._Term;
+			}
+			set
+			{
+				if ((this._Term != value))
+				{
+					this._Term = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Payment", DbType="Float")]
+		public System.Nullable<double> Payment
+		{
+			get
+			{
+				return this._Payment;
+			}
+			set
+			{
+				if ((this._Payment != value))
+				{
+					this._Payment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancePrice", DbType="Float")]
+		public System.Nullable<double> FinancePrice
+		{
+			get
+			{
+				return this._FinancePrice;
+			}
+			set
+			{
+				if ((this._FinancePrice != value))
+				{
+					this._FinancePrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deposit", DbType="Float")]
+		public System.Nullable<double> Deposit
+		{
+			get
+			{
+				return this._Deposit;
+			}
+			set
+			{
+				if ((this._Deposit != value))
+				{
+					this._Deposit = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contribution", DbType="Float")]
+		public System.Nullable<double> Contribution
+		{
+			get
+			{
+				return this._Contribution;
+			}
+			set
+			{
+				if ((this._Contribution != value))
+				{
+					this._Contribution = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseFee", DbType="Float")]
+		public System.Nullable<double> PurchaseFee
+		{
+			get
+			{
+				return this._PurchaseFee;
+			}
+			set
+			{
+				if ((this._PurchaseFee != value))
+				{
+					this._PurchaseFee = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalPayment", DbType="Float")]
+		public System.Nullable<double> FinalPayment
+		{
+			get
+			{
+				return this._FinalPayment;
+			}
+			set
+			{
+				if ((this._FinalPayment != value))
+				{
+					this._FinalPayment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditCharge", DbType="Float")]
+		public System.Nullable<double> CreditCharge
+		{
+			get
+			{
+				return this._CreditCharge;
+			}
+			set
+			{
+				if ((this._CreditCharge != value))
+				{
+					this._CreditCharge = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROI", DbType="NVarChar(50)")]
+		public string ROI
+		{
+			get
+			{
+				return this._ROI;
+			}
+			set
+			{
+				if ((this._ROI != value))
+				{
+					this._ROI = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APR", DbType="NVarChar(50)")]
+		public string APR
+		{
+			get
+			{
+				return this._APR;
+			}
+			set
+			{
+				if ((this._APR != value))
+				{
+					this._APR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewCarId", DbType="Int")]
+		public System.Nullable<int> NewCarId
+		{
+			get
+			{
+				return this._NewCarId;
+			}
+			set
+			{
+				if ((this._NewCarId != value))
+				{
+					this._NewCarId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Info", DbType="NVarChar(MAX)")]
+		public string Info
+		{
+			get
+			{
+				return this._Info;
+			}
+			set
+			{
+				if ((this._Info != value))
+				{
+					this._Info = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetNewCarResult
 	{
 		
 		private int _Id;
@@ -2122,7 +2395,9 @@ namespace Combobulator.DAL
 		
 		private string _Alt3;
 		
-		public GetNewCarsResult()
+		private string _Terms;
+		
+		public GetNewCarResult()
 		{
 		}
 		
@@ -2445,9 +2720,25 @@ namespace Combobulator.DAL
 				}
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Terms", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Terms
+		{
+			get
+			{
+				return this._Terms;
+			}
+			set
+			{
+				if ((this._Terms != value))
+				{
+					this._Terms = value;
+				}
+			}
+		}
 	}
 	
-	public partial class GetNewCarResult
+	public partial class GetNewCarsResult
 	{
 		
 		private int _Id;
@@ -2492,7 +2783,7 @@ namespace Combobulator.DAL
 		
 		private string _Terms;
 		
-		public GetNewCarResult()
+		public GetNewCarsResult()
 		{
 		}
 		

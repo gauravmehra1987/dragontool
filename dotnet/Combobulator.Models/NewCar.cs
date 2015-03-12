@@ -25,14 +25,14 @@
 	    // ReSharper restore InconsistentNaming
         public string Terms { get; set; }
         
-        public int Term { get; set; }
-        public int Payment { get; set; }
-        public int FinancePrice { get; set; }
-        public int Deposit { get; set; }
-        public int Contribution { get; set; }
-        public int PurchaseFee { get; set; }
-        public int FinalPayment { get; set; }
-        public int CreditCharge { get; set; }
+        public int? Term { get; set; }
+        public double? Payment { get; set; }
+        public double? FinancePrice { get; set; }
+        public double? Deposit { get; set; }
+        public double? Contribution { get; set; }
+        public double? PurchaseFee { get; set; }
+        public double? FinalPayment { get; set; }
+        public double? CreditCharge { get; set; }
         public string ROI { get; set; }
         public string APR { get; set; }
     }

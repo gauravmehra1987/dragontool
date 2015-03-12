@@ -70,7 +70,7 @@ function UI( templates ) {
 
 		var user = $body.find( '#uid' ).val();
 
-		return ( typeof user === 'undefined' ) ? url + 'm=' + code : url + 'c=' + user + '&m=' + code;
+		return ( typeof user === 'undefined' ) ? url + 'm=' + code : url + 'm=' + code + '&c=' + user;
 
 	};
 

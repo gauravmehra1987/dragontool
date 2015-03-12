@@ -41,19 +41,19 @@ namespace Combobulator.Controllers
                 {
                     foreach (var record in records)
                     {
-                        var finance = new EntitySet<Finance>();
-                        finance.Add(new Finance
+                        var finance = new EntitySet<DAL.Finance>();
+                        finance.Add(new DAL.Finance
                             {
-                                Term = record.Term,
-                                FinalPayment = record.FinalPayment,
-                                FinancePrice = record.FinancePrice,
+                                Term = record.Term ?? 0,
+                                FinalPayment = record.FinalPayment ?? 0.0,
+                                FinancePrice = record.FinancePrice ?? 0.0,
                                 APR = record.APR,
                                 ROI = record.ROI,
-                                Contribution = record.Contribution,
-                                CreditCharge = record.CreditCharge,
-                                Deposit = record.Deposit,
-                                Payment = record.Payment,
-                                PurchaseFee = record.PurchaseFee
+                                Contribution = record.Contribution ?? 0.0,
+                                CreditCharge = record.CreditCharge ?? 0.0,
+                                Deposit = record.Deposit ?? 0.0,
+                                Payment = record.Payment ?? 0.0,
+                                PurchaseFee = record.PurchaseFee ?? 0.0
                             });
 
                         context.NewCars.InsertOnSubmit(new DAL.NewCar

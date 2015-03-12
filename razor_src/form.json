@@ -1,6 +1,6 @@
 {
 
-	"model":			"@model Combobulator.Models.Customer",
+	"model":			"@model Combobulator.Business.ViewModels.FormViewModel",
 
 	"open":				{
 

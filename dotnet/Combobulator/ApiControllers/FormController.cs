@@ -20,7 +20,7 @@ namespace Combobulator.ApiControllers
         {
             try
             {
-                Combobulator.DAL.NewCar dbCar = dbContext.GetNewCar(customer.Car.Code).FirstOrDefault();
+                var dbCar = dbContext.GetNewCar(customer.Car.Code).FirstOrDefault();
                 Combobulator.Models.NewCar car = new Combobulator.Models.NewCar
                 {
                     Code = dbCar.Code,

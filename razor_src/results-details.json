@@ -1,8 +1,9 @@
 {
 
-	"model": "@model Combobulator.Models.NewCar",
-	"name": "@Model.DisplayName",
+	"model": "@model Combobulator.Business.ViewModels.CarViewModel",
+	"name": "@Model.Name",
 	"code": "@Model.Code",
-	"form_link": "#REPLACE_THIS"
+	"carImage": "@Url.Content(\"assets/cars/\" + @Model.Code + \".png\")",
+	"form_link": "/form?m=@Model.Code"
 
 }

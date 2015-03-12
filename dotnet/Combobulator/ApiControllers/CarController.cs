@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 using Combobulator.DAL;
 using Combobulator.Helpers;
 using Combobulator.Models;
+using Combobulator.Business.ViewModels;
 using log4net;
 using Newtonsoft.Json;
 using Car = Combobulator.DAL.Car;
@@ -32,45 +33,60 @@ namespace Combobulator.ApiControllers
         public HttpResponseMessage GetCars()
         {
             var serializer = new JavaScriptSerializer();
-            
             HttpResponseMessage response = new HttpResponseMessage();
-
             try
             {
-                IList<GetNewCarsResult> dbCar = dbContext.GetNewCars().ToList();
-                var query = from c in dbCar
-                            select new NewCar
-                                {
-                                    Code = c.Code,
-                                    Color = c.Color,
-                                    Engine = c.Engine,
-                                    Name = c.Name,
-                                    Capacity = c.Capacity,
-                                    Luggage = c.Luggage,
-                                    Lifestyle = c.Lifestyle,
-                                    Awd = c.Awd,
-                                    High = c.High,
-                                    Convertible = c.Convertible,
-                                    Price = c.Price,
-                                    Cost = c.Cost,
-                                    Speed = c.Speed,
-                                    Mph = c.Mph,
-                                    Economy = c.Economy,
-                                    Alt_1 = c.Alt1,
-                                    Alt_2 = c.Alt2,
-                                    Alt_3 = c.Alt3,
-                                };
+                var dbCar = dbContext.GetNewCars().ToList();
+                var viewModel = new List<CarViewModel>();
+                foreach (var car in dbCar)
+                {
+                    var finance = dbContext.GetCarFinance(car.Id).First();
+                    viewModel.Add(new CarViewModel
+                    {
+                        Code = car.Code,
+                        Color = car.Color,
+                        Engine = car.Engine,
+                        Name = car.Name,
+                        Capacity = car.Capacity,
+                        Luggage = car.Luggage,
+                        Lifestyle = car.Lifestyle,
+                        Awd = car.Awd,
+                        High = car.High,
+                        Convertible = car.Convertible,
+                        Price = car.Price,
+                        Cost = car.Cost,
+                        Speed = car.Speed,
+                        Mph = car.Mph,
+                        Economy = car.Economy,
+                        Alt_1 = car.Alt1,
+                        Alt_2 = car.Alt2,
+                        Alt_3 = car.Alt3,
+                        Terms = car.Terms,
+                        Finance = new Combobulator.Models.Finance
+                        {
+                            Info = car.Terms,
+                            Term = finance.Term ?? 0,
+                            Payment = finance.Payment ?? 0.0,
+                            Price = finance.FinancePrice ?? 0.0,
+                            Deposit = finance.Deposit ?? 0.0,
+                            Contribution = finance.Contribution ?? 0.0,
+                            Purchase_Fee = finance.PurchaseFee ?? 0.0,
+                            Final_Payment = finance.FinalPayment ?? 0.0,
+                            Credit_Charge = finance.CreditCharge ?? 0.0,
+                            ROI = finance.ROI,
+                            APR = finance.APR
+                        }
+                    });
+                }
 
-                IEnumerable<NewCar> cars = query.ToList();
-
-                if (cars == null)
+                if (viewModel == null)
                 {
                     throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
                 }
 
                 var settings = new JsonSerializerSettings();
                 settings.ContractResolver = new LowercaseContractResolver();
-                var json = JsonConvert.SerializeObject(cars, Formatting.Indented, settings);
+                var json = JsonConvert.SerializeObject(viewModel, Formatting.Indented, settings);
 
                 StringContent sc = new StringContent(json);
                 sc.Headers.ContentType = new MediaTypeHeaderValue("application/json");

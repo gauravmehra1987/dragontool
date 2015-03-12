@@ -29,6 +29,6 @@ namespace Combobulator.Business.ViewModels
         public string Alt_2 { get; set; }
         public string Alt_3 { get; set; }
         public string Terms { get; set; }
-        public FinanceDetails FinanceDetails { get; set; }
+        public Finance Finance { get; set; }
     }
 }
