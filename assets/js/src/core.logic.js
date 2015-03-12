@@ -37,6 +37,7 @@ function Logic() {
 
 		finance.total_deposit	= finance.deposit + finance.contribution;
 		finance.total_amount	= finance.price + finance.credit_charge;
+		finance.terms			= car.terms;
 
 		return finance;
 
