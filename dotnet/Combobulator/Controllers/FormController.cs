@@ -132,8 +132,8 @@ namespace Combobulator.Controllers
             try
             {
                 DAL.NewCar dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
-                //var dbFinance = dbCar.Finances
-                var viewModel = new ViewModels.CarViewModel
+                var dbFinance = dbCar.Finances.First();
+                var viewModel = new CarViewModel
                 {
                     Code = dbCar.Code,
                     Color = dbCar.Color,
@@ -153,22 +153,20 @@ namespace Combobulator.Controllers
                     Alt_1 = dbCar.Alt1,
                     Alt_2 = dbCar.Alt2,
                     Alt_3 = dbCar.Alt3,
-                    Terms = dbCar.Terms
-                    /*
+                    Terms = dbCar.Terms,
                     FinanceDetails = new FinanceDetails
                     {
-                        Term = dbFinance.Term ?? -1,
-                        Payment = dbFinance.Payment ?? -1.0m,
-                        FinancePrice = dbFinance.FinancePrice ?? -1.0m,
-                        Deposit = dbFinance.Deposit ?? -1.0m,
-                        Contribution = dbFinance.Contribution ?? -1.0m,
-                        PurchaseFee = dbFinance.PurchaseFee ?? -1.0m,
-                        FinalPayment = dbFinance.FinalPayment ?? -1.0m,
-                        CreditCharge = dbFinance.CreditCharge ?? -1.0m,
-                        ROI = dbFinance.ROI ?? -1.0m,
-                        APR = dbFinance.APR ?? -1.0m,
+                        Term = dbFinance.Term ?? 0,
+                        Payment = dbFinance.Payment ?? 0.0,
+                        FinancePrice = dbFinance.FinancePrice ?? 0.0,
+                        Deposit = dbFinance.Deposit ?? 0.0,
+                        Contribution = dbFinance.Contribution ?? 0.0,
+                        PurchaseFee = dbFinance.PurchaseFee ?? 0.0,
+                        FinalPayment = dbFinance.FinalPayment ?? 0.0,
+                        CreditCharge = dbFinance.CreditCharge ?? 0.0,
+                        ROI = dbFinance.ROI,
+                        APR = dbFinance.APR,
                     }
-                    */
                 };
                 return PartialView("_ResultDetail", viewModel);
             }

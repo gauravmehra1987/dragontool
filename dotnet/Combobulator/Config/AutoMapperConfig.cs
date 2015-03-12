@@ -1,7 +1,7 @@
 ﻿using System.Web.UI.WebControls;
 using AutoMapper;
 using Combobulator.DAL;
-using Combobulator.ViewModels;
+using Combobulator.Business.ViewModels;
 
 namespace Combobulator.Config
 {

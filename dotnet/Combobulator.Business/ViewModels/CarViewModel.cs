@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Combobulator.Models;
 
-namespace Combobulator.ViewModels
+namespace Combobulator.Business.ViewModels
 {
     public class CarViewModel
     {

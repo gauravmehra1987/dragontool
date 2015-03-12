@@ -60,6 +60,7 @@
       <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="NewCar_Finance" Member="Finances" ThisKey="Id" OtherKey="NewCarId" Type="Finance" />
     </Type>
   </Table>
   <Table Name="dbo.PostcodeLookUp" Member="PostcodeLookUps">
@@ -75,7 +76,7 @@
   </Table>
   <Table Name="dbo.Finances" Member="Finances">
     <Type Name="Finance">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Payment" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="FinancePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
@@ -87,6 +88,7 @@
       <Column Name="ROI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NewCar_Finance" Member="NewCar" ThisKey="NewCarId" OtherKey="Id" Type="NewCar" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GetCar" Method="GetCar">

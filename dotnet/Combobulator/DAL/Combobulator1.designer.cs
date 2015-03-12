@@ -171,10 +171,10 @@ namespace Combobulator.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetNewCar")]
-        public ISingleResult<NewCar> GetNewCar([global::System.Data.Linq.Mapping.ParameterAttribute(Name = "ModelCode", DbType = "VarChar(10)")] string modelCode)
+		public ISingleResult<NewCar> GetNewCar([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ModelCode", DbType="VarChar(10)")] string modelCode)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), modelCode);
-			return ((ISingleResult<NewCar>)(result.ReturnValue));
+            return ((ISingleResult<NewCar>)(result.ReturnValue));
 		}
 	}
 	
@@ -940,6 +940,8 @@ namespace Combobulator.DAL
 		
 		private string _Terms;
 		
+		private EntitySet<Finance> _Finances;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -990,6 +992,7 @@ namespace Combobulator.DAL
 		
 		public NewCar()
 		{
+			this._Finances = new EntitySet<Finance>(new Action<Finance>(this.attach_Finances), new Action<Finance>(this.detach_Finances));
 			OnCreated();
 		}
 		
@@ -1413,6 +1416,19 @@ namespace Combobulator.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewCar_Finance", Storage="_Finances", ThisKey="Id", OtherKey="NewCarId")]
+		public EntitySet<Finance> Finances
+		{
+			get
+			{
+				return this._Finances;
+			}
+			set
+			{
+				this._Finances.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1431,6 +1447,18 @@ namespace Combobulator.DAL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Finances(Finance entity)
+		{
+			this.SendPropertyChanging();
+			entity.NewCar = this;
+		}
+		
+		private void detach_Finances(Finance entity)
+		{
+			this.SendPropertyChanging();
+			entity.NewCar = null;
 		}
 	}
 	
@@ -1670,6 +1698,8 @@ namespace Combobulator.DAL
 		
 		private System.Nullable<int> _NewCarId;
 		
+		private EntityRef<NewCar> _NewCar;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1702,10 +1732,11 @@ namespace Combobulator.DAL
 		
 		public Finance()
 		{
+			this._NewCar = default(EntityRef<NewCar>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -1936,11 +1967,49 @@ namespace Combobulator.DAL
 			{
 				if ((this._NewCarId != value))
 				{
+					if (this._NewCar.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnNewCarIdChanging(value);
 					this.SendPropertyChanging();
 					this._NewCarId = value;
 					this.SendPropertyChanged("NewCarId");
 					this.OnNewCarIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewCar_Finance", Storage="_NewCar", ThisKey="NewCarId", OtherKey="Id", IsForeignKey=true)]
+		public NewCar NewCar
+		{
+			get
+			{
+				return this._NewCar.Entity;
+			}
+			set
+			{
+				NewCar previousValue = this._NewCar.Entity;
+				if (((previousValue != value) 
+							|| (this._NewCar.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NewCar.Entity = null;
+						previousValue.Finances.Remove(this);
+					}
+					this._NewCar.Entity = value;
+					if ((value != null))
+					{
+						value.Finances.Add(this);
+						this._NewCarId = value.Id;
+					}
+					else
+					{
+						this._NewCarId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("NewCar");
 				}
 			}
 		}

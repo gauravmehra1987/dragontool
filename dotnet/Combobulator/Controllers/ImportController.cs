@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,6 +9,7 @@ using CsvHelper;
 using System.IO;
 using Combobulator.Config;
 using Combobulator.Models;
+using Combobulator.DAL;
 
 namespace Combobulator.Controllers
 {
@@ -19,7 +21,7 @@ namespace Combobulator.Controllers
 
         public ActionResult Index()
         {
-            var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v25.csv");
+            var fileName = Server.MapPath("~/App_Data/mini_data_latest.csv");
             using (var fileReader = System.IO.File.OpenText(fileName))
             using (var csv = new CsvReader(fileReader))
             {
@@ -34,11 +36,26 @@ namespace Combobulator.Controllers
                 csv.Configuration.CultureInfo = cultureInfo;
                 csv.Configuration.RegisterClassMap<NewCarConfig>();
 
-                var records = csv.GetRecords<NewCar>().Distinct().ToList();
+                var records = csv.GetRecords<Combobulator.Models.NewCar>().Distinct().ToList();
                 using (var context = new DAL.CombobulatorDataContext())
                 {
                     foreach (var record in records)
                     {
+                        var finance = new EntitySet<Finance>();
+                        finance.Add(new Finance
+                            {
+                                Term = record.Term,
+                                FinalPayment = record.FinalPayment,
+                                FinancePrice = record.FinancePrice,
+                                APR = record.APR,
+                                ROI = record.ROI,
+                                Contribution = record.Contribution,
+                                CreditCharge = record.CreditCharge,
+                                Deposit = record.Deposit,
+                                Payment = record.Payment,
+                                PurchaseFee = record.PurchaseFee
+                            });
+
                         context.NewCars.InsertOnSubmit(new DAL.NewCar
                         {
                             Code = record.Code,
@@ -60,7 +77,8 @@ namespace Combobulator.Controllers
                             Alt1 = record.Alt_1,
                             Alt2 = record.Alt_2,
                             Alt3 = record.Alt_3,
-                            Terms = record.Terms
+                            Terms = record.Terms,
+                            Finances = finance
                         });
                         context.SubmitChanges();
                     }
