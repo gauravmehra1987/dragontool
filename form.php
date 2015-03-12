@@ -1,4 +1,4 @@
-<!-- build:remove-->
+<!-- build:remove -->
 <?php require( 'header.php' ); ?>
 
 <div id="page-form" class="layout-wrapper">
