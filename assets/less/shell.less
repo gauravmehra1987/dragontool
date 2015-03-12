@@ -735,6 +735,8 @@
 
 		}
 
+		.layout-footer { margin: @margin; }
+
 	}
 
 	html > body .layout-wrapper {
@@ -747,6 +749,65 @@
 				padding-top: 30px;
 
 				.control-title { display: none !important; }
+
+			}
+
+		}
+
+	}
+
+	html > body #page-results.layout-wrapper .layout.full-width {
+
+		width: auto;
+
+		#car {
+
+			margin: 0 @margin;
+
+			.img-base { display: none; }
+
+			#results-car { position: static; }
+
+			figcaption {
+
+				&, .car-layout {
+
+					position: static;
+
+					&.top {
+
+						.actions {
+
+							position: absolute;
+
+							top: 0;
+							right: 0;
+							left: 0;
+
+						}
+
+					}
+
+					&.bottom {
+
+						border: 0;
+						margin: @margin auto 0;
+
+						tbody {
+
+							border-top: solid 1px @white;
+							float: none;
+							margin: 0;
+
+							width: auto;
+
+							&:first-of-type { border: 0; }
+
+						}
+
+					}
+
+				}
 
 			}
 
