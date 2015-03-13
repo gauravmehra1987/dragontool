@@ -189,18 +189,16 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="assets/handlebars.js"></script>
+	<script src="../bower_components/jquery.browser/dist/jquery.browser.js"></script>    
 	<script src="../bower_components/jquery-tiny-pubsub/dist/ba-tiny-pubsub.js"></script>    
 	<script src="../bower_components/underscore/underscore.js"></script>    
 	<script src="../bower_components/store/store.js"></script>    
 	<script src="../bower_components/taffydb/taffy.js"></script>    
+	<script src="../assets/js/src/config.js"></script>    
 	<script src="../assets/js/src/core.logic.js"></script>    
 	<script type="text/javascript">
 
 	// Local variables for prototype
-
-	var path	= path || {};
-
-	if( ! path.hasOwnProperty( 'api' ) ) path.api = '../json/car.json';
 	
 	var logic	= new Logic();
 	var query	= new logic.query();

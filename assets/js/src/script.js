@@ -237,6 +237,19 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 			$( '#address-chooser' ).append( ui.renderTpl( tpl, { addresses: formattedAddresses } ) );
 
+			// We must add this field to the validator manually because it's dynamically created
+
+			$( '#addresses' ).rules( 'add', {
+
+				required: true,
+				messages: {
+
+					required: 'Please select your address from the list.'
+
+				}
+
+			} );
+
 		} );
 
 	} );

@@ -138,10 +138,10 @@ function UI() {
 		var _this	= this;
 		var related	= related || false;		
 
-		var renderRelatedCars = function( car, related ) {
+		var renderRelatedCars = function( car, skipRelated ) {
 
-			var $cars		= _this.$panel.find( '.car-changer' );
-			var related		= related || false;
+			var $cars			= _this.$panel.find( '.car-changer' );
+			var skipRelated		= skipRelated || false;
 
 			var alt_1 = logic.getCarByName( car.alt_1 );
 			var alt_2 = logic.getCarByName( car.alt_2 );
@@ -166,19 +166,9 @@ function UI() {
 			
 			else {
 
-				if( related ) {
+				if( ! skipRelated ) {
 
-					console.log( 'replacing only related cars' );
-
-					$cars.not( '.active' ).eq( 0 ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + alt_1.code + '.png' );
-					$cars.not( '.active' ).eq( 1 ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + alt_2.code + '.png' );
-					$cars.not( '.active' ).eq( 2 ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + alt_3.code + '.png' );
-
-				}
-
-				else {
-
-					console.log( 'replacing all cars' );
+					console.log( 'replacing related cars' );
 
 					$cars.removeClass( 'active' ).filter( ':first' ).addClass( 'active' );
 
