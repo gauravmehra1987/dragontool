@@ -21,7 +21,7 @@
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
 
-	<select id="addresses"></select>
+	<div id="address-chooser"></div><!-- end div#addrhook -->
 
 	<div class="fields-left">
 

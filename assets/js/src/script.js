@@ -211,9 +211,11 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 		addressObj = addresses;
 
+		formattedAddresses = [];
+
 		// Remove existing addresses
 
-		$( '#addresses' ).contents().remove();
+		$( '#address-chooser' ).contents().remove();
 
 		// Construct address strings
 
@@ -225,11 +227,15 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 			address = address.substr( 0, address.length - 2 );
 
-			ui.getTpl( 'addresses' ).then( function( tpl ) {
+			formattedAddresses.push( { id: i, address: address } );
 
-				$( '#addresses' ).append( ui.renderTpl( tpl, { id: i, address: address } ) );
+		} );
 
-			} );
+		// Render template
+
+		ui.getTpl( 'addresses' ).then( function( tpl ) {
+
+			$( '#address-chooser' ).append( ui.renderTpl( tpl, { addresses: formattedAddresses } ) );
 
 		} );
 
