@@ -1,4 +1,4 @@
-function UI( templates ) {
+function UI() {
 
 	var _this = this;
 

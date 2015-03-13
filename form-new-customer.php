@@ -21,6 +21,8 @@
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
 
+	<select id="addresses"></select>
+
 	<div class="fields-left">
 
 		<div class="form-control">
@@ -124,38 +126,7 @@
 
 	<div class="fields-right">
 
-		<div class="form-control append home full-width">
-
-			<!-- build:template
-			<%= form.field.address_1 %>
-			/build -->
-
-			<!-- build:remove --><input type="text" id="field-address-1" name="address-1" placeholder="Address line 1" /><!-- /build -->
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="form-control append home full-width">
-
-			<!-- build:template
-			<%= form.field.address_2 %>
-			/build -->
-
-			<!-- build:remove --><input type="text" id="field-address-2" name="address-2" placeholder="Address line 2" /><!-- /build -->
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="form-control append home full-width">
-
-			<!-- build:template
-			<%= form.field.address_3 %>
-			/build -->
-
-			<!-- build:remove --><input type="text" id="field-address-3" name="address-3" placeholder="Address line 3" /><!-- /build -->
-			<span class="field-icon"></span>
-
-		</div>
+		
 
 		<div class="form-control append home full-width">
 
