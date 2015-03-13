@@ -16,7 +16,7 @@ namespace Combobulator.ApiControllers
     public class CustomerController : BaseController
     {
         [DeflateCompression]
-        public List<Customer> Get()
+        public List<User> Get()
         {
             var customers = Utils.GetCustomers();
             return customers;

@@ -43,6 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
     <Compile Include="ViewModels\PostcodeLookUpApiViewModel.cs" />
+    <Compile Include="ViewModels\PostcodeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Combobulator.Models\Combobulator.Models.csproj">

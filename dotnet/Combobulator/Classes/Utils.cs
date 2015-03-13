@@ -14,6 +14,9 @@ using System.Web.Configuration;
 using System.ComponentModel;
 using System.Threading;
 using Combobulator.Classes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace Combobulator.Classes
 {
@@ -64,7 +67,7 @@ namespace Combobulator.Classes
             }
         }
 
-        public static List<Customer> GetCustomers()
+        public static List<User> GetCustomers()
         {
             try
             {
@@ -79,13 +82,25 @@ namespace Combobulator.Classes
                 StreamReader responseStream = new StreamReader(response.GetResponseStream());
 
                 string line = responseStream.ReadLine();
-                dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
+                var obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
                 if (obj.Error != null)
                 {
                     log.Error("GetCustomers Error - " + obj.Error);
                     return null;
                 }
-                return null;
+
+                var users = new List<User>();
+                var jObj = JObject.Parse(line);
+                foreach (JObject o in jObj.Properties().Select(p => p.Value))
+                {
+                    users.Add(new User {
+                        Id = Convert.ToInt32(((JProperty)o.Parent).Name),
+                        Firstname = o["first_name"].ToString(),
+                        Lastname = o["surname"].ToString(),
+                        Email = o["email"].ToString()
+                    });
+                }
+                return users;
             }
             catch (Exception ex)
             {

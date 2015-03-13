@@ -50,8 +50,8 @@ namespace Combobulator.DAL
     partial void DeleteFinance(Finance instance);
     #endregion
 		
-		public CombobulatorDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["MINI_CombobulatorConnectionString1"].ConnectionString, mappingSource)
+		public CombobulatorDataContext() :
+        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CombobulatorConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -182,6 +182,13 @@ namespace Combobulator.DAL
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetNewCarsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPostCode")]
+		public ISingleResult<GetPostCodeResult> GetPostCode([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string postcode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), postcode);
+			return ((ISingleResult<GetPostCodeResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3119,6 +3126,140 @@ namespace Combobulator.DAL
 				if ((this._Terms != value))
 				{
 					this._Terms = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetPostCodeResult
+	{
+		
+		private int _Id;
+		
+		private string _Address1;
+		
+		private string _Address2;
+		
+		private string _Address3;
+		
+		private string _Town;
+		
+		private string _County;
+		
+		private string _Postcode;
+		
+		public GetPostCodeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address1", DbType="NVarChar(50)")]
+		public string Address1
+		{
+			get
+			{
+				return this._Address1;
+			}
+			set
+			{
+				if ((this._Address1 != value))
+				{
+					this._Address1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address2", DbType="NVarChar(50)")]
+		public string Address2
+		{
+			get
+			{
+				return this._Address2;
+			}
+			set
+			{
+				if ((this._Address2 != value))
+				{
+					this._Address2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address3", DbType="NVarChar(50)")]
+		public string Address3
+		{
+			get
+			{
+				return this._Address3;
+			}
+			set
+			{
+				if ((this._Address3 != value))
+				{
+					this._Address3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Town", DbType="NVarChar(50)")]
+		public string Town
+		{
+			get
+			{
+				return this._Town;
+			}
+			set
+			{
+				if ((this._Town != value))
+				{
+					this._Town = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_County", DbType="NVarChar(50)")]
+		public string County
+		{
+			get
+			{
+				return this._County;
+			}
+			set
+			{
+				if ((this._County != value))
+				{
+					this._County = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Postcode", DbType="NVarChar(50)")]
+		public string Postcode
+		{
+			get
+			{
+				return this._Postcode;
+			}
+			set
+			{
+				if ((this._Postcode != value))
+				{
+					this._Postcode = value;
 				}
 			}
 		}
