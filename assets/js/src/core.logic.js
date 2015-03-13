@@ -30,6 +30,23 @@ function Logic() {
 
 	}
 
+	this.getPostcode = function( postcode ) {
+
+		return $.when( 
+
+			$.ajax( {
+
+				url:		path.apiPostcode,
+				data:		{ postcode: postcode },
+				success:	function( data ) { addresses = data; },
+				error:		function( xhr ) { tpl = false; }
+
+			} )
+
+		).then( function( data ) { return data; } );
+
+	}
+
 	this.getFinance = function( code ) {
 
 		var car			= this.getCarByCode( code );
@@ -310,7 +327,6 @@ function Logic() {
 			$.ajax( {
 
 				url:		path.api,
-				async:		false, // Deprecated, but in reality not for a looong time! :)
 				error:		function(){ alert( 'There\'s been a problem obtaining the results.' ); },
 				success:	function( data ) {
 

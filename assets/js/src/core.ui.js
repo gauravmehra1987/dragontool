@@ -1,68 +1,50 @@
 function UI( templates ) {
 
-	var _this		= this;
+	var _this = this;
 
-	this.$panel		= $body.find( '.panel-results' );
-	this.templates	= {};
+	this.$panel = $body.find( '.panel-results' );
 
-	// Template loader
+	// Load / cache template
 
-	var getTpl = function( name ) {
+	this.getTpl = function( name ) {
 
-		var cached = store.get( 'miniTemplates' ) || {};
+		var promise	= new $.Deferred();
+	    var cached	= store.get( 'miniTemplates' ) || {};
 
-		if( cached.hasOwnProperty( name ) ) {
+	    if( cached.hasOwnProperty( name ) ) {
 
-			console.log( 'template ' + name + '.mustache found in cache' );
+	        console.log( 'template ' + name + '.mustache found in cache' );	        
 
-			return cached[ name ];
+		    promise.resolve( cached[ name ] );
 
-		}
-		
-		else {
+	    }
 
-			console.log( 'requesting ' + name + '.mustache template via AJAX' );
+	    else {
 
-			var tpl;
+	        console.log( 'requesting ' + name + '.mustache template via AJAX' );
 
-			$.ajax( {
+	        promise = $.get( path.templates + '/' + name + '.mustache' ).then( function( data ) {
 
-				url: path.templates + '/' + name + '.mustache',
-				async: false,
-				success: function( data ) {
+	        	var cached      = store.get( 'miniTemplates' ) || {};       
+		        var newTemplate = {};
 
-					tpl = data;
+		        newTemplate[ name ] = data;
 
-					var newTemplate = {};
+		        if( ! cached.hasOwnProperty( name ) ) store.set( 'miniTemplates', _.extend( cached, newTemplate ) );
 
-					newTemplate[ name ] = data;
+		        return data;
 
-					// Cache template
+	        } );
 
-					if( ! cached.hasOwnProperty( name ) ) store.set( 'miniTemplates', _.extend( cached, newTemplate ) )
+	    }
 
-				},
-				error: function() { tpl = false; }
-
-			} );
-
-			return tpl;
-
-		}
+	    return promise;
 
 	}
 
-	this.t = getTpl;
+	// Render template
 
-	// Template renderer
-
-	this.renderTpl = function( tpl, data ) {
-
-		console.log( 'rendering ' + tpl + '.mustache' );
-
-		return Mustache.render( getTpl( tpl ), data );
-
-	}
+	this.renderTpl = function( tpl, data ) { return Mustache.render( tpl, data ); }
 
 	// Results URL generator
 
@@ -222,8 +204,12 @@ function UI( templates ) {
 
 		// Render car template
 
-		$( '#tpl-results' ).contents().remove();
-		$( '#tpl-results' ).append( _this.renderTpl( 'results', car ) );
+		this.getTpl( 'results' ).then( function( tpl ) {
+
+			$( '#tpl-results' ).contents().remove();
+			$( '#tpl-results' ).append( _this.renderTpl( tpl, car ) );
+
+		} );		
 
 		renderRelatedCars( car, related );
 
@@ -282,9 +268,5 @@ function UI( templates ) {
 		}
 
 	}
-
-	// Load templates upon initialization
-
-	if( templates ) $.each( templates, function( i, tpl ) { getTpl( tpl ); } );
 
 }

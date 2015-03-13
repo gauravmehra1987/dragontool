@@ -35,8 +35,6 @@ $.validator.setDefaults( {
 
 	submitHandler: function( form ) {
 
-		console.log( carCode );
-
 		var ajaxURL = $( form ).attr( 'action' ),
 			ajaxDelay = 1000; // Not needed but included here to illustrate the loading DIV behaviour
 
