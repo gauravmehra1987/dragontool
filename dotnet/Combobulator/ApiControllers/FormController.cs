@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Combobulator.Business.ViewModels;
+using Combobulator.Common.Extensions;
 
 namespace Combobulator.ApiControllers
 {
@@ -15,12 +17,48 @@ namespace Combobulator.ApiControllers
         private Combobulator.DAL.CombobulatorDataContext dbContext = new Combobulator.DAL.CombobulatorDataContext();
 
         // POST api/form
-        [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Customer customer)
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]FormViewModel form)
         {
             try
             {
-                var dbCar = dbContext.GetNewCar(customer.Car.Code).FirstOrDefault();
+                var customer = new Customer
+                {
+                    AddressLine1 = form.Fields.Address_1,
+                    AddressLine2 = form.Fields.Address_2,
+                    AddressLine3 = form.Fields.Address_3,
+                    AddressPostcode = form.Fields.Postcode,
+                    Dealer = form.Fields.Dealer,
+                    Email = form.Fields.Email,
+                    FirstName = form.Fields.Name,
+                    LastName = form.Fields.Surname,
+                    Title = form.Fields.Title,
+                    TelephoneMobile = form.Fields.Mobile,
+                    TelephoneHome = form.Fields.Home,
+                    TelephoneWork = form.Fields.Work,
+                    RequestCallback = (form.Fields.Callback != "1" ? true : false),
+                    UserId = form.Fields.UserId,
+                    Selections = new Selections
+                    {
+                        Capacity = form.Input.Seats.CountCharacterFrequency(0).ToString(),
+                        Luggage = form.Input.Luggage,
+                        PriceRange = form.Input.Price,
+                        Performance = form.Input.Speed,
+                        Use = form.Input.Lifestyle,
+                        Options = new Combobulator.Models.Options
+                        {
+                            AWD = form.Input.Options.awd,
+                            DT = form.Input.Options.dt,
+                            HP = form.Input.Options.hp,
+                            TP = form.Input.Options.tp
+                        },
+                        Economy = form.Input.Mpg
+                    }
+
+                };
+                var dbCar = dbContext.GetNewCar(form.Car).FirstOrDefault();
+                var dbFinance = dbContext.GetCarFinance(dbCar.Id).FirstOrDefault();
+
                 Combobulator.Models.NewCar car = new Combobulator.Models.NewCar
                 {
                     Code = dbCar.Code,
@@ -38,13 +76,24 @@ namespace Combobulator.ApiControllers
                     Speed = dbCar.Speed,
                     Mph = dbCar.Mph,
                     Economy = dbCar.Economy,
-                    Terms = "",
+                    Terms = dbCar.Terms,
                     Alt_1 = dbCar.Alt1,
                     Alt_2 = dbCar.Alt2,
-                    Alt_3 = dbCar.Alt3
+                    Alt_3 = dbCar.Alt3, APR = dbFinance.APR,
+                    Contribution = dbFinance.Contribution,
+                    CreditCharge = dbFinance.CreditCharge,
+                    Deposit = dbFinance.Deposit,
+                    FinalPayment = dbFinance.FinalPayment,
+                    PurchaseFee = dbFinance.PurchaseFee,
+                    ROI = dbFinance.ROI,
+                    Term = dbFinance.Term,
+                    FinancePrice = dbFinance.FinancePrice,
+                    Payment = dbFinance.Payment,
+                    Mpg = Convert.ToDouble(dbCar.Mpg)
                 };
                 customer.Car = car;
 
+                
                 if (customer != null && !string.IsNullOrEmpty(customer.UserId))
                 {
                     // Send to API
@@ -63,6 +112,7 @@ namespace Combobulator.ApiControllers
                     Email.EmailCustomerDetails(customer);
                 }
 
+                /*
                 // Email results to customer
                 if (customer.EmailResults == true)
                 {
@@ -75,7 +125,7 @@ namespace Combobulator.ApiControllers
                         log.Error("EmailMeResults", ex);
                     }
                 }
-
+                */
                 return Request.CreateResponse(HttpStatusCode.OK, "success");
             }
             catch (Exception ex)

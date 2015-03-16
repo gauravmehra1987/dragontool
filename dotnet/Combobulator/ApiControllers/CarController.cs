@@ -14,7 +14,6 @@ using Combobulator.Models;
 using Combobulator.Business.ViewModels;
 using log4net;
 using Newtonsoft.Json;
-using Car = Combobulator.DAL.Car;
 using NewCar = Combobulator.Models.NewCar;
 
 namespace Combobulator.ApiControllers
@@ -114,6 +113,7 @@ namespace Combobulator.ApiControllers
             }
         }
 
+        /*
         // GET api/car/XN12
         // Get single car by model code
         [DeflateCompression]
@@ -125,8 +125,8 @@ namespace Combobulator.ApiControllers
 
             try
             {
-                Car dbCar = dbContext.GetCar(id).FirstOrDefault();
-                Models.Car car = new Models.Car
+                Car dbCar = dbContext.GetNewCar(id).FirstOrDefault();
+                var car = new Models.NewCar
                 {
                     Id = dbCar.Id,
                     Model = dbCar.Model,
@@ -145,10 +145,10 @@ namespace Combobulator.ApiControllers
                     EconomyScale = dbCar.EconomyScale,
                     MPG = dbCar.MPG,
                     UsageScale = dbCar.UsageScale,
-                    Alt1 = dbCar.Alt1,
-                    Alt2 = dbCar.Alt2,
-                    Alt3 = dbCar.Alt3,
-                    TermsConditions = dbCar.TermsConditions
+                    Alt_1 = dbCar.Alt1,
+                    Alt_2 = dbCar.Alt2,
+                    Alt_3 = dbCar.Alt3,
+                    TermsConditions = dbCar.Terms
                 };
 
                 if (car == null)
@@ -181,5 +181,6 @@ namespace Combobulator.ApiControllers
                 return response;
             }
         }
+        */
     }
 }

@@ -17,8 +17,6 @@ namespace Combobulator.Controllers
     {
         private DAL.CombobulatorDataContext dbContext = new DAL.CombobulatorDataContext();
 
-        //private TextReader fileReader;
-
         public ActionResult Index()
         {
             var fileName = Server.MapPath("~/App_Data/mini_data_latest.csv");

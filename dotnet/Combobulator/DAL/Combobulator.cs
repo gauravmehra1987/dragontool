@@ -12,7 +12,6 @@ namespace Combobulator.DAL
     {
         [FunctionAttribute(Name = "dbo.GetLookups")]
         [ResultType(typeof(Title))]
-        [ResultType(typeof(Dealer))]
         public IMultipleResults GetLookupsResults()
         {
             IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));

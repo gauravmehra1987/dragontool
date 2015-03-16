@@ -9,7 +9,7 @@ namespace Combobulator.Config
     {
         public static void Configure()
         {
-            Mapper.CreateMap<Car, CarViewModel>()
+            Mapper.CreateMap<Models.NewCar, CarViewModel>()
                 .ForMember(d => d.Code, x => x.Ignore())
                 .ForMember(d => d.Color, x => x.Ignore())
                 .ForMember(d => d.Engine, x => x.Ignore())

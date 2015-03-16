@@ -14,7 +14,6 @@ using System.Web.Configuration;
 using System.ComponentModel;
 using System.Threading;
 using Combobulator.Classes;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
@@ -111,6 +110,13 @@ namespace Combobulator.Classes
 
         public static bool SendExistingCustomerDataApi(Customer customer)
         {
+            /*
+            http://combobdev.emaster.me.uk/?script=EM/External&checksum=31214e8483&system_id=3491056
+            &action=recordoutcome&de_id=1886&random=01234564rf
+                &outcome={"id":"1886","title":"Mr","first_name":"COLIN","surname":"HALES","email":"support@fisconline.co.uk","telephone":"012345678910","request_callback":"true","request_early_redemption":"true"}
+            &type=json
+            */
+
             bool success = false;
             string action = "recordoutcome";
             string customerId = customer.UserId;
@@ -125,19 +131,26 @@ namespace Combobulator.Classes
                 telephone = customer.TelephoneHome == null ? "" : customer.TelephoneHome,
                 request_callback = customer.RequestCallback == true ? "true" : "false",
                 request_early_redemption = customer.RequestEarlyRedemption == true ? "true" : "false",
+
                 model_name = customer.Car.Name == null ? "" : customer.Car.Name,
                 model_code = customer.Car.Code == null ? "" : customer.Car.Code,
-                capacity = customer.Selections.Capacity == null ? "" : Utils.SelectionsDescription(customer.Selections.Capacity, "CapacityScale"),
-                luggage = customer.Selections.Luggage == null ? "" : Utils.SelectionsDescription(customer.Selections.Luggage, "LuggageLevel"),
-                options = customer.Selections.Options == null ? "" : Utils.SelectionsDescription(customer.Selections.Options, "Options"),
-                price_range = customer.Selections.PriceRange == null ? "" : Utils.SelectionsDescription(customer.Selections.PriceRange, "PriceRange"),
+                capacity = customer.Selections.Capacity == null ? "" : Utils.SelectionsDescription(customer.Selections.Use, "CapacityScale"),
+                luggage = customer.Selections.Luggage == null ? "" : customer.Selections.Luggage,
+
+                awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
+                dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
+                hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
+                tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
+                
+                price_range = customer.Selections.PriceRange == null ? "" : customer.Selections.PriceRange,
                 performance = customer.Selections.Performance == null ? "" : Utils.SelectionsDescription(customer.Selections.Performance, "PerformanceScale"),
-                economy = customer.Selections.Economy == null ? "" : Utils.SelectionsDescription(customer.Selections.Economy, "EconomyScale"),
+                economy = customer.Selections.Economy == null ? "" : customer.Selections.Economy,
                 use = customer.Selections.Use == null ? "" : Utils.SelectionsDescription(customer.Selections.Use, "Use")
             });
 
             string url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customerId, _random, json);
 
+            /*
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = @"application/json";
@@ -160,6 +173,7 @@ namespace Combobulator.Classes
             {
                 success = true;
             }
+            */
 
             return success;
         }

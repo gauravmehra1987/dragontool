@@ -11,8 +11,6 @@ using Newtonsoft.Json;
 using Combobulator.Helpers;
 using Combobulator.DAL;
 using System.Web.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
 
 namespace Combobulator.ApiControllers
 {
@@ -20,21 +18,27 @@ namespace Combobulator.ApiControllers
     {
         private CombobulatorDataContext dbContext = new CombobulatorDataContext();
 
+        [DeflateCompression]
         public List<Models.PostcodeLookUp> Post([FromBody] PostcodeViewModel model)
         {
+            if (String.IsNullOrEmpty(model.Postcode))
+                return new List<Models.PostcodeLookUp>();
+
+            var postcode = model.Postcode.Replace(" ", "");
+
             bool isCacheEnabled;
             bool.TryParse(Common.Config.CacheEnabled, out isCacheEnabled);
             if (isCacheEnabled)
             {
                 //Check Cached Result
-                if (Cache.IsInCache("MC-POSTCODELOOKUP-" + model.Postcode))
+                if (Cache.IsInCache("MC-POSTCODELOOKUP-" + postcode))
                 {
-                    return Cache.GetFromCache<List<Models.PostcodeLookUp>>("MC-POSTCODELOOKUP-" + model.Postcode);
+                    return Cache.GetFromCache<List<Models.PostcodeLookUp>>("MC-POSTCODELOOKUP-" + postcode);
                 }
             }
 
             // Check Database
-            var postcodeData = dbContext.GetPostCode(model.Postcode);
+            var postcodeData = dbContext.GetPostCode(postcode);
             var postcodes = postcodeData.Select(x => new Models.PostcodeLookUp
             {
                 Address1 = x.Address1,
@@ -42,7 +46,7 @@ namespace Combobulator.ApiControllers
                 Address3 = x.Address3,
                 Town = x.Town,
                 County = x.County,
-                Postcode = x.Postcode
+                Postcode = x.Postcode.NormalizePostcode()
             }).ToList();
 
             if (postcodes.Any())
@@ -54,19 +58,20 @@ namespace Combobulator.ApiControllers
 
                 if (isCacheEnabled)
                 {
-                    Cache.SaveToCache("MC-POSTCODELOOKUP-" + model.Postcode, postcodes, DateTimeOffset.Now.AddSeconds(time));
+                    Cache.SaveToCache("MC-POSTCODELOOKUP-" + postcode, postcodes, DateTimeOffset.Now.AddSeconds(time));
                 }
                 return postcodes;
             }
             else
             {
                 //Make Grass Roots API WebRequest
-                var request = new RequestData();
                 var uri = new Uri(Common.Config.PostcodeApi)
-                    .AddParameter("postcode", model.Postcode)
+                    .AddParameter("postcode", postcode)
                     .AddParameter("application", Common.Config.PostcodeApp);
 
-                var json = request.GetData(uri.ToString());
+                var response = HttpWebRequestHelper.MakeRequest(uri.ToString());
+                string json = HttpWebRequestHelper.GetHttpWebResponseData(response);
+
                 if (!String.IsNullOrEmpty(json))
                 {
                     var postcodeApi = (PostcodeLookUpApiViewModel)JsonConvert.DeserializeObject(json, typeof(PostcodeLookUpApiViewModel));
@@ -75,7 +80,16 @@ namespace Combobulator.ApiControllers
                     foreach (var address in postcodeApi.Addresses)
                     {
                         address.Postcode = model.Postcode;
+                        dbContext.PostcodeLookUps.InsertOnSubmit(new DAL.PostcodeLookUp {
+                            Address1 = address.Address1,
+                            Address2 = address.Address2,
+                            Address3 = address.Address3,
+                            Town = address.Town,
+                            County = address.County,
+                            Postcode = postcode
+                        });
                     }
+                    dbContext.SubmitChanges();
 
                     if (!isCacheEnabled)
                         return postcodeApi.Addresses;
@@ -83,12 +97,12 @@ namespace Combobulator.ApiControllers
                     double time;
                     var isParsed = double.TryParse(Common.Config.CacheExpiration, out time);
                     if (!isParsed)
-                        Cache.SaveToCache("MC-POSTCODELOOKUP-" + model.Postcode, postcodeApi.Addresses, DateTimeOffset.Now.AddSeconds(time));
+                        Cache.SaveToCache("MC-POSTCODELOOKUP-" + postcode, postcodeApi.Addresses, DateTimeOffset.Now.AddSeconds(time));
                     return postcodeApi.Addresses;
                 }
                 else
                 {
-                    return null;
+                    return new List<Models.PostcodeLookUp>();
                 }
             }
         }
