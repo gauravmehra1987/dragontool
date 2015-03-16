@@ -30,7 +30,7 @@ function Logic() {
 
 	}
 
-	this.getPostcode = function( postcode ) {
+	this.getAddresses = function( postcode ) {
 
 		return $.when( 
 
@@ -38,7 +38,23 @@ function Logic() {
 
 				url:		path.apiPostcode,
 				data:		{ postcode: postcode },
-				success:	function( data ) { addresses = data; },
+				error:		function( xhr ) { tpl = false; }
+
+			} )
+
+		).then( function( data ) { return data; } );
+
+	}
+
+
+	this.getDealers = function( postcode ) {
+
+		return $.when( 
+
+			$.ajax( {
+
+				url:		path.apiDealers,
+				data:		{ postcode: postcode },
 				error:		function( xhr ) { tpl = false; }
 
 			} )

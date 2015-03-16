@@ -8,16 +8,18 @@
 		$fields		= $_POST[ 'form' ];
 		$car		= $_POST[ 'car' ];
 		$input		= $_POST[ 'input' ];
+		$dealer		= $_POST[ 'localDealer' ];
 
 		echo json_encode(
 
 			array(
 
-				'success'	=> true,
-				'message'	=> $message,
-				'fields'	=> $fields,
-				'car'		=> $car,
-				'input'		=> $input
+				'success'			=> true,
+				'message'			=> $message,
+				'fields'			=> $fields,
+				'car'				=> $car,
+				'input'				=> $input,
+				'localDealer'		=> $dealer
 
 			)
 
