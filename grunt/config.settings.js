@@ -15,7 +15,6 @@ grunt.config.merge( {
 
 				global:			grunt.file.readJSON( razor + '/global.json' ),
 				form:			grunt.file.readJSON( razor + '/form.json' ),
-				details:		grunt.file.readJSON( razor + '/results-details.json' ),
 				results:		grunt.file.readJSON( razor + '/results.json' ),
 				home:			grunt.file.readJSON( razor + '/home.json' ),
 				dashboard:		grunt.file.readJSON( razor + '/dashboard.json' ),

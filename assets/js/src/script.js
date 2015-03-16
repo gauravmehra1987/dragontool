@@ -1,17 +1,12 @@
 var priceChanged	= false;
 var ie				= new IE();
-var ui				= new UI( [ 'results', 'finance' ] );
+var ui				= new UI();
 var logic			= new Logic();
 var query			= new logic.query();
+var carCode			= getQueryParameter( 'm' ) || false;
 
 var responsive;
 var dashboard;
-
-// Determine car color - otherwise fall back to a generic blue color
-
-var carCode			= getQueryParameter( 'm' ) || false;
-var color			= ( carCode ) ? logic.getCarByCode( carCode ).color : false;
-var dashColor		= ( color ) ? color : 'Electric Blue';
 
 // Some not IE-friendly stuff
 
@@ -31,15 +26,14 @@ if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
 
 dashboard = new Dashboard();
 
-// Load initial color
-
-dashboard.colors( carColors[ dashColor ] );
-
 // Initialize everything after the page has fully loaded (otherwise dashboard values will be off!)
 
 $( window ).load( function() {
 
 	// We need to update dashboard color once the SVGs have been loaded
+
+	var color		= ( carCode ) ? logic.getCarByCode( carCode ).color : false;
+	var dashColor	= ( color ) ? color : 'Electric Blue';
 
 	dashboard.colors( carColors[ dashColor ] );
 
@@ -204,19 +198,69 @@ $( window ).load( function() {
 
 // Postcode
 
+var addrTpl = $( '#addresses' ).html();
+var sta;
+
 $( '#field-postcode' ).on( 'change', function( e ) {
 
 	var postcode = $( this ).val();
 
 	logic.getPostcode( postcode ).then( function( addresses ) {
 
-		var addr = _.first( addresses );
+		// Store addresses
 
-		$( '#field-address-1' ).val( addr.Address1 );
-		$( '#field-address-2' ).val( addr.Address2 );
-		$( '#field-address-3' ).val( addr.Address3 );
+		addressObj = addresses;
+
+		formattedAddresses = [];
+
+		// Remove existing addresses
+
+		$( '#address-chooser' ).contents().remove();
+
+		// Construct address strings
+
+		$( addresses ).each( function( i, addr ) {
+
+			var address = new String();
+
+			for( var key in addr ) if( ! _.isEmpty( addr[ key ] ) ) address += addr[ key ] + ', ';
+
+			address = address.substr( 0, address.length - 2 );
+
+			formattedAddresses.push( { id: i, address: address } );
+
+		} );
+
+		// Render template
+
+		ui.getTpl( 'addresses' ).then( function( tpl ) {
+
+			$( '#address-chooser' ).append( ui.renderTpl( tpl, { addresses: formattedAddresses } ) );
+
+			// We must add this field to the validator manually because it's dynamically created
+
+			$( '#addresses' ).rules( 'add', {
+
+				required: true,
+				messages: {
+
+					required: 'Please select your address from the list.'
+
+				}
+
+			} );
+
+		} );
 
 	} );
+
+} );
+
+$body.on( 'change', '#addresses', function( e ) {
+
+	var id = $( this ).val();
+
+	console.log( addressObj[ id ] );
 
 } );
 

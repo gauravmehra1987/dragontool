@@ -306,6 +306,8 @@ function Logic() {
 
 		console.log( data.length + ' rows loaded successfully to the database' );
 
+		$.publish( 'data-loaded' );
+
 		return db;
 
 	}
@@ -318,7 +320,9 @@ function Logic() {
 
 			console.log( 'loading database from local storage' );
 
-			populateDB( data ); }
+			populateDB( data );
+
+		}
 		
 		else {
 

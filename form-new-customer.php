@@ -168,6 +168,24 @@
 
 		</div>
 
+		<div id="address-chooser">
+			
+			<div class="form-control">
+
+				<div class="select disabled">
+
+					<select disabled="disabled">
+
+						<option value="">Choose your address</option>
+
+					</select>
+
+				</div>
+
+			</div>
+
+		</div><!-- end div#address-chooser -->
+
 		<div class="form-control">
 
 			<div class="select">

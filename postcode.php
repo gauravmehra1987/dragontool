@@ -9,7 +9,7 @@
 			array(
 
 				'Address1'		=> 'Flat 107',
-				'Address2'		=> 'Holly Court',
+				'Address2'		=> '',
 				'Address3'		=> 'John Harrison Way',
 				'Town'			=> 'London',
 				'County'		=> 'Greater London',

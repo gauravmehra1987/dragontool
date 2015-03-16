@@ -8,8 +8,8 @@ $.validator.setDefaults( {
 
 				// Add the .error class to the element
 
-				var el = el.element,
-					elementType = el.tagName.toLowerCase();					
+				var el				= el.element;
+				var elementType		= el.tagName.toLowerCase();					
 
 				if( elementType === 'select' ) {
 
@@ -26,6 +26,7 @@ $.validator.setDefaults( {
 				// Validate the fields here
 
 				console.log( el );
+				console.log( errors[ el.name ] );
 
 			} );
 
