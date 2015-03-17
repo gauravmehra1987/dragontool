@@ -2,7 +2,7 @@
 <%= results.model %>
 /build -->
 
-<figure id="car" class="model-image">
+<figure id="results-car" class="model-image">
 
 	<img src="assets/cars/none.png" class="img-base" />
 
@@ -10,7 +10,7 @@
 	<img src="<%= results.carImage %>" id="results-car" class="img-content" />
 	/build -->
 
-	<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="results-car" class="img-content" /><!-- /build -->
+	<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
 
 	<figcaption>
 
