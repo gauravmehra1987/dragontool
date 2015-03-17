@@ -165,7 +165,7 @@
 
 	</div><!-- end div#address-chooser -->
 
-	<div class="form-control disabled disabled-address append home full-width">
+	<div class="form-control disabled append home full-width">
 
 		<!-- build:template
 		<%= form.field.address_1 %>
@@ -176,7 +176,7 @@
 
 	</div>
 
-	<div class="form-control disabled disabled-address append home full-width">
+	<div class="form-control disabled append home full-width">
 
 		<!-- build:template
 		<%= form.field.address_2 %>
@@ -187,7 +187,7 @@
 
 	</div>
 
-	<div class="form-control disabled disabled-address append home full-width">
+	<div class="form-control disabled append home full-width">
 
 		<!-- build:template
 		<%= form.field.address_3 %>

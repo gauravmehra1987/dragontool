@@ -232,7 +232,7 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 	// Enable fields
 
-	$( '.disabled-address' ).removeClass( 'disabled' ).find( '[disabled]' ).prop( 'disabled', false );
+	$( '.disabled' ).removeClass( 'disabled' ).find( '[disabled]' ).prop( 'disabled', false );
 
 	// Get home addresses
 
