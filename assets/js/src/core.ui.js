@@ -211,6 +211,10 @@ function UI() {
 
 		this.showPanel( 'results' );
 
+		// If mobile, scroll to the top
+
+		if( Mini.browser.mobile ) $( [ $html[ 0 ], $body[ 0 ] ] ).animate( { scrollTop: 0 }, 600 );
+
 	}
 
 	// Easter eggs

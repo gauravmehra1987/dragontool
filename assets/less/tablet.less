@@ -61,6 +61,8 @@ html {
 
 				width: 100%;
 
+				&.full-width { width: 100%; }
+
 				.column {
 
 					&.right, &.left {
@@ -160,71 +162,32 @@ html {
 
 		}
 
+		#page-home {
+
+			#results #tpl-results .model-image {
+
+				background-color: transparent;
+				background-image: url( ../img/skid-marks-faded.png );
+
+			}
+
+		}
+
 		#page-results {
 
-			.layout {
+			.layout { position: relative; }
 
-				// Rearrange order of elements in the HTML
+			#results-car {
 
-				.display( flex );
-				.flex-direction( column-reverse );
+				margin: @margin;
 
-				position: static;
+				#car-image { width: 100%; }
 
-				height: auto;
+				figcaption {
 
-				.column {
+					&, & .car-layout.bottom {
 
-					position: static;
-
-					&.right {
-
-						height: auto;
-
-						.panel {
-
-							padding-left: 30px;
-							padding-right: 30px;
-
-							form {
-
-								.clearfix;
-								
-								.fields-left,
-								.fields-right {
-
-									float: left;
-									margin: 0 0 @margin;
-
-									width: 47.5%;
-
-								}
-
-								.fields-right {
-
-									margin-left: 5%;
-
-									& + .form-control {
-
-										clear: both;
-										float: none;
-										display: block;
-
-										button {
-
-											display: block;
-
-											width: 100% !important;
-
-										}
-
-									}
-
-								}
-
-							}
-
-						}
+						position: static; 
 
 					}
 

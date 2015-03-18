@@ -29,7 +29,6 @@
 
 				<!-- build:remove --><h2 class="switch-color">Car name</h2><!-- /build -->
 
-
 			<!-- build:template
 			<a href="<%= results.form_Link %>" class="button transparent">Call to action</a>
 			/build -->
