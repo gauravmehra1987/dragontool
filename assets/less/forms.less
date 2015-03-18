@@ -4,12 +4,18 @@
 
 	.remove-last-margin;
 
+
+
+	&.disabled { opacity: 0.6; }
+
 	&.append {
 
 		padding-left: ( @fontSizeSmall ) + ( @margin ) + 2px;
 		position: relative;
 
 	}
+
+	&.half-width { width: 50%; }
 
 	&.full-width {
 
@@ -209,26 +215,17 @@ input[type=cancel] {
 
 		label:before {
 
+			.icon;
+			.icon-circle-empty;
+
 			background: 0;
-			border-radius: 100%;
-			box-shadow: 0px 0px 0px 1px @gray inset;
+			color: @formGray;
 
 		}
 
-		input[type=radio] + label:after {
+		input[type=radio] + label:after { display: none; }
 
-			.icon-circle;
-
-			color: @black;
-			font-size: 0.5em;
-			visibility: hidden;
-
-			top: 0.5em;
-			left: 0.5em;
-
-		}
-
-		input[type=radio]:checked + label:after { visibility: visible; }
+		input[type=radio]:checked + label:before { .icon-circle-tick; }
 
 	}
 
@@ -261,7 +258,5 @@ select {
 		.form-select( @borderColor: @formRed, @dropdownBg: @formRed, @dropdownColor: @white );
 
 	}
-
-	&.disabled { opacity: 0.6; }
 
 }

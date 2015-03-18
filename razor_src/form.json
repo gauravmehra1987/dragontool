@@ -2,20 +2,10 @@
 
 	"model":			"@model Combobulator.Business.ViewModels.FormViewModel",
 
-	"open":				{
-
-		"existing":		"@using (Html.BeginForm(\"form\", \"api\", FormMethod.Post))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
-		"new_user":		"@using (Ajax.BeginForm(\"NewCustomerSubmit\", \"Customer\", new AjaxOptions { HttpMethod = \"POST\", InsertionMode = InsertionMode.Replace, UpdateTargetId = \"formContainer\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)"
-
-	},
+	"open":				"@using (Ajax.BeginForm(\"NewCustomerSubmit\", \"Customer\", new AjaxOptions { HttpMethod = \"POST\", InsertionMode = InsertionMode.Replace, UpdateTargetId = \"formContainer\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
 	"close":			"}",
 
-	"userid": {
-
-		"existing":		"@Html.EditorFor(model => model.UserId, new { id=\"uid\", value = Model.UserId })",
-		"new_user":		"@Html.EditorFor(model => model.UserId, new { id=\"uid\", value = ViewBag.UserId })"
-
-	},
+	"userid":			"@Html.EditorFor(model => model.UserId, new { id=\"uid\", value = ViewBag.UserId })",
 
 	"field": {
 

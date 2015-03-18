@@ -198,14 +198,45 @@ $( window ).load( function() {
 
 // Postcode
 
-var addrTpl = $( '#addresses' ).html();
-var sta;
+var addressObj;
+var dealersObj;
+
+var formatAddress = function( addrObj, skip ) {
+
+	var skip	= skip || [];
+	var address	= new String();
+
+	// Strip unwanted values
+
+	for( var i = 0; i < skip.length; i++ ) {
+
+		var key = skip[ i ];
+
+		delete addrObj[ key ];
+
+	}
+
+	// Construct string
+
+	for( var key in addrObj ) if( ! _.isEmpty( addrObj[ key ] ) ) address += addrObj[ key ] + ', ';
+
+	address = address.substr( 0, address.length - 2 );
+
+	return address;
+
+}
 
 $( '#field-postcode' ).on( 'change', function( e ) {
 
 	var postcode = $( this ).val();
 
-	logic.getPostcode( postcode ).then( function( addresses ) {
+	// Enable fields
+
+	$( '.disabled' ).removeClass( 'disabled' ).find( '[disabled]' ).prop( 'disabled', false );
+
+	// Get home addresses
+
+	logic.getAddresses( postcode ).then( function( addresses ) {
 
 		// Store addresses
 
@@ -254,13 +285,74 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 	} );
 
+	// Get dealers
+
+	logic.getDealers( postcode ).then( function( dealers ) {
+
+		// Store addresses
+
+		dealersObj = dealers;
+
+		formattedDealers = [];
+
+		// Remove existing addresses
+
+		$( '#dealer-chooser' ).contents().remove();
+
+		// Construct address strings
+
+		$( dealers ).each( function( i, addr ) {
+
+			var address = formatAddress( addr );
+
+			formattedDealers.push( { id: i, dealer: address } );
+
+		} );
+
+		// Render template
+
+		ui.getTpl( 'dealers' ).then( function( tpl ) {
+
+			$( '#dealer-chooser' ).append( ui.renderTpl( tpl, { dealers: formattedDealers } ) );
+
+			// We must add this field to the validator manually because it's dynamically created
+
+			$( '#dealers' ).rules( 'add', {
+
+				required: true,
+				messages: {
+
+					required: 'Please select your nearest dealer.'
+
+				}
+
+			} );
+
+		} );
+
+	} );
+
 } );
 
 $body.on( 'change', '#addresses', function( e ) {
 
-	var id = $( this ).val();
+	var address	= addressObj[ $( this ).val() ];
 
-	console.log( addressObj[ id ] );
+	if( ! _.isEmpty( $( this ).val() ) ) {
+
+		$( '#field-address-1' ).val( formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
+		$( '#field-address-2' ).val( address.Town );
+		$( '#field-address-3' ).val( address.County );
+
+	}
+
+	else {
+
+		$( '#field-address-1' ).val( null );
+		$( '#field-address-2' ).val( null );
+		$( '#field-address-3' ).val( null );
+
+	}
 
 } );
 

@@ -156,6 +156,12 @@
 
 		}
 
+		&.auto-height {
+
+			height: auto;
+
+		}
+
 		.column {
 
 			float: right;
@@ -206,6 +212,71 @@
 }
 
 // Common elements
+
+.actions {
+
+	.list-inline;
+
+	#results-back {
+
+		float: left;
+
+		a {
+
+			font-family: @fontMiniBold;
+			color: @grayDarker;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			&:before {
+
+				.icon;
+				.icon-raquo;
+				.rotate( 180deg );
+
+				margin-right: 0.5em;
+
+			}
+
+		}
+
+	}
+	
+	#results-close {
+
+		float: right;
+
+		a {
+
+			.hide-text;
+
+			color: @white;
+			display: block;
+			float: right;
+			font-size: @fontSizeLarge;
+			position: relative;
+			text-decoration: none;
+
+			height: 1em;
+			width: 1em;
+
+			&:before {
+
+				.icon;
+				.icon-cross;
+
+				position: absolute;
+
+				top: 0;
+				left: 0;
+
+			}
+
+		}
+
+	}
+
+}
 
 .price-span {
 
@@ -259,7 +330,7 @@
 
 }
 
-.terms {
+.terms, .notice {
 
 	&, p {
 
@@ -267,6 +338,9 @@
 		font-size: @fontSizeSmaller;
 		line-height: @fontSize;
 		margin: 0;
+
+		& + &,
+		& + .form-control { margin-top: @margin; }
 
 	}
 
@@ -316,7 +390,7 @@
 
 // Results page
 
-#car {
+#results-car {
 
 	background: url( ../img/skid-marks-faded.png ) 50% 0% no-repeat;
 	background-size: 80% auto;
@@ -364,7 +438,7 @@
 
 	// New, single-column layout
 
-	#results-car {
+	#car-image {
 
 		margin: 0 auto;
 		width: 80%;
@@ -395,71 +469,6 @@
 
 					font-size: @fontSizeLarger;
 					max-width: 480px;
-
-				}
-
-				.actions {
-
-					.list-inline;
-
-					#results-back {
-
-						float: left;
-
-						a {
-
-							font-family: @fontMiniBold;
-							color: @grayDarker;
-							text-decoration: none;
-							text-transform: uppercase;
-
-							&:before {
-
-								.icon;
-								.icon-raquo;
-								.rotate( 180deg );
-
-								margin-right: 0.5em;
-
-							}
-
-						}
-
-					}
-					
-					#results-close {
-
-						float: right;
-
-						a {
-
-							.hide-text;
-
-							color: @white;
-							display: block;
-							float: right;
-							font-size: @fontSizeLarge;
-							position: relative;
-							text-decoration: none;
-
-							height: 1em;
-							width: 1em;
-
-							&:before {
-
-								.icon;
-								.icon-cross;
-
-								position: absolute;
-
-								top: 0;
-								left: 0;
-
-							}
-
-						}
-
-					}
 
 				}
 
@@ -760,13 +769,13 @@
 
 		width: auto;
 
-		#car {
+		#results-car {
 
 			margin: 0 @margin;
 
 			.img-base { display: none; }
 
-			#results-car { position: static; }
+			#car-image { position: static; }
 
 			figcaption {
 
@@ -810,6 +819,123 @@
 				}
 
 			}
+
+		}
+
+	}
+
+	html > body #page-form.layout-wrapper .layout.auto-height {
+
+		margin: 0 @margin;
+
+		.form-left, .form-right {
+
+			border: 0;
+			float: none;
+			margin: 0;
+			max-width: none;
+			padding: 0;
+
+			width: auto;
+
+		}
+
+		.inline .half-width, .inline, .half-width, #address-type-chooser {
+
+			float: none;
+
+			width: 100%;
+
+			input:not( [type=checkbox] ):not( [type=radio] ),
+			.button,
+			button,
+			textarea { width: 100%; }
+
+		}
+
+		#form-car { display: none; }
+
+		#finance + label { line-height: 1.4em; }
+
+	}
+
+}
+
+// Form page
+
+html > body #page-form.layout-wrapper {
+
+	form { .clearfix; }
+
+	.form-left, .form-right {
+
+		float: left;
+		overflow: hidden;
+		position: relative;
+
+	}
+
+	.form-left {
+
+		border-right: solid 1px @dialGray;
+		max-width: ~'calc( 35% - 41px )';
+		margin-right: @margin;
+		padding-right: @margin;
+
+	}
+
+	.form-right { max-width: 65%; }
+
+	#form-car {
+
+		background: url( ../img/skid-marks-faded.png ) 50% 50% no-repeat;
+		margin: 0 auto;
+
+		height: auto;
+		width: 100%;
+
+	}
+
+	// Actual form layout
+
+	.inline {
+
+		.clearfix;
+
+		.form-control {
+
+			.box-sizing( border-box );
+
+			&:first-of-type {
+
+				float: left;
+
+				width: auto;
+
+			}
+
+			&:last-of-type {
+
+				float: right;
+
+				width: auto;
+
+			}
+
+		}
+
+	}
+
+	#optout-chooser, #address-type-chooser {
+
+		.clearfix;
+
+		.checkbox {
+
+			float: left;
+			margin-right: @margin;
+
+			&.checkbox-radio label { line-height: 2.3em; }
 
 		}
 

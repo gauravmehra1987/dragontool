@@ -44,13 +44,13 @@ $.validator.setDefaults( {
 			$.ajax( {
 
 				type: 'POST',
-				// async: false,
 				url: ajaxURL,
 				data: {
 
 					form: $( 'form' ).serializeObject(),
 					car: carCode,
-					input: store.get( 'miniInput' )
+					input: store.get( 'miniInput' ),
+					localDealer: dealersObj[ $( '#dealers' ).val() ]
 
 				},
 				dataType: 'json',

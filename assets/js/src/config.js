@@ -32,6 +32,7 @@ var system_paths = {
 		spriteFallback:	'Assets/sprites',
 		api:			'api/car',
 		apiPostcode:	'api/postcodelookup',
+		apiPostcode:	'api/dealerlookup',
 		preload:		'api/assets/svg',
 		templates:		'Assets/js/tpl'
 
@@ -42,8 +43,9 @@ var system_paths = {
 		assets:			'assets/cars/',
 		results:		'results.php?',
 		spriteFallback:	'assets/sprites',
-		api:			'json/car.json',
+		api:			'json/data.json',
 		apiPostcode:	'postcode.php',
+		apiDealers:		'dealers.php',
 		preload:		'preload.php',
 		templates:		'assets/js/tpl'
 

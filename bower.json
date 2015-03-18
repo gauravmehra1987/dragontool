@@ -17,7 +17,6 @@
   ],
   "devDependencies": {
     "animate.css": "*",
-    "fancybox": "~2.1.5",
     "fastclick": "~1.0.3",
     "html5shiv": "*",
     "jquery.browser": "*",

@@ -3,13 +3,17 @@
 A car picker tool for Mini.
 
 1. [Requirements](#requirements)
-2. [Installation](#installation)
-3. [Grunt tasks](#grunt-tasks)
-	1. [OS X workflow](#os-x-workflow)
-	2. [Windows workflow](#windows-workflow)
-	3. [Rendering Razor views and copying assets](#rendering-razor-views-and-copying-assets)
-4. [.NET integration](#net-integration)
-5. [Troubleshooting](#troubleshooting)
+2. [Project overview](#project-overview)
+	1. [Scripts / libraries used in the project](#scripts-libraries-used-in-the-project)
+	2. [Directory structure](#directory-structure)	
+3. [Installation](#installation)
+4. Grunt
+	1. [Grunt tasks](#grunt-tasks)
+	2. [OS X workflow](#os-x-workflow)
+	3. [Windows workflow](#windows-workflow)
+	4. [Rendering Razor views and copying assets](#rendering-razor-views-and-copying-assets)
+5. [.NET integration](#net-integration)
+6. [Troubleshooting](#troubleshooting)
 
 > ##### Disclaimer
 > This document assumes you're using a Mac. If you're on Windows, you will not be able to generate web fonts. For production, always build the project on an Apple machine.
@@ -48,6 +52,72 @@ A car picker tool for Mini.
 
 > ##### Note
 > Steps 4 and 5 won't work if you're on a Windows machine. [Click here](#addendum) to read on how to compile the project in Windows.
+
+## Project overview
+
+### Scripts / libraries used in the project
+
+- [LESS Hat](http://lesshat.madebysource.com/)
+- [jQuery](https://jquery.com/)
+- [jQuery Validation](http://jqueryvalidation.org/)
+- [Underscore](http://underscorejs.org/)
+- [GreenSock Draggable](https://greensock.com/draggable) (used to create touch-friendly dials)
+- [SVGInjector](https://github.com/iconic/SVGInjector)
+- [Mustache](http://mustache.github.io/)
+- [TaffyDB](http://www.taffydb.com/) (used to query JSON data in a SQL-like fashion)
+- [store.js](https://github.com/marcuswestin/store.js/) (used to persist user selection across the screens)
+
+### Directory structure
+
+An asterisk denotes a directory created during the build process. Please see the table below to find out more information about some of the directories.
+
+```
+assets/
+	cars/
+	css/*
+	fonts/
+		icons/*
+		mini/
+	icons/
+	img/
+		sprites/*
+	js/
+		htc/*
+		src/
+		tpl/
+	less/
+		dials/
+	sprites/
+		svg/
+bower_components/
+dotnet/
+grunt/
+json/
+landing-page/
+node_modules/
+prototype/
+	assets/
+razor_src/
+razor_templates/*
+```
+
+Directory name  		| Information
+------------------------|------------
+`assets/cars/`			| Put all car images in here. Each car has a two-letter, two-digit code assigned to it, eg. *XM52*. The app will look for a matching image in this folder.
+`assets/fonts/`			| This folder hosts all web-fonts. All generted fonts will be put in the root directory of the folder, except for the *icon* font, which has its own sub-directory.
+`assets/icons/`			| All `*.svg` files in this folder will be converted into a web-font; original filenames will be used as LESS mixin name, for example `facebook.svg` will generate a mixin called `.icon-facebok`.
+`assets/img/`			| Contains all images used in the project. Bear in mind, that the images are meant to be places in the *root* directory, and every sub-folder will be deleted when `grunt clean` is being run.
+`assets/js/src/`		| Place all your custom JavaScript here.
+`assets/js/tpl/`		| Stores `*.mustache` templates.
+`assets/less/`			| LESS source-files, organised by function they serve.
+`assets/sprites/svg/`	| SVG images used to generate CSS sprites for the dials. Those will be converted to PNGs by `grunt generate`.
+`dotnet`				| Holds the entire .NET project.
+`grunt/`				| Here you will find task definitions and settings for Grunt plugins.
+`json/`					| This stores only one file - `data.json` which is meant to be used for front-end developement, when no .NET environment is available.
+`landing-page/`			| A simple landing page, just in case anything goes wrong.
+`prototype/`			| Contains the standalone logic prototype used for logic testing. Does not require compiling.
+`razor_src`				| In this directory you will find `*.json` files with snippets of Razor code, which is used to generate *Views* in the `dotnet` folder. You can read more about it [here](#net-integration).
+`razor_templates/`		| Temporary directory created by `grunt templates`. Nothing to see here. Running `grunt clean` will delete it.
 
 ## Installation
 

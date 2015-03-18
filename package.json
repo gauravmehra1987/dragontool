@@ -19,7 +19,6 @@
     "grunt-htmlclean": "^2.3.2",
     "grunt-newer": "^1.1.0",
     "grunt-notify": "^0.4.1",
-    "grunt-php": "^1.2.0",
     "grunt-prettify": "^0.4.0",
     "grunt-processhtml": "0.3.6",
     "grunt-spritesmith": "^3.7.0",
