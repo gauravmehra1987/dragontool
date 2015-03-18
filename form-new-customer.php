@@ -3,7 +3,7 @@
 /build -->
 
 <!-- build:template
-<%= form.open.new_user %>
+<%= form.open %>
 /build -->
 
 <div class="layout auto-height">
@@ -11,7 +11,7 @@
 <!-- build:remove --><form action="ajax.php"><!-- /build -->
 
 	<!-- build:template
-	<%= form.userid.new_user %>
+	<%= form.userid %>
 	/build -->
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
