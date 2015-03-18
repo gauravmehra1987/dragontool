@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Combobulator.Models;
 using Combobulator.Common;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common.Extensions;
 using Newtonsoft.Json;
 using Combobulator.Helpers;
-using Combobulator.DAL;
+using Combobulator.Data;
 using System.Web.Http;
+using Combobulator.Common.Helpers;
 
 namespace Combobulator.ApiControllers
 {
     public class PostcodeLookUpController : BaseController
     {
-        private CombobulatorDataContext dbContext = new CombobulatorDataContext();
+        private readonly CombobulatorDataContext _dbContext = new CombobulatorDataContext();
 
+        /// <summary>
+        /// Posts the specified model and returns a list of addresses.
+        /// </summary>
+        /// <param name="model">The form collection containing a postcode.</param>
+        /// <returns>A list of addresses from the given postcode.</returns>
         [DeflateCompression]
         public List<Models.PostcodeLookUp> Post([FromBody] PostcodeViewModel model)
         {
@@ -38,7 +41,7 @@ namespace Combobulator.ApiControllers
             }
 
             // Check Database
-            var postcodeData = dbContext.GetPostCode(postcode);
+            var postcodeData = _dbContext.GetPostCode(postcode);
             var postcodes = postcodeData.Select(x => new Models.PostcodeLookUp
             {
                 Address1 = x.Address1,
@@ -70,7 +73,7 @@ namespace Combobulator.ApiControllers
                     .AddParameter("application", Common.Config.PostcodeApp);
 
                 var response = HttpWebRequestHelper.MakeRequest(uri.ToString());
-                string json = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                var json = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                 if (!String.IsNullOrEmpty(json))
                 {
@@ -80,7 +83,7 @@ namespace Combobulator.ApiControllers
                     foreach (var address in postcodeApi.Addresses)
                     {
                         address.Postcode = model.Postcode;
-                        dbContext.PostcodeLookUps.InsertOnSubmit(new DAL.PostcodeLookUp {
+                        _dbContext.PostcodeLookUps.InsertOnSubmit(new PostcodeLookUp {
                             Address1 = address.Address1,
                             Address2 = address.Address2,
                             Address3 = address.Address3,
@@ -89,7 +92,7 @@ namespace Combobulator.ApiControllers
                             Postcode = postcode
                         });
                     }
-                    dbContext.SubmitChanges();
+                    _dbContext.SubmitChanges();
 
                     if (!isCacheEnabled)
                         return postcodeApi.Addresses;

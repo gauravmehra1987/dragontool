@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Data.Linq;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using CsvHelper;
-using System.IO;
 using Combobulator.Config;
-using Combobulator.Models;
-using Combobulator.DAL;
+using Combobulator.Data;
 
 namespace Combobulator.Controllers
 {
     public class ImportController : BaseController
     {
-        private DAL.CombobulatorDataContext dbContext = new DAL.CombobulatorDataContext();
-
-        public ActionResult Index()
+        /// <summary>
+        /// Reads a local CSV file and imports the data into database.
+        /// </summary>
+        public void Index()
         {
             var fileName = Server.MapPath("~/App_Data/mini_data_latest.csv");
             using (var fileReader = System.IO.File.OpenText(fileName))
@@ -34,13 +31,14 @@ namespace Combobulator.Controllers
                 csv.Configuration.CultureInfo = cultureInfo;
                 csv.Configuration.RegisterClassMap<NewCarConfig>();
 
-                var records = csv.GetRecords<Combobulator.Models.NewCar>().Distinct().ToList();
-                using (var context = new DAL.CombobulatorDataContext())
+                var records = csv.GetRecords<Models.NewCar>().Distinct().ToList();
+                using (var context = new CombobulatorDataContext())
                 {
                     foreach (var record in records)
                     {
-                        var finance = new EntitySet<DAL.Finance>();
-                        finance.Add(new DAL.Finance
+                        var finance = new EntitySet<Finance>
+                        {
+                            new Finance
                             {
                                 Term = record.Term ?? 0,
                                 FinalPayment = record.FinalPayment ?? 0.0,
@@ -52,9 +50,10 @@ namespace Combobulator.Controllers
                                 Deposit = record.Deposit ?? 0.0,
                                 Payment = record.Payment ?? 0.0,
                                 PurchaseFee = record.PurchaseFee ?? 0.0
-                            });
+                            }
+                        };
 
-                        context.NewCars.InsertOnSubmit(new DAL.NewCar
+                        context.NewCars.InsertOnSubmit(new NewCar
                         {
                             Code = record.Code,
                             Color = record.Color,
@@ -82,9 +81,13 @@ namespace Combobulator.Controllers
                     }
                 }
             }
-            return View();
         }
 
+        /// <summary>
+        /// Readings the exception callback.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        /// <param name="reader">The reader.</param>
         private static void ReadingExceptionCallback(Exception ex, ICsvReader reader)
         {
             throw ex;

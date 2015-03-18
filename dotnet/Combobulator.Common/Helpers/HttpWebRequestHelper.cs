@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Net;
-using System.Collections.Specialized;
 using System.Web;
-using System.IO;
 
-namespace Combobulator.Common.Extensions
+namespace Combobulator.Common.Helpers
 {
     public static class HttpWebRequestHelper
     {
@@ -19,7 +16,7 @@ namespace Combobulator.Common.Extensions
 
         private static string FormatPostParameters(NameValueCollection nameValueCollection)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (string key in nameValueCollection)
             {
                 sb.Append(key + "=" + HttpUtility.UrlEncode(nameValueCollection[key]) + "&");
@@ -30,8 +27,8 @@ namespace Combobulator.Common.Extensions
 
         private static string FormatPostParameters(Dictionary<string, string> parameters)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (string key in parameters.Keys)
+            var sb = new StringBuilder();
+            foreach (var key in parameters.Keys)
             {
                 sb.Append(HttpUtility.UrlEncode(key) + "=" + HttpUtility.UrlEncode(parameters[key]) + "&");
             }
@@ -41,68 +38,64 @@ namespace Combobulator.Common.Extensions
 
         public static HttpWebResponse SendFormPostRequest(string url, Dictionary<string, string> parameters)
         {
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = FormContentType;
             httpWebRequest.Method = POST;
 
-            string postData = FormatPostParameters(parameters);
+            var postData = FormatPostParameters(parameters);
 
-            byte[] requestBytes = Encoding.UTF8.GetBytes(postData);
+            var requestBytes = Encoding.UTF8.GetBytes(postData);
 
             httpWebRequest.ContentLength = requestBytes.Length;
 
-            using (Stream requestStream = httpWebRequest.GetRequestStream())
+            using (var requestStream = httpWebRequest.GetRequestStream())
             {
                 requestStream.Write(requestBytes, 0, requestBytes.Length);
                 requestStream.Close();
             }
 
-            Task<WebResponse> responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
-
+            var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
             return (HttpWebResponse)responseTask.Result;
         }
         public static HttpWebResponse SendNonFormPostRequest(string data, string url)
         {
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = XMLContentType;
             httpWebRequest.Method = POST;
             httpWebRequest.KeepAlive = false;
             httpWebRequest.Timeout = 500000;
 
-            StreamWriter sw = new StreamWriter(httpWebRequest.GetRequestStream());
+            var sw = new StreamWriter(httpWebRequest.GetRequestStream());
             sw.WriteLine(data);
             sw.Close();
 
-            Task<WebResponse> responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
-
+            var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
             return (HttpWebResponse)responseTask.Result;
         }
 
         public static HttpWebResponse MakeRequest(string url)
         {
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = XMLContentType;
             httpWebRequest.Method = "GET";
             httpWebRequest.KeepAlive = false;
             httpWebRequest.Timeout = 500000;
 
-            Task<WebResponse> responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
-
+            var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
             return (HttpWebResponse)responseTask.Result;
         }
 
         public static string GetHttpWebResponseData(HttpWebResponse response)
         {
-            string data = string.Empty;
+            var data = string.Empty;
             if (response != null)
             {
-                StreamReader incomingStreamReader = new StreamReader(response.GetResponseStream());
+                var incomingStreamReader = new StreamReader(response.GetResponseStream());
                 data = incomingStreamReader.ReadToEnd();
                 incomingStreamReader.Close();
                 response.GetResponseStream().Close();
             }
             return data;
         }
-
     }
 }

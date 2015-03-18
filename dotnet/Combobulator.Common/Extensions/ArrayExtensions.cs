@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Combobulator.Common.Extensions
 {
@@ -15,13 +11,12 @@ namespace Combobulator.Common.Extensions
             foreach (var i in array)
             {
                 int result;
-                bool isParsed = Int32.TryParse(i, out result);
-                if (isParsed)
+                var isParsed = Int32.TryParse(i, out result);
+                if (!isParsed)
+                    continue;
+                if (Convert.ToInt32(i) == search)
                 {
-                    if (Convert.ToInt32(i) == search)
-                    {
-                        counter++;
-                    }
+                    counter++;
                 }
             }
             var count = total - counter;

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Collections.Generic;
 using Combobulator.Models;
-using Combobulator.Common;
-using Combobulator.Business.ViewModels;
-using Combobulator.Common.Extensions;
-using Newtonsoft.Json;
 using Combobulator.Helpers;
 using Combobulator.Classes;
 
@@ -15,6 +7,10 @@ namespace Combobulator.ApiControllers
 {
     public class CustomerController : BaseController
     {
+        /// <summary>
+        /// Connects to eMaster API and returns a list of users.
+        /// </summary>
+        /// <returns>Returns a list of users.</returns>
         [DeflateCompression]
         public List<User> Get()
         {

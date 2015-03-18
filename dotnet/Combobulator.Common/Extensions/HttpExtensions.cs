@@ -8,9 +8,9 @@ namespace Combobulator.Common.Extensions
         /// <summary>
         /// Adds the specified parameter to the Query String.
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="paramName">Name of the parameter to add.</param>
-        /// <param name="paramValue">Value for the parameter to add.</param>
+        /// <param name="uri"></param>
+        /// <param name="name">Name of the parameter to add.</param>
+        /// <param name="value">Value for the parameter to add.</param>
         /// <returns>Url with added parameter.</returns>
         public static Uri AddParameter(this Uri uri, string name, string value)
         {

@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Linq.Mapping;
-using System.Linq;
-using System.Reflection;
-using System.Web;
 using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using System.Reflection;
 
-namespace Combobulator.DAL
+namespace Combobulator.Data
 {
     public partial class CombobulatorDataContext
     {
-        [FunctionAttribute(Name = "dbo.GetLookups")]
+        [Function(Name = "dbo.GetLookups")]
         [ResultType(typeof(Title))]
         public IMultipleResults GetLookupsResults()
         {

@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Combobulator.Models;
 using Combobulator.Common;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common.Extensions;
 using Newtonsoft.Json;
 using Combobulator.Helpers;
-using Combobulator.DAL;
-using System.Data.Linq;
+using Combobulator.Data;
 using System.Web.Http;
+using Combobulator.Common.Helpers;
 
 namespace Combobulator.ApiControllers
 {
     public class DealerLookUpController : BaseController
     {
-        private CombobulatorDataContext dbContext = new CombobulatorDataContext();
+        private readonly CombobulatorDataContext _dbContext = new CombobulatorDataContext();
 
+        /// <summary>
+        /// Posts the specified model and returns a list of dealers.
+        /// </summary>
+        /// <param name="model">The model containing a postcode.</param>
+        /// <returns>A list of dealers from the given postcode.</returns>
         [DeflateCompression]
         public List<Models.DealerLookUp> Post([FromBody] DealerViewModel model)
         {
@@ -39,7 +41,7 @@ namespace Combobulator.ApiControllers
             }
 
             // Check Database
-            var postcodeData = dbContext.GetDealer(postcode);
+            var postcodeData = _dbContext.GetDealer(postcode);
             var dealers = postcodeData.Select(x => new Models.DealerLookUp
             {
                 DealerId = x.DealerId,
@@ -78,7 +80,7 @@ namespace Combobulator.ApiControllers
                     .AddParameter("address", postcode)
                     .AddParameter("sensor", "false");
                 var response = HttpWebRequestHelper.MakeRequest(googleUri.ToString());
-                string json = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                var json = HttpWebRequestHelper.GetHttpWebResponseData(response);
                 var addresses = (GoogleGeoCodeResponse)JsonConvert.DeserializeObject(json, typeof(GoogleGeoCodeResponse));
                 var location = addresses.results.Select(x => x.geometry.location).SingleOrDefault();
 
@@ -93,10 +95,10 @@ namespace Combobulator.ApiControllers
                     .AddParameter("lat", location.lat)
                     .AddParameter("lng", location.lng);
                 var dealerResponse = HttpWebRequestHelper.MakeRequest(dealerUri.ToString());
-                string feed = HttpWebRequestHelper.GetHttpWebResponseData(dealerResponse);
+                var feed = HttpWebRequestHelper.GetHttpWebResponseData(dealerResponse);
 
-                var start = feed.IndexOf("(");
-                var end = feed.LastIndexOf(")");
+                var start = feed.IndexOf("(", StringComparison.Ordinal);
+                var end = feed.LastIndexOf(")", StringComparison.Ordinal);
                 var data = feed.Substring(start + 1, end - start - 1);
                 var dealerList = (DealerResponse)JsonConvert.DeserializeObject(data, typeof(DealerResponse));
 
@@ -121,10 +123,10 @@ namespace Combobulator.ApiControllers
                 //Save Result to DB
                 foreach (var dealer in viewModel)
                 {
-                    dbContext.Dealers.InsertOnSubmit(new DAL.Dealer
+                    _dbContext.Dealers.InsertOnSubmit(new Dealer
                     {
                         Postcode = postcode,
-                        DealerLookUp = new DAL.DealerLookUp
+                        DealerLookUp = new DealerLookUp
                         {
                             Address = dealer.Address,
                             Postcode = dealer.Postcode,
@@ -142,7 +144,7 @@ namespace Combobulator.ApiControllers
                             Url = dealer.Url
                         }
                     });
-                    dbContext.SubmitChanges();
+                    _dbContext.SubmitChanges();
                 }
 
                 if (!isCacheEnabled)

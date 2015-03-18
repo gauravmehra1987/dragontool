@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Combobulator.DAL
+namespace Combobulator.Data
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;

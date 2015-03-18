@@ -196,14 +196,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
-    <Compile Include="DAL\Combobulator.cs">
-      <DependentUpon>Combobulator.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\Combobulator1.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Combobulator.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -436,11 +428,6 @@
     <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="DAL\Combobulator.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Combobulator1.designer.cs</LastGenOutput>
-    </Content>
     <Content Include="App_Data\mini_data_latest.csv" />
     <Content Include="Assets\cars\index.php" />
     <Content Include="Assets\fonts\icons\icons.eot" />
@@ -501,6 +488,10 @@
       <Project>{218ae4b6-3a16-4623-bb3a-1364b0430957}</Project>
       <Name>Combobulator.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Combobulator.Data\Combobulator.Data.csproj">
+      <Project>{5ecfa913-45ec-42e5-a37e-c6992b402d34}</Project>
+      <Name>Combobulator.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Combobulator.Models\Combobulator.Models.csproj">
       <Project>{d39ac1eb-6021-44ad-803a-a39ecd1bf729}</Project>
       <Name>Combobulator.Models</Name>
@@ -513,11 +504,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DAL\Combobulator.dbml.layout">
-      <DependentUpon>Combobulator.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />

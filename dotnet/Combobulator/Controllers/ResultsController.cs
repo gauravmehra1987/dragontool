@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Data.Linq;
 using System.Linq;
-using System.Reflection;
 using System.Web.Mvc;
-using log4net;
-using Combobulator.Classes;
-using Combobulator.DAL;
-using Combobulator.Models;
 using Combobulator.Business.ViewModels;
+using Combobulator.Data;
 
 namespace Combobulator.Controllers
 {
 	public class ResultsController : BaseController
 	{
-		private CombobulatorDataContext dbContext = new CombobulatorDataContext();
+		private readonly CombobulatorDataContext _dbContext = new CombobulatorDataContext();
 
+        /// <summary>
+        /// Renders a view on screen.
+        /// </summary>
+        /// <returns></returns>
 		public ActionResult Index()
 		{
-			string userId = String.Empty;
-			string modelCode = String.Empty;
-			Selections selections = new Selections();
+			var userId = String.Empty;
+			string modelCode;
 			// customer id
 			if (!String.IsNullOrEmpty(Request.QueryString["c"]))
 			{
@@ -32,15 +30,21 @@ namespace Combobulator.Controllers
 			}
 			else
 			{
-				string cQuery = userId != String.Empty ? ("?c=" + userId) : "";
-				return Redirect(String.Concat("~/", cQuery));
+				var cQuery = userId != String.Empty ? ("?c=" + userId) : "";
+			    return RedirectToAction("Index", "Home", cQuery);
 			}
 			ViewBag.UserId = userId;
 			ViewBag.ModelCode = modelCode;
 			return View();
 		}
 
+        /// <summary>
+        /// Retrieves a car model and finance details from the database and renders it on screen.
+        /// </summary>
+        /// <param name="modelCode">Model code.</param>
+        /// <returns>Renders a partial view on screen.</returns>
         [ChildActionOnly]
+        [HttpGet]
         public ActionResult ResultDetail(string modelCode)
         {
             if (String.IsNullOrEmpty(modelCode))
@@ -50,8 +54,14 @@ namespace Combobulator.Controllers
 
             try
             {
-                var dbCar = dbContext.GetNewCar(modelCode).FirstOrDefault();
-                var dbFinance = dbContext.GetCarFinance(dbCar.Id).FirstOrDefault();
+                var dbCar = _dbContext.GetNewCar(modelCode).FirstOrDefault();
+                if (dbCar == null)
+                    return RedirectToAction("Index", "Home");
+
+                var dbFinance = _dbContext.GetCarFinance(dbCar.Id).FirstOrDefault();
+                if (dbFinance == null)
+                    return RedirectToAction("Index", "Home");
+
                 var viewModel = new CarViewModel
                 {
                     Code = dbCar.Code,
@@ -73,7 +83,7 @@ namespace Combobulator.Controllers
                     Alt_2 = dbCar.Alt2,
                     Alt_3 = dbCar.Alt3,
                     Terms = dbCar.Terms,
-                    Finance = new Combobulator.Models.Finance
+                    Finance = new Models.Finance
                     {
                         Info = dbCar.Terms,
                         Term = dbFinance.Term ?? 0,

@@ -5,23 +5,21 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Web.Configuration;
 using System.ComponentModel;
 using System.Threading;
-using Combobulator.Classes;
+using Combobulator.Business.ViewModels;
+using Combobulator.Common.Helpers;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
+using log4net;
 
 namespace Combobulator.Classes
 {
     public class Utils
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static string _systemId = WebConfigurationManager.AppSettings["FiscSystemId"];
         private static string _random = WebConfigurationManager.AppSettings["FiscRandom"];
@@ -46,7 +44,7 @@ namespace Combobulator.Classes
                 dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
                 if (obj.Error != null)
                 {
-                    log.Error("GetCustomerById Error - " + obj.Error);
+                    Log.Error("GetCustomerById Error - " + obj.Error);
                     return new Customer();
                 }
                 else
@@ -61,7 +59,7 @@ namespace Combobulator.Classes
             }
             catch (Exception ex)
             {
-                log.Error("GetCustomerById", ex);
+                Log.Error("GetCustomerById", ex);
                 return new Customer();
             }
         }
@@ -84,7 +82,7 @@ namespace Combobulator.Classes
                 var obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
                 if (obj.Error != null)
                 {
-                    log.Error("GetCustomers Error - " + obj.Error);
+                    Log.Error("GetCustomers Error - " + obj.Error);
                     return null;
                 }
 
@@ -103,52 +101,76 @@ namespace Combobulator.Classes
             }
             catch (Exception ex)
             {
-                log.Error("GetCustomerById", ex);
+                Log.Error("GetCustomerById", ex);
                 return null;
             }
         }
 
         public static bool SendExistingCustomerDataApi(Customer customer)
         {
-            /*
-            http://combobdev.emaster.me.uk/?script=EM/External&checksum=31214e8483&system_id=3491056
-            &action=recordoutcome&de_id=1886&random=01234564rf
-                &outcome={"id":"1886","title":"Mr","first_name":"COLIN","surname":"HALES","email":"support@fisconline.co.uk","telephone":"012345678910","request_callback":"true","request_early_redemption":"true"}
-            &type=json
-            */
-
-            bool success = false;
-            string action = "recordoutcome";
-            string customerId = customer.UserId;
-            string checksum = GetCustomerDetailsChecksum(_systemId, customerId, _secretKey, _random);
-            string json = new JavaScriptSerializer().Serialize(new
+            var success = false;
+            var action = "recordoutcome";
+            var input = Common.Config.SystemId + customer.UserId + Common.Config.SecretKey + Common.Config.Random;
+            var checksum = CryptoHelper.CalculateMd5Hash(input);
+            var json = JsonConvert.SerializeObject(new ResultViewModel
             {
-                id = customer.UserId == null ? "" : customer.UserId,
-                title = customer.Title == null ? "" : customer.Title,
-                first_name = customer.FirstName == null ? "" : customer.FirstName,
-                surname = customer.LastName == null ? "" : customer.LastName,
-                email = customer.Email == null ? "" : customer.Email,
-                telephone = customer.TelephoneHome == null ? "" : customer.TelephoneHome,
-                request_callback = customer.RequestCallback == true ? "true" : "false",
-                request_early_redemption = customer.RequestEarlyRedemption == true ? "true" : "false",
+                id = customer.UserId ?? "",
+                title = customer.Title ?? "",
+                first_name = customer.FirstName ?? "",
+                surname = customer.LastName ?? "",
+                email = customer.Email ?? "",
+                telephone = customer.TelephoneHome ?? "",
+                request_callback = customer.RequestCallback ? "true" : "false",
+                request_early_redemption = customer.RequestEarlyRedemption ? "true" : "false",
 
-                model_name = customer.Car.Name == null ? "" : customer.Car.Name,
-                model_code = customer.Car.Code == null ? "" : customer.Car.Code,
-                capacity = customer.Selections.Capacity == null ? "" : Utils.SelectionsDescription(customer.Selections.Use, "CapacityScale"),
-                luggage = customer.Selections.Luggage == null ? "" : customer.Selections.Luggage,
+                model_name = customer.Car.Name ?? "",
+                model_code = customer.Car.Code ?? "",
+                capacity = customer.Selections.Capacity == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "CapacityScale"),
+                luggage = customer.Selections.Luggage ?? "",
+
+                awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
+                dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
+                hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
+                tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
+
+                price_range = customer.Selections.PriceRange ?? "",
+                performance = customer.Selections.Performance == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale"),
+                economy = customer.Selections.Economy ?? "",
+                use = customer.Selections.Use == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
+            });
+
+            /*
+            var json = new JavaScriptSerializer().Serialize(new
+            {
+                id = customer.UserId ?? "",
+                title = customer.Title ?? "",
+                first_name = customer.FirstName ?? "",
+                surname = customer.LastName ?? "",
+                email = customer.Email ?? "",
+                telephone = customer.TelephoneHome ?? "",
+                request_callback = customer.RequestCallback ? "true" : "false",
+                request_early_redemption = customer.RequestEarlyRedemption ? "true" : "false",
+
+                model_name = customer.Car.Name ?? "",
+                model_code = customer.Car.Code ?? "",
+                capacity = customer.Selections.Capacity == null ? "" : SelectionsDescription(customer.Selections.Use, "CapacityScale"),
+                luggage = customer.Selections.Luggage ?? "",
 
                 awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
                 dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
                 hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
                 tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
                 
-                price_range = customer.Selections.PriceRange == null ? "" : customer.Selections.PriceRange,
-                performance = customer.Selections.Performance == null ? "" : Utils.SelectionsDescription(customer.Selections.Performance, "PerformanceScale"),
-                economy = customer.Selections.Economy == null ? "" : customer.Selections.Economy,
-                use = customer.Selections.Use == null ? "" : Utils.SelectionsDescription(customer.Selections.Use, "Use")
+                price_range = customer.Selections.PriceRange ?? "",
+                performance = customer.Selections.Performance == null ? "" : SelectionsDescription(customer.Selections.Performance, "PerformanceScale"),
+                economy = customer.Selections.Economy ?? "",
+                use = customer.Selections.Use == null ? "" : SelectionsDescription(customer.Selections.Use, "Use")
             });
+            */
 
-            string url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customerId, _random, json);
+            var url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customer.UserId, _random, json);
+            var response = HttpWebRequestHelper.MakeRequest(url);
+
 
             /*
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -192,8 +214,8 @@ namespace Combobulator.Classes
 
         private static string CalculateMD5Hash(string input)
         {
-            MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
             byte[] hash = md5.ComputeHash(inputBytes);
 
             StringBuilder sb = new StringBuilder();
@@ -224,7 +246,7 @@ namespace Combobulator.Classes
                     success = func(customer);
                     break; // success
                 }
-                catch
+                catch(Exception ex)
                 {
                     if (--retryCount == 0)
                     {
@@ -245,49 +267,49 @@ namespace Combobulator.Classes
             switch (stype)
             {
                 case "CapacityScale":
-                    Common.Enums.CapacityScale selection1 = (Common.Enums.CapacityScale)(Convert.ToInt32(id));
+                    var selection1 = (Common.Enums.CapacityScale)(Convert.ToInt32(id));
                     var type1 = typeof(Common.Enums.CapacityScale);
                     var member1 = type1.GetMember(selection1.ToString());
                     var attributes1 = member1[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes1[0]).Description;
                     break;
                 case "EconomyScale":
-                    Common.Enums.EconomyScale selection2 = (Common.Enums.EconomyScale)(Convert.ToInt32(id));
+                    var selection2 = (Common.Enums.EconomyScale)(Convert.ToInt32(id));
                     var type2 = typeof(Common.Enums.EconomyScale);
                     var member2 = type2.GetMember(selection2.ToString());
                     var attributes2 = member2[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes2[0]).Description;
                     break;
                 case "LuggageLevel":
-                    Common.Enums.LuggageLevel selection3 = (Common.Enums.LuggageLevel)(Convert.ToInt32(id));
+                    var selection3 = (Common.Enums.LuggageLevel)(Convert.ToInt32(id));
                     var type3 = typeof(Common.Enums.LuggageLevel);
                     var member3 = type3.GetMember(selection3.ToString());
                     var attributes3 = member3[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes3[0]).Description;
                     break;
                 case "Options":
-                    Common.Enums.Options selection4 = (Common.Enums.Options)(Convert.ToInt32(id));
+                    var selection4 = (Common.Enums.Options)(Convert.ToInt32(id));
                     var type4 = typeof(Common.Enums.Options);
                     var member4 = type4.GetMember(selection4.ToString());
                     var attributes4 = member4[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes4[0]).Description;
                     break;
                 case "PerformanceScale":
-                    Common.Enums.PerformanceScale selection5 = (Common.Enums.PerformanceScale)(Convert.ToInt32(id));
+                    var selection5 = (Common.Enums.PerformanceScale)(Convert.ToInt32(id));
                     var type5 = typeof(Common.Enums.PerformanceScale);
                     var member5 = type5.GetMember(selection5.ToString());
                     var attributes5 = member5[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes5[0]).Description;
                     break;
                 case "PriceRange":
-                    Common.Enums.PriceRange selection6 = (Common.Enums.PriceRange)(Convert.ToInt32(id));
+                    var selection6 = (Common.Enums.PriceRange)(Convert.ToInt32(id));
                     var type6 = typeof(Common.Enums.PriceRange);
                     var member6 = type6.GetMember(selection6.ToString());
                     var attributes6 = member6[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
                     description = ((DescriptionAttribute)attributes6[0]).Description;
                     break;
                 case "Use":
-                    Common.Enums.Use selection7 = (Common.Enums.Use)(Convert.ToInt32(id));
+                    var selection7 = (Common.Enums.Use)(Convert.ToInt32(id));
                     var type7 = typeof(Common.Enums.Use);
                     var member7 = type7.GetMember(selection7.ToString());
                     var attributes7 = member7[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
