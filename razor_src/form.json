@@ -5,28 +5,40 @@
 	"open":				"@using (Ajax.BeginForm(\"NewCustomerSubmit\", \"Customer\", new AjaxOptions { HttpMethod = \"POST\", InsertionMode = InsertionMode.Replace, UpdateTargetId = \"formContainer\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
 	"close":			"}",
 
-	"userid":			"@Html.EditorFor(model => model.UserId, new { id=\"uid\", value = ViewBag.UserId })",
-
 	"field": {
 
-		"title":		"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"),  \"Title\")",
-		"dealer":		"@Html.DropDownListFor(model => model.Dealer, new SelectList(Model.Dealers, \"Name\", \"Name\"), \"Dealer\")",
+		"user":		"@Html.EditorFor(model => model.UserId, new { id=\"uid\", value = ViewBag.UserId })",
 
-		"name":			"@Html.TextBoxFor( model => model.FirstName, new { id=\"field-name\", name=\"name\", placeholder=\"First name\" } )​",
-		"surname":		"@Html.TextBoxFor( model => model.LastName, new { id=\"field-surname\", name=\"surname\", placeholder=\"Last name\" } )​",
-		"address_1":	"@Html.TextBoxFor( model => model.AddressLine1, new { id=\"field-address-1\", name=\"address-1\", placeholder=\"Address line 1\" } )​",
-		"address_2":	"@Html.TextBoxFor( model => model.AddressLine2, new { id=\"field-address-2\", name=\"address-2\", placeholder=\"Address line 2\" } )​",
-		"address_3":	"@Html.TextBoxFor( model => model.AddressLine3, new { id=\"field-address-3\", name=\"address-3\", placeholder=\"Address line 3\" } )​",
-		"postcode":		"@Html.TextBoxFor( model => model.AddressPostcode, new { id=\"field-postcode\", name=\"postcode\", placeholder=\"Postcode\" } )​",
+		"title":		"",
+		"name":			"",
+		"surname":		"",
+		"email":		"",
+		"tel":			{
 
-		"email":		"@Html.TextBoxFor( model => model.Email, new { type=\"email\", id=\"field-email\", name=\"email\", placeholder=\"E-mail address\" } )​",
-		"home":			"@Html.TextBoxFor( model => model.TelephoneHome, new { type=\"tel\", id=\"field-home\", name=\"home\", placeholder=\"Home telephone\" } )​",
-		"work":			"@Html.TextBoxFor( model => model.TelephoneWork, new { type=\"tel\", id=\"field-work\", name=\"work\", placeholder=\"Work telephone\" } )​",
-		"mobile":		"@Html.TextBoxFor( model => model.TelephoneMobile, new { type=\"tel\", id=\"field-mobile\", name=\"mobile\", placeholder=\"Mobile telephone\" } )​",
+			"home":		"",
+			"work":		"",
+			"mobile":	""
 
-		"callback":		"@Html.LabelFor(model => model.RequestCallback)",
-		"redemption":	"@Html.LabelFor(model => model.RequestEarlyRedemption)",
-		"results":		"@Html.LabelFor(model => model.EmailResults)"
+		},
+		"address": {
+
+			"home":			"",
+			"work":			"",
+			"postcode":		"",
+			"address1":		"",
+			"address2":		"",
+			"address3":		""
+
+		},
+		
+		"dealer":		"",
+		"finance":		"",
+		"optout": {
+
+			"phone":	"",
+			"post":		""
+
+		}
 
 	}
 
