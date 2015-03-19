@@ -29,6 +29,7 @@ namespace Combobulator.Common
         public static string Random = ConfigurationManager.AppSettings["FiscRandom"];
         public static string SecretKey = ConfigurationManager.AppSettings["FiscSecretKey"];
         public static string HostUrl = ConfigurationManager.AppSettings["FiscURL"];
+        public static string GrassRootsHostUrl = ConfigurationManager.AppSettings["GrassRootsURL"];
 
         public static string _host = ConfigurationManager.AppSettings["EmailHost"];
         public static string _username = ConfigurationManager.AppSettings["EmailUsername"];

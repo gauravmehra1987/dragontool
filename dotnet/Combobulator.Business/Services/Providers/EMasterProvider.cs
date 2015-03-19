@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common;
@@ -45,7 +46,7 @@ namespace Combobulator.Business.Services.Providers
 
             var json = JsonConvert.SerializeObject(result);
             var url = string.Format(Config.HostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, Config.SystemId, action, customer.UserId, Config.Random, json);
-            /*
+
             var response = HttpWebRequestHelper.MakeRequest(url);
             var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
@@ -65,7 +66,7 @@ namespace Combobulator.Business.Services.Providers
             {
                 success = true;
             }
-            */
+
             return success;
         }
     }
