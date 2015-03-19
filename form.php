@@ -1,15 +1,13 @@
-<!-- build:remove -->
-<?php require( 'header.php' ); ?>
+<!-- build:remove --><?php require( 'header.php' ); ?><!-- /build -->
 
 <div id="page-form" class="layout-wrapper">
 
-	<?php require( 'top.php' ); ?>
+	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
-	<?php require( 'form-new-customer.php' ); ?>
+	<!-- build:include form-new-customer.php --><?php require( 'form-new-customer.php' ); ?><!-- /build -->
 
-	<?php require( 'bottom.php' ); ?>
+	<!-- build:include bottom.php --><?php require( 'bottom.php' ); ?><!-- /build -->
 
 </div><!-- end div#page-form.layout-wrapper -->
 
-<?php require( 'footer.php' ); ?>
-<!-- /build -->
+<!-- build:remove --><?php require( 'footer.php' ); ?><!-- /build -->
