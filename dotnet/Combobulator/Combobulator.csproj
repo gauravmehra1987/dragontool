@@ -473,8 +473,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Results\_ResultDetail.cshtml" />
-    <Content Include="Views\Form\_Form.cshtml" />
-    <Content Include="Views\Form\Index.cshtml" />
+    <Content Include="Views\Form\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.WebParts;
+using Combobulator.Business.Commands;
 using Combobulator.Classes;
 using Combobulator.Business.ViewModels;
 using Combobulator.Data;
@@ -38,9 +40,20 @@ namespace Combobulator.Controllers
                 var cQuery = userId != String.Empty ? ("?c=" + userId) : "";
                 return RedirectToAction("Index", "Home", cQuery);
             }
+
+            Customer customer = null;
+            var command = new GetCustomerDataCommand(userId);
+            customer = command.Execute();
+            var viewModel = new FormViewModel();
+            viewModel.FirstName = customer.FirstName;
+            viewModel.LastName = customer.LastName;
+            viewModel.Email = customer.Email;
+
+
             ViewBag.UserId = userId;
             ViewBag.ModelCode = modelCode;
-            return View();
+
+            return View(viewModel);
         }
 
         /// <summary>

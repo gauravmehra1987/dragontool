@@ -13,13 +13,14 @@ namespace Combobulator.Business.ViewModels
         public string TelephoneHome { get; set; }
         public string TelephoneWork { get; set; }
         public string TelephoneMobile { get; set; }
+        public bool AddressType { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string AddressLine3 { get; set; }
         public string AddressPostcode { get; set; }
         public string Dealer { get; set; }
-        public string RequestCallback { get; set; }
-        public string EmailResults { get; set; }
+        public bool RequestCallback { get; set; }
+        public bool EmailResults { get; set; }
 
         public List<Title> Titles { get; set; }
         public List<Dealer> Dealers { get; set; }
