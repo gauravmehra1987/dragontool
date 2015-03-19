@@ -52,7 +52,7 @@ function Responsive() {
 				// Light up the light
 
 				var $light	= $( this ).find( '.light' );
-				var color	= $( '.car-link' ).css( 'border-color' );
+				var color	= $( '.car-changer' ).css( 'border-color' );
 
 				if( $( this ).hasClass( 'open' ) ) {
 
