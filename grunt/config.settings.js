@@ -50,7 +50,6 @@ grunt.config.merge( {
 				// Form
 
 				'<%= project.paths.templates %>/Form/_Index.cshtml':						[ 'form.php' ],
-				'<%= project.paths.templates %>/Form/_Form.cshtml':							[ 'form-new-customer.php' ],
 
 				// Partials
 

@@ -11,7 +11,7 @@
 <!-- build:remove --><form action="ajax.php"><!-- /build -->
 
 	<!-- build:template
-	<%= form.userid %>
+	<%= form.field.user %>
 	/build -->
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
@@ -39,7 +39,7 @@
 				/build -->
 
 				<!-- build:remove -->
-				<select id="field-title" name="title">
+				<select id="title" name="title">
 
 					<option value="">Title</option>
 
@@ -67,7 +67,7 @@
 			<%= form.field.name %>
 			/build -->
 
-			<!-- build:remove --><input type="text" id="field-name" name="name" placeholder="First name" /><!-- /build -->
+			<!-- build:remove --><input type="text" id="name" name="name" placeholder="First name" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -78,7 +78,7 @@
 			<%= form.field.surname %>
 			/build -->
 
-			<!-- build:remove --><input type="text" id="field-surname" name="surname" placeholder="Last name" /><!-- /build -->
+			<!-- build:remove --><input type="text" id="surname" name="surname" placeholder="Last name" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -91,7 +91,7 @@
 			<%= form.field.email %>
 			/build -->
 
-			<!-- build:remove --><input type="email" id="field-email" name="email" placeholder="E-mail address" /><!-- /build -->
+			<!-- build:remove --><input type="email" id="email" name="email" placeholder="E-mail address" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -101,10 +101,10 @@
 		<div class="form-control append phone full-width">
 
 			<!-- build:template
-			<%= form.field.home %>
+			<%= form.field.tel.home %>
 			/build -->
 
-			<!-- build:remove --><input type="tel" id="field-home" name="home" placeholder="Home telephone" /><!-- /build -->
+			<!-- build:remove --><input type="tel" id="tel-home" name="tel-home" placeholder="Home telephone" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -112,10 +112,10 @@
 		<div class="form-control append phone full-width">
 
 			<!-- build:template
-			<%= form.field.work %>
+			<%= form.field.tel.work %>
 			/build -->
 
-			<!-- build:remove --><input type="tel" id="field-work" name="work" placeholder="Work telephone" /><!-- /build -->
+			<!-- build:remove --><input type="tel" id="tel-work" name="tel-work" placeholder="Work telephone" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -123,10 +123,10 @@
 		<div class="form-control append phone full-width">
 
 			<!-- build:template
-			<%= form.field.mobile %>
+			<%= form.field.tel.mobile %>
 			/build -->
 
-			<!-- build:remove --><input type="tel" id="field-mobile" name="mobile" placeholder="Mobile telephone" /><!-- /build -->
+			<!-- build:remove --><input type="tel" id="tel-mobile" name="tel-mobile" placeholder="Mobile telephone" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -136,10 +136,10 @@
 			<div class="form-control append home half-width">
 
 				<!-- build:template
-				<%= form.field.postcode %>
+				<%= form.field.address.postcode %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="field-postcode" name="postcode" placeholder="Postcode" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="postcode" name="postcode" placeholder="Postcode" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -150,15 +150,23 @@
 
 					<div class="checkbox checkbox-radio">
 
-						<input id="address-type-home" name="address-type" type="radio" value="home" checked="checked" />
-						<!-- build:remove --><label for="address-type-home">Home</label><!-- /build -->
+						<!-- build:remove --><input id="address-type-home" name="address-type" type="radio" value="home" checked="checked" /><!-- /build -->
+						<label for="address-type-home">Home</label>
+
+						<!-- build:template
+						<%= form.field.address.home %>
+						/build -->
 
 					</div>
 
 					<div class="checkbox checkbox-radio">
 
-						<input id="address-type-work" name="address-type" type="radio" value="work" />
-						<!-- build:remove --><label for="address-type-work">Work</label><!-- /build -->
+						<!-- build:remove --><input id="address-type-work" name="address-type" type="radio" value="work" /><!-- /build -->
+						<label for="address-type-work">Work</label>
+
+						<!-- build:template
+						<%= form.field.address.work %>
+						/build -->
 
 					</div>				
 
@@ -189,10 +197,10 @@
 		<div class="form-control disabled append home full-width">
 
 			<!-- build:template
-			<%= form.field.address_1 %>
+			<%= form.field.address.address1 %>
 			/build -->
 
-			<!-- build:remove --><input type="text" id="field-address-1" name="address-1" placeholder="Address line 1" disabled="disabled" /><!-- /build -->
+			<!-- build:remove --><input type="text" id="address-1" name="address-1" placeholder="Address line 1" disabled="disabled" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -200,10 +208,10 @@
 		<div class="form-control disabled append home full-width">
 
 			<!-- build:template
-			<%= form.field.address_2 %>
+			<%= form.field.address.address2 %>
 			/build -->
 
-			<!-- build:remove --><input type="text" id="field-address-2" name="address-2" placeholder="Address line 2" disabled="disabled" /><!-- /build -->
+			<!-- build:remove --><input type="text" id="address-2" name="address-2" placeholder="Address line 2" disabled="disabled" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -211,10 +219,10 @@
 		<div class="form-control disabled append home full-width">
 
 			<!-- build:template
-			<%= form.field.address_3 %>
+			<%= form.field.address.address3 %>
 			/build -->
 
-			<!-- build:remove --><input type="text" id="field-address-3" name="address-3" placeholder="Address line 3" disabled="disabled" /><!-- /build -->
+			<!-- build:remove --><input type="text" id="address-3" name="address-3" placeholder="Address line 3" disabled="disabled" /><!-- /build -->
 			<span class="field-icon"></span>
 
 		</div>
@@ -253,8 +261,8 @@
 			
 			<div class="checkbox">
 
-				<input id="finance" name="finance" type="checkbox" value="1" checked="checked" />
-				<!-- build:remove --><label for="finance">Please tick here if you are interested in MINI finance options.</label><!-- /build -->
+				<!-- build:remove --><input id="finance" name="finance" type="checkbox" value="1" checked="checked" /><!-- /build -->
+				<label for="finance">Please tick here if you are interested in MINI finance options.</label>
 
 				<!-- build:template
 				<%= form.field.finance %>
@@ -273,22 +281,23 @@
 			
 			<div class="checkbox">
 
-				<input id="optout-phone" name="optout" type="checkbox" value="phone" />
-				<!-- build:remove --><label for="optout-phone">by phone</label><!-- /build -->
+				<!-- build:remove --><input id="optout-phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
+				<label for="optout-phone">by phone</label>				
 
 				<!-- build:template
-				<%= form.field.optoutPhone %>
+				<%= form.field.optout.phone %>
 				/build -->
 
 			</div>
 
 			<div class="checkbox">
 
-				<input id="optout-post" name="optout" type="checkbox" value="post" />
-				<!-- build:remove --><label for="optout-post">by post</label><!-- /build -->
+				<!-- build:remove --><input id="optout-post" name="optout" type="checkbox" value="post" /><!-- /build -->
+				<label for="optout-post">by post</label>
+				
 
 				<!-- build:template
-				<%= form.field.optoutPost %>
+				<%= form.field.optout.post %>
 				/build -->
 
 			</div>

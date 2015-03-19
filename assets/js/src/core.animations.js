@@ -105,12 +105,3 @@
 // }
 
 // animate();
-
-// setTimeout( function() {
-
-// 	// $( '#start' ).trigger( 'click' );
-// 	Mini.DOMCtrl.panelControl('welcome');
-
-// 	$( 'form' ).validate();
-
-// }, 100 );

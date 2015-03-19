@@ -5,8 +5,25 @@ var logic			= new Logic();
 var query			= new logic.query();
 var carCode			= getQueryParameter( 'm' ) || false;
 
+var addressObj;
+var dealersObj;
 var responsive;
 var dashboard;
+var postcodeTimer;
+
+// Selectors for form fields
+
+var form = {
+
+	addresses:			'#addresses',
+	address1:			'#address-1',
+	address2:			'#address-2',
+	address3:			'#address-3',
+	addressChooser:		'#address-chooser',
+	dealerChooser:		'#dealer-chooser',
+	dealers:			'#dealers',
+
+}
 
 // Some not IE-friendly stuff
 
@@ -43,7 +60,7 @@ $( window ).load( function() {
 
 	// Color switcher
 
-	$.subscribe( 'colour-change', function( e, color) { dashboard.colors( color ); } );
+	$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); } );
 
 	// Show first panel on a page
 
@@ -196,10 +213,7 @@ $( window ).load( function() {
 
 } );
 
-// Postcode
-
-var addressObj;
-var dealersObj;
+// Postcode lookup, dealers lookup
 
 var formatAddress = function( addrObj, skip ) {
 
@@ -226,9 +240,9 @@ var formatAddress = function( addrObj, skip ) {
 
 }
 
-$( '#field-postcode' ).on( 'change', function( e ) {
+var handlePostcode = function( e ) {
 
-	var postcode = $( this ).val();
+	var postcode = $( '#postcode' ).val();
 
 	// Enable fields
 
@@ -246,7 +260,7 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 		// Remove existing addresses
 
-		$( '#address-chooser' ).contents().remove();
+		$( form.addressChooser ).contents().remove();
 
 		// Construct address strings
 
@@ -266,11 +280,11 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 		ui.getTpl( 'addresses' ).then( function( tpl ) {
 
-			$( '#address-chooser' ).append( ui.renderTpl( tpl, { addresses: formattedAddresses } ) );
+			$( form.addressChooser ).append( ui.renderTpl( tpl, { addresses: formattedAddresses } ) );
 
 			// We must add this field to the validator manually because it's dynamically created
 
-			$( '#addresses' ).rules( 'add', {
+			$( form.addresses ).rules( 'add', {
 
 				required: true,
 				messages: {
@@ -297,7 +311,7 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 		// Remove existing addresses
 
-		$( '#dealer-chooser' ).contents().remove();
+		$( form.dealerChooser ).contents().remove();
 
 		// Construct address strings
 
@@ -313,11 +327,11 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 		ui.getTpl( 'dealers' ).then( function( tpl ) {
 
-			$( '#dealer-chooser' ).append( ui.renderTpl( tpl, { dealers: formattedDealers } ) );
+			$( form.dealerChooser ).append( ui.renderTpl( tpl, { dealers: formattedDealers } ) );
 
 			// We must add this field to the validator manually because it's dynamically created
 
-			$( '#dealers' ).rules( 'add', {
+			$( form.dealers ).rules( 'add', {
 
 				required: true,
 				messages: {
@@ -332,32 +346,49 @@ $( '#field-postcode' ).on( 'change', function( e ) {
 
 	} );
 
+}
+
+$( '#postcode' ).on( 'keyup', function( e ) {
+
+	// Fire only when alphanumeric keys are pressed
+
+	if( e.which <= 90 && e.which >= 48 ) {
+
+		clearTimeout( postcodeTimer );
+
+		postcodeTimer = setTimeout( handlePostcode, 600 );
+
+	}
+
 } );
 
-$body.on( 'change', '#addresses', function( e ) {
+$body.on( 'change', form.addresses, function( e ) {
 
 	var address	= addressObj[ $( this ).val() ];
 
 	if( ! _.isEmpty( $( this ).val() ) ) {
 
-		$( '#field-address-1' ).val( formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
-		$( '#field-address-2' ).val( address.Town );
-		$( '#field-address-3' ).val( address.County );
+		$( form.address1 ).val( formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
+		$( form.address2 ).val( address.Town );
+		$( form.address3 ).val( address.County );
 
 	}
 
 	else {
 
-		$( '#field-address-1' ).val( null );
-		$( '#field-address-2' ).val( null );
-		$( '#field-address-3' ).val( null );
+		$( form.address1 ).val( null );
+		$( form.address2 ).val( null );
+		$( form.address3 ).val( null );
 
 	}
 
 } );
 
+// Handle AJAX form results
+
 $.subscribe( 'form-ajax-results', function( e, data ) {
 
+	alert( 'Thanks! Data has been logged to the console.' );
 	console.log( data );
 
 } );
