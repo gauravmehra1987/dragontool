@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61BFAA81-F62D-4B54-ABD6-DFAA0E78F4C6}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Combobulator</RootNamespace>
+    <AssemblyName>Combobulator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.10.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Mandrill">
+      <HintPath>..\packages\Mandrill.1.0.103.0\lib\net40\Mandrill.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.0\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiControllers\BaseController.cs" />
+    <Compile Include="ApiControllers\CustomerController.cs" />
+    <Compile Include="ApiControllers\DealerLookUpController.cs" />
+    <Compile Include="ApiControllers\PostcodeLookUpController.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\Email.cs" />
+    <Compile Include="Classes\JsonUtils.cs" />
+    <Compile Include="Classes\Utils.cs" />
+    <Compile Include="Config\AutoMapperConfig.cs" />
+    <Compile Include="Config\NewCarConfig.cs" />
+    <Compile Include="ApiControllers\AssetsController.cs" />
+    <Compile Include="ApiControllers\CarController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="ApiControllers\FormController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
+    <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CompressionHelper.cs" />
+    <Compile Include="Helpers\DeflateCompressionAttribute.cs" />
+    <Compile Include="Helpers\JsonContentNegotiator.cs" />
+    <Compile Include="Helpers\LowercaseContractResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\cars\MR92.png" />
+    <Content Include="Assets\cars\none.png" />
+    <Content Include="Assets\cars\RJ52.png" />
+    <Content Include="Assets\cars\RS52.png" />
+    <Content Include="Assets\cars\RS72.png" />
+    <Content Include="Assets\cars\RS92.png" />
+    <Content Include="Assets\cars\SS12.png" />
+    <Content Include="Assets\cars\SS32.png" />
+    <Content Include="Assets\cars\SS52.png" />
+    <Content Include="Assets\cars\SS72.png" />
+    <Content Include="Assets\cars\SS92.png" />
+    <Content Include="Assets\cars\SX12.png" />
+    <Content Include="Assets\cars\SX32.png" />
+    <Content Include="Assets\cars\SX72.png" />
+    <Content Include="Assets\cars\SX92.png" />
+    <Content Include="Assets\cars\SY12.png" />
+    <Content Include="Assets\cars\SY32.png" />
+    <Content Include="Assets\cars\SY72.png" />
+    <Content Include="Assets\cars\SY92.png" />
+    <Content Include="Assets\cars\XD12.png" />
+    <Content Include="Assets\cars\XM52.png" />
+    <Content Include="Assets\cars\XM72.png" />
+    <Content Include="Assets\cars\XN12.png" />
+    <Content Include="Assets\cars\XN32.png" />
+    <Content Include="Assets\cars\XN72.png" />
+    <Content Include="Assets\cars\XN92.png" />
+    <Content Include="Assets\cars\XS12.png" />
+    <Content Include="Assets\cars\XS52.png" />
+    <Content Include="Assets\cars\XS72.png" />
+    <Content Include="Assets\cars\XT12.png" />
+    <Content Include="Assets\cars\XT32.png" />
+    <Content Include="Assets\cars\XT72.png" />
+    <Content Include="Assets\cars\ZB32.png" />
+    <Content Include="Assets\cars\ZB52.png" />
+    <Content Include="Assets\cars\ZB72.png" />
+    <Content Include="Assets\cars\ZC52.png" />
+    <Content Include="Assets\cars\ZD52.png" />
+    <Content Include="Assets\cars\ZD72.png" />
+    <Content Include="Assets\cars\ZM28.png" />
+    <Content Include="Assets\cars\ZM32.png" />
+    <Content Include="Assets\cars\ZM38.png" />
+    <Content Include="Assets\cars\ZM39.png" />
+    <Content Include="Assets\cars\ZM43.png" />
+    <Content Include="Assets\cars\ZM56.png" />
+    <Content Include="Assets\cars\ZN32.png" />
+    <Content Include="Assets\cars\ZR32.png" />
+    <Content Include="Assets\css\ie.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\icons\circle-empty.svg" />
+    <Content Include="Assets\icons\circle.svg" />
+    <Content Include="Assets\icons\cross.svg" />
+    <Content Include="Assets\icons\down-block.svg" />
+    <Content Include="Assets\icons\down-thick.svg" />
+    <Content Include="Assets\icons\facebook-letter.svg" />
+    <Content Include="Assets\icons\facebook.svg" />
+    <Content Include="Assets\icons\home.svg" />
+    <Content Include="Assets\icons\mail.svg" />
+    <Content Include="Assets\icons\ok.svg" />
+    <Content Include="Assets\icons\phone.svg" />
+    <Content Include="Assets\icons\raquo.svg" />
+    <Content Include="Assets\icons\template.css" />
+    <Content Include="Assets\icons\twitter-bird.svg" />
+    <Content Include="Assets\icons\twitter.svg" />
+    <Content Include="Assets\icons\user.svg" />
+    <Content Include="Assets\img\blank.png" />
+    <Content Include="Assets\img\button-shape.png" />
+    <Content Include="Assets\img\dashboard.png" />
+    <Content Include="Assets\img\mini-logo-small.png" />
+    <Content Include="Assets\img\mini-logo.png" />
+    <Content Include="Assets\img\mini-sample.png" />
+    <Content Include="Assets\img\ministry-of-finance.png" />
+    <Content Include="Assets\img\skid-marks-faded.png" />
+    <Content Include="Assets\img\skid-marks.jpg" />
+    <Content Include="Assets\img\sprites\sprites.png" />
+    <Content Include="Assets\img\teleport-scanlines.jpg" />
+    <Content Include="Assets\img\tpl-bumper-wide.gif" />
+    <Content Include="Assets\img\tpl-bumper.gif" />
+    <Content Include="Assets\img\tpl-button.gif" />
+    <Content Include="Assets\img\tpl-lifestyle.gif" />
+    <Content Include="Assets\img\tpl-luggage-arrows.gif" />
+    <Content Include="Assets\img\tpl-luggage.gif" />
+    <Content Include="Assets\img\tpl-mpg.gif" />
+    <Content Include="Assets\img\tpl-option.gif" />
+    <Content Include="Assets\img\tpl-price.gif" />
+    <Content Include="Assets\img\tpl-roller-wide.gif" />
+    <Content Include="Assets\img\tpl-roller.gif" />
+    <Content Include="Assets\img\tpl-slot.gif" />
+    <Content Include="Assets\img\tpl-speed.gif" />
+    <Content Include="Assets\js\app.js" />
+    <Content Include="Assets\js\htc\backgroundsize.htc" />
+    <Content Include="Assets\js\htc\boxsizing.htc" />
+    <Content Include="Assets\js\ie-lib.js" />
+    <Content Include="Assets\js\ie.js" />
+    <Content Include="Assets\js\lib.js" />
+    <Content Include="Assets\sprites\combobulate.png" />
+    <Content Include="Assets\sprites\figure-alien.png" />
+    <Content Include="Assets\sprites\figure-boy.png" />
+    <Content Include="Assets\sprites\figure-cat.png" />
+    <Content Include="Assets\sprites\figure-dog.png" />
+    <Content Include="Assets\sprites\figure-girl.png" />
+    <Content Include="Assets\sprites\figure-infant.png" />
+    <Content Include="Assets\sprites\figure-man.png" />
+    <Content Include="Assets\sprites\figure-plus.png" />
+    <Content Include="Assets\sprites\figure-woman.png" />
+    <Content Include="Assets\sprites\lifestyle-dial-shadow.png" />
+    <Content Include="Assets\sprites\lifestyle-dial.png" />
+    <Content Include="Assets\sprites\lifestyle-item-beach-bum.png" />
+    <Content Include="Assets\sprites\lifestyle-item-junglist.png" />
+    <Content Include="Assets\sprites\lifestyle-item-mountaineer.png" />
+    <Content Include="Assets\sprites\lifestyle-item-urbanite.png" />
+    <Content Include="Assets\sprites\lifestyle-label-window.png" />
+    <Content Include="Assets\sprites\lifestyle-mask.png" />
+    <Content Include="Assets\sprites\luggage-arrows-left.png" />
+    <Content Include="Assets\sprites\luggage-arrows-right.png" />
+    <Content Include="Assets\sprites\luggage-arrows.png" />
+    <Content Include="Assets\sprites\luggage-dial-big-loader.png" />
+    <Content Include="Assets\sprites\luggage-dial-light-packer.png" />
+    <Content Include="Assets\sprites\luggage-dial-lugger.png" />
+    <Content Include="Assets\sprites\luggage-dial-minimalist.png" />
+    <Content Include="Assets\sprites\luggage-dial.png" />
+    <Content Include="Assets\sprites\luggage-mask.png" />
+    <Content Include="Assets\sprites\mpg-00.png" />
+    <Content Include="Assets\sprites\mpg-01.png" />
+    <Content Include="Assets\sprites\mpg-02.png" />
+    <Content Include="Assets\sprites\mpg-03.png" />
+    <Content Include="Assets\sprites\mpg-04.png" />
+    <Content Include="Assets\sprites\mpg-05.png" />
+    <Content Include="Assets\sprites\mpg-06.png" />
+    <Content Include="Assets\sprites\mpg-07.png" />
+    <Content Include="Assets\sprites\mpg-08.png" />
+    <Content Include="Assets\sprites\mpg-09.png" />
+    <Content Include="Assets\sprites\mpg-10.png" />
+    <Content Include="Assets\sprites\mpg-11.png" />
+    <Content Include="Assets\sprites\mpg-12.png" />
+    <Content Include="Assets\sprites\mpg-13.png" />
+    <Content Include="Assets\sprites\mpg-knob-arrow.png" />
+    <Content Include="Assets\sprites\mpg-knob.png" />
+    <Content Include="Assets\sprites\opts-awd-off.png" />
+    <Content Include="Assets\sprites\opts-awd-on.png" />
+    <Content Include="Assets\sprites\opts-dt-off.png" />
+    <Content Include="Assets\sprites\opts-dt-on.png" />
+    <Content Include="Assets\sprites\opts-hp-off.png" />
+    <Content Include="Assets\sprites\opts-hp-on.png" />
+    <Content Include="Assets\sprites\opts-tp-off.png" />
+    <Content Include="Assets\sprites\opts-tp-on.png" />
+    <Content Include="Assets\sprites\range-bg.png" />
+    <Content Include="Assets\sprites\range-handle.png" />
+    <Content Include="Assets\sprites\range-mask.png" />
+    <Content Include="Assets\sprites\slots-reset-pressed.png" />
+    <Content Include="Assets\sprites\slots-reset.png" />
+    <Content Include="Assets\sprites\speed-edge.png" />
+    <Content Include="Assets\sprites\speed-lightspeed.png" />
+    <Content Include="Assets\sprites\speed-nippier.png" />
+    <Content Include="Assets\sprites\speed-nippy.png" />
+    <Content Include="Assets\sprites\speed-quick.png" />
+    <Content Include="Assets\sprites\speed-woohoo.png" />
+    <Content Include="Assets\sprites\svg\combobulate.svg" />
+    <Content Include="Assets\sprites\svg\figure-alien.svg" />
+    <Content Include="Assets\sprites\svg\figure-boy.svg" />
+    <Content Include="Assets\sprites\svg\figure-cat.svg" />
+    <Content Include="Assets\sprites\svg\figure-dog.svg" />
+    <Content Include="Assets\sprites\svg\figure-girl.svg" />
+    <Content Include="Assets\sprites\svg\figure-infant.svg" />
+    <Content Include="Assets\sprites\svg\figure-man.svg" />
+    <Content Include="Assets\sprites\svg\figure-plus.svg" />
+    <Content Include="Assets\sprites\svg\figure-woman.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-dial-shadow.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-dial.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-item-beach-bum.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-item-junglist.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-item-mountaineer.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-item-urbanite.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-label-window.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-mask.svg" />
+    <Content Include="Assets\sprites\svg\luggage-arrows-left.svg" />
+    <Content Include="Assets\sprites\svg\luggage-arrows-right.svg" />
+    <Content Include="Assets\sprites\svg\luggage-arrows.svg" />
+    <Content Include="Assets\sprites\svg\luggage-dial-big-loader.svg" />
+    <Content Include="Assets\sprites\svg\luggage-dial-light-packer.svg" />
+    <Content Include="Assets\sprites\svg\luggage-dial-lugger.svg" />
+    <Content Include="Assets\sprites\svg\luggage-dial-minimalist.svg" />
+    <Content Include="Assets\sprites\svg\luggage-dial.svg" />
+    <Content Include="Assets\sprites\svg\luggage-mask.svg" />
+    <Content Include="Assets\sprites\svg\mpg-00.svg" />
+    <Content Include="Assets\sprites\svg\mpg-01.svg" />
+    <Content Include="Assets\sprites\svg\mpg-02.svg" />
+    <Content Include="Assets\sprites\svg\mpg-03.svg" />
+    <Content Include="Assets\sprites\svg\mpg-04.svg" />
+    <Content Include="Assets\sprites\svg\mpg-05.svg" />
+    <Content Include="Assets\sprites\svg\mpg-06.svg" />
+    <Content Include="Assets\sprites\svg\mpg-07.svg" />
+    <Content Include="Assets\sprites\svg\mpg-08.svg" />
+    <Content Include="Assets\sprites\svg\mpg-09.svg" />
+    <Content Include="Assets\sprites\svg\mpg-10.svg" />
+    <Content Include="Assets\sprites\svg\mpg-11.svg" />
+    <Content Include="Assets\sprites\svg\mpg-12.svg" />
+    <Content Include="Assets\sprites\svg\mpg-13.svg" />
+    <Content Include="Assets\sprites\svg\mpg-knob-arrow.svg" />
+    <Content Include="Assets\sprites\svg\mpg-knob.svg" />
+    <Content Include="Assets\sprites\svg\opts-awd-off.svg" />
+    <Content Include="Assets\sprites\svg\opts-awd-on.svg" />
+    <Content Include="Assets\sprites\svg\opts-dt-off.svg" />
+    <Content Include="Assets\sprites\svg\opts-dt-on.svg" />
+    <Content Include="Assets\sprites\svg\opts-hp-off.svg" />
+    <Content Include="Assets\sprites\svg\opts-hp-on.svg" />
+    <Content Include="Assets\sprites\svg\opts-tp-off.svg" />
+    <Content Include="Assets\sprites\svg\opts-tp-on.svg" />
+    <Content Include="Assets\sprites\svg\range-bg.svg" />
+    <Content Include="Assets\sprites\svg\range-handle.svg" />
+    <Content Include="Assets\sprites\svg\range-mask.svg" />
+    <Content Include="Assets\sprites\svg\slots-reset-pressed.svg" />
+    <Content Include="Assets\sprites\svg\slots-reset.svg" />
+    <Content Include="Assets\sprites\svg\speed-edge.svg" />
+    <Content Include="Assets\sprites\svg\speed-lightspeed.svg" />
+    <Content Include="Assets\sprites\svg\speed-nippier.svg" />
+    <Content Include="Assets\sprites\svg\speed-nippy.svg" />
+    <Content Include="Assets\sprites\svg\speed-quick.svg" />
+    <Content Include="Assets\sprites\svg\speed-woohoo.svg" />
+    <Content Include="Content\EmailTemplate\EmailCustomerDetailsTemplate.htm" />
+    <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.htm" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="App_Data\mini_data_latest.csv" />
+    <Content Include="Assets\cars\index.php" />
+    <Content Include="Assets\fonts\icons\icons.eot" />
+    <Content Include="Assets\fonts\icons\icons.ttf" />
+    <Content Include="Assets\fonts\icons\icons.woff" />
+    <Content Include="Assets\fonts\mini-bold.eot" />
+    <Content Include="Assets\fonts\mini-bold.woff" />
+    <Content Include="Assets\fonts\mini-headline.eot" />
+    <Content Include="Assets\fonts\mini-headline.woff" />
+    <Content Include="Assets\fonts\mini-regular.eot" />
+    <Content Include="Assets\fonts\mini-regular.woff" />
+    <Content Include="Assets\fonts\mini\mini-bold.ttf" />
+    <Content Include="Assets\fonts\mini\mini-headline.ttf" />
+    <Content Include="Assets\fonts\mini\mini-regular.ttf" />
+    <Content Include="Assets\icons\template.json" />
+    <Content Include="Assets\js\tpl\finance.mustache" />
+    <Content Include="Assets\js\tpl\results.mustache" />
+    <None Include="Properties\PublishProfiles\Staging.pubxml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_ControlBums.cshtml" />
+    <Content Include="Views\Home\_ControlLifestyle.cshtml" />
+    <Content Include="Views\Home\_ControlLuggage.cshtml" />
+    <Content Include="Views\Home\_ControlMpg.cshtml" />
+    <Content Include="Views\Home\_ControlOptions.cshtml" />
+    <Content Include="Views\Home\_ControlPrice.cshtml" />
+    <Content Include="Views\Home\_ControlSpeed.cshtml" />
+    <Content Include="Views\Home\_ControlStart.cshtml" />
+    <Content Include="Views\Home\_Dashboard.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Results\Index.cshtml" />
+    <Content Include="Views\Results\_ResultDetail.cshtml" />
+    <Content Include="Views\Form\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <None Include="Web.Staging.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Combobulator.Business\Combobulator.Business.csproj">
+      <Project>{a21692d7-fd7b-4da5-986f-d918ee065a36}</Project>
+      <Name>Combobulator.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Combobulator.Common\Combobulator.Common.csproj">
+      <Project>{218ae4b6-3a16-4623-bb3a-1364b0430957}</Project>
+      <Name>Combobulator.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Combobulator.Data\Combobulator.Data.csproj">
+      <Project>{5ecfa913-45ec-42e5-a37e-c6992b402d34}</Project>
+      <Name>Combobulator.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Combobulator.Models\Combobulator.Models.csproj">
+      <Project>{d39ac1eb-6021-44ad-803a-a39ecd1bf729}</Project>
+      <Name>Combobulator.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1896/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

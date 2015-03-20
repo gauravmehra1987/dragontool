@@ -1,0 +1,65 @@
+@import 'dials/rollers';
+@import 'dials/mpg';
+@import 'dials/lifestyle';
+@import 'dials/luggage';
+@import 'dials/options';
+@import 'dials/price';
+@import 'dials/button';
+
+html body #dash #dash-right .bottom {
+
+	background: @dialGrayDark;
+
+	.control-title {
+
+		.hide-text;
+
+		background: @dialGrayDark;
+		color: transparent;
+
+	}
+
+
+}
+
+@media ( max-width: @breakpointMobile ) {
+
+	#c-mpg .res-wrap { width: ~'calc( 100% - 80px )'; }
+
+	#c-luggage .res-wrap { width: ~'calc( 100% - 40px )'; }
+	
+	#c-options {
+
+		.control-inner {
+
+			.box-sizing( border-box );
+
+			padding: 0 @margin;
+
+		}
+
+		.res-wrap {
+
+			float: left;
+
+			width: 50%;
+
+		}
+
+	}
+
+	#t-price { margin: 0 !important; }
+	
+	#c-price .res-wrap { max-width: 140px; }
+
+	#c-speed {
+
+		.res-wrap { width: ~'calc( 100% - 80px )'; }
+
+	}
+
+	#t-button { display: none !important; }
+
+	#c-button .res-wrap { width: ~'calc( 100% - 180px )'; }
+
+}

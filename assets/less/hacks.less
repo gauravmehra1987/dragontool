@@ -1,0 +1,23 @@
+// Webkit browsers
+
+@media screen and ( -webkit-min-device-pixel-ratio: 0 ) {
+
+	html > body {
+
+		// Let's revert select element's width back to 100% for optimal experience
+
+		.select select { width: 100%; }
+
+	}
+
+}
+
+// Firefox only hacks
+
+@-moz-document url-prefix() {
+
+	.select > select { padding: @margin / 2 !important; }
+
+	// Place your hacks here
+
+}

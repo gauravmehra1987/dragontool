@@ -1,0 +1,194 @@
+#bums {
+
+	display: block;
+	margin: 0 auto;
+	position: relative;
+
+	width: 310px; // Bloody Firefox!
+
+	#reset {
+
+		.hide-text;
+		.sprite-slots-reset( 58px, 58px );
+		.transition;
+
+		background-color: transparent !important;
+		border-radius: 100%;
+		display: block;
+		margin-left: -25px;
+		padding: 0;
+		position: absolute;
+		z-index: 99999;
+
+		top: -25px;
+		left: 50%;
+
+		height: 58px;
+		width: 58px;
+
+		&:after {
+
+			.pseudo;
+			.sprite-slots-reset-pressed( 58px, 58px );
+
+			opacity: 0;
+			position: absolute;
+
+			top: 0;
+			left: 0;
+
+			height: 100%;
+			width: 100%;
+
+		}
+
+		&:active:after { opacity: 1; }
+
+	}
+
+}
+
+#rollers {
+
+	background: @black;
+	overflow: hidden;
+	position: relative;
+	padding: 0 5px;
+
+}
+
+@rollerBaseW: 50px;
+@rollerBaseH: 160px;
+
+@speedBaseW: 130px;
+@speedBaseH: @rollerBaseH;
+
+#c-speed {
+
+	background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat !important;
+
+	.backline { .align-centers; }
+
+	@media ( max-width: @breakpointMobile ) {
+
+		.backline { position: static; }
+
+		.control-inner {
+
+			background: url( ../sprites/speed-edge.png ) 50% 50% no-repeat !important;
+			.background-size( auto 100% ) !important;
+
+		}
+
+	}
+
+}
+
+.roller {
+
+	background: @slotGray;
+	float: left;
+	margin: 0 5px; // what do we do with this?!
+	overflow: hidden;
+	position: relative;
+
+	height: @rollerBaseH;
+	width: @rollerBaseW;
+
+	&:after {
+
+		.align-centers;
+		.background-image( linear-gradient( to bottom, @black 0%, fadeout( @black, 80% ) 25%, transparent 26%, transparent 74%, fadeout( @black, 80% ) 75%, @black 100% ) );
+		.pseudo;
+
+	}
+
+	&.roller-wide {
+
+		margin: 0;
+
+		width: @speedBaseW;
+
+		.responsive;
+
+		.list .item {
+
+			box-shadow: none;
+			margin: 0 !important;;
+			padding: 0 !important;
+
+			width: 100%;
+
+		}
+
+	}
+
+	.list, .list-static {
+
+		.list-remove-bullets;
+		.transition( transform 0.6s ease-out );
+
+		&.dragging { .transition; }
+
+		.item {
+
+			background: @slotGray;
+			box-shadow: 0 -1px 0 fadeout( @trueBlack, 90% ) inset;
+			display: block !important;
+			position: relative;
+
+			height: auto;
+			width: 100%;
+
+			&.bumper {
+
+				.hide-text;
+
+				box-shadow: none;
+
+				height: auto;
+				width: 100%;
+
+				& ~ .item.woman { box-shadow: none; }
+
+			}
+
+			span, svg {
+
+				.hide-text;
+
+				display: block;
+				margin: 0 auto;
+
+				height: 100%;
+				width: 100%;
+
+			}
+
+		}
+
+	}
+
+	.fake-list {
+
+		.align-centers;
+
+		z-index: 999;
+
+		width: 100%;
+
+	}
+
+}
+
+@media ( max-width: @breakpointMobile ) {
+
+	#bums {
+
+		width: 285px;
+
+		.roller { margin: 0 2.5px; }
+
+	}
+
+}

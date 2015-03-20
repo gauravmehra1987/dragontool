@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="assets/main.css">
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+
+		<h1>Mini Dataset Logic test</h1>
+
+		<form>
+			
+			<fieldset>
+
+				<legend>Who will be travelling most often in your MINI?</legend>
+
+				<div class="input">
+					
+					<select name="capacity" id="capacity">
+
+						<option value="0">Select</option>
+						<option value="1">1 / 1 - 2 people</option>
+						<option value="2">2 / 1 - 4 people (including car seat)</option>
+						<option value="3">3 / 1 - 2 adults + 1 - 2 children / 1 adult + 3 children</option>
+						<option value="4">4 / 5 people</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>	
+
+			<fieldset>
+					
+					<legend>How much luggage will you carry?</legend>
+
+					<div class="input">
+						
+						<select name="luggage" id="luggage">
+
+							<option value="1">1 / Minimalist</option>
+							<option value="2">2 / Light packer</option>
+							<option value="3">3 / Lugger</option>
+							<option value="4">4 / Big loader</option>
+
+						</select>
+
+					</div><!-- end div.input -->
+			
+			</fieldset>
+
+			<fieldset>
+					
+				<legend>Which options would you like to have:</legend>
+
+				<div class="input">
+					
+					<div><label><input type="checkbox" id="awd" name="awd" value="1">4WD</label></div>
+					<div><label><input type="checkbox" id="high" name="high" value="2">High driving position</label></div>
+					<div><label><input type="checkbox" id="convertible" name="convertible" value="3">Drop top</label></div>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>What is your budget for your new MINI?</legend>
+
+				<div class="input">
+					
+					<select name="price" id="price">
+
+						<option value="0">0 / up to 190</option>
+						<option value="1">1 / 191 up to 215</option>
+						<option value="2">2 / 216 up to 245</option>
+						<option value="3">3 / 246 up to 269</option>
+						<option value="4">4 / 270 up to 294</option>
+						<option value="5">5 / 295+</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>		
+
+			<fieldset>
+
+				<legend>Performance for your new MINI?</legend>
+
+				<div class="input">
+					
+					<select name="speed" id="speed">
+
+						<option value="1">1 / 105 - 120mph (nippy)</option>
+						<option value="2">2 / 121 - 130 (nippier)</option>
+						<option value="3">3 / 131 - 140 (quick)</option>
+						<option value="4">4 / 141 - 145 + (woohooo)</option>
+						<option value="5">Lightspeed</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>Economy for your new MINI?</legend>
+
+				<div class="input">
+					
+					<select name="economy" id="economy">
+
+						<option value="1">1 / 25 - 45 (min economic)</option>
+						<option value="2">2 / 46 - 60</option>
+						<option value="3">3 / 61 - 69</option>
+						<option value="4">4 / 70 - 80 + (max economic)</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>How would you describe the typical use of the car?</legend>
+
+				<div class="input">
+					
+					<select name="lifestyle" id="lifestyle">
+
+						<option value="2">2 / Beach Bum</option>
+						<option value="1">1 / Urbanite</option>			
+						<option value="3">3 / Mountaineer</option>
+						<option value="4">4 / Junglist</option>
+
+					</select>
+
+				</div><!-- end div.input -->
+
+			</fieldset>
+
+			<button type="submit"id="submit">Submit</button>
+
+		</form>
+
+		<div id="output">
+
+			<script id="template" type="text/x-handlebars-template">
+
+				<div class="output-content">
+
+					<h2>{{cars.length}} results</h2>
+
+					<p>Searched for: </p>
+
+					<pre>{{query}}</pre>
+
+					{{#each cars}}
+
+						<h3 data-car-id="{{code}}">{{name}} ({{code}})</h3>
+						
+						<ul class="alternatives">
+						
+							<li><b>Alternative 1:</b> {{alt_1}}</li>
+							<li><b>Alternative 2:</b> {{alt_2}}</li>
+							<li><b>Alternative 3:</b> {{alt_3}}</li>
+
+						</ul>
+
+					{{/each}}
+
+				</div>
+
+			</script>
+
+		</div>
+
+	</div><!-- end div.wrapper -->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="assets/handlebars.js"></script>
+	<script src="../bower_components/jquery.browser/dist/jquery.browser.js"></script>    
+	<script src="../bower_components/jquery-tiny-pubsub/dist/ba-tiny-pubsub.js"></script>    
+	<script src="../bower_components/underscore/underscore.js"></script>    
+	<script src="../bower_components/store/store.js"></script>    
+	<script src="../bower_components/taffydb/taffy.js"></script>    
+	<script src="../assets/js/src/config.js"></script>    
+	<script src="../assets/js/src/core.logic.js"></script>    
+	<script type="text/javascript">
+
+	path.api = '../json/data.json';
+
+	// Local variables for prototype
+	
+	var logic	= new Logic();
+	var query	= new logic.query();
+
+	function getObj() {
+
+		var obj = {		
+		
+			capacity:		( $( '#capacity' ).val() === '0' ) ? false : $( '#capacity' ).val(),
+			luggage:		$( '#luggage' ).val(),
+			lifestyle:		$( '#lifestyle' ).val(),
+			
+			price:			parseInt( $( '#price' ).val() ),
+			speed:			parseInt( $( '#speed' ).val() ),
+			economy:		parseInt( $( '#economy' ).val() ),
+
+			awd:			parseInt( $( '#awd:checked' ).val() ) || 0,
+			high:			parseInt( $( '#high:checked' ).val() ) || 0,
+			convertible:	parseInt( $( '#convertible:checked' ).val() ) || 0,
+
+		};
+
+		return query.filter( obj );
+
+	};
+
+	$( '#submit' ).on( 'click', function( e ) {
+
+		e.preventDefault();
+
+		var $output     = $( '#output' );
+		var template    = Handlebars.compile( $('#template').html() );
+		var search		= getObj();
+		var data		= logic.getCars( query.build( search ) );
+
+		$output.find( '.output-content' ).remove();
+		$output.append( template( {
+
+			query: JSON.stringify( search ),
+			cars: data.data
+
+		} ) );
+
+	} );
+
+	</script>
+</body>
+
+</html>

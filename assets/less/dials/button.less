@@ -1,0 +1,89 @@
+// TODO
+@btnBaseRadius: 150px;
+@btnBaseBorder: 5px;
+
+@btnBorder: @btnBaseBorder;
+@btnRadius: @btnBaseRadius;
+
+@btnOuter: @btnRadius + ( ( 2 * @btnBorder ) * 2 );
+
+.control.start {
+
+	z-index: 1;
+
+	height: @btnOuter;
+	width: @btnOuter;
+
+	.responsive;
+
+	#start {
+
+		.background-image( linear-gradient( to bottom, #010204 0%, #323337 100% ) );
+		
+		box-shadow: 0 -1px 0 0px lighten( @dialGray, 10% ) inset;
+		border-radius: 100%;
+		cursor: pointer;
+		display: block;
+		margin-top: -( ( @btnOuter - ( @btnBorder * 2 ) ) / 2 );
+		margin-left: -( ( @btnOuter - ( @btnBorder * 2 ) ) / 2 );
+		position: absolute;
+
+		top: 50%;
+		left: 50%;
+
+		height: @btnOuter - ( @btnBorder * 2 );
+		width: @btnOuter - ( @btnBorder * 2 );
+
+		margin-top: -50%;
+		margin-left: -50%;
+
+		height: 100%;
+		width: 100%;
+
+		.button-inner {
+
+			.box-sizing( border-box );
+			.hide-text;
+			// .transition( background-color 0.05s ease-in );
+
+			border: solid 5px @trueBlack !important;
+			border-radius: 100%;
+			position: absolute;
+
+			top: ( ( ( @btnBaseBorder * 2 ) / @btnBaseRadius ) * 100% ) / 2 ;
+			left: ( ( ( @btnBaseBorder * 2 ) / @btnBaseRadius ) * 100% ) / 2 ;
+
+			height: 100% - ( ( ( @btnBaseBorder * 2 ) / @btnBaseRadius ) * 100% );
+			width: 100% - ( ( ( @btnBaseBorder * 2 ) / @btnBaseRadius ) * 100% );
+
+			&:before,
+			&:after {
+
+				.pseudo;
+
+				border-radius: 100%;
+				position: absolute;
+
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+
+			}
+
+			&:before { .background-image( linear-gradient( to bottom, transparent 0%, fadeout( @trueBlack, 65% ) 100% ) ); }
+
+			&:after {
+
+				.sprite-combobulate( @btnBaseRadius, @btnBaseRadius );
+
+				height: 100%;
+				width: 100%;
+
+			}
+
+		}
+
+	}
+
+}
