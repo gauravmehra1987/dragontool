@@ -428,7 +428,6 @@
     <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="App_Data\mini_data_latest.csv" />
     <Content Include="Assets\cars\index.php" />
     <Content Include="Assets\fonts\icons\icons.eot" />
     <Content Include="Assets\fonts\icons\icons.ttf" />
@@ -473,9 +472,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Results\_ResultDetail.cshtml" />
-    <Content Include="Views\Form\Index.cshtml">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="Views\Form\_Index.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
