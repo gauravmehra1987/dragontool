@@ -280,7 +280,7 @@ grunt.config.merge( {
 				'<%= project.paths.js %>/src/core.dials.js',
 				'<%= project.paths.js %>/src/core.dashboard.js',
 				'<%= project.paths.js %>/src/core.ui.js',
-				'<%= project.paths.js %>/src/core.utils.js',
+				'<%= project.paths.js %>/src/core.social.js',
 				'<%= project.paths.js %>/src/core.responsive.js',
 				'<%= project.paths.js %>/src/script.js',
 				'<%= project.paths.js %>/src/core.ie.js',
