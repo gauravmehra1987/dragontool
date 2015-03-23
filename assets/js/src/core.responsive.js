@@ -105,7 +105,7 @@ function Responsive() {
 
 			// Set the correct height for the dashboard elements
 
-			$( '#page-home .layout, #dash' ).height( $( window ).innerHeight() - ( $( '.layout-header' ).height() + 4 ) );
+			// $( '#page-home .layout, .column.right' ).height( $( window ).innerHeight() - ( $( '.layout-header' ).height() + 4 ) );
 
 		};
 
