@@ -5104,15 +5104,28 @@ html body #dash #dash-right .bottom .control-title {
 @media (max-width: 767px) {
   #c-mpg .res-wrap {
     width: calc( 100% - 80px );
+    max-width: 200px;
+    margin: 0 auto;
   }
   #c-luggage .res-wrap {
     width: calc( 100% - 40px );
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  #c-lifestyle .res-wrap {
+    max-width: 210px;
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
   #c-options .control-inner {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0 20px;
+  }
+  #c-options .control-inner .control.options {
+    max-width: 400px;
+    margin: 0 auto;
   }
   #c-options .res-wrap {
     float: left;
@@ -5126,12 +5139,17 @@ html body #dash #dash-right .bottom .control-title {
   }
   #c-speed .res-wrap {
     width: calc( 100% - 80px );
+    max-width: 150px;
+  }
+  #bums {
+    margin: 20px auto;
   }
   #t-button {
     display: none !important;
   }
   #c-button .res-wrap {
     width: calc( 100% - 180px );
+    max-width: 170px;
   }
 }
 .control-title {
@@ -5387,7 +5405,7 @@ html body #dash #dash-right .bottom .control-title {
     -o-transform: none;
     -ms-transform: none;
     transform: none;
-    margin: 20px 0;
+    margin: 20px auto;
     position: static;
     height: auto;
     width: 100%;

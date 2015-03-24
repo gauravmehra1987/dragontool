@@ -1563,32 +1563,32 @@ if( 'addEventListener' in document ) { document.addEventListener('DOMContentLoad
 
 function Responsive() {
 
-	var disabled	= matchMedia( '( max-width: 767px ) and ( orientation: landscape )' );
+	// var disabled	= matchMedia( '( max-width: 767px ) and ( orientation: landscape )' );
 	var mobile		= matchMedia( '( max-width: 767px )' );
 	var tablet		= matchMedia( '( min-width: 768px ) and ( max-width: 1179px )' );
 	var desktop		= matchMedia( '( min-width: 1180px )' );
 
-	var handleDisabled = function( mediaQuery ) {
+	// var handleDisabled = function( mediaQuery ) {
 
-		this.on = function() {
+	// 	this.on = function() {
 
-			console.log( 'Responsive: disabled mode on' );
+	// 		console.log( 'Responsive: disabled mode on' );
 
-			$html.addClass( 'page-disabled' );
+	// 		$html.addClass( 'page-disabled' );
 
-		};
+	// 	};
 
-		this.off = function() {
+	// 	this.off = function() {
 
-			console.log( 'Responsive: disabled mode off' );
+	// 		console.log( 'Responsive: disabled mode off' );
 
-			$html.removeClass( 'page-disabled' );
+	// 		$html.removeClass( 'page-disabled' );
 
-		};
+	// 	};
 
-		( mediaQuery.matches ) ? this.on() : this.off();
+	// 	( mediaQuery.matches ) ? this.on() : this.off();
 
-	};
+	// };
 
 	var handleMobile = function( mediaQuery ) {
 
@@ -1700,7 +1700,7 @@ function Responsive() {
 
 			// Call match media upon load
 
-			if( disabled.matches ) handleDisabled( disabled );
+			// if( disabled.matches ) handleDisabled( disabled );
 			if( mobile.matches ) handleMobile( mobile );
 			if( tablet.matches ) handleTablet( tablet );
 			if( desktop.matches ) handleDesktop( desktop );
@@ -1709,7 +1709,7 @@ function Responsive() {
 
 		// And bind to viewport changes
 
-		disabled.addListener( handleDisabled );
+		// disabled.addListener( handleDisabled );
 		mobile.addListener( handleMobile );
 		tablet.addListener( handleTablet );
 		desktop.addListener( handleDesktop );
