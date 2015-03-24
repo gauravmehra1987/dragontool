@@ -6240,6 +6240,9 @@ html.page-disabled #disabled p {
     max-width: 800px;
     height: auto;
   }
+  html > body .layout-wrapper .layout .control-title {
+    cursor: pointer;
+  }
   html > body .layout-wrapper .layout .top,
   html > body .layout-wrapper .layout .middle,
   html > body .layout-wrapper .layout .bottom,
