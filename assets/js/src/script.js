@@ -51,7 +51,7 @@ $( window ).load( function() {
 	// We need to update dashboard color once the SVGs have been loaded
 
 	var color		= ( carCode ) ? logic.getCarByCode( carCode ).color : false;
-	var dashColor	= ( color ) ? color : 'Electric Blue';
+	var dashColor	= ( color ) ? color : 'Chili red';
 
 	dashboard.colors( carColors[ dashColor ] );
 
@@ -100,7 +100,7 @@ $( window ).load( function() {
 
 		// Animate button
 
-		TweenLite.from($( '#start' ), 0.5, {rotation: -360});
+		TweenLite.from($( '#start .button-inner' ), 0.5, {rotation: -360});
 
 		// Scroll to top of page
 

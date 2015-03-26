@@ -25,7 +25,7 @@
 
 	<div id="tpl-results">Loading...</div>
 	
-	<div>
+	<div class="results-footer">
 	
 		<ul id="related" class="related">
 
