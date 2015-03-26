@@ -1,6 +1,6 @@
 /*! by John Przeslakowski - visit me at http://goodpixels.co.uk */
 
-var social = {
+var socialMedia = {
 
 	facebook: {
 

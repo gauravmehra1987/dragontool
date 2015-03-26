@@ -3,6 +3,7 @@ var ie				= new IE();
 var ui				= new UI();
 var logic			= new Logic();
 var query			= new logic.query();
+var social			= new SocialMedia();
 var carCode			= getQueryParameter( 'm' ) || false;
 
 var addressObj;
@@ -75,32 +76,6 @@ $( window ).load( function() {
 	$.subscribe( 'form-ajax-results', function( e, data ) {
 
 		if( data.success ) { ui.showPanel( 'thanks' ); }
-
-	} );
-
-	// Handle social media
-
-	sharing();
-
-	// Events - let's start with the backdrop
-
-	$( '#terms-link' ).on( 'click', function( e ) {
-
-		e.preventDefault();
-
-		var _this	= this;
-		var target	= $( this ).attr( 'href' );
-		var $close	= $( target ).find( '.close' );
-
-		$( 'html' ).removeClass( 'terms-visible' ).addClass( 'terms-visible' );
-
-		$close.on( 'click', function( e ) {
-
-			e.preventDefault();
-
-			$( 'html' ).removeClass( 'terms-visible' );
-
-		} );
 
 	} );
 
@@ -386,10 +361,19 @@ $body.on( 'change', form.addresses, function( e ) {
 
 // Handle AJAX form results
 
+var $thanks = $( '#thanks-left, #thanks-right' );
+var $formContent = $( '.form-content' );
+
+$thanks.hide();
+
 $.subscribe( 'form-ajax-results', function( e, data ) {
 
-	alert( 'Thanks! Data has been logged to the console.' );
 	console.log( data );
+
+	$formContent.slideUp( 600 );
+	$thanks.slideDown( 600 );
+
+	alert( 'Thanks! Data has been logged to the console.' );
 
 } );
 

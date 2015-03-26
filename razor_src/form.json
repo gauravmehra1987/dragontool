@@ -9,7 +9,7 @@
 
 		"user":		"@Html.HiddenFor(model => model.UserId, new {@id = \"uid\", @value = ViewBag.UserId})",
 
-		"title":		"",
+		"title":		"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"),  \"Title\")",
 		"name":			"@Html.TextBoxFor(model => model.FirstName, new {@type = \"text\", @id=\"name\", @placeholder=\"First name\"})",
 		"surname":		"@Html.TextBoxFor(model => model.LastName, new {@type = \"text\", @id=\"surname\", @placeholder=\"Last name\"})",
 		"email":		"@Html.TextBoxFor(model => model.Email, new {@type = \"email\", @id=\"email\", @placeholder = \"E-mail address\"})",
@@ -22,7 +22,7 @@
 		},
 		"address": {
 
-			"home":			"@Html.TextBoxFor(model => model.AddressType, new { @type=\"radio\", @id=\"address-type-home\", @name=\"address-type\", @value=\"home\", @selected=\"selected\"})",
+			"home":			"@Html.TextBoxFor(model => model.AddressType, new { @type=\"radio\", @id=\"address-type-home\", @name=\"address-type\", @value=\"home\", @checked=\"checked\"})",
 			"work":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address-type-work\", @name = \"address-type\", @value = \"home\"})",
 			"postcode":		"@Html.TextBoxFor(model => model.AddressPostcode, new {type = \"text\", id = \"postcode\", placeholder = \"Postcode\"})",
 			"address1":		"@Html.TextBoxFor(model => model.AddressLine1, new {@type = \"text\", @id = \"address-1\", @placeholder = \"Address line 1\", @disabled = \"disabled\"})",
@@ -31,12 +31,11 @@
 
 		},
 		
-		"dealer":		"@Html.TextBoxFor(model => model.Dealer, new { @type=\"text\", @id=\"dealer\", @placeholder=\"Dealer\")",
 		"finance":		"@Html.CheckBoxFor(model => model.RequestCallback, new { @id=\"finance\", @value=\"1\"})",
 		"optout": {
 
-			"phone":	"@Html.CheckBoxFor(model => model.RequestCallback, new { @id=\"finance\", @value=\"1\"})",
-			"post":		"@Html.CheckBoxFor(model => model.EmailResults, new { @id=\"optout-post\", @value=\"post\"})"
+			"phone":	"@Html.CheckBoxFor(model => model.RequestCallback, new { @id=\"optout-phone\", @value=\"1\"})",
+			"post":		"@Html.CheckBoxFor(model => model.EmailResults, new { @id=\"optout-post\", @value=\"1\"})"
 
 		}
 

@@ -47,149 +47,163 @@
 
 		</header>
 
-		<div class="form-control half-width">
+		<div class="form-content">
 
-			<div class="select">
+			<div class="form-control half-width">
+
+				<div class="select">
+
+					@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, "Name", "Name"),  "Title")
+
+				</div>
 
 			</div>
 
-		</div>
+			<div class="form-control append user full-width">
 
-		<div class="form-control append user full-width">
-
-			@Html.TextBoxFor(model => model.FirstName, new {@type = "text", @id="name", @placeholder="First name"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="form-control append user full-width">
-
-			@Html.TextBoxFor(model => model.LastName, new {@type = "text", @id="surname", @placeholder="Last name"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<p class="notice">Please give us your email address if you'd like to hear about MINI adventures from MINI UK, MINI Financial Services and approved MINI Retailers. From time to time you may also get news from other BMW Group companies, approved BMW Retailers, BMW agents and other suppliers of BMW or MINI branded products or services by email.</p>
-
-		<div class="form-control append mail full-width">
-
-			@Html.TextBoxFor(model => model.Email, new {@type = "email", @id="email", @placeholder = "E-mail address"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<p class="notice">Please give at least one phone number.</p>
-
-		<div class="form-control append phone full-width">
-
-			@Html.TextBoxFor(model => model.TelephoneHome, new {@type = "tel", @id = "tel-home", @placeholder = "Home telephone"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="form-control append phone full-width">
-
-			@Html.TextBoxFor(model => model.TelephoneWork, new {@type = "tel", @id = "tel-work", @placeholder = "Work telephone"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="form-control append phone full-width">
-
-			@Html.TextBoxFor(model => model.TelephoneMobile, new {@type = "tel", @id = "tel-mobile", @placeholder = "Mobile telephone"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="inline">
-
-			<div class="form-control append home half-width">
-
-				@Html.TextBoxFor(model => model.AddressPostcode, new {type = "text", id = "postcode", placeholder = "Postcode"})
+				@Html.TextBoxFor(model => model.FirstName, new {@type = "text", @id="name", @placeholder="First name"})
 				<span class="field-icon"></span>
 
 			</div>
 
-			<div class="form-control half-width">
-			
-				<div id="address-type-chooser" class="form-control">
+			<div class="form-control append user full-width">
 
-					<div class="checkbox checkbox-radio">
-						<label for="address-type-home">Home</label>
+				@Html.TextBoxFor(model => model.LastName, new {@type = "text", @id="surname", @placeholder="Last name"})
+				<span class="field-icon"></span>
 
-						@Html.TextBoxFor(model => model.AddressType, new { @type="radio", @id="address-type-home", @name="address-type", @value="home", @selected="selected"})
+			</div>
+
+			<p class="notice">Please give us your email address if you'd like to hear about MINI adventures from MINI UK, MINI Financial Services and approved MINI Retailers. From time to time you may also get news from other BMW Group companies, approved BMW Retailers, BMW agents and other suppliers of BMW or MINI branded products or services by email.</p>
+
+			<div class="form-control append mail full-width">
+
+				@Html.TextBoxFor(model => model.Email, new {@type = "email", @id="email", @placeholder = "E-mail address"})
+				<span class="field-icon"></span>
+
+			</div>
+
+			<p class="notice">Please give at least one phone number.</p>
+
+			<div class="form-control append phone full-width">
+
+				@Html.TextBoxFor(model => model.TelephoneHome, new {@type = "tel", @id = "tel-home", @placeholder = "Home telephone"})
+				<span class="field-icon"></span>
+
+			</div>
+
+			<div class="form-control append phone full-width">
+
+				@Html.TextBoxFor(model => model.TelephoneWork, new {@type = "tel", @id = "tel-work", @placeholder = "Work telephone"})
+				<span class="field-icon"></span>
+
+			</div>
+
+			<div class="form-control append phone full-width">
+
+				@Html.TextBoxFor(model => model.TelephoneMobile, new {@type = "tel", @id = "tel-mobile", @placeholder = "Mobile telephone"})
+				<span class="field-icon"></span>
+
+			</div>
+
+			<div class="inline">
+
+				<div class="form-control append home half-width">
+
+					@Html.TextBoxFor(model => model.AddressPostcode, new {type = "text", id = "postcode", placeholder = "Postcode"})
+					<span class="field-icon"></span>
+
+				</div>
+
+				<div class="form-control half-width">
+				
+					<div id="address-type-chooser" class="form-control">
+
+						<div class="checkbox checkbox-radio">
+							<label for="address-type-home">Home</label>
+
+							@Html.TextBoxFor(model => model.AddressType, new { @type="radio", @id="address-type-home", @name="address-type", @value="home", @checked="checked"})
+
+						</div>
+
+						<div class="checkbox checkbox-radio">
+							<label for="address-type-work">Work</label>
+
+							@Html.TextBoxFor(model => model.AddressType, new { @type = "radio", @id = "address-type-work", @name = "address-type", @value = "home"})
+
+						</div>				
+
+					</div>
+					
+				</div><!-- end div.form-control half-width -->
+
+			</div><!-- end div.inline -->
+
+			<div id="address-chooser">
+				
+				<div class="form-control disabled">
+
+					<div class="select disabled">
+
+						<select disabled="disabled">
+
+							<option value="">Choose your address</option>
+
+						</select>
 
 					</div>
 
-					<div class="checkbox checkbox-radio">
-						<label for="address-type-work">Work</label>
-
-						@Html.TextBoxFor(model => model.AddressType, new { @type = "radio", @id = "address-type-work", @name = "address-type", @value = "home"})
-
-					</div>				
-
 				</div>
+
+			</div><!-- end div#address-chooser -->
+
+			<div class="form-control disabled append home full-width">
+
+				@Html.TextBoxFor(model => model.AddressLine1, new {@type = "text", @id = "address-1", @placeholder = "Address line 1", @disabled = "disabled"})
+				<span class="field-icon"></span>
+
+			</div>
+
+			<div class="form-control disabled append home full-width">
+
+				@Html.TextBoxFor(model => model.AddressLine2, new {@type = "text", @id = "address-2", @placeholder = "Address line 2", @disabled = "disabled"})
+				<span class="field-icon"></span>
+
+			</div>
+
+			<div class="form-control disabled append home full-width">
+
+				@Html.TextBoxFor(model => model.AddressLine3, new {@type = "text", @id = "address-3", @placeholder = "Address line 3", @disabled = "disabled"})
+				<span class="field-icon"></span>
+
+			</div>
+
+			<div id="dealer-chooser">
 				
-			</div><!-- end div.form-control half-width -->
+				<div class="form-control disabled">
 
-		</div><!-- end div.inline -->
+					<div class="select disabled">
 
-		<div id="address-chooser">
-			
-			<div class="form-control disabled">
+						<select disabled="disabled">
 
-				<div class="select disabled">
+							<option value="">Choose your nearest dealer</option>
 
-					<select disabled="disabled">
+						</select>
 
-						<option value="">Choose your address</option>
-
-					</select>
+					</div>
 
 				</div>
 
-			</div>
+			</div><!-- end div#dealer-chooser -->
 
-		</div><!-- end div#address-chooser -->
+		</div><!-- end div.form-content -->
 
-		<div class="form-control disabled append home full-width">
-
-			@Html.TextBoxFor(model => model.AddressLine1, new {@type = "text", @id = "address-1", @placeholder = "Address line 1", @disabled = "disabled"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="form-control disabled append home full-width">
-
-			@Html.TextBoxFor(model => model.AddressLine2, new {@type = "text", @id = "address-2", @placeholder = "Address line 2", @disabled = "disabled"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div class="form-control disabled append home full-width">
-
-			@Html.TextBoxFor(model => model.AddressLine3, new {@type = "text", @id = "address-3", @placeholder = "Address line 3", @disabled = "disabled"})
-			<span class="field-icon"></span>
-
-		</div>
-
-		<div id="dealer-chooser">
+		<div id="thanks-left">
 			
-			<div class="form-control disabled">
+			<h3>Nice one.</h3>
+				
+			<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
 
-				<div class="select disabled">
-
-					<select disabled="disabled">
-
-						<option value="">Choose your nearest dealer</option>
-
-					</select>
-
-				</div>
-
-			</div>
-
-		</div><!-- end div#dealer-chooser -->
+		</div><!-- end div#thanks-left -->
 
 	</div><!-- end div.form-left -->
 
@@ -201,46 +215,67 @@
 			
 		</figure><!-- end figure#car -->
 		
-		<div class="form-control">
-			
-			<div class="checkbox">
-				<label for="finance">Please tick here if you are interested in MINI finance options.</label>
+		<div class="form-content">
 
-				@Html.CheckBoxFor(model => model.RequestCallback, new { @id="finance", @value="1"})
-
-			</div>
-
-		</div>
-
-		<p class="notice">Here at MINI, we'd like to get in touch with you to share news on our latest MINI adventures and other products and services you might be interested in. We may also contact you for market research reasons, so we can find out what you think of MINI, and in turn we can learn a bit more about you.</p>
-		<p class="notice">Your personal details are only shared with other BMW Group companies, authorised BMW and MINI Retailers, BMW i agents and other suppliers of BMW or MINI branded products or services for these reasons. Have a look at our privacy policy for more information. </p>
-
-		<div id="optout-chooser" class="form-control">
-
-			<p>Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
-			
-			<div class="checkbox">
-				<label for="optout-phone">by phone</label>				
-
-				@Html.CheckBoxFor(model => model.RequestCallback, new { @id="finance", @value="1"})
-
-			</div>
-
-			<div class="checkbox">
-				<label for="optout-post">by post</label>
+			<div class="form-control">
 				
+				<div class="checkbox">
+					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
 
-				@Html.CheckBoxFor(model => model.EmailResults, new { @id="optout-post", @value="post"})
+					@Html.CheckBoxFor(model => model.RequestCallback, new { @id="finance", @value="1"})
+
+				</div>
 
 			</div>
 
-		</div>
+			<p class="notice">Here at MINI, we'd like to get in touch with you to share news on our latest MINI adventures and other products and services you might be interested in. We may also contact you for market research reasons, so we can find out what you think of MINI, and in turn we can learn a bit more about you.</p>
+			<p class="notice">Your personal details are only shared with other BMW Group companies, authorised BMW and MINI Retailers, BMW i agents and other suppliers of BMW or MINI branded products or services for these reasons. Have a look at our privacy policy for more information. </p>
 
-		<div class="form-control">
+			<div id="optout-chooser" class="form-control">
 
-			<button type="submit" class="button switch-bg">Submit</button>
+				<p>Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
+				
+				<div class="checkbox">
+					<label for="optout-phone">by phone</label>				
 
-		</div>
+					@Html.CheckBoxFor(model => model.RequestCallback, new { @id="optout-phone", @value="1"})
+
+				</div>
+
+				<div class="checkbox">
+					<label for="optout-post">by post</label>
+					
+
+					@Html.CheckBoxFor(model => model.EmailResults, new { @id="optout-post", @value="1"})
+
+				</div>
+
+			</div>
+
+			<div class="form-control">
+
+				<button type="submit" class="button switch-bg">Submit</button>
+
+			</div>
+
+		</div><!-- end div.form-content -->
+
+		<div id="thanks-right">
+
+			<h4 class="item switch-color">Mollycoddle your Mini.</h4>
+			<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
+
+			<hr />
+
+			<h4 class="item switch-color">Keep it covered.</h4>
+			<p>Protect your MINI’s working parts with a MINI Warranty.</p>
+
+			<hr />
+
+			<h4 class="item switch-color">Get connected.</h4>
+			<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
+
+		</div><!-- end div#thanks-right -->
 
 	</div><!-- end div.form-right -->
 
@@ -250,29 +285,8 @@
 
 	<footer class="layout-footer">
 		
-	<p><a id="terms-link" href="#terms">Terms and Conditions</a></p>
+	<p><a id="terms-link" href="http://www.mini.co.uk/legal-notice/" target="_blank">Terms and Conditions</a></p>
 
 </footer><!-- end footer.layout-footer -->
-
-<div id="terms">
-
-	<a href="#" class="close">Close</a>
-	
-	<div class="inner">
-		
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quos voluptatum, saepe maxime nesciunt, laborum laboriosam atque dignissimos aspernatur hic unde maiores amet impedit dolorum consectetur eum dolor perferendis dicta.</p>
-
-	</div><!-- end div.inner -->
-
-</div><!-- end div#terms -->
 
 </div><!-- end div#page-form.layout-wrapper -->
