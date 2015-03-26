@@ -229,7 +229,10 @@ function UI() {
 				'color':	'Rocket gold',
 				'name':		'Rocket Car!',
 				'cost':		'n/a',
-				'terms':	'A ro-ro-ro-rocket car!'
+				'terms':	'A ro-ro-ro-rocket car!',
+				 "alt_1": "Roadster JCW",
+				 "alt_2": "Convertible JCW",
+				 "alt_3": "Paceman JCW ALL4"
 
 			},
 
@@ -239,7 +242,10 @@ function UI() {
 				'color':	'Toy brown',
 				'name':		'Toy Car',
 				'cost':		'n/a',
-				'terms':	'Just a silly toy...'
+				'terms':	'Just a silly toy...',
+				 "alt_1": "Roadster JCW",
+				 "alt_2": "Convertible JCW",
+				 "alt_3": "Paceman JCW ALL4"
 
 			}
 
