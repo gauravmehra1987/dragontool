@@ -1844,7 +1844,7 @@ $( window ).load( function() {
 
 		// Animate button
 
-		TweenLite.from($( '#start' ), 0.5, {rotation: -360});
+		TweenLite.from($( '#start .button-inner' ), 0.5, {rotation: -360});
 
 		// Scroll to top of page
 

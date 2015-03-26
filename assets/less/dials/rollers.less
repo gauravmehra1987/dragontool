@@ -69,6 +69,16 @@
 
 	.backline { .align-centers; }
 
+	.roller {
+
+		&:after {
+
+			.background-image( linear-gradient( to bottom, @trueBlack 0%, transparent 47%, @trueBlack 100% ) );
+
+		}
+
+	}
+
 	@media ( max-width: @breakpointMobile ) {
 
 		.backline { position: static; }
@@ -99,7 +109,7 @@
 
 		.align-centers;
 
-		.background-image( linear-gradient( to bottom, @trueBlack 0%, transparent 47%, @trueBlack 100% ) );
+		.background-image( linear-gradient( to bottom, @black 0%, fadeout( @black, 80% ) 25%, transparent 26%, transparent 74%, fadeout( @black, 80% ) 75%, @black 100% ) );
 
 		.pseudo;
 
