@@ -1638,13 +1638,39 @@ function Responsive() {
 
 				e.preventDefault();
 
+				// When the dashboard is in view
+
 				$( '.layout > .column.left' ).toggleClass( 'open' );
+				$('.layout').toggleClass('dash-open');
+
+				// When the results screen is in view
+
+				if ( !($('.layout').hasClass('dash-open')) && $('#results').is(':visible') ) {
+
+					var resultsHeight = $('#results').height() + 270 + 'px';
+					$('.layout').css('height', resultsHeight);
+
+				} else {
+
+					$('.layout').removeAttr('style');
+
+				};
+
+				// Scroll to top
+
+				setTimeout( function() {
+
+					$('html, body').animate( {
+
+						scrollTop: 0
+
+					}, 600);
+
+					return false;
+
+				}, 200 );
 
 			} );
-
-			// Set the correct height for the dashboard elements
-
-			// $( '#page-home .layout, .column.right' ).height( $( window ).innerHeight() - ( $( '.layout-header' ).height() + 4 ) );
 
 		};
 
@@ -1794,11 +1820,33 @@ $( window ).load( function() {
 
 	}
 
+
 	// Execute search
 
 	$( '#start' ).on( 'click', function( e ) {
 
 		e.preventDefault();
+
+		// Animate button
+
+		TweenLite.from($( '#start' ), 0.5, {rotation: -360});
+
+		// Scroll to top of page
+
+		setTimeout( function() {
+
+			$('#tablet-toggle').click();
+
+			$('html, body').animate( {
+
+				scrollTop: 0
+
+			}, 600);
+
+			return false;
+
+		}, 400 );
+
 
 		var userSelection = dashboard.values();
 

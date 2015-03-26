@@ -52,14 +52,15 @@ html {
 
 			display: block;
 
+			.dash-open { height: 905px; }
+			.results-open { height: 1340px; }
+
 			.layout {
 
 				display: block;
 				margin-top: 3px;
 				overflow: hidden;
 				position: relative;
-				height: 905px;
-
 				width: 100%;
 
 				&.full-width { width: 100%; }
@@ -87,7 +88,7 @@ html {
 							padding-right: 140px;
 							position: static;
 
-							height: ~'calc( 100% - 160px )';
+							// height: ~'calc( 100% - 160px )';
 
 						}
 
@@ -121,6 +122,8 @@ html {
 							height: 905px;
 
 							#tablet-toggle {
+
+								cursor: pointer;
 
 								.hide-text;
 
