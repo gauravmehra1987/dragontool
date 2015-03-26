@@ -3372,8 +3372,8 @@ Copyright (c) 2015 Daniel Eden
 }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons/icons.eot?9951ac68c1c6c43910c9600833411a21");
-  src: url("../fonts/icons/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons/icons.woff?9951ac68c1c6c43910c9600833411a21") format("woff"), url("../fonts/icons/icons.ttf?9951ac68c1c6c43910c9600833411a21") format("truetype");
+  src: url("../fonts/icons/icons.eot?01c06917b7cde7b1ec68448ed4bd0bab");
+  src: url("../fonts/icons/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons/icons.woff?01c06917b7cde7b1ec68448ed4bd0bab") format("woff"), url("../fonts/icons/icons.ttf?01c06917b7cde7b1ec68448ed4bd0bab") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -4132,6 +4132,7 @@ html body {
   padding: 0;
   position: absolute;
   z-index: 99999;
+  cursor: pointer;
   top: -25px;
   left: 50%;
   height: 58px;
@@ -4172,6 +4173,13 @@ html body {
   bottom: 0;
   left: 0;
 }
+#c-speed .roller:after {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iNDclIiBzdG9wLWNvbG9yPSJyZ2IoMCwwLDApIiBzdG9wLW9wYWNpdHk9IjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNsZXNzaGF0LWdlbmVyYXRlZCkiIC8+PC9zdmc+);
+  background-image: -webkit-linear-gradient(top, #000000 0%, transparent 47%, #000000 100%);
+  background-image: -moz-linear-gradient(top, #000000 0%, transparent 47%, #000000 100%);
+  background-image: -o-linear-gradient(top, #000000 0%, transparent 47%, #000000 100%);
+  background-image: linear-gradient(to bottom, #000000 0%, transparent 47%, #000000 100%);
+}
 @media (max-width: 767px) {
   #c-speed .backline {
     position: static;
@@ -4190,6 +4198,7 @@ html body {
   margin: 0 5px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
   height: 160px;
   width: 50px;
 }
@@ -4334,6 +4343,7 @@ html body {
   background-image: url(../sprites/svg/mpg-knob-arrow.svg );
   background-image: url( ../sprites/mpg-knob-arrow.png )\9;
   display: block;
+  cursor: pointer;
 }
 .control.mpg .switch-bg {
   height: 83.33333333%;
@@ -4868,6 +4878,7 @@ html body {
   right: 0;
   bottom: 0;
   left: 0;
+  cursor: pointer;
 }
 .control.options .option input.checked + label span,
 .control.options .option input.checked + label .light {
@@ -5090,6 +5101,12 @@ html body {
   display: block;
   height: 100%;
   width: 100%;
+}
+.state_0 {
+  transform: rotate(0deg);
+}
+.state_1 {
+  transform: rotate(170deg);
 }
 html body #dash #dash-right .bottom {
   background: #1a1a1a;
@@ -5469,7 +5486,7 @@ html.page-disabled #disabled p {
     height: 905px;
   }
   html > body .layout-wrapper .results-open {
-    height: 1165px;
+    height: 1340px;
   }
   html > body .layout-wrapper .layout {
     display: block;
@@ -5498,7 +5515,6 @@ html.page-disabled #disabled p {
     padding-left: 140px;
     padding-right: 140px;
     position: static;
-    height: calc( 100% - 160px );
   }
   html > body .layout-wrapper .layout .column.left {
     -webkit-transition: top 0.6s;
@@ -5524,6 +5540,7 @@ html.page-disabled #disabled p {
     height: 905px;
   }
   html > body .layout-wrapper .layout .column.left #dash #tablet-toggle {
+    cursor: pointer;
     display: inline-block;
     text-indent: -999em;
     white-space: nowrap;
@@ -5573,6 +5590,7 @@ html.page-disabled #disabled p {
   html > body #page-home #results #tpl-results .model-image {
     background-color: transparent;
     background-image: url(../img/skid-marks-faded.png );
+    margin-top: 0px;
   }
   html > body #page-results .layout {
     position: relative;
@@ -5986,7 +6004,7 @@ html.page-disabled #disabled p {
   -moz-background-size: cover;
   background-size: cover;
   *behavior: url('/assets/js/htc/backgroundsize.htc');
-  margin: 20px -30px;
+  margin: 66px -30px;
   overflow: hidden;
   position: relative;
 }
@@ -6152,19 +6170,20 @@ html.page-disabled #disabled p {
   height: 2em;
 }
 #results .model-image {
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 #results .gimmick {
   font-family: 'mini-headline', fantasy;
   font-size: 18px;
   margin: 20px 0;
+  line-height: 19px;
 }
 #results .related {
   *zoom: 1;
   list-style-type: none;
   padding: 0;
   line-height: 1;
-  background: #1e1e1e;
+  background: #1a1a1a;
   margin: auto -30px;
   padding: 30px;
 }
@@ -6192,11 +6211,12 @@ html.page-disabled #disabled p {
 #results .related li a {
   background: url(../img/skid-marks.jpg ) 50% 50% no-repeat;
   background-size: cover;
-  border: solid 1px transparent;
   display: block;
 }
 #results .related li a.active {
-  border-color: #ffffff !important;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
 }
 #results .related li a:hover {
   background: none;
@@ -6447,4 +6467,3 @@ html > body #page-form.layout-wrapper #optout-chooser .checkbox.checkbox-radio l
 html > body #page-form.layout-wrapper #address-type-chooser .checkbox.checkbox-radio label {
   line-height: 2.3em;
 }
-/*# sourceMappingURL=style.css.map */
