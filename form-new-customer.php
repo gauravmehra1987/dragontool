@@ -26,7 +26,8 @@
 
 			</ul>
 
-			<h3 class="title">Your details</h3>
+			<h3 class="title">ALMOST THERE</h3>
+			<p class="notice">You've found your dream MINI. Now pop in your details so your local MINI Retailer can help you get your hands on it. </p>
 
 		</header>
 
@@ -85,7 +86,7 @@
 
 			</div>
 
-			<p class="notice">Please give us your email address if you'd like to hear about MINI adventures from MINI UK, MINI Financial Services and approved MINI Retailers. From time to time you may also get news from other BMW Group companies, approved BMW Retailers, BMW agents and other suppliers of BMW or MINI branded products or services by email.</p>
+			<p class="notice">Please tick the relevant box if you'd prefer NOT to be contacted</p>
 
 			<div class="form-control append mail full-width">
 
@@ -98,7 +99,7 @@
 
 			</div>
 
-			<p class="notice">Please give at least one phone number.</p>
+			<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or MINI Retailers, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest news on our vehicles and and other products and services by email. We may occasionally ask for your assistance in market research to help improve our service to customers. Have a look at our privacy policy for more information.  </p>
 
 			<div class="form-control append phone full-width">
 
@@ -237,7 +238,7 @@
 
 						<select disabled="disabled">
 
-							<option value="">Choose your nearest dealer</option>
+							<option value="">Choose your preferred MINI Centre</option>
 
 						</select>
 
