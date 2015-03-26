@@ -17,7 +17,13 @@
 	.scale, .switch-bg, .indicators, .knob, .arrow { .align-centers; } // Center all layers
 
 	.knob { .sprite-mpg-knob( @mpgBaseH, @mpgBaseW ); }
-	.arrow { .sprite-mpg-knob-arrow( @mpgBaseH, @mpgBaseW ); }
+
+	.arrow {
+
+		.sprite-mpg-knob-arrow( @mpgBaseH, @mpgBaseW );
+
+		cursor: pointer;
+	}
 
 	.switch-bg { .size_pct( @mpgBaseW, @mpgBaseW, @mpgBaseH, @mpgBaseW ); }
 

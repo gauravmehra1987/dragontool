@@ -4132,6 +4132,7 @@ html body {
   padding: 0;
   position: absolute;
   z-index: 99999;
+  cursor: pointer;
   top: -25px;
   left: 50%;
   height: 58px;
@@ -4197,6 +4198,7 @@ html body {
   margin: 0 5px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
   height: 160px;
   width: 50px;
 }
@@ -4341,6 +4343,7 @@ html body {
   background-image: url(../sprites/svg/mpg-knob-arrow.svg );
   background-image: url( ../sprites/mpg-knob-arrow.png )\9;
   display: block;
+  cursor: pointer;
 }
 .control.mpg .switch-bg {
   height: 83.33333333%;
@@ -4875,6 +4878,7 @@ html body {
   right: 0;
   bottom: 0;
   left: 0;
+  cursor: pointer;
 }
 .control.options .option input.checked + label span,
 .control.options .option input.checked + label .light {
