@@ -51,7 +51,7 @@ $( window ).load( function() {
 	// We need to update dashboard color once the SVGs have been loaded
 
 	var color		= ( carCode ) ? logic.getCarByCode( carCode ).color : false;
-	var dashColor	= ( color ) ? color : 'Electric Blue';
+	var dashColor	= ( color ) ? color : 'Chili red';
 
 	dashboard.colors( carColors[ dashColor ] );
 
