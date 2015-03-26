@@ -91,11 +91,33 @@ $( window ).load( function() {
 
 	}
 
+
 	// Execute search
 
 	$( '#start' ).on( 'click', function( e ) {
 
 		e.preventDefault();
+
+		// Animate button
+
+		TweenLite.from($( '#start' ), 0.5, {rotation: -360});
+
+		// Scroll to top of page
+
+		setTimeout( function() {
+
+			$('#tablet-toggle').click();
+
+			$('html, body').animate( {
+
+				scrollTop: 0
+
+			}, 600);
+
+			return false;
+
+		}, 400 );
+
 
 		var userSelection = dashboard.values();
 

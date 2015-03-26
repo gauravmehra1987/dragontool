@@ -54,6 +54,7 @@ var system_paths = {
 };
 
 //var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
+
 var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
 
 var carColors = {

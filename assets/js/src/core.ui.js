@@ -149,7 +149,7 @@ function UI() {
 
 			if( alt_1 === false || alt_2 === false || alt_3 === false ) {
 
-				alert( 'John Cooper Works is missing - please update the dataset with that car.' )
+				alert( 'missing alternate car - check console.log for missing value' )
 
 				console.log( 'Original car:' );
 				console.log( car );

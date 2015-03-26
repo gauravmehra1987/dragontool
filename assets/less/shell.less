@@ -350,7 +350,9 @@
 
 	background: @black url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
 	.background-size( cover );
-	margin: @margin -( @margin * 1.5 );
+	// margin: @margin -( @margin * 1.5 );
+	margin: 66px -30px;
+
 	overflow: hidden;
 	position: relative;
 
@@ -611,13 +613,14 @@
 
 	}
 
-	.model-image { margin-bottom: 2px; }
+	.model-image { margin-bottom: 5px; }
 
 	.gimmick {
 
 		font-family: @fontAlt;
 		font-size: @fontSizeMedium;
 		margin: @margin 0;
+		line-height: 19px;
 
 	}
 
@@ -642,10 +645,13 @@
 
 				background: url( ../img/skid-marks.jpg ) 50% 50% no-repeat;
 				background-size: cover;
-				border: solid 1px transparent;
 				display: block;
 
-				&.active { border-color: @white !important; }
+				&.active {
+					border-style: solid;
+					border-width: 1px;
+					border-color: transparent;
+				}
 				
 				&:hover { background: none; }
 
@@ -708,6 +714,10 @@
 			max-width: 800px;
 
 			height: auto;
+
+			.control-title {
+				cursor: pointer;
+			}
 
 			.top, .middle, .bottom, .inner-left, .inner-right, .control-title {
 

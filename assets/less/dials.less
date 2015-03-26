@@ -24,10 +24,39 @@ html body #dash #dash-right .bottom {
 
 @media ( max-width: @breakpointMobile ) {
 
-	#c-mpg .res-wrap { width: ~'calc( 100% - 80px )'; }
+	#c-mpg {
+		
+		.res-wrap {
 
-	#c-luggage .res-wrap { width: ~'calc( 100% - 40px )'; }
-	
+			width: ~'calc( 100% - 80px )';
+			max-width: 200px;
+			margin: 0 auto;
+		}
+
+	}
+
+	#c-luggage {
+
+		.res-wrap { 
+
+			width: ~'calc( 100% - 40px )';
+			max-width: 400px;
+			margin: 0 auto;
+
+		}
+	}
+
+	#c-lifestyle {
+
+		.res-wrap { 
+
+			max-width: 210px;
+			margin: 0 auto;
+			margin-bottom: 20px;
+
+		}
+	}
+
 	#c-options {
 
 		.control-inner {
@@ -35,6 +64,12 @@ html body #dash #dash-right .bottom {
 			.box-sizing( border-box );
 
 			padding: 0 @margin;
+
+			.control.options {
+
+				max-width: 400px;
+				margin: 0 auto;
+			}
 
 		}
 
@@ -54,12 +89,27 @@ html body #dash #dash-right .bottom {
 
 	#c-speed {
 
-		.res-wrap { width: ~'calc( 100% - 80px )'; }
+		.res-wrap {
 
+			width: ~'calc( 100% - 80px )';
+			max-width: 150px;
+
+		}
+
+	}
+
+	#bums {
+		margin: 20px auto;
 	}
 
 	#t-button { display: none !important; }
 
-	#c-button .res-wrap { width: ~'calc( 100% - 180px )'; }
+	#c-button {
+
+		.res-wrap {
+			width: ~'calc( 100% - 180px )';
+			max-width: 170px;
+		}
+	}
 
 }
