@@ -1065,8 +1065,15 @@ function Dashboard() {
 
 		$( '.switch-bg' ).css( {
 
-			'background-color':	color,
-			'border-color':		color
+			'background-color':	color
+
+		} );
+
+		// Borders
+
+		$('.related .active').css ( {
+
+			'border-color':	color
 
 		} );
 
