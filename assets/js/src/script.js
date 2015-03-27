@@ -118,6 +118,11 @@ $( window ).load( function() {
 
 		}, 400 );
 
+		// var rule = CSSRulePlugin.getRule(".button:before");
+		// TweenLite.to(rule, 3, {cssRule:{left:"60px"}});
+
+		// TweenLite.from( $('.button'), 0.5, {left:"60px", repeat:99} );
+
 
 		var userSelection = dashboard.values();
 
