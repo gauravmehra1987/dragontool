@@ -256,6 +256,8 @@ grunt.config.merge( {
 				'<%= project.paths.bower %>/greensock/src/uncompressed/plugins/CSSPlugin.js',
 				'<%= project.paths.bower %>/greensock/src/uncompressed/TweenLite.js',
 				'<%= project.paths.bower %>/greensock/src/uncompressed/utils/Draggable.js',
+				'<%= project.paths.js %>/src/CSSRulePlugin.js',
+
 
 				// Plugins
 
