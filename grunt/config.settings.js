@@ -275,7 +275,7 @@ grunt.config.merge( {
 
 				// List scripts
 				
-				'<%= project.paths.js %>/src/config.js',
+				'<%= project.paths.js %>/src/core.Config.js',
 				'<%= project.paths.js %>/src/validation.rules.js',
 				'<%= project.paths.js %>/src/validation.js',
 				'<%= project.paths.js %>/src/core.DashboardLogic.js',

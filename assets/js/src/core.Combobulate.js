@@ -122,16 +122,16 @@ function Combobulate() {
 		e.preventDefault();
 		//
 		// Get the clicked on elements thumbnail
-		var $targetThumbnail = $(e.target);
+		var $targetLink = $(e.target).parent();
 		//
 		// Get link of the clicked thumbnail
-		var link = $targetThumbnail.attr( 'href' );
+		var link = $targetLink.attr( 'href' );
 		//
 		// Get the car name from the link
 		var car	= dashboardLogic.getCarByCode( link.substring( 1 ) );
 		//
 		// Remove active classes from all the thumbnails, but add active class to the thumbnail clicked
-		$( '.car-changer' ).removeClass( 'active' ).filter( $targetThumbnail ).addClass( 'active' );
+		$( '.car-changer' ).removeClass( 'active' ).filter( $targetLink ).addClass( 'active' );
 		//
 		// Pass to the UI render function, the clicked on car name and whether it has related cars
 		ui.render( car, true );
