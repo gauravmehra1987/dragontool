@@ -227,7 +227,7 @@ function UI() {
 
 				'code':		'RKT',
 				'color':	'Rocket gold',
-				'name':		'Rocket Car!',
+				'name':		'Alpha Centura',
 				'cost':		'n/a',
 				'terms':	'A ro-ro-ro-rocket car!',
 				 "alt_1": "Roadster JCW",
@@ -261,7 +261,7 @@ function UI() {
 
 			case 'creature':
 
-				alert( 'These search results will show one of the creatures.' );
+			//	alert( 'These search results will show one of the creatures.' );
 
 			break;
 

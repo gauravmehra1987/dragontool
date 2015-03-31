@@ -33,7 +33,7 @@
 			<a href="<%= results.form_Link %>" class="button transparent">Call to action</a>
 			/build -->
 
-			<!-- build:remove --><a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">Call to action</a><!-- /build -->
+			<!-- build:remove --><a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">MAKE THIS MINI A REALITY</a><!-- /build -->
 
 		</div>
 

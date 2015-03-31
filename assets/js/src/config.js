@@ -5,7 +5,7 @@ var socialMedia = {
 	facebook: {
 
 		link:			'http://google.com',
-		message:		'This is the message which will be posted to the user\'s wall.',
+		message:		'Find the perfect MINI for you with our nifty Combobulator tool:',
 		name:			'Image name',
 		caption:		'Image caption',
 		picture:		'http://placehold.it/200x200',
@@ -16,8 +16,8 @@ var socialMedia = {
 	twitter: {
 
 		url:			'http://google.com',
-		text:			'This is the message which will be posted to the user\'s wall.',
-		hashtags:		'mini,cooper'
+		text:			'Find the perfect MINI for you with our nifty Combobulator tool:',
+		hashtags:		''
 
 	}
 

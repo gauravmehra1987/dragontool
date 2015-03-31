@@ -9,14 +9,14 @@
 
 	</header><!-- end header.header -->
 
-	<!-- build:remove --><h3>Hi John,</h3><!-- /build -->
+	<!-- build:remove --><h3>Hi,</h3><!-- /build -->
 
 	<!-- build:template
 	<%= home.hi %>
 	/build -->
 	
-	<p>Want a shiny new MINI finance deal, but don't know your APRs from your elbow? Let the Combobulator find you the perfect offer, at the touch of a button.</p>
-	<p>Choose now much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit Combobulate to get your tailor-made deal.</p>
+	<p>Want a shiny new MINI, but don't know your Countryman from your Convertible? Let the Combobulator find the right model for you, at the touch of a button.</p>
+	<p>Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit 'Combobulate' to get your perfect MINI.</p>
 	<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>
 
 </div><!-- end div#welcome.panel -->
