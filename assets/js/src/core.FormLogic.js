@@ -215,9 +215,11 @@ function FormLogic() {
 
 	this.addressStuff = function( e ) {
 
-		var address	= addressObj[ $( this ).val() ];
+		var $target = $(e.target);
 
-		if( ! _.isEmpty( $( this ).val() ) ) {
+		var address	= addressObj[ $target.val() ];
+
+		if( ! _.isEmpty( $target.val() ) ) {
 
 			$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
 			$( form.address2 ).val( address.Town );
