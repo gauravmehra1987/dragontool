@@ -33,7 +33,7 @@
 			<a href="<%= results.formLink %>" class="button transparent">MAKE THIS MINI A REALITY</a>
 			/build -->
 
-			<!-- build:remove --><a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">MAKE THIS MINI A REALITY</a><!-- /build -->
+			<!-- build:remove --><a id="go-to-form" href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">MAKE THIS MINI A REALITY</a><!-- /build -->
 
 		</div>
 
