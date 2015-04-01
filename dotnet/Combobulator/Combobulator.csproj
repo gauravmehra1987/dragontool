@@ -209,6 +209,7 @@
     <Content Include="Assets\cars\MR92.png" />
     <Content Include="Assets\cars\none.png" />
     <Content Include="Assets\cars\RJ52.png" />
+    <Content Include="Assets\cars\RKT.png" />
     <Content Include="Assets\cars\RS52.png" />
     <Content Include="Assets\cars\RS72.png" />
     <Content Include="Assets\cars\RS92.png" />
@@ -255,6 +256,8 @@
     <Content Include="Assets\css\ie.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\icons\circle-empty.svg" />
+    <Content Include="Assets\icons\circle-radio.svg" />
+    <Content Include="Assets\icons\circle-tick.svg" />
     <Content Include="Assets\icons\circle.svg" />
     <Content Include="Assets\icons\cross.svg" />
     <Content Include="Assets\icons\down-block.svg" />
@@ -444,6 +447,9 @@
     <Content Include="Assets\icons\template.json" />
     <Content Include="Assets\js\tpl\finance.mustache" />
     <Content Include="Assets\js\tpl\results.mustache" />
+    <Content Include="Assets\js\tpl\addresses.mustache" />
+    <Content Include="Assets\js\tpl\dealers.mustache" />
+    <Content Include="App_Data\data.json" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -472,7 +478,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Results\_ResultDetail.cshtml" />
-    <Content Include="Views\Form\_Index.cshtml" />
+    <Content Include="Views\Form\Index.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

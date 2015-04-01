@@ -154,22 +154,24 @@
 						<div class="checkbox checkbox-radio">
 
 							<!-- build:remove --><input id="address-type-home" name="address-type" type="radio" value="home" checked="checked" /><!-- /build -->
-							<label for="address-type-home">Home</label>
-
+							
 							<!-- build:template
 							<%= form.field.address.home %>
 							/build -->
+							<label for="address-type-home">Home</label>
+
 
 						</div>
 
 						<div class="checkbox checkbox-radio">
 
 							<!-- build:remove --><input id="address-type-work" name="address-type" type="radio" value="work" /><!-- /build -->
-							<label for="address-type-work">Work</label>
-
+							
 							<!-- build:template
 							<%= form.field.address.work %>
 							/build -->
+							<label for="address-type-work">Work</label>
+
 
 						</div>				
 
@@ -265,7 +267,10 @@
 		<figure id="form-car" class="model-image">
 
 			<img src="assets/cars/none.png" class="img-base" />
-
+				<!-- build:template
+	<img src="<%= form.carImage %>" id="results-car" class="img-content" />
+	/build -->
+			
 			<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
 			
 		</figure><!-- end figure#car -->
@@ -277,11 +282,11 @@
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="finance" name="finance" type="checkbox" value="1" checked="checked" /><!-- /build -->
-					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
-
 					<!-- build:template
 					<%= form.field.finance %>
 					/build -->
+					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
+
 
 				</div>
 
@@ -297,23 +302,24 @@
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="optout-phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
-					<label for="optout-phone">by phone</label>				
-
 					<!-- build:template
 					<%= form.field.optout.phone %>
 					/build -->
+					<label for="optout-phone">by phone</label>				
+
 
 				</div>
 
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="optout-post" name="optout" type="checkbox" value="post" /><!-- /build -->
-					<label for="optout-post">by post</label>
-					
-
 					<!-- build:template
 					<%= form.field.optout.post %>
 					/build -->
+					<label for="optout-post">by post</label>
+					
+
+					
 
 				</div>
 
@@ -346,10 +352,10 @@
 
 	</div><!-- end div.form-right -->
 
-	<!-- build:template
-	<%= form.close %>
-	/build -->
-
 	<!-- build:remove --></form><!-- /build -->
 
 </div><!-- end div.layout -->
+
+	<!-- build:template
+	<%= form.close %>
+	/build -->

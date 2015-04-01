@@ -59,6 +59,7 @@
     <Compile Include="Services\Providers\EMasterProvider.cs" />
     <Compile Include="Services\Providers\GrassRootsProvider.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\DataViewModel.cs" />
     <Compile Include="ViewModels\DealerResponse.cs" />
     <Compile Include="ViewModels\DealerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />

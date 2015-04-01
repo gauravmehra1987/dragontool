@@ -1,6 +1,6 @@
 {
 
-	"variables":	"@{\r\nViewBag.Title = \"MINI Combobulator Dashboard\";\r\nstring firstName = string.Empty;\r\nstring userId = ViewBag.UserId;\r\n\r\nif (!string.IsNullOrEmpty(ViewBag.FirstName))\r\n{\r\nfirstName = \"<h2>Hi \" + ViewBag.FirstName + \"<\/h2>\";\r\n}\r\n}",
+	"variables":	"@{\r\nViewBag.Title = \"MINI Combobulator Dashboard\";\r\nstring firstName = string.Empty;\r\nstring userId = ViewBag.UserId;\r\n\r\nif (!string.IsNullOrEmpty(ViewBag.FirstName))\r\n{\r\nfirstName = \"<h3>Hi \" + ViewBag.FirstName + \"<\/h3>\";\r\n}else{\r\nfirstName = \"<h3>Hi,<\/h3>\";\r\n}\r\n}",
 	"hi":			"@Html.Raw(firstName)",
 	"input":		"<input id=\"uid\" type=\"hidden\" value=\"@userId\" />",
 	"dashboard":	"@Html.Partial(\"_Dashboard\")"

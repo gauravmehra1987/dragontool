@@ -85,7 +85,7 @@ namespace Combobulator.Controllers
                     Terms = dbCar.Terms,
                     Finance = new Models.Finance
                     {
-                        Info = dbCar.Terms,
+                        Info = dbFinance.Info,
                         Term = dbFinance.Term ?? 0,
                         Payment = dbFinance.Payment ?? 0.0,
                         Price = dbFinance.FinancePrice ?? 0.0,
