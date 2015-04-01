@@ -2,11 +2,11 @@
 
 	"model":			"@model Combobulator.Business.ViewModels.FormViewModel",
 
-	"open":				"@using (Ajax.BeginForm(\"NewCustomerSubmit\", \"Customer\", new AjaxOptions { HttpMethod = \"POST\", InsertionMode = InsertionMode.Replace, UpdateTargetId = \"formContainer\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
+	"open":				"@using (Html.BeginRouteForm(\"DefaultApi\", new { controller=\"Form\", httproute=\"true\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
 	"close":			"}",
 
+	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".png\")",
 	"field": {
-
 		"user":		"@Html.HiddenFor(model => model.UserId, new {@id = \"uid\", @value = ViewBag.UserId})",
 
 		"title":		"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"),  \"Title\")",
@@ -31,11 +31,11 @@
 
 		},
 		
-		"finance":		"@Html.CheckBoxFor(model => model.RequestCallback, new { @id=\"finance\", @value=\"1\"})",
+		"finance":		"@Html.TextBoxFor(model => model.RequestCallback, new {@type=\"checkbox\", @id = \"finance\", @name = \"finance\", @value = \"1\", @checked=\"checked\"})",
 		"optout": {
 
-			"phone":	"@Html.CheckBoxFor(model => model.RequestCallback, new { @id=\"optout-phone\", @value=\"1\"})",
-			"post":		"@Html.CheckBoxFor(model => model.EmailResults, new { @id=\"optout-post\", @value=\"1\"})"
+			"phone":	"@Html.TextBoxFor(model => model.RequestCallback, new {@type=\"checkbox\", @id = \"optout-phone\", @value = \"phone\"})",
+			"post":		"@Html.TextBoxFor(model => model.EmailResults, new { @type = \"checkbox\", @id = \"optout-post\", @value = \"post\" })"
 
 		}
 
