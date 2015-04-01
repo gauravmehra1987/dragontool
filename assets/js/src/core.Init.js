@@ -1,23 +1,31 @@
-var priceChanged	= false;
+
+// Setting up some global variables...
+// Creating instances of all the functions and saving as global variables
 var ie				= new IE();
 var ui				= new UI();
 var dashboardLogic	= new DashboardLogic();
 var formLogic		= new FormLogic();
 var combobulate 	= new Combobulate();
+var finance 		= new Finance();
 var query			= new dashboardLogic.query();
+var dashboard 		= new Dashboard();
 var social			= new SocialMedia();
-var carCode			= getQueryParameter( 'm' ) || false;
-
+//
+// carCode is set to false unless it is ??? (not sure what this does)
+var carCode	= getQueryParameter( 'm' ) || false;
+//
+// priceChanged changes based on whether the price dial is changed
+// We are setting it to false to start with
+var priceChanged = false;
+//
+// Setting up some more empty global variables to set later
 var addressObj;
 var dealersObj;
 var responsive;
-var dashboard;
 var postcodeTimer;
-
-// Selectors for form fields
-
+//
+// Creating a form object with selectors for form fields
 var form = {
-
 	addresses:			'#addresses',
 	address1:			'#address-1',
 	address2:			'#address-2',
@@ -25,81 +33,43 @@ var form = {
 	addressChooser:		'#address-chooser',
 	dealerChooser:		'#dealer-chooser',
 	dealers:			'#dealers',
-
 }
 
-// Some not IE-friendly stuff
 
-if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
-
+// For modern browsers...
+// If browser is above IE8 or not IE at all
+if ( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
+	//
 	// Preload images
-
 	ui.preloadImages();
-
-	// Make everything responsive
-
+	//
+	// Create a new instance of the responsive function, making everything responsive
 	responsive = new Responsive();
-
 }
 
-// Start dashboard
 
-dashboard = new Dashboard();
-
-// Initialize everything after the page has fully loaded (otherwise dashboard values will be off!)
-
+// On load!!
+// Initialize everything after the page has fully loaded
 $( window ).load( function() {
 
-	// We need to update dashboard color once the SVGs have been loaded
+	// Initialize dashboard
+	// Which will activate all the dials and change the dashboard color
+	dashboard.init();
 
-	var color		= ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
-	var dashColor	= ( color ) ? color : 'Chili red';
+	// Initialize UI
+	// Which will show the first panel, passed in
+	ui.init( 'default' );
 
-	dashboard.colors( carColors[ dashColor ] );
-
-	// Initialize controls on the homepage
-
-	if( $( '#dash' ).length ) dashboard.init();
-
-	// Color switcher
-
-	$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); } );
-
-	// Show first panel on a page
-
-	ui.showPanel( 'default' );
-
-	// Validate forms
-
-	$( 'form' ).validate();
-
-	// Handle successful form submission
-	
-	$.subscribe( 'form-ajax-results', function( e, data ) {
-
-		if( data.success ) { ui.showPanel( 'thanks' ); }
-
-	} );
-
-	// Render finance template
-
-	if( $( '#tpl-finance' ).length > 0 ) {
-
-		ui.getTpl( 'finance' ).then( function( tpl ) {
-
-			$( '#tpl-finance' ).replaceWith( ui.renderTpl( tpl, formLogic.getFinance( carCode ) ) );
-
-		} );
-
-	}
-
-	// Initialise form logic and combobulate
+	// Initialize form logic
 	formLogic.init();
+
+	// Initialze finance
+	// Which will render the template for the terms and conditions for whichever car in view
+	finance.init();
+
+	// Initialize combobulate
+	// Which will listen to the on click of the combobulate button
 	combobulate.init();
 
 } );
-
-
-
-
 

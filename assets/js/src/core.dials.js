@@ -1,205 +1,357 @@
 function Dials() {
 
-	// Rollers
 
+	/**
+	 * Rollers
+	 * @param {String} Slot selector
+	 * @return {Object} Returns the slot_dial draggable object with some more useful properties added
+	*/
 	this.roller = function( slot ) {
+		// 
+		// Compile a list from the siblings of the passed in slot (.fake-list)
+		var $list = $( slot ).siblings( '.list' );
+		//
+		// Get the height of each slot
+		var slotHeight = $list.find( '.item:nth-child( 2 )' ).height();
+		//
+		// Get the entire list height
+		var listHeight = slotHeight * ( $list.find( '.item' ).length - 1 );
 
-		var $list		= $( slot ).siblings( '.list' );
-		var slotHeight	= $list.find( '.item:nth-child( 2 )' ).height();
-		var listHeight	= slotHeight * ( $list.find( '.item' ).length - 1 );
-
+		/**
+		 * Reset all the slots using Greensock tweenLite
+		*/
 		var reset = function() {
-
+			//
+			// '_this' is an instance of the draggable object
 			var _this = this;
-
-			TweenLite.to( this.$slot.get( 0 ), 0.6, {
-
+			//
+			// Greensock tween to the first fake-list item, for 0.6 seconds
+			TweenLite.to( _this.$slot.get( 0 ), 0.6, {
+				//
+				// Lock axis to 'y' direction
 				y: 0,
+				//
+				// Once complete, update the draggable object
 				onComplete: function() { _this.update(); }
-
 			} );
-
-			this.$list.find( '.item' ).removeClass( 'active' );
-			this.$list.removeClass( 'dragging' ).removeAttr( 'style' );
-
-			this.update();
-
+			//
+			//
+			// Find the item inside the list and remove the active class
+			_this.$list.find( '.item' ).removeClass( 'active' );
+			//
+			// Remove dragging class and the style attr from the list
+			_this.$list.removeClass( 'dragging' ).removeAttr( 'style' );
+			//
+			// Update the draggable object
+			_this.update();
 		}
 
+		/**
+		 * Get slot value
+		 * @return {String} Returns the value of the active slot (Man, Woman, Boy, Girl etc)
+		*/
 		var getSlotValue = function() {
-
-			var activeSlot		= getSlotState( this.y, slotHeight, 0 );
-			var $slot			= $list.find( '.item' ).eq( activeSlot );
-			var value			= $slot.data( 'value' ) || $slot.text();
-
+			//
+			// Passes the draggable object values into getSlotState to return the active slot
+			var activeSlot = getSlotState( this.y, slotHeight, 0 );
+			//
+			// To get the slot, we find the item in the list which matches the number of the active slot
+			var $slot = $list.find( '.item' ).eq( activeSlot );
+			//
+			// To get the string value, we get the data-value attr or the slot text
+			var value = $slot.data( 'value' ) || $slot.text();
+			//
+			// Returns the value of the slot, or 'empty' if there is no value
 			return ( value === 'Empty' ) ? 0 : value;
-
 		}
 
+		/**
+		 * Get slot state
+		 * @param {Number} Position
+		 * @param {Number} Height
+		 * @param {Number} Padding
+		 * @return {Number} Returns the active slot
+		*/
 		var getSlotState = function( pos, height, padding ) {
-
+			//
+			// Current Position returns the absolute value of the position
 			var currentPosition = Math.abs( pos );
-			var activeSlot		= Math.ceil( currentPosition / height );
-
+			//
+			// Active Slot calculates the position and the height and rounds the number upwards
+			var activeSlot = Math.ceil( currentPosition / height );
+			//
+			// Returns the active slot plus 1 (maybe because otherwise it would start at 0?)
 			return Math.ceil( activeSlot ) + 1;
-
 		}
 
-		$( slot ).height( listHeight ); // Make fake list the same height as the real one
+
+		// Make fake list the same height as the real one
+		$( slot ).height( listHeight );
 
 
-		// Initialize Draggable
-
+		// Initialize Greensock Draggable
+		// Passing in the slot element that was originally passed into the roller function above
 		var slot_dial = new Draggable( slot, {
-
-			type:			'y',
-			bounds:			$( slot ).parent(),
+			//
+			// Lock axis to 'y' direction
+			type: 'y',
+			//
+			// Make the bounds the slots parent (the list element that holds all the slots)
+			bounds:	$( slot ).parent(),
+			//
+			// Setting edge resistance to '1' doesn't allow it to drag past it's set bounds
 			edgeResistance:	1,
-			throwProps:		true,
-			onDrag:			function() {
-
-				var activeSlot		= getSlotState( this.y + 40, slotHeight, 0 );
-				var $active			= $list.find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
-
+			//
+			// Gets the momentum of the users drag, using the throwProps plugin
+			throwProps:	true,
+			//
+			// Applies everytime the slot gets dragged...
+			onDrag:	function() {
+				//
+				// Passes the draggable object values into getSlotState to return the active slot
+				var activeSlot = getSlotState( this.y + 40, slotHeight, 0 );
+				//
+				// Remove active class from all the slots, but add it to the active slot
+				var $active	= $list.find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
+				//
+				// Add dragging class to the list, and CSS transform position based on the value of the 'y' position of the slot
 				$list.addClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.y + 'px, 0px )' } );
-
 			},
-			onDragEnd:		function() { $list.removeClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.endY + 'px, 0px )' } ); },
-			snap:			function( endValue ) { return Math.round( endValue / slotHeight ) * slotHeight; }
-
+			//
+			// Applies when the user stops dragging...
+			onDragEnd: function() {
+				//
+				// Remove dragging class from the list, and CSS transform position to the value of where the drag will end (endY gives you this figure)
+				$list.removeClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.endY + 'px, 0px )' } );
+			},
+			//
+			// Defines a rule for where the slot will snap to...
+			snap: function( endValue ) {
+				//
+				// Calculates the snap position based on the slot height and rounds up
+				return Math.round( endValue / slotHeight ) * slotHeight;
+			}
 		} );
 
+
+		// Using the slot_dial instance of the draggable object...
+		// We will add some useful properties to it based on the above functions
 		slot_dial.getValue	= getSlotValue;
 		slot_dial.reset		= reset;
 		slot_dial.$list		= $list;
 		slot_dial.$slot		= $( slot );
 
-		return slot_dial;
 
+		// And return the slot_dial draggable object with our properties added
+		return slot_dial;
 	}
 
-	// Luggage
 
+	/**
+	 * Luggage
+	 * @return {Object} Returns the luggage_dial draggable object with some more useful properties added
+	*/
 	this.luggage = function() {
+		//
+		// Set luggage_end to be 0
+		var luggage_end	= 0;
+		//
+		// Set luggage_el to be a DOM element
+		var luggage_el = document.querySelector( '.control.luggage .dial' );
+		//
+		// Set the luggage_snap to be a circle divided in quarters as there are 4 options
+		var luggage_snap = 360 / 4;
 
-		var luggage_end		= 0;
-		var luggage_el		= document.querySelector( '.control.luggage .dial' );
-		var luggage_snap	= 360 / 4;
-
+		/**
+		 * Get luggage
+		 * @return {Number} Returns the active slot
+		*/
 		var getLuggage = function() {
-
+			//
+			// Gets the class of the luggage element and gets rid of and other classes so it is only 'dial'
 			return $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
-
 		}
 
+		/**
+		 * Bind events
+		*/
 		var bindEvents = function() {
-
+			//
+			// On user interaction with the luggage arrows...
 			$( '.control.luggage .arrows' ).on( 'mousedown mouseup touchstart touchend', function( e ) {
-
-			e.preventDefault();
-
-				( e.type === 'mousedown' ) ? $( this ).removeClass( 'right left' ).addClass( e.target.id ) : $( this ).removeClass( 'right left' );
-
-			} );
-
-			$( '#left, #right' ).on( 'click', function( e ) {
-
+				//
+				// Prevent default event
 				e.preventDefault();
-
-				// Remove all classes
-
+				//
+				// This adds a class of 'left' or 'right' to the arrows element, depending on user interaction...
+				// 'this' refers to the 'arrows' element and 'e.target' refers to the 'left' and 'right' elements inside
+				// So...
+				// If event is mousedown... Remove classes 'left' and 'right' from the arrows element, but then add the class of the e.target ID (either 'left' or 'right').
+				// If not a mousedown event (so when the user clicks away etc), remove classes 'left' and 'right' from the arrows element
+				( e.type === 'mousedown' ) ? $( this ).removeClass( 'right left' ).addClass( e.target.id ) : $( this ).removeClass( 'right left' );
+			} );
+			//
+			// On click of the right and left elements
+			$( '#left, #right' ).on( 'click', function( e ) {
+				//
+				// Prevent default event
+				e.preventDefault();
+				//
+				// Remove all classes from the luggage element, except 'dial'
 				$( luggage_el ).removeClassExcept( 'dial' );
+				//
+				// Save the dial element
+				var $dial = $( '.control.luggage .dial' );
+				//
+				// Get the direction of user click from the target
+				var direction = e.target.id;
+				//
+				// If direction is 'left'...
+				// Add the luggage_end and luggage_snap together
+				// Else, minus them from eachother
+				var nr = ( direction === 'left' ) ? luggage_end + luggage_snap : luggage_end - luggage_snap;
 
-				var $dial		= $( '.control.luggage .dial' );
-				var direction	= e.target.id;
-				var nr			= ( direction === 'left' ) ? luggage_end + luggage_snap : luggage_end - luggage_snap;
-
-				// Move to the initial position
-
-				TweenLite.to( luggage_el, 1, { rotation: nr, onComplete: function( v ) { dialClass( nr ); } } );
+				// Use Greensock Tween to move to the initial position
+				// 
+				TweenLite.to( luggage_el, 1, {
+					//
+					// Rotation is based on the direction of the user click
+					rotation: nr,
+					//
+					// On complete, pass in the rotation value to the dialClass function
+					onComplete: function( v ) {
+						dialClass( nr );
+					}
+				} );
 
 				// Update rotation & value
-
 				luggage_dial.update();
+				//
+				// Set luggage_end to be based on the user click direction
 				luggage_end = nr;
-
 			} );
-
 		}
 
+
+		/**
+		 * Dial Class
+		 * Adds a class to the luggage dial element based on user selection
+		 * @param {Number} The dials rotation value, everytime the user clicks
+		*/
 		var dialClass = function( r ) {
-
-			var dial_class	= ( ( ( r / luggage_snap ) % luggage_snap ) % 4 );
-
-			if( dial_class === -1 || dial_class === 3 ) { final_class = 'light-packer'; } // light packer
-			if( dial_class === -2 || dial_class === 2 ) { final_class = 'lugger'; } // lugger
-			if( dial_class === -3 || dial_class === 1 ) { final_class = 'big-loader'; } // big loader
-			if( dial_class === 0 ) { final_class = 'minimalist'; } // minimalist
-				
+			//
+			// Some calculation to turn the rotation value into a number from -1 to -4
+			var dial_class = ( ( ( r / luggage_snap ) % luggage_snap ) % 4 );
+			//
+			// Some logic to set a string to each number of the dial and save as 'final_class' to be added to the element
+			if ( dial_class === -1 || dial_class === 3 ) { final_class = 'light-packer'; } // light packer
+			if ( dial_class === -2 || dial_class === 2 ) { final_class = 'lugger'; } // lugger
+			if ( dial_class === -3 || dial_class === 1 ) { final_class = 'big-loader'; } // big loader
+			if ( dial_class === 0 ) { final_class = 'minimalist'; } // minimalist
+			//
+			// Remove all other classes except 'dial' and add the class which determines the user selection
 			$( luggage_el ).removeClassExcept( 'dial' ).addClass( final_class );
-
 		}
 
-		var luggage_dial	= new Draggable( luggage_el, {
 
-			type:				'rotation',
-			throwProps: 		true,
-			onThrowComplete:	function() { dialClass( parseInt( this.endRotation ) ); },
-			onDragStart:		function( e ) { $( luggage_el ).removeClassExcept( 'dial' ); }, // Remove all classes
-			onDragEnd:			function( e ) { luggage_end = parseInt( this.endRotation ); }, // Update luggage_end
-			snap:				function( endValue ) { return Math.round( endValue / luggage_snap ) * luggage_snap; }
-
+		// Creating a new Greensock draggable instance of the luggage dial
+		var luggage_dial = new Draggable( luggage_el, {
+			//
+			// Set type to rotation
+			type: 'rotation',
+			//
+			// Allow user throw with momentum
+			throwProps: true,
+			//
+			// On throw complete...
+			onThrowComplete: function() {
+				//
+				// Pass the end rotaion value to the dial class function
+				dialClass( parseInt( this.endRotation ) );
+			},
+			//
+			// On drag start...
+			onDragStart: function( e ) {
+				//
+				// Remove all classes from the luggage element, except for 'dial'
+				$( luggage_el ).removeClassExcept( 'dial' );
+			},
+			// On drag end...
+			onDragEnd: function( e ) {
+				//
+				// Update luggage end
+				luggage_end = parseInt( this.endRotation );
+			},
+			//
+			// Calculate at what point to snap to...
+			snap: function( endValue ) {
+				//
+				return Math.round( endValue / luggage_snap ) * luggage_snap;
+			}
 		} );
 
+		// Call the bindEvents function to listen to user interaction
 		bindEvents();
 
+		// Set a property of getLuggage to the draggable instance, to be that of the function above
 		luggage_dial.getLuggage = getLuggage;
 
+		// Return the draggable object
 		return luggage_dial;
-
-	},
-
-	// Options
-
-	this.options = function() {
-
-		this.getOptions = function() {
-
-			var $inputs	= $( '.control.options input' );
-			var values	= {};
-
-			// $inputs.each( function( i, el ) { values[ $( this ).attr( 'id' ) ] = parseInt( $( this ).val() ); } );
-
-			// if( $.isEmptyObject( values ) ) values = false;
-
-			$inputs.each( function( i, el ) {
-
-				values[ $( this ).attr( 'id' ) ] = $( this ).hasClass( 'checked' );
-
-			} );
-
-			return values;
-
-		}
-
-		// Normally we wouldn't need it, because in all normal browsers we can just use input:checked + label, but because of the stupid IE we need to do a fallback on click...
-
-		$( '.option' ).on( 'click', function( e ) {
-
-			e.preventDefault();
-
-			var $input = $( this ).find( 'input' );
-
-			$input.toggleClass( 'checked' );
-
-		} );
-
 	}
 
-	// Lifestyle
 
+
+	/**
+	 * Options
+	*/
+	this.options = function() {
+
+		/**
+		 * Get options
+		 * @param {Object} Returns an object with the values the user has selected (booleans values for each option)
+		*/
+		this.getOptions = function() {
+			//
+			// Save the elements of the options checkbox inputs
+			var $inputs	= $( '.control.options input' );
+			//
+			// Set values to an empty object
+			var values	= {};
+			
+			// Iterate over each input checkbox inputs...
+			$inputs.each( function( i, el ) {
+				//
+				// Setting the property to be the ID of the input, and the value to a boolean for if it is checked or not
+				values[ $( this ).attr( 'id' ) ] = $( this ).hasClass( 'checked' );
+			} );
+			//
+			// Returns the values, which is an object with all the options as properties and the values of those set to true or false
+			return values;
+		}
+
+		// Fallback on click for IE...
+		// Normally we wouldn't need it, because in all normal browsers we can just use input:checked + label, but because of the stupid IE we need to do a fallback on click...
+		$( '.option' ).on( 'click', function( e ) {
+			//
+			// Prevent default event
+			e.preventDefault();
+			//
+			// Find the input element
+			var $input = $( this ).find( 'input' );
+			//
+			// And toggle a checked class
+			$input.toggleClass( 'checked' );
+		} );
+	}
+
+
+	/**
+	 * Lifestyle
+	 * @return {Object} Returns the lifestyle_dial draggable object with some more useful properties added
+	*/
 	this.lifestyle = function() {
-
+		//
 		var getLifestyle = function() { return $( '#c-lifestyle .slick-slide.slick-active' ).attr( 'data-value' ); }
 
 		var lifestyle_el		= document.querySelector( '.control.lifestyle .dial' );

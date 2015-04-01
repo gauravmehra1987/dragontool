@@ -1,7 +1,9 @@
 function Dashboard() {
-
-	// Initalize vars
+	//
+	// Save 'this' to refer to this object later
 	var _this = this;
+	//
+	// Initalize all the dials
 	var dials;
 	var price;
 	var mpg;
@@ -131,9 +133,28 @@ function Dashboard() {
 
 
 	/**
-     * Initialise
+	 * Initialize dashboard color
+	*/
+	this.activateDashColor = function() {
+		//
+		// If we have a car code, set the 'color' to the color of that car, if not set 'color' to false
+		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
+		//
+		// If 'color' is set above, set the dashboard to that color, otherwise set a hard coded color
+		var dashColor = ( color ) ? color : 'Chili red';
+		//
+		// Pass in the dashboard color set above to the dashboard.colors function to do all the color changing
+		dashboard.colors( carColors[ dashColor ] );
+		//
+		// Subscribe to colour change
+		$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); } );
+	}
+
+
+	/**
+     * Activate the dashboard
     */
-	this.init = function() {
+	this.activateDashboard = function() {
 		// 
 		// Initialse the dials and set them to the variables at the top of this function
 		dials		= new Dials();
@@ -163,5 +184,23 @@ function Dashboard() {
 			_this.seats();
 		}
 	}
+
+
+	/**
+     * Initialize
+    */
+	this.init = function() {
+		//
+		// If dashboard exsists...
+		if ( $( '#dash' ).length ) {
+			//
+			// Call function to activate dashboard color once the SVGs have been loaded
+			_this.activateDashColor();
+			//
+			// Call function to activate the dashboard dials
+			_this.activateDashboard();
+		}
+	}
+
 }
 

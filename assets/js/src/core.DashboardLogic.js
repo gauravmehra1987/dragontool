@@ -1,11 +1,15 @@
 function DashboardLogic() {
-
-	// Initalize vars
-	var _this			= this;	
+	//
+	// Save 'this' to refer to this object later
+	var _this = this;
+	//
 	// All the filters (based on the dashboard dials)
-	var filters			= [ 'lifestyle', 'economy', 'speed', 'price', 'convertible', 'high', 'awd', 'luggage', 'capacity' ];
-
+	var filters = [ 'lifestyle', 'economy', 'speed', 'price', 'convertible', 'high', 'awd', 'luggage', 'capacity' ];
+	//
+	// An empty object to drop filters later
 	var droppedFilters	= [];
+	//
+	// An empty db object to fill database
 	var db;
 	var cars; // Cars data (defined later in the populateDB function)	
 
@@ -303,10 +307,10 @@ function DashboardLogic() {
 			*/
 			function luggage( v ) {
 
-				if( v === 'minimalist' )	return 1;
-				if( v === 'light-packer' )	return 2;
-				if( v === 'lugger' )		return 3;
-				if( v === 'big-loader' )	return 4;
+				if ( v === 'minimalist' )	return 1;
+				if ( v === 'light-packer' )	return 2;
+				if ( v === 'lugger' )		return 3;
+				if ( v === 'big-loader' )	return 4;
 			}
 
 			/**

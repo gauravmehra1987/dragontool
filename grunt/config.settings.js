@@ -283,6 +283,7 @@ grunt.config.merge( {
 				'<%= project.paths.js %>/src/core.Dials.js',
 				'<%= project.paths.js %>/src/core.Dashboard.js',
 				'<%= project.paths.js %>/src/core.Combobulate.js',
+				'<%= project.paths.js %>/src/core.Finance.js',
 				'<%= project.paths.js %>/src/core.UI.js',
 				'<%= project.paths.js %>/src/core.Social.js',
 				'<%= project.paths.js %>/src/core.Responsive.js',

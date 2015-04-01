@@ -270,6 +270,22 @@ function FormLogic() {
 	}
 
 
+	/**
+	 * Activate forms
+	*/
+	this.activateForms = function() {
+		// Validate forms
+		$( 'form' ).validate();
+
+		// Handle successful form submission
+		$.subscribe( 'form-ajax-results', function( e, data ) {
+
+			if( data.success ) { ui.showPanel( 'thanks' ); }
+
+		} );
+	}
+
+
 	this.eventListeners = function() {
 
 		$body.on( 'change', form.addresses, function( e ) {
@@ -287,6 +303,7 @@ function FormLogic() {
 
 		_this.eventListeners();
 		_this.ajaxFormResults();
+		_this.activateForms();
 
 	}
 

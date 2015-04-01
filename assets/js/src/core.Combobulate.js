@@ -1,6 +1,6 @@
 function Combobulate() {
-
-	// Initalize vars
+	//
+	// Save 'this' to refer to this object later
 	var _this = this;	
 
 

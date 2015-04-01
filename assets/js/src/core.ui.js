@@ -267,4 +267,10 @@ function UI() {
 
 	}
 
+
+	// Initialize
+	this.init = function( panel ) {
+		_this.showPanel( panel );
+	}
+
 }

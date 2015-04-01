@@ -1,32 +1,31 @@
 /*! by John Przeslakowski - visit me at http://goodpixels.co.uk */
 
+
+// Setting up social media values to use later
 var socialMedia = {
 
 	facebook: {
-
 		link:			'http://google.com',
 		message:		'This is the message which will be posted to the user\'s wall.',
 		name:			'Image name',
 		caption:		'Image caption',
 		picture:		'http://placehold.it/200x200',
 		description:	'Just a test description.'
-
 	},
-	
-	twitter: {
 
+	twitter: {
 		url:			'http://google.com',
 		text:			'This is the message which will be posted to the user\'s wall.',
 		hashtags:		'mini,cooper'
-
 	}
-
 };
 
+
+// Setting up path values to use later
 var system_paths = {
 
+	// Dotnet version
 	net: {
-
 		assets:			'Assets/cars/',
 		results:		'results?',
 		spriteFallback:	'Assets/sprites',
@@ -35,11 +34,10 @@ var system_paths = {
 		apiPostcode:	'api/dealerlookup',
 		preload:		'api/assets/svg',
 		templates:		'Assets/js/tpl'
-
 	},
 
+	// PHP version
 	php: {
-
 		assets:			'assets/cars/',
 		results:		'results.php?',
 		spriteFallback:	'assets/sprites',
@@ -48,17 +46,18 @@ var system_paths = {
 		apiDealers:		'dealers.php',
 		preload:		'preload.php',
 		templates:		'assets/js/tpl'
-
 	}
-
 };
-
-//var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
-
+//
+// And now, depending on which set up we are using (Dotnet or PHP), we can comment out the appropriate line below 
+//
+// var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
 var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
 
+
+// Setting up all the colors to use for the dashboard color changes
 var carColors = {
-					
+
 	'Volcanic Orange':		'#f7941d',
 	'Electric Blue':		'#30b6e8',
 	'Lightning Blue':		'#1164ac',
@@ -71,48 +70,45 @@ var carColors = {
 	'Light white':			'#e4dfce',
 
 	// Extra colors
-
 	'Toy brown':			'#47322e',
 	'Rocket gold':			'gold'
-
 }
 
-// Setup namespace and some global variables
 
+// Setup namespace and some global variables
 var $html	= $( 'html' );
 var	$body	= $( 'body' );
 var $sys	= $( '#system' );
 
 var	w		= window;
 
-// System messages
 
+// System messages
 function sysMsg( message ) { $sys.attr( 'data-system-message', message ); }
 
+
+// Set up a Mini object with some data we might need...
 var Mini	= {
-
+	//
+	// Debug mode
 	settings: {
-
 		debug:			true,
-
 	},
-
+	//
+	// Third party ID's
 	thirdParty: {
-
 		facebookID:		892580704115737,
 		analyticsID:	'UA-000000-01'
-
 	},
-
+	//
+	// Browser and device information
 	browser: {
-
 		name:			$.browser.name,
 		version:		$.browser.version,
 		mobile: 		$.browser.mobile || false,
 		platform:		$.browser.platform,
-
+		//
 		// Quick fuction to check IE version
-
 		isIE:			function( version ) {
 
 			switch( typeof( version ) ) {
@@ -122,40 +118,38 @@ var Mini	= {
 				case 'number': return ( $.browser.name === 'msie' && $.browser.platform === 'win' && parseInt( $.browser.version ) === version ); break;
 
 				default: return ( $.browser.name === 'msie' && $.browser.platform === 'win' ); break;
-
 			}
-
 		}
-
 	}
-
 };
 
-// Add some useful classes to the <html> element
 
+// Add some useful classes to the <html> element
 document.querySelector( 'html' ).className += ' ' + Mini.browser.platform;
 
-// Add browser name via JavaScript if it's not IE
 
-if( ! Mini.browser.isIE() ) {
-
+// If browser is NOT IE...
+if ( ! Mini.browser.isIE() ) {
+	//
+	// Add browser name via JavaScript
 	document.querySelector( 'html' ).className += ' ' + Mini.browser.name;
-
-	// Remove IE
-
+	//
+	// And remove IE class from the html
 	$html.removeClass( 'ie' );
-
 }
 
-// We have to manually append .js class to the <html> element if modernizr isn't used
 
-if( typeof( Modernizr ) === 'undefined' ) {
-
+// If Modernizr is not defined...
+// Manually append .js class to the <html> element
+if ( typeof( Modernizr ) === 'undefined' ) {
+	//
 	var bodyClass = document.querySelector( 'html' ).className;
-
+	//
 	document.querySelector( 'html' ).className = bodyClass.replace( 'no-js', 'js' );
-
 }
+
+
+
 $.validator.setDefaults( {
 
 	// Setup form validation rules here
@@ -312,13 +306,17 @@ $.validator.setDefaults( {
 
 } );
 function DashboardLogic() {
-
-	// Initalize vars
-	var _this			= this;	
+	//
+	// Save 'this' to refer to this object later
+	var _this = this;
+	//
 	// All the filters (based on the dashboard dials)
-	var filters			= [ 'lifestyle', 'economy', 'speed', 'price', 'convertible', 'high', 'awd', 'luggage', 'capacity' ];
-
+	var filters = [ 'lifestyle', 'economy', 'speed', 'price', 'convertible', 'high', 'awd', 'luggage', 'capacity' ];
+	//
+	// An empty object to drop filters later
 	var droppedFilters	= [];
+	//
+	// An empty db object to fill database
 	var db;
 	var cars; // Cars data (defined later in the populateDB function)	
 
@@ -616,10 +614,10 @@ function DashboardLogic() {
 			*/
 			function luggage( v ) {
 
-				if( v === 'minimalist' )	return 1;
-				if( v === 'light-packer' )	return 2;
-				if( v === 'lugger' )		return 3;
-				if( v === 'big-loader' )	return 4;
+				if ( v === 'minimalist' )	return 1;
+				if ( v === 'light-packer' )	return 2;
+				if ( v === 'lugger' )		return 3;
+				if ( v === 'big-loader' )	return 4;
 			}
 
 			/**
@@ -1071,6 +1069,22 @@ function FormLogic() {
 	}
 
 
+	/**
+	 * Activate forms
+	*/
+	this.activateForms = function() {
+		// Validate forms
+		$( 'form' ).validate();
+
+		// Handle successful form submission
+		$.subscribe( 'form-ajax-results', function( e, data ) {
+
+			if( data.success ) { ui.showPanel( 'thanks' ); }
+
+		} );
+	}
+
+
 	this.eventListeners = function() {
 
 		$body.on( 'change', form.addresses, function( e ) {
@@ -1088,212 +1102,365 @@ function FormLogic() {
 
 		_this.eventListeners();
 		_this.ajaxFormResults();
+		_this.activateForms();
 
 	}
 
 }
 function Dials() {
 
-	// Rollers
 
+	/**
+	 * Rollers
+	 * @param {String} Slot selector
+	 * @return {Object} Returns the slot_dial draggable object with some more useful properties added
+	*/
 	this.roller = function( slot ) {
+		// 
+		// Compile a list from the siblings of the passed in slot (.fake-list)
+		var $list = $( slot ).siblings( '.list' );
+		//
+		// Get the height of each slot
+		var slotHeight = $list.find( '.item:nth-child( 2 )' ).height();
+		//
+		// Get the entire list height
+		var listHeight = slotHeight * ( $list.find( '.item' ).length - 1 );
 
-		var $list		= $( slot ).siblings( '.list' );
-		var slotHeight	= $list.find( '.item:nth-child( 2 )' ).height();
-		var listHeight	= slotHeight * ( $list.find( '.item' ).length - 1 );
-
+		/**
+		 * Reset all the slots using Greensock tweenLite
+		*/
 		var reset = function() {
-
+			//
+			// '_this' is an instance of the draggable object
 			var _this = this;
-
-			TweenLite.to( this.$slot.get( 0 ), 0.6, {
-
+			//
+			// Greensock tween to the first fake-list item, for 0.6 seconds
+			TweenLite.to( _this.$slot.get( 0 ), 0.6, {
+				//
+				// Lock axis to 'y' direction
 				y: 0,
+				//
+				// Once complete, update the draggable object
 				onComplete: function() { _this.update(); }
-
 			} );
-
-			this.$list.find( '.item' ).removeClass( 'active' );
-			this.$list.removeClass( 'dragging' ).removeAttr( 'style' );
-
-			this.update();
-
+			//
+			//
+			// Find the item inside the list and remove the active class
+			_this.$list.find( '.item' ).removeClass( 'active' );
+			//
+			// Remove dragging class and the style attr from the list
+			_this.$list.removeClass( 'dragging' ).removeAttr( 'style' );
+			//
+			// Update the draggable object
+			_this.update();
 		}
 
+		/**
+		 * Get slot value
+		 * @return {String} Returns the value of the active slot (Man, Woman, Boy, Girl etc)
+		*/
 		var getSlotValue = function() {
-
-			var activeSlot		= getSlotState( this.y, slotHeight, 0 );
-			var $slot			= $list.find( '.item' ).eq( activeSlot );
-			var value			= $slot.data( 'value' ) || $slot.text();
-
+			//
+			// Passes the draggable object values into getSlotState to return the active slot
+			var activeSlot = getSlotState( this.y, slotHeight, 0 );
+			//
+			// To get the slot, we find the item in the list which matches the number of the active slot
+			var $slot = $list.find( '.item' ).eq( activeSlot );
+			//
+			// To get the string value, we get the data-value attr or the slot text
+			var value = $slot.data( 'value' ) || $slot.text();
+			//
+			// Returns the value of the slot, or 'empty' if there is no value
 			return ( value === 'Empty' ) ? 0 : value;
-
 		}
 
+		/**
+		 * Get slot state
+		 * @param {Number} Position
+		 * @param {Number} Height
+		 * @param {Number} Padding
+		 * @return {Number} Returns the active slot
+		*/
 		var getSlotState = function( pos, height, padding ) {
-
+			//
+			// Current Position returns the absolute value of the position
 			var currentPosition = Math.abs( pos );
-			var activeSlot		= Math.ceil( currentPosition / height );
-
+			//
+			// Active Slot calculates the position and the height and rounds the number upwards
+			var activeSlot = Math.ceil( currentPosition / height );
+			//
+			// Returns the active slot plus 1 (maybe because otherwise it would start at 0?)
 			return Math.ceil( activeSlot ) + 1;
-
 		}
 
-		$( slot ).height( listHeight ); // Make fake list the same height as the real one
+
+		// Make fake list the same height as the real one
+		$( slot ).height( listHeight );
 
 
-		// Initialize Draggable
-
+		// Initialize Greensock Draggable
+		// Passing in the slot element that was originally passed into the roller function above
 		var slot_dial = new Draggable( slot, {
-
-			type:			'y',
-			bounds:			$( slot ).parent(),
+			//
+			// Lock axis to 'y' direction
+			type: 'y',
+			//
+			// Make the bounds the slots parent (the list element that holds all the slots)
+			bounds:	$( slot ).parent(),
+			//
+			// Setting edge resistance to '1' doesn't allow it to drag past it's set bounds
 			edgeResistance:	1,
-			throwProps:		true,
-			onDrag:			function() {
-
-				var activeSlot		= getSlotState( this.y + 40, slotHeight, 0 );
-				var $active			= $list.find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
-
+			//
+			// Gets the momentum of the users drag, using the throwProps plugin
+			throwProps:	true,
+			//
+			// Applies everytime the slot gets dragged...
+			onDrag:	function() {
+				//
+				// Passes the draggable object values into getSlotState to return the active slot
+				var activeSlot = getSlotState( this.y + 40, slotHeight, 0 );
+				//
+				// Remove active class from all the slots, but add it to the active slot
+				var $active	= $list.find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
+				//
+				// Add dragging class to the list, and CSS transform position based on the value of the 'y' position of the slot
 				$list.addClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.y + 'px, 0px )' } );
-
 			},
-			onDragEnd:		function() { $list.removeClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.endY + 'px, 0px )' } ); },
-			snap:			function( endValue ) { return Math.round( endValue / slotHeight ) * slotHeight; }
-
+			//
+			// Applies when the user stops dragging...
+			onDragEnd: function() {
+				//
+				// Remove dragging class from the list, and CSS transform position to the value of where the drag will end (endY gives you this figure)
+				$list.removeClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.endY + 'px, 0px )' } );
+			},
+			//
+			// Defines a rule for where the slot will snap to...
+			snap: function( endValue ) {
+				//
+				// Calculates the snap position based on the slot height and rounds up
+				return Math.round( endValue / slotHeight ) * slotHeight;
+			}
 		} );
 
+
+		// Using the slot_dial instance of the draggable object...
+		// We will add some useful properties to it based on the above functions
 		slot_dial.getValue	= getSlotValue;
 		slot_dial.reset		= reset;
 		slot_dial.$list		= $list;
 		slot_dial.$slot		= $( slot );
 
-		return slot_dial;
 
+		// And return the slot_dial draggable object with our properties added
+		return slot_dial;
 	}
 
-	// Luggage
 
+	/**
+	 * Luggage
+	 * @return {Object} Returns the luggage_dial draggable object with some more useful properties added
+	*/
 	this.luggage = function() {
+		//
+		// Set luggage_end to be 0
+		var luggage_end	= 0;
+		//
+		// Set luggage_el to be a DOM element
+		var luggage_el = document.querySelector( '.control.luggage .dial' );
+		//
+		// Set the luggage_snap to be a circle divided in quarters as there are 4 options
+		var luggage_snap = 360 / 4;
 
-		var luggage_end		= 0;
-		var luggage_el		= document.querySelector( '.control.luggage .dial' );
-		var luggage_snap	= 360 / 4;
-
+		/**
+		 * Get luggage
+		 * @return {Number} Returns the active slot
+		*/
 		var getLuggage = function() {
-
+			//
+			// Gets the class of the luggage element and gets rid of and other classes so it is only 'dial'
 			return $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
-
 		}
 
+		/**
+		 * Bind events
+		*/
 		var bindEvents = function() {
-
+			//
+			// On user interaction with the luggage arrows...
 			$( '.control.luggage .arrows' ).on( 'mousedown mouseup touchstart touchend', function( e ) {
-
-			e.preventDefault();
-
-				( e.type === 'mousedown' ) ? $( this ).removeClass( 'right left' ).addClass( e.target.id ) : $( this ).removeClass( 'right left' );
-
-			} );
-
-			$( '#left, #right' ).on( 'click', function( e ) {
-
+				//
+				// Prevent default event
 				e.preventDefault();
-
-				// Remove all classes
-
+				//
+				// This adds a class of 'left' or 'right' to the arrows element, depending on user interaction...
+				// 'this' refers to the 'arrows' element and 'e.target' refers to the 'left' and 'right' elements inside
+				// So...
+				// If event is mousedown... Remove classes 'left' and 'right' from the arrows element, but then add the class of the e.target ID (either 'left' or 'right').
+				// If not a mousedown event (so when the user clicks away etc), remove classes 'left' and 'right' from the arrows element
+				( e.type === 'mousedown' ) ? $( this ).removeClass( 'right left' ).addClass( e.target.id ) : $( this ).removeClass( 'right left' );
+			} );
+			//
+			// On click of the right and left elements
+			$( '#left, #right' ).on( 'click', function( e ) {
+				//
+				// Prevent default event
+				e.preventDefault();
+				//
+				// Remove all classes from the luggage element, except 'dial'
 				$( luggage_el ).removeClassExcept( 'dial' );
+				//
+				// Save the dial element
+				var $dial = $( '.control.luggage .dial' );
+				//
+				// Get the direction of user click from the target
+				var direction = e.target.id;
+				//
+				// If direction is 'left'...
+				// Add the luggage_end and luggage_snap together
+				// Else, minus them from eachother
+				var nr = ( direction === 'left' ) ? luggage_end + luggage_snap : luggage_end - luggage_snap;
 
-				var $dial		= $( '.control.luggage .dial' );
-				var direction	= e.target.id;
-				var nr			= ( direction === 'left' ) ? luggage_end + luggage_snap : luggage_end - luggage_snap;
-
-				// Move to the initial position
-
-				TweenLite.to( luggage_el, 1, { rotation: nr, onComplete: function( v ) { dialClass( nr ); } } );
+				// Use Greensock Tween to move to the initial position
+				// 
+				TweenLite.to( luggage_el, 1, {
+					//
+					// Rotation is based on the direction of the user click
+					rotation: nr,
+					//
+					// On complete, pass in the rotation value to the dialClass function
+					onComplete: function( v ) {
+						dialClass( nr );
+					}
+				} );
 
 				// Update rotation & value
-
 				luggage_dial.update();
+				//
+				// Set luggage_end to be based on the user click direction
 				luggage_end = nr;
-
 			} );
-
 		}
 
+
+		/**
+		 * Dial Class
+		 * Adds a class to the luggage dial element based on user selection
+		 * @param {Number} The dials rotation value, everytime the user clicks
+		*/
 		var dialClass = function( r ) {
-
-			var dial_class	= ( ( ( r / luggage_snap ) % luggage_snap ) % 4 );
-
-			if( dial_class === -1 || dial_class === 3 ) { final_class = 'light-packer'; } // light packer
-			if( dial_class === -2 || dial_class === 2 ) { final_class = 'lugger'; } // lugger
-			if( dial_class === -3 || dial_class === 1 ) { final_class = 'big-loader'; } // big loader
-			if( dial_class === 0 ) { final_class = 'minimalist'; } // minimalist
-				
+			//
+			// Some calculation to turn the rotation value into a number from -1 to -4
+			var dial_class = ( ( ( r / luggage_snap ) % luggage_snap ) % 4 );
+			//
+			// Some logic to set a string to each number of the dial and save as 'final_class' to be added to the element
+			if ( dial_class === -1 || dial_class === 3 ) { final_class = 'light-packer'; } // light packer
+			if ( dial_class === -2 || dial_class === 2 ) { final_class = 'lugger'; } // lugger
+			if ( dial_class === -3 || dial_class === 1 ) { final_class = 'big-loader'; } // big loader
+			if ( dial_class === 0 ) { final_class = 'minimalist'; } // minimalist
+			//
+			// Remove all other classes except 'dial' and add the class which determines the user selection
 			$( luggage_el ).removeClassExcept( 'dial' ).addClass( final_class );
-
 		}
 
-		var luggage_dial	= new Draggable( luggage_el, {
 
-			type:				'rotation',
-			throwProps: 		true,
-			onThrowComplete:	function() { dialClass( parseInt( this.endRotation ) ); },
-			onDragStart:		function( e ) { $( luggage_el ).removeClassExcept( 'dial' ); }, // Remove all classes
-			onDragEnd:			function( e ) { luggage_end = parseInt( this.endRotation ); }, // Update luggage_end
-			snap:				function( endValue ) { return Math.round( endValue / luggage_snap ) * luggage_snap; }
-
+		// Creating a new Greensock draggable instance of the luggage dial
+		var luggage_dial = new Draggable( luggage_el, {
+			//
+			// Set type to rotation
+			type: 'rotation',
+			//
+			// Allow user throw with momentum
+			throwProps: true,
+			//
+			// On throw complete...
+			onThrowComplete: function() {
+				//
+				// Pass the end rotaion value to the dial class function
+				dialClass( parseInt( this.endRotation ) );
+			},
+			//
+			// On drag start...
+			onDragStart: function( e ) {
+				//
+				// Remove all classes from the luggage element, except for 'dial'
+				$( luggage_el ).removeClassExcept( 'dial' );
+			},
+			// On drag end...
+			onDragEnd: function( e ) {
+				//
+				// Update luggage end
+				luggage_end = parseInt( this.endRotation );
+			},
+			//
+			// Calculate at what point to snap to...
+			snap: function( endValue ) {
+				//
+				return Math.round( endValue / luggage_snap ) * luggage_snap;
+			}
 		} );
 
+		// Call the bindEvents function to listen to user interaction
 		bindEvents();
 
+		// Set a property of getLuggage to the draggable instance, to be that of the function above
 		luggage_dial.getLuggage = getLuggage;
 
+		// Return the draggable object
 		return luggage_dial;
-
-	},
-
-	// Options
-
-	this.options = function() {
-
-		this.getOptions = function() {
-
-			var $inputs	= $( '.control.options input' );
-			var values	= {};
-
-			// $inputs.each( function( i, el ) { values[ $( this ).attr( 'id' ) ] = parseInt( $( this ).val() ); } );
-
-			// if( $.isEmptyObject( values ) ) values = false;
-
-			$inputs.each( function( i, el ) {
-
-				values[ $( this ).attr( 'id' ) ] = $( this ).hasClass( 'checked' );
-
-			} );
-
-			return values;
-
-		}
-
-		// Normally we wouldn't need it, because in all normal browsers we can just use input:checked + label, but because of the stupid IE we need to do a fallback on click...
-
-		$( '.option' ).on( 'click', function( e ) {
-
-			e.preventDefault();
-
-			var $input = $( this ).find( 'input' );
-
-			$input.toggleClass( 'checked' );
-
-		} );
-
 	}
 
-	// Lifestyle
 
+
+	/**
+	 * Options
+	*/
+	this.options = function() {
+
+		/**
+		 * Get options
+		 * @param {Object} Returns an object with the values the user has selected (booleans values for each option)
+		*/
+		this.getOptions = function() {
+			//
+			// Save the elements of the options checkbox inputs
+			var $inputs	= $( '.control.options input' );
+			//
+			// Set values to an empty object
+			var values	= {};
+			
+			// Iterate over each input checkbox inputs...
+			$inputs.each( function( i, el ) {
+				//
+				// Setting the property to be the ID of the input, and the value to a boolean for if it is checked or not
+				values[ $( this ).attr( 'id' ) ] = $( this ).hasClass( 'checked' );
+			} );
+			//
+			// Returns the values, which is an object with all the options as properties and the values of those set to true or false
+			return values;
+		}
+
+		// Fallback on click for IE...
+		// Normally we wouldn't need it, because in all normal browsers we can just use input:checked + label, but because of the stupid IE we need to do a fallback on click...
+		$( '.option' ).on( 'click', function( e ) {
+			//
+			// Prevent default event
+			e.preventDefault();
+			//
+			// Find the input element
+			var $input = $( this ).find( 'input' );
+			//
+			// And toggle a checked class
+			$input.toggleClass( 'checked' );
+		} );
+	}
+
+
+	/**
+	 * Lifestyle
+	 * @return {Object} Returns the lifestyle_dial draggable object with some more useful properties added
+	*/
 	this.lifestyle = function() {
-
+		//
 		var getLifestyle = function() { return $( '#c-lifestyle .slick-slide.slick-active' ).attr( 'data-value' ); }
 
 		var lifestyle_el		= document.querySelector( '.control.lifestyle .dial' );
@@ -1453,9 +1620,11 @@ function Dials() {
 
 }
 function Dashboard() {
-
-	// Initalize vars
+	//
+	// Save 'this' to refer to this object later
 	var _this = this;
+	//
+	// Initalize all the dials
 	var dials;
 	var price;
 	var mpg;
@@ -1585,9 +1754,28 @@ function Dashboard() {
 
 
 	/**
-     * Initialise
+	 * Initialize dashboard color
+	*/
+	this.activateDashColor = function() {
+		//
+		// If we have a car code, set the 'color' to the color of that car, if not set 'color' to false
+		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
+		//
+		// If 'color' is set above, set the dashboard to that color, otherwise set a hard coded color
+		var dashColor = ( color ) ? color : 'Chili red';
+		//
+		// Pass in the dashboard color set above to the dashboard.colors function to do all the color changing
+		dashboard.colors( carColors[ dashColor ] );
+		//
+		// Subscribe to colour change
+		$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); } );
+	}
+
+
+	/**
+     * Activate the dashboard
     */
-	this.init = function() {
+	this.activateDashboard = function() {
 		// 
 		// Initialse the dials and set them to the variables at the top of this function
 		dials		= new Dials();
@@ -1617,12 +1805,30 @@ function Dashboard() {
 			_this.seats();
 		}
 	}
+
+
+	/**
+     * Initialize
+    */
+	this.init = function() {
+		//
+		// If dashboard exsists...
+		if ( $( '#dash' ).length ) {
+			//
+			// Call function to activate dashboard color once the SVGs have been loaded
+			_this.activateDashColor();
+			//
+			// Call function to activate the dashboard dials
+			_this.activateDashboard();
+		}
+	}
+
 }
 
 
 function Combobulate() {
-
-	// Initalize vars
+	//
+	// Save 'this' to refer to this object later
 	var _this = this;	
 
 
@@ -1785,6 +1991,38 @@ function Combobulate() {
 		//
 		// Listen to events
 		_this.eventListeners();
+	}
+
+}
+function Finance() {
+
+	// Initalize vars
+	var _this = this;	
+
+
+	/**
+	 * Render finance template
+	*/
+	this.renderFinanceTpl = function() {
+		//
+		// If finance template div exsists...
+		if ( $( '#tpl-finance' ).length > 0 ) {
+			//
+			// 
+			ui.getTpl( 'finance' ).then( function( tpl ) {
+
+				$( '#tpl-finance' ).replaceWith( ui.renderTpl( tpl, formLogic.getFinance( carCode ) ) );
+
+			} );
+		}
+	}
+
+
+	/**
+	 * Initialize
+	*/
+	this.init = function() {
+		_this.renderFinanceTpl();
 	}
 
 }
@@ -2052,6 +2290,12 @@ function UI() {
 			case 'creature': alert( 'These search results will show one of the creatures.' ); break;
 		}
 
+	}
+
+
+	// Initialize
+	this.init = function( panel ) {
+		_this.showPanel( panel );
 	}
 
 }
@@ -2326,26 +2570,34 @@ function Responsive() {
 	init();
 
 }
-var priceChanged	= false;
+
+// Setting up some global variables...
+// Creating instances of all the functions and saving as global variables
 var ie				= new IE();
 var ui				= new UI();
 var dashboardLogic	= new DashboardLogic();
 var formLogic		= new FormLogic();
 var combobulate 	= new Combobulate();
+var finance 		= new Finance();
 var query			= new dashboardLogic.query();
+var dashboard 		= new Dashboard();
 var social			= new SocialMedia();
-var carCode			= getQueryParameter( 'm' ) || false;
-
+//
+// carCode is set to false unless it is ??? (not sure what this does)
+var carCode	= getQueryParameter( 'm' ) || false;
+//
+// priceChanged changes based on whether the price dial is changed
+// We are setting it to false to start with
+var priceChanged = false;
+//
+// Setting up some more empty global variables to set later
 var addressObj;
 var dealersObj;
 var responsive;
-var dashboard;
 var postcodeTimer;
-
-// Selectors for form fields
-
+//
+// Creating a form object with selectors for form fields
 var form = {
-
 	addresses:			'#addresses',
 	address1:			'#address-1',
 	address2:			'#address-2',
@@ -2353,83 +2605,45 @@ var form = {
 	addressChooser:		'#address-chooser',
 	dealerChooser:		'#dealer-chooser',
 	dealers:			'#dealers',
-
 }
 
-// Some not IE-friendly stuff
 
-if( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
-
+// For modern browsers...
+// If browser is above IE8 or not IE at all
+if ( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
+	//
 	// Preload images
-
 	ui.preloadImages();
-
-	// Make everything responsive
-
+	//
+	// Create a new instance of the responsive function, making everything responsive
 	responsive = new Responsive();
-
 }
 
-// Start dashboard
 
-dashboard = new Dashboard();
-
-// Initialize everything after the page has fully loaded (otherwise dashboard values will be off!)
-
+// On load!!
+// Initialize everything after the page has fully loaded
 $( window ).load( function() {
 
-	// We need to update dashboard color once the SVGs have been loaded
+	// Initialize dashboard
+	// Which will activate all the dials and change the dashboard color
+	dashboard.init();
 
-	var color		= ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
-	var dashColor	= ( color ) ? color : 'Chili red';
+	// Initialize UI
+	// Which will show the first panel, passed in
+	ui.init( 'default' );
 
-	dashboard.colors( carColors[ dashColor ] );
-
-	// Initialize controls on the homepage
-
-	if( $( '#dash' ).length ) dashboard.init();
-
-	// Color switcher
-
-	$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); } );
-
-	// Show first panel on a page
-
-	ui.showPanel( 'default' );
-
-	// Validate forms
-
-	$( 'form' ).validate();
-
-	// Handle successful form submission
-	
-	$.subscribe( 'form-ajax-results', function( e, data ) {
-
-		if( data.success ) { ui.showPanel( 'thanks' ); }
-
-	} );
-
-	// Render finance template
-
-	if( $( '#tpl-finance' ).length > 0 ) {
-
-		ui.getTpl( 'finance' ).then( function( tpl ) {
-
-			$( '#tpl-finance' ).replaceWith( ui.renderTpl( tpl, formLogic.getFinance( carCode ) ) );
-
-		} );
-
-	}
-
-	// Initialise form logic and combobulate
+	// Initialize form logic
 	formLogic.init();
+
+	// Initialze finance
+	// Which will render the template for the terms and conditions for whichever car in view
+	finance.init();
+
+	// Initialize combobulate
+	// Which will listen to the on click of the combobulate button
 	combobulate.init();
 
 } );
-
-
-
-
 
 
 // IE class
