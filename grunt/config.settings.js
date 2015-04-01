@@ -275,17 +275,21 @@ grunt.config.merge( {
 
 				// List scripts
 				
-				'<%= project.paths.js %>/src/config.js',
+				'<%= project.paths.js %>/src/core.Config.js',
 				'<%= project.paths.js %>/src/validation.rules.js',
 				'<%= project.paths.js %>/src/validation.js',
-				'<%= project.paths.js %>/src/core.logic.js',
-				'<%= project.paths.js %>/src/core.dials.js',
-				'<%= project.paths.js %>/src/core.dashboard.js',
-				'<%= project.paths.js %>/src/core.ui.js',
-				'<%= project.paths.js %>/src/core.social.js',
-				'<%= project.paths.js %>/src/core.responsive.js',
-				'<%= project.paths.js %>/src/script.js',
-				'<%= project.paths.js %>/src/core.ie.js',
+				'<%= project.paths.js %>/src/core.DashboardLogic.js',
+				'<%= project.paths.js %>/src/core.FormLogic.js',
+				'<%= project.paths.js %>/src/core.Dials.js',
+				'<%= project.paths.js %>/src/core.Dashboard.js',
+				'<%= project.paths.js %>/src/core.Combobulate.js',
+				'<%= project.paths.js %>/src/core.Finance.js',
+				'<%= project.paths.js %>/src/core.UI.js',
+				'<%= project.paths.js %>/src/core.Social.js',
+				'<%= project.paths.js %>/src/core.Responsive.js',
+				// '<%= project.paths.js %>/src/core.IntroAnimations.js',
+				'<%= project.paths.js %>/src/core.Init.js',
+				'<%= project.paths.js %>/src/core.IE.js',
 
 			],
 		
