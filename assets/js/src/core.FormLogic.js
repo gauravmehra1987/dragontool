@@ -54,7 +54,6 @@ function FormLogic() {
 	 * @return {Object} finance details
     */
 	this.getFinance = function( code ) {
-
 		var car			= dashboardLogic.getCarByCode( code );
 		var finance		= car.finance;
 
@@ -63,7 +62,6 @@ function FormLogic() {
 		finance.terms			= car.terms;
 
 		return finance;
-
 	}
 
 
