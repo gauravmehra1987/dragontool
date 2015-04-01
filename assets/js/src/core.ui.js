@@ -143,9 +143,9 @@ function UI() {
 			var $cars			= _this.$panel.find( '.car-changer' );
 			var skipRelated		= skipRelated || false;
 
-			var alt_1 = logic.getCarByName( car.alt_1 );
-			var alt_2 = logic.getCarByName( car.alt_2 );
-			var alt_3 = logic.getCarByName( car.alt_3 );
+			var alt_1 = dashboardLogic.getCarByName( car.alt_1 );
+			var alt_2 = dashboardLogic.getCarByName( car.alt_2 );
+			var alt_3 = dashboardLogic.getCarByName( car.alt_3 );
 
 			if( alt_1 === false || alt_2 === false || alt_3 === false ) {
 
@@ -217,54 +217,52 @@ function UI() {
 
 	}
 
-	// Easter eggs
 
+	/**
+     * Eggs
+     * @param {String} Trigger - car to show 
+     * @param {Array} Data - user selection data
+    */
 	this.eggs = function( trigger, data ) {
+		//
+		// Eggs are the wild cards that a user can select, which will result in made up cars
 
+		// Create an object containing data for the eggs
 		var eggsData = {
 
 			rocket: {
-
 				'code':		'RKT',
 				'color':	'Rocket gold',
 				'name':		'Alpha Centura',
 				'cost':		'n/a',
 				'terms':	'A ro-ro-ro-rocket car!',
-				 "alt_1": "Roadster JCW",
-				 "alt_2": "Convertible JCW",
-				 "alt_3": "Paceman JCW ALL4"
-
+				'alt_1': 	'Roadster JCW',
+				'alt_2': 	'Convertible JCW',
+				'alt_3': 	'Paceman JCW ALL4'
 			},
-
 			toy: {
-
 				'code':		'TOY',
-				'color':	'Toy brown',
+				'color': 	'Toy brown',
 				'name':		'Toy Car',
 				'cost':		'n/a',
-				'terms':	'Just a silly toy...',
-				 "alt_1": "Roadster JCW",
-				 "alt_2": "Convertible JCW",
-				 "alt_3": "Paceman JCW ALL4"
-
+				'terms': 	'Just a silly toy...',
+				'alt_1': 	'Roadster JCW',
+				'alt_2': 	'Convertible JCW',
+				'alt_3': 	'Paceman JCW ALL4'
 			}
-
 		};
 
+		// Removes old egg classes from the html and adds a new one based on the trigger
 		$html.removeClassBeginningWith( 'egg' ).addClass( 'egg-' + trigger );
-
+		//
+		// Based on the trigger passed in, render appropriate data from the eggsData above
 		switch( trigger ) {
-
-			case 'toy': this.render( eggsData.toy ); break;
-			
-			case 'rocket': this.render( eggsData.rocket ); break;
-
-			case 'creature':
-
-			//	alert( 'These search results will show one of the creatures.' );
-
+			case 'toy': this.render( eggsData.toy );
 			break;
-
+			case 'rocket': this.render( eggsData.rocket );
+			break;
+			case 'creature':
+			break;
 		}
 
 	}

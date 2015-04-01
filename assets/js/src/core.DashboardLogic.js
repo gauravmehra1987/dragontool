@@ -1,19 +1,23 @@
-function Logic() {
+function DashboardLogic() {
 
 	// Initalize vars
-
 	var _this			= this;	
 	var filters			= [ 'lifestyle', 'economy', 'speed', 'price', 'convertible', 'high', 'awd', 'luggage', 'capacity' ];
 	var droppedFilters	= [];
 	var db;
-	var cars;	
+	var cars; // Cars data (defined later in the populateDB function)	
 
-	// Public functions
 
+	/**
+     * Optimizes the car data from the json to have property values of integars
+     * @return {Array} Array of car objects and all their data
+    */
 	this.optimizeData = function() {
-
+		//
+		// Iterate over the cars data...
 		$( cars ).each( function( i, el ) {
-
+			//
+			// Optimize each car and all it's properties in the array, to have integars as values
 			cars[ i ].awd			= parseInt( el.awd );
 			cars[ i ].high			= parseInt( el.high );
 			cars[ i ].convertible	= parseInt( el.convertible );
@@ -23,94 +27,80 @@ function Logic() {
 			cars[ i ].mph			= parseInt( el.mph );
 			cars[ i ].economy		= parseInt( el.economy );
 			cars[ i ].mpg			= parseFloat( el.mpg );
-
 		} );
-
+		//
+		// Return newly optimized cars data
 		return cars;
-
-	}
-
-	this.getAddresses = function( postcode ) {
-
-		return $.when( 
-
-			$.ajax( {
-
-				url:		path.apiPostcode,
-				data:		{ postcode: postcode },
-				error:		function( xhr ) { tpl = false; }
-
-			} )
-
-		).then( function( data ) { return data; } );
-
 	}
 
 
-	this.getDealers = function( postcode ) {
-
-		return $.when( 
-
-			$.ajax( {
-
-				url:		path.apiDealers,
-				data:		{ postcode: postcode },
-				error:		function( xhr ) { tpl = false; }
-
-			} )
-
-		).then( function( data ) { return data; } );
-
-	}
-
-	this.getFinance = function( code ) {
-
-		var car			= this.getCarByCode( code );
-		var finance		= car.finance;
-
-		finance.total_deposit	= finance.deposit + finance.contribution;
-		finance.total_amount	= finance.price + finance.credit_charge;
-		finance.terms			= car.terms;
-
-		return finance;
-
-	}
-
+	/**
+     * Eggs
+     * @param {Object} User selection data
+     * @return {Array} Array of eggs based on the user selection
+    */
 	this.eggs = function( data ) {
+		//
+		// Define an array of eggs that could be selected on the bums on seats dial
+		var seatTriggers = [ 'Alien', 'Dog', 'Cat' ];
+		//
+		// Define the last seat as the extra seat (the only seat which may have eggs)
+		var extraSeat = data.seats[ 4 ];
+		//
+		// Create an empty array of eggs
+		var eggs = [];
+		//
+		// Check if Any of the seatTriggers are in the extra seat and save to 'i'
+		var i = $.inArray( extraSeat, seatTriggers );
 
-		var seatTriggers	= [ 'Alien', 'Dog', 'Cat' ];
-		var extraSeat		= data.seats[ 4 ];
-		var eggs			= [];
-		var i				= $.inArray( extraSeat, seatTriggers );
-
-		// Alien, cat, dog
-
-		if( i >= 0 ) { eggs.push( seatTriggers[ i ].toLowerCase() ); }
-
-		// Rocket car
-
-		if( data.speed === 5 ) { eggs.push( 'rocket' ); }
-
-		// Toy car
-
-		if( priceChanged && data.price <= 190 ) { eggs.push( 'toy' ); }
-
-		// No eggs at all
-
-		if( eggs.length <= 0 ) eggs = false;
-
-		// Return the array
-
+		// ALIEN, DOG, CAT
+		// If 'i' has any of the seatTriggers...
+		if ( i >= 0 ) {
+			//
+			// Push all the values into the eggs array (as lowercase)
+			eggs.push( seatTriggers[ i ].toLowerCase() );
+		}
+		//
+		// ROCKET CAR
+		// If speed is the 5th option (lightspeed)
+		if ( data.speed === 5 ) {
+			//
+			// Push the value 'rocket' into the eggs array
+			eggs.push( 'rocket' );
+		}
+		//
+		// TOY CAR
+		// If price dial is 190 or less...
+		if ( priceChanged && data.price <= 190 ) {
+			//
+			// Push 'toy' into the eggs array
+			eggs.push( 'toy' );
+		}
+		//
+		// NO EGGS
+		// If no eggs...
+		if ( eggs.length <= 0 ) {
+			//
+			// Set eggs to false 
+			eggs = false;
+		}
+		//
+		// Return the eggs array
 		return eggs;
-
 	}
 
+
+	/**
+     * Get cars
+     * @param {Object} User selection data, formatted
+     * @return { } 
+    */
 	this.getCars = function( q ) {
 
-		console.log( q );
+		// console.log( 'q is:' );
+		// console.log( q );
 
 		// Handle easter eggs
-
 		if( typeof q.eggs === 'object' ) {
 
 			console.log( 'Easter eggs triggered' );
