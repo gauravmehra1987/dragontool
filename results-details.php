@@ -30,7 +30,7 @@
 				<!-- build:remove --><h2 class="switch-color">Car name</h2><!-- /build -->
 
 			<!-- build:template
-			<a href="<%= results.form_Link %>" class="button transparent">Call to action</a>
+			<a href="<%= results.formLink %>" class="button transparent">MAKE THIS MINI A REALITY</a>
 			/build -->
 
 			<!-- build:remove --><a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">MAKE THIS MINI A REALITY</a><!-- /build -->
