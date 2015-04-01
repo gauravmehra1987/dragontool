@@ -1,13 +1,19 @@
 function Dials() {
 
 
+	// DIAL: ROLLERS
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
-	 * Rollers
+	 * ROLLERS
 	 * @param {String} Slot selector
 	 * @return {Object} Returns the slot_dial draggable object with some more useful properties added
 	*/
 	this.roller = function( slot ) {
-		// 
+
+		// SET VARIABLES
+		///////////////////////////
+		//
 		// Compile a list from the siblings of the passed in slot (.fake-list)
 		var $list = $( slot ).siblings( '.list' );
 		//
@@ -17,8 +23,10 @@ function Dials() {
 		// Get the entire list height
 		var listHeight = slotHeight * ( $list.find( '.item' ).length - 1 );
 
+
 		/**
-		 * Reset all the slots using Greensock tweenLite
+		 * RESET
+		 * All the slots using Greensock tweenLite
 		*/
 		var reset = function() {
 			//
@@ -46,8 +54,9 @@ function Dials() {
 			_this.update();
 		}
 
+
 		/**
-		 * Get slot value
+		 * GET SLOT VALUE
 		 * @return {String} Returns the value of the active slot (Man, Woman, Boy, Girl etc)
 		*/
 		var getSlotValue = function() {
@@ -65,8 +74,9 @@ function Dials() {
 			return ( value === 'Empty' ) ? 0 : value;
 		}
 
+
 		/**
-		 * Get slot state
+		 * GET SLOT STATE
 		 * @param {Number} Position
 		 * @param {Number} Height
 		 * @param {Number} Padding
@@ -89,8 +99,10 @@ function Dials() {
 		$( slot ).height( listHeight );
 
 
-		// Initialize Greensock Draggable
-		// Passing in the slot element that was originally passed into the roller function above
+		// GREENSOCK DRAGGABLE
+		///////////////////////////
+		//
+		// Create new instance of draggable for the slot dial
 		var slot_dial = new Draggable( slot, {
 			//
 			// Lock axis to 'y' direction
@@ -134,6 +146,9 @@ function Dials() {
 		} );
 
 
+		// ADD TO SLOT DIAL OBJECT
+		///////////////////////////
+		//
 		// Using the slot_dial instance of the draggable object...
 		// We will add some useful properties to it based on the above functions
 		slot_dial.getValue	= getSlotValue;
@@ -147,11 +162,19 @@ function Dials() {
 	}
 
 
+
+
+	// DIAL: LUGGAGE
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
-	 * Luggage
+	 * LUGGAGE
 	 * @return {Object} Returns the luggage_dial draggable object with some more useful properties added
 	*/
 	this.luggage = function() {
+
+		// SET VARIABLES
+		///////////////////////////
 		//
 		// Set luggage_end to be 0
 		var luggage_end	= 0;
@@ -162,8 +185,9 @@ function Dials() {
 		// Set the luggage_snap to be a circle divided in quarters as there are 4 options
 		var luggage_snap = 360 / 4;
 
+
 		/**
-		 * Get luggage
+		 * GET LUGGAGE
 		 * @return {Number} Returns the active slot
 		*/
 		var getLuggage = function() {
@@ -172,8 +196,9 @@ function Dials() {
 			return $( luggage_el ).attr( 'class' ).replace( 'dial', '' ).trim();
 		}
 
+
 		/**
-		 * Bind events
+		 * BIND EVENTS
 		*/
 		var bindEvents = function() {
 			//
@@ -234,7 +259,7 @@ function Dials() {
 
 
 		/**
-		 * Dial Class
+		 * DIAL CLASS
 		 * Adds a class to the luggage dial element based on user selection
 		 * @param {Number} The dials rotation value, everytime the user clicks
 		*/
@@ -254,7 +279,10 @@ function Dials() {
 		}
 
 
-		// Creating a new Greensock draggable instance of the luggage dial
+		// GREENSOCK DRAGGABLE
+		///////////////////////////
+		//
+		// Create new instance of draggable for the slot dial
 		var luggage_dial = new Draggable( luggage_el, {
 			//
 			// Set type to rotation
@@ -290,6 +318,7 @@ function Dials() {
 			}
 		} );
 
+
 		// Call the bindEvents function to listen to user interaction
 		bindEvents();
 
@@ -302,8 +331,12 @@ function Dials() {
 
 
 
+
+	// DIAL: OPTIONS
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
-	 * Options
+	 * OPTIONS
 	*/
 	this.options = function() {
 
@@ -346,37 +379,70 @@ function Dials() {
 	}
 
 
+
+
+	// DIAL: LIFESTYLE
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
-	 * Lifestyle
+	 * LIFESTYLE
 	 * @return {Object} Returns the lifestyle_dial draggable object with some more useful properties added
 	*/
 	this.lifestyle = function() {
-		//
-		var getLifestyle = function() { return $( '#c-lifestyle .slick-slide.slick-active' ).attr( 'data-value' ); }
 
-		var lifestyle_el		= document.querySelector( '.control.lifestyle .dial' );
-		var lifestyle_bounds	= 5;
-		var lifestyle_bounds	= 45;
-
-		var lifestyle_direction;
-		
-		// Load slick.js only for not IE browsers
-
-		if( ! ie.loadFallbacks() ) {
-
-			var $slick = $( '.items-wrapper' ).slick( {
-
-				arrows:				false,
-				infinite:			true,
-				slide:				'.item',
-				onAfterChange:		function() { lifestyle_dial.enable(); }
-
-			} );
-
+		/**
+		 * GET LIFESTYLE
+		 * @return {String} Returns a number string from the data-value attr of the active slide
+		*/
+		var getLifestyle = function() {
+			//
+			// Slick-slide is part of the slick.js slider plugin, which is used to show the lifestyle images
+			return $( '#c-lifestyle .slick-slide.slick-active' ).attr( 'data-value' );
 		}
 
-		// Initialize draggable
 
+		// SET VARIABLES
+		///////////////////////////
+		//
+		// Get the dial element (the rotating draggable element)
+		var lifestyle_el = document.querySelector( '.control.lifestyle .dial' );
+		//
+		// Set the lifestyle bounds to be the number of slides?? No idea why it's defined twice
+		var lifestyle_bounds = 5;
+		var lifestyle_bounds = 45;
+		//
+		// Set an empty variable for the direction
+		var lifestyle_direction;
+
+
+		// SLICK.JS
+		///////////////////////////
+		//
+		// For modern browsers, load slick.js slider
+		if ( ! ie.loadFallbacks() ) {
+			//
+			// Set the wrapper of the slider
+			var $slick = $( '.items-wrapper' ).slick( {
+				//
+				// Don't include arrows, infinate sliding (looping), and define the selector for the slides
+				arrows:	false,
+				infinite: true,
+				slide: '.item',
+				//
+				// After slide change...
+				onAfterChange: function() {
+					//
+					// Enable lifestyle_dial. Not sure where this function is??
+					lifestyle_dial.enable();
+				}
+			} );
+		}
+
+
+		// GREENSOCK DRAGGABLE
+		///////////////////////////
+		//
+		// Create new instance of draggable for the lifestyle dial
 		var lifestyle_dial = new Draggable( lifestyle_el, {
 
 			type:			'rotation',
@@ -414,8 +480,16 @@ function Dials() {
 
 	}
 
-	// MPG knob
 
+
+
+	// DIAL: MPG
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * MPG
+	 * @return {}
+	*/
 	this.mpg = function() {
 
 		var mpg_el		= document.querySelector( '.control.mpg .arrow' );
@@ -468,8 +542,16 @@ function Dials() {
 
 	}
 
-	// Price dial
 
+
+
+	// DIAL: PRICE
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * PRICE
+	 * @return {}
+	*/
 	this.price = function() {
 
 		var getPrice = function() {
@@ -510,3 +592,4 @@ function Dials() {
 	}
 
 }
+

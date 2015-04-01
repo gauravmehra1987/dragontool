@@ -10,6 +10,7 @@ var finance 		= new Finance();
 var query			= new dashboardLogic.query();
 var dashboard 		= new Dashboard();
 var social			= new SocialMedia();
+var dials			= new Dials();
 //
 // carCode is set to false unless it is ??? (not sure what this does)
 var carCode	= getQueryParameter( 'm' ) || false;
