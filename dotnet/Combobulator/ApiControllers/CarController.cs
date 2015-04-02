@@ -37,7 +37,17 @@ namespace Combobulator.ApiControllers
                     {
                         Code = car.Code, Color = car.Color, Engine = car.Engine, Name = car.Name, Capacity = car.Capacity, Luggage = car.Luggage, Lifestyle = car.Lifestyle, Awd = car.Awd, High = car.High, Convertible = car.Convertible, Price = car.Price, Cost = car.Cost, Speed = car.Speed, Mph = car.Mph, Economy = car.Economy, Alt_1 = car.Alt1, Alt_2 = car.Alt2, Alt_3 = car.Alt3, Terms = car.Terms, Finance = new Models.Finance
                         {
-                            Info = car.Terms, Term = finance.Term ?? 0, Payment = finance.Payment ?? 0.0, Price = finance.FinancePrice ?? 0.0, Deposit = finance.Deposit ?? 0.0, Contribution = finance.Contribution ?? 0.0, Purchase_Fee = finance.PurchaseFee ?? 0.0, Final_Payment = finance.FinalPayment ?? 0.0, Credit_Charge = finance.CreditCharge ?? 0.0, ROI = finance.ROI, APR = finance.APR
+                            Info = finance.Info,
+                            Term = finance.Term ?? 0,
+                            Payment = finance.Payment ?? 0.0,
+                            Price = finance.FinancePrice ?? 0.0,
+                            Deposit = finance.Deposit ?? 0.0,
+                            Contribution = finance.Contribution ?? 0.0,
+                            Purchase_Fee = finance.PurchaseFee ?? 0.0,
+                            Final_Payment = finance.FinalPayment ?? 0.0,
+                            Credit_Charge = finance.CreditCharge ?? 0.0,
+                            ROI = finance.ROI,
+                            APR = finance.APR
                         }
                     }).ToList();
 
