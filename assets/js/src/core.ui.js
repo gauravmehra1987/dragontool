@@ -136,7 +136,8 @@ function UI() {
 	this.render = function( car, related ) {
 
 		var _this	= this;
-		var related	= related || false;		
+		var related	= related || false;
+
 
 		var renderRelatedCars = function( car, skipRelated ) {
 
@@ -147,7 +148,7 @@ function UI() {
 			var alt_2 = dashboardLogic.getCarByName( car.alt_2 );
 			var alt_3 = dashboardLogic.getCarByName( car.alt_3 );
 
-			if( alt_1 === false || alt_2 === false || alt_3 === false ) {
+			if ( alt_1 === false || alt_2 === false || alt_3 === false ) {
 
 				alert( 'missing alternate car - check console.log for missing value' )
 
@@ -166,7 +167,7 @@ function UI() {
 			
 			else {
 
-				if( ! skipRelated ) {
+				if ( ! skipRelated ) {
 
 					console.log( 'replacing related cars' );
 
@@ -202,6 +203,9 @@ function UI() {
 		} );		
 
 		renderRelatedCars( car, related );
+
+		// Hide link for rocket car
+		if ( car.code === 'RKT' ) { $('.car-link').hide(); }
 
 		// Change dashboard color
 

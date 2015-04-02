@@ -284,7 +284,9 @@
 
 	font-family: @fontAlt;
 	overflow: hidden;
-	position: relative;
+	position: absolute;
+	margin-top: 20px;
+	z-index: 1;
 
 	.currency, .price, .permonth, .car-link {
 
@@ -471,16 +473,6 @@
 
 					font-size: @fontSizeLarger;
 					max-width: 480px;
-
-				}
-
-				#go-to-form {
-					
-					display: none;
-
-					&.show {
-						display: block;
-					}
 
 				}
 
