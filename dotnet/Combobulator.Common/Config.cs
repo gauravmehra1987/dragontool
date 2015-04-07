@@ -43,5 +43,6 @@ namespace Combobulator.Common
         public static string _emailMeResultsSubject = ConfigurationManager.AppSettings["EmailMeResultsSubject"];
 
         public static string _emailMeResultsTemplate = ConfigurationManager.AppSettings["EmailMeResultsTemplate"];
+        public static string _emailCustomerResultsTemplate = ConfigurationManager.AppSettings["EmailCustomerDetailsTemplate"];
     }
 }

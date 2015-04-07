@@ -102,7 +102,7 @@ namespace Combobulator.Controllers
             }
             catch (Exception ex)
             {
-                log.Error("ResultDetail", ex);
+                Log.Error("ResultDetail", ex);
                 return PartialView("_ResultError");
             }
         }

@@ -25,7 +25,7 @@ namespace Combobulator.Controllers
                 }
                 catch (Exception ex)
                 {
-                    log.Error("GetCustomerById", ex);
+                    Log.Error("GetCustomerById", ex);
                 }
             }
 

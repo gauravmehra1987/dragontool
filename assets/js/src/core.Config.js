@@ -31,7 +31,7 @@ var system_paths = {
 		spriteFallback:	'Assets/sprites',
 		api:			'api/car',
 		apiPostcode:	'api/postcodelookup',
-		apiPostcode:	'api/dealerlookup',
+		apiDealers:		'api/dealerlookup',
 		preload:		'api/assets/svg',
 		templates:		'Assets/js/tpl'
 	},
@@ -51,8 +51,8 @@ var system_paths = {
 //
 // And now, depending on which set up we are using (Dotnet or PHP), we can comment out the appropriate line below 
 //
-// var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
-var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
+ var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
+//var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
 
 
 // Setting up all the colors to use for the dashboard color changes

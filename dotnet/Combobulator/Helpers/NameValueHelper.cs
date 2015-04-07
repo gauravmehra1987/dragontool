@@ -18,8 +18,7 @@ namespace Combobulator.Helpers
             while (pairs.MoveNext())
             {
                 var pair = pairs.Current;
-                var key = pair.Key.Replace("form[", "").Replace("input[", "").Replace("options[", "").Replace("localDealer[", "").Replace("]", "");
-                collection.Add(key, pair.Value);
+                collection.Add(pair.Key, pair.Value);
             }
             return collection;
         }

@@ -17,21 +17,21 @@
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
 
 	<div class="form-left">
-		
-		<header>
-
-			<ul class="actions">
-				
-				<li id="results-back"><a href="./">Go back to results</a></li>
-
-			</ul>
-
-			<h3 class="title">ALMOST THERE</h3>
-			<p class="notice">You've found your dream MINI. Now pop in your details so your local MINI Retailer can help you get your hands on it. </p>
-
-		</header>
 
 		<div class="form-content">
+		
+			<header>
+
+				<ul class="actions">
+					
+					<li id="results-back"><a href="./">Go back to results</a></li>
+
+				</ul>
+
+				<h3 class="title">ALMOST THERE</h3>
+				<p class="notice">You've found your dream MINI. Now pop in your details so your local MINI Retailer can help you get your hands on it. </p>
+
+			</header>
 
 			<div class="form-control half-width">
 

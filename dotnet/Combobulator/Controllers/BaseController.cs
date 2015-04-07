@@ -6,6 +6,6 @@ namespace Combobulator.Controllers
 {
     public class BaseController : Controller
     {
-        public static readonly log4net.ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
     }
 }

@@ -134,7 +134,10 @@ function FormLogic() {
 
 				address = address.substr( 0, address.length - 2 );
 
+				//console.log(address);
 				formattedAddresses.push( { id: i, address: address } );
+				
+				//console.log(formattedAddresses.length);
 
 			} );
 
@@ -180,8 +183,8 @@ function FormLogic() {
 			$( dealers ).each( function( i, addr ) {
 
 				var address = _this.formatAddress( addr );
-
-				formattedDealers.push( { id: i, dealer: address } );
+				var dealerId = addr.DealerId;
+				formattedDealers.push( { id: dealerId, dealer: address } );
 
 			} );
 
@@ -263,7 +266,7 @@ function FormLogic() {
 			$formContent.slideUp( 600 );
 			$thanks.slideDown( 600 );
 
-			alert( 'Thanks! Data has been logged to the console.' );
+			//alert( 'Thanks! Data has been logged to the console.' );
 
 		} );
 
@@ -276,10 +279,9 @@ function FormLogic() {
 	this.activateForms = function() {
 		// Validate forms
 		$( 'form' ).validate();
-
 		// Handle successful form submission
 		$.subscribe( 'form-ajax-results', function( e, data ) {
-
+			
 			if( data.success ) { ui.showPanel( 'thanks' ); }
 
 		} );

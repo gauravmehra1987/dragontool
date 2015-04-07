@@ -63,6 +63,7 @@
     <Compile Include="ViewModels\DealerResponse.cs" />
     <Compile Include="ViewModels\DealerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
     <Compile Include="ViewModels\GoogleGeoCodeResponse.cs" />
     <Compile Include="ViewModels\PostcodeLookUpApiViewModel.cs" />

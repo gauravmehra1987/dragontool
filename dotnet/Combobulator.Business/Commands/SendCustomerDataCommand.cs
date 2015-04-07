@@ -19,16 +19,18 @@ namespace Combobulator.Business.Commands
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Customer _customer;
         private readonly string _carModel;
+        private readonly string _templatePath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SendCustomerDataCommand"/> class.
         /// </summary>
         /// <param name="customer">The customer object.</param>
         /// <param name="carModel">The car model identifier.</param>
-        public SendCustomerDataCommand(Customer customer, string carModel)
+        public SendCustomerDataCommand(Customer customer, string carModel, string templatePath)
         {
             _customer = customer;
             _carModel = carModel;
+            _templatePath = templatePath;
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace Combobulator.Business.Commands
                     var strBody = string.Empty;
                     var subject = Config._emailMeResultsSubject;
                     var template = Config._emailMeResultsTemplate;
-                    using (var reader = new StreamReader(template))
+                    using (var reader = new StreamReader(_templatePath))
                     {
                         readFile = reader.ReadToEnd();
                     }

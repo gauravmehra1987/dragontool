@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
-using System.Web.UI.WebControls.WebParts;
 using Combobulator.Business.Commands;
-using Combobulator.Classes;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common.Extensions;
 using Combobulator.Data;
 using Combobulator.Models;
-using Dealer = Combobulator.Models.Dealer;
+using Options = Combobulator.Models.Options;
 using Title = Combobulator.Models.Title;
 
 namespace Combobulator.Controllers
@@ -64,74 +58,66 @@ namespace Combobulator.Controllers
                 Name = x.Name
             }).ToList();
 
-
             ViewBag.UserId = userId;
             ViewBag.ModelCode = modelCode;
 
             return View(viewModel);
         }
 
-        [System.Web.Mvc.HttpPost]
-        [ValidateAntiForgeryToken] 
-        public HttpResponseMessage Submit()
+        [HttpPost]
+        public ActionResult Submit(FormCollection collection)
         {
             try
             {
-                /*
+                var seats = collection["input[seats][]"].Split(',');
+
                 var customer = new Customer
                 {
-                    AddressLine1 = form.Fields.Address_1,
-                    AddressLine2 = form.Fields.Address_2,
-                    AddressLine3 = form.Fields.Address_3,
-                    AddressPostcode = form.Fields.Postcode,
-                    Dealer = form.Fields.Dealer,
-                    Email = form.Fields.Email,
-                    FirstName = form.Fields.Name,
-                    LastName = form.Fields.Surname,
-                    Title = form.Fields.Title,
-                    TelephoneMobile = form.Fields.Mobile,
-                    TelephoneHome = form.Fields.Home,
-                    TelephoneWork = form.Fields.Work,
-                    RequestCallback = form.Fields.Callback != "1" ? true : false,
-                    UserId = form.Fields.UserId,
+                    AddressLine1 = collection["form[address-1]"],
+                    AddressLine2 = collection["form[address-2]"],
+                    AddressLine3 = collection["form[address-3]"],
+                    AddressPostcode = collection["form[postcode]"],
+                    Dealer = collection["form[dealer]"],
+                    Email = collection["form[email]"],
+                    FirstName = collection["form[name]"],
+                    LastName = collection["form[surname]"],
+                    Title = collection["form[title]"],
+                    TelephoneMobile = collection["form[tel-mobile]"],
+                    TelephoneHome = collection["form[tel-home]"],
+                    TelephoneWork = collection["form[tel-work]"],
+                    RequestCallback = collection["form[finance]"] != "1" ? true : false,
+                    UserId = collection["form[UserId]"],
                     Selections = new Selections
                     {
-                        Capacity = form.Input.Seats.CountCharacterFrequency(0).ToString(),
-                        Luggage = form.Input.Luggage,
-                        PriceRange = form.Input.Price,
-                        Performance = form.Input.Speed,
-                        Use = form.Input.Lifestyle,
-                        Economy = form.Input.Mpg,
-                        Options = new Models.Options
+                        Capacity = seats.CountCharacterFrequency(0).ToString(),
+                        Luggage = collection["input[luggage]"],
+                        PriceRange = collection["input[price]"],
+                        Performance = collection["input[speed]"],
+                        Use = collection["input[lifestyle]"],
+                        Economy = collection["input[mpg]"],
+                        Options = new Options
                         {
-                            AWD = form.Input.Options.awd,
-                            DT = form.Input.Options.dt,
-                            HP = form.Input.Options.hp,
-                            TP = form.Input.Options.tp
+                            AWD = collection["input[options][awd]"],
+                            DT = collection["input[options][dt]"],
+                            HP = collection["input[options][hp]"],
+                            TP = collection["input[options][tp]"]
                         }
                     }
                 };
-                var carModel = form.Car;
-                */
-                var customer = new Customer();
-                var carModel = "RKT";
-                var command = new SendCustomerDataCommand(customer, carModel);
+                var carModel = collection["car"];
+                var template = Common.Config._emailCustomerResultsTemplate;
+                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
                 var result = command.Execute();
 
                 // Create a 201 response.
-                var response = new HttpResponseMessage(HttpStatusCode.OK)
-                {
-                    Content = new StringContent("success")
-                };
-                return response;
-
-                //return Request.CreateResponse(HttpStatusCode.OK, !result ? "error" : "success");
+                Response.StatusCode = 201;
+                Response.StatusDescription = "success";
+                return Json("success");
             }
             catch (Exception ex)
             {
-                throw ex;
-                //return Request.CreateResponse(HttpStatusCode.BadRequest);
-                //return Request.CreateResponse(HttpStatusCode.NotFound);
+                Log.Error(ex.Message);
+                return Json("error");
             }
         }
     }

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Net.Http;
 using System.Web.Http.Filters;
-using System.Net.Http;
 
 namespace Combobulator.Helpers
 {
-    public class DeflateCompressionAttribute : System.Web.Http.Filters.ActionFilterAttribute
+    public class DeflateCompressionAttribute : ActionFilterAttribute
     {
-
         public override void OnActionExecuted(HttpActionExecutedContext actContext)
         {
             var content = actContext.Response.Content;
