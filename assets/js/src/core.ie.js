@@ -21,7 +21,7 @@ function IE() {
 
 		loadFallbacks: function() {
 
-			return ( Mini.browser.isIE( '<=8' ) && Mini.browser.isIE() );
+			return ( Mini.browser.isIE( '<=9' ) && Mini.browser.isIE() );
 
 		},
 
