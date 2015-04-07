@@ -1,11 +1,13 @@
 ﻿using Combobulator.Models;
 using System;
+using System.Collections.Specialized;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using Combobulator.Business.Commands;
 using Combobulator.Business.ViewModels;
-using Combobulator.Common.Extensions;
+using Combobulator.Helpers;
 
 namespace Combobulator.ApiControllers
 {
@@ -17,11 +19,47 @@ namespace Combobulator.ApiControllers
         /// </summary>
         /// <param name="form">Form collection</param>
         /// <returns>Success of failure.</returns>
-        [HttpPost]
-        public HttpResponseMessage Post([FromBody] CustomerViewModel form)
+        //public HttpResponseMessage Post([FromBody] CustomerViewModel form)
+        public HttpResponseMessage Post(FormDataCollection form)
         {
+            var valueMap = NameValueHelper.Convert(form);
             try
             {
+                var customer = new Customer
+                {
+                    AddressLine1 = valueMap["address-1"],
+                    AddressLine2 = valueMap["address-2"],
+                    AddressLine3 = valueMap["address-3"],
+                    AddressPostcode = valueMap["postcode"],
+                    Dealer = "",
+                    Email = valueMap["email"],
+                    FirstName = valueMap["name"],
+                    LastName = valueMap["surname"],
+                    Title = valueMap["title"],
+                    TelephoneMobile = valueMap["tel-mobile"],
+                    TelephoneHome = valueMap["tel-home"],
+                    TelephoneWork = valueMap["tel-work"],
+                    RequestCallback = valueMap["finance"] != "1" ? true : false,
+                    UserId = valueMap["UserId"],
+                    Selections = new Selections
+                    {
+                        Capacity = "0",
+                        Luggage = valueMap["luggage"],
+                        PriceRange = valueMap["price"],
+                        Performance = valueMap["speed"],
+                        Use = valueMap["lifestyle"],
+                        Economy = valueMap["mpg"],
+                        Options = new Models.Options
+                        {
+                            AWD = valueMap["awd"],
+                            DT = valueMap["dt"],
+                            HP = valueMap["hp"],
+                            TP = valueMap["tp"]
+                        }
+                    }
+                };
+
+                /*
                 var customer = new Customer
                 {
                     AddressLine1 = form.Fields.Address_1,
@@ -55,7 +93,10 @@ namespace Combobulator.ApiControllers
                         }
                     }
                 };
-                var carModel = form.Car;
+                var customer = new Customer();
+                */
+                //var carModel = form.Car;
+                var carModel = valueMap["car"];
                 var command = new SendCustomerDataCommand(customer, carModel);
                 var result = command.Execute();
                 return Request.CreateResponse(HttpStatusCode.OK, !result ? "error" : "success");

@@ -159,7 +159,7 @@ namespace Combobulator.ApiControllers
         }
 
         [DeflateCompression]
-        public List<Models.DealerLookUp> Get([FromBody] string postcode)
+        public List<Models.DealerLookUp> Get(string postcode)
         {
             if (String.IsNullOrEmpty(postcode))
                 return new List<Models.DealerLookUp>();
@@ -171,9 +171,9 @@ namespace Combobulator.ApiControllers
             if (isCacheEnabled)
             {
                 //Check Cached Result
-                if (Cache.IsInCache("MC-DEALERLOOKUP-" + postcode))
+                if (Cache.IsInCache("MC-DEALERLOOKUP-" + postcodeInfo))
                 {
-                    return Cache.GetFromCache<List<Models.DealerLookUp>>("MC-DEALERLOOKUP-" + postcode);
+                    return Cache.GetFromCache<List<Models.DealerLookUp>>("MC-DEALERLOOKUP-" + postcodeInfo);
                 }
             }
 

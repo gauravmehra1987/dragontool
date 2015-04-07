@@ -8,6 +8,11 @@ namespace Combobulator.Business.ViewModels
 {
     public class CustomerViewModel
     {
+        public string UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string name { get; set; }
+        public string surname { get; set; }
         public Fields Fields { get; set; }
         public string Car { get; set; }
         public Input Input { get; set; }

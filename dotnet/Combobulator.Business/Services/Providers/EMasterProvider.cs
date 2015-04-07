@@ -13,7 +13,8 @@ namespace Combobulator.Business.Services.Providers
     {
         public bool SendData(Customer customer)
         {
-            var success = false;
+            var success = true;
+            /*
             const string action = "recordoutcome";
             var input = Config.SystemId + customer.UserId + Config.SecretKey + Config.Random;
             var checksum = CryptoHelper.CalculateMd5Hash(input);
@@ -32,12 +33,12 @@ namespace Combobulator.Business.Services.Providers
                 model_code = customer.Car.Code ?? "",
                 capacity = customer.Selections.Capacity == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
                 luggage = customer.Selections.Luggage ?? "",
-
+                
                 awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
                 dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
                 hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
                 tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
-
+                
                 price_range = customer.Selections.PriceRange ?? "",
                 performance = customer.Selections.Performance == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale"),
                 economy = customer.Selections.Economy ?? "",
@@ -51,6 +52,7 @@ namespace Combobulator.Business.Services.Providers
             var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
             dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(data);
+            
             if (obj.Error != null)
             {
                 var responseCode = (Common.Enums.eMasterResponseCode)(Convert.ToInt32(obj.Error));
@@ -66,6 +68,7 @@ namespace Combobulator.Business.Services.Providers
             {
                 success = true;
             }
+            */
 
             return success;
         }
