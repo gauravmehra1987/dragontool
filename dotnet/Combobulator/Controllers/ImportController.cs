@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Linq;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using Combobulator.Business.ViewModels;
 using CsvHelper;
 using Combobulator.Config;
@@ -21,11 +22,12 @@ namespace Combobulator.Controllers
             switch (type)
             {
                 case "csv":
-                    var fileName = Server.MapPath("~/App_Data/mini_data_latest.csv");
+                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v31_FK_Import.csv");
                     using (var fileReader = System.IO.File.OpenText(fileName))
                     using (var csv = new CsvReader(fileReader))
                     {
-                        var cultureInfo = CultureInfo.CurrentCulture;
+                        //var cultureInfo = CultureInfo.CurrentCulture;
+                        csv.Configuration.Encoding = Encoding.UTF32;
                         csv.Configuration.IgnoreReadingExceptions = true;
                         csv.Configuration.ReadingExceptionCallback = ReadingExceptionCallback;
                         csv.Configuration.WillThrowOnMissingField = false;
@@ -33,8 +35,8 @@ namespace Combobulator.Controllers
                         csv.Configuration.HasHeaderRecord = true;
                         csv.Configuration.TrimFields = true;
                         csv.Configuration.IgnoreHeaderWhiteSpace = true;
-                        csv.Configuration.CultureInfo = cultureInfo;
-                        csv.Configuration.RegisterClassMap<NewCarConfig>();
+                        //csv.Configuration.CultureInfo = cultureInfo;
+                        csv.Configuration.RegisterClassMap<NewCarConfigRedux>();
 
                         var records = csv.GetRecords<Models.NewCar>().Distinct().ToList();
                         using (var context = new CombobulatorDataContext())
@@ -45,6 +47,7 @@ namespace Combobulator.Controllers
                                 {
                                     new Finance
                                     {
+                                        Info = record.Info,
                                         Term = record.Term ?? 0,
                                         FinalPayment = record.FinalPayment ?? 0.0,
                                         FinancePrice = record.FinancePrice ?? 0.0,

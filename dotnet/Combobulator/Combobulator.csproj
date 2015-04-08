@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AntiXssLibrary">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
@@ -49,6 +53,10 @@
     </Reference>
     <Reference Include="CsvHelper">
       <HintPath>..\packages\CsvHelper.2.10.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
@@ -184,6 +192,7 @@
     <Compile Include="Classes\JsonUtils.cs" />
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="Config\AutoMapperConfig.cs" />
+    <Compile Include="Config\NewCarConfigRedux.cs" />
     <Compile Include="Config\NewCarConfig.cs" />
     <Compile Include="ApiControllers\AssetsController.cs" />
     <Compile Include="ApiControllers\CarController.cs">
@@ -201,6 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CompressionHelper.cs" />
+    <Compile Include="Helpers\CookieHelper.cs" />
     <Compile Include="Helpers\DeflateCompressionAttribute.cs" />
     <Compile Include="Helpers\JsonContentNegotiator.cs" />
     <Compile Include="Helpers\LowercaseContractResolver.cs" />
@@ -452,6 +462,7 @@
     <Content Include="Assets\js\tpl\results.mustache" />
     <Content Include="Assets\js\tpl\addresses.mustache" />
     <Content Include="Assets\js\tpl\dealers.mustache" />
+    <Content Include="App_Data\MINI_FS_logic_v31_FK_Import.csv" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -515,7 +526,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>

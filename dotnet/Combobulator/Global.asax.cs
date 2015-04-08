@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Script.Serialization;
 using Combobulator.Config;
 using Combobulator.Controllers;
 using Combobulator.Helpers;
@@ -47,48 +48,63 @@ namespace Combobulator
 
             Response.Clear();
 
-            var httpException = exception as HttpException;
-
-            var routeData = new RouteData();
-            routeData.Values.Add("controller", "Error");
-
-            if (httpException == null)
+            if (exception is HttpRequestValidationException)
             {
-                routeData.Values.Add("action", "Index");
-            }
-            else //It's an Http Exception, Let's handle it.
-            {
-                switch (httpException.GetHttpCode())
+                var isAjaxCall = string.Equals("XMLHttpRequest", Context.Request.Headers["x-requested-with"], StringComparison.OrdinalIgnoreCase);
+                Context.ClearError();
+                if (isAjaxCall)
                 {
-                    case 404:
-                        // Page not found.
-                        routeData.Values.Add("action", "HttpError404");
-                        break;
-                    case 500:
-                        // Server error.
-                        routeData.Values.Add("action", "HttpError500");
-                        break;
-
-                    // Here you can handle Views to other error codes.
-                    // I choose a General error template  
-                    default:
-                        routeData.Values.Add("action", "Index");
-                        break;
+                    Context.Response.ContentType = "application/json";
+                    Context.Response.StatusCode = 500;
+                    Context.Response.Write(new JavaScriptSerializer().Serialize(new {error = "error"}));
                 }
             }
+            else
+            {
 
-            // Pass exception details to the target error View.
-            routeData.Values.Add("error", exception);
+                var httpException = exception as HttpException;
 
-            // Clear the error on server.
-            Server.ClearError();
+                var routeData = new RouteData();
+                routeData.Values.Add("controller", "Error");
 
-            // Avoid IIS7 getting in the middle
-            Response.TrySkipIisCustomErrors = true;
+                if (httpException == null)
+                {
+                    routeData.Values.Add("action", "Index");
+                }
+                else //It's an Http Exception, Let's handle it.
+                {
+                    switch (httpException.GetHttpCode())
+                    {
+                        case 404:
+                            // Page not found.
+                            routeData.Values.Add("action", "HttpError404");
+                            break;
+                        case 500:
+                            // Server error.
+                            routeData.Values.Add("action", "HttpError500");
+                            break;
 
-            // Call target Controller and pass the routeData.
-            IController errorController = new ErrorController();
-            errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
+                        // Here you can handle Views to other error codes.
+                        // I choose a General error template  
+                        default:
+                            routeData.Values.Add("action", "Index");
+                            break;
+                    }
+                }
+
+                // Pass exception details to the target error View.
+                routeData.Values.Add("error", exception);
+
+                // Clear the error on server.
+                Server.ClearError();
+
+                // Avoid IIS7 getting in the middle
+                Response.TrySkipIisCustomErrors = true;
+
+                // Call target Controller and pass the routeData.
+                IController errorController = new ErrorController();
+                errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
+            }
         }
     }
 }

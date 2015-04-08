@@ -60,12 +60,7 @@ $.validator.setDefaults( {
 
 				},
 				success: function( data ) { $.publish( 'form-ajax-results', data ); },
-				error: function( xhr ) {
-
-					alert( 'Couldn\'t submit the form with AJAX, returning XHR object to the console:' );
-					console.log( xhr );
-
-				},
+				error: function( data ) {  },
 				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
 
 			} );	

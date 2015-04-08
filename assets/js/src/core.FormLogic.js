@@ -57,8 +57,16 @@ function FormLogic() {
 		var car			= dashboardLogic.getCarByCode( code );
 		var finance		= car.finance;
 
-		finance.total_deposit	= finance.deposit + finance.contribution;
-		finance.total_amount	= finance.price + finance.credit_charge;
+		finance.payment = Number(finance.payment).toFixed(2);
+		finance.price = Number(finance.price).toFixed(2);
+		finance.deposit = Number(finance.deposit).toFixed(2);
+		finance.contribution = Number(finance.contribution).toFixed(2);
+		finance.purchase_fee = Number(finance.purchase_fee).toFixed(2);
+		finance.final_payment = Number(finance.final_payment).toFixed(2);
+		
+		finance.total_deposit	= Number(Number(finance.deposit) + Number(finance.contribution)).toFixed(2);
+		finance.total_amount	= Number(Number(finance.price) + Number(finance.credit_charge)).toFixed(2);
+		finance.credit_charge 	= Number(finance.credit_charge).toFixed(2);
 		finance.terms			= car.terms;
 
 		return finance;
@@ -281,8 +289,11 @@ function FormLogic() {
 		$( 'form' ).validate();
 		// Handle successful form submission
 		$.subscribe( 'form-ajax-results', function( e, data ) {
-			
-			if( data.success ) { ui.showPanel( 'thanks' ); }
+			if( data.success ) {
+				ui.showPanel( 'thanks' );
+			} else {
+				ui.showPanel( 'error' );
+			}
 
 		} );
 	}

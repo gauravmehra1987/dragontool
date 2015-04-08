@@ -7,6 +7,7 @@ using Combobulator.Business.Commands;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common.Extensions;
 using Combobulator.Data;
+using Combobulator.Helpers;
 using Combobulator.Models;
 using Options = Combobulator.Models.Options;
 using Title = Combobulator.Models.Title;
@@ -65,11 +66,16 @@ namespace Combobulator.Controllers
         }
 
         [HttpPost]
+        //[ValidateInput(false)]
         public ActionResult Submit(FormCollection collection)
         {
             try
             {
+                var cookieToken = CookieHelper.GetCookie("__RequestVerificationToken");
+                var token = collection["form[__RequestVerificationToken]"];
                 var seats = collection["input[seats][]"].Split(',');
+
+                System.Web.Helpers.AntiForgery.Validate(cookieToken, token);
 
                 var customer = new Customer
                 {
