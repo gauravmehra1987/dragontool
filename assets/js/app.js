@@ -160,7 +160,6 @@ $.validator.setDefaults( {
 		'surname':		{ required: true },
 		'address-1':	{ required: true },
 		'address-2':	{ required: true },
-		'address-3':	{ required: true },
 		'address-4':	{ required: true },
 		'tel-home':		{ required: true },
 		'tel-work':		{ required: true },
@@ -185,7 +184,6 @@ $.validator.setDefaults( {
 		'surname':		{ required: 'Last name is required.' },
 		'address-1':	{ required: 'Address line 1 is required.' },
 		'address-2':	{ required: 'Address line 2 is required.' },
-		'address-3':	{ required: 'Address line 3 is required.' },
 		'address-4':	{ required: 'Address line 4 is required.' },
 		'tel-home':			{ required: 'Home telephone is required.' },
 		'tel-work':			{ required: 'Work telephone is required.' },
@@ -906,7 +904,7 @@ function FormLogic() {
     */
 	this.handlePostcode = function( e ) {
 
-		var postcode = $( '#postcode' ).val();
+		var postcode = $( '#postcode-search' ).val();
 
 		// Enable fields
 
@@ -1022,11 +1020,14 @@ function FormLogic() {
 
 		var address	= addressObj[ $target.val() ];
 
+		console.log(address.Postcode);
+
 		if( ! _.isEmpty( $target.val() ) ) {
 
 			$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
 			$( form.address2 ).val( address.Town );
 			$( form.address3 ).val( address.County );
+			$( form.postcode ).val( address.Postcode );
 
 		}
 
@@ -1035,6 +1036,7 @@ function FormLogic() {
 			$( form.address1 ).val( null );
 			$( form.address2 ).val( null );
 			$( form.address3 ).val( null );
+			$( form.postcode ).val( null );
 
 		}
 	}
@@ -1099,7 +1101,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$( '#postcode' ).on( 'keyup', function( e ) {
+		$( '#postcode-search' ).on( 'keyup', function( e ) {
 			_this.postcodeStuff( e );
 		});
 
@@ -2707,6 +2709,7 @@ var form = {
 	address1:			'#address-1',
 	address2:			'#address-2',
 	address3:			'#address-3',
+	postcode:			'#postcode',
 	addressChooser:		'#address-chooser',
 	dealerChooser:		'#dealer-chooser',
 	dealers:			'#dealers',

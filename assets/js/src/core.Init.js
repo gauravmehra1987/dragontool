@@ -31,6 +31,7 @@ var form = {
 	address1:			'#address-1',
 	address2:			'#address-2',
 	address3:			'#address-3',
+	postcode:			'#postcode',
 	addressChooser:		'#address-chooser',
 	dealerChooser:		'#dealer-chooser',
 	dealers:			'#dealers',
