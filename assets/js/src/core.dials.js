@@ -581,7 +581,7 @@ function Dials() {
 			bounds:					'.control.price .bounds',
 			throwProps:				false,
 			onDragStart:			function() { priceChanged = true; },
-			onDrag:					function() { $( '.control.price .switch-bg' ).css( 'height', getHeight( this ) + '%' ); },
+			onDrag:					function() { $( '.control.price .switch-bg' ).css( 'height', getHeight( this ) + 2.4 + '%' ); },
 
 		} );
 
