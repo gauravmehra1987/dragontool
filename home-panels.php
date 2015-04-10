@@ -29,10 +29,10 @@
 	
 		<ul id="related" class="related">
 
-			<li><a href="#" id="related_1" class="switch-bg car-changer"><img src="assets/img/blank.png" /></a></li>
-			<li><a href="#" id="related_2" class="switch-bg car-changer"><img src="assets/img/blank.png" /></a></li>
-			<li><a href="#" id="related_3" class="switch-bg car-changer"><img src="assets/img/blank.png" /></a></li>
-			<li><a href="#" id="related_4" class="switch-bg car-changer"><img src="assets/img/blank.png" /></a></li>
+			<li><a href="#" id="related_1" class="car-changer"><img src="assets/img/blank.png" /></a></li>
+			<li><a href="#" id="related_2" class="car-changer"><img src="assets/img/blank.png" /></a></li>
+			<li><a href="#" id="related_3" class="car-changer"><img src="assets/img/blank.png" /></a></li>
+			<li><a href="#" id="related_4" class="car-changer"><img src="assets/img/blank.png" /></a></li>
 
 		</ul><!-- end ul.related -->
 

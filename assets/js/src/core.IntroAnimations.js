@@ -1,107 +1,107 @@
-// ( function( Mini ) {
+( function( Mini ) {
 	
-// } )( Mini );
+} )( Mini );
 
-// // Intro animations
+// Intro animations
 
-// function animate() {
+function animate() {
 
-// 	this.bg = function() {
+	this.bg = function() {
 
-// 		var colors = [
+		var colors = [
 
-// 			'#f7941d',
-// 			'#30b6e8',
-// 			'#1164ac',
-// 			'#426046',
-// 			'#d71d24',
-// 			'#d71d24',
-// 			'#e4dfce'
+			'#f7941d',
+			'#30b6e8',
+			'#1164ac',
+			'#426046',
+			'#d71d24',
+			'#d71d24',
+			'#e4dfce'
 
-// 		];
+		];
 
-// 		var i = 0;
+		var i = 0;
 
-// 		var t;
+		var t;
 
-// 		var increment = function() {
+		var increment = function() {
 
-// 			$.publish('colour-change', colors[ i ]);
+			$.publish('colour-change', colors[ i ]);
 
-// 			( i < colors.length ) ? i++ : clearInterval( t );
+			( i < colors.length ) ? i++ : clearInterval( t );
 
-// 		};
+		};
 
-// 		t = setInterval( increment, 100 );
+		t = setInterval( increment, 100 );
 
-// 	};
+	};
 
-// 	this.bums = function() {
+	this.bums = function() {
 
-// 		setSlotValue( _.random( 0, $( slot_1 ).find( '.slot' ).length - 1 ), slot_1 );
-// 		setSlotValue( _.random( 0, $( slot_2 ).find( '.slot' ).length - 1 ), slot_2 );
-// 		setSlotValue( _.random( 0, $( slot_3 ).find( '.slot' ).length - 1 ), slot_3 );
-// 		setSlotValue( _.random( 0, $( slot_4 ).find( '.slot' ).length - 1 ), slot_4 );
-// 		setSlotValue( _.random( 0, $( slot_5 ).find( '.slot' ).length - 1 ), slot_5 );
+		setSlotValue( _.random( 0, $( slot_1 ).find( '.slot' ).length - 1 ), slot_1 );
+		setSlotValue( _.random( 0, $( slot_2 ).find( '.slot' ).length - 1 ), slot_2 );
+		setSlotValue( _.random( 0, $( slot_3 ).find( '.slot' ).length - 1 ), slot_3 );
+		setSlotValue( _.random( 0, $( slot_4 ).find( '.slot' ).length - 1 ), slot_4 );
+		setSlotValue( _.random( 0, $( slot_5 ).find( '.slot' ).length - 1 ), slot_5 );
 
-// 	};
+	};
 
-// 	this.mpg = function() {
+	this.mpg = function() {
 
-// 		TweenLite.to( mpg_el, 0.6, { rotation: 120 } );
-// 		setTimeout( function() { TweenLite.to( mpg_el, 0.6, { rotation: -120 } ); }, 600 );
+		TweenLite.to( mpg_el, 0.6, { rotation: 120 } );
+		setTimeout( function() { TweenLite.to( mpg_el, 0.6, { rotation: -120 } ); }, 600 );
 
-// 	};
+	};
 
-// 	this.options = function() {
+	this.options = function() {
 
-// 		$( '.option input' ).each( function( i, el ) {
+		$( '.option input' ).each( function( i, el ) {
 
-// 			setTimeout( function() { $( el ).prop( 'checked', true ); }, i * 100 );
+			setTimeout( function() { $( el ).prop( 'checked', true ); }, i * 100 );
 			
-// 			setTimeout( function() { $( el ).prop( 'checked', false ); }, ( i * 100 ) + 400 );
+			setTimeout( function() { $( el ).prop( 'checked', false ); }, ( i * 100 ) + 400 );
 
-// 		} );
+		} );
 
-// 	};
+	};
 
-// 	this.price = function() {
+	this.price = function() {
 
-// 		TweenLite.to( price_el, 0.6, { y: price_slider.minY } );
-// 		setTimeout( function() { TweenLite.to( price_el, 0.6, { y: price_slider.maxY } ); }, 600 );
+		TweenLite.to( price_el, 0.6, { y: price_slider.minY } );
+		setTimeout( function() { TweenLite.to( price_el, 0.6, { y: price_slider.maxY } ); }, 600 );
 
-// 	};
+	};
 
-// 	this.lifestyle = function() {
+	this.lifestyle = function() {
 
-// 		TweenLite.to( lifestyle_el, 0.6, {
+		TweenLite.to( lifestyle_el, 0.6, {
 
-// 			rotation: lifestyle_dial.minRotation,
-// 			onComplete: function() { updateLifestyleDial(); }
+			rotation: lifestyle_dial.minRotation,
+			onComplete: function() { updateLifestyleDial(); }
 
-// 		} ); // left
+		} ); // left
 
-// 		setTimeout( function() { TweenLite.to( lifestyle_el, 0.6, { rotation: 0 } ); }, 600 ); // right
+		setTimeout( function() { TweenLite.to( lifestyle_el, 0.6, { rotation: 0 } ); }, 600 ); // right
 
-// 	};
+	};
 
-// 	this.speed = function() { setSlotValue( $( speed_control ).find( '.slot' ).length - 2, speed_control ); };
+	this.speed = function() { setSlotValue( $( speed_control ).find( '.slot' ).length - 2, speed_control ); };
 
-// 	this.luggage = function() {
+	this.luggage = function() {
 
-// 		TweenLite.to( luggage_el, 2, { rotation: 360 } );
+		TweenLite.to( luggage_el, 2, { rotation: 360 } );
 
-// 	};
+	};
 
-// 	this.bums();
-// 	this.mpg();
-// 	this.options();
-// 	this.price();
-// 	this.lifestyle();
-// 	this.speed();
-// 	this.luggage();
-// 	this.bg();
+	this.bums();
+	this.mpg();
+	this.options();
+	this.price();
+	this.lifestyle();
+	this.speed();
+	this.luggage();
+	this.bg();
 
-// }
+}
 
-// animate();
+animate();

@@ -112,7 +112,7 @@ function FormLogic() {
     */
 	this.handlePostcode = function( e ) {
 
-		var postcode = $( '#postcode' ).val();
+		var postcode = $( '#postcode-search' ).val();
 
 		// Enable fields
 
@@ -228,11 +228,14 @@ function FormLogic() {
 
 		var address	= addressObj[ $target.val() ];
 
+		console.log(address.Postcode);
+
 		if( ! _.isEmpty( $target.val() ) ) {
 
 			$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
 			$( form.address2 ).val( address.Town );
 			$( form.address3 ).val( address.County );
+			$( form.postcode ).val( address.Postcode );
 
 		}
 
@@ -241,6 +244,7 @@ function FormLogic() {
 			$( form.address1 ).val( null );
 			$( form.address2 ).val( null );
 			$( form.address3 ).val( null );
+			$( form.postcode ).val( null );
 
 		}
 	}
@@ -305,7 +309,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$( '#postcode' ).on( 'keyup', function( e ) {
+		$( '#postcode-search' ).on( 'keyup', function( e ) {
 			_this.postcodeStuff( e );
 		});
 
