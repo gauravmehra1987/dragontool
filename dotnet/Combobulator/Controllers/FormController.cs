@@ -112,10 +112,12 @@ namespace Combobulator.Controllers
                     }
                 };
                 var carModel = collection["car"];
+                /*
                 var template = Common.Config._emailCustomerResultsTemplate;
                 var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
                 var dataSent = command.Execute();
-
+                */
+                var dataSent = true;
                 if (!dataSent)
                 {
                     Response.StatusCode = 500;

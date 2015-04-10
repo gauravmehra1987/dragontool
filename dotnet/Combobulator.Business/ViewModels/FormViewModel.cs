@@ -23,6 +23,7 @@ namespace Combobulator.Business.ViewModels
         public bool RequestCallback { get; set; }
         public bool EmailResults { get; set; }
 
+        public string Postcode { get; set; }
         public List<Title> Titles { get; set; }
         public List<Dealer> Dealers { get; set; }
     }

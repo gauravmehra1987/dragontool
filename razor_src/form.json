@@ -21,7 +21,7 @@
 
 		},
 		"address": {
-
+			"postcodesearch": "@Html.TextBoxFor(model => model.Postcode, new { type = \"text\", id = \"postcode-search\", Name = \"postcode-search\", placeholder = \"Postcode\" })",
 			"home":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address-type-home\", @Name = \"address-type\", @value = \"home\", @checked = \"checked\" })",
 			"work":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address-type-work\", @Name = \"address-type\", @value = \"home\" })",
 			"postcode":		"@Html.TextBoxFor(model => model.AddressPostcode, new { type = \"text\", id = \"postcode\", Name = \"postcode\", placeholder = \"Postcode\" })",
