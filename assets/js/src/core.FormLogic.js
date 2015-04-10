@@ -4,6 +4,21 @@ function FormLogic() {
 	var _this = this;	
 
 
+
+	/**
+     * Color changer
+     * Any color passed in, will change all the nessisary elements back ground colors/paths/strokes/borders etc
+     * @param {String} Color
+    */
+	this.colors = function( color ) {
+		//
+		// Background colors
+		$( '.switch-bg' ).css({
+			'background-color':	color
+		});
+	}
+
+
 	/**
      * Gets addresses from a given postcode
      * @param {String} postcode
@@ -289,6 +304,10 @@ function FormLogic() {
 	 * Activate forms
 	*/
 	this.activateForms = function() {
+		//
+		// Activate the color of submit button
+		dashboard.activateDashColor();
+		//
 		// Validate forms
 		$( 'form' ).validate();
 		// Handle successful form submission
