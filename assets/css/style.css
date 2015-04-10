@@ -5599,6 +5599,8 @@ html.page-disabled #disabled p {
     background-color: transparent;
     background-image: url(../img/skid-marks-faded.png );
     margin-top: 0px;
+    max-width: 760px;
+    margin: 0 auto;
   }
   html > body #page-results .layout {
     position: relative;
@@ -6227,9 +6229,6 @@ html.page-disabled #disabled p {
   border-style: solid;
   border-width: 1px;
   border-color: transparent;
-}
-#results .related li a:hover {
-  background: none;
 }
 #thanks header,
 #thanks footer {
