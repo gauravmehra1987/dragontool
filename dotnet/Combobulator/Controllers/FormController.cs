@@ -66,22 +66,19 @@ namespace Combobulator.Controllers
         }
 
         [HttpPost]
-        //[ValidateInput(false)]
+        [ValidateAjaxAntiForgeryToken]
         public ActionResult Submit(FormCollection collection)
         {
             try
             {
-                var cookieToken = CookieHelper.GetCookie("__RequestVerificationToken");
-                var token = collection["form[__RequestVerificationToken]"];
-                var seats = collection["input[seats][]"].Split(',');
-
-                System.Web.Helpers.AntiForgery.Validate(cookieToken, token);
+                var isphone = collection["form[optout-phone]"] ?? "true";
+                var ispost = collection["form[optout-post]"] ?? "true";
+                var addresstype = collection["form[address-type]"];
 
                 var customer = new Customer
                 {
                     AddressLine1 = collection["form[address-1]"],
                     AddressLine2 = collection["form[address-2]"],
-                    AddressLine3 = collection["form[address-3]"],
                     AddressPostcode = collection["form[postcode]"],
                     Dealer = collection["form[dealer]"],
                     Email = collection["form[email]"],
@@ -91,11 +88,15 @@ namespace Combobulator.Controllers
                     TelephoneMobile = collection["form[tel-mobile]"],
                     TelephoneHome = collection["form[tel-home]"],
                     TelephoneWork = collection["form[tel-work]"],
-                    RequestCallback = collection["form[finance]"] != "1" ? true : false,
+                    IsFinance = collection["form[finance]"] != "1",
+                    AddressType = addresstype,
+                    IsPhone = isphone == "true" ? true : false,
+                    IsPost = ispost == "true" ? true : false,
+                    
                     UserId = collection["form[UserId]"],
                     Selections = new Selections
                     {
-                        Capacity = seats.CountCharacterFrequency(0).ToString(),
+                        Capacity = collection["input[seats][]"].Split(',').CountCharacterFrequency(0).ToString(),
                         Luggage = collection["input[luggage]"],
                         PriceRange = collection["input[price]"],
                         Performance = collection["input[speed]"],
@@ -113,9 +114,15 @@ namespace Combobulator.Controllers
                 var carModel = collection["car"];
                 var template = Common.Config._emailCustomerResultsTemplate;
                 var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
-                var result = command.Execute();
+                var dataSent = command.Execute();
 
-                // Create a 201 response.
+                if (!dataSent)
+                {
+                    Response.StatusCode = 500;
+                    Response.StatusDescription = "error";
+                    return Json("error");
+                }
+
                 Response.StatusCode = 201;
                 Response.StatusDescription = "success";
                 return Json("success");
@@ -123,6 +130,7 @@ namespace Combobulator.Controllers
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
+                Response.StatusCode = 500;
                 return Json("error");
             }
         }

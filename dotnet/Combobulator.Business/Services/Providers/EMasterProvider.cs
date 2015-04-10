@@ -1,18 +1,23 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Reflection;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common;
 using Combobulator.Common.Helpers;
 using Combobulator.Models;
+using log4net;
 using Newtonsoft.Json;
 
 namespace Combobulator.Business.Services.Providers
 {
     public class EMasterProvider : IProvider
     {
+        public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public bool SendData(Customer customer)
         {
-            var output = false;
+            var isComplete = false;
             
             const string action = "recordoutcome";
             var input = Config.SystemId + customer.UserId + Config.SecretKey + Config.Random;
@@ -20,13 +25,14 @@ namespace Combobulator.Business.Services.Providers
 
             try
             {
-                var capacity = customer.Selections.Capacity;
-                var performance = customer.Selections.Performance;
-                var use = customer.Selections.Use;
+                var isFinance = customer.IsFinance;
+                var isPhone = customer.IsPhone;
+                var isPost = customer.IsPhone;
 
-                var selection = SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale");
+                var usegae = SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use");
 
-                var result = new ResultViewModel
+
+                var viewModel = new ResultViewModel
                 {
                     id = customer.UserId ?? "",
                     title = customer.Title ?? "",
@@ -34,9 +40,12 @@ namespace Combobulator.Business.Services.Providers
                     surname = customer.LastName ?? "",
                     email = customer.Email ?? "",
                     telephone = customer.TelephoneHome ?? "",
-                    request_callback = customer.RequestCallback ? "true" : "false",
-                    request_early_redemption = customer.RequestEarlyRedemption ? "true" : "false",
 
+                    finance_interest = isFinance ? "true" : "false",
+                    phone_communication = isPhone ? "true" : "false",
+                    post_communication = isPost ? "true" : "false",
+
+                    
                     model_name = customer.Car.Name ?? "",
                     model_code = customer.Car.Code ?? "",
                     
@@ -48,13 +57,13 @@ namespace Combobulator.Business.Services.Providers
                     dt = customer.Selections.Options.DT,
                     hp = customer.Selections.Options.HP,
                     tp = customer.Selections.Options.TP,
-
+                    
                     performance = customer.Selections.Performance == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale"),
                     capacity = customer.Selections.Capacity == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
-                    use = customer.Selections.Use == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")                         
+                    use = customer.Selections.Use == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
                 };
 
-                var json = JsonConvert.SerializeObject(result);
+                var json = JsonConvert.SerializeObject(viewModel);
                 var url =
                     string.Format(
                         Config.HostUrl +
@@ -65,7 +74,6 @@ namespace Combobulator.Business.Services.Providers
                 var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                 dynamic obj = JsonConvert.DeserializeObject(data);
-                /*
                 if (obj["Error"] != null)
                 {
                     var error = obj["Error"];
@@ -75,21 +83,18 @@ namespace Combobulator.Business.Services.Providers
                     var attributes = member[0].GetCustomAttributes(typeof (DescriptionAttribute), false);
                     var description = ((DescriptionAttribute) attributes[0]).Description;
 
-                    throw new Exception("eMaster recordoutcome method - " + description);
+                    Log.Error("eMaster recordoutcome method - " + description);
                 }
-                */
-                output = true;
-
-                if (obj.Success != null)
+                else
                 {
-                    output = true;
+                    isComplete = true;
                 }
-
-                return output;
+                return isComplete;
             }
             catch (Exception ex)
             {
-                return output;
+                Log.Error("EMaster Provider - " + ex.Message);
+                return isComplete;
             }
         }
     }

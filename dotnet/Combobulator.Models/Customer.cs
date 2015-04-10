@@ -51,6 +51,8 @@ namespace Combobulator.Models
         [Display(Name = "Mobile telephone")]
         public string TelephoneMobile { get; set; }
 
+        public string AddressType { get; set; }
+
         [Required(ErrorMessage = "Address line 1 is required")]
         [StringLength(20)]
         [Display(Name = "Address line 1")]
@@ -75,6 +77,7 @@ namespace Combobulator.Models
         [Display(Name = "Dealer")]
         public string Dealer { get; set; }
 
+        /*
         [Display(Name = "Request callback")]
         public bool RequestCallback { get; set; }
 
@@ -83,5 +86,10 @@ namespace Combobulator.Models
 
         [Display(Name = "Email me my results")]
         public bool EmailResults { get; set; }
+        */
+
+        public bool IsFinance { get; set; }
+        public bool IsPhone { get; set; }
+        public bool IsPost { get; set; }
     }
 }

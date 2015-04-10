@@ -36,9 +36,6 @@ namespace Combobulator.Data
     partial void InsertNewCar(NewCar instance);
     partial void UpdateNewCar(NewCar instance);
     partial void DeleteNewCar(NewCar instance);
-    partial void InsertFinance(Finance instance);
-    partial void UpdateFinance(Finance instance);
-    partial void DeleteFinance(Finance instance);
     partial void InsertPostcodeLookUp(PostcodeLookUp instance);
     partial void UpdatePostcodeLookUp(PostcodeLookUp instance);
     partial void DeletePostcodeLookUp(PostcodeLookUp instance);
@@ -48,10 +45,13 @@ namespace Combobulator.Data
     partial void InsertDealerLookUp(DealerLookUp instance);
     partial void UpdateDealerLookUp(DealerLookUp instance);
     partial void DeleteDealerLookUp(DealerLookUp instance);
+    partial void InsertFinance(Finance instance);
+    partial void UpdateFinance(Finance instance);
+    partial void DeleteFinance(Finance instance);
     #endregion
 		
-		public CombobulatorDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CombobulatorConnectionString"].ConnectionString, mappingSource)
+		public CombobulatorDataContext() :
+        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CombobulatorConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -96,14 +96,6 @@ namespace Combobulator.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<Finance> Finances
-		{
-			get
-			{
-				return this.GetTable<Finance>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PostcodeLookUp> PostcodeLookUps
 		{
 			get
@@ -128,6 +120,14 @@ namespace Combobulator.Data
 			}
 		}
 		
+		public System.Data.Linq.Table<Finance> Finances
+		{
+			get
+			{
+				return this.GetTable<Finance>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetTitles")]
 		public ISingleResult<Title> GetTitles()
 		{
@@ -140,6 +140,20 @@ namespace Combobulator.Data
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetLookupsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPostCode")]
+		public ISingleResult<GetPostCodeResult> GetPostCode([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string postcode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), postcode);
+			return ((ISingleResult<GetPostCodeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetDealer")]
+		public ISingleResult<GetDealerResult> GetDealer([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string postcode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), postcode);
+			return ((ISingleResult<GetDealerResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCarFinance")]
@@ -161,20 +175,6 @@ namespace Combobulator.Data
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetNewCarsResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPostCode")]
-		public ISingleResult<GetPostCodeResult> GetPostCode([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string postcode)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), postcode);
-			return ((ISingleResult<GetPostCodeResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetDealer")]
-		public ISingleResult<GetDealerResult> GetDealer([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string postcode)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), postcode);
-			return ((ISingleResult<GetDealerResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -831,397 +831,6 @@ namespace Combobulator.Data
 		{
 			this.SendPropertyChanging();
 			entity.NewCar = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Finances")]
-	public partial class Finance : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _Term;
-		
-		private System.Nullable<double> _Payment;
-		
-		private System.Nullable<double> _FinancePrice;
-		
-		private System.Nullable<double> _Deposit;
-		
-		private System.Nullable<double> _Contribution;
-		
-		private System.Nullable<double> _PurchaseFee;
-		
-		private System.Nullable<double> _FinalPayment;
-		
-		private System.Nullable<double> _CreditCharge;
-		
-		private string _ROI;
-		
-		private string _APR;
-		
-		private System.Nullable<int> _NewCarId;
-		
-		private string _Info;
-		
-		private EntityRef<NewCar> _NewCar;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnTermChanging(System.Nullable<int> value);
-    partial void OnTermChanged();
-    partial void OnPaymentChanging(System.Nullable<double> value);
-    partial void OnPaymentChanged();
-    partial void OnFinancePriceChanging(System.Nullable<double> value);
-    partial void OnFinancePriceChanged();
-    partial void OnDepositChanging(System.Nullable<double> value);
-    partial void OnDepositChanged();
-    partial void OnContributionChanging(System.Nullable<double> value);
-    partial void OnContributionChanged();
-    partial void OnPurchaseFeeChanging(System.Nullable<double> value);
-    partial void OnPurchaseFeeChanged();
-    partial void OnFinalPaymentChanging(System.Nullable<double> value);
-    partial void OnFinalPaymentChanged();
-    partial void OnCreditChargeChanging(System.Nullable<double> value);
-    partial void OnCreditChargeChanged();
-    partial void OnROIChanging(string value);
-    partial void OnROIChanged();
-    partial void OnAPRChanging(string value);
-    partial void OnAPRChanged();
-    partial void OnNewCarIdChanging(System.Nullable<int> value);
-    partial void OnNewCarIdChanged();
-    partial void OnInfoChanging(string value);
-    partial void OnInfoChanged();
-    #endregion
-		
-		public Finance()
-		{
-			this._NewCar = default(EntityRef<NewCar>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Term", DbType="Int")]
-		public System.Nullable<int> Term
-		{
-			get
-			{
-				return this._Term;
-			}
-			set
-			{
-				if ((this._Term != value))
-				{
-					this.OnTermChanging(value);
-					this.SendPropertyChanging();
-					this._Term = value;
-					this.SendPropertyChanged("Term");
-					this.OnTermChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Payment", DbType="Float")]
-		public System.Nullable<double> Payment
-		{
-			get
-			{
-				return this._Payment;
-			}
-			set
-			{
-				if ((this._Payment != value))
-				{
-					this.OnPaymentChanging(value);
-					this.SendPropertyChanging();
-					this._Payment = value;
-					this.SendPropertyChanged("Payment");
-					this.OnPaymentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancePrice", DbType="Float")]
-		public System.Nullable<double> FinancePrice
-		{
-			get
-			{
-				return this._FinancePrice;
-			}
-			set
-			{
-				if ((this._FinancePrice != value))
-				{
-					this.OnFinancePriceChanging(value);
-					this.SendPropertyChanging();
-					this._FinancePrice = value;
-					this.SendPropertyChanged("FinancePrice");
-					this.OnFinancePriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deposit", DbType="Float")]
-		public System.Nullable<double> Deposit
-		{
-			get
-			{
-				return this._Deposit;
-			}
-			set
-			{
-				if ((this._Deposit != value))
-				{
-					this.OnDepositChanging(value);
-					this.SendPropertyChanging();
-					this._Deposit = value;
-					this.SendPropertyChanged("Deposit");
-					this.OnDepositChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contribution", DbType="Float")]
-		public System.Nullable<double> Contribution
-		{
-			get
-			{
-				return this._Contribution;
-			}
-			set
-			{
-				if ((this._Contribution != value))
-				{
-					this.OnContributionChanging(value);
-					this.SendPropertyChanging();
-					this._Contribution = value;
-					this.SendPropertyChanged("Contribution");
-					this.OnContributionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseFee", DbType="Float")]
-		public System.Nullable<double> PurchaseFee
-		{
-			get
-			{
-				return this._PurchaseFee;
-			}
-			set
-			{
-				if ((this._PurchaseFee != value))
-				{
-					this.OnPurchaseFeeChanging(value);
-					this.SendPropertyChanging();
-					this._PurchaseFee = value;
-					this.SendPropertyChanged("PurchaseFee");
-					this.OnPurchaseFeeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalPayment", DbType="Float")]
-		public System.Nullable<double> FinalPayment
-		{
-			get
-			{
-				return this._FinalPayment;
-			}
-			set
-			{
-				if ((this._FinalPayment != value))
-				{
-					this.OnFinalPaymentChanging(value);
-					this.SendPropertyChanging();
-					this._FinalPayment = value;
-					this.SendPropertyChanged("FinalPayment");
-					this.OnFinalPaymentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditCharge", DbType="Float")]
-		public System.Nullable<double> CreditCharge
-		{
-			get
-			{
-				return this._CreditCharge;
-			}
-			set
-			{
-				if ((this._CreditCharge != value))
-				{
-					this.OnCreditChargeChanging(value);
-					this.SendPropertyChanging();
-					this._CreditCharge = value;
-					this.SendPropertyChanged("CreditCharge");
-					this.OnCreditChargeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROI", DbType="NVarChar(50)")]
-		public string ROI
-		{
-			get
-			{
-				return this._ROI;
-			}
-			set
-			{
-				if ((this._ROI != value))
-				{
-					this.OnROIChanging(value);
-					this.SendPropertyChanging();
-					this._ROI = value;
-					this.SendPropertyChanged("ROI");
-					this.OnROIChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APR", DbType="NVarChar(50)")]
-		public string APR
-		{
-			get
-			{
-				return this._APR;
-			}
-			set
-			{
-				if ((this._APR != value))
-				{
-					this.OnAPRChanging(value);
-					this.SendPropertyChanging();
-					this._APR = value;
-					this.SendPropertyChanged("APR");
-					this.OnAPRChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewCarId", DbType="Int")]
-		public System.Nullable<int> NewCarId
-		{
-			get
-			{
-				return this._NewCarId;
-			}
-			set
-			{
-				if ((this._NewCarId != value))
-				{
-					if (this._NewCar.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnNewCarIdChanging(value);
-					this.SendPropertyChanging();
-					this._NewCarId = value;
-					this.SendPropertyChanged("NewCarId");
-					this.OnNewCarIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Info", DbType="NVarChar(MAX)")]
-		public string Info
-		{
-			get
-			{
-				return this._Info;
-			}
-			set
-			{
-				if ((this._Info != value))
-				{
-					this.OnInfoChanging(value);
-					this.SendPropertyChanging();
-					this._Info = value;
-					this.SendPropertyChanged("Info");
-					this.OnInfoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewCar_Finance", Storage="_NewCar", ThisKey="NewCarId", OtherKey="Id", IsForeignKey=true)]
-		public NewCar NewCar
-		{
-			get
-			{
-				return this._NewCar.Entity;
-			}
-			set
-			{
-				NewCar previousValue = this._NewCar.Entity;
-				if (((previousValue != value) 
-							|| (this._NewCar.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NewCar.Entity = null;
-						previousValue.Finances.Remove(this);
-					}
-					this._NewCar.Entity = value;
-					if ((value != null))
-					{
-						value.Finances.Add(this);
-						this._NewCarId = value.Id;
-					}
-					else
-					{
-						this._NewCarId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("NewCar");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -2008,6 +1617,421 @@ namespace Combobulator.Data
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Finances")]
+	public partial class Finance : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _Term;
+		
+		private System.Nullable<double> _Payment;
+		
+		private System.Nullable<double> _FinancePrice;
+		
+		private System.Nullable<double> _Deposit;
+		
+		private System.Nullable<double> _Contribution;
+		
+		private System.Nullable<double> _PurchaseFee;
+		
+		private System.Nullable<double> _FinalPayment;
+		
+		private System.Nullable<double> _CreditCharge;
+		
+		private string _ROI;
+		
+		private string _APR;
+		
+		private System.Nullable<int> _NewCarId;
+		
+		private string _Info;
+		
+		private System.Nullable<double> _TotalAmount;
+		
+		private EntityRef<NewCar> _NewCar;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTermChanging(System.Nullable<int> value);
+    partial void OnTermChanged();
+    partial void OnPaymentChanging(System.Nullable<double> value);
+    partial void OnPaymentChanged();
+    partial void OnFinancePriceChanging(System.Nullable<double> value);
+    partial void OnFinancePriceChanged();
+    partial void OnDepositChanging(System.Nullable<double> value);
+    partial void OnDepositChanged();
+    partial void OnContributionChanging(System.Nullable<double> value);
+    partial void OnContributionChanged();
+    partial void OnPurchaseFeeChanging(System.Nullable<double> value);
+    partial void OnPurchaseFeeChanged();
+    partial void OnFinalPaymentChanging(System.Nullable<double> value);
+    partial void OnFinalPaymentChanged();
+    partial void OnCreditChargeChanging(System.Nullable<double> value);
+    partial void OnCreditChargeChanged();
+    partial void OnROIChanging(string value);
+    partial void OnROIChanged();
+    partial void OnAPRChanging(string value);
+    partial void OnAPRChanged();
+    partial void OnNewCarIdChanging(System.Nullable<int> value);
+    partial void OnNewCarIdChanged();
+    partial void OnInfoChanging(string value);
+    partial void OnInfoChanged();
+    partial void OnTotalAmountChanging(System.Nullable<double> value);
+    partial void OnTotalAmountChanged();
+    #endregion
+		
+		public Finance()
+		{
+			this._NewCar = default(EntityRef<NewCar>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Term", DbType="Int")]
+		public System.Nullable<int> Term
+		{
+			get
+			{
+				return this._Term;
+			}
+			set
+			{
+				if ((this._Term != value))
+				{
+					this.OnTermChanging(value);
+					this.SendPropertyChanging();
+					this._Term = value;
+					this.SendPropertyChanged("Term");
+					this.OnTermChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Payment", DbType="Float")]
+		public System.Nullable<double> Payment
+		{
+			get
+			{
+				return this._Payment;
+			}
+			set
+			{
+				if ((this._Payment != value))
+				{
+					this.OnPaymentChanging(value);
+					this.SendPropertyChanging();
+					this._Payment = value;
+					this.SendPropertyChanged("Payment");
+					this.OnPaymentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancePrice", DbType="Float")]
+		public System.Nullable<double> FinancePrice
+		{
+			get
+			{
+				return this._FinancePrice;
+			}
+			set
+			{
+				if ((this._FinancePrice != value))
+				{
+					this.OnFinancePriceChanging(value);
+					this.SendPropertyChanging();
+					this._FinancePrice = value;
+					this.SendPropertyChanged("FinancePrice");
+					this.OnFinancePriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deposit", DbType="Float")]
+		public System.Nullable<double> Deposit
+		{
+			get
+			{
+				return this._Deposit;
+			}
+			set
+			{
+				if ((this._Deposit != value))
+				{
+					this.OnDepositChanging(value);
+					this.SendPropertyChanging();
+					this._Deposit = value;
+					this.SendPropertyChanged("Deposit");
+					this.OnDepositChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contribution", DbType="Float")]
+		public System.Nullable<double> Contribution
+		{
+			get
+			{
+				return this._Contribution;
+			}
+			set
+			{
+				if ((this._Contribution != value))
+				{
+					this.OnContributionChanging(value);
+					this.SendPropertyChanging();
+					this._Contribution = value;
+					this.SendPropertyChanged("Contribution");
+					this.OnContributionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseFee", DbType="Float")]
+		public System.Nullable<double> PurchaseFee
+		{
+			get
+			{
+				return this._PurchaseFee;
+			}
+			set
+			{
+				if ((this._PurchaseFee != value))
+				{
+					this.OnPurchaseFeeChanging(value);
+					this.SendPropertyChanging();
+					this._PurchaseFee = value;
+					this.SendPropertyChanged("PurchaseFee");
+					this.OnPurchaseFeeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalPayment", DbType="Float")]
+		public System.Nullable<double> FinalPayment
+		{
+			get
+			{
+				return this._FinalPayment;
+			}
+			set
+			{
+				if ((this._FinalPayment != value))
+				{
+					this.OnFinalPaymentChanging(value);
+					this.SendPropertyChanging();
+					this._FinalPayment = value;
+					this.SendPropertyChanged("FinalPayment");
+					this.OnFinalPaymentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditCharge", DbType="Float")]
+		public System.Nullable<double> CreditCharge
+		{
+			get
+			{
+				return this._CreditCharge;
+			}
+			set
+			{
+				if ((this._CreditCharge != value))
+				{
+					this.OnCreditChargeChanging(value);
+					this.SendPropertyChanging();
+					this._CreditCharge = value;
+					this.SendPropertyChanged("CreditCharge");
+					this.OnCreditChargeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROI", DbType="NVarChar(50)")]
+		public string ROI
+		{
+			get
+			{
+				return this._ROI;
+			}
+			set
+			{
+				if ((this._ROI != value))
+				{
+					this.OnROIChanging(value);
+					this.SendPropertyChanging();
+					this._ROI = value;
+					this.SendPropertyChanged("ROI");
+					this.OnROIChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APR", DbType="NVarChar(50)")]
+		public string APR
+		{
+			get
+			{
+				return this._APR;
+			}
+			set
+			{
+				if ((this._APR != value))
+				{
+					this.OnAPRChanging(value);
+					this.SendPropertyChanging();
+					this._APR = value;
+					this.SendPropertyChanged("APR");
+					this.OnAPRChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewCarId", DbType="Int")]
+		public System.Nullable<int> NewCarId
+		{
+			get
+			{
+				return this._NewCarId;
+			}
+			set
+			{
+				if ((this._NewCarId != value))
+				{
+					if (this._NewCar.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnNewCarIdChanging(value);
+					this.SendPropertyChanging();
+					this._NewCarId = value;
+					this.SendPropertyChanged("NewCarId");
+					this.OnNewCarIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Info", DbType="NVarChar(MAX)")]
+		public string Info
+		{
+			get
+			{
+				return this._Info;
+			}
+			set
+			{
+				if ((this._Info != value))
+				{
+					this.OnInfoChanging(value);
+					this.SendPropertyChanging();
+					this._Info = value;
+					this.SendPropertyChanged("Info");
+					this.OnInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Float")]
+		public System.Nullable<double> TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this.OnTotalAmountChanging(value);
+					this.SendPropertyChanging();
+					this._TotalAmount = value;
+					this.SendPropertyChanged("TotalAmount");
+					this.OnTotalAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewCar_Finance", Storage="_NewCar", ThisKey="NewCarId", OtherKey="Id", IsForeignKey=true)]
+		public NewCar NewCar
+		{
+			get
+			{
+				return this._NewCar.Entity;
+			}
+			set
+			{
+				NewCar previousValue = this._NewCar.Entity;
+				if (((previousValue != value) 
+							|| (this._NewCar.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NewCar.Entity = null;
+						previousValue.Finances.Remove(this);
+					}
+					this._NewCar.Entity = value;
+					if ((value != null))
+					{
+						value.Finances.Add(this);
+						this._NewCarId = value.Id;
+					}
+					else
+					{
+						this._NewCarId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("NewCar");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class GetLookupsResult
 	{
 		
@@ -2052,6 +2076,418 @@ namespace Combobulator.Data
 		}
 	}
 	
+	public partial class GetPostCodeResult
+	{
+		
+		private int _Id;
+		
+		private string _Address1;
+		
+		private string _Address2;
+		
+		private string _Address3;
+		
+		private string _Town;
+		
+		private string _County;
+		
+		private string _Postcode;
+		
+		public GetPostCodeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address1", DbType="NVarChar(50)")]
+		public string Address1
+		{
+			get
+			{
+				return this._Address1;
+			}
+			set
+			{
+				if ((this._Address1 != value))
+				{
+					this._Address1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address2", DbType="NVarChar(50)")]
+		public string Address2
+		{
+			get
+			{
+				return this._Address2;
+			}
+			set
+			{
+				if ((this._Address2 != value))
+				{
+					this._Address2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address3", DbType="NVarChar(50)")]
+		public string Address3
+		{
+			get
+			{
+				return this._Address3;
+			}
+			set
+			{
+				if ((this._Address3 != value))
+				{
+					this._Address3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Town", DbType="NVarChar(50)")]
+		public string Town
+		{
+			get
+			{
+				return this._Town;
+			}
+			set
+			{
+				if ((this._Town != value))
+				{
+					this._Town = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_County", DbType="NVarChar(50)")]
+		public string County
+		{
+			get
+			{
+				return this._County;
+			}
+			set
+			{
+				if ((this._County != value))
+				{
+					this._County = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Postcode", DbType="NVarChar(50)")]
+		public string Postcode
+		{
+			get
+			{
+				return this._Postcode;
+			}
+			set
+			{
+				if ((this._Postcode != value))
+				{
+					this._Postcode = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetDealerResult
+	{
+		
+		private int _Id;
+		
+		private System.Nullable<int> _DealerId;
+		
+		private string _Name;
+		
+		private string _Address;
+		
+		private string _Country;
+		
+		private string _County;
+		
+		private string _Town;
+		
+		private string _Postcode;
+		
+		private System.Nullable<double> _Latitude;
+		
+		private System.Nullable<double> _Longitude;
+		
+		private string _Url;
+		
+		private string _Phone;
+		
+		private string _Fax;
+		
+		private System.Nullable<double> _Distance;
+		
+		private string _Email;
+		
+		public GetDealerResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DealerId", DbType="Int")]
+		public System.Nullable<int> DealerId
+		{
+			get
+			{
+				return this._DealerId;
+			}
+			set
+			{
+				if ((this._DealerId != value))
+				{
+					this._DealerId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Country", DbType="NVarChar(MAX)")]
+		public string Country
+		{
+			get
+			{
+				return this._Country;
+			}
+			set
+			{
+				if ((this._Country != value))
+				{
+					this._Country = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_County", DbType="NVarChar(MAX)")]
+		public string County
+		{
+			get
+			{
+				return this._County;
+			}
+			set
+			{
+				if ((this._County != value))
+				{
+					this._County = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Town", DbType="NVarChar(MAX)")]
+		public string Town
+		{
+			get
+			{
+				return this._Town;
+			}
+			set
+			{
+				if ((this._Town != value))
+				{
+					this._Town = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Postcode", DbType="NVarChar(MAX)")]
+		public string Postcode
+		{
+			get
+			{
+				return this._Postcode;
+			}
+			set
+			{
+				if ((this._Postcode != value))
+				{
+					this._Postcode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="Float")]
+		public System.Nullable<double> Latitude
+		{
+			get
+			{
+				return this._Latitude;
+			}
+			set
+			{
+				if ((this._Latitude != value))
+				{
+					this._Latitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Longitude", DbType="Float")]
+		public System.Nullable<double> Longitude
+		{
+			get
+			{
+				return this._Longitude;
+			}
+			set
+			{
+				if ((this._Longitude != value))
+				{
+					this._Longitude = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Url", DbType="NVarChar(MAX)")]
+		public string Url
+		{
+			get
+			{
+				return this._Url;
+			}
+			set
+			{
+				if ((this._Url != value))
+				{
+					this._Url = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this._Phone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="NVarChar(MAX)")]
+		public string Fax
+		{
+			get
+			{
+				return this._Fax;
+			}
+			set
+			{
+				if ((this._Fax != value))
+				{
+					this._Fax = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Distance", DbType="Float")]
+		public System.Nullable<double> Distance
+		{
+			get
+			{
+				return this._Distance;
+			}
+			set
+			{
+				if ((this._Distance != value))
+				{
+					this._Distance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+	}
+	
 	public partial class GetCarFinanceResult
 	{
 		
@@ -2080,6 +2516,8 @@ namespace Combobulator.Data
 		private System.Nullable<int> _NewCarId;
 		
 		private string _Info;
+		
+		private System.Nullable<double> _TotalAmount;
 		
 		public GetCarFinanceResult()
 		{
@@ -2289,6 +2727,22 @@ namespace Combobulator.Data
 				if ((this._Info != value))
 				{
 					this._Info = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Float")]
+		public System.Nullable<double> TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this._TotalAmount = value;
 				}
 			}
 		}
@@ -3061,418 +3515,6 @@ namespace Combobulator.Data
 				if ((this._Terms != value))
 				{
 					this._Terms = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetPostCodeResult
-	{
-		
-		private int _Id;
-		
-		private string _Address1;
-		
-		private string _Address2;
-		
-		private string _Address3;
-		
-		private string _Town;
-		
-		private string _County;
-		
-		private string _Postcode;
-		
-		public GetPostCodeResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address1", DbType="NVarChar(50)")]
-		public string Address1
-		{
-			get
-			{
-				return this._Address1;
-			}
-			set
-			{
-				if ((this._Address1 != value))
-				{
-					this._Address1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address2", DbType="NVarChar(50)")]
-		public string Address2
-		{
-			get
-			{
-				return this._Address2;
-			}
-			set
-			{
-				if ((this._Address2 != value))
-				{
-					this._Address2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address3", DbType="NVarChar(50)")]
-		public string Address3
-		{
-			get
-			{
-				return this._Address3;
-			}
-			set
-			{
-				if ((this._Address3 != value))
-				{
-					this._Address3 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Town", DbType="NVarChar(50)")]
-		public string Town
-		{
-			get
-			{
-				return this._Town;
-			}
-			set
-			{
-				if ((this._Town != value))
-				{
-					this._Town = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_County", DbType="NVarChar(50)")]
-		public string County
-		{
-			get
-			{
-				return this._County;
-			}
-			set
-			{
-				if ((this._County != value))
-				{
-					this._County = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Postcode", DbType="NVarChar(50)")]
-		public string Postcode
-		{
-			get
-			{
-				return this._Postcode;
-			}
-			set
-			{
-				if ((this._Postcode != value))
-				{
-					this._Postcode = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetDealerResult
-	{
-		
-		private int _Id;
-		
-		private System.Nullable<int> _DealerId;
-		
-		private string _Name;
-		
-		private string _Address;
-		
-		private string _Country;
-		
-		private string _County;
-		
-		private string _Town;
-		
-		private string _Postcode;
-		
-		private System.Nullable<double> _Latitude;
-		
-		private System.Nullable<double> _Longitude;
-		
-		private string _Url;
-		
-		private string _Phone;
-		
-		private string _Fax;
-		
-		private System.Nullable<double> _Distance;
-		
-		private string _Email;
-		
-		public GetDealerResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DealerId", DbType="Int")]
-		public System.Nullable<int> DealerId
-		{
-			get
-			{
-				return this._DealerId;
-			}
-			set
-			{
-				if ((this._DealerId != value))
-				{
-					this._DealerId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Country", DbType="NVarChar(MAX)")]
-		public string Country
-		{
-			get
-			{
-				return this._Country;
-			}
-			set
-			{
-				if ((this._Country != value))
-				{
-					this._Country = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_County", DbType="NVarChar(MAX)")]
-		public string County
-		{
-			get
-			{
-				return this._County;
-			}
-			set
-			{
-				if ((this._County != value))
-				{
-					this._County = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Town", DbType="NVarChar(MAX)")]
-		public string Town
-		{
-			get
-			{
-				return this._Town;
-			}
-			set
-			{
-				if ((this._Town != value))
-				{
-					this._Town = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Postcode", DbType="NVarChar(MAX)")]
-		public string Postcode
-		{
-			get
-			{
-				return this._Postcode;
-			}
-			set
-			{
-				if ((this._Postcode != value))
-				{
-					this._Postcode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="Float")]
-		public System.Nullable<double> Latitude
-		{
-			get
-			{
-				return this._Latitude;
-			}
-			set
-			{
-				if ((this._Latitude != value))
-				{
-					this._Latitude = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Longitude", DbType="Float")]
-		public System.Nullable<double> Longitude
-		{
-			get
-			{
-				return this._Longitude;
-			}
-			set
-			{
-				if ((this._Longitude != value))
-				{
-					this._Longitude = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Url", DbType="NVarChar(MAX)")]
-		public string Url
-		{
-			get
-			{
-				return this._Url;
-			}
-			set
-			{
-				if ((this._Url != value))
-				{
-					this._Url = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this._Phone = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="NVarChar(MAX)")]
-		public string Fax
-		{
-			get
-			{
-				return this._Fax;
-			}
-			set
-			{
-				if ((this._Fax != value))
-				{
-					this._Fax = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Distance", DbType="Float")]
-		public System.Nullable<double> Distance
-		{
-			get
-			{
-				return this._Distance;
-			}
-			set
-			{
-				if ((this._Distance != value))
-				{
-					this._Distance = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
 				}
 			}
 		}

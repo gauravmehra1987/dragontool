@@ -195,9 +195,7 @@
     <Compile Include="Config\NewCarConfigRedux.cs" />
     <Compile Include="Config\NewCarConfig.cs" />
     <Compile Include="ApiControllers\AssetsController.cs" />
-    <Compile Include="ApiControllers\CarController.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="ApiControllers\CarController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="ApiControllers\FormController.cs" />
@@ -215,6 +213,7 @@
     <Compile Include="Helpers\JsonContentNegotiator.cs" />
     <Compile Include="Helpers\LowercaseContractResolver.cs" />
     <Compile Include="Helpers\NameValueHelper.cs" />
+    <Compile Include="Helpers\ValidateAjaxAntiForgeryTokenRedux.cs" />
     <Compile Include="Helpers\ValidateAjaxAntiForgeryToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -462,7 +461,7 @@
     <Content Include="Assets\js\tpl\results.mustache" />
     <Content Include="Assets\js\tpl\addresses.mustache" />
     <Content Include="Assets\js\tpl\dealers.mustache" />
-    <Content Include="App_Data\MINI_FS_logic_v31_FK_Import.csv" />
+    <Content Include="App_Data\MINI_FS_logic_v32_FK.csv" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

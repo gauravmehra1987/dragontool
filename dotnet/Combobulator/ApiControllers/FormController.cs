@@ -36,7 +36,7 @@ namespace Combobulator.ApiControllers
                     TelephoneMobile = valueMap["form[tel-mobile]"],
                     TelephoneHome = valueMap["form[tel-home]"],
                     TelephoneWork = valueMap["form[tel-work]"],
-                    RequestCallback = valueMap["form[finance]"] != "1" ? true : false,
+                    IsFinance = valueMap["form[finance]"] != "1" ? true : false,
                     UserId = valueMap["form[UserId]"],
                     Selections = new Selections
                     {

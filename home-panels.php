@@ -36,7 +36,7 @@
 
 		</ul><!-- end ul.related -->
 
-		<p class="gimmick">Or you could buy <span class="switch-color">98 tickets to the National Stamp Museum.</span></p>
+		<p class="gimmick">Or you could buy <span class="switch-color">98 tickets to the National Stamp Museum<sup>^</sup>.</span></p>
 
 	</div>
 	

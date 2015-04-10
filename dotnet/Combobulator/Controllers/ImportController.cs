@@ -22,7 +22,7 @@ namespace Combobulator.Controllers
             switch (type)
             {
                 case "csv":
-                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v31_FK_Import.csv");
+                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v32_FK.csv");
                     using (var fileReader = System.IO.File.OpenText(fileName))
                     using (var csv = new CsvReader(fileReader))
                     {
@@ -57,7 +57,8 @@ namespace Combobulator.Controllers
                                         CreditCharge = record.CreditCharge ?? 0.0,
                                         Deposit = record.Deposit ?? 0.0,
                                         Payment = record.Payment ?? 0.0,
-                                        PurchaseFee = record.PurchaseFee ?? 0.0
+                                        PurchaseFee = record.PurchaseFee ?? 0.0,
+                                        TotalAmount = record.TotalAmount ?? 0.0
                                     }
                                 };
 

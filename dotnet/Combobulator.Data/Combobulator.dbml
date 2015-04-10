@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MINI_Combobulator" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=JUSTFORKIX;Initial Catalog=MINI_Combobulator;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CombobulatorConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=JUSTFORKIX;Initial Catalog=MINI_Combobulator;Integrated Security=True" SettingsObjectName="Combobulator.Data.Properties.Settings" SettingsPropertyName="CombobulatorConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Titles" Member="Titles">
     <Type Name="Title" Id="ID1">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -30,24 +30,6 @@
       <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Association Name="NewCar_Finance" Member="Finances" ThisKey="Id" OtherKey="NewCarId" Type="Finance" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Finances" Member="Finances">
-    <Type Name="Finance">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Payment" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FinancePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Deposit" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Contribution" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PurchaseFee" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FinalPayment" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CreditCharge" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ROI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="NewCar_Finance" Member="NewCar" ThisKey="NewCarId" OtherKey="Id" Type="NewCar" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PostcodeLookUp" Member="PostcodeLookUps">
@@ -89,6 +71,25 @@
       <Association Name="DealerLookUp_Dealer" Member="Dealers" ThisKey="Id" OtherKey="DealerLookUpId" Type="Dealer" />
     </Type>
   </Table>
+  <Table Name="dbo.Finances" Member="Finances">
+    <Type Name="Finance">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Payment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Deposit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Contribution" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PurchaseFee" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinalPayment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CreditCharge" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ROI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="NewCar_Finance" Member="NewCar" ThisKey="NewCarId" OtherKey="Id" Type="NewCar" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.GetTitles" Method="GetTitles">
     <ElementType IdRef="ID1" />
   </Function>
@@ -96,6 +97,38 @@
     <ElementType Name="GetLookupsResult">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPostCode" Method="GetPostCode">
+    <Parameter Name="postcode" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetPostCodeResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Postcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetDealer" Method="GetDealer">
+    <Parameter Name="postcode" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetDealerResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DealerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Postcode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Distance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.GetCarFinance" Method="GetCarFinance">
@@ -114,6 +147,7 @@
       <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.GetNewCar" Method="GetNewCar">
@@ -165,38 +199,6 @@
       <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.GetPostCode" Method="GetPostCode">
-    <Parameter Name="postcode" Type="System.String" DbType="VarChar(10)" />
-    <ElementType Name="GetPostCodeResult">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Address1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="County" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Postcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.GetDealer" Method="GetDealer">
-    <Parameter Name="postcode" Type="System.String" DbType="VarChar(10)" />
-    <ElementType Name="GetDealerResult">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DealerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Country" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="County" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Town" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Postcode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Url" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Fax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Distance" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

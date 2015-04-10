@@ -65,7 +65,7 @@ function FormLogic() {
 		finance.final_payment = Number(finance.final_payment).toFixed(2);
 		
 		finance.total_deposit	= Number(Number(finance.deposit) + Number(finance.contribution)).toFixed(2);
-		finance.total_amount	= Number(Number(finance.price) + Number(finance.credit_charge)).toFixed(2);
+		finance.total_amount	= Number(finance.total_amount).toFixed(2);
 		finance.credit_charge 	= Number(finance.credit_charge).toFixed(2);
 		finance.terms			= car.terms;
 

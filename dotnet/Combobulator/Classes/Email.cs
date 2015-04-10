@@ -56,22 +56,22 @@ namespace Combobulator.Classes
             }
             strBody = readFile;
             strBody = strBody.Replace("[[Title]]", customer.Title)
-                     .Replace("[[Firstname]]", customer.FirstName)
-                     .Replace("[[Lastname]]", customer.LastName)
-                     .Replace("[[Email]]", customer.Email)
+                .Replace("[[Firstname]]", customer.FirstName)
+                .Replace("[[Lastname]]", customer.LastName)
+                .Replace("[[Email]]", customer.Email)
 
-                     .Replace("[[Address1]]", customer.AddressLine1)
-                     .Replace("[[Address2]]", customer.AddressLine2)
-                     .Replace("[[Address3]]", customer.AddressLine3)
-                     .Replace("[[Postcode]]", customer.AddressPostcode)
-                     .Replace("[[Dealer]]", customer.Dealer)
-                     .Replace("[[TelephoneHome]]", customer.TelephoneHome)
-                     .Replace("[[TelephoneMobile]]", customer.TelephoneMobile)
-                     .Replace("[[TelephoneWork]]", customer.TelephoneWork)
-                     .Replace("[[CarName]]", customer.Car.Name)
+                .Replace("[[Address1]]", customer.AddressLine1)
+                .Replace("[[Address2]]", customer.AddressLine2)
+                .Replace("[[Address3]]", customer.AddressLine3)
+                .Replace("[[Postcode]]", customer.AddressPostcode)
+                .Replace("[[Dealer]]", customer.Dealer)
+                .Replace("[[TelephoneHome]]", customer.TelephoneHome)
+                .Replace("[[TelephoneMobile]]", customer.TelephoneMobile)
+                .Replace("[[TelephoneWork]]", customer.TelephoneWork)
+                .Replace("[[CarName]]", customer.Car.Name);
 
-                     .Replace("[[RequestCallback]]", customer.RequestCallback ? "Yes" : "No")
-                     .Replace("[[RequestEarlyRedemption]]", customer.RequestEarlyRedemption ? "Yes" : "No");
+                     //.Replace("[[RequestCallback]]", customer.RequestCallback ? "Yes" : "No")
+                     //.Replace("[[RequestEarlyRedemption]]", customer.RequestEarlyRedemption ? "Yes" : "No");
 
             SendEmail(_emailAddressTo, subject, strBody);
         }

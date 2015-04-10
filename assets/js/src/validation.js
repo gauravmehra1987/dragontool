@@ -40,13 +40,11 @@ $.validator.setDefaults( {
 			ajaxDelay = 1000; // Not needed but included here to illustrate the loading DIV behaviour
 
 		var ajaxRequest = function() {
-
 			$.ajax( {
 
 				type: 'POST',
 				url: ajaxURL,
 				data: {
-
 					form: $( 'form' ).serializeObject(),
 					car: carCode,
 					input: store.get( 'miniInput' ),
@@ -60,7 +58,9 @@ $.validator.setDefaults( {
 
 				},
 				success: function( data ) { $.publish( 'form-ajax-results', data ); },
-				error: function( data ) {  },
+				error: function (request, error) {
+					//Error Handler (TO DO)
+				},
 				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
 
 			} );	

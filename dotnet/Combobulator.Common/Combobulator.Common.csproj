@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Cache.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Enums\AddressType.cs" />
     <Compile Include="Enums\CapacityScale.cs" />
     <Compile Include="Enums\EconomyScale.cs" />
     <Compile Include="Enums\eMasterResponseCode.cs" />

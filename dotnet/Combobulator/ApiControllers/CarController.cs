@@ -47,7 +47,8 @@ namespace Combobulator.ApiControllers
                             Final_Payment = finance.FinalPayment ?? 0.0,
                             Credit_Charge = finance.CreditCharge ?? 0.0,
                             ROI = finance.ROI,
-                            APR = finance.APR
+                            APR = finance.APR,
+                            Total_Amount = finance.TotalAmount ?? 0.0
                         }
                     }).ToList();
 

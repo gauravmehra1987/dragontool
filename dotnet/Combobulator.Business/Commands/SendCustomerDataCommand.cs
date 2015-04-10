@@ -44,6 +44,8 @@ namespace Combobulator.Business.Commands
         /// </exception>
         public bool Execute()
         {
+            var isComplete = false;
+
             var dbCar = _dbContext.GetNewCar(_carModel).FirstOrDefault();
             if (dbCar == null)
                 throw new CarNotFoundException("Car not found.");
@@ -89,13 +91,26 @@ namespace Combobulator.Business.Commands
 
             if (!string.IsNullOrEmpty(_customer.UserId))
             {
-                // Send to API
-                IProvider provider = new EMasterProvider();
-                Func<Customer, bool> func = provider.SendData;
-                var sent = FuncHelper.DoFuncWithRetry(func, _customer, TimeSpan.FromSeconds(2));
+                // Send to eMaster API
+                IProvider eMasterProvider = new EMasterProvider();
+                Func<Customer, bool> emfunc = eMasterProvider.SendData;
+                var emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, TimeSpan.FromSeconds(2));
+
+                IProvider grassRootsProvider = new GrassRootsProvider();
+                Func<Customer, bool> grgfunc = grassRootsProvider.SendData;
+                var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, TimeSpan.FromSeconds(2));
+
+                if ((emResponse) && (grgResponse))
+                {
+                    isComplete = true;
+                }
+                else
+                {
+                    isComplete = true;
+                }
 
                 // If send api fails then send to fallback email
-                if (!sent)
+                if (!emResponse)
                 {
                     var readFile = string.Empty;
                     var strBody = string.Empty;
@@ -107,12 +122,9 @@ namespace Combobulator.Business.Commands
                     }
                     strBody = readFile;
                     strBody = strBody.Replace("[[Title]]", _customer.Title)
-                             .Replace("[[Firstname]]", _customer.FirstName)
-                             .Replace("[[Lastname]]", _customer.LastName)
-                             .Replace("[[ModelCode]]", car.Code)
-                             .Replace("[[Model]]", car.Name)
-                             .Replace("[[Cost]]", car.Cost.ToString())
-                             .Replace("[[TermsConditions]]", car.Terms);
+                        .Replace("[[Firstname]]", _customer.FirstName)
+                        .Replace("[[Lastname]]", _customer.LastName)
+                        .Replace("[[CarName]]", car.Name);
 
                     MandrillHelper.SendEmail(_customer.Email, subject, strBody);
                 }
@@ -123,6 +135,7 @@ namespace Combobulator.Business.Commands
                 //Email.EmailCustomerDetails(_customer);
             }
 
+            /*
             // Email results to customer
             if (_customer.EmailResults)
             {
@@ -135,7 +148,8 @@ namespace Combobulator.Business.Commands
                     Log.Error("EmailMeResults", ex);
                 }
             }
-            return true;
+            */
+            return isComplete;
         }
     }
 }

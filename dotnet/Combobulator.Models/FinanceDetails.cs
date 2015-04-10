@@ -13,5 +13,6 @@
         public double Credit_Charge { get; set; }
         public string ROI { get; set; }
         public string APR { get; set; }
+        public double Total_Amount { get; set; }
 	}
 }

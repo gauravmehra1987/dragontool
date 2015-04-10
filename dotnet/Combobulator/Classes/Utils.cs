@@ -120,8 +120,8 @@ namespace Combobulator.Classes
                 surname = customer.LastName ?? "",
                 email = customer.Email ?? "",
                 telephone = customer.TelephoneHome ?? "",
-                request_callback = customer.RequestCallback ? "true" : "false",
-                request_early_redemption = customer.RequestEarlyRedemption ? "true" : "false",
+                //request_callback = customer.RequestCallback ? "true" : "false",
+                //request_early_redemption = customer.RequestEarlyRedemption ? "true" : "false",
 
                 model_name = customer.Car.Name ?? "",
                 model_code = customer.Car.Code ?? "",

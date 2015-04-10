@@ -1,79 +1,117 @@
 ﻿using System;
+using System.Reflection;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common;
 using Combobulator.Common.Extensions;
 using Combobulator.Common.Helpers;
 using Combobulator.Models;
+using log4net;
 using Newtonsoft.Json;
 
 namespace Combobulator.Business.Services.Providers
 {
     public class GrassRootsProvider : IProvider
     {
+        public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public bool SendData(Customer customer)
         {
-            var success = false;
-            var viewModel = new ResultViewModel
+            var isComplete = false;
+            try
             {
-                id = customer.UserId ?? "",
-                title = customer.Title ?? "",
-                first_name = customer.FirstName ?? "",
-                surname = customer.LastName ?? "",
-                email = customer.Email ?? "",
-                telephone = customer.TelephoneHome ?? "",
-                request_callback = customer.RequestCallback ? "true" : "false",
-                request_early_redemption = customer.RequestEarlyRedemption ? "true" : "false",
+                var isFinance = customer.IsFinance;
+                var isPhone = customer.IsPhone;
+                var isPost = customer.IsPhone;
 
-                model_name = customer.Car.Name ?? "",
-                model_code = customer.Car.Code ?? "",
-                capacity = customer.Selections.Capacity == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
-                luggage = customer.Selections.Luggage ?? "",
+                var result = new ResultViewModel
+                {
+                    id = customer.UserId ?? "",
+                    title = customer.Title ?? "",
+                    first_name = customer.FirstName ?? "",
+                    surname = customer.LastName ?? "",
+                    email = customer.Email ?? "",
+                    telephone = customer.TelephoneHome ?? "",
 
-                awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
-                dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
-                hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
-                tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
+                    finance_interest = isFinance ? "true" : "false",
+                    phone_communication = isPhone ? "true" : "false",
+                    post_communication = isPost ? "true" : "false",
 
-                price_range = customer.Selections.PriceRange ?? "",
-                performance = customer.Selections.Performance == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale"),
-                economy = customer.Selections.Economy ?? "",
-                use = customer.Selections.Use == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
-            };
+                    model_name = customer.Car.Name ?? "",
+                    model_code = customer.Car.Code ?? "",
+                    luggage = customer.Selections.Luggage ?? "",
 
-            var url = new Uri(Config.GrassRootsHostUrl)
-                .AddParameter("addresstype", "Work")
-                .AddParameter("dealer", "15106")
-                .AddParameter("address1", customer.AddressLine1)
-                .AddParameter("address2", customer.AddressLine2)
-                .AddParameter("town", customer.AddressLine4)
-                .AddParameter("hometelephone", customer.TelephoneHome)
-                .AddParameter("worktelephone", customer.TelephoneWork)
-                .AddParameter("mobiletelephone", customer.TelephoneMobile)
-                .AddParameter("postcode", customer.AddressPostcode)
-                .AddParameter("title", customer.Title)
-                .AddParameter("firstname", customer.FirstName)
-                .AddParameter("surname", customer.LastName)
-                .AddParameter("email", customer.Email)
-                .AddParameter("model", customer.Car.Code)
-                .AddParameter("comments", "## CAR DATA ##")
-                .AddParameter("telephonemarketing", "0")
-                .AddParameter("postmarketing", "0")
-                .AddParameter("application", "iprospect")
-                .AddParameter("brand", "MINI")
-                .AddParameter("form", "miniecom_tda")
-                .AddParameter("campaign", "I1683");
+                    awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
+                    dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
+                    hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
+                    tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
 
-            var response = HttpWebRequestHelper.MakeRequest(url.ToString());
-            var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                    price_range = customer.Selections.PriceRange ?? "",
+                    economy = customer.Selections.Economy ?? "",
 
-            dynamic obj = JsonConvert.SerializeObject(data);
-            if (obj.Success != null)
-            {
-                success = true;
+                    capacity =
+                        customer.Selections.Capacity == null
+                            ? ""
+                            : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
+                    performance =
+                        customer.Selections.Performance == null
+                            ? ""
+                            : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance,
+                                "PerformanceScale"),
+                    use =
+                        customer.Selections.Use == null
+                            ? ""
+                            : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
+                };
+
+                var json = JsonConvert.SerializeObject(result);
+
+                var url = new Uri(Config.GrassRootsHostUrl)
+                    .AddParameter("application", Config.GrassRootsAppName)
+                    .AddParameter("form", "fqr")
+                    .AddParameter("brand", "MINI")
+                    .AddParameter("title", customer.Title)
+                    .AddParameter("firstname", customer.FirstName)
+                    .AddParameter("surname", customer.LastName)
+                    .AddParameter("email", customer.Email)
+                    .AddParameter("addresstype", "Home")
+                    .AddParameter("address1", customer.AddressLine1)
+                    .AddParameter("address2", customer.AddressLine2)
+                    .AddParameter("address3", customer.AddressLine3)
+                    .AddParameter("town", customer.AddressLine4)
+                    .AddParameter("postcode", customer.AddressPostcode)
+                    .AddParameter("hometelephone", customer.TelephoneHome)
+                    .AddParameter("worktelephone", customer.TelephoneWork)
+                    .AddParameter("mobiletelephone", customer.TelephoneMobile)
+                    .AddParameter("mobiletelephone", customer.TelephoneMobile)
+                    .AddParameter("emailmarketing", "1")
+                    .AddParameter("postmarketing", "0")
+                    .AddParameter("telephonemarketing", "0")
+                    .AddParameter("dealer", "15106")
+                    .AddParameter("model", customer.Car.Code)
+                    .AddParameter("finance", "Y")
+                    .AddParameter("comments", "## " + json + " ##");
+
+                var response = HttpWebRequestHelper.MakeRequest(url.ToString());
+                var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+
+                dynamic obj = JsonConvert.DeserializeObject(data);
+                if (obj["responsecode"] != "0")
+                {
+                    var error = obj["errormessage"];
+                    Log.Error("GrassRoots - " + error);
+                }
+                else
+                {
+                    isComplete = true;
+                }
+                return isComplete;
             }
-
-            return success;
+            catch (Exception ex)
+            {
+                Log.Error("GrassRoots Provider - " + ex.Message);
+                return isComplete;
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 {
 
-	"model":			"@model Combobulator.Business.ViewModels.FormViewModel",
+	"model":			"@model Combobulator.Business.ViewModels.FormViewModel\n@{ViewBag.Title = \"MINI Combobulator Form\"; }",
 
 	"open":				"@using (Ajax.BeginForm(\"Submit\", \"Form\", new AjaxOptions { HttpMethod = \"POST\" }))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
 	"close":			"}",

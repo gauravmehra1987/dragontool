@@ -1,46 +1,39 @@
-﻿using System.Linq;
-using System.Net.Http;
+﻿using System;
+using System.Net;
 using System.Web.Helpers;
-using System.Web.Http;
-using System.Web.Http.Controllers;
+using System.Web.Mvc;
 
 namespace Combobulator.Helpers
 {
     public class ValidateAjaxAntiForgeryToken : AuthorizeAttribute
     {
-        protected override bool IsAuthorized(HttpActionContext actionContext)
+        public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            var headerToken = actionContext
-                .Request
-                .Headers
-                .GetValues("__RequestVerificationToken")
-                .FirstOrDefault();
+            var request = filterContext.HttpContext.Request;
 
-            var cookieToken = actionContext
-                .Request
-                .Headers
-                .GetCookies()
-                .Select(c => c[AntiForgeryConfig.CookieName])
-                .FirstOrDefault();
-
-            // check for missing cookie or header
-            if (cookieToken == null || headerToken == null)
+            //  Only validate POSTs
+            if (request.HttpMethod == WebRequestMethods.Http.Post)
             {
-                return false;
-            }
+                //  Ajax POSTs and normal form posts have to be treated differently when it comes
+                //  to validating the AntiForgeryToken
+                if (request.IsAjaxRequest())
+                {
+                    var antiForgeryCookie = request.Cookies[AntiForgeryConfig.CookieName];
 
-            // ensure that the cookie matches the header
-            try
-            {
-                AntiForgery.Validate(cookieToken.Value, headerToken);
-            }
-            catch
-            {
-                return false;
-            }
+                    var cookieValue = antiForgeryCookie != null
+                        ? antiForgeryCookie.Value
+                        : null;
 
-            return base.IsAuthorized(actionContext);
+                    var token = request.Form["form[__RequestVerificationToken]"];
+
+                    AntiForgery.Validate(cookieValue, token);
+                }
+                else
+                {
+                    new ValidateAntiForgeryTokenAttribute()
+                        .OnAuthorization(filterContext);
+                }
+            }
         }
-
     }
 }

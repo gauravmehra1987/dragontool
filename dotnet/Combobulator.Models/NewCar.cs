@@ -36,5 +36,6 @@
         public double? CreditCharge { get; set; }
         public string ROI { get; set; }
         public string APR { get; set; }
+        public double? TotalAmount { get; set; }
     }
 }

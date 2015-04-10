@@ -38,6 +38,7 @@ namespace Combobulator.Config
             Map(m => m.CreditCharge).Name("Credit_Charge");
             Map(m => m.ROI).Name("ROI");
             Map(m => m.APR).Name("APR");
+            Map(m => m.TotalAmount).Name("Total_amount_payable");
         }
     }
 }
