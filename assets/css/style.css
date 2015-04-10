@@ -6016,7 +6016,7 @@ html.page-disabled #disabled p {
   -moz-background-size: cover;
   background-size: cover;
   *behavior: url('/assets/js/htc/backgroundsize.htc');
-  margin: 66px -30px;
+  margin: 105px -30px;
   overflow: hidden;
   position: relative;
 }
@@ -6030,6 +6030,16 @@ html.page-disabled #disabled p {
   right: 0;
   bottom: 0;
   left: 0;
+}
+.model-image .rocket-car--car {
+  z-index: 3;
+}
+.model-image .rocket-car--glow {
+  z-index: 2;
+  opacity: 0;
+}
+.model-image .rocket-car--shadow {
+  z-index: 1;
 }
 .panel-framed {
   border: solid 12px #888888;

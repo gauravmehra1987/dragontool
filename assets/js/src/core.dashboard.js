@@ -199,6 +199,7 @@ function Dashboard() {
 			//
 			// Call function to activate the dashboard dials
 			_this.activateDashboard();
+
 		}
 	}
 

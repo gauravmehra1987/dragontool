@@ -1914,6 +1914,7 @@ function Dashboard() {
 			//
 			// Call function to activate the dashboard dials
 			_this.activateDashboard();
+
 		}
 	}
 
@@ -2320,14 +2321,31 @@ function UI() {
 		car.url = resultsPageUrl( path.results, car.code );
 		car.img = path.assets + car.code + '.png';
 
-		// Render car template
+		// Render car templates
 
-		this.getTpl( 'results' ).then( function( tpl ) {
+		// If rocket car...
+		if ( car.code === "RKT" ) {
 
-			$( '#tpl-results' ).contents().remove();
-			$( '#tpl-results' ).append( _this.renderTpl( tpl, car ) );
+			this.getTpl( 'rocketcar' ).then( function( tpl ) {
 
-		} );		
+				$( '#tpl-results' ).contents().remove();
+				$( '#tpl-results' ).append( _this.renderTpl( tpl, car ) );
+
+				_this.rocketcar();
+
+			} );
+
+		// If any other car...
+		} else {
+
+			this.getTpl( 'results' ).then( function( tpl ) {
+
+				$( '#tpl-results' ).contents().remove();
+				$( '#tpl-results' ).append( _this.renderTpl( tpl, car ) );
+
+			} );
+
+		}		
 
 		renderRelatedCars( car, related );
 
@@ -2397,6 +2415,54 @@ function UI() {
 		}
 
 	}
+
+
+	/**
+     * Animate rocket car
+    */
+	this.rocketcar = function() {
+
+		var $rocketCarCar = $('.rocket-car--car');
+		var $rocketCarGlow = $('.rocket-car--glow');
+		var $rocketCarShadow = $('.rocket-car--shadow');
+
+		TweenMax.to($rocketCarCar, 1, {
+
+			top: "-10px",
+
+			repeat: -1,
+
+			yoyo: true,
+
+			ease: Linear.easeNone
+		});
+
+		TweenMax.to($rocketCarGlow, 1, {
+
+			top: "-10px",
+
+			alpha: 1,
+
+			repeat: -1,
+
+			yoyo: true,
+
+			ease: Linear.easeNone
+		});
+
+		TweenMax.to($rocketCarShadow, 1, {
+
+			alpha: 0.3,
+
+			repeat: -1,
+
+			yoyo: true,
+
+			ease: Linear.easeNone
+		});
+
+	};
+
 
 
 	// Initialize
