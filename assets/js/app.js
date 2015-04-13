@@ -375,14 +375,6 @@ function DashboardLogic() {
 			eggs.push( 'rocket' );
 		}
 		//
-		// TOY CAR
-		// If price dial is 200 or less...
-		if ( priceChanged && data.price <= 200 ) {
-			//
-			// Push 'toy' into the eggs array
-			eggs.push( 'toy' );
-		}
-		//
 		// NO EGGS
 		// If no eggs...
 		if ( eggs.length <= 0 ) {
