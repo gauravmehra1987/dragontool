@@ -568,7 +568,7 @@ function Dials() {
 		var getHeight = function( v ) {
 
 			var position	= Math.abs( parseInt( v.endY ) );	
-			var height		= Math.abs( ( position / v.minY ) * 100 );
+			var height		= (position + 13) + 'px';
 
 			return height;
 
@@ -581,7 +581,7 @@ function Dials() {
 			bounds:					'.control.price .bounds',
 			throwProps:				false,
 			onDragStart:			function() { priceChanged = true; },
-			onDrag:					function() { $( '.control.price .switch-bg' ).css( 'height', getHeight( this ) + 2.4 + '%' ); },
+			onDrag:					function() { $( '.control.price .switch-bg' ).css( 'height', getHeight( this ) ); },
 
 		} );
 
