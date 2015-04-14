@@ -6,109 +6,192 @@
 
 function animate() {
 
-	// this.bg = function() {
 
-	// 	var colors = [
+	/**
+	 * BG COLOR
+	*/
+	this.bg = function() {
+		//
+		// Create an array of the colors in the order we want to animate
+		var colors = [
+			'#30b6e8',
+			'#e4dfce',
+			'#1164ac',
+			'#f7941d',
+			'#426046',
+			'#d71d24'
+		];
+		//
+		// Set the iterator to 0
+		var i = 0;
+		//
+		//
+		var t;
 
-	// 		'#f7941d',
-	// 		'#30b6e8',
-	// 		'#1164ac',
-	// 		'#426046',
-	// 		'#d71d24',
-	// 		'#d71d24',
-	// 		'#e4dfce'
+		var increment = function() {
 
-	// 	];
+			$.publish('colour-change', colors[ i ]);
 
-	// 	var i = 0;
+			( i < colors.length ) ? i++ : clearInterval( t );
 
-	// 	var t;
+		};
 
-	// 	var increment = function() {
+		t = setInterval( increment, 300 );
+	};
 
-	// 		$.publish('colour-change', colors[ i ]);
 
-	// 		( i < colors.length ) ? i++ : clearInterval( t );
 
-	// 	};
+	/**
+	 * BUMS ON SEATS
+	*/
+	this.bums = function() {
+		//
+		// Get all the roller slots
+		var $list = $( '#c-bums .roller .list' );
+		var timeOut = 0;
+		//
+		// Iterate over all the slots...
+		$list.each( function( i, val ) {
+			//
+			// Get the height of the slot
+			var slotHeight = $(val).height() - 160;
+			// 
+			// 
+			timeOut = timeOut + 100;
 
-	// 	t = setInterval( increment, 100 );
+			setTimeout( function() {
+				//
+				TweenLite.to( val, 0.4, {
+					//
+					// Lock axis to 'y' direction
+					y: -slotHeight,
+					//
+					// Once complete, update the draggable object
+					onComplete: function() {
+						this.reverse();
+					}
+				} );
+			}, timeOut );
 
-	// };
+		})
+	};
 
-	// this.bums = function() {
 
-	// 	setSlotValue( _.random( 0, $( slot_1 ).find( '.slot' ).length - 1 ), slot_1 );
-	// 	setSlotValue( _.random( 0, $( slot_2 ).find( '.slot' ).length - 1 ), slot_2 );
-	// 	setSlotValue( _.random( 0, $( slot_3 ).find( '.slot' ).length - 1 ), slot_3 );
-	// 	setSlotValue( _.random( 0, $( slot_4 ).find( '.slot' ).length - 1 ), slot_4 );
-	// 	setSlotValue( _.random( 0, $( slot_5 ).find( '.slot' ).length - 1 ), slot_5 );
-
-	// };
-
+	/**
+	 * MPG
+	*/
 	this.mpg = function() {
 		//
 		// Get the elements to tween
 		var $wrap = $('.control.mpg');
 		var $arrow = $('.control.mpg .arrow');
-		//
-		// Set the initial position of the arrow to the beginning
-		TweenLite.to( $arrow, 0.01, { rotation: -120 } );
+		var $value = $('.control.mpg .value');
 
-		// Set an iterator that the below function will update
-		var x = 0;
-
-		// function animateScaleDown() {
-		// 	console.log('animate down called');
-		// 	//
-		// 	// We are changing the class depending on which notch we want to show, and using the iterations to create the class number eg. scale-13
-		// 	$( '.control.mpg' ).removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
-		// 	//
-		// 	// It will repeat the function 13 times (which is how many markers notches there are on the scale)
-		// 	if ( x-- < 0 ) {
-		// 		x
-		// 		//
-		// 		// And setting a timeout each time and repeating the function
-		// 		setTimeout(animateScaleDown, 30);
-		// 	}
-		// }
-
-		// Set a really short timeout to begin the animation...
-		setTimeout( function() {
-			//
-			// Tween the arrow rotation
-			TweenLite.to( $arrow, 0.4, { rotation: 120 } );
-
-			//
-			// Create a function which will animate the colored notches
-			function animateScaleUp() {
-				//
-				// We are changing the class depending on which notch we want to show, and using the iterations to create the class number eg. scale-13
-				$( '.control.mpg' ).removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
-				//
-				// It will repeat the function 13 times (which is how many markers notches there are on the scale)
-				if ( x++ < 13 ) {
-					//
-					// And setting a timeout each time and repeating the function
-					setTimeout(animateScaleUp, 30);
-					//
-					// When it gets to the end (ie if x is 13)
-					if ( x === 13 ) {
-						//
-						// Call the function to reverse the animation
-						// animateScaleDown();
-					}
-				}
+		// To tween the handle...
+		// Tween the arrow rotation up and down
+		TweenLite.to( $arrow, 0.5, {
+			rotation: 120,
+			onComplete: function() {
+				this.reverse();
 			}
-			// Call the function initially
-			animateScaleUp();
+		});
+
+		// To animate the notches...
+		// The notches are made up of a series of images which are swapped by giving a different class the the wrapper
+		// The class we need to give is 'scale-x' and the 'x' would be a number from 1 to 13 to display each notch image
+		//
+		// Call the function to animate notches up (explained below)
+		animateNotchesUp();
+		//
+		// First we need to set an iterator which will be animated up and down in the following functions
+		var x = 0;
+		//
+		// Create a function to animate the notches up...
+		function animateNotchesUp() {
 			//
-		}, 0.1 );
+			// Set the counter from 1 to 13
+			$({ Counter: 1 }).animate({ Counter: 13 }, {
+				//
+				// The duration needs to be in sync with the handle
+				duration: 500,
+				easing: 'swing',
+				//
+				// Each step...
+				step: function () {
+					//
+					// Set our iterator to the number in the animation
+					x = Math.ceil(this.Counter);
+					//
+					// And use the iterator to give the wrapper the correct class name
+					$wrap.removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
+				},
+				//
+				// Once the sequence is complete...
+				complete: function() {
+					//
+					// We will call the animate down function which does the oposite sequence
+					animateNotchesDown();
+				}
+			});
+		};
+		//
+		// The following function is to animate the notches down...
+		// It does the same as the animate up function above, but on complete it will remove the scale class completely
+		function animateNotchesDown() {
+			$({ Counter: 13 }).animate({ Counter: 1 }, {
+				duration: 500,
+				easing: 'swing',
+				step: function () {
+					x = Math.ceil(this.Counter);
+					$wrap.removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
+				},
+				complete: function() {
+					$wrap.removeClassExcept( 'control mpg' );
+				}
+			});
+		};
 
-
-
+		// To animate the value...
+		// Very similar to the notches animations above
+		//
+		// Call the function to animate the value up (explained below)
+		animateValueUp();
+		//
+		// First we need to set an iterator which will be animated up and down in the following functions
+		var j = 0;
+		//
+		// Create a function to animate the value up...
+		function animateValueUp() {
+			//
+			// Set the counter from 25 to 80
+			$({ Counter: 25 }).animate({ Counter: 80 }, {
+				duration: 500,
+				easing: 'swing',
+				step: function () {
+					j = Math.ceil(this.Counter);
+					// And use the iterator to give the correct value to the element
+					$value.text(j);
+				},
+				complete: function() {
+					animateValueDown();
+				}
+			});
+		};
+		//
+		// The following function is to animate the value down...
+		function animateValueDown() {
+			$({ Counter: 80 }).animate({ Counter: 24 }, {
+				duration: 500,
+				easing: 'swing',
+				step: function () {
+					j = Math.ceil(this.Counter);
+					$value.text(j);
+				}
+			});
+		};
 
 	};
+
 
 
 
@@ -141,10 +224,10 @@ function animate() {
 		// Call the checkboxes animation
 		animateOptions();
 		//
-		// And call again once the animation is complete
-		setTimeout( function() {
-			animateOptions();
-		}, (inputsLength * 100) + 500 );
+		// // And call again once the animation is complete
+		// setTimeout( function() {
+		// 	animateOptions();
+		// }, (inputsLength * 100) + 500 );
 	};
 
 
@@ -162,58 +245,120 @@ function animate() {
 		var bgColorMaxHeight = "403px";
 		//
 		// Tween the handle
-		TweenMax.to( $handle, 0.4, { 
+		TweenMax.to( $handle, 0.5, { 
 			y: handleTopPosition,
 			yoyo: true,
-			repeat: 3
+			repeat: 1
 		});
 		//
 		// Tween the color behind
-		TweenMax.to( $bgColor, 0.4, {
+		TweenMax.to( $bgColor, 0.5, {
 			height: bgColorMaxHeight,
 			yoyo: true,
-			repeat: 3
+			repeat: 1
 		});
 	};
 
-	// this.lifestyle = function() {
 
-	// 	TweenLite.to( lifestyle_el, 0.6, {
 
-	// 		rotation: lifestyle_dial.minRotation,
-	// 		onComplete: function() { updateLifestyleDial(); }
 
-	// 	} ); // left
+	/**
+	 * LIFESTYLE
+	*/
+	this.lifestyle = function() {
+		//
+		// Get lifestyle dial to tween
+		var $lifestyleDial = $( '.control.lifestyle .dial' );
+		var $slickWrap = $( '.items-wrapper' );
+		//
+		// Animate slides
+		var animateSlides = setInterval(function() {
+			$slickWrap.slick( 'slickPrev' );
+		}, 0);
+		//
+		// Stop the slides animating once it gets back to the beginning
+		setTimeout(function() {
+			clearInterval(animateSlides);
+		}, 2000);	
+	};
 
-	// 	setTimeout( function() { TweenLite.to( lifestyle_el, 0.6, { rotation: 0 } ); }, 600 ); // right
 
-	// };
 
-	// this.speed = function() {
+	/**
+	 * SPEED
+	*/
+	this.speed = function() {
+		//
+		// Get all the roller slot
+		var $list = $( '.control.speed .roller .list' );
+		//
+		// Get the height of the slot
+		var slotHeight = $list.height() - 160;
+		// 
+		//
+		TweenLite.to( $list, 0.5, {
+			y: -slotHeight,
+			onComplete: function() {
+				this.reverse();
+			}
+		});
+	};
 
-	// 	setSlotValue( $( speed_control ).find( '.slot' ).length - 2, speed_control );
 
-	// };
+	/**
+	 * LUGGAGE
+	*/
+	this.luggage = function() {
+		//
+		// Get the luggage dial element
+		var $luggageDial = $( '.control.luggage .dial' );
+		//
+		// Tween rotate it full circle
+		TweenLite.to( $luggageDial, 2, {
+			rotation: 360 }
+		);
+	};
 
-	// this.luggage = function() {
 
-	// 	TweenLite.to( luggage_el, 2, { rotation: 360 } );
+	/**
+	 * BUTTON
+	*/
+	this.button = function() {
+		// Get the button element to rotate as well as the button element to be clicked (one is inside the other)
+		var $button = $( '.control.start #start' );
+		var $buttonInner = $button.find( '.button-inner' );
+		//
+		// Disable the user clicking the button to combobulate until the animation is complete
+		$button.css('pointer-events', 'none');
+		//
+		// Tween the button to rotate 3 times full circle and on complete re-enable the button click
+		TweenLite.to( $buttonInner, 2, {
+			rotation: 1080,
+			onComplete: function() {
+				$button.css('pointer-events', 'auto');
+			}
+		});
+	};
 
-	// };
 
-	// Set a timeout before executing the functions, so the page has a chance to load
+	// Set a series of timeouts before executing the functions...
 	setTimeout( function() {
+		this.bums();
+		this.bg();
+		this.luggage();
+		this.button();
+		this.lifestyle();
+	}, 1000 );
 
-		// this.bums();
+	setTimeout( function() {
 		this.mpg();
+		this.speed();
+	}, 1500 );
+
+	setTimeout( function() {
 		this.options();
 		this.price();
-		// this.lifestyle();
-		// this.speed();
-		// this.luggage();
-		// this.bg();
-
-	}, 1000 );
+	}, 2000 );
 
 }
 
