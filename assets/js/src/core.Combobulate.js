@@ -13,16 +13,32 @@ function Combobulate() {
 		// prevent default of button
 		e.preventDefault();
 		//
-		// Animate the combobulate button
-		TweenLite.from($( '#start .button-inner' ), 0.5, {rotation: -360});
+		// Get the clicked button
+		var $button = $(e.target).parent();
 		//
-		// Set a timeout
-		setTimeout( function() {
+		// Disable users clicking the button again
+		$button.css('pointer-events', 'none');
+		//
+		// Animate the combobulate button
+		TweenLite.from($( '#start .button-inner' ), 0.5, {
 			//
-			// Toggle the screen view to show results
-			$('#tablet-toggle').click();
+			// Roatate all the way round
+			rotation: -360,
 			//
-			// Scroll to top of page
+			// On complete...
+			onComplete: function() {
+				//
+				// Call the scroll to top of the page function
+				scrollToTop();
+				//
+				// And allow the user to click the button again
+				$button.css('pointer-events', 'auto');
+			}
+		});
+		//
+		// Scroll to top of page
+		var scrollToTop = function() {
+			//
 			$('html, body').animate( {
 				//
 				scrollTop: 0
@@ -30,8 +46,7 @@ function Combobulate() {
 			}, 600);
 			//
 			return false;
-			//
-		}, 400 );
+		}
 	};
 
 
