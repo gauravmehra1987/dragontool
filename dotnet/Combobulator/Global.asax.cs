@@ -26,6 +26,7 @@ namespace Combobulator
 
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.Filters.Add(new MyExceptionFilter());
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

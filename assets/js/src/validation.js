@@ -40,18 +40,25 @@ $.validator.setDefaults( {
 			ajaxDelay = 1000; // Not needed but included here to illustrate the loading DIV behaviour
 
 		var ajaxRequest = function() {
+			
+			var formData = {
+					info: $( 'form' ).serializeObject(),
+					car: carCode,
+					input: store.get( 'miniInput' )
+				};
+			
+			var json = JSON.stringify(formData);
+			
+			var token = $('input[name="__RequestVerificationToken"]').val();
 			$.ajax( {
-
 				type: 'POST',
 				url: ajaxURL,
-				data: {
-					form: $( 'form' ).serializeObject(),
-					car: carCode,
-					input: store.get( 'miniInput' ),
-					localDealer: dealersObj[ $( '#dealers' ).val() ]
-
-				},
+				contentType: 'application/json',
+				data: json,
+				headers: { "__RequestVerificationToken": token },
+				/*
 				dataType: 'json',
+				*/
 				complete: function() {
 
 					$( form ).toggleClass( 'busy' );
@@ -59,7 +66,8 @@ $.validator.setDefaults( {
 				},
 				success: function( data ) { $.publish( 'form-ajax-results', data ); },
 				error: function (request, error) {
-					//Error Handler (TO DO)
+					alert(error);
+					//var response = JSON.parse(error.responseText);
 				},
 				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
 

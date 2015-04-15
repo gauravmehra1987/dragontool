@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.IO;
+﻿using System.IO;
+using Ionic.Zlib;
 
 namespace Combobulator.Helpers
 {
@@ -18,9 +15,9 @@ namespace Combobulator.Helpers
             using (var output = new MemoryStream())
             {
                 using (
-                    var compressor = new Ionic.Zlib.DeflateStream(
-                    output, Ionic.Zlib.CompressionMode.Compress,
-                    Ionic.Zlib.CompressionLevel.BestSpeed))
+                    var compressor = new DeflateStream(
+                    output, CompressionMode.Compress,
+                    CompressionLevel.BestSpeed))
                 {
                     compressor.Write(str, 0, str.Length);
                 }

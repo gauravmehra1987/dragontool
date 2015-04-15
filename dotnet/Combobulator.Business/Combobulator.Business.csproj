@@ -41,6 +41,7 @@
       <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
@@ -63,12 +64,14 @@
     <Compile Include="ViewModels\DealerResponse.cs" />
     <Compile Include="ViewModels\DealerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\ErrorMessageViewModel.cs" />
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
     <Compile Include="ViewModels\GoogleGeoCodeResponse.cs" />
     <Compile Include="ViewModels\PostcodeLookUpApiViewModel.cs" />
     <Compile Include="ViewModels\PostcodeViewModel.cs" />
     <Compile Include="ViewModels\ResultViewModel.cs" />
+    <Compile Include="ViewModels\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Combobulator.Common\Combobulator.Common.csproj">

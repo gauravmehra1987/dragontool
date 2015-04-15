@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Net;
 
 namespace Combobulator.Common
 {
@@ -45,5 +46,9 @@ namespace Combobulator.Common
 
         public static string _emailMeResultsTemplate = ConfigurationManager.AppSettings["EmailMeResultsTemplate"];
         public static string _emailCustomerResultsTemplate = ConfigurationManager.AppSettings["EmailCustomerDetailsTemplate"];
+
+        public static string PostcodeExpression = @"^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$";
+
+        public static string PhoneExpression = @"^0[1-9]\d{1}\s\d{4}\s?\d{4}$)|(^0[1-9]\d{2}\s\d{3}\s?\d{4}$)|(^0[1-9]\d{2}\s\d{4}\s?\d{3}$)|(^0[1-9]\d{3}\s\d{3}\s?\d{2}$)|(^0[1-9]\d{3}\s\d{3}\s?\d{3}$)|(^0[1-9]\d{4}\s\d{3}\s?\d{2}$)|(^0[1-9]\d{4}\s\d{2}\s?\d{3}$)|(^0[1-9]\d{4}\s\d{2}\s?\d{2}$";
     }
 }

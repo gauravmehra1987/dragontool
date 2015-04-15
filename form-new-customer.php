@@ -24,7 +24,7 @@
 
 				<ul class="actions">
 					
-					<li id="results-back"><a href="./">Go back to results</a></li>
+					<li id="results-back"><a href="./results">Go back</a></li>
 
 				</ul>
 

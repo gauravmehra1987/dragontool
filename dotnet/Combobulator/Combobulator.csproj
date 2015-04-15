@@ -189,7 +189,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Classes\Email.cs" />
-    <Compile Include="Classes\JsonUtils.cs" />
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="Config\AutoMapperConfig.cs" />
     <Compile Include="Config\NewCarConfigRedux.cs" />
@@ -212,8 +211,10 @@
     <Compile Include="Helpers\DeflateCompressionAttribute.cs" />
     <Compile Include="Helpers\JsonContentNegotiator.cs" />
     <Compile Include="Helpers\LowercaseContractResolver.cs" />
+    <Compile Include="Helpers\ModelStateExtensions.cs" />
+    <Compile Include="Helpers\MyExceptionFilter.cs" />
     <Compile Include="Helpers\NameValueHelper.cs" />
-    <Compile Include="Helpers\ValidateAjaxAntiForgeryTokenRedux.cs" />
+    <Compile Include="Helpers\ResponseHelper.cs" />
     <Compile Include="Helpers\ValidateAjaxAntiForgeryToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

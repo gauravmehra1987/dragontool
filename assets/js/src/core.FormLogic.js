@@ -127,7 +127,7 @@ function FormLogic() {
     */
 	this.handlePostcode = function( e ) {
 
-		var postcode = $( '#postcode-search' ).val();
+		var postcode = $( '#postcode_search' ).val();
 
 		// Enable fields
 
@@ -328,7 +328,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$( '#postcode-search' ).on( 'keyup', function( e ) {
+		$( '#postcode_search' ).on( 'keyup', function( e ) {
 			_this.postcodeStuff( e );
 		});
 

@@ -24,7 +24,7 @@ namespace Combobulator.Helpers
                         ? antiForgeryCookie.Value
                         : null;
 
-                    var token = request.Form["form[__RequestVerificationToken]"];
+                    var token = request.Headers.Get("__RequestVerificationToken");
 
                     AntiForgery.Validate(cookieValue, token);
                 }

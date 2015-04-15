@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Mvc;
 using Combobulator.Business.Commands;
 using Combobulator.Business.ViewModels;
@@ -67,56 +65,62 @@ namespace Combobulator.Controllers
 
         [HttpPost]
         [ValidateAjaxAntiForgeryToken]
-        public ActionResult Submit(FormCollection collection)
+        public ActionResult Submit(TestViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                Response.StatusCode = 400;
+                Response.TrySkipIisCustomErrors = true;
+
+                var modelErrors = ModelState.AllErrors();
+                return Json(modelErrors);
+            }
+
             try
             {
-                var isphone = collection["form[optout-phone]"] ?? "true";
-                var ispost = collection["form[optout-post]"] ?? "true";
-                var addresstype = collection["form[address-type]"];
-
                 var customer = new Customer
                 {
-                    AddressLine1 = collection["form[address-1]"],
-                    AddressLine2 = collection["form[address-2]"],
-                    AddressPostcode = collection["form[postcode]"],
-                    Dealer = collection["form[dealer]"],
-                    Email = collection["form[email]"],
-                    FirstName = collection["form[name]"],
-                    LastName = collection["form[surname]"],
-                    Title = collection["form[title]"],
-                    TelephoneMobile = collection["form[tel-mobile]"],
-                    TelephoneHome = collection["form[tel-home]"],
-                    TelephoneWork = collection["form[tel-work]"],
-                    IsFinance = collection["form[finance]"] != "1",
-                    AddressType = addresstype,
-                    IsPhone = isphone == "true" ? true : false,
-                    IsPost = ispost == "true" ? true : false,
-                    
-                    UserId = collection["form[UserId]"],
+                    AddressLine1 = viewModel.info.address1,
+                    AddressLine2 = viewModel.info.address2,
+                    AddressPostcode = viewModel.info.postcode,
+                    Dealer = viewModel.info.dealer,
+                    Email = viewModel.info.email,
+                    FirstName = viewModel.info.name,
+                    LastName = viewModel.info.surname,
+                    Title = viewModel.info.title,
+                    TelephoneMobile = viewModel.info.telmobile,
+                    TelephoneHome = viewModel.info.telhome,
+                    TelephoneWork = viewModel.info.telwork,
+                    IsFinance = viewModel.info.finance,
+                    AddressType = viewModel.info.address_type_work ? "work" : "home",
+                    IsPhone = !viewModel.info.optoutphone,
+                    IsPost = !viewModel.info.optoutpost,
+                    UserId = viewModel.info.userid,
+
                     Selections = new Selections
                     {
-                        Capacity = collection["input[seats][]"].Split(',').CountCharacterFrequency(0).ToString(),
-                        Luggage = collection["input[luggage]"],
-                        PriceRange = collection["input[price]"],
-                        Performance = collection["input[speed]"],
-                        Use = collection["input[lifestyle]"],
-                        Economy = collection["input[mpg]"],
+                        Capacity = viewModel.input.seats.Split(',').CountCharacterFrequency(0).ToString(),
+                        Luggage = viewModel.input.luggage,
+                        PriceRange = viewModel.input.price.ToString(),
+                        Performance = viewModel.input.speed,
+                        Use = viewModel.input.lifestyle,
+                        Economy = viewModel.input.mpg.ToString(),
                         Options = new Options
                         {
-                            AWD = collection["input[options][awd]"],
-                            DT = collection["input[options][dt]"],
-                            HP = collection["input[options][hp]"],
-                            TP = collection["input[options][tp]"]
+                            AWD = viewModel.input.options.awd.ToString(),
+                            DT = viewModel.input.options.dt.ToString(),
+                            HP = viewModel.input.options.hp.ToString(),
+                            TP = viewModel.input.options.tp.ToString()
                         }
                     }
+
                 };
-                var carModel = collection["car"];
+                var carModel = viewModel.car;
                 /*
-                var template = Common.Config._emailCustomerResultsTemplate;
-                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
-                var dataSent = command.Execute();
-                */
+                    var template = Common.Config._emailCustomerResultsTemplate;
+                    var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
+                    var dataSent = command.Execute();
+                    */
                 var dataSent = true;
                 if (!dataSent)
                 {

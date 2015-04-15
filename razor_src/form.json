@@ -15,27 +15,27 @@
 		"email":		"@Html.TextBoxFor(model => model.Email, new { @type = \"email\", @id = \"email\", Name = \"email\", @placeholder = \"E-mail address\" })",
 		"tel":			{
 
-			"home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { @type = \"tel\", @id = \"tel-home\", Name = \"tel-home\", @placeholder = \"Home telephone\" })",
-			"work":		"@Html.TextBoxFor(model => model.TelephoneWork, new { @type = \"tel\", @id = \"tel-work\", Name = \"tel-work\", @placeholder = \"Work telephone\" })",
-			"mobile":	"@Html.TextBoxFor(model => model.TelephoneMobile, new { @type = \"tel\", @id = \"tel-mobile\", Name = \"tel-mobile\", @placeholder = \"Mobile telephone\" })"
+			"home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { @type = \"tel\", @id = \"telhome\", Name = \"telhome\", @placeholder = \"Home telephone\" })",
+			"work":		"@Html.TextBoxFor(model => model.TelephoneWork, new { @type = \"tel\", @id = \"telwork\", Name = \"telwork\", @placeholder = \"Work telephone\" })",
+			"mobile":	"@Html.TextBoxFor(model => model.TelephoneMobile, new { @type = \"tel\", @id = \"telmobile\", Name = \"telmobile\", @placeholder = \"Mobile telephone\" })"
 
 		},
 		"address": {
-			"postcodesearch": "@Html.TextBoxFor(model => model.Postcode, new { type = \"text\", id = \"postcode-search\", Name = \"postcode-search\", placeholder = \"Postcode\" })",
-			"home":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address-type-home\", @Name = \"address-type\", @value = \"home\", @checked = \"checked\" })",
-			"work":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address-type-work\", @Name = \"address-type\", @value = \"home\" })",
+			"postcodesearch": "@Html.TextBoxFor(model => model.Postcode, new { type = \"text\", id = \"postcode_search\", Name = \"postcode_search\", placeholder = \"Postcode\" })",
+			"home":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address_type_home\", @Name = \"address_type\", @value = \"home\", @checked = \"checked\" })",
+			"work":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address_type_work\", @Name = \"address_type\", @value = \"home\" })",
 			"postcode":		"@Html.TextBoxFor(model => model.AddressPostcode, new { type = \"text\", id = \"postcode\", Name = \"postcode\", placeholder = \"Postcode\" })",
-			"address1":		"@Html.TextBoxFor(model => model.AddressLine1, new { @type = \"text\", @id = \"address-1\", @Name = \"address-1\", @placeholder = \"Address line 1\", @disabled = \"disabled\" })",
-			"address2":		"@Html.TextBoxFor(model => model.AddressLine2, new { @type = \"text\", @id = \"address-2\", @Name = \"address-2\", @placeholder = \"Address line 2\", @disabled = \"disabled\" })",
-			"address3":		"@Html.TextBoxFor(model => model.AddressLine3, new { @type = \"text\", @id = \"address-3\", @Name = \"address-3\", @placeholder = \"Address line 3\", @disabled = \"disabled\" })"
+			"address1":		"@Html.TextBoxFor(model => model.AddressLine1, new { @type = \"text\", @id = \"address1\", @Name = \"address1\", @placeholder = \"Address line 1\", @disabled = \"disabled\" })",
+			"address2":		"@Html.TextBoxFor(model => model.AddressLine2, new { @type = \"text\", @id = \"address2\", @Name = \"address2\", @placeholder = \"Address line 2\", @disabled = \"disabled\" })",
+			"address3":		"@Html.TextBoxFor(model => model.AddressLine3, new { @type = \"text\", @id = \"address3\", @Name = \"address3\", @placeholder = \"Address line 3\", @disabled = \"disabled\" })"
 
 		},
 		
 		"finance":		"@Html.TextBoxFor(model => model.RequestCallback, new {@type=\"checkbox\", @id = \"finance\", @Name = \"finance\", @value = \"1\", @checked=\"checked\"})",
 		"optout": {
 
-			"phone":	"@Html.TextBoxFor(model => model.RequestCallback, new { @type = \"checkbox\", @id = \"optout-phone\", @Name = \"optout-phone\", @value = \"phone\" })",
-			"post":		"@Html.TextBoxFor(model => model.EmailResults, new { @type = \"checkbox\", @id = \"optout-post\", @Name = \"optout-post\", @value = \"post\" })"
+			"phone":	"@Html.TextBoxFor(model => model.RequestCallback, new { @type = \"checkbox\", @id = \"optout_phone\", @Name = \"optout_phone\", @value = \"phone\" })",
+			"post":		"@Html.TextBoxFor(model => model.EmailResults, new { @type = \"checkbox\", @id = \"optout_post\", @Name = \"optout_post\", @value = \"post\" })"
 
 		}
 
