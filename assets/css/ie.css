@@ -6,6 +6,12 @@
   bottom: 0;
   left: 0;
 }
+html.ie.oldie > body #disabled,
+html.ie.oldie > body .control.mpg .value,
+html.ie.oldie > body .control-inner {
+  margin: 20px auto 0!important;
+  position: static!important;
+}
 html.ie.oldie > body #logo a {
   background-image: url(../img/mini-logo-small.png );
 }

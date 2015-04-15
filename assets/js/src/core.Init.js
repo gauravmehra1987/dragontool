@@ -41,7 +41,7 @@ var form = {
 
 // For modern browsers...
 // If browser is above IE8 or not IE at all
-if ( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
+if ( Mini.browser.isIE( '>9' ) || ! Mini.browser.isIE() ) {
 	//
 	// Preload images
 	ui.preloadImages();

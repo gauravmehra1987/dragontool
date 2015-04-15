@@ -4359,8 +4359,6 @@ html body {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: 20px auto 0\9;
-  position: static\9;
   text-align: center;
   letter-spacing: 0.05em;
   -webkit-transform: translateX(-50%);
@@ -5321,8 +5319,6 @@ html body #dash #dash-right .bottom .control-title {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: 20px auto 0\9;
-  position: static\9;
 }
 #dash #dash-left {
   width: 50%;
@@ -5472,8 +5468,6 @@ html.page-disabled #disabled {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: 20px auto 0\9;
-  position: static\9;
   text-align: center;
   padding: 100px 0 40px;
 }
