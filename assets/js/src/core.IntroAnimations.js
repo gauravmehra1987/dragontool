@@ -1,11 +1,9 @@
-( function( Mini ) {
-	
-} )( Mini );
 
 // Intro animations
+function IntroAnimations() {
 
-function animate() {
-
+	// Initalize vars
+	var _this = this;	
 
 	/**
 	 * BG COLOR
@@ -340,25 +338,37 @@ function animate() {
 	};
 
 
-	// Set a series of timeouts before executing the functions...
-	setTimeout( function() {
-		this.bums();
-		this.bg();
-		this.luggage();
-		this.button();
-		this.lifestyle();
-	}, 1000 );
+	/**
+     * Initialize
+    */
+	this.init = function() {
+		//
+		// If desktop or tablet...
+		if ( $( 'body' ).hasClass('desktop') || $( 'body' ).hasClass('tablet') ) {
+			//
+			// And if dashboard exsists...
+			if ( $( '#dash' ).length ) {
+				// Set a series of timeouts before executing the functions...
+				setTimeout( function() {
+					_this.bums();
+					_this.bg();
+					_this.luggage();
+					_this.button();
+					_this.lifestyle();
+				}, 1000 );
 
-	setTimeout( function() {
-		this.mpg();
-		this.options();
-		this.speed();
-	}, 1500 );
+				setTimeout( function() {
+					_this.mpg();
+					_this.options();
+					_this.speed();
+				}, 1500 );
 
-	setTimeout( function() {
-		this.price();
-	}, 2000 );
+				setTimeout( function() {
+					_this.price();
+				}, 2000 );
+
+			}
+		}
+	};
 
 }
-
-animate();

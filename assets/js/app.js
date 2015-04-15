@@ -1969,16 +1969,18 @@ function Combobulate() {
 				//
 				// And allow the user to click the button again
 				$button.css('pointer-events', 'auto');
+				//
+				setTimeout( function() {
+					$('#tablet-toggle').click();
+				}, 600);
 			}
 		});
 		//
 		// Scroll to top of page
-		var scrollToTop = function() {
+		function scrollToTop() {
 			//
-			$('html, body').animate( {
-				//
-				scrollTop: 0
-				//
+			$('html, body').animate({
+			    scrollTop: 0
 			}, 600);
 			//
 			return false;
@@ -2614,8 +2616,9 @@ function Responsive() {
 	var handleMobile = function( mediaQuery ) {
 
 		this.on = function() {
-
-			console.log( 'Responsive: mobile mode on' );
+			//
+			// Add mobile class to body
+			$( 'body' ).addClass('mobile');
 
 			// Show / hide controls on tap
 
@@ -2656,7 +2659,8 @@ function Responsive() {
 
 		this.off = function() {
 
-			console.log( 'Responsive: mobile mode off' );
+			// Remove mobile class from body
+			$( 'body' ).removeClass('mobile');
 
 			// Remove all appended classes and inline CSS
 
@@ -2672,8 +2676,9 @@ function Responsive() {
 	var handleTablet = function( mediaQuery ) {
 
 		this.on = function() {
-
-			console.log( 'Responsive: tablet mode on' );
+			//
+			// Add tablet class to body
+			$( 'body' ).addClass('tablet');
 
 			// Handle toggle arrow
 
@@ -2718,8 +2723,9 @@ function Responsive() {
 		};
 
 		this.off = function() {
-
-			console.log( 'Responsive: tablet mode off' );
+			//
+			// Remove tablet class from body
+			$( 'body' ).removeClass('tablet');
 
 			// Unbind events and inline CSS
 
@@ -2737,9 +2743,17 @@ function Responsive() {
 
 	var handleDesktop = function( mediaQuery ) {
 
-		this.on = function() { console.log( 'desktop on' ); };
+		this.on = function() {
+			//
+			// Add desktop class to body
+			$( 'body' ).addClass('desktop');
+		};
 
-		this.off = function() { console.log( 'desktop off' ); };
+		this.off = function() {
+			//
+			// Remove desktop class from body
+			$( 'body' ).removeClass('desktop');
+		};
 
 		( mediaQuery.matches ) ? this.on() : this.off();
 
@@ -2770,14 +2784,12 @@ function Responsive() {
 	init();
 
 }
-( function( Mini ) {
-	
-} )( Mini );
 
 // Intro animations
+function IntroAnimations() {
 
-function animate() {
-
+	// Initalize vars
+	var _this = this;	
 
 	/**
 	 * BG COLOR
@@ -3112,28 +3124,41 @@ function animate() {
 	};
 
 
-	// Set a series of timeouts before executing the functions...
-	setTimeout( function() {
-		this.bums();
-		this.bg();
-		this.luggage();
-		this.button();
-		this.lifestyle();
-	}, 1000 );
+	/**
+     * Initialize
+    */
+	this.init = function() {
+		//
+		// If desktop or tablet...
+		if ( $( 'body' ).hasClass('desktop') || $( 'body' ).hasClass('tablet') ) {
+			//
+			// And if dashboard exsists...
+			if ( $( '#dash' ).length ) {
+				// Set a series of timeouts before executing the functions...
+				setTimeout( function() {
+					_this.bums();
+					_this.bg();
+					_this.luggage();
+					_this.button();
+					_this.lifestyle();
+				}, 1000 );
 
-	setTimeout( function() {
-		this.mpg();
-		this.options();
-		this.speed();
-	}, 1500 );
+				setTimeout( function() {
+					_this.mpg();
+					_this.options();
+					_this.speed();
+				}, 1500 );
 
-	setTimeout( function() {
-		this.price();
-	}, 2000 );
+				setTimeout( function() {
+					_this.price();
+				}, 2000 );
+
+			}
+		}
+	};
 
 }
 
-animate();
 
 // Setting up some global variables...
 // Creating instances of all the functions and saving as global variables
@@ -3147,6 +3172,7 @@ var query			= new dashboardLogic.query();
 var dashboard 		= new Dashboard();
 var social			= new SocialMedia();
 var dials			= new Dials();
+var introAnimations	= new IntroAnimations();
 //
 // carCode is set to false unless it is ??? (not sure what this does)
 var carCode	= getQueryParameter( 'm' ) || false;
@@ -3193,6 +3219,9 @@ $( window ).load( function() {
 	// Initialize dashboard
 	// Which will activate all the dials and change the dashboard color
 	dashboard.init();
+
+	// Initialize intro animations on the dashboard
+	introAnimations.init();
 
 	// Initialize UI
 	// Which will show the first panel, passed in

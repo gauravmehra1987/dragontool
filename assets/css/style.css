@@ -5241,6 +5241,7 @@ html body #dash #dash-right .bottom .control-title {
   max-width: 780px;
   position: relative;
   height: 785px;
+  z-index: 2;
 }
 #dash > * {
   -webkit-user-select: none;

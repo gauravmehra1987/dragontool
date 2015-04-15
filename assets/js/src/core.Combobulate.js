@@ -35,16 +35,18 @@ function Combobulate() {
 				//
 				// And allow the user to click the button again
 				$button.css('pointer-events', 'auto');
+				//
+				setTimeout( function() {
+					$('#tablet-toggle').click();
+				}, 600);
 			}
 		});
 		//
 		// Scroll to top of page
-		var scrollToTop = function() {
+		function scrollToTop() {
 			//
-			$('html, body').animate( {
-				//
-				scrollTop: 0
-				//
+			$('html, body').animate({
+			    scrollTop: 0
 			}, 600);
 			//
 			return false;

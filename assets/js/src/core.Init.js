@@ -11,6 +11,7 @@ var query			= new dashboardLogic.query();
 var dashboard 		= new Dashboard();
 var social			= new SocialMedia();
 var dials			= new Dials();
+var introAnimations	= new IntroAnimations();
 //
 // carCode is set to false unless it is ??? (not sure what this does)
 var carCode	= getQueryParameter( 'm' ) || false;
@@ -57,6 +58,9 @@ $( window ).load( function() {
 	// Initialize dashboard
 	// Which will activate all the dials and change the dashboard color
 	dashboard.init();
+
+	// Initialize intro animations on the dashboard
+	introAnimations.init();
 
 	// Initialize UI
 	// Which will show the first panel, passed in
