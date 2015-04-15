@@ -58,17 +58,13 @@ function IntroAnimations() {
 			timeOut = timeOut + 100;
 
 			setTimeout( function() {
-				//
-				TweenLite.to( val, 0.4, {
-					//
-					// Lock axis to 'y' direction
+				TweenMax.to( val, 0.4, {
 					y: -slotHeight,
-					//
-					// Once complete, update the draggable object
-					onComplete: function() {
-						this.reverse();
-					}
-				} );
+					repeat: 1,
+					yoyo: true,
+					easeIn: ElasticIn,
+					repeatDelay: 0.5
+				});
 			}, timeOut );
 
 		})
@@ -280,7 +276,6 @@ function IntroAnimations() {
 	};
 
 
-
 	/**
 	 * SPEED
 	*/
@@ -295,7 +290,10 @@ function IntroAnimations() {
 		//
 		TweenMax.to( $list, 0.5, {
 			y: -slotHeight,
-			yoyo: 10
+			repeat: 1,
+			yoyo: true,
+			easeIn: ElasticIn,
+			repeatDelay: 0.5
 		});
 	};
 
