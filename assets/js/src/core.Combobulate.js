@@ -22,8 +22,6 @@ function Combobulate() {
 		// Animate the combobulate button
 		TweenMax.from($( '#start .button-inner' ), 0.5, {
 			//
-			overwrite: true,
-			//
 			// Roatate all the way round
 			rotation: -360,
 			//

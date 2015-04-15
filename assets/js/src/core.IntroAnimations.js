@@ -293,11 +293,9 @@ function IntroAnimations() {
 		var slotHeight = $list.height() - 160;
 		// 
 		//
-		TweenLite.to( $list, 0.5, {
+		TweenMax.to( $list, 0.5, {
 			y: -slotHeight,
-			onComplete: function() {
-				this.reverse();
-			}
+			yoyo: 10
 		});
 	};
 
@@ -338,35 +336,50 @@ function IntroAnimations() {
 	};
 
 
+
+	this.startAnimations = function() {
+		//
+		// Start some of the dials animating...
+		_this.bums();
+		_this.bg();
+		_this.luggage();
+		_this.button();
+		_this.lifestyle();
+		//
+		// And set some timeouts before executing the rest of the animations
+		setTimeout( function() {
+			_this.mpg();
+			_this.options();
+			_this.speed();
+		}, 500 );
+
+		setTimeout( function() {
+			_this.price();
+		}, 1000 );
+	};
+
+
 	/**
      * Initialize
     */
 	this.init = function() {
 		//
-		// If desktop or tablet...
-		if ( $( 'body' ).hasClass('desktop') || $( 'body' ).hasClass('tablet') ) {
+		// If dashboard exsists...
+		if ( $( '#dash' ).length ) {
 			//
-			// And if dashboard exsists...
-			if ( $( '#dash' ).length ) {
-				// Set a series of timeouts before executing the functions...
+			// If desktop...
+			if ( $( 'body' ).hasClass('desktop') ) {
+				//
+				// Start animations
+				_this.startAnimations();
+			//
+			// Else if tablet...
+			} else if ( $( 'body' ).hasClass('tablet') ) {
+				//
+				// set a timeout before starting animations
 				setTimeout( function() {
-					_this.bums();
-					_this.bg();
-					_this.luggage();
-					_this.button();
-					_this.lifestyle();
-				}, 1000 );
-
-				setTimeout( function() {
-					_this.mpg();
-					_this.options();
-					_this.speed();
-				}, 1500 );
-
-				setTimeout( function() {
-					_this.price();
+					_this.startAnimations();
 				}, 2000 );
-
 			}
 		}
 	};
