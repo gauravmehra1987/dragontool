@@ -20,7 +20,9 @@ function Combobulate() {
 		$button.css('pointer-events', 'none');
 		//
 		// Animate the combobulate button
-		TweenLite.from($( '#start .button-inner' ), 0.5, {
+		TweenMax.from($( '#start .button-inner' ), 0.5, {
+			//
+			overwrite: true,
 			//
 			// Roatate all the way round
 			rotation: -360,

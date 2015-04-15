@@ -224,10 +224,10 @@ function animate() {
 		// Call the checkboxes animation
 		animateOptions();
 		//
-		// // And call again once the animation is complete
-		// setTimeout( function() {
-		// 	animateOptions();
-		// }, (inputsLength * 100) + 500 );
+		// And call again once the animation is complete
+		setTimeout( function() {
+			animateOptions();
+		}, (inputsLength * 100) + 500 );
 	};
 
 
@@ -258,7 +258,6 @@ function animate() {
 			repeat: 1
 		});
 	};
-
 
 
 
@@ -314,7 +313,7 @@ function animate() {
 		var $luggageDial = $( '.control.luggage .dial' );
 		//
 		// Tween rotate it full circle
-		TweenLite.to( $luggageDial, 2, {
+		TweenLite.from( $luggageDial, 2, {
 			rotation: 360 }
 		);
 	};
@@ -332,8 +331,8 @@ function animate() {
 		$button.css('pointer-events', 'none');
 		//
 		// Tween the button to rotate 3 times full circle and on complete re-enable the button click
-		TweenLite.to( $buttonInner, 2, {
-			rotation: 1080,
+		TweenMax.from( $buttonInner, 2, {
+			rotation: -1080,
 			onComplete: function() {
 				$button.css('pointer-events', 'auto');
 			}
@@ -352,11 +351,11 @@ function animate() {
 
 	setTimeout( function() {
 		this.mpg();
+		this.options();
 		this.speed();
 	}, 1500 );
 
 	setTimeout( function() {
-		this.options();
 		this.price();
 	}, 2000 );
 
