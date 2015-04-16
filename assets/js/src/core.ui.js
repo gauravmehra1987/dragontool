@@ -261,9 +261,9 @@ function UI() {
 				'name':		'Alpha Centura',
 				'cost':		'n/a',
 				'terms':	'A ro-ro-ro-rocket car!',
-				'alt_1': 	'Roadster JCW',
-				'alt_2': 	'Convertible JCW',
-				'alt_3': 	'Paceman JCW ALL4'
+				'alt_1': 	'MINI Roadster JCW',
+				'alt_2': 	'MINI Convertible JCW',
+				'alt_3': 	'MINI Paceman JCW ALL4'
 			},
 			toy: {
 				'code':		'TOY',
@@ -271,9 +271,9 @@ function UI() {
 				'name':		'Toy Car',
 				'cost':		'n/a',
 				'terms': 	'Just a silly toy...',
-				'alt_1': 	'Roadster JCW',
-				'alt_2': 	'Convertible JCW',
-				'alt_3': 	'Paceman JCW ALL4'
+				'alt_1': 	'MINI Roadster JCW',
+				'alt_2': 	'MINI Convertible JCW',
+				'alt_3': 	'MINI Paceman JCW ALL4'
 			}
 		};
 

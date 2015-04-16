@@ -1573,5 +1573,15 @@
             "roi": "1.90%",
             "apr": "28%"
         }
+    },
+    {
+        "code": "RKT",
+        "color": "Rocket gold",
+        "name": "ALPHA CENTURA",
+        "alt_1": "MINI Roadster JCW",
+        "alt_2": "MINI Convertible JCW",
+        "alt_3": "MINI Paceman JCW ALL4"
     }
+
+
 ]
