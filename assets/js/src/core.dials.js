@@ -543,8 +543,6 @@ function Dials() {
 	}
 
 
-
-
 	// DIAL: PRICE
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -552,6 +550,7 @@ function Dials() {
 	 * PRICE
 	 * @return {}
 	*/
+
 	this.price = function() {
 
 		var getPrice = function() {
@@ -565,23 +564,42 @@ function Dials() {
 
 		}
 
+
 		var getHeight = function( v ) {
 
-			var position	= Math.abs( parseInt( v.endY ) );	
-			var height		= (position + 13) + 'px';
+			var position = Math.abs( parseInt( v.endY ) );	
+
+			var height = Math.abs( ( position / v.minY ) * 100 );
 
 			return height;
 
 		}
 
+
+		var getbgColorHeight = function( v ) {
+
+			var position = Math.abs( parseInt( v.endY ) );	
+
+			var height = position + 13 + 'px';
+
+			return height;
+
+		}
+
+
 		var dialPrice = new Draggable( '.control.price .handle', {
 
 			type:					'y',
+
 			edgeResistance:			1,
+
 			bounds:					'.control.price .bounds',
+
 			throwProps:				false,
+
 			onDragStart:			function() { priceChanged = true; },
-			onDrag:					function() { $( '.control.price .switch-bg' ).css( 'height', getHeight( this ) ); },
+
+			onDrag:					function() { $( '.control.price .switch-bg' ).css( 'height', getbgColorHeight(this) ); },
 
 		} );
 

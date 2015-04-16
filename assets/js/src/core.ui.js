@@ -148,6 +148,12 @@ function UI() {
 			var alt_2 = dashboardLogic.getCarByName( car.alt_2 );
 			var alt_3 = dashboardLogic.getCarByName( car.alt_3 );
 
+			// console.log(alt_1);
+			// console.log(alt_2);
+			// console.log(alt_3);
+
+			// console.log(skipRelated);
+
 			if ( alt_1 === false || alt_2 === false || alt_3 === false ) {
 
 				alert( 'missing alternate car - check console.log for missing value' )
@@ -163,9 +169,7 @@ function UI() {
 				console.log( 'Alternative 2 - ' + car.alt_2 + alt_2_status );
 				console.log( 'Alternative 3 - ' + car.alt_3 + alt_3_status );
 
-			}
-			
-			else {
+			} else {
 
 				if ( ! skipRelated ) {
 
@@ -299,37 +303,24 @@ function UI() {
 		var $rocketCarShadow = $('.rocket-car--shadow');
 
 		TweenMax.to($rocketCarCar, 1, {
-
 			top: "-10px",
-
 			repeat: -1,
-
 			yoyo: true,
-
 			ease: Linear.easeNone
 		});
 
 		TweenMax.to($rocketCarGlow, 1, {
-
 			top: "-10px",
-
 			alpha: 1,
-
 			repeat: -1,
-
 			yoyo: true,
-
 			ease: Linear.easeNone
 		});
 
 		TweenMax.to($rocketCarShadow, 1, {
-
 			alpha: 0.3,
-
 			repeat: -1,
-
 			yoyo: true,
-
 			ease: Linear.easeNone
 		});
 
