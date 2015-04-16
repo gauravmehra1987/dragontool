@@ -24,7 +24,7 @@
 
 				<ul class="actions">
 
-					<li id="results-back"><a href="./results">Go back</a></li>
+					<li id="results_back"><a href="./results">Go back</a></li>
 
 				</ul>
 
@@ -105,7 +105,7 @@
 				<%= form.field.tel.home %>
 				/build -->
 
-				<!-- build:remove --><input type="tel" id="tel-home" name="tel-home" placeholder="Home telephone" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="tel" id="tel_home" name="tel_home" placeholder="Home telephone" autocomplete="off" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -116,7 +116,7 @@
 				<%= form.field.tel.work %>
 				/build -->
 
-				<!-- build:remove --><input type="tel" id="tel-work" name="tel-work" placeholder="Work telephone" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="tel" id="tel_work" name="tel_work" placeholder="Work telephone" autocomplete="off" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -127,7 +127,7 @@
 				<%= form.field.tel.mobile %>
 				/build -->
 
-				<!-- build:remove --><input type="tel" id="tel-mobile" name="tel-mobile" placeholder="Mobile telephone" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="tel" id="tel_mobile" name="tel_mobile" placeholder="Mobile telephone" autocomplete="off" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -140,18 +140,18 @@
 					<%= form.field.address.postcodesearch %>
 					/build -->
 
-					<!-- build:remove --><input type="text" id="postcode-search" name="postcode-search" placeholder="Postcode" autocomplete="off" /><!-- /build -->
+					<!-- build:remove --><input type="text" id="postcode_search" name="postcode_search" placeholder="Postcode" autocomplete="off" /><!-- /build -->
 					<span class="field-icon"></span>
 
 				</div>
 
 				<div class="form-control half-width">
 
-					<div id="address-type-chooser" class="form-control">
+					<div id="address_type_chooser" class="form-control">
 
 						<div class="checkbox checkbox-radio">
 
-							<!-- build:remove --><input id="address-type-home" name="address-type" type="radio" value="home" checked="checked" /><!-- /build -->
+							<!-- build:remove --><input id="address_type_home" name="address_type" type="radio" value="home" checked="checked" /><!-- /build -->
 
 							<!-- build:template
 							<%= form.field.address.home %>
@@ -163,7 +163,7 @@
 
 						<div class="checkbox checkbox-radio">
 
-							<!-- build:remove --><input id="address-type-work" name="address-type" type="radio" value="work" /><!-- /build -->
+							<!-- build:remove --><input id="address_type_work" name="address_type" type="radio" value="work" /><!-- /build -->
 
 							<!-- build:template
 							<%= form.field.address.work %>
@@ -179,7 +179,7 @@
 
 			</div><!-- end div.inline -->
 
-			<div id="address-chooser">
+			<div id="address_chooser">
 
 				<div class="form-control form-control-select disabled">
 
@@ -195,7 +195,7 @@
 
 				</div>
 
-			</div><!-- end div#address-chooser -->
+			</div><!-- end div#address_chooser -->
 
 			<div class="form-control disabled append home full-width">
 
@@ -203,7 +203,7 @@
 				<%= form.field.address.address1 %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="address-1" name="address-1" placeholder="Address line 1" disabled="disabled" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="address_1" name="address_1" placeholder="Address line 1" disabled="disabled" autocomplete="off" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -214,7 +214,7 @@
 				<%= form.field.address.address2 %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="address-2" name="address-2" placeholder="Address line 2" disabled="disabled" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="address_2" name="address_2" placeholder="Address line 2" disabled="disabled" autocomplete="off" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -225,7 +225,7 @@
 				<%= form.field.address.address3 %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="address-3" name="address-3" placeholder="Address line 3" disabled="disabled" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="address_3" name="address_3" placeholder="Address line 3" disabled="disabled" autocomplete="off" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -241,7 +241,7 @@
 
 			</div>
 
-			<div id="dealer-chooser">
+			<div id="dealer_chooser">
 
 				<div class="form-control form-control-select disabled">
 
@@ -257,23 +257,23 @@
 
 				</div>
 
-			</div><!-- end div#dealer-chooser -->
+			</div><!-- end div#dealer_chooser -->
 
 		</div><!-- end div.form-content -->
 
-		<div id="thanks-left">
+		<div id="thanks_left">
 
 			<h3>Nice one.</h3>
 
 			<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
 
-		</div><!-- end div#thanks-left -->
+		</div><!-- end div#thanks_left -->
 
 	</div><!-- end div.form-left -->
 
 	<div class="form-right">
 
-		<figure id="form-car" class="model-image">
+		<figure id="form_car" class="model-image">
 
 			<img src="assets/cars/none.png" class="img-base" />
 				<!-- build:template
@@ -304,13 +304,13 @@
 			<p class="notice">Here at MINI, we'd like to get in touch with you to share news on our latest MINI adventures and other products and services you might be interested in. We may also contact you for market research reasons, so we can find out what you think of MINI, and in turn we can learn a bit more about you.</p>
 			<p class="notice">Your personal details are only shared with other BMW Group companies, authorised BMW and MINI Retailers, BMW i agents and other suppliers of BMW or MINI branded products or services for these reasons. Have a look at our privacy policy for more information. </p>
 
-			<div id="optout-chooser" class="form-control">
+			<div id="optout_chooser" class="form-control">
 
 				<p>Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
 
 				<div class="checkbox">
 
-					<!-- build:remove --><input id="optout-phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
+					<!-- build:remove --><input id="optout_phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
 					<!-- build:template
 					<%= form.field.optout.phone %>
 					/build -->
@@ -321,7 +321,7 @@
 
 				<div class="checkbox">
 
-					<!-- build:remove --><input id="optout-post" name="optout" type="checkbox" value="post" /><!-- /build -->
+					<!-- build:remove --><input id="optout_post" name="optout" type="checkbox" value="post" /><!-- /build -->
 					<!-- build:template
 					<%= form.field.optout.post %>
 					/build -->
@@ -342,7 +342,7 @@
 
 		</div><!-- end div.form-content -->
 
-		<div id="thanks-right">
+		<div id="thanks_right">
 
 			<h4 class="item switch-color">Mollycoddle your Mini.</h4>
 			<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
@@ -357,7 +357,7 @@
 			<h4 class="item switch-color">Get connected.</h4>
 			<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
 
-		</div><!-- end div#thanks-right -->
+		</div><!-- end div#thanks_right -->
 
 	</div><!-- end div.form-right -->
 

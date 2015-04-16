@@ -1,7 +1,7 @@
 function FormLogic() {
 
 	// Initalize vars
-	var _this = this;	
+	var _this = this;
 
 
 
@@ -26,7 +26,7 @@ function FormLogic() {
     */
 	this.getAddresses = function( postcode ) {
 
-		return $.when( 
+		return $.when(
 
 			$.ajax( {
 
@@ -48,7 +48,7 @@ function FormLogic() {
     */
 	this.getDealers = function( postcode ) {
 
-		return $.when( 
+		return $.when(
 
 			$.ajax( {
 
@@ -78,7 +78,7 @@ function FormLogic() {
 		finance.contribution = Number(finance.contribution).toFixed(2);
 		finance.purchase_fee = Number(finance.purchase_fee).toFixed(2);
 		finance.final_payment = Number(finance.final_payment).toFixed(2);
-		
+
 		finance.total_deposit	= Number(Number(finance.deposit) + Number(finance.contribution)).toFixed(2);
 		finance.total_amount	= Number(finance.total_amount).toFixed(2);
 		finance.credit_charge 	= Number(finance.credit_charge).toFixed(2);
@@ -159,7 +159,7 @@ function FormLogic() {
 
 				//console.log(address);
 				formattedAddresses.push( { id: i, address: address } );
-				
+
 				//console.log(formattedAddresses.length);
 
 			} );
@@ -281,7 +281,7 @@ function FormLogic() {
 	// Handle AJAX form results
 	this.ajaxFormResults = function() {
 
-		var $thanks = $( '#thanks-left, #thanks-right' );
+		var $thanks = $( '#thanks_left, #thanks_right' );
 		var $formContent = $( '.form-content' );
 
 		$thanks.hide();

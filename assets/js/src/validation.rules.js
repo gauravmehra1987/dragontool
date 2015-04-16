@@ -6,10 +6,14 @@ $.validator.setDefaults( {
 
 		'name':				{ required: true },
 		'surname':			{ required: true },
-		'address-1':		{ required: true },
-		'address-2':		{ required: true },
-		'address-4':		{ required: true },
-		'tel-home':			{
+		'address_1':		{ required: true },
+		'postcode':	{
+
+			required: true,
+			regexPostcode: true
+
+		},
+		'tel_home':			{
 
 			required: true,
 			regexHomePhone: true
@@ -17,7 +21,7 @@ $.validator.setDefaults( {
 		},
 		'dealer':			{ required: true },
 		'title':			{ required: true },
-		'postcode-search':	{
+		'postcode_search':	{
 
 			required: true,
 			regexPostcode: true
@@ -38,13 +42,12 @@ $.validator.setDefaults( {
 
 		'name':				{ required: 'First name is required.' },
 		'surname':			{ required: 'Last name is required.' },
-		'address-1':		{ required: 'Address line 1 is required.' },
-		'address-2':		{ required: 'Address line 2 is required.' },
-		'address-4':		{ required: 'Address line 4 is required.' },
-		'tel-home':			{ required: 'Home telephone is required.' },
+		'address_1':		{ required: 'Address line 1 is required.' },
+		'postcode': 		{ required: 'Postcode is required.' },
+		'tel_home':			{ required: 'Home telephone is required.' },
 		'dealer': 			{ required: 'Please choose a dealer from the list.' },
 		'title': 			{ required: 'Title is required.' },
-		'postcode-search': 	{ required: 'Postcode is required.' },
+		'postcode_search': 	{ required: 'Postcode is required.' },
 		'email':			{
 
 			required: 'E-mail is required.',
