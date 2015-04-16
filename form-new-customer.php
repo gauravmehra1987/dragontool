@@ -19,11 +19,11 @@
 	<div class="form-left">
 
 		<div class="form-content">
-		
+
 			<header>
 
 				<ul class="actions">
-					
+
 					<li id="results-back"><a href="./">Go back to results</a></li>
 
 				</ul>
@@ -33,7 +33,7 @@
 
 			</header>
 
-			<div class="form-control half-width">
+			<div class="form-control form-control-select half-width">
 
 				<div class="select">
 
@@ -148,13 +148,13 @@
 				</div>
 
 				<div class="form-control half-width">
-				
+
 					<div id="address-type-chooser" class="form-control">
 
 						<div class="checkbox checkbox-radio">
 
 							<!-- build:remove --><input id="address-type-home" name="address-type" type="radio" value="home" checked="checked" /><!-- /build -->
-							
+
 							<!-- build:template
 							<%= form.field.address.home %>
 							/build -->
@@ -166,24 +166,24 @@
 						<div class="checkbox checkbox-radio">
 
 							<!-- build:remove --><input id="address-type-work" name="address-type" type="radio" value="work" /><!-- /build -->
-							
+
 							<!-- build:template
 							<%= form.field.address.work %>
 							/build -->
 							<label for="address-type-work">Work</label>
 
 
-						</div>				
+						</div>
 
 					</div>
-					
+
 				</div><!-- end div.form-control half-width -->
 
 			</div><!-- end div.inline -->
 
 			<div id="address-chooser">
-				
-				<div class="form-control disabled">
+
+				<div class="form-control form-control-select disabled">
 
 					<div class="select disabled">
 
@@ -244,8 +244,8 @@
 			</div>
 
 			<div id="dealer-chooser">
-				
-				<div class="form-control disabled">
+
+				<div class="form-control form-control-select disabled">
 
 					<div class="select disabled">
 
@@ -264,9 +264,9 @@
 		</div><!-- end div.form-content -->
 
 		<div id="thanks-left">
-			
+
 			<h3>Nice one.</h3>
-				
+
 			<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
 
 		</div><!-- end div#thanks-left -->
@@ -281,15 +281,15 @@
 				<!-- build:template
 	<img src="<%= form.carImage %>" id="results-car" class="img-content" />
 	/build -->
-			
+
 			<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
-			
+
 		</figure><!-- end figure#car -->
-		
+
 		<div class="form-content">
 
 			<div class="form-control">
-				
+
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="finance" name="finance" type="checkbox" value="1" checked="checked" /><!-- /build -->
@@ -309,14 +309,14 @@
 			<div id="optout-chooser" class="form-control">
 
 				<p>Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
-				
+
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="optout-phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
 					<!-- build:template
 					<%= form.field.optout.phone %>
 					/build -->
-					<label for="optout-phone">by phone</label>				
+					<label for="optout-phone">by phone</label>
 
 
 				</div>
@@ -328,9 +328,9 @@
 					<%= form.field.optout.post %>
 					/build -->
 					<label for="optout-post">by post</label>
-					
 
-					
+
+
 
 				</div>
 
