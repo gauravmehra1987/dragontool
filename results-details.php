@@ -19,7 +19,6 @@
 			<ul class="actions">
 			
 				<li id="results-back"><a href="./">Go back</a></li>
-				<li id="results-close"><a href="./">Close</a></li>
 
 			</ul>
 			

@@ -33,15 +33,15 @@ var form = {
 	address2:			'#address_2',
 	address3:			'#address_3',
 	postcode:			'#postcode',
-	addressChooser:		'#address-chooser',
-	dealerChooser:		'#dealer-chooser',
+	addressChooser:		'#address_chooser',
+	dealerChooser:		'#dealer_chooser',
 	dealers:			'#dealers',
 }
 
 
 // For modern browsers...
 // If browser is above IE8 or not IE at all
-if ( Mini.browser.isIE( '>8' ) || ! Mini.browser.isIE() ) {
+if ( Mini.browser.isIE( '>9' ) || ! Mini.browser.isIE() ) {
 	//
 	// Preload images
 	ui.preloadImages();

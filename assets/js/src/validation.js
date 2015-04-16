@@ -9,14 +9,14 @@ $.validator.setDefaults( {
 				// Add the .error class to the element
 
 				var el				= el.element;
-				var elementType		= el.tagName.toLowerCase();					
+				var elementType		= el.tagName.toLowerCase();
 
 				if( elementType === 'select' ) {
 
 					$( el ).parent().addClass( 'error' );
 
 				}
-				
+
 				else {
 
 					$( el ).addClass( 'error' );
@@ -40,15 +40,15 @@ $.validator.setDefaults( {
 			ajaxDelay = 1000; // Not needed but included here to illustrate the loading DIV behaviour
 
 		var ajaxRequest = function() {
-			
+
 			var formData = {
 					info: $( 'form' ).serializeObject(),
 					car: carCode,
 					input: store.get( 'miniInput' )
 				};
+
 			var json = JSON.stringify(formData);
-			alert(json);
-			
+
 			var token = $('input[name="__RequestVerificationToken"]').val();
 			$.ajax( {
 				type: 'POST',
@@ -69,12 +69,20 @@ $.validator.setDefaults( {
 						var fieldKey = error.Key;
 						var message = error.Message;
 						// apply custom logic with field keys and messages
-						alert(fieldKey + ': ' + message);
+						$('#' + fieldKey).each(function() {
+							$(this).addAttr('aria-required', 'true');
+
+							if ($(this).parent('.select')) {
+								$(this).parent('.select').addClass('error');
+							} else {
+								$(this).addClass('error');
+							}
+						});
 					}
 				},
 				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
 
-			} );	
+			} );
 
 		};
 
@@ -84,7 +92,7 @@ $.validator.setDefaults( {
 
 		// Perform the call
 
-		setTimeout( function() { ajaxRequest(); }, ajaxDelay );			
+		setTimeout( function() { ajaxRequest(); }, ajaxDelay );
 
 	},
 

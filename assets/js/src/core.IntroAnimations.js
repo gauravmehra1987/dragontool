@@ -62,7 +62,6 @@ function IntroAnimations() {
 					y: -slotHeight,
 					repeat: 1,
 					yoyo: true,
-					easeIn: ElasticIn,
 					repeatDelay: 0.5
 				});
 			}, timeOut );
@@ -292,7 +291,6 @@ function IntroAnimations() {
 			y: -slotHeight,
 			repeat: 1,
 			yoyo: true,
-			easeIn: ElasticIn,
 			repeatDelay: 0.5
 		});
 	};
@@ -362,22 +360,26 @@ function IntroAnimations() {
     */
 	this.init = function() {
 		//
-		// If dashboard exsists...
-		if ( $( '#dash' ).length ) {
+		// For modern browers only
+		if ( ! ie.loadFallbacks() ) {
 			//
-			// If desktop...
-			if ( $( 'body' ).hasClass('desktop') ) {
+			// If dashboard exsists...
+			if ( $( '#dash' ).length ) {
 				//
-				// Start animations
-				_this.startAnimations();
-			//
-			// Else if tablet...
-			} else if ( $( 'body' ).hasClass('tablet') ) {
-				//
-				// set a timeout before starting animations
-				setTimeout( function() {
+				// If desktop...
+				if ( $( 'body' ).hasClass('desktop') ) {
+					//
+					// Start animations
 					_this.startAnimations();
-				}, 2000 );
+				//
+				// Else if tablet...
+				} else if ( $( 'body' ).hasClass('tablet') ) {
+					//
+					// set a timeout before starting animations
+					setTimeout( function() {
+						_this.startAnimations();
+					}, 2000 );
+				}
 			}
 		}
 	};
