@@ -33,8 +33,8 @@ var form = {
 	address2:			'#address2',
 	address3:			'#address3',
 	postcode:			'#postcode',
-	addressChooser:		'#address-chooser',
-	dealerChooser:		'#dealer-chooser',
+	addressChooser:		'#address_chooser',
+	dealerChooser:		'#dealer_chooser',
 	dealers:			'#dealers',
 }
 
