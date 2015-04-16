@@ -46,8 +46,8 @@ $.validator.setDefaults( {
 					car: carCode,
 					input: store.get( 'miniInput' )
 				};
-			
 			var json = JSON.stringify(formData);
+			alert(json);
 			
 			var token = $('input[name="__RequestVerificationToken"]').val();
 			$.ajax( {

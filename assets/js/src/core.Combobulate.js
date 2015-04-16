@@ -63,6 +63,9 @@ function Combobulate() {
 		//
 		// Save the values of the dashboard as 'userSelection'
 		var userSelection = dashboard.values();
+		
+		var json = JSON.stringify(userSelection);
+		alert(json);
 		//
 		// Set miniInput to have the value of the userSelection
 		store.set( 'miniInput', userSelection );
