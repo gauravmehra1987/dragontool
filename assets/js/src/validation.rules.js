@@ -83,7 +83,7 @@ $.validator.addMethod(
 	'regexHomePhone',
 	function(value, element, regexp) {
 		var check = false;
-		var re = new RegExp('^[0-9]| |\+)+$');
+		var re = new RegExp('^([0-9]| )+$');
 		return this.optional(element) || re.test(value);
 	},
 	'Please enter a valid phone number.'

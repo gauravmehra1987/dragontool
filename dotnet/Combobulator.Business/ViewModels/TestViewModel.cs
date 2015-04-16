@@ -53,7 +53,7 @@ namespace Combobulator.Business.ViewModels
 
     public class InputStuff
     {
-        public string seats { get; set; }
+        public string[] seats { get; set; }
         public string speed { get; set; }
         public int mpg { get; set; }
         public string lifestyle { get; set; }

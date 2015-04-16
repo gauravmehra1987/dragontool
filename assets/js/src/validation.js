@@ -48,7 +48,6 @@ $.validator.setDefaults( {
 				};
 
 			var json = JSON.stringify(formData);
-			alert(json);
 
 			var token = $('input[name="__RequestVerificationToken"]').val();
 			$.ajax( {
@@ -70,14 +69,13 @@ $.validator.setDefaults( {
 						var fieldKey = error.Key;
 						var message = error.Message;
 						// apply custom logic with field keys and messages
-						alert(fieldKey);
+						$('#' + fieldKey).addClass('error');
 						/*
-						
-						$('#' + fieldKey).each(function() {
+						.each(function() {
 							$(this).addAttr('aria-required', 'true');
 
 							if ($(this).parent('.select')) {
-								$(this).parent('.select').addClass('error');
+								$(this).parent('.select');
 							} else {
 								$(this).addClass('error');
 							}

@@ -98,9 +98,10 @@ namespace Combobulator.Controllers
                     IsPhone = isPhone,
                     IsPost = isPost,
                     UserId = viewModel.info.userid,
+                    
                     Selections = new Selections
                     {
-                        Capacity = viewModel.input.seats.Split(',').CountCharacterFrequency(0).ToString(),
+                        Capacity = viewModel.input.seats.CountCharacterFrequency(0).ToString(),
                         Luggage = viewModel.input.luggage,
                         PriceRange = viewModel.input.price.ToString(),
                         Performance = viewModel.input.speed,
@@ -113,6 +114,7 @@ namespace Combobulator.Controllers
                             HP = viewModel.input.options.hp.ToString(),
                             TP = viewModel.input.options.tp.ToString()
                         }
+                        
                     }
                 };
                 var carModel = viewModel.car;
