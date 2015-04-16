@@ -162,6 +162,8 @@ function DashboardLogic() {
 	 * @return {Object} Returns all the data for that car
 	*/
 	this.getCarByName = function( name ) {
+
+		console.log(name);
 		//
 		// Queries the database to get data about that car
 		return db( { name: name } ).first();
@@ -388,8 +390,8 @@ function DashboardLogic() {
 				convertible:	data.options.dt || false
 			}
 			//
-			// console.log('coverted data object:');
-			// console.log(obj);
+			console.log('coverted data object:');
+			console.log(obj);
 			//
 			// Returns the formatted object
 			return obj;

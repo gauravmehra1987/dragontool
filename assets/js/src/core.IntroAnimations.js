@@ -62,7 +62,6 @@ function IntroAnimations() {
 					y: -slotHeight,
 					repeat: 1,
 					yoyo: true,
-					easeIn: ElasticIn,
 					repeatDelay: 0.5
 				});
 			}, timeOut );
@@ -292,7 +291,6 @@ function IntroAnimations() {
 			y: -slotHeight,
 			repeat: 1,
 			yoyo: true,
-			easeIn: ElasticIn,
 			repeatDelay: 0.5
 		});
 	};
