@@ -4,8 +4,18 @@ $.validator.setDefaults( {
 
 	rules: {
 
-		'name':				{ required: true },
-		'surname':			{ required: true },
+		'name':				{
+
+			required: true,
+			regexName: true
+
+		},
+		'surname':			{
+
+			required: true,
+			regexSurame: true
+
+		},
 		'address_1':		{ required: true },
 		'postcode':	{
 
@@ -77,4 +87,24 @@ $.validator.addMethod(
 		return this.optional(element) || re.test(value);
 	},
 	'Please enter a valid phone number.'
+);
+
+$.validator.addMethod(
+	'regexName',
+	function(value, element, regexp) {
+		var check = false;
+		var re = new RegExp("^[a-zA-Z]'?([a-zA-Z]|\.| |-)+$");
+		return this.optional(element) || re.test(value);
+	},
+	'Please enter a valid name.'
+);
+
+$.validator.addMethod(
+	'regexSurame',
+	function(value, element, regexp) {
+		var check = false;
+		var re = new RegExp("^[a-zA-Z]'?([a-zA-Z]|\.| |-)+$");
+		return this.optional(element) || re.test(value);
+	},
+	'Please enter a valid last name.'
 );
