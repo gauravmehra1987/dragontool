@@ -287,7 +287,7 @@ grunt.config.merge( {
 				'<%= project.paths.js %>/src/core.UI.js',
 				'<%= project.paths.js %>/src/core.Social.js',
 				'<%= project.paths.js %>/src/core.Responsive.js',
-				// '<%= project.paths.js %>/src/core.IntroAnimations.js',
+				'<%= project.paths.js %>/src/core.IntroAnimations.js',
 				'<%= project.paths.js %>/src/core.Init.js',
 				'<%= project.paths.js %>/src/core.IE.js',
 

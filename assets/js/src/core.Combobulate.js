@@ -20,7 +20,7 @@ function Combobulate() {
 		$button.css('pointer-events', 'none');
 		//
 		// Animate the combobulate button
-		TweenLite.from($( '#start .button-inner' ), 0.5, {
+		TweenMax.from($( '#start .button-inner' ), 0.5, {
 			//
 			// Roatate all the way round
 			rotation: -360,
@@ -33,16 +33,21 @@ function Combobulate() {
 				//
 				// And allow the user to click the button again
 				$button.css('pointer-events', 'auto');
+				//
+				setTimeout( function() {
+					$('#tablet-toggle').click();
+					$( '.layout > .column.left' ).removeClass( 'open' );
+				}, 600);
+
+
 			}
 		});
 		//
 		// Scroll to top of page
-		var scrollToTop = function() {
+		function scrollToTop() {
 			//
-			$('html, body').animate( {
-				//
-				scrollTop: 0
-				//
+			$('html, body').animate({
+			    scrollTop: 0
 			}, 600);
 			//
 			return false;

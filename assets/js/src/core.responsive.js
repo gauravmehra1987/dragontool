@@ -14,8 +14,9 @@ function Responsive() {
 	var handleMobile = function( mediaQuery ) {
 
 		this.on = function() {
-
-			console.log( 'Responsive: mobile mode on' );
+			//
+			// Add mobile class to body
+			$( 'body' ).addClass('mobile');
 
 			// Show / hide controls on tap
 
@@ -56,7 +57,8 @@ function Responsive() {
 
 		this.off = function() {
 
-			console.log( 'Responsive: mobile mode off' );
+			// Remove mobile class from body
+			$( 'body' ).removeClass('mobile');
 
 			// Remove all appended classes and inline CSS
 
@@ -72,8 +74,9 @@ function Responsive() {
 	var handleTablet = function( mediaQuery ) {
 
 		this.on = function() {
-
-			console.log( 'Responsive: tablet mode on' );
+			//
+			// Add tablet class to body
+			$( 'body' ).addClass('tablet');
 
 			// Handle toggle arrow
 
@@ -118,8 +121,9 @@ function Responsive() {
 		};
 
 		this.off = function() {
-
-			console.log( 'Responsive: tablet mode off' );
+			//
+			// Remove tablet class from body
+			$( 'body' ).removeClass('tablet');
 
 			// Unbind events and inline CSS
 
@@ -137,9 +141,17 @@ function Responsive() {
 
 	var handleDesktop = function( mediaQuery ) {
 
-		this.on = function() { console.log( 'desktop on' ); };
+		this.on = function() {
+			//
+			// Add desktop class to body
+			$( 'body' ).addClass('desktop');
+		};
 
-		this.off = function() { console.log( 'desktop off' ); };
+		this.off = function() {
+			//
+			// Remove desktop class from body
+			$( 'body' ).removeClass('desktop');
+		};
 
 		( mediaQuery.matches ) ? this.on() : this.off();
 
