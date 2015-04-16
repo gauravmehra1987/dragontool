@@ -29,9 +29,9 @@ var postcodeTimer;
 // Creating a form object with selectors for form fields
 var form = {
 	addresses:			'#addresses',
-	address1:			'#address1',
-	address2:			'#address2',
-	address3:			'#address3',
+	address1:			'#address_1',
+	address2:			'#address_2',
+	address3:			'#address_3',
 	postcode:			'#postcode',
 	addressChooser:		'#address-chooser',
 	dealerChooser:		'#dealer-chooser',

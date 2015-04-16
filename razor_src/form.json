@@ -15,9 +15,9 @@
 		"email":		"@Html.TextBoxFor(model => model.Email, new { @type = \"email\", @id = \"email\", Name = \"email\", @placeholder = \"E-mail address\" })",
 		"tel":			{
 
-			"home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { @type = \"tel\", @id = \"telhome\", Name = \"telhome\", @placeholder = \"Home telephone\" })",
-			"work":		"@Html.TextBoxFor(model => model.TelephoneWork, new { @type = \"tel\", @id = \"telwork\", Name = \"telwork\", @placeholder = \"Work telephone\" })",
-			"mobile":	"@Html.TextBoxFor(model => model.TelephoneMobile, new { @type = \"tel\", @id = \"telmobile\", Name = \"telmobile\", @placeholder = \"Mobile telephone\" })"
+			"home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { @type = \"tel\", @id = \"tel_home\", Name = \"tel_home\", @placeholder = \"Home telephone\" })",
+			"work":		"@Html.TextBoxFor(model => model.TelephoneWork, new { @type = \"tel\", @id = \"tel_work\", Name = \"tel_work\", @placeholder = \"Work telephone\" })",
+			"mobile":	"@Html.TextBoxFor(model => model.TelephoneMobile, new { @type = \"tel\", @id = \"tel_mobile\", Name = \"tel_mobile\", @placeholder = \"Mobile telephone\" })"
 
 		},
 		"address": {
@@ -25,9 +25,9 @@
 			"home":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address_type_home\", @Name = \"address_type\", @value = \"home\", @checked = \"checked\" })",
 			"work":			"@Html.TextBoxFor(model => model.AddressType, new { @type = \"radio\", @id = \"address_type_work\", @Name = \"address_type\", @value = \"home\" })",
 			"postcode":		"@Html.TextBoxFor(model => model.AddressPostcode, new { type = \"text\", id = \"postcode\", Name = \"postcode\", placeholder = \"Postcode\" })",
-			"address1":		"@Html.TextBoxFor(model => model.AddressLine1, new { @type = \"text\", @id = \"address1\", @Name = \"address1\", @placeholder = \"Address line 1\", @disabled = \"disabled\" })",
-			"address2":		"@Html.TextBoxFor(model => model.AddressLine2, new { @type = \"text\", @id = \"address2\", @Name = \"address2\", @placeholder = \"Address line 2\", @disabled = \"disabled\" })",
-			"address3":		"@Html.TextBoxFor(model => model.AddressLine3, new { @type = \"text\", @id = \"address3\", @Name = \"address3\", @placeholder = \"Address line 3\", @disabled = \"disabled\" })"
+			"address1":		"@Html.TextBoxFor(model => model.AddressLine1, new { @type = \"text\", @id = \"address_1\", @Name = \"address_1\", @placeholder = \"Address line 1\", @disabled = \"disabled\" })",
+			"address2":		"@Html.TextBoxFor(model => model.AddressLine2, new { @type = \"text\", @id = \"address_2\", @Name = \"address_2\", @placeholder = \"Address line 2\", @disabled = \"disabled\" })",
+			"address3":		"@Html.TextBoxFor(model => model.AddressLine3, new { @type = \"text\", @id = \"address_3\", @Name = \"address_3\", @placeholder = \"Address line 3\", @disabled = \"disabled\" })"
 
 		},
 		

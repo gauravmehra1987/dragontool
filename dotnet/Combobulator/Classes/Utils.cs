@@ -14,6 +14,7 @@ using Combobulator.Common.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using log4net;
+using Mandrill;
 
 namespace Combobulator.Classes
 {
@@ -79,9 +80,17 @@ namespace Combobulator.Classes
                 StreamReader responseStream = new StreamReader(response.GetResponseStream());
 
                 string line = responseStream.ReadLine();
-                var obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
-                if (obj.Error != null)
+
+                dynamic obj = JsonConvert.DeserializeObject(line);
+                if (obj["Error"] != null)
                 {
+                    var error = obj["Error"];
+                    var responseCode = (Common.Enums.eMasterResponseCode) error;
+                    var type = typeof (Common.Enums.eMasterResponseCode);
+                    var member = type.GetMember(responseCode.ToString());
+                    var attributes = member[0].GetCustomAttributes(typeof (DescriptionAttribute), false);
+                    var description = ((DescriptionAttribute) attributes[0]).Description;
+
                     Log.Error("GetCustomers Error - " + obj.Error);
                     return null;
                 }

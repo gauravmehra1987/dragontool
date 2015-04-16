@@ -77,31 +77,35 @@ namespace Combobulator.Controllers
             }
             try
             {
+                var isPhone = viewModel.info.optout_phone != null ? true : false;
+                var isPost = viewModel.info.optout_post == null;
+
                 var customer = new Customer
                 {
-                    AddressLine1 = viewModel.info.address1,
-                    AddressLine2 = viewModel.info.address2,
+                    AddressLine1 = viewModel.info.address_1,
+                    AddressLine2 = viewModel.info.address_2,
                     AddressPostcode = viewModel.info.postcode,
                     Dealer = viewModel.info.dealer,
                     Email = viewModel.info.email,
                     FirstName = viewModel.info.name,
                     LastName = viewModel.info.surname,
                     Title = viewModel.info.title,
-                    TelephoneMobile = viewModel.info.telmobile,
-                    TelephoneHome = viewModel.info.telhome,
-                    TelephoneWork = viewModel.info.telwork,
+                    TelephoneMobile = viewModel.info.tel_mobile,
+                    TelephoneHome = viewModel.info.tel_home,
+                    TelephoneWork = viewModel.info.tel_work,
                     IsFinance = viewModel.info.finance,
                     AddressType = viewModel.info.address_type_work ? "work" : "home",
-                    IsPhone = !viewModel.info.optoutphone,
-                    IsPost = !viewModel.info.optoutpost,
+                    IsPhone = isPhone,
+                    IsPost = isPost,
                     UserId = viewModel.info.userid,
-
+                    
                     Selections = new Selections
                     {
-                        Capacity = viewModel.input.seats.Split(',').CountCharacterFrequency(0).ToString(),
+                        //Capacity = viewModel.input.seats.Split(',').CountCharacterFrequency(0).ToString(),
                         Luggage = viewModel.input.luggage,
-                        PriceRange = viewModel.input.price.ToString(),
-                        Performance = viewModel.input.speed,
+                        PriceRange = "100",
+                        //PriceRange = viewModel.input.price.ToString(),
+                        //Performance = viewModel.input.speed,
                         Use = viewModel.input.lifestyle,
                         Economy = viewModel.input.mpg.ToString(),
                         Options = new Options
@@ -112,7 +116,6 @@ namespace Combobulator.Controllers
                             TP = viewModel.input.options.tp.ToString()
                         }
                     }
-
                 };
                 var carModel = viewModel.car;
                 var template = Common.Config._emailCustomerResultsTemplate;

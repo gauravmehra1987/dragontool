@@ -75,8 +75,10 @@
     <Compile Include="Helpers\SelectionsDescriptionHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\NameValidatorAttribute.cs" />
+    <Compile Include="Validators\PhoneValidatorAttribute.cs" />
     <Compile Include="Validators\PostcodeValidatorAttribute.cs" />
-    <Compile Include="Validators\ValidateEmailAttribute.cs" />
+    <Compile Include="Validators\EmailValidatorAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

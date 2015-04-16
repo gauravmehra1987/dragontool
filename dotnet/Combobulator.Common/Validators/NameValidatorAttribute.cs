@@ -3,11 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace Combobulator.Common.Validators
 {
-    public class PostcodeValidatorAttribute : ValidationAttribute
+    public class NameValidatorAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
-            return value != null && Regex.IsMatch(value.ToString(), Config.PostcodeExpression);
+            return value != null && Regex.IsMatch(value.ToString(), Config.NameExpression);
         }
     }
 }
