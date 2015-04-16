@@ -75,7 +75,6 @@ namespace Combobulator.Controllers
                 var modelErrors = ModelState.AllErrors();
                 return Json(modelErrors);
             }
-
             try
             {
                 var customer = new Customer
@@ -116,19 +115,15 @@ namespace Combobulator.Controllers
 
                 };
                 var carModel = viewModel.car;
-                /*
-                    var template = Common.Config._emailCustomerResultsTemplate;
-                    var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
-                    var dataSent = command.Execute();
-                    */
-                var dataSent = true;
+                var template = Common.Config._emailCustomerResultsTemplate;
+                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
+                var dataSent = command.Execute();
                 if (!dataSent)
                 {
                     Response.StatusCode = 500;
                     Response.StatusDescription = "error";
                     return Json("error");
                 }
-
                 Response.StatusCode = 201;
                 Response.StatusDescription = "success";
                 return Json("success");

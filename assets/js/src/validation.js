@@ -56,9 +56,6 @@ $.validator.setDefaults( {
 				contentType: 'application/json',
 				data: json,
 				headers: { "__RequestVerificationToken": token },
-				/*
-				dataType: 'json',
-				*/
 				complete: function() {
 
 					$( form ).toggleClass( 'busy' );
@@ -66,8 +63,14 @@ $.validator.setDefaults( {
 				},
 				success: function( data ) { $.publish( 'form-ajax-results', data ); },
 				error: function (request, error) {
-					alert(error);
-					//var response = JSON.parse(error.responseText);
+					var response = JSON.parse(request.responseText);
+					for (var i = 0; i < response.length; i++) {
+						var error = response[i];
+						var fieldKey = error.Key;
+						var message = error.Message;
+						// apply custom logic with field keys and messages
+						alert(fieldKey + ': ' + message);
+					}
 				},
 				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
 

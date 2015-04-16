@@ -158,7 +158,7 @@
 							<!-- build:template
 							<%= form.field.address.home %>
 							/build -->
-							<label for="address-type-home">Home</label>
+							<label for="address_type_home">Home</label>
 
 
 						</div>
@@ -170,7 +170,7 @@
 							<!-- build:template
 							<%= form.field.address.work %>
 							/build -->
-							<label for="address-type-work">Work</label>
+							<label for="address_type_work">Work</label>
 
 
 						</div>				
@@ -316,7 +316,7 @@
 					<!-- build:template
 					<%= form.field.optout.phone %>
 					/build -->
-					<label for="optout-phone">by phone</label>				
+					<label for="optout_phone">by phone</label>				
 
 
 				</div>
@@ -327,7 +327,7 @@
 					<!-- build:template
 					<%= form.field.optout.post %>
 					/build -->
-					<label for="optout-post">by post</label>
+					<label for="optout_post">by post</label>
 					
 
 					

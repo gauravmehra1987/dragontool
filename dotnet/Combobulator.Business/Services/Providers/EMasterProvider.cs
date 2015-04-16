@@ -29,9 +29,6 @@ namespace Combobulator.Business.Services.Providers
                 var isPhone = customer.IsPhone;
                 var isPost = customer.IsPhone;
 
-                var usegae = SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use");
-
-
                 var viewModel = new ResultViewModel
                 {
                     id = customer.UserId ?? "",

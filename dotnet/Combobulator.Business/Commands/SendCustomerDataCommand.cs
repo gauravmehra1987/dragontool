@@ -91,16 +91,20 @@ namespace Combobulator.Business.Commands
 
             if (!string.IsNullOrEmpty(_customer.UserId))
             {
-                // Send to eMaster API
-                IProvider eMasterProvider = new EMasterProvider();
-                Func<Customer, bool> emfunc = eMasterProvider.SendData;
-                var emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, TimeSpan.FromSeconds(2));
+                var emResponse = false;
+                if (_customer.UserId != "0")
+                {
+                    // Send to eMaster API
+                    IProvider eMasterProvider = new EMasterProvider();
+                    Func<Customer, bool> emfunc = eMasterProvider.SendData;
+                    emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, TimeSpan.FromSeconds(2));
+                }
 
                 IProvider grassRootsProvider = new GrassRootsProvider();
                 Func<Customer, bool> grgfunc = grassRootsProvider.SendData;
                 var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, TimeSpan.FromSeconds(2));
 
-                if ((emResponse) && (grgResponse))
+                if (grgResponse)
                 {
                     isComplete = true;
                 }
@@ -110,24 +114,24 @@ namespace Combobulator.Business.Commands
                 }
 
                 // If send api fails then send to fallback email
-                if (!emResponse)
-                {
-                    var readFile = string.Empty;
-                    var strBody = string.Empty;
-                    var subject = Config._emailMeResultsSubject;
-                    var template = Config._emailMeResultsTemplate;
-                    using (var reader = new StreamReader(_templatePath))
-                    {
-                        readFile = reader.ReadToEnd();
-                    }
-                    strBody = readFile;
-                    strBody = strBody.Replace("[[Title]]", _customer.Title)
-                        .Replace("[[Firstname]]", _customer.FirstName)
-                        .Replace("[[Lastname]]", _customer.LastName)
-                        .Replace("[[CarName]]", car.Name);
+                if (emResponse)
+                    return isComplete;
 
-                    MandrillHelper.SendEmail(_customer.Email, subject, strBody);
+                var readFile = string.Empty;
+                var strBody = string.Empty;
+                var subject = Config._emailMeResultsSubject;
+                var template = Config._emailMeResultsTemplate;
+                using (var reader = new StreamReader(_templatePath))
+                {
+                    readFile = reader.ReadToEnd();
                 }
+                strBody = readFile;
+                strBody = strBody.Replace("[[Title]]", _customer.Title)
+                    .Replace("[[Firstname]]", _customer.FirstName)
+                    .Replace("[[Lastname]]", _customer.LastName)
+                    .Replace("[[CarName]]", car.Name);
+
+                MandrillHelper.SendEmail(_customer.Email, subject, strBody);
             }
             else
             {

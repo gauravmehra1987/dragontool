@@ -15,7 +15,7 @@ namespace Combobulator.Helpers
 
             foreach (var erroneousField in erroneousFields)
             {
-                var fieldKey = erroneousField.Key.Replace("input.","");
+                var fieldKey = erroneousField.Key.Replace("info.","");
                 var fieldErrors = erroneousField.Errors
                                    .Select(error => new Error(fieldKey, error.ErrorMessage));
                 result.AddRange(fieldErrors);
