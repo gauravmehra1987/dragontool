@@ -261,19 +261,9 @@ function UI() {
 				'name':		'Alpha Centura',
 				'cost':		'n/a',
 				'terms':	'A ro-ro-ro-rocket car!',
-				'alt_1': 	'MINI Roadster JCW',
-				'alt_2': 	'MINI Convertible JCW',
-				'alt_3': 	'MINI Paceman JCW ALL4'
-			},
-			toy: {
-				'code':		'TOY',
-				'color': 	'Toy brown',
-				'name':		'Toy Car',
-				'cost':		'n/a',
-				'terms': 	'Just a silly toy...',
-				'alt_1': 	'MINI Roadster JCW',
-				'alt_2': 	'MINI Convertible JCW',
-				'alt_3': 	'MINI Paceman JCW ALL4'
+				'alt_1': 	'MINI JOHN COOPER WORKS COUPE',
+				'alt_2': 	'MINI JOHN COOPER WORKS CONVERTIBLE',
+				'alt_3': 	'MINI JOHN COOPER WORKS ALL4 PACEMAN'
 			}
 		};
 
@@ -282,11 +272,7 @@ function UI() {
 		//
 		// Based on the trigger passed in, render appropriate data from the eggsData above
 		switch( trigger ) {
-			case 'toy': this.render( eggsData.toy );
-			break;
 			case 'rocket': this.render( eggsData.rocket );
-			break;
-			case 'creature':
 			break;
 		}
 
