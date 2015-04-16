@@ -129,13 +129,13 @@ function FormLogic() {
 
 		var postcode = $( '#postcode_search' ).val();
 
-		// Enable fields
-
-		$( '.disabled' ).removeClass( 'disabled' ).find( '[disabled]' ).prop( 'disabled', false );
-
 		// Get home addresses
 
 		formLogic.getAddresses( postcode ).then( function( addresses ) {
+
+			// Enable fields
+
+			$( '.disabled' ).removeClass( 'disabled' ).find( '[disabled]' ).prop( 'disabled', false );
 
 			// Store addresses
 
