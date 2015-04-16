@@ -251,7 +251,7 @@ function UI() {
 	this.eggs = function( trigger, data ) {
 		//
 		// Eggs are the wild cards that a user can select, which will result in made up cars
-
+		//
 		// Create an object containing data for the eggs
 		var eggsData = {
 

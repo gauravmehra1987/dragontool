@@ -102,6 +102,7 @@ function Combobulate() {
 			//
 			// Get the car results using the dashboardLogic.getCars function and passing in the above search structure from user input
 			var results	= dashboardLogic.getCars( search );
+			console.log(results);
 			//
 			// Get an array of all the cars data from the results object
 			var cars = results.data;
