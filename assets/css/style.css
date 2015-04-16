@@ -4621,12 +4621,12 @@ html body {
   display: block;
   width: 100%;
 }
-.control.lifestyle .window .items-wrapper .item.mountaineer {
+.control.lifestyle .window .items-wrapper .item.countrysider {
   height: 71.05263158%;
   background-size: contain;
   width: 78.94736842%;
-  background-image: url(../sprites/svg/lifestyle-item-mountaineer.svg );
-  background-image: url( ../sprites/lifestyle-item-mountaineer.png )\9;
+  background-image: url(../sprites/svg/lifestyle-item-countrysider.svg );
+  background-image: url( ../sprites/lifestyle-item-countrysider.png )\9;
   display: block;
   width: 100%;
 }
