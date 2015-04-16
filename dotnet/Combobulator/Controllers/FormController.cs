@@ -118,8 +118,9 @@ namespace Combobulator.Controllers
                     }
                 };
                 var carModel = viewModel.car;
-                var template = Common.Config._emailCustomerResultsTemplate;
-                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
+                var template = Common.Config._emailMeResultsTemplate;
+                var customerTemplate = Common.Config._emailCustomerResultsTemplate;
+                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template), Server.MapPath(customerTemplate));
                 var dataSent = command.Execute();
                 if (!dataSent)
                 {

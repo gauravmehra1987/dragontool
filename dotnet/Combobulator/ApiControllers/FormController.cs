@@ -57,7 +57,8 @@ namespace Combobulator.ApiControllers
                 };
                 var carModel = valueMap["car"];
                 var template = string.Empty;
-                var command = new SendCustomerDataCommand(customer, carModel, template);
+                var customerTemplate = string.Empty;
+                var command = new SendCustomerDataCommand(customer, carModel, template, customerTemplate);
                 var result = command.Execute();
                 return Request.CreateResponse(HttpStatusCode.OK, !result ? "error" : "success");
             }

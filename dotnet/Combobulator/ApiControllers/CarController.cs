@@ -23,6 +23,7 @@ namespace Combobulator.ApiControllers
         /// </summary>
         /// <returns>A list of cars in JSON format.</returns>
         [DeflateCompression]
+
         [System.Web.Mvc.HttpGet]
         public HttpResponseMessage GetCars()
         {
@@ -52,6 +53,21 @@ namespace Combobulator.ApiControllers
                         }
                     }).ToList();
 
+                //Add Rocket Car
+                viewModel.Add(new CarViewModel
+                {
+                    Engine = "",
+                    Capacity = "",
+                    Luggage = "",
+                    Lifestyle = "",
+                    Alt_1 = "MINI JOHN COOPER WORKS COUPE",
+                    Alt_2 = "MINI JOHN COOPER WORKS CONVERTIBLE",
+                    Alt_3 = "MINI JOHN COOPER WORKS ALL4 PACEMAN",
+                    Code = "RKT",
+                    Color = "Rocket gold",
+                    Name = "ALPHA CENTURA"
+                });
+
                 var settings = new JsonSerializerSettings {ContractResolver = new LowercaseContractResolver()};
                 var json = JsonConvert.SerializeObject(viewModel, Formatting.Indented, settings);
 
@@ -66,6 +82,7 @@ namespace Combobulator.ApiControllers
                     MaxAge = new TimeSpan(_apiCacheDurationHours, 0, 0),
                     Public = true
                 };
+
                 return response;
             }
             catch (Exception ex)
