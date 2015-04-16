@@ -166,6 +166,8 @@ function DashboardLogic() {
 		console.log(name);
 		//
 		// Queries the database to get data about that car
+
+		console.log(db( { name: name } ).first());
 		return db( { name: name } ).first();
 	}
 
