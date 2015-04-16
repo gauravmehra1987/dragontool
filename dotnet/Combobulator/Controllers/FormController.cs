@@ -77,7 +77,7 @@ namespace Combobulator.Controllers
             }
             try
             {
-                var isPhone = viewModel.info.optout_phone != null ? true : false;
+                var isPhone = viewModel.info.optout_phone == null;
                 var isPost = viewModel.info.optout_post == null;
 
                 var customer = new Customer
@@ -98,14 +98,12 @@ namespace Combobulator.Controllers
                     IsPhone = isPhone,
                     IsPost = isPost,
                     UserId = viewModel.info.userid,
-                    
                     Selections = new Selections
                     {
-                        //Capacity = viewModel.input.seats.Split(',').CountCharacterFrequency(0).ToString(),
+                        Capacity = viewModel.input.seats.Split(',').CountCharacterFrequency(0).ToString(),
                         Luggage = viewModel.input.luggage,
-                        PriceRange = "100",
-                        //PriceRange = viewModel.input.price.ToString(),
-                        //Performance = viewModel.input.speed,
+                        PriceRange = viewModel.input.price.ToString(),
+                        Performance = viewModel.input.speed,
                         Use = viewModel.input.lifestyle,
                         Economy = viewModel.input.mpg.ToString(),
                         Options = new Options

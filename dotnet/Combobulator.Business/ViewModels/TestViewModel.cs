@@ -58,7 +58,7 @@ namespace Combobulator.Business.ViewModels
         public int mpg { get; set; }
         public string lifestyle { get; set; }
         public string luggage { get; set; }
-        //public int price { get; set; }
+        public int price { get; set; }
         public OptionStuff options { get; set; }
     }
 

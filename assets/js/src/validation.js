@@ -48,6 +48,7 @@ $.validator.setDefaults( {
 				};
 
 			var json = JSON.stringify(formData);
+			alert(json);
 
 			var token = $('input[name="__RequestVerificationToken"]').val();
 			$.ajax( {
@@ -69,6 +70,9 @@ $.validator.setDefaults( {
 						var fieldKey = error.Key;
 						var message = error.Message;
 						// apply custom logic with field keys and messages
+						alert(fieldKey);
+						/*
+						
 						$('#' + fieldKey).each(function() {
 							$(this).addAttr('aria-required', 'true');
 
@@ -78,6 +82,7 @@ $.validator.setDefaults( {
 								$(this).addClass('error');
 							}
 						});
+						*/
 					}
 				},
 				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
