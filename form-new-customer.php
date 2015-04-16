@@ -86,8 +86,6 @@
 
 			</div>
 
-			<p class="notice">Please tick the relevant box if you'd prefer NOT to be contacted</p>
-
 			<div class="form-control append mail full-width">
 
 				<!-- build:template
@@ -315,8 +313,8 @@
 					<!-- build:remove --><input id="optout-phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
 					<!-- build:template
 					<%= form.field.optout.phone %>
-					/build -->			
-					<label for="optout_phone">by phone</label>				
+					/build -->
+					<label for="optout_phone">by phone</label>
 
 
 				</div>
