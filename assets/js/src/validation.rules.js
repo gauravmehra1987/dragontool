@@ -10,8 +10,6 @@ $.validator.setDefaults( {
 		'address-2':		{ required: true },
 		'address-4':		{ required: true },
 		'tel-home':			{ required: true },
-		'tel-work':			{ required: true },
-		'tel-mobile':		{ required: true },
 		'dealer':			{ required: true },
 		'title':			{ required: true },
 		'postcode-search':	{
@@ -39,8 +37,6 @@ $.validator.setDefaults( {
 		'address-2':		{ required: 'Address line 2 is required.' },
 		'address-4':		{ required: 'Address line 4 is required.' },
 		'tel-home':			{ required: 'Home telephone is required.' },
-		'tel-work':			{ required: 'Work telephone is required.' },
-		'tel-mobile':		{ required: 'Mobile telephone is required.' },
 		'dealer': 			{ required: 'Please choose a dealer from the list.' },
 		'title': 			{ required: 'Title is required.' },
 		'postcode-search': 	{ required: 'Postcode is required.' },
