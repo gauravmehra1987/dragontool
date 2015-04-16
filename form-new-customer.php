@@ -24,7 +24,8 @@
 
 				<ul class="actions">
 
-					<li id="results_back"><a href="./results">Go back</a></li>
+					<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
+					<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
 
 				</ul>
 

@@ -215,11 +215,12 @@
 
 .actions {
 
-	.list-inline;
+	padding: 0px;
 
-	#results_back {
+	#results_back,
+	#results_recombobulate {
 
-		float: left;
+		display: block;
 
 		a {
 
@@ -242,7 +243,7 @@
 
 	}
 
-	#results-close {
+	#results_close {
 
 		float: right;
 
@@ -339,7 +340,6 @@
 		color: @grayDark;
 		font-size: @fontSizeSmaller;
 		line-height: @fontSize;
-		margin: 0;
 
 		& + &,
 		& + .form-control { margin-top: @margin; }
@@ -984,3 +984,14 @@ html > body #page-form.layout-wrapper {
 	}
 
 }
+
+
+
+// Error page
+
+#heading_error {
+	color: white;
+	padding: 20px;
+}
+
+
