@@ -18,7 +18,7 @@
 			
 			<ul class="actions">
 			
-				<li id="results_back"><a href="./">Go back</a></li>
+				<li id="results_back"><a href="./">Recombobulate</a></li>
 
 			</ul>
 			

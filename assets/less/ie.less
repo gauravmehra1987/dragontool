@@ -3,6 +3,24 @@
 @import 'mixins';
 
 
+html.ie > body {
+
+	.roller .list .item,
+	.roller .list-static .item {
+
+		height: 80px;
+
+	}
+
+	.roller .list .item.bumper,
+	.roller .list-static .item.bumper {
+
+		height: 40px;
+
+	}
+}
+
+
 html.ie8 > body {
 
 	.control-inner {
@@ -76,7 +94,8 @@ html.ie.oldie > body {
 
 			.backline {
 
-				background-image: none;
+				background-image: none!important;
+
 			}
 
 		}
