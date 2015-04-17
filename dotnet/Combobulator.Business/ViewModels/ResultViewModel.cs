@@ -8,10 +8,10 @@
         public string surname { get; set; }
         public string email { get; set; }
         public string telephone { get; set; }
-        /*
+
         public string request_callback { get; set; }
         public string request_early_redemption { get; set; }
-        */
+
         public string finance_interest { get; set; }
         public string phone_communication { get; set; }
         public string post_communication { get; set; }

@@ -168,7 +168,7 @@ namespace Combobulator.ApiControllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, string.Format("Postcode must not be null."));
 
             var regex = new Regex(Common.Config.PostcodeExpression);
-            var match = regex.Match(postcode);
+            var match = regex.Match(postcode.ToUpper());
             if (match.Success)
             {
                 var postcodeInfo = postcode.Replace(" ", "");

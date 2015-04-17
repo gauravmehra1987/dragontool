@@ -23,11 +23,14 @@ namespace Combobulator.Controllers
             {
                 case "csv":
                     var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v32_FK.csv");
+
+                    var encoding = GetEncoding(fileName);
+
                     using (var fileReader = System.IO.File.OpenText(fileName))
                     using (var csv = new CsvReader(fileReader))
                     {
                         //var cultureInfo = CultureInfo.CurrentCulture;
-                        csv.Configuration.Encoding = Encoding.UTF32;
+                        csv.Configuration.Encoding = Encoding.UTF8;
                         csv.Configuration.IgnoreReadingExceptions = true;
                         csv.Configuration.ReadingExceptionCallback = ReadingExceptionCallback;
                         csv.Configuration.WillThrowOnMissingField = false;
@@ -148,6 +151,31 @@ namespace Combobulator.Controllers
 
                     break;
             }
+        }
+
+        protected System.Text.Encoding GetEncoding(string path)
+        {
+            System.Text.Encoding[] encodings = { System.Text.Encoding.UTF8 };
+            foreach (var encoding in encodings)
+            {
+                var encPreamble = encoding.GetPreamble();
+                var filPreamble = new byte[encPreamble.Length];
+                using (var f = new System.IO.FileStream(path, System.IO.FileMode.Open))
+                {
+                    var r = f.Read(filPreamble, 0, filPreamble.Length);
+                }
+                var b = true;
+                for (int i = 0; i < encPreamble.Length; i++)
+                {
+                    if (encPreamble[i] != filPreamble[i])
+                    {
+                        b = false;
+                        break;
+                    }
+                }
+                if (b) return encoding;
+            }
+            return System.Text.Encoding.GetEncoding(1252);
         }
 
         /// <summary>

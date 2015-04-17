@@ -19,6 +19,7 @@ namespace Combobulator.Helpers
             actContext.Response.Content.Headers.Remove("Content-Type");
             actContext.Response.Content.Headers.Add("Content-encoding", "deflate");
             actContext.Response.Content.Headers.Add("Content-Type", "application/json");
+            actContext.Response.Content.Headers.ContentType.CharSet = "utf-8";
             base.OnActionExecuted(actContext);
         }
     }

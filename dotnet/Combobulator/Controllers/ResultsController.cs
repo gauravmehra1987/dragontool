@@ -45,7 +45,7 @@ namespace Combobulator.Controllers
         /// <returns>Renders a partial view on screen.</returns>
         [ChildActionOnly]
         [HttpGet]
-        public ActionResult ResultDetail(string modelCode)
+        public ActionResult ResultDetail(string modelCode, string userId)
         {
             if (String.IsNullOrEmpty(modelCode))
             {
@@ -98,6 +98,7 @@ namespace Combobulator.Controllers
                         APR = dbFinance.APR
                     }
                 };
+                ViewBag.UserId = userId;
                 return PartialView("_ResultDetail", viewModel);
             }
             catch (Exception ex)

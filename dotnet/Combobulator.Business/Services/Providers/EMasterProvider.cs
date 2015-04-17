@@ -38,6 +38,9 @@ namespace Combobulator.Business.Services.Providers
                     email = customer.Email ?? "",
                     telephone = customer.TelephoneHome ?? "",
 
+                    request_callback = "false",
+                    request_early_redemption = "false",
+
                     finance_interest = isFinance ? "true" : "false",
                     phone_communication = isPhone ? "true" : "false",
                     post_communication = isPost ? "true" : "false",

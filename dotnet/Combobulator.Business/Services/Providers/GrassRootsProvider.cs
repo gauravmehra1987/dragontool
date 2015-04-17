@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Web;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common;
@@ -66,6 +67,15 @@ namespace Combobulator.Business.Services.Providers
 
                 var json = JsonConvert.SerializeObject(result);
 
+                /*
+                var url =
+                    string.Format(
+                        Config.GrassRootsHostUrl +
+                        "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum,
+                        Config.SystemId, action, customer.UserId, Config.Random, json);
+                */
+
+
                 var url = new Uri(Config.GrassRootsHostUrl)
                     .AddParameter("application", Config.GrassRootsAppName)
                     .AddParameter("form", "fqr")
@@ -89,10 +99,14 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("telephonemarketing", "0")
                     .AddParameter("dealer", "15106")
                     .AddParameter("model", customer.Car.Code)
-                    .AddParameter("finance", "Y")
-                    .AddParameter("comments", "## " + json + " ##");
+                    .AddParameter("finance", "Y");
 
-                var response = HttpWebRequestHelper.MakeRequest(url.ToString());
+                var requestUrl =
+                    string.Format(
+                        url.ToString() +
+                        "&comments=##{0}##", json);
+
+                var response = HttpWebRequestHelper.MakeRequest(requestUrl.ToString());
                 var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                 dynamic obj = JsonConvert.DeserializeObject(data);

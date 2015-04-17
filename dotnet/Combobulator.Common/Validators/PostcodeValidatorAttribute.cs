@@ -7,7 +7,7 @@ namespace Combobulator.Common.Validators
     {
         public override bool IsValid(object value)
         {
-            return value != null && Regex.IsMatch(value.ToString(), Config.PostcodeExpression);
+            return value != null && Regex.IsMatch(value.ToString().ToUpper(), Config.PostcodeExpression);
         }
     }
 }

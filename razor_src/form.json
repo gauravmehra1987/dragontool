@@ -7,7 +7,7 @@
 
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".png\")",
 	"field": {
-		"user":		"@Html.HiddenFor(model => model.UserId, new {@id = \"uid\", @value = ViewBag.UserId})",
+		"user":		"@Html.HiddenFor(model => model.UserId, new {@id = \"userid\", @Name=\"userid\", @value = ViewBag.UserId})",
 
 		"title":		"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"), \"Title\", new { Name = \"title\" })",
 		"name":			"@Html.TextBoxFor(model => model.FirstName, new { @type = \"text\", @id = \"name\", Name = \"name\", @placeholder = \"First name\" })",

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Text;
 using System.Web;
 
 namespace Combobulator.Common.Extensions
@@ -15,9 +17,10 @@ namespace Combobulator.Common.Extensions
         public static Uri AddParameter(this Uri uri, string name, string value)
         {
             var ub = new UriBuilder(uri);
+            //NameValueCollection httpValueCollection = HttpUtility.ParseQueryString(uri.Query, Encoding.UTF8);
             var httpValueCollection = HttpUtility.ParseQueryString(uri.Query);
             httpValueCollection.Add(name, value);
-            ub.Query = httpValueCollection.ToString();
+            ub.Query = HttpUtility.UrlDecode(httpValueCollection.ToString());
             return ub.Uri;
         }
     }

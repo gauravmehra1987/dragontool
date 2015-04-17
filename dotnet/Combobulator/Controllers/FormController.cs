@@ -59,6 +59,10 @@ namespace Combobulator.Controllers
 
             ViewBag.UserId = userId;
             ViewBag.ModelCode = modelCode;
+            if (userId != "")
+            {
+                viewModel.UserId = Int32.Parse(userId);
+            }
 
             return View(viewModel);
         }

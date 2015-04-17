@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Web.Script.Serialization;
 using Combobulator.Data;
 using Combobulator.Helpers;
@@ -23,7 +24,6 @@ namespace Combobulator.ApiControllers
         /// </summary>
         /// <returns>A list of cars in JSON format.</returns>
         [DeflateCompression]
-
         [System.Web.Mvc.HttpGet]
         public HttpResponseMessage GetCars()
         {
@@ -60,7 +60,7 @@ namespace Combobulator.ApiControllers
                     Capacity = "",
                     Luggage = "",
                     Lifestyle = "",
-                    Alt_1 = "MINI JOHN COOPER WORKS COUPE",
+                    Alt_1 = "MINI JOHN COOPER WORKS COUPÉ",
                     Alt_2 = "MINI JOHN COOPER WORKS CONVERTIBLE",
                     Alt_3 = "MINI JOHN COOPER WORKS ALL4 PACEMAN",
                     Code = "RKT",
@@ -73,10 +73,20 @@ namespace Combobulator.ApiControllers
 
                 var sc = new StringContent(json);
                 sc.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                
                 response.Content = sc;
 
+                HttpResponseMessage response2 = new HttpResponseMessage()
+                {
+                    Content = new StringContent(
+                            json,
+                            Encoding.UTF8,
+                            "application/json"
+                        )
+                };
+
                 if (!_apiCacheEnabled)
-                    return response;
+                    return response2;
                 response.Headers.CacheControl = new CacheControlHeaderValue
                 {
                     MaxAge = new TimeSpan(_apiCacheDurationHours, 0, 0),
