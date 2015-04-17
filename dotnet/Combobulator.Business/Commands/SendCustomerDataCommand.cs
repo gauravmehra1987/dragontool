@@ -151,7 +151,7 @@ namespace Combobulator.Business.Commands
                     .Replace("[[Lastname]]", _customer.LastName)
                     .Replace("[[CarName]]", car.Name);
 
-                MandrillHelper.SendEmail(Config._emailAddressTo, subject2, template2);
+                MandrillHelper.SendEmail(Config._emailAddressTo, subject2, strBody2);
             }
             else
             {

@@ -69,16 +69,18 @@ $.validator.setDefaults( {
 						var fieldKey = error.Key;
 						var message = error.Message;
 						// apply custom logic with field keys and messages
-						var input = $('#' + fieldKey);
+						var input = $('#' + fieldKey).addClass('error');
+						input.attr('aria-required', 'true');
+						/*
 						var select = input.parent('.select');
 
-						input.addAttr('aria-required', 'true');
 
 						if (select) {
 							select.addClass('error');
 						} else if (input) {
 							$(this).addClass('error');
 						}
+						*/
 					}
 				},
 				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed

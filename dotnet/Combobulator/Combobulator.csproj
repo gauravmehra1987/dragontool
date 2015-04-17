@@ -329,8 +329,8 @@
     <Content Include="Assets\sprites\lifestyle-dial-shadow.png" />
     <Content Include="Assets\sprites\lifestyle-dial.png" />
     <Content Include="Assets\sprites\lifestyle-item-beach-bum.png" />
+    <Content Include="Assets\sprites\lifestyle-item-countrysider.png" />
     <Content Include="Assets\sprites\lifestyle-item-junglist.png" />
-    <Content Include="Assets\sprites\lifestyle-item-mountaineer.png" />
     <Content Include="Assets\sprites\lifestyle-item-urbanite.png" />
     <Content Include="Assets\sprites\lifestyle-label-window.png" />
     <Content Include="Assets\sprites\lifestyle-mask.png" />
@@ -391,8 +391,8 @@
     <Content Include="Assets\sprites\svg\lifestyle-dial-shadow.svg" />
     <Content Include="Assets\sprites\svg\lifestyle-dial.svg" />
     <Content Include="Assets\sprites\svg\lifestyle-item-beach-bum.svg" />
+    <Content Include="Assets\sprites\svg\lifestyle-item-countrysider.svg" />
     <Content Include="Assets\sprites\svg\lifestyle-item-junglist.svg" />
-    <Content Include="Assets\sprites\svg\lifestyle-item-mountaineer.svg" />
     <Content Include="Assets\sprites\svg\lifestyle-item-urbanite.svg" />
     <Content Include="Assets\sprites\svg\lifestyle-label-window.svg" />
     <Content Include="Assets\sprites\svg\lifestyle-mask.svg" />
