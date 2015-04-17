@@ -10,15 +10,13 @@
 	
 		<meta charset="utf-8" />
 
-		<!-- build:template
-		<title><%= global.title %></title>
-		/build -->
+		<title>@ViewBag.Title</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<!-- // To ensure assets are downloaded in parallel, always include external CSS before external JavaScript. -->
 
-		<!-- build:css Assets/css/style.css --><link href="assets/css/style.css" rel="stylesheet" /><!-- /build -->
+		<link rel="stylesheet" href="Assets/css/style.css">
 
 		<!-- // Note about the authors of the document -->
 
@@ -47,8 +45,8 @@
 		<meta name="twitter:image" content="" />
 		
 		<!--[if lt IE 10]>
-		<!-- build:css Assets/css/ie.css --><link href="assets/css/ie.css" rel="stylesheet" /><!-- /build -->
-		<!-- build:js Assets/js/ie-lib.js --><script src="assets/js/ie-lib.js"></script><!-- /build -->
+		<link rel="stylesheet" href="Assets/css/ie.css">
+		<script src="Assets/js/ie-lib.js"></script>
 		<![endif]-->
 
 	</head>

@@ -2,36 +2,28 @@
 @import 'colors';
 @import 'mixins';
 
-// IE specific fixes here
 
-html.ie > body {
+html.ie8 > body {
 
-	// Place your fixes here
+	.control-inner {
 
-	.roller .list .item.bumper {
+		margin: 20px auto 0!important;
+		position: static!important;
 
-		// height: 5px!important;
+	}
+
+	.control.mpg .arrow {
+
+		// visibility: hidden;
 
 	}
 
 }
 
 
-// IE 8 and below
+// IE 9 and below
 
 html.ie.oldie > body {
-
-	// Place your fixes here
-
-	// The align-middle mixin hacks...
-	#disabled,
-	.control.mpg .value,
-	.control-inner{
-
-		margin: 20px auto 0!important;
-		position: static!important;
-
-	}
 
 	#logo a { background-image: url( ../img/mini-logo-small.png ); }
 
@@ -40,7 +32,6 @@ html.ie.oldie > body {
 		#mpg_value {
 
 			background: @black;
-			padding-top: 100%;
 
 		}
 
@@ -78,7 +69,17 @@ html.ie.oldie > body {
 	#page-home .layout { 
 
 		&,
-		#dash { overflow: visible; }
+
+		#dash {
+
+			overflow: visible;
+
+			.backline {
+
+				background-image: none;
+			}
+
+		}
 
 	}
 
