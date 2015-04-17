@@ -213,7 +213,7 @@ function Dials() {
 				// So...
 				// If event is mousedown... Remove classes 'left' and 'right' from the arrows element, but then add the class of the e.target ID (either 'left' or 'right').
 				// If not a mousedown event (so when the user clicks away etc), remove classes 'left' and 'right' from the arrows element
-				( e.type === 'mousedown' || 'touchstart' ) ? $( this ).removeClass( 'right left' ).addClass( e.target.id ) : $( this ).removeClass( 'right left' );
+				( e.type === 'mousedown' || e.type === 'touchstart' ) ? $( this ).removeClass( 'right left' ).addClass( e.target.id ) : $( this ).removeClass( 'right left' );
 			} );
 			//
 			// On click of the right and left elements

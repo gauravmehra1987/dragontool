@@ -415,8 +415,6 @@ function DashboardLogic() {
 		// Converts the cars array to a JSON object
 		// Passes to TAFFY method which turns it into a database structure, saving the result as db
 		db = TAFFY( JSON.stringify( cars ) );
-
-		console.log(db);
 		//
 		// Make dashboardLogic.database equal to db
 		_this.database = db;

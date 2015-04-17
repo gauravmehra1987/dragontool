@@ -11,14 +11,14 @@
 	/build -->
 
 	<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
-
+	<img src="assets/img/skid-marks-faded.png" class="img-content skid" />
 	<figcaption>
 
 		<div class="car-layout top">
 			
 			<ul class="actions">
 			
-				<li id="results_back"><a href="./">Go back</a></li>
+				<li id="results_back"><a href="./">Recombobulate</a></li>
 
 			</ul>
 			

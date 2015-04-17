@@ -261,7 +261,7 @@ function UI() {
 				'name':		'Alpha Centura',
 				'cost':		'n/a',
 				'terms':	'A ro-ro-ro-rocket car!',
-				'alt_1': 	'MINI JOHN COOPER WORKS COUPE',
+				'alt_1': 	'MINI JOHN COOPER WORKS COUPÉ',
 				'alt_2': 	'MINI JOHN COOPER WORKS CONVERTIBLE',
 				'alt_3': 	'MINI JOHN COOPER WORKS ALL4 PACEMAN'
 			}

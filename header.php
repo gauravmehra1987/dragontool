@@ -46,7 +46,7 @@
 		<meta name="twitter:description" content="" />
 		<meta name="twitter:image" content="" />
 		
-		<!--[if lt IE 9]>
+		<!--[if lt IE 10]>
 		<!-- build:css Assets/css/ie.css --><link href="assets/css/ie.css" rel="stylesheet" /><!-- /build -->
 		<!-- build:js Assets/js/ie-lib.js --><script src="assets/js/ie-lib.js"></script><!-- /build -->
 		<![endif]-->
