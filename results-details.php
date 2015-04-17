@@ -11,7 +11,7 @@
 	/build -->
 
 	<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
-
+	<img src="assets/img/skid-marks-faded.png" class="img-content skid" />
 	<figcaption>
 
 		<div class="car-layout top">
