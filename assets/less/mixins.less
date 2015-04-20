@@ -269,7 +269,7 @@
 		border: 0;
 		border-radius: 0;
 		color: @textColor;
-  		line-height: 1.1;
+		line-height: 1.1;
 		display: block;
 		outline: 0 !important;
 		overflow: hidden;
@@ -281,12 +281,17 @@
 		max-height: 30px;
 
 		-ms-word-break: break-all;
-  		word-break: break-word;
-  		word-wrap: break-word;
-        white-space: normal;
-        text-overflow: ellipsis;
+		word-break: break-word;
+		word-wrap: break-word;
+		white-space: normal;
+		text-overflow: ellipsis;
 
 		&:focus { color: @textColor; }
+
+		// Hide arrow for IE10+
+		&::-ms-expand {
+			display: none;
+		}
 
 	}
 
