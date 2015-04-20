@@ -507,13 +507,15 @@
 
 			width: 100%;
 
+			// table-layout:fixed;
+
 			tbody {
 
 				display: block;
 				float: left;
 				margin-right: @margin;
 
-				width: ~'calc( ( 100% - 40px ) / 3 )';
+				width: 32%;
 
 				&:last-of-type { margin-right: 0; }
 
@@ -522,7 +524,7 @@
 					border-bottom: solid 1px @white;
 					display: block;
 					overflow: hidden;
-					padding: 5px 0;
+					width: 100%;
 
 					&:last-of-type { border: 0; }
 
@@ -533,7 +535,7 @@
 						font-family: @fontMini;
 						font-size: @fontSizeSmall;
 						line-height: 1;
-						padding: 0;
+						padding: 5px 0;
 
 						width: 50%;
 
