@@ -284,7 +284,7 @@ function FormLogic() {
 		var $thanks = $( '#thanks_left, #thanks_right' );
 		var $formContent = $( '.form-content' );
 
-		$thanks.hide();
+		// $thanks.hide();
 
 		$.subscribe( 'form-ajax-results', function( e, data ) {
 

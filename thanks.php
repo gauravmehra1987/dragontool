@@ -1,40 +1,74 @@
-<div id="thanks" class="panel panel-framed" data-panel-name="thanks">
+<?php require( 'header.php' ); ?>
 
-	<header>
+	<div id="page-form" class="layout-wrapper">
 
-		<p class="ministry">Ministry of Finance</p>
+		<?php require( 'top.php' ); ?>
 
-		<h3>Nice one.</h3>
-		
-		<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
+			<div class="layout auto-height">
 
-	</header>
 
-	<hr />
 
-	<h4 class="item switch-color">Mollycoddle your Mini.</h4>
-	<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
+				<div id="thanks_right" class="column right">
 
-	<hr />
+					<div id="thanks" class="panel panel-framed panel-active" data-panel-name="default">
 
-	<h4 class="item switch-color">Keep it covered.</h4>
-	<p>Protect your MINI’s working parts with a MINI Warranty.</p>
+						<header class="header">
+							
+							<p class="ministry">Ministry of Finance</p>
+							
+							<h3>Nice one.</h3>
 
-	<hr />
+							<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
 
-	<h4 class="item switch-color">Get connected.</h4>
-	<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
+						</header><!-- end header.header -->
 
-	<hr />
+						<hr />
 
-	<footer>
+						<h4 class="item switch-color">Mollycoddle your Mini.</h4>
+						<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
 
-		<div class="form-control full-width">
+						<hr />
 
-			<a href="#" class="button switch-bg">Configure my Mini</a>
+						<h4 class="item switch-color">Keep it covered.</h4>
+						<p>Protect your MINI’s working parts with a MINI Warranty.</p>
 
-		</div>
+						<hr />
 
-	</footer>
+						<h4 class="item switch-color">Get connected.</h4>
+						<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
 
-</div><!-- end div#thanks.panel -->
+						<hr />
+
+
+					</div><!-- end div#welcome.panel -->
+
+				</div><!-- end div#thanks_right -->
+
+
+				<div id="thanks_left" class="column left">
+
+					<form action="ajax.php">
+
+						<input type="hidden" id="uid" name="UserId" value="999" />
+
+						<figure id="form_car" class="model-image">
+
+							<img src="assets/cars/none.png" class="img-base" />	
+
+							<img src="assets/cars/MR92.png" id="car-image" class="img-content" />
+
+						</figure><!-- end figure#car -->
+
+					</form>
+
+				</div><!-- end div#thanks_left -->
+	
+
+			</div><!-- end div.layout -->
+
+		<?php require( 'bottom.php' ); ?>
+
+	</div><!-- end div#page-form.layout-wrapper -->
+
+<?php require( 'footer.php' ); ?>
+

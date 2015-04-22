@@ -5546,7 +5546,7 @@ html.page-disabled #disabled p {
     margin: 20px;
     padding-left: 140px;
     padding-right: 140px;
-    position: static;
+    height: auto;
   }
   html > body .layout-wrapper .layout .column.left {
     -webkit-transition: top 0.6s;
@@ -5850,7 +5850,7 @@ html.page-disabled #disabled p {
   margin-left: 2px;
   opacity: 0;
   padding: 30px;
-  position: absolute;
+  height: 100%;
   visibility: hidden;
   top: 0;
   right: 0;
