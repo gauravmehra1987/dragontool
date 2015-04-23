@@ -28,7 +28,7 @@
 
 .layout-wrapper {
 
-	display: table;
+	// display: table; why was this here???
 	margin: auto;
 	max-width: 1180px;
 
@@ -177,41 +177,43 @@
 
 			}
 
-			.panel {
-
-				.box-sizing( border-box );
-
-				display: none;
-				margin-left: 2px;
-				opacity: 0;
-				padding: @margin * 1.5;
-				// position: absolute;
-				height: 100%;
-				visibility: hidden;
-
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-
-				&.panel-active {
-
-					display: block;
-
-					opacity: 1;
-					visibility: visible;
-
-				}
-
-			}
-
 		}
 
 	}
 
 }
 
+
 // Common elements
+
+
+
+.panel {
+
+	.box-sizing( border-box );
+
+	display: none;
+	margin-left: 2px;
+	opacity: 0;
+	padding: @margin * 1.5;
+	height: 100%;
+	visibility: hidden;
+
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	&.panel-active {
+
+		display: block;
+
+		opacity: 1;
+		visibility: visible;
+
+	}
+
+}
 
 .actions {
 
@@ -694,7 +696,7 @@
 
 }
 
-#thanks {
+.thanks {
 
 	header, footer { .tc; }
 
@@ -708,10 +710,31 @@
 
 	}
 
+}
+
+.thanks-content {
+
+	header.centred {
+
+		text-align: center;
+
+		h3 {
+
+			padding-top: 20px;
+
+		}
+
+	}
+
+}
+
+
+.thanks-links {
+
 	.item {
 
 		font-size: @fontSizeMedium;
-		margin: 0 0 @margin / 2;
+		margin: 0 0 @margin / 2!important;
 
 		&:before {
 
@@ -732,6 +755,10 @@
 
 	}
 
+}
+
+.car-name-big {
+	font-size: 36px;
 }
 
 // Responsive
@@ -788,6 +815,7 @@
 		.layout-footer { margin: @margin; }
 
 	}
+
 
 	html > body .layout-wrapper {
 
@@ -875,9 +903,15 @@
 			float: none;
 			margin: 0;
 			max-width: none;
-			padding: 0;
 
 			width: auto;
+
+		}
+
+		.form-left {
+
+			padding: 0px;
+			margin-bottom: 20px;
 
 		}
 
@@ -925,11 +959,26 @@ html > body #page-form.layout-wrapper {
 		max-width: ~'calc( 35% - 41px )';
 		margin-right: @margin;
 		padding-right: @margin;
+		max-width: 360px;
 
 	}
-		.form-content {padding-top:1em}
+	
+	.form-content {
 
-	.form-right { max-width: 65%; }
+		padding-top: 1em
+
+	}
+
+
+	.form-right {
+
+		position: absolute;
+		margin-top: 68px;
+		margin-left: 400px;
+		max-width: 100%;
+		padding-right: 20px;
+	
+	}
 
 	#form_car {
 

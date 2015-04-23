@@ -1,4 +1,4 @@
-﻿<!-- build:template
+﻿build:template
 <%= form.model %>
 /build -->
 
@@ -6,7 +6,7 @@
 <%= form.open %>
 /build -->
 
-<div class="layout auto-height">
+<div id="page_form" class="layout layout-form auto-height">
 
 	<!-- build:remove --><form action="ajax.php"><!-- /build -->
 
@@ -18,21 +18,26 @@
 
 	<div class="form-left">
 
+		<header>
+
+			<ul class="actions">
+
+				<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
+				<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
+
+			</ul>
+
+		</header>
+
+
+
+		<!-- ****************************************************************************** -->
+		<!-- FORM CONTENT -->
+
 		<div class="form-content">
 
-			<header>
-
-				<ul class="actions">
-
-					<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
-					<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
-
-				</ul>
-
-				<h3 class="title">ALMOST THERE</h3>
-				<p class="notice">You've found your dream MINI. Now pop in your details so your local MINI Retailer can help you get your hands on it. </p>
-
-			</header>
+			<h3 class="title">ALMOST THERE</h3>
+			<p>You've found your dream MINI. Now pop in your details so your local MINI Retailer can help you get your hands on it. </p>
 
 			<div class="form-control form-control-select half-width">
 
@@ -262,28 +267,94 @@
 
 		</div><!-- end div.form-content -->
 
-		<div id="thanks_left">
+		<!-- ****************************************************************************** -->
+		<!-- END: FORM CONTENT -->
 
-			<h3>Nice one.</h3>
 
-			<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
 
-		</div><!-- end div#thanks_left -->
+
+		<!-- ****************************************************************************** -->
+		<!-- START: THANKS CONTENT -->
+
+		<div class="thanks-content">
+
+			<div class="panel panel-framed panel-active">
+
+
+				<header class="header centred">
+							
+					<p class="ministry">Ministry of Finance</p>
+							
+					<h3>Nice one.</h3>
+
+					<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
+
+				</header><!-- end header.header -->
+
+
+				<div class="thanks-links">
+
+					<hr />
+
+					<h4 class="item switch-color">Mollycoddle your Mini.</h4>
+					<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
+
+					<hr />
+
+					<h4 class="item switch-color">Keep it covered.</h4>
+					<p>Protect your MINI’s working parts with a MINI Warranty.</p>
+
+					<hr />
+
+					<h4 class="item switch-color">Get connected.</h4>
+					<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
+
+
+				</div>
+
+
+			</div>
+
+		</div><!-- end div.thanks -->
+
+		<!-- ****************************************************************************** -->
+		<!-- END: THANKS CONTENT -->
+
+
 
 	</div><!-- end div.form-left -->
+
+
+
+
 
 	<div class="form-right">
 
 		<figure id="form_car" class="model-image">
 
 			<img src="assets/cars/none.png" class="img-base" />
-				<!-- build:template
-	<img src="<%= form.carImage %>" id="results-car" class="img-content" />
-	/build -->
+
+			<!-- build:template
+				<img src="<%= form.carImage %>" id="results-car" class="img-content" />
+			/build -->
 
 			<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
 
+			<hr />
+
+			<!-- build:template
+			<h2 class="switch-color"><%= results.name %></h2>
+			/build -->
+
+			<!-- build:remove --><h2 class="switch-color car-name-big">Car name</h2><!-- /build -->
+
 		</figure><!-- end figure#car -->
+
+
+
+
+		<!-- ****************************************************************************** -->
+		<!-- FORM CONTENT -->
 
 		<div class="form-content">
 
@@ -296,7 +367,6 @@
 					<%= form.field.finance %>
 					/build -->
 					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
-
 
 				</div>
 
@@ -317,7 +387,6 @@
 					/build -->
 					<label for="optout_phone">by phone</label>
 
-
 				</div>
 
 				<div class="checkbox">
@@ -327,9 +396,6 @@
 					<%= form.field.optout.post %>
 					/build -->
 					<label for="optout_post">by post</label>
-
-
-
 
 				</div>
 
@@ -343,22 +409,28 @@
 
 		</div><!-- end div.form-content -->
 
-		<div id="thanks_right">
+		<!-- ****************************************************************************** -->
+		<!-- FORM CONTENT -->
 
-			<h4 class="item switch-color">Mollycoddle your Mini.</h4>
-			<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
 
-			<hr />
 
-			<h4 class="item switch-color">Keep it covered.</h4>
-			<p>Protect your MINI’s working parts with a MINI Warranty.</p>
 
-			<hr />
 
-			<h4 class="item switch-color">Get connected.</h4>
-			<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
+		<!-- ****************************************************************************** -->
+		<!-- START: THANKS CONTENT -->
 
-		</div><!-- end div#thanks_right -->
+		<div class="thanks-content">
+
+			<a href="http://www.mini.co.uk/design-your-mini" class="button switch-bg">Configure my Mini</a>
+
+		</div><!-- end div.thanks -->
+
+		<!-- END THANKS CONTENT -->
+		<!-- ****************************************************************************** -->
+
+
+
+
 
 	</div><!-- end div.form-right -->
 
@@ -368,4 +440,4 @@
 
 	<!-- build:template
 	<%= form.close %>
-	/build -->
+	/build

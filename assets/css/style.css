@@ -3624,6 +3624,7 @@ textarea {
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
+  height: 30px;
   background: #a4a4a4;
   border-color: #a4a4a4;
   border-radius: 0 3px 3px 0;
@@ -3657,7 +3658,7 @@ textarea + .field-icon {
   position: absolute;
   top: 0;
   left: 0;
-  height: 34px;
+  height: 30px;
   width: 34px;
 }
 input:not( [type=checkbox] ):not( [type=radio] ) + .field-icon:before,
@@ -3685,7 +3686,7 @@ textarea + .field-icon:before {
   -o-transition: all 0.2s;
   transition: all 0.2s;
   color: #a4a4a4;
-  font-size: 24px;
+  font-size: 16px;
   margin-top: -0.5em;
   margin-left: -0.5em;
   position: absolute;
@@ -3862,6 +3863,9 @@ input[type=cancel].transparent {
   width: 1em;
   top: 0;
   left: 0;
+}
+.checkbox label {
+  line-height: 18px;
 }
 .checkbox input + label:before {
   background: #a4a4a4;
@@ -4078,6 +4082,9 @@ select {
 }
 .select.error > select::-ms-expand {
   display: none;
+}
+.select:after {
+  font-size: 16px;
 }
 .form-control-select {
   overflow: hidden;
@@ -5619,6 +5626,10 @@ html.page-disabled #disabled p {
   html > body .layout-wrapper .layout .column.left #dash #dash-right {
     height: calc( 100% - 120px );
   }
+  html > body .layout-wrapper .layout-form {
+    width: auto;
+    padding: 20px;
+  }
   html > body #page-home #results #tpl-results .model-image {
     background-color: transparent;
     background-image: url(../img/skid-marks-faded.png );
@@ -5639,23 +5650,31 @@ html.page-disabled #disabled p {
   html > body #page-results #results-car figcaption .car-layout.bottom {
     position: static;
   }
-  html > body #page-form .layout form {
-    overflow: hidden;
-    padding: 20px;
-  }
-  html > body #page-form .layout form .form-left,
-  html > body #page-form .layout form .form-right {
-    border: 0;
-    float: none;
-    margin: 20px 0;
-    max-width: none;
-    padding: 0;
-    width: 65%;
-  }
-  html > body #page-form .layout form #form-car {
+  .hide4mobile {
     display: none;
   }
-  html > body #page-form .layout form .tablet-column {
+}
+@media (max-width: 768px) {
+  #page_form.layout {
+    margin: 0px;
+    position: static;
+  }
+  #page_form.layout form {
+    overflow: hidden;
+  }
+  #page_form.layout form .form-left,
+  #page_form.layout form .form-right {
+    position: static;
+    border: 0;
+    float: none;
+    max-width: none;
+    width: 65%;
+  }
+  #page_form.layout form .form-left {
+    position: static;
+    margin: 0px;
+  }
+  #page_form.layout form .tablet-column {
     margin-bottom: 20px;
   }
 }
@@ -5685,7 +5704,6 @@ html.page-disabled #disabled p {
   height: auto;
 }
 .layout-wrapper {
-  display: table;
   margin: auto;
   max-width: 1180px;
 }
@@ -5842,7 +5860,7 @@ html.page-disabled #disabled p {
   height: 100%;
   width: 400px;
 }
-.layout-wrapper .layout .column .panel {
+.panel {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -5857,7 +5875,7 @@ html.page-disabled #disabled p {
   bottom: 0;
   left: 0;
 }
-.layout-wrapper .layout .column .panel.panel-active {
+.panel.panel-active {
   display: block;
   opacity: 1;
   visibility: visible;
@@ -6251,24 +6269,30 @@ html.page-disabled #disabled p {
   border-width: 1px;
   border-color: transparent;
 }
-#thanks header,
-#thanks footer {
+.thanks header,
+.thanks footer {
   text-align: center;
 }
-#thanks header h3 {
+.thanks header h3 {
   margin-top: 20px;
 }
-#thanks footer {
+.thanks footer {
   margin: 40px 0 0;
 }
-#thanks footer .form-control {
+.thanks footer .form-control {
   margin: 0;
 }
-#thanks .item {
-  font-size: 18px;
-  margin: 0 0 10px;
+.thanks-content header.centred {
+  text-align: center;
 }
-#thanks .item:before {
+.thanks-content header.centred h3 {
+  padding-top: 20px;
+}
+.thanks-links .item {
+  font-size: 18px;
+  margin: 0 0 10px !important;
+}
+.thanks-links .item:before {
   font-family: "icons";
   font-style: normal;
   font-weight: normal;
@@ -6285,10 +6309,13 @@ html.page-disabled #disabled p {
   content: "\f10e";
   margin-right: 0.5em;
 }
-#thanks .item + p {
+.thanks-links .item + p {
   font-size: 12px;
   line-height: 1.5em;
   margin: 0 0 0 27px;
+}
+.car-name-big {
+  font-size: 36px;
 }
 @media (max-width: 767px) {
   html > body .layout-wrapper .layout {
@@ -6382,8 +6409,11 @@ html.page-disabled #disabled p {
     float: none;
     margin: 0;
     max-width: none;
-    padding: 0;
     width: auto;
+  }
+  html > body #page-form.layout-wrapper .layout.auto-height .form-left {
+    padding: 0px;
+    margin-bottom: 20px;
   }
   html > body #page-form.layout-wrapper .layout.auto-height .inline .half-width,
   html > body #page-form.layout-wrapper .layout.auto-height .inline,
@@ -6439,12 +6469,17 @@ html > body #page-form.layout-wrapper .form-left {
   max-width: calc( 35% - 41px );
   margin-right: 20px;
   padding-right: 20px;
+  max-width: 360px;
 }
 html > body #page-form.layout-wrapper .form-content {
   padding-top: 1em;
 }
 html > body #page-form.layout-wrapper .form-right {
-  max-width: 65%;
+  position: absolute;
+  margin-top: 68px;
+  margin-left: 400px;
+  max-width: 100%;
+  padding-right: 20px;
 }
 html > body #page-form.layout-wrapper #form_car {
   background: url(../img/skid-marks-faded.png ) 50% 50% no-repeat;

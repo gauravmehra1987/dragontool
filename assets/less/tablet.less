@@ -163,6 +163,13 @@ html {
 
 			}
 
+			.layout-form {
+
+				width: auto;
+				padding: 20px;
+
+			}
+
 		}
 
 		#page-home {
@@ -203,33 +210,53 @@ html {
 
 		}
 
-		#page-form .layout {
+	}
 
-			form {
+	.hide4mobile {
 
-				overflow: hidden;
-				padding: @margin;
+		display: none;
 
-				.form-left, .form-right {
+	}
 
-					border: 0;
-					float: none;
-					margin: @margin 0;
-					max-width: none;
-					padding: 0;
+}
 
-					width: 65%;
 
-				}
 
-				#form-car { display: none; }
 
-				.tablet-column { margin-bottom: @margin; }
+
+
+@media ( max-width: 768px ) {
+
+	#page_form.layout {
+
+		margin: 0px;
+		position: static;
+
+		form {
+
+			overflow: hidden;
+			// padding: @margin;
+
+			.form-left, .form-right {
+
+				position: static;
+				border: 0;
+				float: none;
+				max-width: none;
+				width: 65%;
 
 			}
+
+			.form-left {
+
+				position: static;
+				margin: 0px;
+
+			}
+
+			.tablet-column { margin-bottom: @margin; }
 
 		}
 
 	}
-
 }

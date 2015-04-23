@@ -281,10 +281,11 @@ function FormLogic() {
 	// Handle AJAX form results
 	this.ajaxFormResults = function() {
 
-		var $thanks = $( '#thanks_left, #thanks_right' );
+		var $thanks = $( '.thanks-content' );
 		var $formContent = $( '.form-content' );
 
 		// $thanks.hide();
+		$formContent.hide();
 
 		$.subscribe( 'form-ajax-results', function( e, data ) {
 
@@ -292,8 +293,6 @@ function FormLogic() {
 
 			$formContent.slideUp( 600 );
 			$thanks.slideDown( 600 );
-
-			//alert( 'Thanks! Data has been logged to the console.' );
 
 		} );
 

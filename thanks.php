@@ -7,7 +7,6 @@
 			<div class="layout auto-height">
 
 
-
 				<div id="thanks_right" class="column right">
 
 					<div id="thanks" class="panel panel-framed panel-active" data-panel-name="default">
@@ -39,6 +38,11 @@
 
 						<hr />
 
+						<footer class="footer">
+
+							<a href="#" class="button switch-bg">Configure my Mini</a>
+														
+						</footer><!-- end header.header -->
 
 					</div><!-- end div#welcome.panel -->
 
@@ -58,6 +62,21 @@
 							<img src="assets/cars/MR92.png" id="car-image" class="img-content" />
 
 						</figure><!-- end figure#car -->
+
+
+						<div class="footer">
+
+						<hr/>
+
+							<p>&pound;20p <span>per <br/>month</span></p>
+
+							<ul class="actions">
+
+								<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
+
+							</ul>
+
+						</div>
 
 					</form>
 
