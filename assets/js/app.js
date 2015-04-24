@@ -51,8 +51,8 @@ var system_paths = {
 //
 // And now, depending on which set up we are using (Dotnet or PHP), we can comment out the appropriate line below 
 //
-var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
-// var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
+// var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
+var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
 
 
 // Setting up all the colors to use for the dashboard color changes
@@ -1143,9 +1143,7 @@ function FormLogic() {
 
 	this.postcodeStuff = function( e ) {
 
-		// Fire only when alphanumeric keys are pressed
-
-		if( e.which <= 90 && e.which >= 48 ) {
+		if ( $(e.target).val() != '' ) {
 
 			clearTimeout( postcodeTimer );
 
@@ -1205,7 +1203,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$( '#postcode_search' ).on( 'change keyup input', function( e ) {
+		$( '#postcode_search' ).on( 'propertychange change click keyup input paste', function( e ) {
 			_this.postcodeStuff( e );
 		});
 

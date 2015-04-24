@@ -267,9 +267,7 @@ function FormLogic() {
 
 	this.postcodeStuff = function( e ) {
 
-		// Fire only when alphanumeric keys are pressed
-
-		if( e.which <= 90 && e.which >= 48 ) {
+		if ( $(e.target).val() != '' ) {
 
 			clearTimeout( postcodeTimer );
 
@@ -329,7 +327,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$( '#postcode_search' ).on( 'change keyup input', function( e ) {
+		$( '#postcode_search' ).on( 'propertychange change click keyup input paste', function( e ) {
 			_this.postcodeStuff( e );
 		});
 
