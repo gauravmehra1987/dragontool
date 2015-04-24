@@ -322,6 +322,9 @@ $.validator.setDefaults( {
 
 					$( form ).toggleClass( 'busy' );
 
+					$( '.form-control .button' ).removeAttr( 'disabled' );
+					$( '.form-control .button' ).removeClass( 'disabled' );
+
 				},
 				success: function( data ) { $.publish( 'form-ajax-results', data ); },
 				error: function (request, error) {
@@ -354,6 +357,9 @@ $.validator.setDefaults( {
 		// Disable the form to prevent accidental submission while the request is pending
 
 		$( form ).toggleClass( 'busy' );
+
+		$( '.form-control .button' ).attr( 'disabled', true );
+		$( '.form-control .button' ).addClass( 'disabled' );
 
 		// Perform the call
 
