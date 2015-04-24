@@ -225,9 +225,6 @@ function UI() {
 
 		renderRelatedCars( car, related );
 
-		// Hide link for rocket car
-		if ( car.code === 'RKT' ) { $('.car-link').hide(); }
-
 		// Change dashboard color
 
 		dashboard.colors( carColors[ car.color ] );
