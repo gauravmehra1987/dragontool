@@ -5992,9 +5992,6 @@ html.page-disabled #disabled p {
   line-height: 1;
   margin-right: 5px;
 }
-.price-span .car-link {
-  font-size: 20px;
-}
 .price-span .currency {
   font-size: 24px;
   position: relative;
@@ -6007,6 +6004,9 @@ html.page-disabled #disabled p {
   font-size: 14px;
   position: relative;
   top: 22px;
+}
+.car-link {
+  font-size: 20px;
 }
 .ministry {
   display: inline-block;

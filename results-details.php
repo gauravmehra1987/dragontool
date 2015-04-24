@@ -29,10 +29,10 @@
 				<!-- build:remove --><h2 class="switch-color">Car name</h2><!-- /build -->
 
 			<!-- build:template
-			<a href="<%= results.formLink %>" class="button transparent">MAKE THIS MINI A REALITY</a>
+			<a href="<%= results.formLink %>" class="button transparent car-link">MAKE THIS MINI A REALITY</a>
 			/build -->
 
-			<!-- build:remove --><a id="go-to-form" href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">MAKE THIS MINI A REALITY</a><!-- /build -->
+			<!-- build:remove --><a id="go-to-form" href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent car-link">MAKE THIS MINI A REALITY</a><!-- /build -->
 
 		</div>
 
