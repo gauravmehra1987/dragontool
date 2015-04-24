@@ -10,8 +10,12 @@
 	<img src="<%= results.carImage %>" id="car-image" class="img-content" />
 	/build -->
 
-	<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
-	<img src="assets/img/skid-marks-faded.png" class="img-content skid" />
+	<!-- build:remove -->
+	<a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>">
+		<img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content result-car" />
+	</a>
+	<!-- /build -->
+	
 	<figcaption>
 
 		<div class="car-layout top">
