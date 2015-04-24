@@ -8,7 +8,7 @@
 
 <div id="page_form" class="layout layout-form auto-height">
 
-	<!-- build:remove --><form action="ajax.php"><!-- /build -->
+	<!-- build:remove --><form action="ajax.php" autocomplete="off"><!-- /build -->
 
 	<!-- build:template
 	<%= form.field.user %>
@@ -76,7 +76,7 @@
 				<%= form.field.name %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="name" name="name" placeholder="First name" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="name" name="name" placeholder="First name" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -87,7 +87,7 @@
 				<%= form.field.surname %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="surname" name="surname" placeholder="Last name" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="surname" name="surname" placeholder="Last name" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -98,7 +98,7 @@
 				<%= form.field.email %>
 				/build -->
 
-				<!-- build:remove --><input type="email" id="email" name="email" placeholder="E-mail address" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="email" id="email" name="email" placeholder="E-mail address" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -111,7 +111,7 @@
 				<%= form.field.tel.home %>
 				/build -->
 
-				<!-- build:remove --><input type="tel" id="tel_home" name="tel_home" placeholder="Home telephone" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="tel" id="tel_home" name="tel_home" placeholder="Home telephone" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -122,7 +122,7 @@
 				<%= form.field.tel.work %>
 				/build -->
 
-				<!-- build:remove --><input type="tel" id="tel_work" name="tel_work" placeholder="Work telephone" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="tel" id="tel_work" name="tel_work" placeholder="Work telephone" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -133,7 +133,7 @@
 				<%= form.field.tel.mobile %>
 				/build -->
 
-				<!-- build:remove --><input type="tel" id="tel_mobile" name="tel_mobile" placeholder="Mobile telephone" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="tel" id="tel_mobile" name="tel_mobile" placeholder="Mobile telephone" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -146,7 +146,7 @@
 					<%= form.field.address.postcodesearch %>
 					/build -->
 
-					<!-- build:remove --><input type="text" id="postcode_search" name="postcode_search" placeholder="Postcode" autocomplete="off" /><!-- /build -->
+					<!-- build:remove --><input type="text" id="postcode_search" name="postcode_search" placeholder="Postcode" /><!-- /build -->
 					<span class="field-icon"></span>
 
 				</div>
@@ -209,7 +209,7 @@
 				<%= form.field.address.address1 %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="address_1" name="address_1" placeholder="Address line 1" disabled="disabled" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="address_1" name="address_1" placeholder="Address line 1" disabled="disabled" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -220,7 +220,7 @@
 				<%= form.field.address.address2 %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="address_2" name="address_2" placeholder="Address line 2" disabled="disabled" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="address_2" name="address_2" placeholder="Address line 2" disabled="disabled" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -231,7 +231,7 @@
 				<%= form.field.address.address3 %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="address_3" name="address_3" placeholder="Address line 3" disabled="disabled" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="address_3" name="address_3" placeholder="Address line 3" disabled="disabled" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>
@@ -242,7 +242,7 @@
 				<%= form.field.address.postcode %>
 				/build -->
 
-				<!-- build:remove --><input type="text" id="postcode" name="postcode" placeholder="Postcode" disabled="disabled" autocomplete="off" /><!-- /build -->
+				<!-- build:remove --><input type="text" id="postcode" name="postcode" placeholder="Postcode" disabled="disabled" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>

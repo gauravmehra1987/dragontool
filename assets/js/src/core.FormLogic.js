@@ -264,6 +264,7 @@ function FormLogic() {
 		}
 	}
 
+
 	this.postcodeStuff = function( e ) {
 
 		// Fire only when alphanumeric keys are pressed
@@ -277,6 +278,7 @@ function FormLogic() {
 		}
 
 	}
+
 
 	// Handle AJAX form results
 	this.ajaxFormResults = function() {
@@ -327,7 +329,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$( '#postcode_search' ).on( 'keyup', function( e ) {
+		$( '#postcode_search' ).on( 'change keyup input', function( e ) {
 			_this.postcodeStuff( e );
 		});
 
