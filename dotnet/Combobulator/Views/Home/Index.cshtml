@@ -1,4 +1,42 @@
-<div id="welcome" class="panel panel-framed centered" data-panel-name="default">
+@{
+ViewBag.Title = "MINI Combobulator Dashboard";
+string firstName = string.Empty;
+string userId = ViewBag.UserId;
+if (!string.IsNullOrEmpty(ViewBag.FirstName))
+{
+firstName = "<h3>Hi " + ViewBag.FirstName + "</h3>";
+}else{
+firstName = "<h3>Hi,</h3>";
+}
+}
+
+<div id="page-home" class="layout-wrapper">
+
+	<header class="layout-header">
+		
+	<h2 id="logo"><a href="./">Mini</a></h2><!-- end h2#logo -->
+
+	<ul class="social js-sharer">
+
+		<li class="facebook" data-fb-mode="direct"><a href="https://www.facebook.com/MINI.uk">Facebook</a></li><!-- end li.facebook -->
+		<li class="twitter"><a href="https://twitter.com/miniuk">Twitter</a></li><!-- end li.twitter -->
+		
+	</ul><!-- end ul.social -->
+
+</header><!-- end header.layout-header -->
+
+<div id="disabled">
+	
+	<h2>Please rotate your device</h2>
+	<p>This app has been optimised for portrait mode.</p>
+
+</div><!-- end div#disabled -->
+
+	<main class="layout">
+		
+		<div class="column right">
+			
+			<div id="welcome" class="panel panel-framed centered" data-panel-name="default">
 
 	<header class="header">
 		
@@ -9,11 +47,7 @@
 
 	</header><!-- end header.header -->
 
-	<!-- build:remove --><h3>Hi,</h3><!-- /build -->
-
-	<!-- build:template
-	<%= home.hi %>
-	/build -->
+	@Html.Raw(firstName)
 	
 	<p>Want a shiny new MINI, but don't know your Countryman from your Convertible? Let the Combobulator find the right model for you, at the touch of a button.</p>
 	<p>Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit 'Combobulate' to get your perfect MINI.</p>
@@ -46,3 +80,21 @@
 	</div>
 	
 </div><!-- end div#results.panel -->
+
+		</div><!-- end div.column left -->
+
+		<div class="column left">
+
+			@Html.Partial("_Dashboard")
+
+		</div><!-- end div.column right -->
+
+	</main><!-- end main.layout -->
+
+	<footer class="layout-footer">
+		
+</footer><!-- end footer.layout-footer -->
+
+</div><!-- end div.layout-wrapper -->
+
+<input id="uid" type="hidden" value="@userId" />
