@@ -17,12 +17,6 @@ $.validator.setDefaults( {
 
 		},
 		'address_1':		{ required: true },
-		'postcode':	{
-
-			required: true,
-			regexPostcode: true
-
-		},
 		'tel_home':			{
 
 			required: true,
