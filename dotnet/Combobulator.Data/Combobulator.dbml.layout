@@ -39,17 +39,17 @@
         <classShapeMoniker Id="01acebf4-5023-4f4c-bb6b-168e692fcc5d" />
       </nodes>
     </associationConnector>
-    <classShape Id="ee1fca17-a9c1-4370-bee0-485ce294ddf4" absoluteBounds="0.75, 5.5, 2, 3.5016097005208326">
+    <classShape Id="431caa76-469c-4455-89ca-abdd4c30c779" absoluteBounds="0.75, 5.375, 2, 3.8862125651041666">
       <DataClassMoniker Name="/CombobulatorDataContext/Finance" />
       <nestedChildShapes>
-        <elementListCompartment Id="b33180ce-6ad1-4290-a205-917862f499f3" absoluteBounds="0.76499999999999968, 5.9600000000000009, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b7faf394-8714-4790-97f3-c6fc9c108617" absoluteBounds="0.76499999999999968, 5.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.625 : 7.25080485026042); (2.75 : 7.25080485026042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(3.625 : 7.31810628255208); (2.75 : 7.31810628255208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/CombobulatorDataContext/NewCar/NewCar_Finance" />
       <nodes>
         <classShapeMoniker Id="7b927ca2-fa15-4aae-9505-a55f58f608c3" />
-        <classShapeMoniker Id="ee1fca17-a9c1-4370-bee0-485ce294ddf4" />
+        <classShapeMoniker Id="431caa76-469c-4455-89ca-abdd4c30c779" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

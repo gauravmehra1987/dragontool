@@ -49,12 +49,12 @@ namespace Combobulator.Data
     partial void UpdateFinance(Finance instance);
     partial void DeleteFinance(Finance instance);
     #endregion
-		
-		public CombobulatorDataContext() :
+
+    public CombobulatorDataContext() :
         base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CombobulatorConnectionString"].ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
+    {
+        OnCreated();
+    }
 		
 		public CombobulatorDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -1651,6 +1651,10 @@ namespace Combobulator.Data
 		
 		private System.Nullable<double> _TotalAmount;
 		
+		private System.Nullable<double> _TotalDeposit;
+		
+		private System.Nullable<double> _DealerDiscount;
+		
 		private EntityRef<NewCar> _NewCar;
 		
     #region Extensibility Method Definitions
@@ -1685,6 +1689,10 @@ namespace Combobulator.Data
     partial void OnInfoChanged();
     partial void OnTotalAmountChanging(System.Nullable<double> value);
     partial void OnTotalAmountChanged();
+    partial void OnTotalDepositChanging(System.Nullable<double> value);
+    partial void OnTotalDepositChanged();
+    partial void OnDealerDiscountChanging(System.Nullable<double> value);
+    partial void OnDealerDiscountChanged();
     #endregion
 		
 		public Finance()
@@ -1973,6 +1981,46 @@ namespace Combobulator.Data
 					this._TotalAmount = value;
 					this.SendPropertyChanged("TotalAmount");
 					this.OnTotalAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalDeposit", DbType="Float")]
+		public System.Nullable<double> TotalDeposit
+		{
+			get
+			{
+				return this._TotalDeposit;
+			}
+			set
+			{
+				if ((this._TotalDeposit != value))
+				{
+					this.OnTotalDepositChanging(value);
+					this.SendPropertyChanging();
+					this._TotalDeposit = value;
+					this.SendPropertyChanged("TotalDeposit");
+					this.OnTotalDepositChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DealerDiscount", DbType="Float")]
+		public System.Nullable<double> DealerDiscount
+		{
+			get
+			{
+				return this._DealerDiscount;
+			}
+			set
+			{
+				if ((this._DealerDiscount != value))
+				{
+					this.OnDealerDiscountChanging(value);
+					this.SendPropertyChanging();
+					this._DealerDiscount = value;
+					this.SendPropertyChanged("DealerDiscount");
+					this.OnDealerDiscountChanged();
 				}
 			}
 		}

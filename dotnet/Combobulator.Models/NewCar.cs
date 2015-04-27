@@ -30,6 +30,8 @@
         public double? Payment { get; set; }
         public double? FinancePrice { get; set; }
         public double? Deposit { get; set; }
+        public double? DealerDiscount { get; set; }
+        public double? TotalDeposit { get; set; }
         public double? Contribution { get; set; }
         public double? PurchaseFee { get; set; }
         public double? FinalPayment { get; set; }
@@ -37,5 +39,6 @@
         public string ROI { get; set; }
         public string APR { get; set; }
         public double? TotalAmount { get; set; }
+        public string ResultJoke { get; set; }
     }
 }

@@ -28,8 +28,12 @@ namespace Combobulator.Business.ViewModels
 
         public bool address_type_home { get; set; }
         public bool address_type_work { get; set; }
+
+        [Required]
+        public string postcode_search { get; set; }
         [Required]
         [PostcodeValidator]
+        [Compare("postcode_search", ErrorMessage = "Postcode does not match.")]
         public string postcode { get; set; }
         [Required]
         [EmailValidator]

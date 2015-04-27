@@ -36,7 +36,26 @@ namespace Combobulator.ApiControllers
                     let finance = _dbContext.GetCarFinance(car.Id).First()
                     select new CarViewModel
                     {
-                        Code = car.Code, Color = car.Color, Engine = car.Engine, Name = car.Name, Capacity = car.Capacity, Luggage = car.Luggage, Lifestyle = car.Lifestyle, Awd = car.Awd, High = car.High, Convertible = car.Convertible, Price = car.Price, Cost = car.Cost, Speed = car.Speed, Mph = car.Mph, Economy = car.Economy, Alt_1 = car.Alt1, Alt_2 = car.Alt2, Alt_3 = car.Alt3, Terms = car.Terms, Finance = new Models.Finance
+                        Code = car.Code,
+                        Color = car.Color,
+                        Engine = car.Engine,
+                        Name = car.Name,
+                        Capacity = car.Capacity,
+                        Luggage = car.Luggage,
+                        Lifestyle = car.Lifestyle,
+                        Awd = car.Awd,
+                        High = car.High,
+                        Convertible = car.Convertible,
+                        Price = car.Price,
+                        Cost = car.Cost,
+                        Speed = car.Speed,
+                        Mph = car.Mph,
+                        Economy = car.Economy,
+                        Alt_1 = car.Alt1,
+                        Alt_2 = car.Alt2,
+                        Alt_3 = car.Alt3,
+                        Terms = car.Terms,
+                        Finance = new Models.Finance
                         {
                             Info = finance.Info,
                             Term = finance.Term ?? 0,
@@ -64,7 +83,7 @@ namespace Combobulator.ApiControllers
                     Alt_2 = "MINI JOHN COOPER WORKS CONVERTIBLE",
                     Alt_3 = "MINI JOHN COOPER WORKS ALL4 PACEMAN",
                     Code = "RKT",
-                    Color = "Rocket gold",
+                    Color = "Red",
                     Name = "ALPHA CENTURA"
                 });
 
@@ -73,15 +92,15 @@ namespace Combobulator.ApiControllers
 
                 var sc = new StringContent(json);
                 sc.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                
+
                 response.Content = sc;
 
                 HttpResponseMessage response2 = new HttpResponseMessage()
                 {
                     Content = new StringContent(
-                            json,
-                            Encoding.UTF8,
-                            "application/json"
+                        json,
+                        Encoding.UTF8,
+                        "application/json"
                         )
                 };
 

@@ -18,7 +18,8 @@ namespace Combobulator.Common.Helpers
             }
 
             var s = sb.ToString();
-            return s.Length > 10 ? s.Substring(s.Length - 10, 10) : sb.ToString();
+            var checksum = s.Length > 10 ? s.Substring(s.Length - 10, 10) : sb.ToString();
+            return checksum;
         }
 
 

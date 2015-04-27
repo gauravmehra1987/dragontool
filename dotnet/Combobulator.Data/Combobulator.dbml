@@ -87,6 +87,8 @@
       <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalDeposit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DealerDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="NewCar_Finance" Member="NewCar" ThisKey="NewCarId" OtherKey="Id" Type="NewCar" IsForeignKey="true" />
     </Type>
   </Table>

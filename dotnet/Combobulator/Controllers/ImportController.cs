@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Linq;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using Combobulator.Business.ViewModels;
@@ -22,7 +21,7 @@ namespace Combobulator.Controllers
             switch (type)
             {
                 case "csv":
-                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v32_FK.csv");
+                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v33.csv");
 
                     var encoding = GetEncoding(fileName);
 
@@ -61,7 +60,9 @@ namespace Combobulator.Controllers
                                         Deposit = record.Deposit ?? 0.0,
                                         Payment = record.Payment ?? 0.0,
                                         PurchaseFee = record.PurchaseFee ?? 0.0,
-                                        TotalAmount = record.TotalAmount ?? 0.0
+                                        TotalAmount = record.TotalAmount ?? 0.0,
+                                        DealerDiscount = record.DealerDiscount ?? 0.0,
+                                        TotalDeposit = record.TotalDeposit ?? 0.0
                                     }
                                 };
 

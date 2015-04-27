@@ -30,15 +30,18 @@ namespace Combobulator.Config
             Map(m => m.Info).Name("Info");
             Map(m => m.Term).Name("Term");
             Map(m => m.Payment).Name("Payment");
-            Map(m => m.FinancePrice).Name("Finance_Price");
-            Map(m => m.Deposit).Name("Deposit");
+            Map(m => m.FinancePrice).Name("Finance Price".Replace(" ", ""));
+            Map(m => m.Deposit).Name("Customer Deposit".Replace(" ", ""));
             Map(m => m.Contribution).Name("Contribution");
+            Map(m => m.DealerDiscount).Name("Dealer discount".Replace(" ", ""));
+            Map(m => m.TotalDeposit).Name("Total deposit".Replace(" ", ""));
             Map(m => m.PurchaseFee).Name("Purchase_Fee");
             Map(m => m.FinalPayment).Name("Final_Payment");
             Map(m => m.CreditCharge).Name("Credit_Charge");
             Map(m => m.ROI).Name("ROI");
             Map(m => m.APR).Name("APR");
             Map(m => m.TotalAmount).Name("Total_amount_payable");
+            Map(m => m.ResultJoke).Name("Results_joke");
         }
     }
 }
