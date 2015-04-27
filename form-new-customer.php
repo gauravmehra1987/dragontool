@@ -243,6 +243,56 @@
 
 			</div><!-- end div#dealer_chooser -->
 
+
+
+
+			<div class="form-control">
+
+				<div class="checkbox">
+
+					<!-- build:remove --><input id="finance" name="finance" type="checkbox" value="1" checked="checked" /><!-- /build -->
+					<!-- build:template
+					<%= form.field.finance %>
+					/build -->
+					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
+
+				</div>
+
+			</div>
+
+			<div id="optout_chooser" class="form-control">
+
+				<p class="notice">Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
+
+				<div class="checkbox">
+
+					<!-- build:remove --><input id="optout_phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
+					<!-- build:template
+					<%= form.field.optout.phone %>
+					/build -->
+					<label for="optout_phone">by phone</label>
+
+				</div>
+
+				<div class="checkbox">
+
+					<!-- build:remove --><input id="optout_post" name="optout" type="checkbox" value="post" /><!-- /build -->
+					<!-- build:template
+					<%= form.field.optout.post %>
+					/build -->
+					<label for="optout_post">by post</label>
+
+				</div>
+
+			</div>
+
+			<div class="form-control">
+
+				<button type="submit" class="button switch-bg">Submit</button>
+
+			</div>
+
+
 		</div><!-- end div.form-content -->
 
 		<!-- ****************************************************************************** -->
@@ -287,7 +337,7 @@
 					<h4 class="item switch-color"><a href="#" target="_blank">Get connected.</a></h4>
 					<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
 
-					<a href="http://www.mini.co.uk/design-your-mini" target="_blank" class="button switch-bg hideDesktop hideTablet">Configure my Mini</a>
+					<a href="http://www.mini.co.uk/design-your-mini" target="_blank" class="button switch-bg">Configure my Mini</a>
 
 				</div>
 
@@ -304,22 +354,9 @@
 	</div><!-- end div.form-left -->
 
 
-
-
-
 	<div class="form-right">
-
-		<figure id="form_car" class="model-image">
-
-			<img src="assets/cars/none.png" class="img-base" />
-
-			<!-- build:template
-				<img src="<%= form.carImage %>" id="results-car" class="img-content" />
-			/build -->
-
-			<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
-
-			<hr />
+		
+		<div id="form_car_wrap">
 
 			<!-- build:template
 			<h2 class="switch-color"><%= results.name %></h2>
@@ -327,89 +364,19 @@
 
 			<!-- build:remove --><h2 class="switch-color car-name-big">Car name</h2><!-- /build -->
 
-		</figure><!-- end figure#car -->
+			<figure id="form_car" class="model-image">
 
+				<img src="assets/cars/none.png" class="img-base" />
 
+				<!-- build:template
+					<img src="<%= form.carImage %>" id="results-car" class="img-content" />
+				/build -->
 
+				<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
 
-		<!-- ****************************************************************************** -->
-		<!-- FORM CONTENT -->
+			</figure><!-- end figure#car -->
 
-		<div class="form-content">
-
-			<div class="form-control">
-
-				<div class="checkbox">
-
-					<!-- build:remove --><input id="finance" name="finance" type="checkbox" value="1" checked="checked" /><!-- /build -->
-					<!-- build:template
-					<%= form.field.finance %>
-					/build -->
-					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
-
-				</div>
-
-			</div>
-
-			<p class="notice">Here at MINI, we'd like to get in touch with you to share news on our latest MINI adventures and other products and services you might be interested in. We may also contact you for market research reasons, so we can find out what you think of MINI, and in turn we can learn a bit more about you.</p>
-			<p class="notice">Your personal details are only shared with other BMW Group companies, authorised BMW and MINI Retailers, BMW i agents and other suppliers of BMW or MINI branded products or services for these reasons. Have a look at our privacy policy for more information. </p>
-
-			<div id="optout_chooser" class="form-control">
-
-				<p>Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
-
-				<div class="checkbox">
-
-					<!-- build:remove --><input id="optout_phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
-					<!-- build:template
-					<%= form.field.optout.phone %>
-					/build -->
-					<label for="optout_phone">by phone</label>
-
-				</div>
-
-				<div class="checkbox">
-
-					<!-- build:remove --><input id="optout_post" name="optout" type="checkbox" value="post" /><!-- /build -->
-					<!-- build:template
-					<%= form.field.optout.post %>
-					/build -->
-					<label for="optout_post">by post</label>
-
-				</div>
-
-			</div>
-
-			<div class="form-control">
-
-				<button type="submit" class="button switch-bg">Submit</button>
-
-			</div>
-
-		</div><!-- end div.form-content -->
-
-		<!-- ****************************************************************************** -->
-		<!-- FORM CONTENT -->
-
-
-
-
-
-		<!-- ****************************************************************************** -->
-		<!-- START: THANKS CONTENT -->
-
-		<div class="thanks-content">
-
-			<a href="http://www.mini.co.uk/design-your-mini" target="_blank" class="button switch-bg hideMobile">Configure my Mini</a>
-
-		</div><!-- end div.thanks -->
-
-		<!-- END THANKS CONTENT -->
-		<!-- ****************************************************************************** -->
-
-
-
-
+		</div>
 
 	</div><!-- end div.form-right -->
 

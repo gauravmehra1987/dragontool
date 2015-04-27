@@ -19,8 +19,8 @@
 	<p>Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit 'Combobulate' to get your perfect MINI.</p>
 	<p>
 	<span class="hideTablet hideMobile">Just use the control panel on the left to fire it up.</span>
-	<span class="hideMobile hideDesktop">Just click the arrows below to fire up the control panel.</span>
-	<span class="hideTablet hideDesktop">Just select the drop downs below to select your options.</span>
+	<span class="hideMobile hideDesktop">Just click the arrows below to start combobulating.</span>
+	<span class="hideTablet hideDesktop">Just select the drop downs below to choose your options.</span>
 
 	<br/>Happy Combobulating.</p>
 
