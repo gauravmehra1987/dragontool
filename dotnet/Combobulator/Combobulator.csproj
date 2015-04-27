@@ -227,10 +227,6 @@
     <Content Include="Assets\cars\rocket-car\rocketcar-car.png" />
     <Content Include="Assets\cars\rocket-car\rocketcar-glow.png" />
     <Content Include="Assets\cars\rocket-car\rocketcar-shadow.png" />
-    <Content Include="Assets\cars\rocket\rocketcar-bg.jpg" />
-    <Content Include="Assets\cars\rocket\rocketcar-car.png" />
-    <Content Include="Assets\cars\rocket\rocketcar-glow.png" />
-    <Content Include="Assets\cars\rocket\rocketcar-shadow.png" />
     <Content Include="Assets\cars\RS52.png" />
     <Content Include="Assets\cars\RS72.png" />
     <Content Include="Assets\cars\RS92.png" />
@@ -301,7 +297,6 @@
     <Content Include="Assets\img\mini-logo.png" />
     <Content Include="Assets\img\mini-sample.png" />
     <Content Include="Assets\img\ministry-of-finance.png" />
-    <Content Include="Assets\img\skid-marks-faded.png" />
     <Content Include="Assets\img\skid-marks.jpg" />
     <Content Include="Assets\img\sprites\sprites.png" />
     <Content Include="Assets\img\teleport-scanlines.jpg" />
@@ -501,8 +496,8 @@
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Results\_ResultDetail.cshtml" />
     <Content Include="Views\Form\Index.cshtml" />
-    <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\HttpError404.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\HttpError500.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>

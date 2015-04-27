@@ -42,6 +42,7 @@ namespace Combobulator
             GlobalConfiguration.Configuration.Services.Replace(typeof(IContentNegotiator), new JsonContentNegotiator(jsonFormatter));
         }
 
+        /*
         protected void Application_Error(object sender, EventArgs e)
         {
             var exception = Server.GetLastError();
@@ -107,5 +108,6 @@ namespace Combobulator
                 errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
             }
         }
+        */
     }
 }

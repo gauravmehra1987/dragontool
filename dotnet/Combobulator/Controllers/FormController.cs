@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 using Combobulator.Business.Commands;
 using Combobulator.Business.ViewModels;
@@ -44,11 +45,13 @@ namespace Combobulator.Controllers
             Customer customer = null;
             var command = new GetCustomerDataCommand(userId);
             customer = command.Execute();
-            var viewModel = new FormViewModel();
-            viewModel.FirstName = customer.FirstName;
-            viewModel.LastName = customer.LastName;
-            viewModel.Email = customer.Email;
-            viewModel.Code = modelCode;
+            var viewModel = new FormViewModel
+            {
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                Email = customer.Email,
+                Code = modelCode
+            };
 
             var titles = _dbContext.GetTitles().ToList();
             viewModel.Titles = titles.Select(x => new Title
@@ -57,6 +60,11 @@ namespace Combobulator.Controllers
                 Name = x.Name
             }).ToList();
 
+            var car = _dbContext.GetNewCar(modelCode).SingleOrDefault();
+            if (car != null)
+            {
+                ViewBag.ModelName = car.Name;
+            }
             ViewBag.UserId = userId;
             ViewBag.ModelCode = modelCode;
             if (userId != "")

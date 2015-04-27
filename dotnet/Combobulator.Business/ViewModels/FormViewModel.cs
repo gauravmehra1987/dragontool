@@ -12,8 +12,6 @@ namespace Combobulator.Business.ViewModels
         public string LastName { get; set; }
         public string Email { get; set; }
         public string TelephoneHome { get; set; }
-        public string TelephoneWork { get; set; }
-        public string TelephoneMobile { get; set; }
         public bool AddressType { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }

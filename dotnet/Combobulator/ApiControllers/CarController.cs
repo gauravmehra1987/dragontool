@@ -79,12 +79,13 @@ namespace Combobulator.ApiControllers
                     Capacity = "",
                     Luggage = "",
                     Lifestyle = "",
-                    Alt_1 = "MINI JOHN COOPER WORKS COUPÉ",
-                    Alt_2 = "MINI JOHN COOPER WORKS CONVERTIBLE",
-                    Alt_3 = "MINI JOHN COOPER WORKS ALL4 PACEMAN",
+                    Alt_1 = "SX92",
+                    Alt_2 = "MR92",
+                    Alt_3 = "SS92",
                     Code = "RKT",
-                    Color = "Red",
-                    Name = "ALPHA CENTURA"
+                    Color = "Blazing Red",
+                    Name = "ALPHA CENTURA",
+                    Terms = ""
                 });
 
                 var settings = new JsonSerializerSettings {ContractResolver = new LowercaseContractResolver()};
