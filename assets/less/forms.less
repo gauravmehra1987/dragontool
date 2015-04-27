@@ -4,8 +4,6 @@
 
 	.remove-last-margin;
 
-
-
 	&.disabled { opacity: 0.6; }
 
 	&.append {
@@ -60,6 +58,8 @@ textarea {
 	.placeholder( @black );
 	.transition( all 0.2s );
 
+	height: 30px;
+
 	background: @formGray;
 	border-color: @formGray;
 	border-radius: 0 3px 3px 0;
@@ -77,7 +77,7 @@ textarea {
 		top: 0;
 		left: 0;
 
-		height: ( @fontSizeSmall ) + ( @margin ) + 2px;
+		height: 30px;
 		width: ( @fontSizeSmall ) + ( @margin ) + 2px;
 
 		&:before {
@@ -87,7 +87,7 @@ textarea {
 			.transition( all 0.2s );
 
 			color: @formGray;
-			font-size: @fontSizeLarge;
+			font-size: 16px;
 			margin-top: -0.5em;
 			margin-left: -0.5em;
 			position: absolute;
@@ -187,12 +187,28 @@ input[type=cancel] {
 
 }
 
+.button {
+
+	&.disabled {
+
+		opacity: 0.5;
+
+	}
+}
+
 // Now, checkboxes...
 
 .checkbox {
 
 	.clearfix;
 	.form-checkbox;
+
+	label {
+
+		line-height: 18px;
+	}
+
+
 
 	// Here you can change the icon - or you can overwrite it in the mixins file permanently
 
@@ -262,6 +278,12 @@ select {
 	&.error {
 
 		.form-select( @borderColor: @formRed, @dropdownBg: @formRed, @dropdownColor: @white );
+
+	}
+
+	&:after {
+
+		font-size: 16px;
 
 	}
 

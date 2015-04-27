@@ -9,7 +9,7 @@
 
 	</header><!-- end header.header -->
 
-	<!-- build:remove --><h3>Hi,</h3><!-- /build -->
+	<!-- build:remove --><h3>Hi there,</h3><!-- /build -->
 
 	<!-- build:template
 	<%= home.hi %>
@@ -17,7 +17,12 @@
 	
 	<p>Want a shiny new MINI, but don't know your Countryman from your Convertible? Let the Combobulator find the right model for you, at the touch of a button.</p>
 	<p>Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit 'Combobulate' to get your perfect MINI.</p>
-	<p>Just use the control panel on the left to fire it up.<br/>Happy Combobulating.</p>
+	<p>
+	<span class="hideTablet hideMobile">Just use the control panel on the left to fire it up.</span>
+	<span class="hideMobile hideDesktop">Just click the arrows below to fire up the control panel.</span>
+	<span class="hideTablet hideDesktop">Just select the drop downs below to select your options.</span>
+
+	<br/>Happy Combobulating.</p>
 
 </div><!-- end div#welcome.panel -->
 

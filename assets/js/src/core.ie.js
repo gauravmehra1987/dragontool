@@ -46,8 +46,8 @@ function IE() {
 			document.querySelector( 'html' ).className += ' oldie ie' + parseInt( Mini.browser.version );
 
 			// Unwrap select elements
-			
-			$( '.select > select, .checkbox > input' ).unwrap();
+
+			$( '.checkbox > input' ).unwrap();
 
 			// Do your stuff here
 
@@ -188,7 +188,7 @@ function IE() {
 	if( obj.loadFallbacks() ) {
 
 		obj.polyfills();
-		
+
 		$( document ).on( 'ready', function() { obj.flow(); } );
 
 	}

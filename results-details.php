@@ -10,8 +10,12 @@
 	<img src="<%= results.carImage %>" id="car-image" class="img-content" />
 	/build -->
 
-	<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
-	<img src="assets/img/skid-marks-faded.png" class="img-content skid" />
+	<!-- build:remove -->
+	<a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>">
+		<img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content result-car" />
+	</a>
+	<!-- /build -->
+	
 	<figcaption>
 
 		<div class="car-layout top">
@@ -29,10 +33,10 @@
 				<!-- build:remove --><h2 class="switch-color">Car name</h2><!-- /build -->
 
 			<!-- build:template
-			<a href="<%= results.formLink %>" class="button transparent">MAKE THIS MINI A REALITY</a>
+			<a href="<%= results.formLink %>" class="button transparent car-link">MAKE THIS MINI A REALITY</a>
 			/build -->
 
-			<!-- build:remove --><a id="go-to-form" href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent">MAKE THIS MINI A REALITY</a><!-- /build -->
+			<!-- build:remove --><a id="go-to-form" href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>" class="button transparent car-link">MAKE THIS MINI A REALITY</a><!-- /build -->
 
 		</div>
 

@@ -13,7 +13,7 @@ function UI() {
 
 	    if( cached.hasOwnProperty( name ) ) {
 
-	        console.log( 'template ' + name + '.mustache found in cache' );	        
+	        console.log( 'template ' + name + '.mustache found in cache' );
 
 		    promise.resolve( cached[ name ] );
 
@@ -25,7 +25,7 @@ function UI() {
 
 	        promise = $.get( path.templates + '/' + name + '.mustache' ).then( function( data ) {
 
-	        	var cached      = store.get( 'miniTemplates' ) || {};       
+	        	var cached      = store.get( 'miniTemplates' ) || {};
 		        var newTemplate = {};
 
 		        newTemplate[ name ] = data;
@@ -67,7 +67,7 @@ function UI() {
 			pngFallback: path.spriteFallback,
 
 			each: function( svg ) {
-				
+
 				$( svg ).hide().fadeIn( 600 );
 
 			}
@@ -144,9 +144,9 @@ function UI() {
 			var $cars			= _this.$panel.find( '.car-changer' );
 			var skipRelated		= skipRelated || false;
 
-			var alt_1 = dashboardLogic.getCarByName( car.alt_1 );
-			var alt_2 = dashboardLogic.getCarByName( car.alt_2 );
-			var alt_3 = dashboardLogic.getCarByName( car.alt_3 );
+			var alt_1 = dashboardLogic.getCarByCode( car.alt_1 );
+			var alt_2 = dashboardLogic.getCarByCode( car.alt_2 );
+			var alt_3 = dashboardLogic.getCarByCode( car.alt_3 );
 
 			// console.log(alt_1);
 			// console.log(alt_2);
@@ -164,7 +164,7 @@ function UI() {
 				var alt_1_status = _.isObject( alt_1 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
 				var alt_2_status = _.isObject( alt_2 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
 				var alt_3_status = _.isObject( alt_3 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
-				
+
 				console.log( 'Alternative 1 - ' + car.alt_1 + alt_1_status );
 				console.log( 'Alternative 2 - ' + car.alt_2 + alt_2_status );
 				console.log( 'Alternative 3 - ' + car.alt_3 + alt_3_status );
@@ -221,12 +221,9 @@ function UI() {
 
 			} );
 
-		}		
+		}
 
 		renderRelatedCars( car, related );
-
-		// Hide link for rocket car
-		if ( car.code === 'RKT' ) { $('.car-link').hide(); }
 
 		// Change dashboard color
 
@@ -245,7 +242,7 @@ function UI() {
 
 	/**
      * Eggs
-     * @param {String} Trigger - car to show 
+     * @param {String} Trigger - car to show
      * @param {Array} Data - user selection data
     */
 	this.eggs = function( trigger, data ) {
@@ -257,13 +254,13 @@ function UI() {
 
 			rocket: {
 				'code':		'RKT',
-				'color':	'Rocket gold',
+				'color':	'Blazing Red',
 				'name':		'Alpha Centura',
 				'cost':		'n/a',
 				'terms':	'A ro-ro-ro-rocket car!',
-				'alt_1': 	'MINI JOHN COOPER WORKS COUPÉ',
-				'alt_2': 	'MINI JOHN COOPER WORKS CONVERTIBLE',
-				'alt_3': 	'MINI JOHN COOPER WORKS ALL4 PACEMAN'
+				'alt_1': 	'SX92',
+				'alt_2': 	'MR92',
+				'alt_3': 	'SS92'
 			}
 		};
 

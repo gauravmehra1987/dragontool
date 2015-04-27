@@ -3,6 +3,8 @@
 	<div id="dash">
 
 		<a id="tablet-toggle" class="tablet-only">Reveal dashboard</a>
+
+		<div class="dash-overlay"></div>
 		
 		<div id="dash-left">
 			
