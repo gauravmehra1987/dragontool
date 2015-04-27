@@ -6475,12 +6475,12 @@ html.page-disabled #disabled p {
     border: 0;
     float: none;
     margin: 0;
+    margin-bottom: 20px;
     max-width: none;
     width: auto;
   }
   html > body #page-form.layout-wrapper .layout.auto-height .form-left {
     padding: 0px;
-    margin-bottom: 20px;
   }
   html > body #page-form.layout-wrapper .layout.auto-height .inline .half-width,
   html > body #page-form.layout-wrapper .layout.auto-height .inline,
