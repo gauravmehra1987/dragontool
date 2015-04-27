@@ -1,4 +1,4 @@
-<!-- build:remove --><?php if( __FILE__ == $_SERVER['SCRIPT_FILENAME' ] ) { require( 'header.php' ); } ?><!-- /build -->
+
 
 	<div id="dash">
 
@@ -13,12 +13,8 @@
 				<h5 id="t-bums" class="control-title"><span class="light"></span>Bums on seats</h5>
 
 				<div id="c-bums" class="control-wrapper backline"><div class="control-inner">
-
-				<!-- build:remove --><?php include( 'control-bums.php' ); ?><!-- /build -->
 				
-				<!-- build:template
-				<%= dashboard.bums %>
-				/build -->
+				@Html.Partial("_ControlBums")
 
 				</div></div>
 
@@ -31,12 +27,8 @@
 					<h5 id="t-mpg" class="control-title"><span class="light"></span>Mpg</h5>
 
 					<div id="c-mpg" class="control-wrapper"><div class="control-inner">
-
-					<!-- build:remove --><?php include( 'control-mpg.php' ); ?><!-- /build -->
 					
-					<!-- build:template
-					<%= dashboard.mpg %>
-					/build -->
+					@Html.Partial("_ControlMpg")
 
 					</div></div>
 
@@ -47,12 +39,8 @@
 					<h5 id="t-lifestyle" class="control-title"><span class="light"></span>Lifestyle</h5>
 
 					<div id="c-lifestyle" class="control-wrapper"><div class="control-inner">
-
-					<!-- build:remove --><?php include( 'control-lifestyle.php' ); ?><!-- /build -->
 					
-					<!-- build:template
-					<%= dashboard.lifestyle %>
-					/build -->
+					@Html.Partial("_ControlLifestyle")
 
 					</div></div>
 
@@ -65,12 +53,8 @@
 				<h5 id="t-luggage" class="control-title"><span class="light"></span>Luggage</h5>
 
 				<div id="c-luggage" class="control-wrapper"><div class="control-inner">
-
-				<!-- build:remove --><?php include( 'control-luggage.php' ); ?><!-- /build -->
 				
-				<!-- build:template
-				<%= dashboard.luggage %>
-				/build -->
+				@Html.Partial("_ControlLuggage")
 
 				</div></div>
 
@@ -85,12 +69,8 @@
 				<h5 id="t-options" class="control-title"><span class="light"></span>Options</h5>
 
 				<div id="c-options" class="control-wrapper"><div class="control-inner">
-
-				<!-- build:remove --><?php include( 'control-options.php' ); ?><!-- /build -->
 				
-				<!-- build:template
-				<%= dashboard.options %>
-				/build -->
+				@Html.Partial("_ControlOptions")
 
 				</div></div>
 
@@ -105,12 +85,8 @@
 					<div class="backline">
 						
 						<div class="control-inner">
-
-						<!-- build:remove --><?php include( 'control-speed.php' ); ?><!-- /build -->
 						
-						<!-- build:template
-						<%= dashboard.speed %>
-						/build -->
+						@Html.Partial("_ControlSpeed")
 
 						</div>
 						
@@ -129,12 +105,8 @@
 				<h5 id="t-price" class="control-title"><span class="light"></span>£ per month</h5>
 
 				<div id="c-price" class="control-wrapper"><div class="control-inner">
-
-				<!-- build:remove --><?php include( 'control-price.php' ); ?><!-- /build -->
 				
-				<!-- build:template
-				<%= dashboard.price %>
-				/build -->
+				@Html.Partial("_ControlPrice")
 
 				</div></div>
 				
@@ -145,12 +117,8 @@
 				<h5 id="t-button" class="control-title"><span class="light"></span>Start</h5>
 
 				<div id="c-button" class="control-wrapper dont-hide"><div class="control-inner">
-
-				<!-- build:remove --><?php include( 'control-start.php' ); ?><!-- /build -->
 				
-				<!-- build:template
-				<%= dashboard.start %>
-				/build -->
+				@Html.Partial("_ControlStart")
 
 				</div><!-- end div.bottom --></div>
 
@@ -159,5 +127,3 @@
 		</div><!-- end div#dash-right -->
 
 	</div><!-- end div#dash -->
-
-<!-- build:remove --><?php if( __FILE__ == $_SERVER['SCRIPT_FILENAME' ] ) { require( 'footer.php' ); } ?><!-- /build -->

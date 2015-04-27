@@ -85,6 +85,17 @@
 
 	}
 
+	.dash-overlay {
+
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 9999;
+
+		&.hide { display: none; }
+
+	}
+
 	#dash-left, #dash-middle, #dash-right {
 
 		float: left;
@@ -151,6 +162,8 @@
 	#dash {
 
 		height: auto;
+
+		.dash-overlay { display: none; }
 
 		#dash-left, #dash-middle, #dash-right {
 

@@ -352,6 +352,12 @@ function IntroAnimations() {
 		setTimeout( function() {
 			_this.price();
 		}, 1000 );
+
+		// Hide overlay once all animations are complete
+		setTimeout( function() {
+			// Overlay prevents users from interacting with animations because it sometimes causes bugs
+			$('.dash-overlay').addClass('hide');
+		}, 2500 );
 	};
 
 
