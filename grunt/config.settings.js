@@ -15,6 +15,8 @@ grunt.config.merge( {
 
 				global:			grunt.file.readJSON( razor + '/global.json' ),
 				error:			grunt.file.readJSON( razor + '/error.json' ),
+				errornotfound:			grunt.file.readJSON( razor + '/error.json' ),
+				errorcritical:			grunt.file.readJSON( razor + '/error.json' ),
 				form:			grunt.file.readJSON( razor + '/form.json' ),
 				results:		grunt.file.readJSON( razor + '/results.json' ),
 				home:			grunt.file.readJSON( razor + '/home.json' ),
@@ -55,6 +57,8 @@ grunt.config.merge( {
 				// Error
 
 				'<%= project.paths.templates %>/Error/Index.cshtml':							[ 'error.php' ],
+				'<%= project.paths.templates %>/Error/NotFound.cshtml':							[ 'error-404.php' ],
+				'<%= project.paths.templates %>/Error/Http500.cshtml':							[ 'error-500.php' ],
 
 				// Partials
 

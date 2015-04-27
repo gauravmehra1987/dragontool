@@ -78,11 +78,11 @@ namespace Combobulator
                     {
                         case 404:
                             // Page not found.
-                            routeData.Values.Add("action", "HttpError404");
+                            routeData.Values.Add("action", "Index");
                             break;
                         case 500:
                             // Server error.
-                            routeData.Values.Add("action", "HttpError500");
+                            routeData.Values.Add("action", "Index");
                             break;
 
                         // Here you can handle Views to other error codes.

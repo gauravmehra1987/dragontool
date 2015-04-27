@@ -7,34 +7,40 @@ namespace Combobulator.Controllers
     {
         public ActionResult Index(string error)
         {
+            Response.StatusCode = 400;
             var viewModel = new ErrorViewModel
             {
                 Title = "General Error",
                 Description = "Sorry, an error occurred while processing your request.",
                 Error = error
             };
+            Response.ContentType = "text/html";
             return View(viewModel);
         }
 
-        public ActionResult HttpError404(string error)
+        public ActionResult NotFound(string error)
         {
+            Response.StatusCode = 404;
             var viewModel = new ErrorViewModel
             {
-                Title = "Not Found (404)",
+                Title = "General Error",
                 Description = "Sorry, an error occurred while processing your request.",
                 Error = error
             };
+            Response.ContentType = "text/html";
             return View(viewModel);
         }
 
-        public ActionResult HttpError500(string error)
+        public ActionResult Http500(string error)
         {
+            Response.StatusCode = 500;
             var viewModel = new ErrorViewModel
             {
-                Title = "Exception Error (500)",
+                Title = "General Error",
                 Description = "Sorry, an error occurred while processing your request.",
                 Error = error
             };
+            Response.ContentType = "text/html";
             return View(viewModel);
         }
     }
