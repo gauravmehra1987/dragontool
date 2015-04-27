@@ -6059,34 +6059,17 @@ html.page-disabled #disabled p {
   height: 100px;
   width: 100px;
 }
-.terms,
 .notice,
-.terms p,
 .notice p {
   color: #aaaaaa;
   font-size: 10px;
   line-height: 16px;
-  letter-spacing: 0.1px;
 }
-.terms + .terms,
-.terms + .notice,
-.terms + .terms p,
-.terms + .notice p,
-.notice + .terms,
 .notice + .notice,
-.notice + .terms p,
 .notice + .notice p,
-.terms p + .terms,
-.terms p + .notice,
-.terms p + .terms p,
-.terms p + .notice p,
-.notice p + .terms,
 .notice p + .notice,
-.notice p + .terms p,
 .notice p + .notice p,
-.terms + .form-control,
 .notice + .form-control,
-.terms p + .form-control,
 .notice p + .form-control {
   margin-top: 20px;
 }
@@ -6183,10 +6166,17 @@ html.page-disabled #disabled p {
   margin: 20px 0 10px;
   line-height: 16px;
 }
+#results-car figcaption .car-layout.bottom .terms {
+  font-size: 10px;
+  margin: 10px 0 10px;
+  line-height: 14px;
+  color: #aaaaaa;
+  letter-spacing: 0.1px;
+}
 #results-car figcaption #payment-plan {
   color: #aaaaaa;
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto;
   overflow: hidden;
   width: 100%;
   table-layout: fixed;
@@ -6213,7 +6203,7 @@ html.page-disabled #disabled p {
   display: block;
   float: left;
   font-family: 'mini-regular';
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1;
   padding: 5px 1px;
   width: calc( 50% - 2px );
