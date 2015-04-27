@@ -496,9 +496,6 @@
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Results\_ResultDetail.cshtml" />
     <Content Include="Views\Form\Index.cshtml" />
-    <Content Include="Views\Error\HttpError404.cshtml" />
-    <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Error\HttpError500.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
