@@ -6065,7 +6065,8 @@ html.page-disabled #disabled p {
 .notice p {
   color: #aaaaaa;
   font-size: 10px;
-  line-height: 14px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
 }
 .terms + .terms,
 .terms + .notice,
@@ -6180,8 +6181,10 @@ html.page-disabled #disabled p {
 #results-car figcaption .car-layout.bottom p {
   font-size: 12px;
   margin: 20px 0 10px;
+  line-height: 16px;
 }
 #results-car figcaption #payment-plan {
+  color: #aaaaaa;
   display: block;
   margin: 0 auto 20px;
   overflow: hidden;
@@ -6191,14 +6194,14 @@ html.page-disabled #disabled p {
 #results-car figcaption #payment-plan tbody {
   display: block;
   float: left;
-  margin-right: 2%;
-  width: 32%;
+  margin-right: 3%;
+  width: 31%;
 }
 #results-car figcaption #payment-plan tbody:last-of-type {
   margin-right: 0;
 }
 #results-car figcaption #payment-plan tbody tr {
-  border-bottom: solid 1px #ffffff;
+  border-bottom: solid 1px #aaaaaa;
   display: block;
   overflow: hidden;
   width: 100%;
@@ -6212,8 +6215,8 @@ html.page-disabled #disabled p {
   font-family: 'mini-regular';
   font-size: 12px;
   line-height: 1;
-  padding: 5px 0;
-  width: 50%;
+  padding: 5px 1px;
+  width: calc( 50% - 2px );
 }
 #results-car figcaption #payment-plan tbody tr td:nth-child( even ) {
   text-align: right;

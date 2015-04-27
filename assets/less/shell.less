@@ -359,7 +359,8 @@
 
 		color: @grayDark;
 		font-size: @fontSizeSmaller;
-		line-height: @fontSize;
+		line-height: 16px;
+		letter-spacing: 0.1px;
 
 		& + &,
 		& + .form-control { margin-top: @margin; }
@@ -515,6 +516,7 @@
 
 					font-size: @fontSizeSmall;
 					margin: @margin 0 @margin / 2;
+					line-height: 16px;
 
 				}
 
@@ -524,6 +526,7 @@
 
 		#payment-plan {
 
+			color: @grayDark;
 			display: block;
 			margin: 0 auto @margin;
 			overflow: hidden;
@@ -536,15 +539,15 @@
 
 				display: block;
 				float: left;
-				margin-right: 2%;
+				margin-right: 3%;
 
-				width: 32%;
+				width: 31%;
 
 				&:last-of-type { margin-right: 0; }
 
 				tr {
 
-					border-bottom: solid 1px @white;
+					border-bottom: solid 1px @grayDark;
 					display: block;
 					overflow: hidden;
 					width: 100%;
@@ -558,10 +561,9 @@
 						font-family: @fontMini;
 						font-size: @fontSizeSmall;
 						line-height: 1;
-						padding: 5px 0;
+						padding: 5px 1px;
 
-						width: 50%;
-
+						width: ~'calc( 50% - 2px )';
 						&:nth-child( even ) { .tr; }
 
 					}
