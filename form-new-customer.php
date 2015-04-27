@@ -116,28 +116,6 @@
 
 			</div>
 
-			<div class="form-control append phone full-width">
-
-				<!-- build:template
-				<%= form.field.tel.work %>
-				/build -->
-
-				<!-- build:remove --><input type="tel" id="tel_work" name="tel_work" placeholder="Work telephone" /><!-- /build -->
-				<span class="field-icon"></span>
-
-			</div>
-
-			<div class="form-control append phone full-width">
-
-				<!-- build:template
-				<%= form.field.tel.mobile %>
-				/build -->
-
-				<!-- build:remove --><input type="tel" id="tel_mobile" name="tel_mobile" placeholder="Mobile telephone" /><!-- /build -->
-				<span class="field-icon"></span>
-
-			</div>
-
 			<div class="inline">
 
 				<div class="form-control append home half-width">
@@ -296,19 +274,20 @@
 
 					<hr />
 
-					<h4 class="item switch-color">Mollycoddle your Mini.</h4>
+					<h4 class="item switch-color"><a href="#" target="_blank">Mollycoddle your Mini.</a></h4>
 					<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
 
 					<hr />
 
-					<h4 class="item switch-color">Keep it covered.</h4>
+					<h4 class="item switch-color"><a href="#" target="_blank">Keep it covered.</a></h4>
 					<p>Protect your MINI’s working parts with a MINI Warranty.</p>
 
 					<hr />
 
-					<h4 class="item switch-color">Get connected.</h4>
+					<h4 class="item switch-color"><a href="#" target="_blank">Get connected.</a></h4>
 					<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
 
+					<a href="http://www.mini.co.uk/design-your-mini" target="_blank" class="button switch-bg hideDesktop hideTablet">Configure my Mini</a>
 
 				</div>
 
@@ -421,7 +400,7 @@
 
 		<div class="thanks-content">
 
-			<a href="http://www.mini.co.uk/design-your-mini" class="button switch-bg">Configure my Mini</a>
+			<a href="http://www.mini.co.uk/design-your-mini" target="_blank" class="button switch-bg hideMobile">Configure my Mini</a>
 
 		</div><!-- end div.thanks -->
 

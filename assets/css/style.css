@@ -6356,6 +6356,15 @@ html.page-disabled #disabled p {
   font-size: 18px;
   margin: 0 0 10px !important;
 }
+.thanks-links .item a {
+  color: inherit;
+}
+.thanks-links .item a:hover,
+.thanks-links .item a:active,
+.thanks-links .item a:visited {
+  color: inherit;
+  text-decoration: none;
+}
 .thanks-links .item:before {
   font-family: "icons";
   font-style: normal;
@@ -6540,7 +6549,7 @@ html > body #page-form.layout-wrapper .form-content {
 }
 html > body #page-form.layout-wrapper .form-right {
   position: absolute;
-  margin-top: 68px;
+  margin-top: 6px;
   margin-left: 400px;
   max-width: 100%;
   padding-right: 20px;
