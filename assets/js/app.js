@@ -2705,37 +2705,53 @@ function Responsive() {
 			// Add mobile class to body
 			$( 'body' ).addClass('mobile');
 
-			// Show / hide controls on tap
-
-			$( '.control-title' ).off( 'click' ).on( 'click', function( e ) {
-
+			// Toggling dial tabs
+			//
+			// Get the dial tabs trigger
+			var $controlTitle = $( '.control-title' );
+			//
+			// On click of dial tab trigger
+			$controlTitle.off( 'click' ).on( 'click', function( e ) {
+				//
+				// Prevent default event
 				e.preventDefault();
 
-				// Close all controls
-
-				$( '.control-title' ).removeClass( 'open' );
-				
-				// Open targetted control
-
-				$( this ).toggleClass( 'open' );
-				
-				// Light up the light
-
-				var $light	= $( this ).find( '.light' );
-				var color	= $( '.car-changer' ).css( 'border-color' );
-
-				if( $( this ).hasClass( 'open' ) ) {
-
-					$light.addClass( 'switch-light' );
-					$.publish( 'colour-change', color );
-
+				// Check if dial tab is already open...
+				if ( $( this ).hasClass( 'open' ) ) {
+					//
+					// Close it
+					$controlTitle.removeClass( 'open' );
+				//
+				// Else, if it is not open...
+				} else {
+					//
+					// Close all the other tabs
+					$controlTitle.removeClass( 'open' );
+					//
+					// And open the selected one
+					$( this ).addClass( 'open' );
 				}
 
-				else {
-
+				
+				// Lighting up the dial tabs light
+				//
+				// Get the light
+				var $light = $( this ).find( '.light' );
+				var color = $( '.car-changer' ).css( 'border-color' );
+				//
+				// Add a light class to the clicked tab to show the user has opened it
+				$( this ).addClass('light');
+				//
+				// If the dial tab has the light class...
+				if ( $( this ).hasClass( 'light' ) ) {
+					//
+					$light.addClass( 'switch-light' );
+					$.publish( 'colour-change', color );
+					//
+				} else {
+					//
 					$light.removeClass( 'switch-light' );
 					$light.removeAttr( 'style' );
-
 				}
 
 			} );
@@ -2750,6 +2766,7 @@ function Responsive() {
 			// Remove all appended classes and inline CSS
 
 			$( '.control-title' ).removeClass( 'open' ).off();
+			$( '.control-title' ).removeClass( 'light' ).off();
 			$( '.control-title .light' ).removeAttr( 'style' ).removeClass( 'switch-light' );
 
 		};
