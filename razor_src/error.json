@@ -1,0 +1,5 @@
+{
+
+	"model":		"@model Combobulator.Business.ViewModels.ErrorViewModel",
+	"variables":	"@{ ViewBag.Title = \"MINI Combobulator Error\"; }"
+}

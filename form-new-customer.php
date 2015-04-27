@@ -359,7 +359,7 @@
 		<div id="form_car_wrap">
 
 			<!-- build:template
-			<h2 class="switch-color car-name-big"><%= results.name %></h2>
+			<h2 class="switch-color car-name-big"><%= form.name %></h2>
 			/build -->
 
 			<!-- build:remove --><h2 class="switch-color car-name-big">Car name</h2><!-- /build -->

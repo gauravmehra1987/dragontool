@@ -14,6 +14,7 @@ grunt.config.merge( {
 			data: {
 
 				global:			grunt.file.readJSON( razor + '/global.json' ),
+				error:			grunt.file.readJSON( razor + '/error.json' ),
 				form:			grunt.file.readJSON( razor + '/form.json' ),
 				results:		grunt.file.readJSON( razor + '/results.json' ),
 				home:			grunt.file.readJSON( razor + '/home.json' ),
@@ -50,6 +51,10 @@ grunt.config.merge( {
 				// Form
 
 				'<%= project.paths.templates %>/Form/Index.cshtml':							[ 'form.php' ],
+
+				// Error
+
+				'<%= project.paths.templates %>/Error/Index.cshtml':							[ 'error.php' ],
 
 				// Partials
 

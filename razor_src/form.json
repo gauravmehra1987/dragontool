@@ -4,6 +4,8 @@
 
 	"open":				"@using (Ajax.BeginForm(\"Submit\", \"Form\", new AjaxOptions { HttpMethod = \"POST\" }, new {autocomplete =\"off\"}))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
 	"close":			"}",
+	
+	"name" : "@ViewBag.ModelName",
 
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".png\")",
 	"field": {
