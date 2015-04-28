@@ -456,23 +456,63 @@ function Dials() {
 
 				var direction = ( Math.abs( this.y ) > lifestyle_direction ) ? 'right' : 'left';
 
-				// Move content in the window
-
-				if( ie.loadFallbacks() ) {
-
-					( direction === 'right' ) ? ie.lifestyle.prev() : ie.lifestyle.next();
-
-				}
-
-				else {
-
-					( direction === 'right' ) ? $slick.slick( 'slickPrev' ) : $slick.slick( 'slickNext' );
-
-				}
+				slideContent( direction );
 
 			}
 
 		} );
+
+
+		// Move content in the window
+		function slideContent( direction ) {
+
+			if ( ie.loadFallbacks() ) {
+
+				( direction === 'right' ) ? ie.lifestyle.prev() : ie.lifestyle.next();
+
+			} else {
+
+				( direction === 'right' ) ? $slick.slick( 'slickPrev' ) : $slick.slick( 'slickNext' );
+
+			}
+		}
+
+
+		// Listen to click...
+		$('.control.lifestyle').off('click').on('click', function( e ) {
+			//
+			// Get width of clicked element
+			var width = $(this).width();
+			//
+			// Get offset of clicked element
+			var posX = $(this).offset().left;
+			//
+			// Calculate clicked position from offset
+			var clickedPos = e.pageX - posX;
+			//
+			// Calculate the half way position
+			var halfWay = width / 2;
+
+			// Set direction variable to be updated
+			var direction;
+
+			// If clicked position is less than half way...
+			if ( clickedPos < halfWay ) {
+				//
+				// Direction is left
+				direction = 'left';
+			//
+			// More than half way...
+			} else {
+				//
+				// Direction is right
+				direction = 'right';
+			}
+			//
+			// Pass the position to the slideContent func
+			slideContent( direction );
+		});
+
 
 		lifestyle_dial.getLifestyle = getLifestyle;
 
