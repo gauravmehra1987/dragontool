@@ -3,32 +3,57 @@
 
 @import '../../bower_components/lesshat/build/lesshat';
 
-// External CSS overrides
 
-@import 'plugins';
+// PLUGINS
+@import 'plugins/slick';
 
-// Import core components
 
-@import 'variables';
-@import 'colors';
-@import 'mixins';
-@import 'fonts';
-@import 'sprites';
-@import 'icons';
-@import 'type';
-@import 'forms';
+// BASE
+@import 'base/variables';
+@import 'base/colors';
+@import 'base/mixins';
+@import 'base/fonts';
+@import 'base/sprites';
+@import 'base/icons';
+@import 'base/type';
 
-// Define custom styles
 
-@import 'skin';
-@import 'dials';
-@import 'dashboard';
+// LAYOUT
+@import 'layout/layout-wrapper';
+@import 'layout/layout-default';
+@import 'layout/layout-dash';
+@import 'layout/layout-footer';
+@import 'layout/layout-header';
 
-// Responsive styles
 
-@import 'responsive';
+// COMPONENTS
+@import 'components/common';
+@import 'components/dials';
+@import 'components/forms';
+@import 'components/results-car';
+@import 'components/results-panel';
+@import 'components/loader';
+@import 'components/social';
+@import 'components/actions';
+@import 'components/ministry';
+@import 'components/panel';
 
-// Hacks
 
-@import 'hacks';
-@import 'shell';
+@import 'components/dash/dash';
+@import 'components/dash/control-title';
+@import 'components/dash/res-wrap';
+
+
+// PAGES
+@import 'pages/results-page';
+@import 'pages/form-page';
+@import 'pages/thanks-page';
+@import 'pages/error-page';
+
+
+// OVERRIDES
+@import 'overrides/hacks';
+
+
+
+

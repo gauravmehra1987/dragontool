@@ -1,0 +1,52 @@
+
+.social {
+
+	.list-inline;
+
+	display: table;
+	float: right;
+	margin: 0 auto;
+
+	li {
+
+		.hide-text;
+
+		background: orange;
+		display: block;
+		margin-left: 4px;
+
+		a {
+
+			.hide-text;
+
+			background: @formGrayDark;
+			color: @white;
+			display: block;
+			padding: @margin;
+			position: relative;
+			text-decoration: none;
+
+			&:hover { background: @formGray; }
+
+			&:after {
+
+				.icon;
+
+				font-size: 16px;
+				margin-top: -8px;
+				margin-left: -8px;
+				position: absolute;
+
+				top: 50%;
+				left: 50%;
+
+			}
+
+		}
+
+		&.facebook a:after { .icon-facebook-letter; }
+		&.twitter a:after { .icon-twitter-bird; }
+
+	}
+
+}

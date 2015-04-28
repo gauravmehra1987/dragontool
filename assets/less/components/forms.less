@@ -1,0 +1,299 @@
+// Form input wrapper
+
+.form-control {
+
+	.remove-last-margin;
+
+	&.disabled { opacity: 0.6; }
+
+	&.append {
+
+		padding-left: ( @fontSizeSmall ) + ( @margin ) + 2px;
+		position: relative;
+
+	}
+
+	&.half-width { width: 50%; }
+
+	&.full-width {
+
+		input:not( [type=checkbox] ):not( [type=radio] ),
+		.button,
+		button,
+		textarea { width: 100%; }
+
+	}
+
+	// This is for IE8 when we're not using fancy form controls
+
+	input[type=radio],
+	input[type=checkbox] { margin-right: 0.5em; }
+
+}
+
+// Inputs
+
+.form-error {
+
+	.clearfix;
+
+	color: @formRed;
+	clear: both;
+	display: block;
+	font-size: @fontSizeSmall;
+	line-height: 1;
+	margin-top: @margin / 2;
+
+	.append & {
+
+		margin-left: -( ( @fontSizeSmall ) + ( @margin ) + 2px );
+
+	}
+
+}
+
+input:not( [type=checkbox] ):not( [type=radio] ),
+textarea {
+
+	.form-input;
+	.placeholder( @black );
+	.transition( all 0.2s );
+
+	height: 30px;
+	padding: 0px 10px;
+
+	background: @formGray;
+	border-color: @formGray;
+	border-radius: 0 3px 3px 0;
+	box-shadow: 1px 1px 2px transparent inset;
+	color: @black;
+
+	& + .field-icon {
+
+		.transition( all 0.2s );
+
+		background: @formGrayDark;
+		border-radius: 3px 0 0 3px;
+		position: absolute;
+
+		top: 0;
+		left: 0;
+
+		height: 30px;
+		width: ( @fontSizeSmall ) + ( @margin ) + 2px;
+
+		&:before {
+
+			.align-centers;
+			.icon;
+			.transition( all 0.2s );
+
+			color: @formGray;
+			font-size: 16px;
+			margin-top: -0.5em;
+			margin-left: -0.5em;
+			position: absolute;
+
+			top: 50%;
+			left: 50%;
+
+		}
+
+	}
+
+	&.error {
+
+		border-color: @formRed;
+
+		+ .field-icon {
+
+			background: @formRed;
+			&:before { color: @white; }
+
+		}
+
+	}
+
+}
+
+.form-control.append {
+
+	&.user input + .field-icon:before { .icon-user; }
+	&.mail input + .field-icon:before { .icon-mail; }
+	&.phone input + .field-icon:before { .icon-phone; }
+	&.home input + .field-icon:before { .icon-home; }
+
+}
+
+// Textarea
+
+textarea { min-height: @margin * 6; }
+
+// Buttons
+
+.button,
+button,
+input[type=button],
+input[type=submit],
+input[type=cancel] {
+
+	&, &:visited { color: @white; }
+
+	.form-input;
+
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	display: inline-block;
+	font-family: @fontMiniBold;
+	font-size: @fontSizeMedium;
+	font-weight: normal;
+	line-height: 1;
+	padding: @margin * 0.75;
+	text-decoration: none;
+	text-transform: uppercase;
+	height: auto;
+	// position: relative;
+	// left: 0px;
+
+	&:before {
+
+		// display: block;
+		// position: absolute;
+		// left: 0px;
+
+		.icon;
+		.icon-raquo;
+
+		margin-right: 0.5em;
+
+	}
+
+	&:hover { text-decoration: none; }
+
+	&.gray {
+
+		background: @formGray;
+		color: @black;
+		font-size: @fontSize;
+
+	}
+
+	&.transparent {
+
+		background-color: transparent;
+		border-color: transparent;
+		padding: 0;
+
+	}
+
+}
+
+.button {
+
+	&.disabled {
+
+		opacity: 0.5;
+
+	}
+}
+
+// Now, checkboxes...
+
+.checkbox {
+
+	.clearfix;
+	.form-checkbox;
+
+	label {
+
+		line-height: 18px;
+	}
+
+
+
+	// Here you can change the icon - or you can overwrite it in the mixins file permanently
+
+	input + label:before {
+
+		background: @formGray;
+		box-shadow: none;
+
+	}
+
+	input:checked + label {
+
+		&:after {
+
+			.icon-ok;
+
+			color: @black
+
+		}
+
+	}
+
+	// Now the radio buttons
+
+	&.checkbox-radio {
+
+		label:before {
+
+			.icon;
+			.icon-circle-empty;
+
+			background: 0;
+			color: @formGray;
+
+		}
+
+		input[type=radio] + label:after { display: none; }
+
+		input[type=radio]:checked + label:before { .icon-circle-tick; }
+
+	}
+
+}
+
+// and select elements - first for IE8
+
+select {
+
+	display: block;
+	margin: 0 0 ( @margin / 2 ) 0;
+	padding: @fontSize;
+	width: 100%;
+
+	option { padding: 5px 10px; }
+
+}
+
+// then for other browsers
+
+.select {
+
+	.transition( all 0.2s );
+
+	.form-select;
+
+	// Different states
+
+	&.error {
+
+		.form-select( @borderColor: @formRed, @dropdownBg: @formRed, @dropdownColor: @white );
+
+	}
+
+	&:after {
+
+		font-size: 16px;
+
+	}
+
+}
+
+.form-control-select {
+
+	overflow: hidden;
+
+}

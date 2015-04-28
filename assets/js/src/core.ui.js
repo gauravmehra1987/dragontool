@@ -177,10 +177,10 @@ function UI() {
 
 					$cars.removeClass( 'active' ).filter( ':first' ).addClass( 'active' );
 
-					$cars.eq( 0 ).attr( 'href', '#' + car.code ).find( 'img' ).attr( 'src', path.assets + car.code + '.png' );
-					$cars.eq( 1 ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + alt_1.code + '.png' );
-					$cars.eq( 2 ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + alt_2.code + '.png' );
-					$cars.eq( 3 ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + alt_3.code + '.png' );
+					$cars.eq( 0 ).attr( 'href', '#' + car.code ).find( 'img' ).attr( 'src', path.assets + car.code + '.jpg' );
+					$cars.eq( 1 ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + alt_1.code + '.jpg' );
+					$cars.eq( 2 ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + alt_2.code + '.jpg' );
+					$cars.eq( 3 ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + alt_3.code + '.jpg' );
 
 				}
 
@@ -190,12 +190,12 @@ function UI() {
 
 		// Hide the dashboard on mobile
 
-		if( Mini.browser.mobile ) setTimeout( function() { $( '.layout > .column.left' ).removeClass( 'open' ); }, 0 );
+		if( Mini.browser.mobile ) setTimeout( function() { $( '#layout-dash > .column.left' ).removeClass( 'open' ); }, 0 );
 
 		// Render actual results
 
 		car.url = resultsPageUrl( path.results, car.code );
-		car.img = path.assets + car.code + '.png';
+		car.img = path.assets + car.code + '.jpg';
 
 		// Render car templates
 

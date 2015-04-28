@@ -1,0 +1,75 @@
+
+.thanks {
+
+	header, footer { .tc; }
+
+	header h3 { margin-top: @margin; }
+
+	footer {
+
+		margin: @margin * 2 0 0;
+
+		.form-control { margin: 0; }
+
+	}
+
+}
+
+.thanks-content {
+
+	header.centred {
+
+		text-align: center;
+
+		h3 {
+
+			padding-top: 20px;
+
+		}
+
+	}
+
+}
+
+
+.thanks-links {
+
+	.item {
+
+		font-size: @fontSizeMedium;
+		margin: 0 0 @margin / 2!important;
+
+		a {
+
+			color: inherit;
+
+			&:hover,
+			&:active,
+			&:visited {
+
+				color: inherit;
+				text-decoration: none;
+
+			}
+		}
+
+		&:before {
+
+			.icon;
+			.icon-raquo;
+
+			margin-right: 0.5em;
+
+		}
+
+		& + p {
+
+			font-size: @fontSizeSmall;
+			line-height: 1.5em;
+			margin: 0 0 0 @fontSizeMedium * 1.5;
+
+		}
+
+	}
+
+}

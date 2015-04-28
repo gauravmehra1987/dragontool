@@ -1,0 +1,157 @@
+
+#page-form {
+
+	form { .clearfix; }
+
+	.form-left,
+	.form-right {
+
+		float: left;
+		overflow: hidden;
+		position: relative;
+
+	}
+
+	.form-left {
+
+		border-right: solid 1px @dialGray;
+		max-width: ~'calc( 35% - 41px )';
+		margin-right: @margin;
+		padding-right: @margin;
+		max-width: 420px;
+
+	}
+
+	.form-right {
+
+		position: absolute;
+		margin-top: 0px;
+		margin-left: 460px;
+		max-width: 100%;
+		padding-right: 20px;
+	
+	}
+
+	#form_car_wrap {
+
+		width: 100%;
+		margin: 0px auto;
+
+	}
+
+	#form_car {
+
+		height: auto;
+		width: 100%;
+
+	}
+
+	// Actual form layout
+
+	.inline {
+
+		.clearfix;
+
+		.form-control {
+
+			.box-sizing( border-box );
+
+			&:first-of-type {
+
+				float: left;
+
+				width: auto;
+
+			}
+
+			&:last-of-type {
+
+				float: right;
+
+				width: auto;
+
+			}
+
+		}
+
+	}
+
+	#optout_chooser,
+	#address_type_chooser {
+
+		.clearfix;
+
+		.checkbox {
+
+			float: left;
+			margin-right: @margin;
+
+			&.checkbox-radio label { line-height: 2.3em; }
+
+		}
+
+	}
+
+
+
+	// TABLET
+	@media ( max-width: @breakpointTablet ) {
+
+		.layout-form {
+
+			width: auto;
+			padding: 20px;
+
+		}
+
+	}
+
+
+	// MOBILE
+	@media ( max-width: @breakpointMobile ) {
+
+		.form-left,
+		.form-right {
+
+			border: 0;
+			float: none;
+			margin: 0;
+			margin-bottom: 20px;
+			max-width: none;
+
+			width: auto;
+
+		}
+
+		.form-left {
+
+			padding: 0px;
+
+		}
+
+
+		.inline .half-width,
+		.inline,
+		.half-width,
+		#address_type_chooser {
+
+			float: none;
+
+			width: 100%;
+
+			input:not( [type=checkbox] ):not( [type=radio] ),
+			.button,
+			button,
+			textarea { width: 100%; }
+
+		}
+
+		#form_car_wrap { display: none; }
+
+		#finance + label { line-height: 1.4em; }
+
+	}
+
+
+}
+

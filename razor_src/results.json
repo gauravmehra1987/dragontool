@@ -5,7 +5,7 @@
 	"details":		"@Html.Action(\"ResultDetail\", new { modelCode = ViewBag.ModelCode })",
 	"name":			"@Model.Name",
 	"code":			"@Model.Code",
-	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".png\")",
+	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".jpg\")",
 	"formLink":		"/form?m=@Model.Code"
 
 }

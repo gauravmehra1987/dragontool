@@ -1,0 +1,121 @@
+
+// make result-car clickable
+.result-car{
+	z-index:1;
+}
+
+.img-base {
+
+	opacity: 0;
+	visibility: hidden;
+
+	height: auto;
+	width: auto;
+
+}
+
+.model-image {
+
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	max-width: 760px;
+
+	img {
+
+		&.img-base {
+
+			height: auto;
+			width: 100%; 
+
+		}
+
+		&.img-content {
+
+			position: absolute;
+			width: 100%;
+
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			
+
+		}
+
+	}
+
+}
+
+
+
+
+// Common elements
+
+.price-span,
+.rkt-disclamer {
+
+	.clearfix;
+
+	font-family: @fontAlt;
+	overflow: hidden;
+	margin: @margin 0px;
+
+	.currency,
+	.price,
+	.permonth,
+	.car-link {
+
+		display: block;
+		float: left;
+		line-height: 1;
+		margin-right: 5px;
+
+	}
+
+	.currency {
+
+		font-size: @fontSizeLarge;
+		position: relative;
+		top: @fontSize / 2;
+
+	}
+
+	.price { font-size: 56px; }
+
+	.permonth {
+
+		font-size: @fontSize;
+		position: relative;
+		top: 22px;
+
+	}
+
+}
+
+.rkt-disclamer {
+
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	font-size: 12px;
+
+}
+
+.car-link { font-size: 20px; }
+
+.car-name-big { font-size: 36px; }
+
+
+
+.egg-teleport #results .model-image {
+
+	canvas {
+
+		height: auto;
+		width: 100%;
+
+	}
+
+}
+

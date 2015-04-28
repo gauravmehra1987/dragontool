@@ -103,19 +103,19 @@ function Responsive() {
 
 				// When the dashboard is in view
 
-				$( '.layout > .column.left' ).toggleClass( 'open' );
-				$('.layout').toggleClass('dash-open');
+				$( '#layout-dash > .column.left' ).toggleClass( 'open' );
+				$('#layout-dash').toggleClass('dash-open');
 
 				// When the results screen is in view
 
-				if ( !($('.layout').hasClass('dash-open')) && $('#results').is(':visible') ) {
+				if ( !($('#layout-dash').hasClass('dash-open')) && $('#results').is(':visible') ) {
 
 					var resultsHeight = $('#results').height() + 270 + 'px';
-					$('.layout').css('height', resultsHeight);
+					$('#layout-dash').css('height', resultsHeight);
 
 				} else {
 
-					$('.layout').removeAttr('style');
+					$('#layout-dash').removeAttr('style');
 
 				};
 
@@ -146,9 +146,9 @@ function Responsive() {
 
 			$( '#tablet-toggle' ).off();
 
-			$( '.layout > .column.left' ).removeClass( 'open' );
+			$( '#layout-dash > .column.left' ).removeClass( 'open' );
 
-			$( '#page-home .layout, #dash' ).removeAttr( 'style' );
+			$( '#layout-dash, #dash' ).removeAttr( 'style' );
 
 		};
 

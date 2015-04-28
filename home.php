@@ -8,7 +8,7 @@
 
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
-	<main class="layout">
+	<main id="layout-dash" class="layout-dash">
 		
 		<div class="column right">
 			

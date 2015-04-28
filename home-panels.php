@@ -1,6 +1,6 @@
 <div id="welcome" class="panel panel-framed centered" data-panel-name="default">
 
-	<header class="header">
+	<header class="header welcome">
 		
 		<p class="ministry">Ministry of Finance</p>
 		<h6 class="strike-through">Presents</h6>
@@ -27,6 +27,8 @@
 </div><!-- end div#welcome.panel -->
 
 <div id="results" class="panel panel-results" data-panel-name="results">
+
+	<h5 class="control-title">Your results</h5>
 
 	<div id="tpl-results">Loading...</div>
 	
