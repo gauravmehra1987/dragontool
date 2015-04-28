@@ -23,7 +23,7 @@
 	<!-- build:remove --><form action="ajax.php" autocomplete="off"><!-- /build -->
 
 	<!-- build:template -->
-	<!-- <%= form.field.user %> -->
+	<%= form.field.user %>
 	<!-- /build -->
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
