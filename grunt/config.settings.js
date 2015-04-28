@@ -58,7 +58,7 @@ grunt.config.merge( {
 
 				'<%= project.paths.templates %>/Error/Index.cshtml':							[ 'error.php' ],
 				'<%= project.paths.templates %>/Error/NotFound.cshtml':							[ 'error-404.php' ],
-				'<%= project.paths.templates %>/Error/Http500.cshtml':							[ 'error-500.php' ],
+				'<%= project.paths.templates %>/Error/HttpError500.cshtml':							[ 'error-500.php' ],
 
 				// Partials
 
