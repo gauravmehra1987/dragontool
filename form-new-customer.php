@@ -1,11 +1,10 @@
-﻿<!-- build:template -->
+﻿<!-- build:template
 <%= form.model %>
-<!-- /build -->
+/build -->
 
-<!-- build:template -->
+<!-- build:template
 <%= form.open %>
-<!-- /build -->
-
+/build -->
 
 <div id="page_form" class="layout layout-default">
 
@@ -22,9 +21,9 @@
 
 	<!-- build:remove --><form action="ajax.php" autocomplete="off"><!-- /build -->
 
-	<!-- build:template -->
+	<!-- build:template
 	<%= form.field.user %>
-	<!-- /build -->
+	/build -->
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
 

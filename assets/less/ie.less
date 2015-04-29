@@ -25,6 +25,67 @@ html.ie8 > body {
 
 html.ie.oldie > body {
 
+	.form-control.append {
+
+		input {
+
+			height: 30px;
+			padding: 0px 10px;
+
+			background: @formGray;
+			border-color: @formGray;
+			border-radius: 0 3px 3px 0;
+			box-shadow: 1px 1px 2px transparent inset;
+			color: @black;
+
+			& + .field-icon {
+
+				background: @formGrayDark;
+				border-radius: 3px 0 0 3px;
+				position: absolute;
+
+				top: 0;
+				left: 0;
+
+				height: 30px;
+				width: ( @fontSizeSmall ) + ( @margin ) + 2px;
+
+				&:before {
+
+					// .align-centers;
+					// .icon;
+
+					color: @formGray;
+					font-size: 16px;
+					margin-top: -0.5em;
+					margin-left: -0.5em;
+					position: absolute;
+
+					top: 50%;
+					left: 50%;
+
+				}
+
+			}
+
+			&.error {
+
+				border-color: @formRed;
+
+				+ .field-icon {
+
+					background: @formRed;
+					&:before { color: @white; }
+
+				}
+
+			}
+
+		}
+	}
+
+
+
 	#logo a { background-image: url( ../img/mini-logo-small.png ); }
 
 	.layout-wrapper .layout #dash {

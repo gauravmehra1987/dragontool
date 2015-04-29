@@ -4,7 +4,7 @@
 
 		<a id="tablet-toggle" class="tablet-only">Reveal dashboard</a>
 
-		<div class="dash-overlay"></div>
+		<div class="dash-overlay hide"></div>
 		
 		<div id="dash-left">
 			
