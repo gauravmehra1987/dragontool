@@ -14,23 +14,25 @@ namespace Combobulator.Controllers
         public ActionResult Index()
         {
             Customer customer = null;
-
             if (!string.IsNullOrEmpty(Request.QueryString["c"]))
             {
                 try
                 {
-                    var command = new GetCustomerDataCommand(Request.QueryString["c"]);
-                    customer = command.Execute();
-                    //customer = Utils.GetCustomerById(Request.QueryString["c"]);
+                    int customerId;
+                    var isInteger = Int32.TryParse(Request.QueryString["c"], out customerId);
+                    if (isInteger)
+                    {
+                        var command = new GetCustomerDataCommand(customerId);
+                        customer = command.Execute();
+                        ViewBag.UserId = customerId.ToString();
+                    }
                 }
                 catch (Exception ex)
                 {
                     Log.Error("GetCustomerById", ex);
                 }
             }
-
             ViewBag.FirstName = customer != null ? customer.FirstName : "";
-            ViewBag.UserId = Request.QueryString["c"];
             return View();
         }
     }

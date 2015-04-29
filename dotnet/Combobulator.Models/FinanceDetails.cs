@@ -14,5 +14,7 @@
         public string ROI { get; set; }
         public string APR { get; set; }
         public double Total_Amount { get; set; }
+        public double Total_Deposit { get; set; }
+        public double Dealer_Discount { get; set; }
 	}
 }

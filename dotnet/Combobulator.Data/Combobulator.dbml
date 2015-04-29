@@ -133,25 +133,6 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetCarFinance" Method="GetCarFinance">
-    <Parameter Name="NewCardId" Parameter="newCardId" Type="System.Int32" DbType="Int" />
-    <ElementType Name="GetCarFinanceResult">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Payment" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FinancePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Deposit" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Contribution" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PurchaseFee" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FinalPayment" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CreditCharge" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ROI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.GetNewCar" Method="GetNewCar">
     <Parameter Name="ModelCode" Parameter="modelCode" Type="System.String" DbType="VarChar(10)" />
     <ElementType Name="GetNewCarResult">
@@ -201,6 +182,27 @@
       <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCarFinance" Method="GetCarFinance">
+    <Parameter Name="NewCardId" Parameter="newCardId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCarFinanceResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Term" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Payment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Deposit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Contribution" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PurchaseFee" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinalPayment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CreditCharge" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ROI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="APR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NewCarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Info" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalDeposit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DealerDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

@@ -45,7 +45,7 @@
         <elementListCompartment Id="b7faf394-8714-4790-97f3-c6fc9c108617" absoluteBounds="0.76499999999999968, 5.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.625 : 7.31810628255208); (2.75 : 7.31810628255208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.625 : 7.31810628255208); (2.75 : 7.31810628255208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CombobulatorDataContext/NewCar/NewCar_Finance" />
       <nodes>
         <classShapeMoniker Id="7b927ca2-fa15-4aae-9505-a55f58f608c3" />

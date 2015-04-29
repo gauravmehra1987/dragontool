@@ -31,7 +31,7 @@ namespace Combobulator.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Http500(string error)
+        public ActionResult HttpError500(string error)
         {
             Response.StatusCode = 500;
             var viewModel = new ErrorViewModel

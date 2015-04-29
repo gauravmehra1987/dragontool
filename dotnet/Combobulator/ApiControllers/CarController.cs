@@ -68,7 +68,9 @@ namespace Combobulator.ApiControllers
                             Credit_Charge = finance.CreditCharge ?? 0.0,
                             ROI = finance.ROI,
                             APR = finance.APR,
-                            Total_Amount = finance.TotalAmount ?? 0.0
+                            Total_Amount = finance.TotalAmount ?? 0.0,
+                            Total_Deposit = finance.TotalDeposit ?? 0.0,
+                            Dealer_Discount = finance.DealerDiscount ?? 0.0
                         }
                     }).ToList();
 
@@ -96,7 +98,7 @@ namespace Combobulator.ApiControllers
 
                 response.Content = sc;
 
-                HttpResponseMessage response2 = new HttpResponseMessage()
+                var response2 = new HttpResponseMessage()
                 {
                     Content = new StringContent(
                         json,
@@ -118,11 +120,11 @@ namespace Combobulator.ApiControllers
             catch (Exception ex)
             {
                 Log.Error("GetCars", ex);
-                ErrorResponse error = new ErrorResponse
+                var error = new ErrorResponse
                 {
                     Error = "Failed to get cars"
                 };
-                StringContent sc = new StringContent(serializer.Serialize(error));
+                var sc = new StringContent(serializer.Serialize(error));
                 sc.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response.Content = sc;
                 return response;

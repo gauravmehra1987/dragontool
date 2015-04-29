@@ -22,13 +22,23 @@ namespace Combobulator.Controllers
         /// <returns>A view</returns>
         public ActionResult Index()
         {
-            var userId = String.Empty;
+            var customerId = String.Empty;
             string modelCode;
 
+            var viewModel = new FormViewModel();
             // customer id
             if (!String.IsNullOrEmpty(Request.QueryString["c"]))
             {
-                userId = Request.QueryString["c"];
+                customerId = Request.QueryString["c"];
+
+                var command = new GetCustomerDataCommand(Int32.Parse(customerId));
+                var customer = command.Execute();
+                viewModel = new FormViewModel
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Email = customer.Email
+                };
             }
             // model code
             if (!String.IsNullOrEmpty(Request.QueryString["m"]))
@@ -37,20 +47,9 @@ namespace Combobulator.Controllers
             }
             else
             {
-                var cQuery = userId != String.Empty ? ("?c=" + userId) : "";
+                var cQuery = customerId != String.Empty ? ("?c=" + customerId) : "";
                 return RedirectToAction("Index", "Home", cQuery);
             }
-
-            Customer customer = null;
-            var command = new GetCustomerDataCommand(userId);
-            customer = command.Execute();
-            var viewModel = new FormViewModel
-            {
-                FirstName = customer.FirstName,
-                LastName = customer.LastName,
-                Email = customer.Email,
-                Code = modelCode
-            };
 
             var titles = _dbContext.GetTitles().ToList();
             viewModel.Titles = titles.Select(x => new Title
@@ -58,19 +57,20 @@ namespace Combobulator.Controllers
                 Id = x.Id,
                 Name = x.Name
             }).ToList();
+            viewModel.Code = modelCode;
 
             var car = _dbContext.GetNewCar(modelCode).SingleOrDefault();
             if (car != null)
             {
                 ViewBag.ModelName = car.Name;
             }
-            ViewBag.UserId = userId;
+            ViewBag.UserId = customerId;
             ViewBag.ModelCode = modelCode;
-            if (userId != "")
-            {
-                viewModel.UserId = Int32.Parse(userId);
-            }
 
+            if (!string.IsNullOrEmpty(customerId))
+            {
+                viewModel.UserId = Int32.Parse(customerId);
+            }
             return View(viewModel);
         }
 

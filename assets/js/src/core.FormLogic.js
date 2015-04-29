@@ -79,7 +79,7 @@ function FormLogic() {
 		finance.purchase_fee = Number(finance.purchase_fee).toFixed(2);
 		finance.final_payment = Number(finance.final_payment).toFixed(2);
 
-		finance.total_deposit	= Number(Number(finance.deposit) + Number(finance.contribution)).toFixed(2);
+		finance.total_deposit	= Number(finance.total_deposit).toFixed(2);
 		finance.total_amount	= Number(finance.total_amount).toFixed(2);
 		finance.credit_charge 	= Number(finance.credit_charge).toFixed(2);
 		finance.terms			= car.terms;
@@ -246,11 +246,13 @@ function FormLogic() {
 		console.log(address.Postcode);
 
 		if( ! _.isEmpty( $target.val() ) ) {
+			
+			var postcode_search = $( '#postcode_search' ).val();
 
 			$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
 			$( form.address2 ).val( address.Town );
 			$( form.address3 ).val( address.County );
-			$( form.postcode ).val( address.Postcode );
+			$( form.postcode ).val( postcode_search );
 
 		}
 

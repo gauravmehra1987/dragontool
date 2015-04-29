@@ -156,13 +156,6 @@ namespace Combobulator.Data
 			return ((ISingleResult<GetDealerResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCarFinance")]
-		public ISingleResult<GetCarFinanceResult> GetCarFinance([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewCardId", DbType="Int")] System.Nullable<int> newCardId)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), newCardId);
-			return ((ISingleResult<GetCarFinanceResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetNewCar")]
 		public ISingleResult<GetNewCarResult> GetNewCar([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ModelCode", DbType="VarChar(10)")] string modelCode)
 		{
@@ -175,6 +168,13 @@ namespace Combobulator.Data
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetNewCarsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCarFinance")]
+		public ISingleResult<GetCarFinanceResult> GetCarFinance([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewCardId", DbType="Int")] System.Nullable<int> newCardId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), newCardId);
+			return ((ISingleResult<GetCarFinanceResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -2536,266 +2536,6 @@ namespace Combobulator.Data
 		}
 	}
 	
-	public partial class GetCarFinanceResult
-	{
-		
-		private int _Id;
-		
-		private System.Nullable<int> _Term;
-		
-		private System.Nullable<double> _Payment;
-		
-		private System.Nullable<double> _FinancePrice;
-		
-		private System.Nullable<double> _Deposit;
-		
-		private System.Nullable<double> _Contribution;
-		
-		private System.Nullable<double> _PurchaseFee;
-		
-		private System.Nullable<double> _FinalPayment;
-		
-		private System.Nullable<double> _CreditCharge;
-		
-		private string _ROI;
-		
-		private string _APR;
-		
-		private System.Nullable<int> _NewCarId;
-		
-		private string _Info;
-		
-		private System.Nullable<double> _TotalAmount;
-		
-		public GetCarFinanceResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Term", DbType="Int")]
-		public System.Nullable<int> Term
-		{
-			get
-			{
-				return this._Term;
-			}
-			set
-			{
-				if ((this._Term != value))
-				{
-					this._Term = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Payment", DbType="Float")]
-		public System.Nullable<double> Payment
-		{
-			get
-			{
-				return this._Payment;
-			}
-			set
-			{
-				if ((this._Payment != value))
-				{
-					this._Payment = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancePrice", DbType="Float")]
-		public System.Nullable<double> FinancePrice
-		{
-			get
-			{
-				return this._FinancePrice;
-			}
-			set
-			{
-				if ((this._FinancePrice != value))
-				{
-					this._FinancePrice = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deposit", DbType="Float")]
-		public System.Nullable<double> Deposit
-		{
-			get
-			{
-				return this._Deposit;
-			}
-			set
-			{
-				if ((this._Deposit != value))
-				{
-					this._Deposit = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contribution", DbType="Float")]
-		public System.Nullable<double> Contribution
-		{
-			get
-			{
-				return this._Contribution;
-			}
-			set
-			{
-				if ((this._Contribution != value))
-				{
-					this._Contribution = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseFee", DbType="Float")]
-		public System.Nullable<double> PurchaseFee
-		{
-			get
-			{
-				return this._PurchaseFee;
-			}
-			set
-			{
-				if ((this._PurchaseFee != value))
-				{
-					this._PurchaseFee = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalPayment", DbType="Float")]
-		public System.Nullable<double> FinalPayment
-		{
-			get
-			{
-				return this._FinalPayment;
-			}
-			set
-			{
-				if ((this._FinalPayment != value))
-				{
-					this._FinalPayment = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditCharge", DbType="Float")]
-		public System.Nullable<double> CreditCharge
-		{
-			get
-			{
-				return this._CreditCharge;
-			}
-			set
-			{
-				if ((this._CreditCharge != value))
-				{
-					this._CreditCharge = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROI", DbType="NVarChar(50)")]
-		public string ROI
-		{
-			get
-			{
-				return this._ROI;
-			}
-			set
-			{
-				if ((this._ROI != value))
-				{
-					this._ROI = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APR", DbType="NVarChar(50)")]
-		public string APR
-		{
-			get
-			{
-				return this._APR;
-			}
-			set
-			{
-				if ((this._APR != value))
-				{
-					this._APR = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewCarId", DbType="Int")]
-		public System.Nullable<int> NewCarId
-		{
-			get
-			{
-				return this._NewCarId;
-			}
-			set
-			{
-				if ((this._NewCarId != value))
-				{
-					this._NewCarId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Info", DbType="NVarChar(MAX)")]
-		public string Info
-		{
-			get
-			{
-				return this._Info;
-			}
-			set
-			{
-				if ((this._Info != value))
-				{
-					this._Info = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Float")]
-		public System.Nullable<double> TotalAmount
-		{
-			get
-			{
-				return this._TotalAmount;
-			}
-			set
-			{
-				if ((this._TotalAmount != value))
-				{
-					this._TotalAmount = value;
-				}
-			}
-		}
-	}
-	
 	public partial class GetNewCarResult
 	{
 		
@@ -3563,6 +3303,302 @@ namespace Combobulator.Data
 				if ((this._Terms != value))
 				{
 					this._Terms = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetCarFinanceResult
+	{
+		
+		private int _Id;
+		
+		private System.Nullable<int> _Term;
+		
+		private System.Nullable<double> _Payment;
+		
+		private System.Nullable<double> _FinancePrice;
+		
+		private System.Nullable<double> _Deposit;
+		
+		private System.Nullable<double> _Contribution;
+		
+		private System.Nullable<double> _PurchaseFee;
+		
+		private System.Nullable<double> _FinalPayment;
+		
+		private System.Nullable<double> _CreditCharge;
+		
+		private string _ROI;
+		
+		private string _APR;
+		
+		private System.Nullable<int> _NewCarId;
+		
+		private string _Info;
+		
+		private System.Nullable<double> _TotalAmount;
+		
+		private System.Nullable<double> _TotalDeposit;
+		
+		private System.Nullable<double> _DealerDiscount;
+		
+		public GetCarFinanceResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Term", DbType="Int")]
+		public System.Nullable<int> Term
+		{
+			get
+			{
+				return this._Term;
+			}
+			set
+			{
+				if ((this._Term != value))
+				{
+					this._Term = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Payment", DbType="Float")]
+		public System.Nullable<double> Payment
+		{
+			get
+			{
+				return this._Payment;
+			}
+			set
+			{
+				if ((this._Payment != value))
+				{
+					this._Payment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancePrice", DbType="Float")]
+		public System.Nullable<double> FinancePrice
+		{
+			get
+			{
+				return this._FinancePrice;
+			}
+			set
+			{
+				if ((this._FinancePrice != value))
+				{
+					this._FinancePrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deposit", DbType="Float")]
+		public System.Nullable<double> Deposit
+		{
+			get
+			{
+				return this._Deposit;
+			}
+			set
+			{
+				if ((this._Deposit != value))
+				{
+					this._Deposit = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contribution", DbType="Float")]
+		public System.Nullable<double> Contribution
+		{
+			get
+			{
+				return this._Contribution;
+			}
+			set
+			{
+				if ((this._Contribution != value))
+				{
+					this._Contribution = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseFee", DbType="Float")]
+		public System.Nullable<double> PurchaseFee
+		{
+			get
+			{
+				return this._PurchaseFee;
+			}
+			set
+			{
+				if ((this._PurchaseFee != value))
+				{
+					this._PurchaseFee = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalPayment", DbType="Float")]
+		public System.Nullable<double> FinalPayment
+		{
+			get
+			{
+				return this._FinalPayment;
+			}
+			set
+			{
+				if ((this._FinalPayment != value))
+				{
+					this._FinalPayment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditCharge", DbType="Float")]
+		public System.Nullable<double> CreditCharge
+		{
+			get
+			{
+				return this._CreditCharge;
+			}
+			set
+			{
+				if ((this._CreditCharge != value))
+				{
+					this._CreditCharge = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROI", DbType="NVarChar(50)")]
+		public string ROI
+		{
+			get
+			{
+				return this._ROI;
+			}
+			set
+			{
+				if ((this._ROI != value))
+				{
+					this._ROI = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APR", DbType="NVarChar(50)")]
+		public string APR
+		{
+			get
+			{
+				return this._APR;
+			}
+			set
+			{
+				if ((this._APR != value))
+				{
+					this._APR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewCarId", DbType="Int")]
+		public System.Nullable<int> NewCarId
+		{
+			get
+			{
+				return this._NewCarId;
+			}
+			set
+			{
+				if ((this._NewCarId != value))
+				{
+					this._NewCarId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Info", DbType="NVarChar(MAX)")]
+		public string Info
+		{
+			get
+			{
+				return this._Info;
+			}
+			set
+			{
+				if ((this._Info != value))
+				{
+					this._Info = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Float")]
+		public System.Nullable<double> TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this._TotalAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalDeposit", DbType="Float")]
+		public System.Nullable<double> TotalDeposit
+		{
+			get
+			{
+				return this._TotalDeposit;
+			}
+			set
+			{
+				if ((this._TotalDeposit != value))
+				{
+					this._TotalDeposit = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DealerDiscount", DbType="Float")]
+		public System.Nullable<double> DealerDiscount
+		{
+			get
+			{
+				return this._DealerDiscount;
+			}
+			set
+			{
+				if ((this._DealerDiscount != value))
+				{
+					this._DealerDiscount = value;
 				}
 			}
 		}

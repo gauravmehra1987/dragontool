@@ -12,13 +12,13 @@ namespace Combobulator.Business.Commands
     {
         //Set Logging
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly string _customerId;
+        private readonly int _customerId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GetCustomerDataCommand"/> class.
         /// </summary>
         /// <param name="customerId">The customer identifier.</param>
-        public GetCustomerDataCommand(string customerId)
+        public GetCustomerDataCommand(int customerId)
         {
             _customerId = customerId;
         }
@@ -49,7 +49,7 @@ namespace Combobulator.Business.Commands
 
                 var customer = new Customer
                 {
-                    UserId = _customerId,
+                    UserId = _customerId.ToString(),
                     FirstName = obj.first_name,
                     LastName = obj.surname,
                     Email = obj.email

@@ -2,10 +2,10 @@
 
 	"model":		"@model Combobulator.Business.ViewModels.CarViewModel",
 	"variables":	"@{ ViewBag.Title = \"MINI Combobulator Results\"; }",
-	"details":		"@Html.Action(\"ResultDetail\", new { modelCode = ViewBag.ModelCode })",
+	"details":		"@Html.Action(\"ResultDetail\", new { modelCode = ViewBag.ModelCode, userId = ViewBag.UserId })",
 	"name":			"@Model.Name",
 	"code":			"@Model.Code",
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".png\")",
-	"formLink":		"/form?m=@Model.Code"
+	"formLink":		"/form?m=@Model.Code&c=@ViewBag.UserId"
 
 }
