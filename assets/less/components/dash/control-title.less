@@ -1,0 +1,82 @@
+
+.control-title {
+
+	.tc;
+
+	background: @dialGrayDark;
+	color: @dialGrayText;
+	display: block;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	line-height: 30px;
+	margin: @dashGutter @dashGutter 0;
+	text-transform: uppercase;
+
+	@media ( max-width: @breakpointMobile ) {
+
+		.tl;
+
+		background: @dialGrayDark;
+		color: @white !important;
+		margin-bottom: @dashGutter !important;
+		padding: @margin;
+		padding-left: @margin * 2.5;
+		position: relative;
+
+		&.open + .control-wrapper { max-height: 600px !important; }
+
+		.light {
+
+			background: 0;
+			border: solid 4px @black;
+			border-radius: 100%;
+			box-shadow: 0 1px 0 fadeout( @grayDarker, 50% );
+			margin-top: -8px;
+			margin-left: -4px;
+			position: absolute;
+			
+			top: 50%;
+			left: @margin;
+
+			height: 8px;
+			width: 8px;
+
+		}
+
+		&:after {
+
+			.icon;
+			.icon-down-thick;
+
+			margin-top: -0.5em;
+			position: absolute;
+
+			top: 50%;
+			right: @margin;
+
+		}
+
+	}
+
+}
+
+
+.control-title.open  {
+
+	@media ( max-width: @breakpointMobile ) {
+
+		&:after {
+
+			display: inline-block;
+			-webkit-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-o-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			transform: rotate(180deg);
+
+		}
+
+	}
+
+}
+

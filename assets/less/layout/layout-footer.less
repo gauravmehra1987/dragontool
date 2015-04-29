@@ -1,0 +1,47 @@
+
+.layout-footer {
+
+	font-size: @fontSizeSmall;
+	margin: @margin 0;
+
+	p {
+
+		line-height: 1;
+
+		a {
+
+			color: @grayDark;
+
+			&:before {
+
+				.icon;
+				.icon-raquo;
+
+				font-size: @fontSizeSmaller * 0.8;
+				margin-right: 0.5em;
+
+			}
+
+		}
+
+	}
+
+}
+
+
+// TABLET
+@media ( max-width: @breakpointTablet ) {
+
+	.layout-footer { display: none; }
+
+}
+
+
+// MOBILE
+@media ( max-width: @breakpointMobile ) {
+
+	.layout-footer { margin: @margin; }
+
+}
+
+

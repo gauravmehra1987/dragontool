@@ -1,0 +1,154 @@
+
+.layout-dash {
+
+	color: white;
+	max-width: 1180px;
+	overflow: hidden;
+	position: relative;
+
+	height: 795px;
+
+	&.full-width {
+
+		height: auto;
+		width: 1180px;
+
+	}
+
+	&.auto-height {
+
+		height: auto;
+
+	}
+
+	.column {
+
+		float: right;
+		position: relative;
+
+		&.left { width: 780px; }
+
+		&.right {
+
+			margin: 2px 0;
+
+			height: 100%;
+			width: 400px;
+
+		}
+
+	}
+
+
+	// TABLET
+	@media ( max-width: @breakpointTablet ) {
+
+		display: block;
+		margin-top: 3px;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+
+		&.dash-open { height: 905px; }
+		&.results-open { height: 1340px; }
+		&.full-width { width: 100%; }
+
+		.column {
+
+			&.right,
+			&.left {
+
+				background: @trueBlack;
+				float: none;
+				margin: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				width: auto;
+
+				.panel { height: auto; }
+
+			}
+
+			&.left {
+
+				.transition( top 0.6s );
+
+				top: ~'calc( 100% - ( 120px ) )';
+
+				height: ~'calc( 100% + 120px )';
+
+				&.open {
+
+					top: 0;
+
+					#dash #tablet-toggle:before {
+
+						.rotate( 90 );
+
+						color: @white;
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+	// MOBILE
+	@media ( max-width: @breakpointMobile ) {
+
+		height: auto;
+
+		.control-title { cursor: pointer; }
+
+		.top,
+		.middle,
+		.bottom,
+		.inner-left,
+		.inner-right,
+		.control-title {
+
+			display: block !important;
+			text-indent: 0 !important;
+
+			box-shadow: none;
+			margin: 0;
+
+		}
+
+		.column {
+
+			&.left,
+			&.right {
+
+				clear: both;
+				float: none;
+				overflow: hidden;
+
+				height: auto;
+				width: auto;
+				position: static;
+
+				.panel {
+
+					position: static;
+					padding: @margin;
+					margin: 0px;
+					width: auto;
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+

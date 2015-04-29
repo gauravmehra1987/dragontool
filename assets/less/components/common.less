@@ -1,0 +1,58 @@
+html {
+
+	height: 100%;
+
+	body {
+
+		background: @trueBlack;
+		color: @text;
+		font-family: @fontSans;
+		font-size: @fontSize;
+		line-height: @lineHeight;
+		padding: 0;
+
+		height: 100%;
+		width: auto; // Needed for padding
+
+	}
+
+}
+
+
+.hideDesktop { display: none; }
+
+
+.notice {
+
+	&, p {
+
+		color: @grayDark;
+		font-size: @fontSizeSmaller;
+		line-height: 16px;
+
+		& + &,
+		& + .form-control { margin-top: @margin; }
+
+	}
+
+}
+
+
+@media ( max-width: @breakpointTablet ) {
+
+	.hideDesktop { display: inherit; }
+	.hideTablet { display: none; }
+
+}
+
+@media ( max-width: @breakpointMobile ) {
+
+	.hideTablet { display: inherit; }
+	.hideMobile { display: none; }
+
+	.button { width: 100%; }
+
+}
+
+
+

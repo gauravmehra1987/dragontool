@@ -35,7 +35,7 @@ var form = {
 	postcode:			'#postcode',
 	addressChooser:		'#address_chooser',
 	dealerChooser:		'#dealer_chooser',
-	dealers:			'#dealers',
+	dealers:			'#dealers'
 }
 
 

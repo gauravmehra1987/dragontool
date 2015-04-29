@@ -1,35 +1,33 @@
-﻿<!-- build:template -->
+﻿<!-- build:template
 <%= form.model %>
-<!-- /build -->
+/build -->
 
-<!-- build:template -->
+<!-- build:template
 <%= form.open %>
-<!-- /build -->
+/build -->
 
-<div id="page_form" class="layout layout-form auto-height">
+<div id="page_form" class="layout layout-default">
+
+	<div class="form-content">
+
+		<ul class="actions">
+
+			<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
+			<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
+
+		</ul>
+
+	</div>
 
 	<!-- build:remove --><form action="ajax.php" autocomplete="off"><!-- /build -->
 
-	<!-- build:template -->
+	<!-- build:template
 	<%= form.field.user %>
-	<!-- /build -->
+	/build -->
 
 	<!-- build:remove --><input type="hidden" id="uid" name="UserId" value="999" /><!-- /build -->
 
 	<div class="form-left">
-
-		<header>
-
-			<ul class="actions">
-
-				<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
-				<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
-
-			</ul>
-
-		</header>
-
-
 
 		<!-- ****************************************************************************** -->
 		<!-- FORM CONTENT -->
@@ -372,7 +370,7 @@
 					<img src="<%= form.carImage %>" id="results-car" class="img-content" />
 				/build -->
 
-				<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.png" id="car-image" class="img-content" /><!-- /build -->
+				<!-- build:remove --><img src="assets/cars/<?= $_GET[ 'm' ]; ?>.jpg" id="car-image" class="img-content" /><!-- /build -->
 
 			</figure><!-- end figure#car -->
 
@@ -384,6 +382,6 @@
 
 </div><!-- end div.layout -->
 
-	<!-- build:template -->
-	<%= form.close %>
-	<!-- /build -->
+<!-- build:template -->
+<%= form.close %>
+<!-- /build -->

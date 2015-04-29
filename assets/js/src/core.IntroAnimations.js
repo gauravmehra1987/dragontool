@@ -335,6 +335,9 @@ function IntroAnimations() {
 
 	this.startAnimations = function() {
 		//
+		// Show the dash overlay to prevent users from interacting with the intro animations
+		$('.dash-overlay').removeClass('hide');
+		//
 		// Start some of the dials animating...
 		_this.bums();
 		_this.bg();
@@ -355,7 +358,6 @@ function IntroAnimations() {
 
 		// Hide overlay once all animations are complete
 		setTimeout( function() {
-			// Overlay prevents users from interacting with animations because it sometimes causes bugs
 			$('.dash-overlay').addClass('hide');
 		}, 2500 );
 	};

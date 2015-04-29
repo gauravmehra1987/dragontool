@@ -1,0 +1,44 @@
+
+#system {
+
+	.align-centers;
+	.transition( opacity 0.2s linear );
+
+	background: fadeout( @trueBlack, 20% );
+	margin-top: -500px;
+	position: fixed;
+	z-index: 99999;
+
+	top: 50%;
+	left: 0%;
+
+	height: 1000px;
+	width: 100%;
+
+	opacity: 1;
+	visibility: visible;
+
+	&.hidden {
+
+		opacity: 0;
+		visibility: hidden;
+
+	}
+
+	&:after {
+
+		.align-centers;
+		.tc;
+
+		content: attr( data-system-message );
+		color: @white;
+		font-family: @fontMiniHD;
+		font-size: @fontSizeLarger;
+		line-height: 1000px;
+	
+	}
+
+	// MOBILE
+	@media ( max-width: @breakpointMobile ) { display: none; }
+
+}

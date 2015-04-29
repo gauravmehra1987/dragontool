@@ -36,7 +36,7 @@ function Combobulate() {
 				//
 				setTimeout( function() {
 					$('#tablet-toggle').click();
-					$( '.layout > .column.left' ).removeClass( 'open' );
+					$( '.layout-dash > .column.left' ).removeClass( 'open' );
 				}, 600);
 
 

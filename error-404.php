@@ -12,7 +12,7 @@
 
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
-	<main class="layout full-width">
+	<main class="layout layout-default">
 	
 	<div id="notFound">
 
