@@ -50,7 +50,9 @@ function Responsive() {
 				//
 				// Get the light
 				var $light = $( this ).find( '.light' );
-				var color = $( '.car-changer' ).css( 'border-color' );
+				//
+				// Get the color
+				var color = $( '.switch-bg' ).css( 'background-color' );
 				//
 				// Add a light class to the clicked tab to show the user has opened it
 				$( this ).addClass('light');
