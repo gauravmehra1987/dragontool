@@ -7,7 +7,7 @@
 	
 	"name" : "@ViewBag.ModelName",
 
-	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".png\")",
+	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".jpg\")",
 	"field": {
 		"user":		"@Html.HiddenFor(model => model.UserId, new {@id = \"userid\", @Name=\"userid\", @value = ViewBag.UserId})",
 
