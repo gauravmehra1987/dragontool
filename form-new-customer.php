@@ -313,7 +313,7 @@
 							
 					<h3>Nice one.</h3>
 
-					<p>A friendly MINI Dealer will be in contact soon. (We’ve sent an email to your inbox with all the info.) Until then, why not make your MINI one in a million with our configurator?</p>
+					<p>A friendly MINI retailer will be in contact soon. (We're sending an email to your inbox with all the info). Until then, why not see what else we've got up our sleeve?</p>
 
 				</header><!-- end header.header -->
 
@@ -322,20 +322,18 @@
 
 					<hr />
 
-					<h4 class="item switch-color"><a href="#" target="_blank">Mollycoddle your Mini.</a></h4>
-					<p>Keep your MINI cotton-wool wrapped with MINI Insurance.</p>
+					<h4 class="item switch-color"><a href="http://www.mini.co.uk/offers-and-finance/insurance" target="_blank">Mollycoddle your Mini.</a></h4>
+					<p>Keep your MINI cotton-wool wrapped with MINI Insurance and Warranties.</p>
 
 					<hr />
 
-					<h4 class="item switch-color"><a href="#" target="_blank">Keep it covered.</a></h4>
-					<p>Protect your MINI’s working parts with a MINI Warranty.</p>
+					<h4 class="item switch-color"><a href="http://www.mini.co.uk/offers-and-finance" target="_blank">Offers for every pocket.</a></h4>
+					<p>Get a bespoke finance package just for you from the MINIstry of Finance.</p>
 
 					<hr />
 
-					<h4 class="item switch-color"><a href="#" target="_blank">Get connected.</a></h4>
+					<h4 class="item switch-color"><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">Get connected.</a></h4>
 					<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
-
-					<a href="http://www.mini.co.uk/design-your-mini" target="_blank" class="button switch-bg">Configure my Mini</a>
 
 				</div>
 
