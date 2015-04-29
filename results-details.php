@@ -31,15 +31,17 @@
 			<img src="assets/cars/none.png" class="img-base" />
 
 			<!-- build:template
-			<img src="<%= results.carImage %>" id="car-image" class="img-content" />
+			<a href="<%= results.formLink %>">
+				<img src="<%= results.carImage %>" id="car-image" class="img-content" />
+			</a>
 			/build -->
 
 			<!-- build:remove -->
 			<a href="form.php?<?= $_SERVER[ 'QUERY_STRING' ]; ?>">
 				<img src="assets/cars/<?= $_GET[ 'm' ]; ?>.jpg" id="car-image" class="img-content result-car" />
 			</a>
-
 			<!-- /build -->
+
 		</figure><!-- end figure#car -->
 
 	</div>
