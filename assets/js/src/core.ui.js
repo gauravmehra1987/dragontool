@@ -177,10 +177,10 @@ function UI() {
 
 					$cars.removeClass( 'active' ).filter( ':first' ).addClass( 'active' );
 
-					$cars.eq( 0 ).attr( 'href', '#' + car.code ).find( 'img' ).attr( 'src', path.assets + car.code + '.jpg' );
-					$cars.eq( 1 ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + alt_1.code + '.jpg' );
-					$cars.eq( 2 ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + alt_2.code + '.jpg' );
-					$cars.eq( 3 ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + alt_3.code + '.jpg' );
+					$cars.eq( 0 ).attr( 'href', '#' + car.code ).find( 'img' ).attr( 'src', path.assets + 'thumbnails/' + car.code + '.jpg' );
+					$cars.eq( 1 ).attr( 'href', '#' + alt_1.code ).find( 'img' ).attr( 'src', path.assets + 'thumbnails/' + alt_1.code + '.jpg' );
+					$cars.eq( 2 ).attr( 'href', '#' + alt_2.code ).find( 'img' ).attr( 'src', path.assets + 'thumbnails/' + alt_2.code + '.jpg' );
+					$cars.eq( 3 ).attr( 'href', '#' + alt_3.code ).find( 'img' ).attr( 'src', path.assets + 'thumbnails/' + alt_3.code + '.jpg' );
 
 				}
 
@@ -225,13 +225,13 @@ function UI() {
 
 		renderRelatedCars( car, related );
 
-		// Change dashboard color
-
-		dashboard.colors( carColors[ car.color ] );
-
 		// Reveal results
 
 		this.showPanel( 'results' );
+
+		// Change dashboard color
+
+		dashboard.colors( carColors[ car.color ] );
 
 		// If mobile, scroll to the top
 
