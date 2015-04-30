@@ -2,13 +2,13 @@
 <%= results.model %>
 /build -->
 
+<ul class="actions">
+
+	<li id="results_back"><a href="./">Recombobulate</a></li>
+
+</ul>
+
 <div class="car-result--layout">
-
-	<ul class="actions">
-
-		<li id="results_back"><a href="./">Recombobulate</a></li>
-
-	</ul>
 
 	<div class="car-result--left">
 

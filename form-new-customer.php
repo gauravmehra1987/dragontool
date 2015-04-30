@@ -1,23 +1,20 @@
-﻿<!-- build:template
-<%= form.model %>
-/build -->
-
-<!-- build:template
-<%= form.open %>
-/build -->
-
+﻿
 <div id="page_form" class="layout layout-default">
 
-	<div class="form-content">
+	<ul class="actions">
 
-		<ul class="actions">
+		<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
+		<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
 
-			<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
-			<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
+	</ul>
 
-		</ul>
+	<!-- build:template
+	<%= form.model %>
+	/build -->
 
-	</div>
+	<!-- build:template
+	<%= form.open %>
+	/build -->
 
 	<!-- build:remove --><form action="ajax.php" autocomplete="off"><!-- /build -->
 

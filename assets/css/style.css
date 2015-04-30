@@ -5725,6 +5725,8 @@ select option {
 }
 .actions {
   padding: 0px;
+  height: 60px;
+  width: 100%;
 }
 .actions #results_back,
 .actions #results_recombobulate {
@@ -6209,7 +6211,7 @@ select option {
 #page-results .car-result--right {
   width: 320px;
   position: absolute;
-  top: 30px;
+  top: 32px;
   right: 0px;
 }
 #page-results .car-result--right p {
@@ -6296,7 +6298,7 @@ select option {
 }
 #page-form .form-right {
   position: absolute;
-  margin-top: 0px;
+  margin-top: 33px;
   margin-left: 460px;
   max-width: 100%;
   padding-right: 20px;
