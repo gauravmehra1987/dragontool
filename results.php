@@ -17,7 +17,6 @@
 		<!-- build:template
 		<%= results.details %>
 		/build -->
-
 		<!-- build:remove --><?php include( 'results-details.php' ); ?><!-- /build -->
 
 	</main><!-- end main.layout -->
