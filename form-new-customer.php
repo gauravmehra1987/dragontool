@@ -1,4 +1,10 @@
-﻿
+﻿	<!-- build:template
+	<%= form.model %>
+	/build -->
+
+	<!-- build:template
+	<%= form.open %>
+	/build -->
 <div id="page_form" class="layout layout-default">
 
 	<ul class="actions">
@@ -8,13 +14,7 @@
 
 	</ul>
 
-	<!-- build:template
-	<%= form.model %>
-	/build -->
 
-	<!-- build:template
-	<%= form.open %>
-	/build -->
 
 	<!-- build:remove --><form action="ajax.php" autocomplete="off"><!-- /build -->
 
