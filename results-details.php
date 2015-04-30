@@ -14,10 +14,10 @@
 
 		<figcaption class="car-result--caption">
 			<!-- build:template
-			<h2 class="switch-color"><%= results.name %></h2>
+			<h2 class="switch-color model-name"><%= results.name %></h2>
 			/build -->
 
-			<!-- build:remove --><h2 class="switch-color">Car name</h2><!-- /build -->
+			<!-- build:remove --><h2 class="switch-color model-name">Car name</h2><!-- /build -->
 
 			<!-- build:template
 			<a href="<%= results.formLink %>" class="button transparent car-link">How to get your hands on it</a>

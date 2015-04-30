@@ -47,7 +47,12 @@
 
 }
 
+.model-name {
 
+	font-size: 34px;
+	max-width: 338px;
+
+}
 
 
 // Common elements
@@ -56,38 +61,18 @@
 .rkt-disclamer {
 
 	.clearfix;
-
 	font-family: @fontAlt;
 	overflow: hidden;
+	position: relative;
+	z-index: 1;
 	margin: @margin 0px;
 
-	.currency,
-	.price,
-	.permonth,
 	.car-link {
 
 		display: block;
 		float: left;
 		line-height: 1;
 		margin-right: 5px;
-
-	}
-
-	.currency {
-
-		font-size: @fontSizeLarge;
-		position: relative;
-		top: @fontSize / 2;
-
-	}
-
-	.price { font-size: 56px; }
-
-	.permonth {
-
-		font-size: @fontSize;
-		position: relative;
-		top: 22px;
 
 	}
 
@@ -104,14 +89,6 @@
 
 .car-link { font-size: 20px; }
 
-.car-name-big { 
-
-	font-size: 36px;
-	text-transform: uppercase;
-
-}
-
-
 
 .egg-teleport #results .model-image {
 
@@ -119,6 +96,18 @@
 
 		height: auto;
 		width: 100%;
+
+	}
+
+}
+
+
+// TABLET
+@media ( max-width: @breakpointTablet ) {
+
+	.rkt-disclamer {
+
+		bottom: -50px;
 
 	}
 
