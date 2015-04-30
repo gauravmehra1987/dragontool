@@ -3571,7 +3571,8 @@ pre {
   max-width: 1180px;
   overflow: hidden;
   position: relative;
-  padding: 0px 20px 20px 20px;
+  margin-bottom: 20px;
+  padding: 0px 20px 0px 20px;
   overflow: visible;
   height: auto;
   width: calc( 100% - 40px );
@@ -3581,7 +3582,8 @@ pre {
   max-width: 1180px;
   overflow: hidden;
   position: relative;
-  height: 795px;
+  margin-bottom: 20px;
+  height: 785px;
 }
 .layout-dash.full-width {
   height: auto;
@@ -3609,6 +3611,7 @@ pre {
     overflow: hidden;
     position: relative;
     width: 100%;
+    margin-bottom: 0px;
   }
   .layout-dash.dash-open {
     height: 905px;
