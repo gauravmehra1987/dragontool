@@ -46,7 +46,7 @@ html.ie.oldie > body .form-control.append input + .field-icon {
   position: absolute;
   top: 0;
   left: 0;
-  height: 30px;
+  height: 26px;
   width: 34px;
 }
 html.ie.oldie > body .form-control.append input + .field-icon:before {

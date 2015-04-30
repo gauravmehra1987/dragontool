@@ -4922,8 +4922,8 @@ html body #dash #dash-right .bottom .control-title {
 .append .form-error {
   margin-left: -34px;
 }
-input:not( [type=checkbox] ):not( [type=radio] ),
-textarea {
+.form-control-input input,
+.form-control-input textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -4948,24 +4948,24 @@ textarea {
   box-shadow: 1px 1px 2px transparent inset;
   color: #101010;
 }
-input:not( [type=checkbox] ):not( [type=radio] )::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
+.form-control-input input::-webkit-input-placeholder,
+.form-control-input textarea::-webkit-input-placeholder {
   color: #464646;
 }
-input:not( [type=checkbox] ):not( [type=radio] ):-moz-placeholder,
-textarea:-moz-placeholder {
+.form-control-input input:-moz-placeholder,
+.form-control-input textarea:-moz-placeholder {
   color: #464646;
 }
-input:not( [type=checkbox] ):not( [type=radio] )::-moz-placeholder,
-textarea::-moz-placeholder {
+.form-control-input input::-moz-placeholder,
+.form-control-input textarea::-moz-placeholder {
   color: #464646;
 }
-input:not( [type=checkbox] ):not( [type=radio] ):-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+.form-control-input input:-ms-input-placeholder,
+.form-control-input textarea:-ms-input-placeholder {
   color: #464646;
 }
-input:not( [type=checkbox] ):not( [type=radio] ) + .field-icon,
-textarea + .field-icon {
+.form-control-input input + .field-icon,
+.form-control-input textarea + .field-icon {
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
@@ -4978,8 +4978,8 @@ textarea + .field-icon {
   height: 30px;
   width: 34px;
 }
-input:not( [type=checkbox] ):not( [type=radio] ) + .field-icon:before,
-textarea + .field-icon:before {
+.form-control-input input + .field-icon:before,
+.form-control-input textarea + .field-icon:before {
   margin: 0 auto;
   top: 0;
   right: 0;
@@ -5010,16 +5010,16 @@ textarea + .field-icon:before {
   top: 50%;
   left: 50%;
 }
-input:not( [type=checkbox] ):not( [type=radio] ).error,
-textarea.error {
+.form-control-input input.error,
+.form-control-input textarea.error {
   border-color: #ee3229;
 }
-input:not( [type=checkbox] ):not( [type=radio] ).error + .field-icon,
-textarea.error + .field-icon {
+.form-control-input input.error + .field-icon,
+.form-control-input textarea.error + .field-icon {
   background: #ee3229;
 }
-input:not( [type=checkbox] ):not( [type=radio] ).error + .field-icon:before,
-textarea.error + .field-icon:before {
+.form-control-input input.error + .field-icon:before,
+.form-control-input textarea.error + .field-icon:before {
   color: #ffffff;
 }
 .form-control.append.user input + .field-icon:before {
