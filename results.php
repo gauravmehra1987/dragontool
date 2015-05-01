@@ -18,7 +18,7 @@
 		<%= results.details %>
 		/build -->
 		<!-- build:remove --><?php include( 'results-details.php' ); ?><!-- /build -->
-
+		
 	</main><!-- end main.layout -->
 
 	<!-- build:include bottom.php --><?php require( 'bottom.php' ); ?><!-- /build -->

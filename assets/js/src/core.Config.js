@@ -49,7 +49,7 @@ var system_paths = {
 //
 // And now, depending on which set up we are using (Dotnet or PHP), we can comment out the appropriate line below 
 //
-var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.net;
+var path = ( location.href.indexOf( '10.16.7.126:8005' ) >= 0 ) ? system_paths.php : system_paths.net;
 // var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
 
 
