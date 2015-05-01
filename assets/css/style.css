@@ -5507,9 +5507,6 @@ select option {
   right: 0;
   left: 0;
 }
-#results .model-name {
-  font-size: 36px;
-}
 #results .model-image {
   width: calc( 100% + 60px );
   margin: 30px -30px 0px -30px;
