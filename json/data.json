@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "code": "XN72",
     "color": "Volcanic Orange",
@@ -24,15 +24,17 @@
       "info": "THE MINI ONE 3-DOOR HATCH MINI Select Representative example including optional Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 199.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 15599.0,
+      "deposit": 2451.07,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6006.96,
       "credit_charge": 13147.93,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 17812.03
+      "total_amount": 17812.03,
+      "total_deposit": 2451.07,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -52,7 +54,7 @@
     "mph": 118,
     "economy": 4,
     "mpg": 0.0,
-    "alt_1": "XN12",
+    "alt_1": "XN32",
     "alt_2": "XT32",
     "alt_3": "RJ52",
     "terms": "Finance example is for a MINI Select agreement for a new MINI One D 3-door Hatch with optional Visual Boost Radio, PEPPER Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 3.91p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
@@ -60,15 +62,17 @@
       "info": "THE MINI ONE D 3-DOOR HATCH MINI Select Representative example including optional Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 209.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 16739.0,
+      "deposit": 2721.8,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6570.72,
       "credit_charge": 14017.2,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 19116.52
+      "total_amount": 19116.52,
+      "total_deposit": 2721.8,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -96,15 +100,17 @@
       "info": "THE MINI COOPER 3-DOOR HATCH MINI Select Representative example including optional Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 209.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 16889.0,
+      "deposit": 3017.16,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6388.2,
       "credit_charge": 13871.84,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 19229.36
+      "total_amount": 19229.36,
+      "total_deposit": 3017.16,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -132,15 +138,17 @@
       "info": "THE MINI COOPER D 3-DOOR HATCH MINI Select Representative example including optional Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 219.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 18039.0,
+      "deposit": 3310.34,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6936.3,
       "credit_charge": 14728.66,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 20540.64
+      "total_amount": 20540.64,
+      "total_deposit": 3310.34,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -162,21 +170,23 @@
     "mpg": 0.0,
     "alt_1": "XN92",
     "alt_2": "XS72",
-    "alt_3": "SS52",
+    "alt_3": "RS52",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper S 3-door Hatch with optional Visual Boost Radio, CHILI Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 4.55p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
     "finance": {
       "info": "THE MINI COOPER S 3-DOOR HATCH MINI Select Representative example including optional Visual Boost Radio, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 249.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 21254.0,
+      "deposit": 4320.25,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8121.87,
       "credit_charge": 16933.75,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 24146.12
+      "total_amount": 24146.12,
+      "total_deposit": 4320.25,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -204,15 +214,17 @@
       "info": "THE MINI COOPER SD 3-DOOR HATCH MINI Select Representative example including optional Visual Boost Radio, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 269.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 22049.0,
+      "deposit": 3614.31,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8951.04,
       "credit_charge": 18434.69,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 25209.35
+      "total_amount": 25209.35,
+      "total_deposit": 3614.31,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -240,15 +252,17 @@
       "info": "THE MINI ONE 5-DOOR HATCH MINI Select Representative example including optional Electric Blue metallic paint, Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 229.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 16734.0,
+      "deposit": 2389.36,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6386.04,
       "credit_charge": 14344.64,
       "roi": "6.87%",
       "apr": "6.90%",
-      "total_amount": 19539.4
+      "total_amount": 19539.4,
+      "total_deposit": 2389.36,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -276,15 +290,17 @@
       "info": "THE MINI ONE D 5-DOOR HATCH MINI Select Representative example including optional Electric Blue metallic paint, Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 239.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 17874.0,
+      "deposit": 2677.13,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6959.52,
       "credit_charge": 15196.87,
       "roi": "6.87%",
       "apr": "6.90%",
-      "total_amount": 20870.65
+      "total_amount": 20870.65,
+      "total_deposit": 2677.13,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -312,15 +328,17 @@
       "info": "THE MINI COOPER 5-DOOR HATCH MINI Select Representative example including optional Electric Blue metallic paint, Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 249.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 18024.0,
+      "deposit": 2562.66,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6766.2,
       "credit_charge": 15461.34,
       "roi": "6.87%",
       "apr": "6.90%",
-      "total_amount": 21032.86
+      "total_amount": 21032.86,
+      "total_deposit": 2562.66,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -348,15 +366,17 @@
       "info": "THE MINI COOPER D 5-DOOR HATCH MINI Select Representative example including optional Electric Blue metallic paint, Visual Boost Radio, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 259.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 19174.0,
+      "deposit": 2879.89,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 7314.3,
       "credit_charge": 16294.11,
       "roi": "6.87%",
       "apr": "6.90%",
-      "total_amount": 22368.19
+      "total_amount": 22368.19,
+      "total_deposit": 2879.89,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -378,21 +398,23 @@
     "mpg": 0.0,
     "alt_1": "XT72",
     "alt_2": "ZM43",
-    "alt_3": "SS52",
+    "alt_3": "RS52",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper S 5-door Hatch with optional Electric Blue metallic paint, Visual Boost Radio, CHILI Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 4.79p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
     "finance": {
       "info": "THE MINI COOPER S 5-DOOR HATCH MINI Select Representative example including optional Electric Blue metallic paint, Visual Boost Radio, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 289.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 22389.0,
+      "deposit": 3516.95,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8444.7,
       "credit_charge": 18872.05,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 25545.65
+      "total_amount": 25545.65,
+      "total_deposit": 3516.95,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -420,15 +442,17 @@
       "info": "THE MINI COOPER SD 5-DOOR HATCH MINI Select Representative example including optional Electric Blue metallic paint, Visual Boost Radio, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 289.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 23184.0,
+      "deposit": 3649.67,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 9276.3,
       "credit_charge": 19534.33,
       "roi": "5.86%",
       "apr": "5.90%",
-      "total_amount": 26509.97
+      "total_amount": 26509.97,
+      "total_deposit": 3649.67,
+      "dealer_discount": 0.0
     }
   },
   {
@@ -448,7 +472,7 @@
     "mph": 119,
     "economy": 2,
     "mpg": 0.0,
-    "alt_1": "SS52",
+    "alt_1": "RS52",
     "alt_2": "XS52",
     "alt_3": "ZB32",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper Paceman with optional Blazing Red metallic paint, PEPPER Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 4.55p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
@@ -456,15 +480,17 @@
       "info": "THE MINI COOPER PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 236.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 21244.0,
+      "deposit": 3359.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 7536.6,
       "credit_charge": 17192.71,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 22680.89
+      "total_amount": 22680.89,
+      "total_deposit": 4051.29,
+      "dealer_discount": 692.29
     }
   },
   {
@@ -492,15 +518,17 @@
       "info": "THE MINI COOPER ALL4 PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 241.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 22444.0,
+      "deposit": 3539.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8328.42,
       "credit_charge": 18120.3,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 23980.12
+      "total_amount": 23980.12,
+      "total_deposit": 4323.7,
+      "dealer_discount": 784.7
     }
   },
   {
@@ -528,15 +556,17 @@
       "info": "THE MINI COOPER D PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 246.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 22374.0,
+      "deposit": 3569.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 7937.28,
       "credit_charge": 17993.7,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 23880.58
+      "total_amount": 23880.58,
+      "total_deposit": 4380.3,
+      "dealer_discount": 811.3
     }
   },
   {
@@ -564,15 +594,17 @@
       "info": "THE MINI COOPER D ALL4 PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 252.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 23699.0,
+      "deposit": 3859.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8729.1,
       "credit_charge": 18965.68,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 25307.42
+      "total_amount": 25307.42,
+      "total_deposit": 4733.32,
+      "dealer_discount": 874.32
     }
   },
   {
@@ -600,15 +632,17 @@
       "info": "THE MINI COOPER S PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 255.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 25534.0,
+      "deposit": 4059.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 9632.7,
       "credit_charge": 20504.98,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 26647.72
+      "total_amount": 26647.72,
+      "total_deposit": 5029.02,
+      "dealer_discount": 970.02
     }
   },
   {
@@ -636,15 +670,17 @@
       "info": "THE MINI COOPER S ALL4 PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 261.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 26789.0,
+      "deposit": 4299.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 10464.3,
       "credit_charge": 21549.52,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 27971.78
+      "total_amount": 27971.78,
+      "total_deposit": 5239.48,
+      "dealer_discount": 940.48
     }
   },
   {
@@ -664,7 +700,7 @@
     "mph": 124,
     "economy": 3,
     "mpg": 0.0,
-    "alt_1": "SS52",
+    "alt_1": "RS52",
     "alt_2": "XT72",
     "alt_3": "ZB72",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper SD Paceman with optional Blazing Red metallic paint, CHILI Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 5.72p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
@@ -672,15 +708,17 @@
       "info": "THE MINI COOPER SD PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 266.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 26274.0,
+      "deposit": 4216.81,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 9761.4,
       "credit_charge": 21122.99,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 27415.41
+      "total_amount": 27415.41,
+      "total_deposit": 5151.01,
+      "dealer_discount": 934.2
     }
   },
   {
@@ -708,15 +746,17 @@
       "info": "THE MINI COOPER SD ALL4 PACEMAN MINI Select Representative example including optional Blazing Red metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 272.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 27459.0,
+      "deposit": 4339.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 10583.1,
       "credit_charge": 22158.34,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 28668.76
+      "total_amount": 28668.76,
+      "total_deposit": 5300.66,
+      "dealer_discount": 961.66
     }
   },
   {
@@ -744,15 +784,17 @@
       "info": "THE MINI JOHN COOPER WORKS ALL4 PACEMAN MINI Select Representative example including optional Chili Red metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 279.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 31679.0,
+      "deposit": 5969.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 12029.94,
       "credit_charge": 24501.39,
       "roi": "0.88%",
       "apr": "0.90%",
-      "total_amount": 32321.55
+      "total_amount": 32321.55,
+      "total_deposit": 7177.61,
+      "dealer_discount": 1208.61
     }
   },
   {
@@ -780,15 +822,17 @@
       "info": "THE MINI ONE COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 231.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 19294.0,
+      "deposit": 3319.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6487.2,
       "credit_charge": 15637.0,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 21002.2
+      "total_amount": 21002.2,
+      "total_deposit": 3657.0,
+      "dealer_discount": 338.0
     }
   },
   {
@@ -816,15 +860,17 @@
       "info": "THE MINI COOPER COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 240.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 20559.0,
+      "deposit": 3499.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 7288.56,
       "credit_charge": 16717.16,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 22411.4
+      "total_amount": 22411.4,
+      "total_deposit": 3841.84,
+      "dealer_discount": 342.84
     }
   },
   {
@@ -846,21 +892,23 @@
     "mpg": 0.0,
     "alt_1": "ZC52",
     "alt_2": "XS52",
-    "alt_3": "SS32",
+    "alt_3": "SS12",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper ALL4 Countryman with optional Jungle Green metallic paint, PEPPER Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 4.90p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
     "finance": {
       "info": "THE MINI COOPER ALL4 COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 246.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 21789.0,
+      "deposit": 3729.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8089.92,
       "credit_charge": 17666.57,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 23775.35
+      "total_amount": 23775.35,
+      "total_deposit": 4122.43,
+      "dealer_discount": 393.43
     }
   },
   {
@@ -888,15 +936,17 @@
       "info": "THE MINI COOPER D COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 260.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 21709.0,
+      "deposit": 3399.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 7689.24,
       "credit_charge": 17932.83,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 23686.41
+      "total_amount": 23686.41,
+      "total_deposit": 3776.17,
+      "dealer_discount": 377.17
     }
   },
   {
@@ -916,7 +966,7 @@
     "mph": 112,
     "economy": 2,
     "mpg": 0.0,
-    "alt_1": "ZB72",
+    "alt_1": "ZD72",
     "alt_2": "RS52",
     "alt_3": "XT32",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper D ALL4 Countryman with optional Jungle Green metallic paint, PEPPER Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 5.08p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
@@ -924,15 +974,17 @@
       "info": "THE MINI COOPER D ALL4 COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 266.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 22989.0,
+      "deposit": 3679.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8490.6,
       "credit_charge": 18882.24,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 25100.36
+      "total_amount": 25100.36,
+      "total_deposit": 4106.76,
+      "dealer_discount": 427.76
     }
   },
   {
@@ -954,21 +1006,23 @@
     "mpg": 0.0,
     "alt_1": "ZB72",
     "alt_2": "XS72",
-    "alt_3": "SS52",
+    "alt_3": "RS52",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper S Countryman with optional Jungle Green metallic paint, CHILI Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 5.43p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
     "finance": {
       "info": "THE MINI COOPER S COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 279.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 25244.0,
+      "deposit": 4085.08,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 9299.88,
       "credit_charge": 20672.92,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 26964.96
+      "total_amount": 26964.96,
+      "total_deposit": 4551.08,
+      "dealer_discount": 466.0
     }
   },
   {
@@ -988,7 +1042,7 @@
     "mph": 130,
     "economy": 1,
     "mpg": 0.0,
-    "alt_1": "ZB72",
+    "alt_1": "ZD72",
     "alt_2": "SS72",
     "alt_3": "XS72",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper S ALL4 Countryman with optional Jungle Green metallic paint, CHILI Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 5.95p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
@@ -996,15 +1050,17 @@
       "info": "THE MINI COOPER S ALL4 COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 286.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 26479.0,
+      "deposit": 4329.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 10123.92,
       "credit_charge": 21718.0,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 28327.92
+      "total_amount": 28327.92,
+      "total_deposit": 4761.0,
+      "dealer_discount": 432.0
     }
   },
   {
@@ -1032,15 +1088,17 @@
       "info": "THE MINI COOPER SD COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 290.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 25929.0,
+      "deposit": 4199.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 9427.41,
       "credit_charge": 21274.87,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 27712.54
+      "total_amount": 27712.54,
+      "total_deposit": 4654.13,
+      "dealer_discount": 455.13
     }
   },
   {
@@ -1068,15 +1126,17 @@
       "info": "THE MINI COOPER SD ALL4 COUNTRYMAN MINI Select Representative example including optional Jungle Green metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 296.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 27149.0,
+      "deposit": 4379.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 10241.64,
       "credit_charge": 22266.82,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 29036.82
+      "total_amount": 29036.82,
+      "total_deposit": 4882.18,
+      "dealer_discount": 503.18
     }
   },
   {
@@ -1104,15 +1164,17 @@
       "info": "THE MINI JOHN COOPER WORKS ALL4 COUNTRYMAN MINI Select Representative example including optional Oxford Green metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 310.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 31339.0,
+      "deposit": 5989.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 11566.8,
       "credit_charge": 24794.26,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 32682.54
+      "total_amount": 32682.54,
+      "total_deposit": 6544.74,
+      "dealer_discount": 555.74
     }
   },
   {
@@ -1140,15 +1202,17 @@
       "info": "THE MINI COOPER COUPÉ MINI Select Representative example including optional Lightning Blue metallic paint, PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 179.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 18269.0,
+      "deposit": 3219.0,
       "contribution": 1250.0,
       "purchase_fee": 1.0,
       "final_payment": 5755.05,
       "credit_charge": 13458.3,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 18979.75
+      "total_amount": 18979.75,
+      "total_deposit": 4810.7,
+      "dealer_discount": 341.7
     }
   },
   {
@@ -1176,15 +1240,17 @@
       "info": "THE MINI COOPER S COUPÉ MINI Select Representative example including optional Lightning Blue metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 219.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 22434.0,
+      "deposit": 4189.0,
       "contribution": 1250.0,
       "purchase_fee": 1.0,
       "final_payment": 7187.4,
       "credit_charge": 16601.69,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 23313.71
+      "total_amount": 23313.71,
+      "total_deposit": 5832.31,
+      "dealer_discount": 393.31
     }
   },
   {
@@ -1212,15 +1278,17 @@
       "info": "THE MINI COOPER SD COUPÉ MINI Select Representative example including optional Lightning Blue metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 229.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 23154.0,
+      "deposit": 4425.86,
       "contribution": 1250.0,
       "purchase_fee": 1.0,
       "final_payment": 7187.4,
       "credit_charge": 17054.82,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 24050.58
+      "total_amount": 24050.58,
+      "total_deposit": 6099.18,
+      "dealer_discount": 423.32
     }
   },
   {
@@ -1248,15 +1316,17 @@
       "info": "THE MINI JOHN COOPER WORKS COUPÉ MINI Select Representative example including optional Lightning Blue metallic paint, CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 259.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 26034.0,
+      "deposit": 4799.0,
       "contribution": 1250.0,
       "purchase_fee": 1.0,
       "final_payment": 8397.36,
       "credit_charge": 19538.42,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 27066.94
+      "total_amount": 27066.94,
+      "total_deposit": 6495.58,
+      "dealer_discount": 446.58
     }
   },
   {
@@ -1284,15 +1354,17 @@
       "info": "THE MINI COOPER ROADSTER MINI Select Representative example including optional PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 199.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 19359.0,
+      "deposit": 3399.0,
       "contribution": 800.0,
       "purchase_fee": 1.0,
       "final_payment": 6237.0,
       "credit_charge": 14812.37,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 20137.63
+      "total_amount": 20137.63,
+      "total_deposit": 4546.63,
+      "dealer_discount": 347.63
     }
   },
   {
@@ -1320,15 +1392,17 @@
       "info": "THE MINI COOPER S ROADSTER MINI Select Representative example including optional CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 239.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 23224.0,
+      "deposit": 3899.0,
       "contribution": 800.0,
       "purchase_fee": 1.0,
       "final_payment": 7821.0,
       "credit_charge": 18096.63,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 24182.37
+      "total_amount": 24182.37,
+      "total_deposit": 5127.37,
+      "dealer_discount": 428.37
     }
   },
   {
@@ -1356,15 +1430,17 @@
       "info": "THE MINI COOPER SD ROADSTER MINI Select Representative example including optional CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 249.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 23939.0,
+      "deposit": 4129.0,
       "contribution": 800.0,
       "purchase_fee": 1.0,
       "final_payment": 7821.0,
       "credit_charge": 18549.78,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 24914.22
+      "total_amount": 24914.22,
+      "total_deposit": 5389.22,
+      "dealer_discount": 460.22
     }
   },
   {
@@ -1392,15 +1468,17 @@
       "info": "THE MINI JOHN COOPER WORKS ROADSTER MINI Select Representative example including optional CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 269.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 26684.0,
+      "deposit": 4559.0,
       "contribution": 800.0,
       "purchase_fee": 1.0,
       "final_payment": 9283.32,
       "credit_charge": 20814.73,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 27796.59
+      "total_amount": 27796.59,
+      "total_deposit": 5869.27,
+      "dealer_discount": 510.27
     }
   },
   {
@@ -1428,15 +1506,17 @@
       "info": "THE MINI ONE CONVERTIBLE MINI Select Representative example including optional PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 219.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 17969.0,
+      "deposit": 2699.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6269.4,
       "credit_charge": 14927.01,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 19605.39
+      "total_amount": 19605.39,
+      "total_deposit": 3041.99,
+      "dealer_discount": 342.99
     }
   },
   {
@@ -1464,15 +1544,17 @@
       "info": "THE MINI COOPER CONVERTIBLE MINI Select Representative example including optional PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 225.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 19094.0,
+      "deposit": 3299.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 6558.3,
       "credit_charge": 15436.52,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 20791.78
+      "total_amount": 20791.78,
+      "total_deposit": 3657.48,
+      "dealer_discount": 358.48
     }
   },
   {
@@ -1494,21 +1576,23 @@
     "mpg": 0.0,
     "alt_1": "ZM56",
     "alt_2": "SY72",
-    "alt_3": "XN12",
+    "alt_3": "XN32",
     "terms": "Finance example is for a MINI Select agreement for a new MINI Cooper D Convertible with optional PEPPER Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 4.79p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
     "finance": {
       "info": "THE MINI COOPER D CONVERTIBLE MINI Select Representative example including optional PEPPER Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 229.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 20154.0,
+      "deposit": 3589.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 7219.8,
       "credit_charge": 16178.69,
       "roi": "3.89%",
       "apr": "3.90%",
-      "total_amount": 21959.11
+      "total_amount": 21959.11,
+      "total_deposit": 3975.31,
+      "dealer_discount": 386.31
     }
   },
   {
@@ -1536,15 +1620,17 @@
       "info": "THE MINI COOPER S CONVERTIBLE MINI Select Representative example including optional CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 259.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 23324.0,
+      "deposit": 4399.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 7838.19,
       "credit_charge": 18482.49,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 24853.7
+      "total_amount": 24853.7,
+      "total_deposit": 4841.51,
+      "dealer_discount": 442.51
     }
   },
   {
@@ -1572,15 +1658,17 @@
       "info": "THE MINI COOPER SD CONVERTIBLE MINI Select Representative example including optional CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 269.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 24004.0,
+      "deposit": 3899.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 8652.42,
       "credit_charge": 19652.02,
       "roi": "2.92%",
       "apr": "2.90%",
-      "total_amount": 25648.4
+      "total_amount": 25648.4,
+      "total_deposit": 4351.98,
+      "dealer_discount": 452.98
     }
   },
   {
@@ -1603,20 +1691,22 @@
     "alt_1": "SY92",
     "alt_2": "XM72",
     "alt_3": "SS92",
-    "terms": "Finance example is for a MINI Select agreement for a new MINI John Cooper Works Convertible with optional CHILI Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 6.19p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. 'MINI Select' is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
+    "terms": "Finance example is for a MINI Select agreement for a new MINI John Cooper Works Convertible with optional CHILI Pack and MINI tlc with a contract mileage of 40,000 miles and excess mileage charge of 6.19p per mile. Applies for new vehicles ordered between 1 April 2015 and 30 June 2015 and registered by 30 September, (subject to availability) at participating MINI retailers. Retail customers only. *On the road cash price is based on manufacturer's recommended retail price and includes 3 year MINI Retailer Warranty, MINI Emergency Service, 12 months' road fund licence, vehicle first registration fee, delivery, number plates and VAT. **Optional final payment and option to purchase fee not payable if you opt to return the vehicle at the end of the agreement (vehicle condition, excess mileage and other charges may be payable). ^Monthly rentals based on the cost of XX watermelons at Sainsbury's, costing £X.XX each. Finance available subject to credit acceptance to UK residents aged 18 or over. Guarantees and indemnities may be required. Terms and conditions apply. Offer may be varied, withdrawn or extended at any time. _ãÄMINI Select_ã_ is a form of hire-purchase agreement provided by MINI Financial Services, a trading name of BMW Financial Services (GB) Limited, Bartley Way, Hook, Hampshire RG27 9UF. You will have a 14 day statutory right to withdraw from the agreement. MINIstry of Finance is not connected to or endorsed by any government department.",
     "finance": {
       "info": "THE MINI JOHN COOPER WORKS CONVERTIBLE MINI Select Representative example including optional CHILI Pack and MINI tlc service cover.",
       "term": 48,
       "payment": 279.0,
-      "price": 0.0,
-      "deposit": 0.0,
+      "price": 27259.0,
+      "deposit": 5199.0,
       "contribution": 0.0,
       "purchase_fee": 1.0,
       "final_payment": 9593.64,
       "credit_charge": 21556.21,
       "roi": "1.85%",
       "apr": "1.90%",
-      "total_amount": 28410.43
+      "total_amount": 28410.43,
+      "total_deposit": 5702.79,
+      "dealer_discount": 503.79
     }
   },
   {
@@ -1639,7 +1729,7 @@
     "alt_1": "SX92",
     "alt_2": "MR92",
     "alt_3": "SS92",
-    "terms": null,
+    "terms": "",
     "finance": null
   }
 ]
