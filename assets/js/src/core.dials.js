@@ -198,62 +198,93 @@ function Dials() {
 
 
 		/**
+		 * SPIN LUGGAGE DIAL
+		 * @param {String} Direction (left or right)
+		*/
+		var spinLuggageDial = function( direction ) {
+			//
+			// Remove all classes from the luggage element, except 'dial'
+			$( luggage_el ).removeClassExcept( 'dial' );
+			//
+			// Save the dial element
+			var $dial = $( '.control.luggage .dial' );
+			//
+			// If direction is 'left'...
+			// Add the luggage_end and luggage_snap together
+			// Else, minus them from eachother
+			var nr = ( direction === 'left' ) ? luggage_end + luggage_snap : luggage_end - luggage_snap;
+			// Use Greensock Tween to move to the initial position
+			// 
+			TweenLite.to( luggage_el, 1, {
+				//
+				// Rotation is based on the direction of the user click
+				rotation: nr,
+				//
+				// On complete, pass in the rotation value to the dialClass function
+				onComplete: function( v ) {
+					dialClass( nr );
+				}
+			} );
+
+			// Update rotation & value
+			luggage_dial.update();
+			//
+			// Set luggage_end to be based on the user click direction
+			luggage_end = nr;
+			// alert('click');
+		};
+
+
+		/**
+		 * LUGGAGE DIAL ARROW UP
+		 * @param {Object} Target parent (arrows parent)
+		 * @param {String} Direction (left or right)
+		*/
+		var dialArrowUp = function( $targetParent, direction ) {
+			//
+			// Remove classes 'left' and 'right' from the arrows element
+			$targetParent.removeClass( 'right left' );
+			//
+			// Spin the dial!
+			spinLuggageDial( direction );
+		};
+
+
+		/**
+		 * LUGGAGE DIAL ARROW DOWN
+		 * @param {Object} Target parent (arrows parent)
+		 * @param {String} Direction (left or right)
+		*/
+		var dialArrowDown = function( $targetParent, direction ) {
+			//
+			// Classes added to the arrows parent element determine the button style to show user interaction (up or down)
+			// Remove classes 'left' and 'right' from the arrows parent element, but then add the class of the direction
+			$targetParent.removeClass( 'right left' ).addClass( direction );
+		};
+
+
+		/**
 		 * BIND EVENTS
 		*/
 		var bindEvents = function() {
 			//
 			// On user interaction with the luggage arrows...
-			$( '.control.luggage .arrows' ).on( 'mousedown mouseup touchstart touchend', function( e ) {
-				//
-				// Prevent default event
+			$( '#left, #right' ).on( 'mousedown mouseup touchstart touchend', function( e ) {
+
+				e.stopPropagation();
 				e.preventDefault();
 				//
-				// This adds a class of 'left' or 'right' to the arrows element, depending on user interaction...
-				// 'this' refers to the 'arrows' element and 'e.target' refers to the 'left' and 'right' elements inside
-				// So...
-				// If event is mousedown... Remove classes 'left' and 'right' from the arrows element, but then add the class of the e.target ID (either 'left' or 'right').
-				// If not a mousedown event (so when the user clicks away etc), remove classes 'left' and 'right' from the arrows element
-				( e.type === 'mousedown' || e.type === 'touchstart' ) ? $( this ).removeClass( 'right left' ).addClass( e.target.id ) : $( this ).removeClass( 'right left' );
-			} );
-			//
-			// On click of the right and left elements
-			$( '#left, #right' ).on( 'click', function( e ) {
-				//
-				// Prevent default event
-				e.preventDefault();
-				//
-				// Remove all classes from the luggage element, except 'dial'
-				$( luggage_el ).removeClassExcept( 'dial' );
-				//
-				// Save the dial element
-				var $dial = $( '.control.luggage .dial' );
-				//
-				// Get the direction of user click from the target
+				// Getting the direction and the target
+				var $targetParent = $( this ).parent();
 				var direction = e.target.id;
 				//
-				// If direction is 'left'...
-				// Add the luggage_end and luggage_snap together
-				// Else, minus them from eachother
-				var nr = ( direction === 'left' ) ? luggage_end + luggage_snap : luggage_end - luggage_snap;
+				// This adds a class of 'left' or 'right' to the arrows element, depending on user interaction...
+				if ( e.type === 'mousedown' || e.type === 'touchstart' ) {
+					dialArrowDown( $targetParent, direction );
+				} else {
+					dialArrowUp( $targetParent, direction );
+				};
 
-				// Use Greensock Tween to move to the initial position
-				// 
-				TweenLite.to( luggage_el, 1, {
-					//
-					// Rotation is based on the direction of the user click
-					rotation: nr,
-					//
-					// On complete, pass in the rotation value to the dialClass function
-					onComplete: function( v ) {
-						dialClass( nr );
-					}
-				} );
-
-				// Update rotation & value
-				luggage_dial.update();
-				//
-				// Set luggage_end to be based on the user click direction
-				luggage_end = nr;
 			} );
 		}
 
