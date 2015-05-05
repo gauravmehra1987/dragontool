@@ -3732,6 +3732,7 @@ pre {
   }
 }
 .layout-header {
+  width: 100%;
   *zoom: 1;
 }
 .layout-header:before,
@@ -5670,7 +5671,6 @@ select option {
   line-height: 1;
   display: table;
   float: right;
-  margin: 0 auto;
 }
 .social:before,
 .social:after {
