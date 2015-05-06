@@ -57,6 +57,7 @@ function IE() {
 
 			$( '.control.start .shape' ).on( 'click', function() { $( '#start' ).trigger( 'click' ); } );
 
+
 		},
 
 		rollers: {
@@ -126,6 +127,8 @@ function IE() {
 					} );
 
 				} );
+
+				dashboard.activateDashColor();
 
 			}
 

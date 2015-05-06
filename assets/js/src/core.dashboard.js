@@ -164,7 +164,7 @@ function Dashboard() {
 		options		= new dials.options();
 		lifestyle	= new dials.lifestyle();
 
-		// If borowser is IE8 or less...
+		// If borowser is IE9 or less...
 		if( ie.loadFallbacks() ) {
 			//
 			// Call the IE specific functions
@@ -173,6 +173,9 @@ function Dashboard() {
 			//
 			// In addition to new dials.lifestyle()
 			ie.lifestyle.init();
+			//
+			// Initiate the dashboard color
+			_this.activateDashColor();
 		//
 		// Else, for modern browsers...
 		} else {
@@ -199,7 +202,6 @@ function Dashboard() {
 			//
 			// Call function to activate the dashboard dials
 			_this.activateDashboard();
-
 		}
 	}
 

@@ -49,7 +49,7 @@ var system_paths = {
 //
 // And now, depending on which set up we are using (Dotnet or PHP), we can comment out the appropriate line below 
 //
-var path = ( location.href.indexOf( '172.16.252.91:8005' ) >= 0 ) ? system_paths.php : system_paths.net;
+var path = ( location.href.indexOf( '10.16.6.194:8005' ) >= 0 ) ? system_paths.php : system_paths.net;
 // var path = ( location.href.indexOf( 'mini.fs' ) >= 0 ) ? system_paths.php : system_paths.php;
 
 
@@ -1226,6 +1226,15 @@ function FormLogic() {
 			_this.postcodeStuff( e );
 		});
 
+		$('input').bind('keydown', function( e ) {
+			if (e.which === 13) {
+				e.stopPropagation();
+				e.preventDefault();
+
+				$(this).nextAll('input').eq(0).focus();
+			}
+		});
+
 	}
 
 
@@ -2089,7 +2098,7 @@ function Dashboard() {
 		options		= new dials.options();
 		lifestyle	= new dials.lifestyle();
 
-		// If borowser is IE8 or less...
+		// If borowser is IE9 or less...
 		if( ie.loadFallbacks() ) {
 			//
 			// Call the IE specific functions
@@ -2098,6 +2107,9 @@ function Dashboard() {
 			//
 			// In addition to new dials.lifestyle()
 			ie.lifestyle.init();
+			//
+			// Initiate the dashboard color
+			_this.activateDashColor();
 		//
 		// Else, for modern browsers...
 		} else {
@@ -2124,7 +2136,6 @@ function Dashboard() {
 			//
 			// Call function to activate the dashboard dials
 			_this.activateDashboard();
-
 		}
 	}
 
@@ -3515,6 +3526,7 @@ function IE() {
 
 			$( '.control.start .shape' ).on( 'click', function() { $( '#start' ).trigger( 'click' ); } );
 
+
 		},
 
 		rollers: {
@@ -3584,6 +3596,8 @@ function IE() {
 					} );
 
 				} );
+
+				dashboard.activateDashColor();
 
 			}
 

@@ -358,6 +358,15 @@ function FormLogic() {
 			_this.postcodeStuff( e );
 		});
 
+		$('input').bind('keydown', function( e ) {
+			if (e.which === 13) {
+				e.stopPropagation();
+				e.preventDefault();
+
+				$(this).nextAll('input').eq(0).focus();
+			}
+		});
+
 	}
 
 
