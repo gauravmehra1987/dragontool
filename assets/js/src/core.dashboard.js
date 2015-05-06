@@ -175,7 +175,9 @@ function Dashboard() {
 			ie.lifestyle.init();
 			//
 			// Initiate the dashboard color
-			_this.activateDashColor();
+			setTimeout( function() {
+				_this.activateDashColor();
+			}, 2000 )
 		//
 		// Else, for modern browsers...
 		} else {

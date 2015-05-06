@@ -128,8 +128,6 @@ function IE() {
 
 				} );
 
-				dashboard.activateDashColor();
-
 			}
 
 		},

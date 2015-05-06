@@ -76,6 +76,5 @@ $( window ).load( function() {
 	// Initialize combobulate
 	// Which will listen to the on click of the combobulate button
 	combobulate.init();
-
 } );
 
