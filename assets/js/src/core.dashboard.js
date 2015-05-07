@@ -174,10 +174,8 @@ function Dashboard() {
 			// In addition to new dials.lifestyle()
 			ie.lifestyle.init();
 			//
-			// Initiate the dashboard color
-			setTimeout( function() {
-				_this.activateDashColor();
-			}, 2000 )
+			// Activate the colour when the element exists
+			runWhenElementExsists( '#bums #rollers .item svg', dashboard.activateDashColor );
 		//
 		// Else, for modern browsers...
 		} else {

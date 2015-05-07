@@ -14,12 +14,12 @@ jQuery.fn.removeClassExcept = function ( val ) {
 
 		}
 
-	
 		$el.removeClass().addClass( reAdd.join( ' ' ) );
 	
 	} );
 
 };
+
 
 jQuery.fn.removeClassBeginningWith = function( className ) {
 
@@ -80,9 +80,24 @@ jQuery.fn.tclick = function ( onclick ) {
 };
 
 
+// Other helpers...
 
 
-// Other helpers
+// Run a function when the element exists
+function runWhenElementExsists( element, functionToRun ) {
+
+	var interval = setInterval( function() {
+
+		if ( $(element).length > 0 ) {
+
+			functionToRun();
+
+			clearInterval(interval);
+		}
+
+	}, 500);
+}
+
 
 function getQueryParameter( name ) {
 

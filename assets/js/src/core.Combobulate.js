@@ -73,29 +73,17 @@ function Combobulate() {
 		// The function dashboardLogic.eggs will return an array of eggs based on the user input (if there are any eggs)
 		var eggs = dashboardLogic.eggs( userSelection );
 
-		// If there is a toy or rocket in the array...
+		// If there is a rocket in the array...
 		// Pass the name as a string, and the array itelf to the UI.eggs function
-		if ( $.inArray( 'toy', eggs ) >= 0 || $.inArray( 'rocket', eggs ) >= 0 ) {
+		if ( $.inArray( 'rocket', eggs ) >= 0 ) {
 			//
-			if ( $.inArray( 'rocket', eggs ) >= 0 && $.inArray( 'toy', eggs ) >= 0 ) {
-				//
-				ui.eggs( 'rocket', eggs );
-			//
-			} else if ( $.inArray( 'toy', eggs ) >= 0 ) {
-				//
-				ui.eggs( 'toy', eggs );
-			//
-			} else {
-				//
-				ui.eggs( 'rocket', eggs );
-			//
-			}
+			ui.eggs( 'rocket', eggs );
 			//
 			return;
-		}
+			//
 		//
-		// Else... if there is not a toy or rocket...
-		else {
+		// Else... if there is not a rocket car...
+		} else {
 			// 
 			// Convert user input values to an appropriate structure
 			var search = query.build( query.convert( dashboard.values() ) );
@@ -113,21 +101,11 @@ function Combobulate() {
 				// Randomly choose a car
 				var car	= cars[ _.random( cars.length - 1 ) ];
 				//
-				// If the car array contains eggs...
-				// Pass 'creature' and the array itself to the UI.eggs function
-				if ( $.inArray( 'dog', eggs ) >= 0 || $.inArray( 'cat', eggs ) >= 0 || $.inArray( 'alien', eggs ) >= 0 ) {
-					// 
-					ui.eggs( 'creature', eggs );
-					//
-					// Populate results
-					ui.render( car );
-				}
+				// Populate results
+				ui.render( car );
 				//
-				else {
-					//
-					// Populate results
-					ui.render( car );
-				}
+				// Activate the colour when the element exists
+				runWhenElementExsists( '#tpl-results .switch-color', dashboard.activateDashColor );
 			}
 		}
 	}
