@@ -135,7 +135,6 @@
 							/build -->
 							<label for="address_type_home">Home</label>
 
-
 						</div>
 
 						<div class="checkbox checkbox-radio">
@@ -147,7 +146,6 @@
 							/build -->
 							<label for="address_type_work">Work</label>
 
-
 						</div>
 
 					</div>
@@ -155,6 +153,12 @@
 				</div><!-- end div.form-control half-width -->
 
 			</div><!-- end div.inline -->
+
+			<div class="form-control form-control-button">
+				
+				<a href="#" id="address_lookup" class="button cta">Address lookup</a>
+
+			</div>
 
 			<div id="address_chooser">
 

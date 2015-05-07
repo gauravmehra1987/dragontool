@@ -275,9 +275,11 @@ function FormLogic() {
 
 	this.postcodeStuff = function( e ) {
 
-		if ( $(e.target).val() != '' ) {
+		e.preventDefault();
 
-			clearTimeout( postcodeTimer );
+		if ( $(form.postcodeSearch).val() != '' ) {
+
+			console.log('need to do front end validation here!');
 
 			// $.validator.addMethod(
 			// 	'regexPostcode',
@@ -354,7 +356,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$( '#postcode_search' ).on( 'propertychange change click keyup input paste', function( e ) {
+		$body.on( 'click', $( form.addressLookup ), function( e ) {
 			_this.postcodeStuff( e );
 		});
 
