@@ -277,32 +277,28 @@ function FormLogic() {
 
 		e.preventDefault();
 
-		if ( $(form.postcodeSearch).val() != '' ) {
+		console.log('need to do front end validation here!');
 
-			console.log('need to do front end validation here!');
+		// $.validator.addMethod(
+		// 	'regexPostcode',
+		// 	function(value, element, regexp) {
+		// 		var check = false;
+		// 		var re = new RegExp('^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$', 'i');
+		// 		return this.optional(element) || re.test(value);
+		// 	},
+		// 	'Please enter a valid UK postcode.'
+		// );
 
-			// $.validator.addMethod(
-			// 	'regexPostcode',
-			// 	function(value, element, regexp) {
-			// 		var check = false;
-			// 		var re = new RegExp('^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$', 'i');
-			// 		return this.optional(element) || re.test(value);
-			// 	},
-			// 	'Please enter a valid UK postcode.'
-			// );
+		// $( '#form-car' ).validate({
+		// 	debug: true,
+		// 	rules: {
+		// 		'postcode_search':	{
+		// 			regexPostcode: true
+		// 		}
+		// 	}
+		// });
 
-			// $( '#form-car' ).validate({
-			// 	debug: true,
-			// 	rules: {
-			// 		'postcode_search':	{
-			// 			regexPostcode: true
-			// 		}
-			// 	}
-			// });
-
-			postcodeTimer = setTimeout( this.handlePostcode, 600 );
-
-		}
+		postcodeTimer = setTimeout( this.handlePostcode, 600 );
 
 	}
 
@@ -356,7 +352,7 @@ function FormLogic() {
 			_this.addressStuff( e );
 		});
 
-		$body.on( 'click', $( form.addressLookup ), function( e ) {
+		$body.on( 'click', form.addressLookup, function( e ) {
 			_this.postcodeStuff( e );
 		});
 
