@@ -157,7 +157,11 @@ function FormLogic() {
 
 			$( addresses ).each( function( i, addr ) {
 
+
+
 				var address = new String();
+
+				console.log(address);
 
 				for( var key in addr ) if( ! _.isEmpty( addr[ key ] ) ) address += addr[ key ] + ', ';
 

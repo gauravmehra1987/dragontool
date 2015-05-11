@@ -104,7 +104,7 @@
 				<%= form.field.tel.home %>
 				/build -->
 
-				<!-- build:remove --><input type="tel" id="tel_home" name="tel_home" placeholder="Home telephone" /><!-- /build -->
+				<!-- build:remove --><input type="tel" id="tel_home" name="tel_home" placeholder="Telephone" /><!-- /build -->
 				<span class="field-icon"></span>
 
 			</div>

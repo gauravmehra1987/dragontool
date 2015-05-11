@@ -17,7 +17,7 @@
 		"email":		"@Html.TextBoxFor(model => model.Email, new { @type = \"email\", @id = \"email\", Name = \"email\", @placeholder = \"E-mail address\" })",
 		"tel":			{
 
-			"home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { @type = \"tel\", @id = \"tel_home\", Name = \"tel_home\", @placeholder = \"Home telephone\" })",
+			"home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { @type = \"tel\", @id = \"tel_home\", Name = \"tel_home\", @placeholder = \"Telephone\" })",
 			"work":		"@Html.TextBoxFor(model => model.TelephoneWork, new { @type = \"tel\", @id = \"tel_work\", Name = \"tel_work\", @placeholder = \"Work telephone\" })",
 			"mobile":	"@Html.TextBoxFor(model => model.TelephoneMobile, new { @type = \"tel\", @id = \"tel_mobile\", Name = \"tel_mobile\", @placeholder = \"Mobile telephone\" })"
 
