@@ -149,7 +149,7 @@ function Dashboard() {
 		dashboard.colors( carColors[ dashColor ] );
 		//
 		// Subscribe to colour change
-		$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); formLogic.colors( color );, formLogic.colors( color ); } );
+		$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); formLogic.colors( color ); } );
 	}
 
 
