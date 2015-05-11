@@ -3,6 +3,7 @@
 // Creating instances of all the functions and saving as global variables
 var ie				= new IE();
 var ui				= new UI();
+var dataLogic       = new DataLogic();
 var dashboardLogic	= new DashboardLogic();
 var formLogic		= new FormLogic();
 var combobulate 	= new Combobulate();
@@ -13,6 +14,8 @@ var social			= new SocialMedia();
 var dials			= new Dials();
 var introAnimations	= new IntroAnimations();
 //
+// Initialize dataLogic
+dataLogic.init();
 // carCode is set to false unless it is ??? (not sure what this does)
 var carCode	= getQueryParameter( 'm' ) || false;
 //

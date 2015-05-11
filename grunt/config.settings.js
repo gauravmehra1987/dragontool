@@ -288,6 +288,7 @@ grunt.config.merge( {
 				'<%= project.paths.js %>/src/validation.rules.js',
 				'<%= project.paths.js %>/src/validation.js',
 				'<%= project.paths.js %>/src/core.DashboardLogic.js',
+				'<%= project.paths.js %>/src/core.DataLogic.js',
 				'<%= project.paths.js %>/src/core.FormLogic.js',
 				'<%= project.paths.js %>/src/core.Dials.js',
 				'<%= project.paths.js %>/src/core.Dashboard.js',

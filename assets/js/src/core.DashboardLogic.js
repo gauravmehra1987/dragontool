@@ -2,6 +2,7 @@ function DashboardLogic() {
 	//
 	// Save 'this' to refer to this object later
 	var _this = this;
+
 	//
 	// All the filters (based on the dashboard dials)
 	var filters = [ 'lifestyle', 'economy', 'speed', 'price', 'convertible', 'high', 'awd', 'luggage', 'capacity' ];
@@ -89,14 +90,15 @@ function DashboardLogic() {
 
 
 	/**
-     * Get an array of matching cars, from user input
-     * @param {Object} Formatted user selection data, passed in on click of the combobulate button
-     * @return {Object} Returns an array of cars matching the users input, as well as other data from the user input
+     * Sends the database and query to the dataLogic function
+     * to filter down.
     */
 	this.getCars = function( q ) {
+		console.log('getCars')
 		//
 		// If there is an eggs object in the data
 		if ( typeof q.eggs === 'object' ) {
+			console.log('q.eggs')
 			//
 			// Console log
 			console.log( 'Easter eggs triggered' );
@@ -107,52 +109,24 @@ function DashboardLogic() {
 		//
 		// Else, if there are no eggs, do some logic to return the correct car
 		else {
+			console.log('sending to dataLogic')
+			console.log(this)
 			//
 			// Results will contain an array of all the cars
-			var results = db( q.prepared ).get();
+			var results = db().get();
 
-			// If results contains any cars...
-			if ( results.length > 0 ) {
-				//
-				// Reset dropped filters
-				droppedFilters = [];
-				//
-				// Prints out how many matches were found
-				console.log( 'Found ' + results.length + ' matches' );
-				//
-				// Create an object containing all the details we might need
-				var obj = {
-					//
-					// Tells us all the values of the user input in different formats
-					queryPrepared: q.prepared,
-					queryRaw: q.raw,
-					//
-					// The array of cars
-					data: results
-				};
-				//
-				// Returns the object with all the info we need for a users input
-				// Including an array of cars that match the user input
-				return obj;
-			}
-			// Else, if results don't contain cars...
-			else {
-				//
-				// 'filters' is the array defined at the top of this function (names of all the dials/filters)
-				// Creates an array of filters to drop, by...???
-				droppedFilters.push( filters[ droppedFilters.length ] );
-				//
-				// Printing out which filters are being dropped
-				console.log( 'No results, dropping ' + droppedFilters[ droppedFilters.length - 1 ] );
-				//
-				// Construct a new query
-				var query = new _this.query();
-				//
-				// Calls this function again, but passing in new data via the query functions...
-				// Returns an array of cars and the user selection data
-				return this.getCars( query.build( query.filter( q.raw, droppedFilters ) ) );
-			}
+			dataLogic.query = q.raw;
+			dataLogic.carCollectionController(results);
+
 		}
+	}
+
+	/**
+     * Accepts the filtered car from dataLogic
+     * sends it to the UI to render in the view
+    */
+	this.publishCar = function(car){
+		ui.render(car);
 	}
 
 
@@ -237,21 +211,49 @@ function DashboardLogic() {
 			var dbQuery	= {};
 			var q = queryObj;
 			var obj;
+			var options = [];
 			//
 			// Here we are building a new 'dbQuery' object based on the values of the passed in queryObj
 			// The new 'dbQuery' object needs to be formatted in a certain way...
 			// We will do this using various if statements that query the queryObj, and then create the format we need for the new dbQuery object
 			if ( q.capacity ) dbQuery.capacity				= { likenocase: q.capacity };
-			if ( q.luggage ) dbQuery.luggage				= { likenocase: q.luggage };
-			if ( q.lifestyle ) dbQuery.lifestyle			= { likenocase: q.lifestyle };
-			
-			if ( q.awd ) dbQuery.awd						= q.awd;
-			if ( q.high ) dbQuery.high						= q.high;
-			if ( q.convertible ) dbQuery.convertible		= q.convertible;
 
-			if ( q.price ) dbQuery.price					= { lt: q.price + 1 };
-			if ( q.speed ) dbQuery.speed					= { gt: q.speed - 1 };
-			if ( q.economy ) dbQuery.economy				= { gt: q.economy - 1};
+			if ( q.luggage ) dbQuery.luggage				= { likenocase: q.luggage }
+				else { queryObj.luggage = 0 };
+
+			if ( q.lifestyle ) dbQuery.lifestyle			= { likenocase: q.lifestyle } 
+				else { queryObj.lifestyle = 0 };
+
+			if ( q.awd ) { 
+				dbQuery.awd						= q.awd;
+				options.push('1');
+				queryObj.awd = 1;
+			}
+			if ( q.high ) {
+				dbQuery.high						= q.high;
+				options.push('3');
+				queryObj.high = 1;
+
+			}
+			if ( q.convertible ) {
+				dbQuery.convertible		= q.convertible;
+				options.push('2');
+				queryObj.convertible = 1;
+
+			}
+
+			if ( q.price ) dbQuery.price					= { lt: q.price + 1 }
+				else { queryObj.price = 0 };
+
+			if ( q.speed ) dbQuery.speed					= { gt: q.speed - 1 }
+				else { queryObj.speed = 0 };
+
+			if ( q.economy ) dbQuery.economy				= { gt: q.economy - 1}
+				else { queryObj.economy = 0 };
+
+			if(options.length > 0) queryObj.options = options
+				else { queryObj.options = 0 };
+
 			//
 			// The final object will contain both the initially passed in 'queryObj' object, as well as the newly formatted 'dbQuery' object
 			obj = { prepared: dbQuery, raw: queryObj };
@@ -393,8 +395,8 @@ function DashboardLogic() {
 				convertible:	data.options.dt || false
 			}
 			//
-			console.log('coverted data object:');
-			console.log(obj);
+			// console.log('coverted data object:');
+			// console.log(obj);
 			//
 			// Returns the formatted object
 			return obj;
@@ -408,6 +410,9 @@ function DashboardLogic() {
 	 * @return {Object} database
 	*/
 	var populateDB = function( data ) {
+		console.log('populateDB')
+
+
 		//
 		// Give the data passed in a better name of 'cars'
 		cars = data;
@@ -415,6 +420,9 @@ function DashboardLogic() {
 		// Converts the cars array to a JSON object
 		// Passes to TAFFY method which turns it into a database structure, saving the result as db
 		db = TAFFY( JSON.stringify( cars ) );
+
+		console.log(typeof db)
+		
 		//
 		// Make dashboardLogic.database equal to db
 		_this.database = db;

@@ -73,40 +73,48 @@ function Combobulate() {
 		// The function dashboardLogic.eggs will return an array of eggs based on the user input (if there are any eggs)
 		var eggs = dashboardLogic.eggs( userSelection );
 
-		// If there is a rocket in the array...
+		// If there is a toy or rocket in the array...
 		// Pass the name as a string, and the array itelf to the UI.eggs function
-		if ( $.inArray( 'rocket', eggs ) >= 0 ) {
+		if ( $.inArray( 'toy', eggs ) >= 0 || $.inArray( 'rocket', eggs ) >= 0 ) {
+			console.log('no')
 			//
-			ui.eggs( 'rocket', eggs );
+			if ( $.inArray( 'rocket', eggs ) >= 0 && $.inArray( 'toy', eggs ) >= 0 ) {
+				//
+				ui.eggs( 'rocket', eggs );
+			//
+			} else if ( $.inArray( 'toy', eggs ) >= 0 ) {
+				//
+				ui.eggs( 'toy', eggs );
+			//
+			} else {
+				//
+				ui.eggs( 'rocket', eggs );
+			//
+			}
 			//
 			return;
-			//
+		}
 		//
-		// Else... if there is not a rocket car...
-		} else {
+		// Else... if there is not a toy or rocket...
+		else {
+
 			// 
 			// Convert user input values to an appropriate structure
 			var search = query.build( query.convert( dashboard.values() ) );
-			//
-			// Get the car results using the dashboardLogic.getCars function and passing in the above search structure from user input
-			var results	= dashboardLogic.getCars( search );
-			console.log(results);
-			//
-			// Get an array of all the cars data from the results object
-			var cars = results.data;
-			//
-			// If the cars array has anything in...
-			if ( cars.length > 0 ) {
-				//
-				// Randomly choose a car
-				var car	= cars[ _.random( cars.length - 1 ) ];
-				//
-				// Populate results
-				ui.render( car );
-				//
-				// Activate the colour when the element exists
-				runWhenElementExsists( '#tpl-results .switch-color', dashboard.activateDashColor );
+
+			if(_.isEqual(dataLogic.oldQuery, search)) {
+				console.log('identical query');
+
+				dataLogic.cycleThroughCarList();
+			} else {
+
+				// Get the car results using the dashboardLogic.getCars function and passing in the above search structure from user input
+				var results	= dashboardLogic.getCars( search );
+
+				// Store the current query
+				dataLogic.oldQuery = search;
 			}
+
 		}
 	}
 
@@ -151,6 +159,12 @@ function Combobulate() {
 		$( '#start' ).on( 'click', function( e ) {
 			_this.animateCombobulate( e );
 			_this.executeSearch();
+		});
+
+		$.subscribe('sort-finished', function(e, data){
+			console.log('sort-finished');
+			console.log(data)
+			ui.render( data );
 		});
 	}
 
