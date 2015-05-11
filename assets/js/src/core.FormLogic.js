@@ -189,6 +189,8 @@ function FormLogic() {
 
 				} );
 
+				$('.loader-inline').removeClass('active');
+
 			} );
 
 		} );
@@ -280,6 +282,8 @@ function FormLogic() {
 		$('#postcode_search').validate();
 
 		if ( $('#postcode_search').valid() )  {
+
+			$(e.target).next('.loader-inline').addClass('active');
 
 			postcodeTimer = setTimeout( this.handlePostcode, 600 );
 

@@ -156,7 +156,7 @@
 
 			<div class="form-control form-control-button">
 				
-				<a href="#" id="address_lookup" class="button cta">Address lookup</a>
+				<a href="#" id="address_lookup" class="button cta">Address lookup</a><span class="loader-inline">Searching</span>
 
 			</div>
 
