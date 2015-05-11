@@ -217,7 +217,7 @@ function Dials() {
 			} );
 			//
 			// On click of the right and left elements
-			$( '#left, #right' ).on( 'click touchstart', function( e ) {
+			$( '#left, #right' ).on( 'click', function( e ) {
 				//
 				// Prevent default event
 				e.preventDefault();

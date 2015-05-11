@@ -12,18 +12,23 @@ html.ie8 > body {
 
 	}
 
-	.control.mpg .arrow {
-
-		// visibility: hidden;
-
-	}
+	.ministry { background: url( ../img/ministry-of-finance-ie8.png ); }
 
 }
 
 
 // IE 9 and below
-
 html.ie.oldie > body {
+
+	.layout-dash { overflow: visible; }
+
+	#dash {
+
+		overflow: visible;
+		
+		.backline { background-image: none!important; }
+
+	}
 
 	.form-control.append {
 
@@ -47,13 +52,10 @@ html.ie.oldie > body {
 				top: 0;
 				left: 0;
 
-				height: 30px;
+				height: 26px;
 				width: ( @fontSizeSmall ) + ( @margin ) + 2px;
 
 				&:before {
-
-					// .align-centers;
-					// .icon;
 
 					color: @formGray;
 					font-size: 16px;

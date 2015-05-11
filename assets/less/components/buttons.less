@@ -1,0 +1,77 @@
+// Buttons
+
+.button,
+button,
+input[type=button],
+input[type=submit],
+input[type=cancel] {
+
+	&, &:visited { color: @white; }
+
+	.form-input;
+
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	display: inline-block;
+	font-family: @fontMiniBold;
+	font-size: @fontSizeMedium;
+	font-weight: normal;
+	line-height: 1;
+	padding: @margin * 0.75;
+	text-decoration: none;
+	text-transform: uppercase;
+	height: auto;
+
+	&:before {
+
+		.icon;
+		.icon-raquo;
+		margin-right: 0.5em;
+
+	}
+
+	&:hover { text-decoration: none; }
+
+	&.gray {
+
+		background: @formGray;
+		color: @black;
+		font-size: @fontSize;
+
+	}
+
+	&.transparent {
+
+		background-color: transparent;
+		border-color: transparent;
+		padding: 0;
+
+	}
+
+}
+
+.button.cta {
+
+	position: relative;
+	padding-left: 27px;
+
+	&:before {
+	
+		display: block;
+		margin-right: 0px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+
+	}
+}
+
+.button {
+
+	&.disabled {
+
+		opacity: 0.5;
+
+	}
+}

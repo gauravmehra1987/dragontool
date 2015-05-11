@@ -1,5 +1,3 @@
-/*! by John Przeslakowski - visit me at http://goodpixels.co.uk */
-
 
 // Setting up social media values to use later
 var socialMedia = {

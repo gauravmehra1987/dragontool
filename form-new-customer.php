@@ -5,21 +5,16 @@
 <!-- build:template
 <%= form.open %>
 /build -->
-
 <div id="page_form" class="layout layout-default">
 
-	<div class="form-content">
+	<ul class="actions">
 
-		<ul class="actions">
+		<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
+		<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
 
-			<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
-			<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
+	</ul>
 
-		</ul>
-
-	</div>
-
-	<!-- build:remove --><form action="ajax.php" autocomplete="off"><!-- /build -->
+<!-- build:remove --><form action="ajax.php" autocomplete="off" id="form-car"><!-- /build -->
 
 	<!-- build:template
 	<%= form.field.user %>
@@ -68,7 +63,7 @@
 
 			</div>
 
-			<div class="form-control append user full-width">
+			<div class="form-control form-control-input append user full-width">
 
 				<!-- build:template
 				<%= form.field.name %>
@@ -79,7 +74,7 @@
 
 			</div>
 
-			<div class="form-control append user full-width">
+			<div class="form-control form-control-input append user full-width">
 
 				<!-- build:template
 				<%= form.field.surname %>
@@ -90,7 +85,7 @@
 
 			</div>
 
-			<div class="form-control append mail full-width">
+			<div class="form-control form-control-input append mail full-width">
 
 				<!-- build:template
 				<%= form.field.email %>
@@ -103,7 +98,7 @@
 
 			<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or MINI Retailers, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest news on our vehicles and and other products and services by email. We may occasionally ask for your assistance in market research to help improve our service to customers. Have a look at our privacy policy for more information.  </p>
 
-			<div class="form-control append phone full-width">
+			<div class="form-control form-control-input append phone full-width">
 
 				<!-- build:template
 				<%= form.field.tel.home %>
@@ -116,7 +111,7 @@
 
 			<div class="inline">
 
-				<div class="form-control append home half-width">
+				<div class="form-control form-control-input append home half-width">
 
 					<!-- build:template
 					<%= form.field.address.postcodesearch %>
@@ -129,7 +124,7 @@
 
 				<div class="form-control half-width">
 
-					<div id="address_type_chooser" class="form-control">
+					<div id="address_type_chooser" class="form-control form-control-input-checkbox">
 
 						<div class="checkbox checkbox-radio">
 
@@ -179,7 +174,7 @@
 
 			</div><!-- end div#address_chooser -->
 
-			<div class="form-control disabled append home full-width">
+			<div class="form-control form-control-input disabled append home full-width">
 
 				<!-- build:template
 				<%= form.field.address.address1 %>
@@ -190,7 +185,7 @@
 
 			</div>
 
-			<div class="form-control disabled append home full-width">
+			<div class="form-control form-control-input disabled append home full-width">
 
 				<!-- build:template
 				<%= form.field.address.address2 %>
@@ -201,7 +196,7 @@
 
 			</div>
 
-			<div class="form-control disabled append home full-width">
+			<div class="form-control form-control-input disabled append home full-width">
 
 				<!-- build:template
 				<%= form.field.address.address3 %>
@@ -212,7 +207,7 @@
 
 			</div>
 
-			<div class="form-control disabled append home full-width">
+			<div class="form-control form-control-input disabled append home full-width">
 
 				<!-- build:template
 				<%= form.field.address.postcode %>
@@ -244,7 +239,7 @@
 
 
 
-			<div class="form-control">
+			<div class="form-control form-control-checkbox">
 
 				<div class="checkbox">
 
@@ -258,7 +253,7 @@
 
 			</div>
 
-			<div id="optout_chooser" class="form-control">
+			<div id="optout_chooser" class="form-control form-control-checkbox">
 
 				<p class="notice">Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
 
@@ -284,7 +279,7 @@
 
 			</div>
 
-			<div class="form-control">
+			<div class="form-control form-control-submit">
 
 				<button type="submit" class="button switch-bg">Submit</button>
 
@@ -355,10 +350,10 @@
 		<div id="form_car_wrap">
 
 			<!-- build:template
-			<h2 class="switch-color car-name-big"><%= form.name %></h2>
+			<h2 class="switch-color model-name"><%= form.name %></h2>
 			/build -->
 
-			<!-- build:remove --><h2 class="switch-color car-name-big">Car name</h2><!-- /build -->
+			<!-- build:remove --><h2 class="switch-color model-name">Car name</h2><!-- /build -->
 
 			<figure id="form_car" class="model-image">
 
