@@ -21,23 +21,8 @@ namespace Combobulator.Business.Services.Providers
             var isComplete = false;
             try
             {
-                var isFinance = customer.IsFinance;
-                var isPhone = customer.IsPhone;
-                var isPost = customer.IsPhone;
-
-                var result = new ResultViewModel
+                var result = new GRGViewModel
                 {
-                    id = customer.UserId ?? "",
-                    title = customer.Title ?? "",
-                    first_name = customer.FirstName ?? "",
-                    surname = customer.LastName ?? "",
-                    email = customer.Email ?? "",
-                    telephone = customer.TelephoneHome ?? "",
-
-                    finance_interest = isFinance ? "true" : "false",
-                    phone_communication = isPhone ? "true" : "false",
-                    post_communication = isPost ? "true" : "false",
-
                     model_name = customer.Car.Name ?? "",
                     model_code = customer.Car.Code ?? "",
                     luggage = customer.Selections.Luggage ?? "",
@@ -75,6 +60,8 @@ namespace Combobulator.Business.Services.Providers
                         Config.SystemId, action, customer.UserId, Config.Random, json);
                 */
 
+                var phone = customer.IsPhone ? "I" : "O";
+                var post = customer.IsPost ? "I" : "O";
 
                 var url = new Uri(Config.GrassRootsHostUrl)
                     .AddParameter("application", Config.GrassRootsAppName)
@@ -88,15 +75,15 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("address1", customer.AddressLine1)
                     .AddParameter("address2", customer.AddressLine2)
                     .AddParameter("address3", customer.AddressLine3)
-                    .AddParameter("town", customer.AddressLine4)
+                    .AddParameter("town", customer.AddressLine3)
                     .AddParameter("postcode", customer.AddressPostcode)
-                    .AddParameter("hometelephone", customer.TelephoneHome)
+                    .AddParameter("hometelephone", customer.TelephoneHome.Replace(" ",""))
                     .AddParameter("worktelephone", customer.TelephoneWork)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
-                    .AddParameter("emailmarketing", "1")
-                    .AddParameter("postmarketing", "0")
-                    .AddParameter("telephonemarketing", "0")
+                    .AddParameter("emailmarketing", "I")
+                    .AddParameter("postmarketing", post)
+                    .AddParameter("telephonemarketing", phone)
                     .AddParameter("dealer", "15106")
                     .AddParameter("model", customer.Car.Code)
                     .AddParameter("finance", "Y");
@@ -106,7 +93,7 @@ namespace Combobulator.Business.Services.Providers
                         url.ToString() +
                         "&comments=##{0}##", json);
 
-                var response = HttpWebRequestHelper.MakeRequest(requestUrl.ToString());
+                var response = HttpWebRequestHelper.MakeRequest(requestUrl);
                 var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                 dynamic obj = JsonConvert.DeserializeObject(data);

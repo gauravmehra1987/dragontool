@@ -30,7 +30,7 @@ namespace Combobulator.Config
             Map(m => m.Info).Name("Info");
             Map(m => m.Term).Name("Term");
             Map(m => m.Payment).Name("Payment");
-            Map(m => m.FinancePrice).Name("Finance Price".Replace(" ", ""));
+            Map(m => m.FinancePrice).Name("Finance_Price".Replace(" ", ""));
             Map(m => m.Deposit).Name("Customer Deposit".Replace(" ", ""));
             Map(m => m.Contribution).Name("Contribution");
             Map(m => m.DealerDiscount).Name("Dealer discount".Replace(" ", ""));
