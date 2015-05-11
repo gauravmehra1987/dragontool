@@ -180,6 +180,9 @@ function DashboardLogic() {
 	*/
 	this.getCarByCode = function( code ) {
 		//
+		console.log('getCarByCode');
+		console.log(code);
+		//
 		// Queries the database to get data about that car
 		return db( { code: code } ).first();
 	}

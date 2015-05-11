@@ -136,6 +136,8 @@ function Dashboard() {
 	 * Initialize dashboard color
 	*/
 	this.activateDashColor = function() {
+		console.log('activateDashColor');
+		console.log(carCode);
 		//
 		// If we have a car code, set the 'color' to the color of that car, if not set 'color' to false
 		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
@@ -147,7 +149,7 @@ function Dashboard() {
 		dashboard.colors( carColors[ dashColor ] );
 		//
 		// Subscribe to colour change
-		$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); formLogic.colors( color ); } );
+		$.subscribe( 'colour-change', function( e, color ) { dashboard.colors( color ); formLogic.colors( color );, formLogic.colors( color ); } );
 	}
 
 

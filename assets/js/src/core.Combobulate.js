@@ -104,8 +104,9 @@ function Combobulate() {
 				// Populate results
 				ui.render( car );
 				//
-				// Activate the colour when the element exists
-				runWhenElementExsists( '#tpl-results .switch-color', dashboard.activateDashColor );
+				// Activate color again
+				var color = $( '.switch-bg' ).css( 'background-color' );
+				$.publish( 'colour-change', color );
 			}
 		}
 	}
