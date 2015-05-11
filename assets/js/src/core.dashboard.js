@@ -136,6 +136,8 @@ function Dashboard() {
 	 * Initialize dashboard color
 	*/
 	this.activateDashColor = function() {
+		console.log('activateDashColor');
+		console.log(carCode);
 		//
 		// If we have a car code, set the 'color' to the color of that car, if not set 'color' to false
 		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;

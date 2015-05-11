@@ -102,6 +102,7 @@ function Combobulate() {
 			// Convert user input values to an appropriate structure
 			var search = query.build( query.convert( dashboard.values() ) );
 
+
 			if(_.isEqual(dataLogic.oldQuery, search)) {
 				console.log('identical query');
 
@@ -113,6 +114,12 @@ function Combobulate() {
 
 				// Store the current query
 				dataLogic.oldQuery = search;
+
+				//
+				// Activate color again
+				var color = $( '.switch-bg' ).css( 'background-color' );
+				$.publish( 'colour-change', color );
+
 			}
 
 		}
