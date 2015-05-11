@@ -277,28 +277,13 @@ function FormLogic() {
 
 		e.preventDefault();
 
-		console.log('need to do front end validation here!');
+		$('#postcode_search').validate();
 
-		// $.validator.addMethod(
-		// 	'regexPostcode',
-		// 	function(value, element, regexp) {
-		// 		var check = false;
-		// 		var re = new RegExp('^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$', 'i');
-		// 		return this.optional(element) || re.test(value);
-		// 	},
-		// 	'Please enter a valid UK postcode.'
-		// );
+		if ( $('#postcode_search').valid() )  {
 
-		// $( '#form-car' ).validate({
-		// 	debug: true,
-		// 	rules: {
-		// 		'postcode_search':	{
-		// 			regexPostcode: true
-		// 		}
-		// 	}
-		// });
+			postcodeTimer = setTimeout( this.handlePostcode, 600 );
 
-		postcodeTimer = setTimeout( this.handlePostcode, 600 );
+		};
 
 	}
 
