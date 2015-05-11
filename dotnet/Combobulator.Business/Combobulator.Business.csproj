@@ -68,6 +68,7 @@
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
     <Compile Include="ViewModels\GoogleGeoCodeResponse.cs" />
+    <Compile Include="ViewModels\GRGViewModel.cs" />
     <Compile Include="ViewModels\PostcodeLookUpApiViewModel.cs" />
     <Compile Include="ViewModels\PostcodeViewModel.cs" />
     <Compile Include="ViewModels\ResultViewModel.cs" />
