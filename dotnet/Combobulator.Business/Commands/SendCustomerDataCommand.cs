@@ -5,7 +5,9 @@ using System.Reflection;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.Services.Providers;
 using Combobulator.Common;
+using Combobulator.Common.Enums;
 using Combobulator.Common.Exceptions;
+using Combobulator.Common.Extensions;
 using Combobulator.Common.Helpers;
 using Combobulator.Models;
 using Combobulator.Data;
@@ -19,24 +21,22 @@ namespace Combobulator.Business.Commands
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Customer _customer;
         private readonly string _carModel;
-        private readonly string _templateUserPath;
-        private readonly string _templateCustomerPath;
+        private readonly string _templatePath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SendCustomerDataCommand"/> class.
         /// </summary>
         /// <param name="customer">The customer object.</param>
         /// <param name="carModel">The car model identifier.</param>
-        public SendCustomerDataCommand(Customer customer, string carModel, string templateUserPath, string templateCustomerPath)
+        public SendCustomerDataCommand(Customer customer, string carModel, string templatePath)
         {
             _customer = customer;
             _carModel = carModel;
-            _templateUserPath = templateUserPath;
-            _templateCustomerPath = templateCustomerPath;
+            _templatePath = templatePath;
         }
 
         /// <summary>
-        /// Sends form data to eMaster API and despatches emails.
+        /// Sends form data to eMaster and GRG APIs and despatches emails.
         /// </summary>
         /// <returns>True/False</returns>
         /// <exception cref="CarNotFoundException">
@@ -48,7 +48,7 @@ namespace Combobulator.Business.Commands
         {
             var isComplete = false;
 
-            var dbCar = _dbContext.GetNewCar(_carModel).FirstOrDefault();
+            var dbCar = _dbContext.GetCar(_carModel).FirstOrDefault();
             if (dbCar == null)
                 throw new CarNotFoundException("Car not found.");
 
@@ -93,15 +93,17 @@ namespace Combobulator.Business.Commands
 
             if (!string.IsNullOrEmpty(_customer.UserId))
             {
+
+                // Send to eMaster API
                 var emResponse = false;
                 if (_customer.UserId != "0")
                 {
-                    // Send to eMaster API
                     IProvider eMasterProvider = new EMasterProvider();
                     Func<Customer, bool> emfunc = eMasterProvider.SendData;
                     emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, TimeSpan.FromSeconds(2));
                 }
 
+                // Send to GRG API
                 IProvider grassRootsProvider = new GrassRootsProvider();
                 Func<Customer, bool> grgfunc = grassRootsProvider.SendData;
                 var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, TimeSpan.FromSeconds(2));
@@ -110,33 +112,38 @@ namespace Combobulator.Business.Commands
                 {
                     isComplete = true;
                 }
-                else
-                {
-                    isComplete = true;
-                }
 
+                /*
                 // If send api fails then send to fallback email
                 if (emResponse)
                     return isComplete;
+                */
 
-                var readFile = string.Empty;
-                var strBody = string.Empty;
-                var subject = Config._emailMeResultsSubject;
-                var template = Config._emailMeResultsTemplate;
-                using (var reader = new StreamReader(_templateUserPath))
+                string readFile;
+                var subject = Config.EmailMeResultsSubject;
+                using (var reader = new StreamReader(_templatePath))
                 {
                     readFile = reader.ReadToEnd();
                 }
-                strBody = readFile;
-                strBody = strBody.Replace("[[Title]]", _customer.Title)
+                var body = readFile;
+                var assetPath = Config.EmailAssetsDomain + Config.EmailAssetsLocation;
+                var carAssetPath = Config.EmailAssetsDomain + Config.EmailCarAssetsLocation;
+                var carPath = carAssetPath + "/" + _customer.Car.Code + ".jpg";
+
+                var colour = Enum.GetValues(typeof(Colour)).Cast<Colour>().FirstOrDefault(v => v.GetDescription() == _customer.Car.Color);
+                var hexColour = colour.DisplayName();
+
+                body = body.Replace("[[Title]]", _customer.Title)
                     .Replace("[[Firstname]]", _customer.FirstName)
                     .Replace("[[Lastname]]", _customer.LastName)
-                    .Replace("[[CarName]]", car.Name);
+                    .Replace("[[CarName]]", car.Name)
+                    .Replace("[[Location]]", assetPath)
+                    .Replace("[[CarImage]]", carPath)
+                    .Replace("[[Colour]]", hexColour);
 
-                MandrillHelper.SendEmail(_customer.Email, subject, strBody);
+                MandrillHelper.SendEmail(_customer.Email, subject, body);
 
-
-
+                /*
                 var readFile2 = string.Empty;
                 var strBody2 = string.Empty;
                 var subject2 = Config._emailMeResultsSubject;
@@ -152,6 +159,7 @@ namespace Combobulator.Business.Commands
                     .Replace("[[CarName]]", car.Name);
 
                 MandrillHelper.SendEmail(Config._emailAddressTo, subject2, strBody2);
+                */
             }
             else
             {

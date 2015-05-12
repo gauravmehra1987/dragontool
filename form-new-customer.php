@@ -242,20 +242,18 @@
 
 
 
-
+			<!-- build:remove -->
 			<div class="form-control form-control-checkbox">
 
 				<div class="checkbox">
 
-					<!-- build:remove --><input id="finance" name="finance" type="checkbox" value="1" checked="checked" /><!-- /build -->
-					<!-- build:template
-					<%= form.field.finance %>
-					/build -->
+					<input id="finance" name="finance" type="checkbox" value="1" checked="checked" />
 					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
 
 				</div>
 
 			</div>
+			<!-- /build -->
 
 			<div id="optout_chooser" class="form-control form-control-checkbox">
 

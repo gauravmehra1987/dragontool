@@ -54,7 +54,7 @@ namespace Combobulator.Controllers
 
             try
             {
-                var dbCar = _dbContext.GetNewCar(modelCode).FirstOrDefault();
+                var dbCar = _dbContext.GetCar(modelCode).FirstOrDefault();
                 if (dbCar == null)
                     return RedirectToAction("Index", "Home");
 

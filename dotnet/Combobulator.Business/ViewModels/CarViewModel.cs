@@ -4,10 +4,13 @@ namespace Combobulator.Business.ViewModels
 {
     public class CarViewModel
     {
+        public string Brand { get; set; }
         public string Code { get; set; }
         public string Color { get; set; }
         public string Engine { get; set; }
         public string Name { get; set; }
+        public string Engine_Name { get; set; }
+        public string Model { get; set; }
         public string Capacity { get; set; }
         public string Luggage { get; set; }
         public string Lifestyle { get; set; }
@@ -24,6 +27,8 @@ namespace Combobulator.Business.ViewModels
         public string Alt_2 { get; set; }
         public string Alt_3 { get; set; }
         public string Terms { get; set; }
+        public string Joke { get; set; }
+        public string Url { get; set; }
         public Finance Finance { get; set; }
     }
 }

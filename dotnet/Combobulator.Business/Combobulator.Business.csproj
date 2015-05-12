@@ -72,7 +72,7 @@
     <Compile Include="ViewModels\PostcodeLookUpApiViewModel.cs" />
     <Compile Include="ViewModels\PostcodeViewModel.cs" />
     <Compile Include="ViewModels\ResultViewModel.cs" />
-    <Compile Include="ViewModels\TestViewModel.cs" />
+    <Compile Include="ViewModels\FormSubmissionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Combobulator.Common\Combobulator.Common.csproj">

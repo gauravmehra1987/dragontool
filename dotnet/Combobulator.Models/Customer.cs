@@ -88,7 +88,7 @@ namespace Combobulator.Models
         public bool EmailResults { get; set; }
         */
 
-        public bool IsFinance { get; set; }
+        //public bool IsFinance { get; set; }
         public bool IsPhone { get; set; }
         public bool IsPost { get; set; }
     }

@@ -21,15 +21,13 @@ namespace Combobulator.Controllers
             switch (type)
             {
                 case "csv":
-                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v33.csv");
-
-                    var encoding = GetEncoding(fileName);
+                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v34.csv");
+                    var fileEncoding = GetEncoding(fileName);
 
                     using (var fileReader = System.IO.File.OpenText(fileName))
                     using (var csv = new CsvReader(fileReader))
                     {
-                        //var cultureInfo = CultureInfo.CurrentCulture;
-                        csv.Configuration.Encoding = Encoding.UTF8;
+                        csv.Configuration.Encoding = fileEncoding;
                         csv.Configuration.IgnoreReadingExceptions = true;
                         csv.Configuration.ReadingExceptionCallback = ReadingExceptionCallback;
                         csv.Configuration.WillThrowOnMissingField = false;
@@ -37,8 +35,7 @@ namespace Combobulator.Controllers
                         csv.Configuration.HasHeaderRecord = true;
                         csv.Configuration.TrimFields = true;
                         csv.Configuration.IgnoreHeaderWhiteSpace = true;
-                        //csv.Configuration.CultureInfo = cultureInfo;
-                        csv.Configuration.RegisterClassMap<NewCarConfigRedux>();
+                        csv.Configuration.RegisterClassMap<NewCarConfig>();
 
                         var records = csv.GetRecords<Models.NewCar>().Distinct().ToList();
                         using (var context = new CombobulatorDataContext())
@@ -66,11 +63,16 @@ namespace Combobulator.Controllers
                                     }
                                 };
 
-                                context.NewCars.InsertOnSubmit(new NewCar
+                                context.Cars.InsertOnSubmit(new Car
                                 {
+                                    Brand = Common.Config.Brand,
                                     Code = record.Code,
                                     Color = record.Color,
                                     Engine = record.Engine,
+                                    EngineName = record.EngineName,
+                                    Model = record.Model,
+                                    Url = record.Url,
+                                    Joke = record.Joke,
                                     Name = record.Name,
                                     Capacity = record.Capacity,
                                     Luggage = record.Luggage,
@@ -122,7 +124,7 @@ namespace Combobulator.Controllers
                                     }
                                 };
 
-                            context.NewCars.InsertOnSubmit(new NewCar
+                            context.Cars.InsertOnSubmit(new Car
                             {
                                 Code = record.Code,
                                 Color = record.Color,

@@ -25,7 +25,7 @@ namespace Combobulator.Business.Services.Providers
 
             try
             {
-                var isFinance = customer.IsFinance;
+                //var isFinance = customer.IsFinance;
                 var isPhone = customer.IsPhone;
                 var isPost = customer.IsPhone;
 
@@ -41,7 +41,6 @@ namespace Combobulator.Business.Services.Providers
                     request_callback = "false",
                     request_early_redemption = "false",
 
-                    finance_interest = isFinance ? "true" : "false",
                     phone_communication = isPhone ? "true" : "false",
                     post_communication = isPost ? "true" : "false",
 

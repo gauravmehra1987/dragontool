@@ -31,15 +31,18 @@ namespace Combobulator.ApiControllers
             var response = new HttpResponseMessage();
             try
             {
-                var dbCar = _dbContext.GetNewCars().ToList();
+                var dbCar = _dbContext.GetCars().ToList();
                 var viewModel = (from car in dbCar
                     let finance = _dbContext.GetCarFinance(car.Id).First()
                     select new CarViewModel
                     {
+                        Brand = car.Brand,
                         Code = car.Code,
                         Color = car.Color,
                         Engine = car.Engine,
                         Name = car.Name,
+                        Engine_Name = car.EngineName,
+                        Model = car.Model,
                         Capacity = car.Capacity,
                         Luggage = car.Luggage,
                         Lifestyle = car.Lifestyle,
@@ -55,6 +58,8 @@ namespace Combobulator.ApiControllers
                         Alt_2 = car.Alt2,
                         Alt_3 = car.Alt3,
                         Terms = car.Terms,
+                        Joke = car.Joke,
+                        Url = car.Url,
                         Finance = new Models.Finance
                         {
                             Info = finance.Info,
@@ -77,7 +82,10 @@ namespace Combobulator.ApiControllers
                 //Add Rocket Car
                 viewModel.Add(new CarViewModel
                 {
+                    Brand = Common.Config.Brand,
                     Engine = "",
+                    Engine_Name = "",
+                    Model = "",
                     Capacity = "",
                     Luggage = "",
                     Lifestyle = "",
@@ -86,8 +94,10 @@ namespace Combobulator.ApiControllers
                     Alt_3 = "SS92",
                     Code = "RKT",
                     Color = "Blazing Red",
-                    Name = "ALPHA CENTURA",
-                    Terms = ""
+                    Name = "MINI ALPHA CENTURA",
+                    Terms = "",
+                    Joke = "",
+                    Url = ""
                 });
 
                 var settings = new JsonSerializerSettings {ContractResolver = new LowercaseContractResolver()};

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Web;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common;
@@ -35,19 +34,9 @@ namespace Combobulator.Business.Services.Providers
                     price_range = customer.Selections.PriceRange ?? "",
                     economy = customer.Selections.Economy ?? "",
 
-                    capacity =
-                        customer.Selections.Capacity == null
-                            ? ""
-                            : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
-                    performance =
-                        customer.Selections.Performance == null
-                            ? ""
-                            : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance,
-                                "PerformanceScale"),
-                    use =
-                        customer.Selections.Use == null
-                            ? ""
-                            : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
+                    capacity = customer.Selections.Capacity == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
+                    performance = customer.Selections.Performance == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale"),
+                    use = customer.Selections.Use == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
                 };
 
                 var json = JsonConvert.SerializeObject(result);
@@ -60,33 +49,32 @@ namespace Combobulator.Business.Services.Providers
                         Config.SystemId, action, customer.UserId, Config.Random, json);
                 */
 
-                var phone = customer.IsPhone ? "I" : "O";
-                var post = customer.IsPost ? "I" : "O";
+
+                var town = customer.AddressLine3 != null ? customer.AddressLine3 : customer.AddressLine2;
 
                 var url = new Uri(Config.GrassRootsHostUrl)
                     .AddParameter("application", Config.GrassRootsAppName)
-                    .AddParameter("form", "fqr")
-                    .AddParameter("brand", "MINI")
+                    .AddParameter("form", Config.GrassRootsPDICode)
+                    .AddParameter("brand", Config.Brand)
                     .AddParameter("title", customer.Title)
                     .AddParameter("firstname", customer.FirstName)
                     .AddParameter("surname", customer.LastName)
                     .AddParameter("email", customer.Email)
-                    .AddParameter("addresstype", "Home")
+                    .AddParameter("addresstype", customer.AddressType)
                     .AddParameter("address1", customer.AddressLine1)
                     .AddParameter("address2", customer.AddressLine2)
                     .AddParameter("address3", customer.AddressLine3)
-                    .AddParameter("town", customer.AddressLine3)
+                    .AddParameter("town", town)
                     .AddParameter("postcode", customer.AddressPostcode)
-                    .AddParameter("hometelephone", customer.TelephoneHome.Replace(" ",""))
+                    .AddParameter("hometelephone", customer.TelephoneHome.Replace(" ", ""))
                     .AddParameter("worktelephone", customer.TelephoneWork)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
                     .AddParameter("emailmarketing", "I")
-                    .AddParameter("postmarketing", post)
-                    .AddParameter("telephonemarketing", phone)
-                    .AddParameter("dealer", "15106")
-                    .AddParameter("model", customer.Car.Code)
-                    .AddParameter("finance", "Y");
+                    .AddParameter("postmarketing", customer.IsPost ? "I" : "O")
+                    .AddParameter("telephonemarketing", customer.IsPhone ? "I" : "O")
+                    .AddParameter("dealer", customer.Dealer)
+                    .AddParameter("model", customer.Car.Code);
 
                 var requestUrl =
                     string.Format(

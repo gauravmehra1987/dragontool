@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Combobulator.Business.Commands;
 using Combobulator.Business.ViewModels;
+using Combobulator.Common.Enums;
 using Combobulator.Common.Extensions;
 using Combobulator.Data;
 using Combobulator.Helpers;
@@ -26,7 +28,6 @@ namespace Combobulator.Controllers
             string modelCode;
 
             var viewModel = new FormViewModel();
-            // customer id
             if (!String.IsNullOrEmpty(Request.QueryString["c"]))
             {
                 customerId = Request.QueryString["c"];
@@ -40,7 +41,6 @@ namespace Combobulator.Controllers
                     Email = customer.Email
                 };
             }
-            // model code
             if (!String.IsNullOrEmpty(Request.QueryString["m"]))
             {
                 modelCode = Request.QueryString["m"];
@@ -51,15 +51,17 @@ namespace Combobulator.Controllers
                 return RedirectToAction("Index", "Home", cQuery);
             }
 
-            var titles = _dbContext.GetTitles().ToList();
-            viewModel.Titles = titles.Select(x => new Title
+            var result = new List<Title>();
+            var values = Enum.GetValues(typeof(Salutation));
+            foreach (var item in values)
             {
-                Id = x.Id,
-                Name = x.Name
-            }).ToList();
+                result.Add(new Title { Id = (int)item, Name = item.ToString() });
+            }
+
+            viewModel.Titles = result.ToList();
             viewModel.Code = modelCode;
 
-            var car = _dbContext.GetNewCar(modelCode).SingleOrDefault();
+            var car = _dbContext.GetCar(modelCode).SingleOrDefault();
             if (car != null)
             {
                 ViewBag.ModelName = car.Name;
@@ -76,7 +78,7 @@ namespace Combobulator.Controllers
 
         [HttpPost]
         [ValidateAjaxAntiForgeryToken]
-        public ActionResult Submit(TestViewModel viewModel)
+        public ActionResult Submit(FormSubmissionViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -105,8 +107,7 @@ namespace Combobulator.Controllers
                     TelephoneMobile = viewModel.info.tel_mobile,
                     TelephoneHome = viewModel.info.tel_home,
                     TelephoneWork = viewModel.info.tel_work,
-                    IsFinance = viewModel.info.finance,
-                    AddressType = viewModel.info.address_type_work ? "work" : "home",
+                    AddressType = viewModel.info.address_type,
                     IsPhone = isPhone,
                     IsPost = isPost,
                     UserId = viewModel.info.userid,
@@ -130,9 +131,8 @@ namespace Combobulator.Controllers
                     }
                 };
                 var carModel = viewModel.car;
-                var template = Common.Config._emailMeResultsTemplate;
-                var customerTemplate = Common.Config._emailCustomerResultsTemplate;
-                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template), Server.MapPath(customerTemplate));
+                var template = Common.Config.EmailMeResultsTemplate;
+                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
                 var dataSent = command.Execute();
                 if (!dataSent)
                 {
