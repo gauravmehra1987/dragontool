@@ -6,9 +6,10 @@
 	"close":			"}",
 	
 	"name" : 			"@ViewBag.ModelName",
-	"brand" : 			"@ViewBag.ModelBrand",
-	"engine_name" : 	"@ViewBag.ModelEngineName",
+	"brand" : 			"@ViewBag.Brand",
+	"engine_name" : 	"@ViewBag.EngineName",
 	"model" : 			"@ViewBag.Model",
+	"url" : 			"@ViewBag.Url",
 
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".jpg\")",
 	"field": {

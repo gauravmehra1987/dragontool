@@ -321,17 +321,27 @@
 
 					<hr />
 
-					<h4 class="item switch-color"><a href="http://www.mini.co.uk/offers-and-finance/insurance" target="_blank">Mollycoddle your Mini.</a></h4>
+					<h4 class="item switch-color">
+						<a href="http://www.mini.co.uk/offers-and-finance/insurance" target="_blank">Mollycoddle your Mini.</a>
+					</h4>
 					<p>Keep your MINI cotton-wool wrapped with MINI Insurance and Warranties.</p>
 
 					<hr />
 
-					<h4 class="item switch-color"><a href="http://www.mini.co.uk/offers-and-finance" target="_blank">Offers for every pocket.</a></h4>
+					<h4 class="item switch-color">
+						<a href="http://www.mini.co.uk/offers-and-finance" target="_blank">Offers for every pocket.</a>
+					</h4>
 					<p>Get a bespoke finance package just for you from the MINIstry of Finance.</p>
 
 					<hr />
 
-					<h4 class="item switch-color"><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">Get connected.</a></h4>
+					<h4 class="item switch-color">
+
+						<!-- build:template <a href="<%= form.url %>" target="_blank">Get connected.</a> /build -->
+
+						<!-- build:remove --><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">Get connected.</a><!-- /build -->
+
+					</h4>
 					<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
 
 				</div>

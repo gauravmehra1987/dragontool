@@ -76,6 +76,8 @@ function FormLogic() {
 		var car			= dashboardLogic.getCarByCode( code );
 		var finance		= car.finance;
 
+		finance.name = car.name;
+
 		finance.payment = Number(finance.payment).toFixed(2);
 		finance.price = Number(finance.price).toFixed(2);
 		finance.deposit = Number(finance.deposit).toFixed(2);
