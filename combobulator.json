@@ -3,16 +3,17 @@
 	"name": "Mini Combobulator",
 	"paths": {
 
-		"bower":		"bower_components/",
-		"css":			"assets/css",
-		"fonts":		"assets/fonts",
-		"img":			"assets/img",
-		"icons":		"assets/icons",
-		"js":			"assets/js",
-		"less":			"assets/less",
-		"razor":		"razor_src",
-		"sprites":		"assets/sprites",
-		"templates":	"razor_templates"
+		"bower":			"bower_components/",
+		"css":				"assets/css",
+		"fonts":			"assets/fonts",
+		"img":				"assets/img",
+		"icons":			"assets/icons",
+		"js":				"assets/js",
+		"less":				"assets/less",
+		"generatedLess":	"assets/less/generated",
+		"razor":			"razor_src",
+		"sprites":			"assets/sprites",
+		"templates":		"razor_templates"
 
 	},
 	"settings": {

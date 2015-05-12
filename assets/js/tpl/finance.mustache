@@ -1,95 +1,100 @@
-<p>{{info}}</p>
+<div id="finance-template">
 
-<table id="payment-plan">
+	<p>{{info}}</p>
 
-	<tbody>
-	
-		<tr>
+	<table id="payment-plan">
 
-			<td>Term of agreement</td>
-			<td>{{term}} months</td>
-			
-		</tr>
+		<tbody>
+		
+			<tr>
 
-		<tr>
+				<td>Term of agreement</td>
+				<td>{{term}} months</td>
+				
+			</tr>
 
-			<td>{{term}} monthly payments</td>
-			<td>£{{payment}}</td>
-			
-		</tr>
+			<tr>
 
-		<tr>
+				<td>{{term}} monthly payments</td>
+				<td>£{{payment}}</td>
+				
+			</tr>
 
-			<td>On the road cash price*</td>
-			<td>£{{price}}</td>
-			
-		</tr>
+			<tr>
 
-		<tr class="customer-deposit--row">
+				<td>On the road cash price*</td>
+				<td>£{{price}}</td>
+				
+			</tr>
 
-			<td>Customer deposit</td>
-			<td>£{{deposit}}</td>
-			
-		</tr>
-	
-		<tr class="retailer-deposit-contribution--row">
+			<tr class="customer-deposit--row">
 
-			<td>Retailer deposit contribution</td>
-			<td>£{{contribution}}</td>
-			
-		</tr>
+				<td>Customer deposit</td>
+				<td>£{{deposit}}</td>
+				
+			</tr>
+		
+			<tr class="retailer-deposit-contribution--row">
 
-		<tr>
+				<td>Retailer deposit contribution</td>
+				<td>£{{contribution}}</td>
+				
+			</tr>
 
-			<td>Total deposit</td>
-			<td>£{{total_deposit}}</td>
-			
-		</tr>
+			<tr>
 
-		<tr>
+				<td>Total deposit</td>
+				<td>£{{total_deposit}}</td>
+				
+			</tr>
 
-			<td>Option to purchase fee**</td>
-			<td>£{{purchase_fee}}</td>
-			
-		</tr>
+			<tr>
 
-		<tr>
+				<td>Option to purchase fee**</td>
+				<td>£{{purchase_fee}}</td>
+				
+			</tr>
 
-			<td>Optional final payment**</td>
-			<td>£{{final_payment}}</td>
-			
-		</tr>
-	
-		<tr>
+			<tr>
 
-			<td>Total amount payable</td>
-			<td>£{{total_amount}}</td>
-			
-		</tr>
+				<td>Optional final payment**</td>
+				<td>£{{final_payment}}</td>
+				
+			</tr>
+		
+			<tr>
 
-		<tr>
+				<td>Total amount payable</td>
+				<td>£{{total_amount}}</td>
+				
+			</tr>
 
-			<td>Total amount of credit</td>
-			<td>£{{credit_charge}}</td>
-			
-		</tr>
+			<tr>
 
-		<tr>
+				<td>Total amount of credit</td>
+				<td>£{{credit_charge}}</td>
+				
+			</tr>
 
-			<td>Rate of interest</td>
-			<td>{{roi}} fixed</td>
-			
-		</tr>
+			<tr>
 
-		<tr>
+				<td>Rate of interest</td>
+				<td>{{roi}} fixed</td>
+				
+			</tr>
 
-			<td>Representative</td>
-			<td>{{apr}} APR</td>
-			
-		</tr>
+			<tr>
 
-	</tbody>
+				<td>Representative</td>
+				<td>{{apr}} APR</td>
+				
+			</tr>
 
-</table>
+		</tbody>
 
-<p class="terms">{{terms}}</p>
+	</table>
+
+	<p class="terms-toggle"><span class="show-terms">Terms and Conditions</span><span class="hide-terms">Terms and Conditions</span></p>
+
+	<p class="terms">{{terms}}</p>
+</div>

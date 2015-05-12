@@ -1,5 +1,3 @@
-/*! (c) 2015 John Przeslakowski | Code released under the MIT license | goodpixels.co.uk */
-
 grunt.config.merge( {
 
 	processhtml: {
@@ -114,7 +112,7 @@ grunt.config.merge( {
 			
 			src: '<%= project.paths.icons %>/*.svg',
 			dest: '<%= project.paths.fonts %>/icons',
-			destCss: '<%= project.paths.less %>',
+			destCss: '<%= project.paths.generatedLess %>',
 
 		},
 
@@ -170,7 +168,7 @@ grunt.config.merge( {
 							"src: url('../fonts/{{font}}.eot?#iefix') format('embedded-opentype')," +
 							"url('../fonts/{{font}}.woff') format('woff')," +
 							"}",
-				outputFile: '<%= project.paths.less %>/fonts.less'
+				outputFile: '<%= project.paths.generatedLess %>/fonts.less'
 
 			}
 
@@ -490,7 +488,7 @@ grunt.config.merge( {
 		
 			src: '<%= project.paths.sprites %>/*.png',
 			dest: '<%= project.paths.img %>/sprites/sprites.png',
-			destCss: '<%= project.paths.less %>/sprites.less',
+			destCss: '<%= project.paths.generatedLess %>/sprites.less',
 			cssTemplate: 'sprites.tpl.mustache'
 
 		},
@@ -641,7 +639,7 @@ grunt.config.merge( {
 
 
 			'<%= project.paths.fonts %>/icons', // Remove exclamation mark to clean
-			'<%= project.paths.less %>/icons.less', // Remove exclamation mark to clean
+			'<%= project.paths.generatedLess %>/icons.less', // Remove exclamation mark to clean
 
 
 		]

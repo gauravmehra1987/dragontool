@@ -3350,26 +3350,6 @@ Copyright (c) 2015 Daniel Eden
   src: url('../img/slick.js/fonts/slick.eot');
   src: url('../img/slick.js/fonts/slick.eot?#iefix') format('embedded-opentype'), url('../img/slick.js/fonts/slick.woff') format('woff'), url('../img/slick.js/fonts/slick.ttf') format('truetype'), url('../img/slick.js/fonts/slick.svg#slick') format('svg');
 }
-.align-centers {
-  margin: 0 auto;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.v-center-wrap {
-  width: 100%;
-  height: 100%;
-  display: table;
-  position: relative;
-}
-.v-center-content {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  padding: 20px;
-}
 @font-face {
   font-family: 'mini-bold';
   src: url('../fonts/mini-bold.eot?#iefix') format('embedded-opentype'), url('../fonts/mini-bold.woff') format('woff');
@@ -3384,8 +3364,8 @@ Copyright (c) 2015 Daniel Eden
 }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/icons/icons.eot?596041e7865e8bc44329fae92fbfee55");
-  src: url("../fonts/icons/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons/icons.woff?596041e7865e8bc44329fae92fbfee55") format("woff"), url("../fonts/icons/icons.ttf?596041e7865e8bc44329fae92fbfee55") format("truetype");
+  src: url("../fonts/icons/icons.eot?27f9259dbaa9c5e6dd18d5abf3a85be0");
+  src: url("../fonts/icons/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons/icons.woff?27f9259dbaa9c5e6dd18d5abf3a85be0") format("woff"), url("../fonts/icons/icons.ttf?27f9259dbaa9c5e6dd18d5abf3a85be0") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -3452,8 +3432,31 @@ Copyright (c) 2015 Daniel Eden
 .icon-twitter {
   content: "\f110";
 }
-.icon-user {
+.icon-up-block {
   content: "\f111";
+}
+.icon-user {
+  content: "\f112";
+}
+.align-centers {
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.v-center-wrap {
+  width: 100%;
+  height: 100%;
+  display: table;
+  position: relative;
+}
+.v-center-content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 20px;
 }
 h1,
 h2,
@@ -3819,9 +3822,9 @@ html body {
   display: inline-block;
   text-indent: -999em;
   white-space: nowrap;
-  height: 94.82758621%;
+  height: 715.51724138%;
   background-size: contain;
-  width: 94.82758621%;
+  width: 241.37931034%;
   background-image: url(../sprites/svg/slots-reset.svg );
   background-image: url( ../sprites/slots-reset.png )\9;
   -webkit-transition: all 0s ease 0s;
@@ -3843,9 +3846,9 @@ html body {
 }
 #bums #reset:after {
   content: '';
-  height: 94.82758621%;
+  height: 715.51724138%;
   background-size: contain;
-  width: 94.82758621%;
+  width: 241.37931034%;
   background-image: url(../sprites/svg/slots-reset-pressed.svg );
   background-image: url( ../sprites/slots-reset-pressed.png )\9;
   display: block;
@@ -5135,7 +5138,7 @@ input[type=cancel].transparent {
   color: #ffffff;
 }
 .form-control.append.user input + .field-icon:before {
-  content: "\f111";
+  content: "\f112";
 }
 .form-control.append.mail input + .field-icon:before {
   content: "\f10b";
@@ -6236,7 +6239,7 @@ select option {
 #page-results .car-result--right {
   width: 320px;
   position: absolute;
-  top: 0px;
+  top: 90px;
   right: 0px;
 }
 #page-results .car-result--right p {
@@ -6250,6 +6253,31 @@ select option {
   line-height: 14px;
   color: #aaaaaa;
   letter-spacing: 0.1px;
+}
+#page-results .car-result--right .terms-toggle {
+  cursor: pointer;
+  padding: 20px 0px 0px 0px;
+}
+#page-results .car-result--right .terms-toggle .show-terms:after {
+  font-family: "icons";
+  content: "\f106";
+  display: inline-block;
+  padding-left: 5px;
+}
+#page-results .car-result--right .terms-toggle .hide-terms:after {
+  font-family: "icons";
+  content: "\f111";
+  display: inline-block;
+  padding-left: 5px;
+}
+#page-results .car-result--right #finance-template {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -webkit-transition: opacity 0.5s ease-in-out;
+}
+#page-results .car-result--right #finance-template.fadeIn {
+  opacity: 1;
 }
 #page-results .car-result--right #payment-plan {
   color: #aaaaaa;
@@ -6276,9 +6304,9 @@ select option {
   display: block;
   float: left;
   font-family: 'mini-regular';
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1;
-  padding: 5px 1px;
+  padding: 8px 1px;
   width: calc( 50% - 2px );
 }
 #page-results .car-result--right #payment-plan tbody tr td:nth-child( even ) {
