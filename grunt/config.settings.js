@@ -112,7 +112,7 @@ grunt.config.merge( {
 			
 			src: '<%= project.paths.icons %>/*.svg',
 			dest: '<%= project.paths.fonts %>/icons',
-			destCss: '<%= project.paths.generatedLess %>',
+			destCss: '<%= project.paths.less %>',
 
 		},
 
@@ -188,7 +188,7 @@ grunt.config.merge( {
 				sourceMap:			true,
 				sourceMapFilename: 	'<%= project.paths.css %>/style.css.map',
 				sourceMapURL:		'style.css.map',
-				sourceMapRootpath:	'../'
+				sourceMapRootpath:	'/../../'
 
 			
 			},
