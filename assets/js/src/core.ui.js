@@ -255,7 +255,7 @@ function UI() {
 			rocket: {
 				'code':		'RKT',
 				'color':	'Blazing Red',
-				'name':		'Alpha Centura',
+				'name':		'MINI ALPHA CENTURA',
 				'cost':		'n/a',
 				'terms':	'A ro-ro-ro-rocket car!',
 				'alt_1': 	'SX92',

@@ -4,6 +4,9 @@
 	"variables":	"@{ ViewBag.Title = \"MINI Combobulator Results\"; }",
 	"details":		"@Html.Action(\"ResultDetail\", new { modelCode = ViewBag.ModelCode, userId = ViewBag.UserId })",
 	"name":			"@Model.Name",
+	"brand":		"@Model.Brand",
+	"engine_name":	"@Model.EngineName",
+	"model":		"@Model.Model",
 	"code":			"@Model.Code",
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".jpg\")",
 	"formLink":		"/form?m=@Model.Code&c=@ViewBag.UserId"

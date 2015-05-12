@@ -1,4 +1,3 @@
-/*! (c) 2015 John Przeslakowski | Code released under the MIT license | goodpixels.co.uk */
 
 grunt	= require( 'grunt' );
 razor	= 'razor_src'; // why does <%= project.paths.razor %> not work in grunt.file.readJSON()?!

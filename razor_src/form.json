@@ -5,7 +5,10 @@
 	"open":				"@using (Ajax.BeginForm(\"Submit\", \"Form\", new AjaxOptions { HttpMethod = \"POST\" }, new {autocomplete =\"off\"}))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
 	"close":			"}",
 	
-	"name" : "@ViewBag.ModelName",
+	"name" : 			"@ViewBag.ModelName",
+	"brand" : 			"@ViewBag.ModelBrand",
+	"engine_name" : 	"@ViewBag.ModelEngineName",
+	"model" : 			"@ViewBag.Model",
 
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".jpg\")",
 	"field": {

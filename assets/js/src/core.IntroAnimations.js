@@ -17,7 +17,7 @@ function IntroAnimations() {
 			'#1164ac',
 			'#f7941d',
 			'#426046',
-			'#d71d24'
+			'#c10000'
 		];
 		//
 		// Set the iterator to 0
