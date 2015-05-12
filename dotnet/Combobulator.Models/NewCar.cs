@@ -6,6 +6,11 @@
         public string Color { get; set; }
         public string Engine { get; set; }
         public string Name { get; set; }
+
+        public string EngineName { get; set; }
+        public string Model { get; set; }
+        public string Url { get; set; }
+
         public string Capacity { get; set; }
         public string Luggage { get; set; }
         public string Lifestyle { get; set; }
@@ -39,6 +44,6 @@
         public string ROI { get; set; }
         public string APR { get; set; }
         public double? TotalAmount { get; set; }
-        public string ResultJoke { get; set; }
+        public string Joke { get; set; }
     }
 }

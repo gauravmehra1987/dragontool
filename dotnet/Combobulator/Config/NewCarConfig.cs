@@ -7,36 +7,45 @@ namespace Combobulator.Config
     {
         public override void CreateMap()
         {
-            Map(m => m.Code).Name("code");
-            Map(m => m.Color).Name("color");
-            Map(m => m.Engine).Name("engine");
-            Map(m => m.Name).Name("name");
-            Map(m => m.Capacity).Name("capacity");
-            Map(m => m.Luggage).Name("luggage");
-            Map(m => m.Lifestyle).Name("lifestyle");
-            Map(m => m.Awd).Name("awd");
-            Map(m => m.High).Name("high");
-            Map(m => m.Convertible).Name("convertible");
-            Map(m => m.Price).Name("price");
-            Map(m => m.Cost).Name("cost");
-            Map(m => m.Speed).Name("speed");
-            Map(m => m.Mph).Name("mph");
-            Map(m => m.Economy).Name("economy");
-            Map(m => m.Mpg).Name("mpg");
-            Map(m => m.Alt_1).Name("alt_1");
-            Map(m => m.Alt_2).Name("alt_2");
-            Map(m => m.Alt_3).Name("alt_3");
-            Map(m => m.Terms).Name("info");
-            Map(m => m.Term).Name("term");
-            Map(m => m.Payment).Name("payment");
-            Map(m => m.FinancePrice).Name("finance_price");
-            Map(m => m.Deposit).Name("deposit");
-            Map(m => m.Contribution).Name("contribution");
-            Map(m => m.PurchaseFee).Name("purchase_fee");
-            Map(m => m.FinalPayment).Name("final_payment");
-            Map(m => m.CreditCharge).Name("credit_charge");
-            Map(m => m.ROI).Name("roi");
-            Map(m => m.APR).Name("apr");
+            Map(m => m.Code).Name("Code");
+            Map(m => m.Color).Name("Color");
+            Map(m => m.Engine).Name("Engine");
+            Map(m => m.Name).Name("Name");
+            Map(m => m.EngineName).Name("Engine_title");
+            Map(m => m.Model).Name("Model");
+            Map(m => m.Url).Name("Car_url");
+            Map(m => m.Name).Name("Name");
+            Map(m => m.Capacity).Name("Capacity");
+            Map(m => m.Luggage).Name("Luggage");
+            Map(m => m.Lifestyle).Name("Lifestyle");
+            Map(m => m.Awd).Name("Awd");
+            Map(m => m.High).Name("High");
+            Map(m => m.Convertible).Name("Convertible");
+            Map(m => m.Price).Name("Price");
+            Map(m => m.Cost).Name("Cost");
+            Map(m => m.Speed).Name("Speed");
+            Map(m => m.Mph).Name("Mph");
+            Map(m => m.Economy).Name("Economy");
+            Map(m => m.Mpg).Name("Mpg");
+            Map(m => m.Alt_1).Name("Alt_1");
+            Map(m => m.Alt_2).Name("Alt_2");
+            Map(m => m.Alt_3).Name("Alt_3");
+            Map(m => m.Terms).Name("Terms");
+            Map(m => m.Info).Name("Info");
+            Map(m => m.Term).Name("Term");
+            Map(m => m.Payment).Name("Payment");
+            Map(m => m.FinancePrice).Name("Finance_Price".Replace(" ", ""));
+            Map(m => m.Deposit).Name("Customer Deposit".Replace(" ", ""));
+            Map(m => m.Contribution).Name("Contribution");
+            Map(m => m.DealerDiscount).Name("Dealer discount".Replace(" ", ""));
+            Map(m => m.TotalDeposit).Name("Total deposit".Replace(" ", ""));
+            Map(m => m.PurchaseFee).Name("Purchase_Fee");
+            Map(m => m.FinalPayment).Name("Final_Payment");
+            Map(m => m.CreditCharge).Name("Credit_Charge");
+            Map(m => m.ROI).Name("ROI");
+            Map(m => m.APR).Name("APR");
+            Map(m => m.TotalAmount).Name("Total_amount_payable");
+            Map(m => m.Joke).Name("Results_joke");
         }
     }
 }

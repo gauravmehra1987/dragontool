@@ -3,7 +3,7 @@ using Combobulator.Common.Validators;
 
 namespace Combobulator.Business.ViewModels
 {
-    public class TestViewModel
+    public class FormSubmissionViewModel
     {
         public FormStuff info { get; set; }
         public string car { get; set; }
@@ -26,8 +26,7 @@ namespace Combobulator.Business.ViewModels
         public string address_2 { get; set; }
         public string address_3 { get; set; }
 
-        public bool address_type_home { get; set; }
-        public bool address_type_work { get; set; }
+        public string address_type { get; set; }
 
         [Required]
         public string postcode_search { get; set; }

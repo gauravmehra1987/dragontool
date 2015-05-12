@@ -6,32 +6,6 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.NewCars" Member="NewCars">
-    <Type Name="NewCar">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Engine" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Capacity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Luggage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Lifestyle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Awd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="High" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Convertible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Speed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Mph" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Economy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Mpg" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="NewCar_Finance" Member="Finances" ThisKey="Id" OtherKey="NewCarId" Type="Finance" />
-    </Type>
-  </Table>
   <Table Name="dbo.PostcodeLookUp" Member="PostcodeLookUps">
     <Type Name="PostcodeLookUp">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -89,7 +63,38 @@
       <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TotalDeposit" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="DealerDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="NewCar_Finance" Member="NewCar" ThisKey="NewCarId" OtherKey="Id" Type="NewCar" IsForeignKey="true" />
+      <Association Name="Car_Finance" Member="Car" ThisKey="NewCarId" OtherKey="Id" Type="Car" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cars" Member="Cars">
+    <Type Name="Car">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Engine" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Capacity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Luggage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Lifestyle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Awd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="High" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Convertible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Speed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mph" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Economy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mpg" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Joke" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EngineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Brand" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Car_Finance" Member="Finances" ThisKey="Id" OtherKey="NewCarId" Type="Finance" />
     </Type>
   </Table>
   <Function Name="dbo.GetTitles" Method="GetTitles">
@@ -133,57 +138,6 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetNewCar" Method="GetNewCar">
-    <Parameter Name="ModelCode" Parameter="modelCode" Type="System.String" DbType="VarChar(10)" />
-    <ElementType Name="GetNewCarResult">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Engine" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Capacity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Luggage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Lifestyle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Awd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="High" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Convertible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Speed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Mph" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Economy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Mpg" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.GetNewCars" Method="GetNewCars">
-    <ElementType Name="GetNewCarsResult">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Engine" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Capacity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Luggage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Lifestyle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Awd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="High" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Convertible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Speed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Mph" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Economy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Mpg" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.GetCarFinance" Method="GetCarFinance">
     <Parameter Name="NewCardId" Parameter="newCardId" Type="System.Int32" DbType="Int" />
     <ElementType Name="GetCarFinanceResult">
@@ -203,6 +157,67 @@
       <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TotalDeposit" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="DealerDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCars" Method="GetCars">
+    <ElementType Name="GetCarsResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Engine" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Capacity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Luggage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Lifestyle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Awd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="High" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Convertible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Speed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mph" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Economy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mpg" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Joke" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EngineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Brand" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCar" Method="GetCar">
+    <Parameter Name="ModelCode" Parameter="modelCode" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetCarResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Engine" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Capacity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Luggage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Lifestyle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Awd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="High" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Convertible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Speed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mph" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Economy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mpg" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Alt3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Joke" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EngineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Brand" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

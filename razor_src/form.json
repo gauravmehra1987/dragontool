@@ -1,26 +1,19 @@
 {
-
 	"model":			"@model Combobulator.Business.ViewModels.FormViewModel\n@{ViewBag.Title = \"MINI Combobulator Form\"; }",
-
 	"open":				"@using (Ajax.BeginForm(\"Submit\", \"Form\", new AjaxOptions { HttpMethod = \"POST\" }, new {autocomplete =\"off\"}))\n{\n@Html.AntiForgeryToken()\n@Html.ValidationSummary(true)",
 	"close":			"}",
-	
 	"name" : "@ViewBag.ModelName",
-
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".jpg\")",
 	"field": {
 		"user":		"@Html.HiddenFor(model => model.UserId, new {@id = \"userid\", @Name=\"userid\", @value = ViewBag.UserId})",
-
 		"title":		"@Html.DropDownListFor(model => model.Title, new SelectList(Model.Titles, \"Name\", \"Name\"), \"Title\", new { Name = \"title\" })",
 		"name":			"@Html.TextBoxFor(model => model.FirstName, new { @type = \"text\", @id = \"name\", Name = \"name\", @placeholder = \"First name\" })",
 		"surname":		"@Html.TextBoxFor(model => model.LastName, new { @type = \"text\", @id = \"surname\", Name = \"surname\", @placeholder = \"Last name\" })",
 		"email":		"@Html.TextBoxFor(model => model.Email, new { @type = \"email\", @id = \"email\", Name = \"email\", @placeholder = \"E-mail address\" })",
 		"tel":			{
-
 			"home":		"@Html.TextBoxFor(model => model.TelephoneHome, new { @type = \"tel\", @id = \"tel_home\", Name = \"tel_home\", @placeholder = \"Home telephone\" })",
 			"work":		"@Html.TextBoxFor(model => model.TelephoneWork, new { @type = \"tel\", @id = \"tel_work\", Name = \"tel_work\", @placeholder = \"Work telephone\" })",
 			"mobile":	"@Html.TextBoxFor(model => model.TelephoneMobile, new { @type = \"tel\", @id = \"tel_mobile\", Name = \"tel_mobile\", @placeholder = \"Mobile telephone\" })"
-
 		},
 		"address": {
 			"postcodesearch": "@Html.TextBoxFor(model => model.Postcode, new { type = \"text\", id = \"postcode_search\", Name = \"postcode_search\", placeholder = \"Postcode\" })",
@@ -30,17 +23,10 @@
 			"address1":		"@Html.TextBoxFor(model => model.AddressLine1, new { @type = \"text\", @id = \"address_1\", @Name = \"address_1\", @placeholder = \"Address line 1\", @disabled = \"disabled\" })",
 			"address2":		"@Html.TextBoxFor(model => model.AddressLine2, new { @type = \"text\", @id = \"address_2\", @Name = \"address_2\", @placeholder = \"Address line 2\", @disabled = \"disabled\" })",
 			"address3":		"@Html.TextBoxFor(model => model.AddressLine3, new { @type = \"text\", @id = \"address_3\", @Name = \"address_3\", @placeholder = \"Address line 3\", @disabled = \"disabled\" })"
-
 		},
-		
-		"finance":		"@Html.TextBoxFor(model => model.RequestCallback, new {@type=\"checkbox\", @id = \"finance\", @Name = \"finance\", @value = \"1\", @checked=\"checked\"})",
 		"optout": {
-
 			"phone":	"@Html.TextBoxFor(model => model.RequestCallback, new { @type = \"checkbox\", @id = \"optout_phone\", @Name = \"optout_phone\", @value = \"phone\" })",
 			"post":		"@Html.TextBoxFor(model => model.EmailResults, new { @type = \"checkbox\", @id = \"optout_post\", @Name = \"optout_post\", @value = \"post\" })"
-
 		}
-
 	}
-
 }

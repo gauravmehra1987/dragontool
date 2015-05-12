@@ -40,7 +40,7 @@ $.validator.setDefaults( {
 			ajaxDelay = 1000; // Not needed but included here to illustrate the loading DIV behaviour
 
 		var ajaxRequest = function() {
-
+		
 			var formData = {
 					info: $( 'form' ).serializeObject(),
 					car: carCode,
