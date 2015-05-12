@@ -188,7 +188,7 @@ grunt.config.merge( {
 				sourceMap:			true,
 				sourceMapFilename: 	'<%= project.paths.css %>/style.css.map',
 				sourceMapURL:		'style.css.map',
-				sourceMapRootpath:	'../../'
+				sourceMapRootpath:	'../'
 
 			
 			},
