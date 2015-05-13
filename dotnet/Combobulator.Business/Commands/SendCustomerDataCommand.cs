@@ -87,7 +87,9 @@ namespace Combobulator.Business.Commands
                 Term = dbFinance.Term,
                 FinancePrice = dbFinance.FinancePrice,
                 Payment = dbFinance.Payment,
-                Mpg = Convert.ToDouble(dbCar.Mpg)
+                Mpg = Convert.ToDouble(dbCar.Mpg),
+                Url = dbCar.Url,
+                Joke = dbCar.Joke
             };
             _customer.Car = car;
 

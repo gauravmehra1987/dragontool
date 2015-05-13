@@ -68,6 +68,11 @@ namespace Combobulator.Controllers
             }
             ViewBag.UserId = customerId;
             ViewBag.ModelCode = modelCode;
+            ViewBag.EngineName = car.EngineName;
+            ViewBag.Brand = car.Brand;
+            ViewBag.Url = car.Url;
+            ViewBag.ModelName = car.Name;
+            ViewBag.Model = car.Model;
 
             if (!string.IsNullOrEmpty(customerId))
             {

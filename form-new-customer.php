@@ -362,7 +362,7 @@
 		<div id="form_car_wrap">
 
 			<!-- build:template
-			<h2 class="switch-color model-name"><%= form.brand %> <br/> <%= form.engine_name %> <br/> <%= form.model %></h2>
+			<h2 class="switch-color model-name"><%= form.brand %> <br/> <%= form.engine_name %> <br/> <%= form.model_name %></h2>
 			/build -->
 
 			<!-- build:remove --><h2 class="switch-color model-name">MINI <br/> ENGINE <br/> MODEL</h2><!-- /build -->

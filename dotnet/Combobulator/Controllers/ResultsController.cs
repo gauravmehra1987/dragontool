@@ -34,7 +34,7 @@ namespace Combobulator.Controllers
 			    return RedirectToAction("Index", "Home", cQuery);
 			}
 			ViewBag.UserId = userId;
-			ViewBag.ModelCode = modelCode;
+            ViewBag.ModelCode = modelCode;
 			return View();
 		}
 
@@ -64,9 +64,13 @@ namespace Combobulator.Controllers
 
                 var viewModel = new CarViewModel
                 {
+                    Brand = Common.Config.Brand,
                     Code = dbCar.Code,
+                    Model = dbCar.Model,
                     Color = dbCar.Color,
                     Engine = dbCar.Engine,
+                    EngineName = dbCar.EngineName,
+                    Url = dbCar.Url,
                     Name = dbCar.Name,
                     Capacity = dbCar.Capacity,
                     Luggage = dbCar.Luggage,
@@ -99,6 +103,10 @@ namespace Combobulator.Controllers
                     }
                 };
                 ViewBag.UserId = userId;
+
+
+
+
                 return PartialView("_ResultDetail", viewModel);
             }
             catch (Exception ex)

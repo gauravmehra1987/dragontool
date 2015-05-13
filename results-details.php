@@ -12,7 +12,7 @@
 
 	<div class="car-result--caption">
 		<!-- build:template
-		<h2 class="switch-color model-name"><%= results.brand %> <br/> <%= results.engine_name %> <br/> <%= results.model %></h2>
+		<h2 class="switch-color model-name"><%= results.brand %> <br/> <%= results.engine_name %> <br/> <%= results.model_name %></h2>
 		/build -->
 
 		<!-- build:remove --><h2 class="switch-color model-name">MINI <br/> ENGINE <br/> MODEL</h2><!-- /build -->
