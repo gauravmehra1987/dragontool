@@ -5,7 +5,7 @@
 	"details":		"@Html.Action(\"ResultDetail\", new { modelCode = ViewBag.ModelCode, userId = ViewBag.UserId })",
 	"name":			"@Model.Name",
 	"brand":		"@Model.Brand",
-	"engine_name":	"@Model.EngineName",
+	"engine_name":	"@Model.Engine_Name",
 	"model_name":		"@Model.Model",
 	"code":			"@Model.Code",
 	"carImage":		"@Url.Content(\"assets/cars/\" + @Model.Code + \".jpg\")",

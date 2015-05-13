@@ -41,7 +41,7 @@ namespace Combobulator.ApiControllers
                         Color = car.Color,
                         Engine = car.Engine,
                         Name = car.Name,
-                        EngineName = car.EngineName,
+                        Engine_Name = car.EngineName,
                         Model = car.Model,
                         Capacity = car.Capacity,
                         Luggage = car.Luggage,
@@ -84,7 +84,7 @@ namespace Combobulator.ApiControllers
                 {
                     Brand = Common.Config.Brand,
                     Engine = "",
-                    EngineName = "",
+                    Engine_Name = "",
                     Model = "",
                     Capacity = "",
                     Luggage = "",

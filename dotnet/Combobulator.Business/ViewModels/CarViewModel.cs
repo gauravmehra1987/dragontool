@@ -9,7 +9,7 @@ namespace Combobulator.Business.ViewModels
         public string Color { get; set; }
         public string Engine { get; set; }
         public string Name { get; set; }
-        public string EngineName { get; set; }
+        public string Engine_Name { get; set; }
         public string Model { get; set; }
         public string Capacity { get; set; }
         public string Luggage { get; set; }

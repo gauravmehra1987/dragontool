@@ -41,6 +41,8 @@ namespace Combobulator.Business.Services.Providers
 
                 var json = JsonConvert.SerializeObject(result);
 
+                Log.Info("JSON: " + json);
+
                 /*
                 var url =
                     string.Format(
@@ -49,8 +51,7 @@ namespace Combobulator.Business.Services.Providers
                         Config.SystemId, action, customer.UserId, Config.Random, json);
                 */
 
-
-                var town = customer.AddressLine3 != null ? customer.AddressLine3 : customer.AddressLine2;
+                var town = customer.AddressLine3 ?? customer.AddressLine2;
 
                 var url = new Uri(Config.GrassRootsHostUrl)
                     .AddParameter("application", Config.GrassRootsAppName)
@@ -81,8 +82,12 @@ namespace Combobulator.Business.Services.Providers
                         url.ToString() +
                         "&comments=##{0}##", json);
 
+                Log.Info("Request URL:" + requestUrl);
+
                 var response = HttpWebRequestHelper.MakeRequest(requestUrl);
                 var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+
+                Log.Info("Response: " + data);
 
                 dynamic obj = JsonConvert.DeserializeObject(data);
                 if (obj["responsecode"] != "0")
@@ -98,7 +103,7 @@ namespace Combobulator.Business.Services.Providers
             }
             catch (Exception ex)
             {
-                Log.Error("GrassRoots Provider - " + ex.Message);
+                Log.Error("GrassRoots Provider - " + ex.StackTrace);
                 return isComplete;
             }
         }

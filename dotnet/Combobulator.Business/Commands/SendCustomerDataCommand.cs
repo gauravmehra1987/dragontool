@@ -93,9 +93,6 @@ namespace Combobulator.Business.Commands
             };
             _customer.Car = car;
 
-            if (!string.IsNullOrEmpty(_customer.UserId))
-            {
-
                 // Send to eMaster API
                 var emResponse = false;
                 if (_customer.UserId != "0")
@@ -109,6 +106,8 @@ namespace Combobulator.Business.Commands
                 IProvider grassRootsProvider = new GrassRootsProvider();
                 Func<Customer, bool> grgfunc = grassRootsProvider.SendData;
                 var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, TimeSpan.FromSeconds(2));
+
+                Log.Info("Response: " + grgResponse.ToString());
 
                 if (grgResponse)
                 {
@@ -162,12 +161,6 @@ namespace Combobulator.Business.Commands
 
                 MandrillHelper.SendEmail(Config._emailAddressTo, subject2, strBody2);
                 */
-            }
-            else
-            {
-                // Email customer details
-                //Email.EmailCustomerDetails(_customer);
-            }
 
             /*
             // Email results to customer

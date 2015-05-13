@@ -69,7 +69,7 @@ namespace Combobulator.Controllers
                     Model = dbCar.Model,
                     Color = dbCar.Color,
                     Engine = dbCar.Engine,
-                    EngineName = dbCar.EngineName,
+                    Engine_Name = dbCar.EngineName,
                     Url = dbCar.Url,
                     Name = dbCar.Name,
                     Capacity = dbCar.Capacity,
@@ -103,9 +103,6 @@ namespace Combobulator.Controllers
                     }
                 };
                 ViewBag.UserId = userId;
-
-
-
 
                 return PartialView("_ResultDetail", viewModel);
             }
