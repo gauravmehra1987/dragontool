@@ -7,6 +7,8 @@
 /build -->
 <div id="page_form" class="layout layout-default">
 
+	<div class="form-sumbitting-overlay">Form submitting</div>
+
 	<ul class="actions">
 
 		<li id="results_recombobulate"><a href="./">Recombobulate</a></li>
@@ -50,11 +52,6 @@
 						<option value="Miss">Miss</option>
 						<option value="Ms">Ms</option>
 						<option value="Dr">Dr</option>
-						<option value="Prof">Prof</option>
-						<option value="Rev">Rev</option>
-						<option value="Lady">Lady</option>
-						<option value="Sir">Sir</option>
-						<option value="Lord">Lord</option>
 
 					</select>
 					<!-- /build -->
@@ -256,8 +253,6 @@
 			<!-- /build -->
 
 			<div id="optout_chooser" class="form-control form-control-checkbox">
-
-				<p class="notice">Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
 
 				<div class="checkbox">
 

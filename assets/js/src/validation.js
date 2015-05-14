@@ -62,6 +62,7 @@ $.validator.setDefaults( {
 
 					$( '.form-control .button' ).removeAttr( 'disabled' );
 					$( '.form-control .button' ).removeClass( 'disabled' );
+					$( '.form-sumbitting-overlay' ).removeClass('active');
 
 				},
 				success: function( data ) { $.publish( 'form-ajax-results', data ); },
@@ -98,6 +99,7 @@ $.validator.setDefaults( {
 
 		$( '.form-control .button' ).attr( 'disabled', true );
 		$( '.form-control .button' ).addClass( 'disabled' );
+		$( '.form-sumbitting-overlay' ).addClass('active');
 
 		// Perform the call
 
