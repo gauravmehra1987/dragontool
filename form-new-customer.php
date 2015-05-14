@@ -5,9 +5,42 @@
 <!-- build:template
 <%= form.open %>
 /build -->
-<div id="page_form" class="layout layout-default">
 
-	<div class="form-sumbitting-overlay">Form submitting</div>
+
+
+<div class="form-sumbitting-overlay">
+
+	<div class="v-center-wrap">
+		<div class="v-center-content">
+	
+			<div class="combobulate-spinning">
+		
+				<img src="assets/img/tpl-button.gif" class="img-base">
+
+					<div class="control start">
+			
+						<div id="start">
+				
+							<div class="button-inner switch-bg">Combobulate</div><!-- end div.button-inner -->
+
+						</div>
+
+					<div class="shape"></div><!-- end div.shape -->
+
+				</div><!-- end div.control start -->
+		
+			</div><!-- end div.res-wrap -->
+
+			<p><br/>Form submitting...</p>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+<div id="page_form" class="layout layout-default">
 
 	<ul class="actions">
 
@@ -238,21 +271,9 @@
 			</div><!-- end div#dealer_chooser -->
 
 
-
-			<!-- build:remove -->
-			<div class="form-control form-control-checkbox">
-
-				<div class="checkbox">
-
-					<input id="finance" name="finance" type="checkbox" value="1" checked="checked" />
-					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
-
-				</div>
-
-			</div>
-			<!-- /build -->
-
 			<div id="optout_chooser" class="form-control form-control-checkbox">
+
+				<p class="notice">Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
 
 				<div class="checkbox">
 

@@ -158,7 +158,8 @@
 .form-sumbitting-overlay {
 
 	display: none;
-	background-color: black;
+	color: white;
+	background: fadeout( @trueBlack, 20% );
 	position: fixed;
 	z-index: 9999;
 	top: 0px;
@@ -167,6 +168,14 @@
 	height: 100%;
 
 	&.active { display: block; }
+
+	p {
+		font-family: @fontAlt;
+		font-size: 20px;
+		font-weight: normal;
+		line-height: 1;
+		text-transform: uppercase;
+	}
 
 }
 
