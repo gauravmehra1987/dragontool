@@ -27,8 +27,8 @@
 
 			<img class="not-found-img" src="assets/img/not_found.gif" />
 
-			<p>Sorry, something went wrong!</p>
-			<p>Please try again. Otherwise, go to our <a href="./">home page</a> or go back to <a href="#" onClick="history.go(-1);return false;">previous page</a>
+			<p>Sorry, an error has occured.<br/>
+			Please try again. Otherwise, go to our <a href="./">home page</a> or go back to <a href="#" onClick="history.go(-1);return false;">previous page</a>
 
 
 		</div>
