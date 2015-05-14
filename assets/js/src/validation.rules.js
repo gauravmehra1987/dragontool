@@ -20,7 +20,7 @@ $.validator.setDefaults( {
 		'tel_home':			{
 
 			required: true,
-			regexHomePhone: true
+			regexPhoneUK: true
 
 		},
 		'dealer':			{ required: true },
@@ -73,15 +73,17 @@ $.validator.addMethod(
 	'Please enter a valid UK postcode.'
 );
 
+
 $.validator.addMethod(
-	'regexHomePhone',
-	function(value, element, regexp) {
-		var check = false;
-		var re = new RegExp('^([0-9]| )+$');
-		return this.optional(element) || re.test(value);
+	'regexPhoneUK',
+	function(phone_number, element) {
+		phone_number = phone_number.replace(/\s/g, '');
+		return this.optional(element) || 
+		phone_number.match(/^(((\+44)?(\(0\))?)|0)[127]\d{9}$/);
 	},
-	'Please enter a valid phone number.'
+	'Please specify a valid phone number.'
 );
+
 
 $.validator.addMethod(
 	'regexName',
