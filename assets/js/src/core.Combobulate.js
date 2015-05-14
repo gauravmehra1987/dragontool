@@ -122,7 +122,7 @@ function Combobulate() {
 			runWhenElementExsists( $('#tpl-results .model-name'), reActivateColor );
 
 			function reActivateColor() {
-				var color = $( '.switch-bg' ).css( 'background-color' );
+				var color = $( '.button-inner .switch-bg' ).css( 'background-color' );
 				$.publish( 'colour-change', color );
 			}
 
