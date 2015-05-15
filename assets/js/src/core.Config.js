@@ -61,7 +61,8 @@ var carColors = {
 	'Lightning Blue':		'#1164ac',
 	'Jungle Green':			'#426046',
 	
-	'Blazing Red':			'#c10000',
+	'Blazing Red':			'#d71d24',
+	'Chili red':			'#d71d24',
 	
 	'Pepper white':			'#e4dfce',
 	'Light white':			'#e4dfce',
