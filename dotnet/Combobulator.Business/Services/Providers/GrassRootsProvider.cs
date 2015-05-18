@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 using System.Reflection;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
@@ -77,17 +79,57 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("dealer", customer.Dealer)
                     .AddParameter("model", customer.Car.Code);
 
-                var requestUrl =
-                    string.Format(
-                        url.ToString() +
-                        "&comments=##{0}##", json);
+                var requestUrl = string.Format(url + "&comments=##{0}##", json);
 
                 Log.Info("Request URL:" + requestUrl);
 
-                var response = HttpWebRequestHelper.MakeRequest(requestUrl);
-                var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
-
-                Log.Info("Response: " + data);
+                /*
+                var data = string.Empty;
+                try
+                {
+                    HttpWebRequest webRequest = HttpWebRequest.Create(requestUrl) as HttpWebRequest;
+                    webRequest.Method = WebRequestMethods.Http.Get;
+                    webRequest.Timeout = 60000; //1 Minute
+                    //webRequest.ContentType = "application/x-www-form-urlencoded";
+                    using (HttpWebResponse response = webRequest.GetResponse() as HttpWebResponse)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            Log.Info("Code: " + response.StatusCode);
+                            using (var stream = response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
+                            {
+                                data = reader.ReadToEnd();
+                                Log.Info(data);
+                            }
+                        }
+                    }
+                }
+                catch (WebException ex)
+                {
+                        Log.Error("Error");
+                        Log.Error(ex.Message);
+                        Log.Error(ex.Data);
+                        Log.Error(ex.StackTrace);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex);
+                }
+                */
+                var data = String.Empty;
+                try
+                {
+                    var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
+                    data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("No data received.");
+                    Log.Error(ex.Message);
+                }
+                if (string.IsNullOrEmpty(data))
+                    return isComplete;
 
                 dynamic obj = JsonConvert.DeserializeObject(data);
                 if (obj["responsecode"] != "0")

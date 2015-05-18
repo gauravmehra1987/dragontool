@@ -57,13 +57,13 @@ namespace Combobulator.Common.Helpers
             var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
             return (HttpWebResponse)responseTask.Result;
         }
-        public static HttpWebResponse SendNonFormPostRequest(string data, string url)
+        public static HttpWebResponse SendNonFormPostRequest(string data, string url, int timeout)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = XMLContentType;
             httpWebRequest.Method = POST;
             httpWebRequest.KeepAlive = false;
-            httpWebRequest.Timeout = 500000;
+            httpWebRequest.Timeout = timeout;
 
             var sw = new StreamWriter(httpWebRequest.GetRequestStream());
             sw.WriteLine(data);
@@ -73,16 +73,21 @@ namespace Combobulator.Common.Helpers
             return (HttpWebResponse)responseTask.Result;
         }
 
-        public static HttpWebResponse MakeRequest(string url)
+        public static HttpWebResponse MakeRequest(string url, int timeout)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = XMLContentType;
             httpWebRequest.Method = "GET";
             httpWebRequest.KeepAlive = false;
-            httpWebRequest.Timeout = 500000;
+            httpWebRequest.Timeout = timeout;
 
-            var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
-            return (HttpWebResponse)responseTask.Result;
+            //var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
+
+            var response = (HttpWebResponse)httpWebRequest.GetResponse();
+            return response;
+
+            //var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            //return (HttpWebResponse)responseTask.Result;
         }
 
         public static string GetHttpWebResponseData(HttpWebResponse response)

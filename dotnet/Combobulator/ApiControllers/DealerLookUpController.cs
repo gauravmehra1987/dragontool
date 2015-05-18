@@ -88,7 +88,7 @@ namespace Combobulator.ApiControllers
                     var googleUri = new Uri(Common.Config.GoogleMapsApi)
                         .AddParameter("address", postcodeInfo)
                         .AddParameter("sensor", "false");
-                    var response = HttpWebRequestHelper.MakeRequest(googleUri.ToString());
+                    var response = HttpWebRequestHelper.MakeRequest(googleUri.ToString(),5000);
                     var json = HttpWebRequestHelper.GetHttpWebResponseData(response);
                     var addresses =
                         (GoogleGeoCodeResponse) JsonConvert.DeserializeObject(json, typeof (GoogleGeoCodeResponse));
@@ -104,7 +104,7 @@ namespace Combobulator.ApiControllers
                         .AddParameter("language", Common.Config.DealerLanguage)
                         .AddParameter("lat", location.lat)
                         .AddParameter("lng", location.lng);
-                    var dealerResponse = HttpWebRequestHelper.MakeRequest(dealerUri.ToString());
+                    var dealerResponse = HttpWebRequestHelper.MakeRequest(dealerUri.ToString(),5000);
                     var feed = HttpWebRequestHelper.GetHttpWebResponseData(dealerResponse);
 
                     var start = feed.IndexOf("(", StringComparison.Ordinal);

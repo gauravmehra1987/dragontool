@@ -15,8 +15,7 @@ namespace Combobulator.ApiControllers
 {
     public class CarController : BaseController
     {
-        private readonly int _apiCacheDurationHours = Convert.ToInt32(ConfigurationManager.AppSettings["ApiCacheDurationHours"]);
-        private readonly bool _apiCacheEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["ApiCacheEnabled"]);
+        
         private readonly CombobulatorDataContext _dbContext = new CombobulatorDataContext();
 
         /// <summary>
@@ -94,7 +93,7 @@ namespace Combobulator.ApiControllers
                     Alt_3 = "SS92",
                     Code = "RKT",
                     Color = "Blazing Red",
-                    Name = "MINI ALPHA CENTURA",
+                    Name = "ALPHA CENTURA",
                     Terms = "",
                     Joke = "",
                     Url = ""
@@ -117,11 +116,14 @@ namespace Combobulator.ApiControllers
                         )
                 };
 
-                if (!_apiCacheEnabled)
+                var cacheEnabled = bool.Parse(Common.Config.CacheEnabled);
+                var expiryTimeOut = Int32.Parse(Common.Config.CacheExpiration);
+
+                if (!cacheEnabled)
                     return response2;
                 response.Headers.CacheControl = new CacheControlHeaderValue
                 {
-                    MaxAge = new TimeSpan(_apiCacheDurationHours, 0, 0),
+                    MaxAge = new TimeSpan(expiryTimeOut, 0, 0),
                     Public = true
                 };
 
