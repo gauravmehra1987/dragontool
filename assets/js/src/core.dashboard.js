@@ -141,7 +141,7 @@ function Dashboard() {
 		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
 		//
 		// If 'color' is set above, set the dashboard to that color, otherwise set a hard coded color
-		var dashColor = ( color ) ? color : 'Blazing red';
+		var dashColor = ( color ) ? color : 'Blazing Red';
 		//
 		// Pass in the dashboard color set above to the dashboard.colors function to do all the color changing
 		dashboard.colors( carColors[ dashColor ] );
