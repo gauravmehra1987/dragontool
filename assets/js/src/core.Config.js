@@ -3,7 +3,7 @@
 var socialMedia = {
 
 	facebook: {
-		link:			'http://google.com',
+		link:			'http://minicombobulator.co.uk',
 		message:		'Find the perfect MINI for you with our nifty Combobulator tool:',
 		name:			'Image name',
 		caption:		'Image caption',
@@ -12,7 +12,7 @@ var socialMedia = {
 	},
 
 	twitter: {
-		url:			'http://google.com',
+		url:			'http://minicombobulator.co.uk',
 		text:			'Find the perfect MINI for you with our nifty Combobulator tool:',
 		hashtags:		''
 	}
@@ -95,8 +95,8 @@ var Mini	= {
 	//
 	// Third party ID's
 	thirdParty: {
-		facebookID:		892580704115737,
-		analyticsID:	'UA-000000-01'
+		facebookID:		815494961880957,
+		analyticsID:	'UA-63131183-1'
 	},
 	//
 	// Browser and device information
