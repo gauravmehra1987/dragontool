@@ -83,6 +83,10 @@ function Dashboard() {
 		// On click of the reset button...
 		$( '#reset' ).on( 'click', function( e ) {
 			//
+			// Google Analytics
+			var triggeredEvent = $( e.target ).closest('.control-wrapper').attr('id');
+			trackDialEvents( triggeredEvent );
+			//
 			// Prevent default of the click event
 			e.preventDefault();
 			//

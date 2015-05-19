@@ -164,12 +164,20 @@ function Combobulate() {
 		// On click of the car changer
 		$body.on( 'click', '.car-changer', function( e ) {
 			_this.showAlternateCars( e );
+
+			// Google Analytics
+			_gaq.push(['_trackEvent', 'Dashboard', 'Related cars' ]);
+
 		});
 
 		// On click of the combobulate button
 		$( '#start' ).on( 'click', function( e ) {
 			_this.animateCombobulate( e );
 			_this.executeSearch();
+
+			// Google Analytics
+			_gaq.push(['_trackEvent', 'Dashboard', 'Combobulate button' ]);
+
 		});
 
 		$.subscribe('sort-finished', function(e, data){
