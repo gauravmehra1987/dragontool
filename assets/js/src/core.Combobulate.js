@@ -63,6 +63,7 @@ function Combobulate() {
 		//
 		// Save the values of the dashboard as 'userSelection'
 		var userSelection = dashboard.values();
+		console.log(userSelection)
 		//
 		// Set miniInput to have the value of the userSelection
 		store.set( 'miniInput', userSelection );
@@ -102,6 +103,7 @@ function Combobulate() {
 			// Convert user input values to an appropriate structure
 			var search = query.build( query.convert( dashboard.values() ) );
 
+			console.log(search)
 
 			if ( _.isEqual(dataLogic.oldQuery, search) ) {
 

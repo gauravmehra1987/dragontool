@@ -133,8 +133,10 @@ function DataLogic() {
 				}
 
 				var matchReject = function(){
-					console.log('skipped value');
-				}
+ 					console.log('skipped value');
+					console.log(qValue)
+					console.log(dValue)
+ 				}
 
 				return !!Helpers.areValuesValid(dValue, qValue) && ( Helpers.doValuesMatch(numberArray, qValue) ? matchAccept() : matchReject() );
 			},

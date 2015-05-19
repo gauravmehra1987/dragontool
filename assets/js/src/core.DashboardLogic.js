@@ -354,20 +354,60 @@ function DashboardLogic() {
 				//
 				// Set 'family' equal to the value of the children and people
 				o.family = o.people + o.children;
+
+				if (o.family <= 2 && o.infants === 0) {
+					console.log('o.family <= 2 && o.infants === 0');
+					return 1;
+				}
+
+				if (o.people === 2 && (0 < o.children && o.children <= 2) && o.infants === 0) {
+					console.log('o.people === 2 && (0 < o.children && o.children <= 2) && o.infants === 0');
+					return 3;
+				}
+				if (o.people === 1 && (0 < o.children && o.children <= 3) && o.infants === 0) {
+					console.log('o.people === 1 && (0 < o.children && o.children <= 3) && o.infants === 0');
+					return 3;
+				}
+
+				if (o.family <= 4 && o.infants === 0){
+					console.log('o.family <= 4 && o.infants === 0');
+					return 2;
+				}
+				if (o.family <= 3 && o.infants === 1){
+					console.log('o.family <= 3 && o.infants === 1');
+					return 2;
+				}
+
+				if (o.family === 5) {
+					console.log('o.family === 5');
+					return 4;
+				}
+
+				if (o.family === 4 && o.infants === 1) {
+					console.log('o.family === 4 && o.infants === 1');
+					return 4;
+				}
+
+				if (o.family === 3 && o.infants === 2) {
+					console.log('o.family === 3 && o.infants === 2');
+					return 4;
+				} else {
+					return 1;
+				}
+
+
 				//
 				// Some if statements determining the category each variation comes under, and returning integars
-				if ( o.family <= 2 && o.infants === 0 )													return 1;
-				if ( o.family <= 4 && o.infants === 0 )													return 2;
-				if ( o.family <= 3 && o.infants === 1 )													return 2;
-				if ( o.people === 2 && ( o.children > 0 && o.children <= 2 ) && o.infants === 0 )		return 3;
-				if ( o.people === 1 && ( o.children > 0 && o.children <= 3 ) && o.infants === 0 )		return 3;
-				if ( o.family === 5 ) 																	return 4;
-				if ( o.family === 4 && o.infants === 1 )												return 4;
-				if ( o.family === 3 && o.infants === 2 )												return 4;
-				if ( o.family <= 3 && o.family > 0 && o.infants > 0 && o.infants <= 2 )					return 4; // This fixes https://iris-worldwide.atlassian.net/browse/FRT-148?filter=15137
+				// if ( o.family <= 2 && o.infants === 0 )													return 1;
+				// if ( o.family <= 4 && o.infants === 0 )													return 2;
+				// if ( o.family <= 3 && o.infants === 1 )													return 2;
+				// if ( o.people === 2 && ( o.children > 0 && o.children <= 2 ) && o.infants === 0 )		return 3;
+				// if ( o.people === 1 && ( o.children > 0 && o.children <= 3 ) && o.infants === 0 )		return 3;
+				// if ( o.family === 5 ) 																	return 4;
+				// if ( o.family === 4 && o.infants === 1 )												return 4;
+				// if ( o.family === 3 && o.infants === 2 )												return 4;
+				// if ( o.family <= 3 && o.family > 0 && o.infants > 0 && o.infants <= 2 )					return 4; // This fixes https://iris-worldwide.atlassian.net/browse/FRT-148?filter=15137
 			}
-
-
 
 
 			// Builds an object based on all the above functions
