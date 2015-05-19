@@ -352,7 +352,9 @@
 
 					<h4 class="item switch-color">
 
-						<!-- build:template <a href="<%= form.url %>" target="_blank">Get connected.</a> /build -->
+						<!-- build:template
+						<a href="<%= form.url %>" target="_blank">Get connected.</a>
+						/build -->
 
 						<!-- build:remove --><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">Get connected.</a><!-- /build -->
 
