@@ -327,26 +327,12 @@
 							
 					<h3>Nice one.</h3>
 
-					<p>Your MINI Centre will be in contact soon. (We're sending you an email to your inbox with all the info.) Until then, see what else we’ve got up our sleeve below.</p>
+					<p>Your MINI Centre will be in contact soon. (We're sending you an email to your inbox with all the info.) Until then, see what else we’ve got up our sleeve.</p>
 
 				</header><!-- end header.header -->
 
 
 				<div class="thanks-links">
-
-					<hr />
-
-					<h4 class="item switch-color">
-						<a href="http://www.mini.co.uk/offers-and-finance/insurance" target="_blank">KEEPING MINIS MOLLYCODDLED.</a>
-					</h4>
-					<p>All you need to know about optional MINI Insurance cover.</p>
-
-					<hr />
-
-					<h4 class="item switch-color">
-						<a href="http://www.mini.co.uk/offers-and-finance" target="_blank">OFFERS FOR EVERY POCKET.</a>
-					</h4>
-					<p>Find the right deal for you. Check out our latest finance packages.</p>
 
 					<hr />
 
@@ -359,10 +345,26 @@
 						<!-- build:remove --><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">TAKE A CLOSER LOOK.</a><!-- /build -->
 
 					</h4>
-					<p>Find out more about your MINI and the rest of the MINI family.</p>
+					<p>Find out more about your MINI and the rest of family.</p>
+
+					<hr />
+
+
+					<h4 class="item switch-color">
+						<a href="http://www.mini.co.uk/offers-and-finance" target="_blank">OFFERS FOR EVERY POCKET.</a>
+					</h4>
+					<p>Find the right deal for you with our latest finance packages.</p>
+
+					<hr />
+
+
+					<h4 class="item switch-color">
+						<a href="http://www.mini.co.uk/offers-and-finance/insurance" target="_blank">KEEPING MINIS MOLLYCODDLED.</a>
+					</h4>
+					<p>All you need to know about optional MINI Insurance cover.</p>
+
 
 				</div>
-
 
 			</div>
 
