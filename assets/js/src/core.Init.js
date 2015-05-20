@@ -49,7 +49,7 @@ function trackDialEvents( triggeredEvent ) {
 
 	if ( triggeredEvent != lastTriggeredEvent ) {
 
-		_gaq.push(['_trackEvent', 'Dashboard dials', triggeredEvent ]);
+		_gaq.push(['_trackEvent', 'Dashboard', triggeredEvent ]);
 
 		lastTriggeredEvent = triggeredEvent;
 
