@@ -79,7 +79,7 @@ $.validator.addMethod(
 	function(phone_number, element) {
 		phone_number = phone_number.replace(/\s/g, '');
 		return this.optional(element) || 
-		phone_number.match(/^(((\+44)?(\(0\))?)|0)[127]\d{9}$/);
+		phone_number.match(/^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/);
 	},
 	'Please specify a valid phone number.'
 );

@@ -178,7 +178,7 @@ namespace Combobulator.Classes
             */
 
             var url = string.Format(_hostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum, _systemId, action, customer.UserId, _random, json);
-            var response = HttpWebRequestHelper.MakeRequest(url);
+            var response = HttpWebRequestHelper.MakeRequest(url,5000);
 
 
             /*

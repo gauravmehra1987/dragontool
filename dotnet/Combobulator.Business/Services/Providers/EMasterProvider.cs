@@ -69,7 +69,7 @@ namespace Combobulator.Business.Services.Providers
                         "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum,
                         Config.SystemId, action, customer.UserId, Config.Random, json);
 
-                var response = HttpWebRequestHelper.MakeRequest(url);
+                var response = HttpWebRequestHelper.MakeRequest(url,5000);
                 var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                 dynamic obj = JsonConvert.DeserializeObject(data);

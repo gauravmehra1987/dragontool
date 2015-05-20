@@ -80,7 +80,7 @@ namespace Combobulator.ApiControllers
                         .AddParameter("postcode", postcodeInfo.ToUpper())
                         .AddParameter("application", Common.Config.PostcodeApp);
 
-                    var response = HttpWebRequestHelper.MakeRequest(uri.ToString());
+                    var response = HttpWebRequestHelper.MakeRequest(uri.ToString(),5000);
                     var json = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                     if (!String.IsNullOrEmpty(json))

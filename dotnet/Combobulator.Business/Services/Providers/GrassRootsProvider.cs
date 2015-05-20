@@ -77,17 +77,23 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("dealer", customer.Dealer)
                     .AddParameter("model", customer.Car.Code);
 
-                var requestUrl =
-                    string.Format(
-                        url.ToString() +
-                        "&comments=##{0}##", json);
+                var requestUrl = string.Format(url + "&comments=##{0}##", json);
 
                 Log.Info("Request URL:" + requestUrl);
 
-                var response = HttpWebRequestHelper.MakeRequest(requestUrl);
-                var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
-
-                Log.Info("Response: " + data);
+                var data = String.Empty;
+                try
+                {
+                    var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
+                    data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("No data received.");
+                    Log.Error(ex.Message);
+                }
+                if (string.IsNullOrEmpty(data))
+                    return isComplete;
 
                 dynamic obj = JsonConvert.DeserializeObject(data);
                 if (obj["responsecode"] != "0")

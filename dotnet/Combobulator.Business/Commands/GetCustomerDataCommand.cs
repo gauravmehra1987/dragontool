@@ -36,7 +36,7 @@ namespace Combobulator.Business.Commands
                 var checksum = CryptoHelper.CalculateMd5Hash(input);
 
                 var url = string.Format(Config.HostUrl + "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&type=json", checksum, Config.SystemId, action, _customerId, Config.Random);
-                var response = HttpWebRequestHelper.MakeRequest(url);
+                var response = HttpWebRequestHelper.MakeRequest(url,5000);
                 var line = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                 dynamic obj = JsonConvert.DeserializeObject(line);
