@@ -30,11 +30,11 @@
 
 		<!-- // Facebook Open Graph - http://developers.facebook.com/docs/opengraph -->
 
-		<meta property="og:title" content="THE MINI COMBOBULATOR" />
+		<meta property="og:title" content="THE MINI COMBOBULATOR." />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="http://minicombobulator.co.uk/Assets/social/combobulator_social_200x200.png" />
-		<meta property="og:url" content="http://minicombobulator.co.uk/" />
-		<meta property="og:site_name" content="THE MINI COMBOBULATOR" />
+		<meta property="og:image" content="https://minicombobulator.co.uk/Assets/social/combobulator_social_200x200.png" />
+		<meta property="og:url" content="https://minicombobulator.co.uk/" />
+		<meta property="og:site_name" content="THE MINI COMBOBULATOR." />
 		<meta property="og:description" content="Want a shiny new MINI, but don't know your Countryman from your Convertible? Let the Combobulator find the right model for you, at the touch of a button. Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two." />
 		
 		<!--[if lt IE 10]>

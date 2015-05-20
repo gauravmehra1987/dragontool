@@ -3,16 +3,16 @@
 var socialMedia = {
 
 	facebook: {
-		link:			'http://minicombobulator.co.uk',
-		message:		'Find the perfect MINI for you with our nifty Combobulator tool:',
-		name:			'THE MINI COMBOBULATOR',
-		picture:		'http://minicombobulator.co.uk/Assets/social/combobulator_social_200x200.png',
+		link:			'https://minicombobulator.co.uk',
+		message:		'Find the MINI for you with our clever Combobulator tool.',
+		name:			'THE MINI COMBOBULATOR.',
+		picture:		'https://minicombobulator.co.uk/Assets/social/combobulator_social_200x200.png',
 		description:	"Want a shiny new MINI, but don't know your Countryman from your Convertible? Let the Combobulator find the right model for you, at the touch of a button. Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two."
 	},
 
 	twitter: {
-		url:			'http://minicombobulator.co.uk',
-		text:			'Find the perfect MINI for you with our nifty Combobulator tool:'
+		url:			'https://minicombobulator.co.uk',
+		text:			'Find the MINI for you with our clever Combobulator tool.'
 	}
 };
 
