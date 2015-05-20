@@ -8,26 +8,30 @@
 <%= error.variables %>
 /build -->
 
-<div id="page-results" class="layout-wrapper">
+<div id="page-error" class="layout-wrapper">
 
 	<!-- build:include top.php --><?php require( 'top.php' ); ?><!-- /build -->
 
 	<main class="layout layout-default">
-	
-	<div id="notFound">
 
-	<img src="assets/img/not_found.gif" />
-    
-    <h1>404 - PAGE NOT FOUND</h1>
-    
-    <span class="redBox">
-        <a class="arrow" href="/">MINI HOME PAGE</a>
-        <a class="arrow" href="javascript:history.back();">BACK</a>
-    </span>
-    
-    <p>Unfortunately, the address you selected is not available.<br />It's possible that the link or bookmark you used is no longer valid.</p>
+		<ul class="actions">
 
-</div>
+			<li id="results_recombobulate"><a href="./">Combobulate</a></li>
+			<li id="results_back"><a href="#" onClick="history.go(-1);return false;">Go back</a></li>
+
+		</ul>
+
+		<div id="notFound">
+
+			<h1>500 - INTERNAL SERVER ERROR</h1>
+
+			<img class="not-found-img" src="assets/img/not_found.gif" />
+
+			<p>Sorry, an error has occured.<br/>
+			Please try again. Otherwise, go to our <a href="./">home page</a> or go back to <a href="#" onClick="history.go(-1);return false;">previous page</a>
+
+
+		</div>
 
 	</main><!-- end main.layout -->
 

@@ -10,14 +10,14 @@ function IntroAnimations() {
 	*/
 	this.bg = function() {
 		//
-		// Create an array of the colors in the order we want to animate
+		// Create an array of the colors in the order we want to animate (taking colours from the object in the config file)
 		var colors = [
-			'#30b6e8',
-			'#e4dfce',
-			'#1164ac',
-			'#f7941d',
-			'#426046',
-			'#c10000'
+			carColors[ 'Electric Blue' ],
+			carColors[ 'Pepper white' ],
+			carColors[ 'Lightning Blue' ],
+			carColors[ 'Volcanic Orange' ],
+			carColors[ 'Jungle Green' ],
+			carColors[ 'Blazing Red' ]
 		];
 		//
 		// Set the iterator to 0

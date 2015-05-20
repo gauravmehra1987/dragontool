@@ -1,4 +1,4 @@
-﻿<!-- build:template
+<!-- build:template
 <%= results.model %>
 /build -->
 

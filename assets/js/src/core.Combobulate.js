@@ -103,10 +103,11 @@ function Combobulate() {
 			var search = query.build( query.convert( dashboard.values() ) );
 
 
-			if(_.isEqual(dataLogic.oldQuery, search)) {
-				console.log('identical query');
+			if ( _.isEqual(dataLogic.oldQuery, search) ) {
 
+				console.log('identical query');
 				dataLogic.cycleThroughCarList();
+
 			} else {
 
 				// Get the car results using the dashboardLogic.getCars function and passing in the above search structure from user input
@@ -115,11 +116,14 @@ function Combobulate() {
 				// Store the current query
 				dataLogic.oldQuery = search;
 
-				//
-				// Activate color again
-				var color = $( '.switch-bg' ).css( 'background-color' );
-				$.publish( 'colour-change', color );
+			};
 
+			// When results exsist, activate color again
+			runWhenElementExsists( $('#tpl-results .model-name'), reActivateColor );
+
+			function reActivateColor() {
+				var color = $( '.button-inner .switch-bg' ).css( 'background-color' );
+				$.publish( 'colour-change', color );
 			}
 
 		}
@@ -160,12 +164,20 @@ function Combobulate() {
 		// On click of the car changer
 		$body.on( 'click', '.car-changer', function( e ) {
 			_this.showAlternateCars( e );
+
+			// Google Analytics
+			_gaq.push(['_trackEvent', 'Dashboard', 'Related cars' ]);
+
 		});
 
 		// On click of the combobulate button
 		$( '#start' ).on( 'click', function( e ) {
 			_this.animateCombobulate( e );
 			_this.executeSearch();
+
+			// Google Analytics
+			_gaq.push(['_trackEvent', 'Dashboard', 'Combobulate button' ]);
+
 		});
 
 		$.subscribe('sort-finished', function(e, data){

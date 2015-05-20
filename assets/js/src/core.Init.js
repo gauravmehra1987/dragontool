@@ -1,4 +1,3 @@
-
 // Setting up some global variables...
 // Creating instances of all the functions and saving as global variables
 var ie				= new IE();
@@ -42,8 +41,22 @@ var form = {
 	dealerChooser:		'#dealer_chooser',
 	dealers:			'#dealers'
 }
+//
+// Google analytics helper function for tracking the dashboard dials
+var lastTriggeredEvent;
 
+function trackDialEvents( triggeredEvent ) {
 
+	if ( triggeredEvent != lastTriggeredEvent ) {
+
+		_gaq.push(['_trackEvent', 'Dashboard', triggeredEvent ]);
+
+		lastTriggeredEvent = triggeredEvent;
+
+	}
+}
+
+//
 // For modern browsers...
 // If browser is above IE8 or not IE at all
 if ( Mini.browser.isIE( '>9' ) || ! Mini.browser.isIE() ) {

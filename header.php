@@ -30,21 +30,12 @@
 
 		<!-- // Facebook Open Graph - http://developers.facebook.com/docs/opengraph -->
 
-		<meta property="og:title" content="" />
-		<meta property="og:type" content="" />
-		<meta property="og:image" content="" />
-		<meta property="og:url" content="" />
-		<meta property="og:site_name" content="" />
-		<meta property="og:description" content="" />
-
-		<!-- // Twitter Card - https://dev.twitter.com/docs/cards -->
-
-		<meta name="twitter:card" content="" />
-		<meta name="twitter:site" content="" />
-		<meta name="twitter:creator" content="" />
-		<meta name="twitter:title" content="" />
-		<meta name="twitter:description" content="" />
-		<meta name="twitter:image" content="" />
+		<meta property="og:title" content="MINI Combobulator" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="http://placehold.it/200x200" />
+		<meta property="og:url" content="http://minicombobulator.co.uk/" />
+		<meta property="og:site_name" content="MINI Combobulator" />
+		<meta property="og:description" content="Find the perfect MINI for you with our nifty Combobulator tool." />
 		
 		<!--[if lt IE 10]>
 		<!-- build:css Assets/css/ie.css --><link href="assets/css/ie.css" rel="stylesheet" /><!-- /build -->

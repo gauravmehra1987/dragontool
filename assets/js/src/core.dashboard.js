@@ -83,6 +83,10 @@ function Dashboard() {
 		// On click of the reset button...
 		$( '#reset' ).on( 'click', function( e ) {
 			//
+			// Google Analytics
+			var triggeredEvent = $( e.target ).closest('.control-wrapper').attr('id');
+			trackDialEvents( triggeredEvent );
+			//
 			// Prevent default of the click event
 			e.preventDefault();
 			//
@@ -141,7 +145,7 @@ function Dashboard() {
 		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
 		//
 		// If 'color' is set above, set the dashboard to that color, otherwise set a hard coded color
-		var dashColor = ( color ) ? color : 'Blazing red';
+		var dashColor = ( color ) ? color : 'Blazing Red';
 		//
 		// Pass in the dashboard color set above to the dashboard.colors function to do all the color changing
 		dashboard.colors( carColors[ dashColor ] );

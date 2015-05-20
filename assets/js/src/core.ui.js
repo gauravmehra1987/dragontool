@@ -253,11 +253,11 @@ function UI() {
 		var eggsData = {
 
 			rocket: {
+				'brand': 	'MINI',
 				'code':		'RKT',
 				'color':	'Blazing Red',
-				'name':		'MINI ALPHA CENTURA',
+				'name':		'ALPHA CENTURA',
 				'cost':		'n/a',
-				'terms':	'A ro-ro-ro-rocket car!',
 				'alt_1': 	'SX92',
 				'alt_2': 	'MR92',
 				'alt_3': 	'SS92'

@@ -1,10 +1,45 @@
-﻿<!-- build:template
+<!-- build:template
 <%= form.model %>
 /build -->
 
 <!-- build:template
 <%= form.open %>
 /build -->
+
+
+
+<div class="form-sumbitting-overlay">
+
+	<div class="v-center-wrap">
+		<div class="v-center-content">
+	
+			<div class="combobulate-spinning">
+		
+				<img src="assets/img/tpl-button.gif" class="img-base">
+
+					<div class="control start">
+			
+						<div id="start">
+				
+							<div class="button-inner switch-bg">Combobulate</div><!-- end div.button-inner -->
+
+						</div>
+
+					<div class="shape"></div><!-- end div.shape -->
+
+				</div><!-- end div.control start -->
+		
+			</div><!-- end div.res-wrap -->
+
+			<p><br/>Form submitting...</p>
+		</div>
+	</div>
+
+</div>
+
+
+
+
 <div id="page_form" class="layout layout-default">
 
 	<ul class="actions">
@@ -30,7 +65,7 @@
 		<div class="form-content">
 
 			<h3 class="title">ALMOST THERE</h3>
-			<p>You've found your dream MINI. Now pop in your details so your local MINI Retailer can help you get your hands on it. </p>
+			<p>You've found your dream MINI. Now pop in your details so your local MINI Centre can help you get your hands on it. </p>
 
 			<div class="form-control form-control-select half-width">
 
@@ -50,11 +85,6 @@
 						<option value="Miss">Miss</option>
 						<option value="Ms">Ms</option>
 						<option value="Dr">Dr</option>
-						<option value="Prof">Prof</option>
-						<option value="Rev">Rev</option>
-						<option value="Lady">Lady</option>
-						<option value="Sir">Sir</option>
-						<option value="Lord">Lord</option>
 
 					</select>
 					<!-- /build -->
@@ -96,7 +126,8 @@
 
 			</div>
 
-			<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or MINI Retailers, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest news on our vehicles and and other products and services by email. We may occasionally ask for your assistance in market research to help improve our service to customers. Have a look at our privacy policy for more information.  </p>
+			<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or MINI Centres, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest news on our vehicles and and other products and services by email. We may occasionally ask for your assistance in market research to help improve our service to customers. Have a look at our <a href="http://www.mini.co.uk/privacy-policy/?_ga=1.57454506.1480298000.1427200403
+" target="_blank">privacy policy</a> for more information.  </p>
 
 			<div class="form-control form-control-input append phone full-width">
 
@@ -241,20 +272,6 @@
 			</div><!-- end div#dealer_chooser -->
 
 
-
-			<!-- build:remove -->
-			<div class="form-control form-control-checkbox">
-
-				<div class="checkbox">
-
-					<input id="finance" name="finance" type="checkbox" value="1" checked="checked" />
-					<label for="finance">Please tick here if you are interested in MINI finance options.</label>
-
-				</div>
-
-			</div>
-			<!-- /build -->
-
 			<div id="optout_chooser" class="form-control form-control-checkbox">
 
 				<p class="notice">Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
@@ -310,7 +327,7 @@
 							
 					<h3>Nice one.</h3>
 
-					<p>A friendly MINI retailer will be in contact soon. (We're sending an email to your inbox with all the info). Until then, why not see what else we've got up our sleeve?</p>
+					<p>A friendly MINI centre will be in contact soon. (We're sending an email to your inbox with all the info). Until then, why not see what else we've got up our sleeve?</p>
 
 				</header><!-- end header.header -->
 
@@ -335,7 +352,9 @@
 
 					<h4 class="item switch-color">
 
-						<!-- build:template <a href="<%= form.url %>" target="_blank">Get connected.</a> /build -->
+						<!-- build:template
+						<a href="<%= form.url %>" target="_blank">Get connected.</a>
+						/build -->
 
 						<!-- build:remove --><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">Get connected.</a><!-- /build -->
 

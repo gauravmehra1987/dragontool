@@ -85,7 +85,9 @@ grunt.registerTask( 'compile-dist',	[
 
 grunt.registerTask( 'compile',	[ 'compile-dev' ] );
 
-grunt.registerTask( 'build',	[ 'compile-dist', 'dotnet' ] );
+grunt.registerTask( 'build-staging',	[ 'compile-dev', 'dotnet' ] );
+
+grunt.registerTask( 'build-live',	[ 'compile-dist', 'dotnet' ] );
 
 grunt.registerTask( 'default',	[
 

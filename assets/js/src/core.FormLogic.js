@@ -126,6 +126,39 @@ function FormLogic() {
 	}
 
 
+
+	/**
+     * Format dealers addresses
+     * @param {Object} Address
+	 * @return {Object} Address
+    */
+	this.formatDealerAddresses = function( addrObj ) {
+
+		var address	= new String();
+
+		// Construct string
+
+		for ( var key in addrObj ) {
+
+			if ( ! _.isEmpty( addrObj[ key ] ) ) {
+
+				if ( key === 'Name' || key === 'Town' || key === 'Postcode' ) {
+
+					address += addrObj[ key ] + ', ';
+
+				}
+
+			}
+		}
+
+		address = address.substr( 0, address.length - 2 );
+
+		return address;
+
+	}
+
+
+
 	/**
      * Handle postcode
      * @param {Event} Event
@@ -159,20 +192,13 @@ function FormLogic() {
 
 			$( addresses ).each( function( i, addr ) {
 
-
-
 				var address = new String();
-
-				console.log(address);
 
 				for( var key in addr ) if( ! _.isEmpty( addr[ key ] ) ) address += addr[ key ] + ', ';
 
 				address = address.substr( 0, address.length - 2 );
 
-				//console.log(address);
 				formattedAddresses.push( { id: i, address: address } );
-
-				//console.log(formattedAddresses.length);
 
 			} );
 
@@ -219,7 +245,7 @@ function FormLogic() {
 
 			$( dealers ).each( function( i, addr ) {
 
-				var address = _this.formatAddress( addr );
+				var address = _this.formatDealerAddresses( addr );
 				var dealerId = addr.DealerId;
 				formattedDealers.push( { id: dealerId, dealer: address } );
 

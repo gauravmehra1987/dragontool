@@ -135,6 +135,10 @@ function Dials() {
 				//
 				// Remove dragging class from the list, and CSS transform position to the value of where the drag will end (endY gives you this figure)
 				$list.removeClass( 'dragging' ).css( { 'transform': 'translate3d( 0px, ' + this.endY + 'px, 0px )' } );
+				//
+				// Google Analytics
+				var triggeredEvent = $( slot ).closest('.control-wrapper').attr('id');
+				trackDialEvents( triggeredEvent );
 			},
 			//
 			// Defines a rule for where the slot will snap to...
@@ -222,7 +226,13 @@ function Dials() {
 				//
 				// On complete, pass in the rotation value to the dialClass function
 				onComplete: function( v ) {
+
 					dialClass( nr );
+
+					// Google Analytics
+					var triggeredEvent = $( luggage_el ).closest('.control-wrapper').attr('id');
+					trackDialEvents( triggeredEvent );
+
 				}
 			} );
 
@@ -394,7 +404,7 @@ function Dials() {
 			return values;
 		}
 
-		// Fallback on click for IE...
+		// Fallback on click for IE, and useful for google analytics...
 		// Normally we wouldn't need it, because in all normal browsers we can just use input:checked + label, but because of the stupid IE we need to do a fallback on click...
 		$( '.option' ).on( 'click', function( e ) {
 			//
@@ -406,6 +416,11 @@ function Dials() {
 			//
 			// And toggle a checked class
 			$input.toggleClass( 'checked' );
+			//
+			// Google Analytics
+			var triggeredEvent = $( e.target ).closest('.control-wrapper').attr('id');
+			trackDialEvents( triggeredEvent );
+			//
 		} );
 	}
 
@@ -506,6 +521,11 @@ function Dials() {
 				( direction === 'right' ) ? $slick.slick( 'slickPrev' ) : $slick.slick( 'slickNext' );
 
 			}
+
+			// Google Analytics
+			var triggeredEvent = $slick.closest('.control-wrapper').attr('id');
+			trackDialEvents( triggeredEvent );
+
 		}
 
 
@@ -592,6 +612,10 @@ function Dials() {
 				$( '.control.mpg' ).removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + css_name );
 				$( '#mpg_value' ).text( v );
 
+				// Google Analytics
+				var triggeredEvent = $( mpg_el ).closest('.control-wrapper').attr('id');
+				trackDialEvents( triggeredEvent );
+
 			},
 
 		} );
@@ -660,17 +684,25 @@ function Dials() {
 
 		var dialPrice = new Draggable( '.control.price .handle', {
 
-			type:					'y',
+			type: 'y',
 
-			edgeResistance:			1,
+			edgeResistance:	1,
 
-			bounds:					'.control.price .bounds',
+			bounds:	'.control.price .bounds',
 
-			throwProps:				false,
+			throwProps: false,
 
-			onDragStart:			function() { priceChanged = true; },
+			onDragStart: function() { priceChanged = true; },
 
-			onDrag:					function() { $( '.control.price .switch-bg' ).css( 'height', getbgColorHeight(this) ); },
+			onDrag:	function() {
+
+				$( '.control.price .switch-bg' ).css( 'height', getbgColorHeight(this) );
+
+				// Google Analytics
+				var triggeredEvent = $( '.control.price' ).closest('.control-wrapper').attr('id');
+				trackDialEvents( triggeredEvent );
+
+			},
 
 		} );
 

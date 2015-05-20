@@ -33,6 +33,8 @@
 	<div id="tpl-results">Loading...</div>
 	
 	<div class="results-footer">
+
+		<p class="related-cars-caption">Or you might like...</p>
 	
 		<ul id="related" class="related">
 
@@ -42,8 +44,6 @@
 			<li><a href="#" id="related_4" class="car-changer"><img src="assets/img/blank.png" /></a></li>
 
 		</ul><!-- end ul.related -->
-
-		<p class="gimmick">Or you could buy <span class="switch-color">98 tickets to the National Stamp Museum<sup>&#94;</sup>.</span></p>
 
 	</div>
 	
