@@ -16,7 +16,7 @@
 	/build -->
 	
 	<p>Want a shiny new MINI, but don't know your Countryman from your Convertible? Let the Combobulator find the right model for you, at the touch of a button.</p>
-	<p>Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit 'Combobulate' to get your perfect MINI.</p>
+	<p>Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two. Then hit 'Combobulate' to reveal the MINI for you.</p>
 	<p>
 	<span class="hideTablet hideMobile">Just use the control panel on the left to fire it up.</span>
 	<span class="hideMobile hideDesktop">Just click the arrows below to start combobulating.</span>

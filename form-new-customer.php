@@ -65,7 +65,7 @@
 		<div class="form-content">
 
 			<h3 class="title">ALMOST THERE</h3>
-			<p>You've found your dream MINI. Now pop in your details so your local MINI Centre can help you get your hands on it. </p>
+			<p>Think this MINI might be for you? Let your preferred MINI Centre work out how you can get your hands on it. Just pop in your details, and they'll be in touch with everything you need to know.</p>
 
 			<div class="form-control form-control-select half-width">
 
@@ -327,7 +327,7 @@
 							
 					<h3>Nice one.</h3>
 
-					<p>A friendly MINI centre will be in contact soon. (We're sending an email to your inbox with all the info). Until then, why not see what else we've got up our sleeve?</p>
+					<p>Your MINI Centre will be in contact soon. (We're sending you an email to your inbox with all the info.) Until then, see what else we’ve got up our sleeve below.</p>
 
 				</header><!-- end header.header -->
 
@@ -337,29 +337,29 @@
 					<hr />
 
 					<h4 class="item switch-color">
-						<a href="http://www.mini.co.uk/offers-and-finance/insurance" target="_blank">Mollycoddle your Mini.</a>
+						<a href="http://www.mini.co.uk/offers-and-finance/insurance" target="_blank">KEEPING MINIS MOLLYCODDLED.</a>
 					</h4>
-					<p>Keep your MINI cotton-wool wrapped with MINI Insurance and Warranties.</p>
+					<p>All you need to know about optional MINI Insurance cover.</p>
 
 					<hr />
 
 					<h4 class="item switch-color">
-						<a href="http://www.mini.co.uk/offers-and-finance" target="_blank">Offers for every pocket.</a>
+						<a href="http://www.mini.co.uk/offers-and-finance" target="_blank">OFFERS FOR EVERY POCKET.</a>
 					</h4>
-					<p>Get a bespoke finance package just for you from the MINIstry of Finance.</p>
+					<p>Find the right deal for you. Check out our latest finance packages.</p>
 
 					<hr />
 
 					<h4 class="item switch-color">
 
 						<!-- build:template
-						<a href="<%= form.url %>" target="_blank">Get connected.</a>
+						<a href="<%= form.url %>" target="_blank">TAKE A CLOSER LOOK.</a>
 						/build -->
 
-						<!-- build:remove --><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">Get connected.</a><!-- /build -->
+						<!-- build:remove --><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">TAKE A CLOSER LOOK.</a><!-- /build -->
 
 					</h4>
-					<p>Enjoy your beats, tweets and calendar meets on screen with MINI Connected.</p>
+					<p>Find out more about your MINI and the rest of the MINI family.</p>
 
 				</div>
 
