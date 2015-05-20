@@ -1,4 +1,6 @@
-﻿namespace Combobulator.Common.Extensions
+﻿using System.Threading;
+
+namespace Combobulator.Common.Extensions
 {
     public static class StringExtensions
     {
@@ -24,6 +26,13 @@
                     break;
             }
             return postcode;
+        }
+
+        public static string ToTitleCase(this string text)
+        {
+            var cultureInfo = Thread.CurrentThread.CurrentCulture;
+            var textInfo = cultureInfo.TextInfo;
+            return textInfo.ToTitleCase(text);
         }
     }
 }

@@ -86,6 +86,7 @@ namespace Combobulator.Business.Services.Providers
                 {
                     var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
                     data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                    Log.Info("JSON Response: " + data);
                 }
                 catch (Exception ex)
                 {

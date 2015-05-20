@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.Services.Providers;
 using Combobulator.Common;
@@ -61,6 +63,8 @@ namespace Combobulator.Business.Commands
                 Code = dbCar.Code,
                 Color = dbCar.Color,
                 Engine = dbCar.Engine,
+                EngineName = dbCar.EngineName,
+                Model = dbCar.Model,
                 Name = dbCar.Name,
                 Capacity = dbCar.Capacity,
                 Luggage = dbCar.Luggage,
@@ -132,7 +136,7 @@ namespace Combobulator.Business.Commands
             body = body.Replace("[[Title]]", _customer.Title)
                 .Replace("[[Firstname]]", _customer.FirstName)
                 .Replace("[[Lastname]]", _customer.LastName)
-                .Replace("[[CarName]]", car.Name)
+                .Replace("[[CarName]]", Config.Brand + " " + car.EngineName.ToLower().ToTitleCase() + " " + car.Model.ToLower().ToTitleCase())
                 .Replace("[[Location]]", assetPath)
                 .Replace("[[CarImage]]", carPath)
                 .Replace("[[Colour]]", hexColour);

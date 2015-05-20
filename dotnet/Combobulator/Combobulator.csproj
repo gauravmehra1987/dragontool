@@ -370,13 +370,17 @@
     <Content Include="Assets\icons\template.css" />
     <Content Include="Assets\icons\twitter-bird.svg" />
     <Content Include="Assets\icons\twitter.svg" />
+    <Content Include="Assets\icons\up-block.svg" />
     <Content Include="Assets\icons\user.svg" />
     <Content Include="Assets\img\blank.png" />
     <Content Include="Assets\img\button-shape.png" />
+    <Content Include="Assets\img\configurator.png" />
     <Content Include="Assets\img\dashboard.png" />
+    <Content Include="Assets\img\loader-icon.gif" />
     <Content Include="Assets\img\mini-logo-small.png" />
     <Content Include="Assets\img\mini-logo.png" />
     <Content Include="Assets\img\mini-sample.png" />
+    <Content Include="Assets\img\ministry-of-finance-ie8.png" />
     <Content Include="Assets\img\ministry-of-finance.png" />
     <Content Include="Assets\img\not_found.gif" />
     <Content Include="Assets\img\sprites\sprites.png" />
@@ -525,6 +529,7 @@
     <Content Include="Assets\sprites\svg\speed-quick.svg" />
     <Content Include="Assets\sprites\svg\speed-woohoo.svg" />
     <Content Include="Content\EmailTemplate\EmailCustomerDetailsTemplate.htm" />
+    <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.txt" />
     <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -546,7 +551,8 @@
     <Content Include="Assets\js\tpl\addresses.mustache" />
     <Content Include="Assets\js\tpl\dealers.mustache" />
     <Content Include="Assets\js\tpl\rocketcar.mustache" />
-    <Content Include="App_Data\MINI_FS_logic_v37.csv" />
+    <Content Include="Assets\css\style.css.map" />
+    <Content Include="App_Data\MINI_FS_logic_v38.csv" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -577,8 +583,8 @@
     <Content Include="Views\Results\_ResultDetail.cshtml" />
     <Content Include="Views\Form\Index.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
-    <Content Include="Views\Error\HttpError500.cshtml" />
+    <Content Include="Views\Error\Http404.cshtml" />
+    <Content Include="Views\Error\Http500.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
