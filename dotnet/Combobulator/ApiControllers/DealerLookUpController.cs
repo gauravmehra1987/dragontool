@@ -154,8 +154,8 @@ namespace Combobulator.ApiControllers
                                 Url = dealer.Url
                             }
                         });
-                        _dbContext.SubmitChanges();
                     }
+                    _dbContext.SubmitChanges();
 
                     if (!isCacheEnabled)
                         return ResponseHelper.FormatMessage(JsonConvert.SerializeObject(viewModel));

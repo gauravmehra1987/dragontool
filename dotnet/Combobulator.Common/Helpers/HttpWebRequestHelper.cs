@@ -81,13 +81,8 @@ namespace Combobulator.Common.Helpers
             httpWebRequest.KeepAlive = false;
             httpWebRequest.Timeout = timeout;
 
-            //var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
-
-            var response = (HttpWebResponse)httpWebRequest.GetResponse();
-            return response;
-
-            //var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            //return (HttpWebResponse)responseTask.Result;
+            var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
+            return (HttpWebResponse)responseTask.Result;
         }
 
         public static string GetHttpWebResponseData(HttpWebResponse response)

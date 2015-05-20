@@ -15,7 +15,6 @@ namespace Combobulator.ApiControllers
 {
     public class CarController : BaseController
     {
-        
         private readonly CombobulatorDataContext _dbContext = new CombobulatorDataContext();
 
         /// <summary>

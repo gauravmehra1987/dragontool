@@ -93,89 +93,54 @@ namespace Combobulator.Business.Commands
             };
             _customer.Car = car;
 
-                // Send to eMaster API
-                var emResponse = false;
-                if (_customer.UserId != "0")
-                {
-                    IProvider eMasterProvider = new EMasterProvider();
-                    Func<Customer, bool> emfunc = eMasterProvider.SendData;
-                    emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, TimeSpan.FromSeconds(2));
-                }
-
-                // Send to GRG API
-                IProvider grassRootsProvider = new GrassRootsProvider();
-                Func<Customer, bool> grgfunc = grassRootsProvider.SendData;
-                var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, TimeSpan.FromSeconds(2));
-
-                Log.Info("Response: " + grgResponse.ToString());
-
-                if (grgResponse)
-                {
-                    isComplete = true;
-                }
-
-                /*
-                // If send api fails then send to fallback email
-                if (emResponse)
-                    return isComplete;
-                */
-
-                string readFile;
-                var subject = Config.EmailMeResultsSubject;
-                using (var reader = new StreamReader(_templatePath))
-                {
-                    readFile = reader.ReadToEnd();
-                }
-                var body = readFile;
-                var assetPath = Config.EmailAssetsDomain + Config.EmailAssetsLocation;
-                var carAssetPath = Config.EmailAssetsDomain + Config.EmailCarAssetsLocation;
-                var carPath = carAssetPath + "/" + _customer.Car.Code + ".jpg";
-
-                var colour = Enum.GetValues(typeof(Colour)).Cast<Colour>().FirstOrDefault(v => v.GetDescription() == _customer.Car.Color);
-                var hexColour = colour.DisplayName();
-
-                body = body.Replace("[[Title]]", _customer.Title)
-                    .Replace("[[Firstname]]", _customer.FirstName)
-                    .Replace("[[Lastname]]", _customer.LastName)
-                    .Replace("[[CarName]]", car.Name)
-                    .Replace("[[Location]]", assetPath)
-                    .Replace("[[CarImage]]", carPath)
-                    .Replace("[[Colour]]", hexColour);
-
-                MandrillHelper.SendEmail(_customer.Email, subject, body);
-
-                /*
-                var readFile2 = string.Empty;
-                var strBody2 = string.Empty;
-                var subject2 = Config._emailMeResultsSubject;
-                var template2 = Config._emailCustomerResultsTemplate;
-                using (var reader = new StreamReader(_templateCustomerPath))
-                {
-                    readFile2 = reader.ReadToEnd();
-                }
-                strBody2 = readFile2;
-                strBody2 = strBody2.Replace("[[Title]]", _customer.Title)
-                    .Replace("[[Firstname]]", _customer.FirstName)
-                    .Replace("[[Lastname]]", _customer.LastName)
-                    .Replace("[[CarName]]", car.Name);
-
-                MandrillHelper.SendEmail(Config._emailAddressTo, subject2, strBody2);
-                */
-
-            /*
-            // Email results to customer
-            if (_customer.EmailResults)
+            // Send to eMaster API
+            var emResponse = false;
+            if (_customer.UserId != "0")
             {
-                try
-                {
-                    //Email.EmailMeResults(customer, car);
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("EmailMeResults", ex);
-                }
+                IProvider eMasterProvider = new EMasterProvider();
+                Func<Customer, bool> emfunc = eMasterProvider.SendData;
+                emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, TimeSpan.FromSeconds(2));
             }
-            */
+
+            // Send to GRG API
+            IProvider grassRootsProvider = new GrassRootsProvider();
+            Func<Customer, bool> grgfunc = grassRootsProvider.SendData;
+            var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, TimeSpan.FromSeconds(2));
+
+            Log.Info("Response: " + grgResponse);
+
+            if (!grgResponse)
+                return isComplete;
+
+            string readFile;
+            var subject = Config.EmailMeResultsSubject;
+            using (var reader = new StreamReader(_templatePath))
+            {
+                readFile = reader.ReadToEnd();
+            }
+            var body = readFile;
+            var assetPath = Config.EmailAssetsDomain + Config.EmailAssetsLocation;
+            var carAssetPath = Config.EmailAssetsDomain + Config.EmailCarAssetsLocation;
+            var carPath = carAssetPath + "/" + _customer.Car.Code + ".jpg";
+
+            var colour =
+                Enum.GetValues(typeof (Colour))
+                    .Cast<Colour>()
+                    .FirstOrDefault(v => v.GetDescription() == _customer.Car.Color);
+            var hexColour = colour.DisplayName();
+
+            body = body.Replace("[[Title]]", _customer.Title)
+                .Replace("[[Firstname]]", _customer.FirstName)
+                .Replace("[[Lastname]]", _customer.LastName)
+                .Replace("[[CarName]]", car.Name)
+                .Replace("[[Location]]", assetPath)
+                .Replace("[[CarImage]]", carPath)
+                .Replace("[[Colour]]", hexColour);
+
+            MandrillHelper.SendEmail(_customer.Email, subject, body);
+
+            isComplete = true;
+
             return isComplete;
         }
     }
