@@ -78,7 +78,7 @@ namespace Combobulator.ApiControllers
                     if (isCacheEnabled)
                     {
                         Cache.SaveToCache("MC-DEALERLOOKUP-" + postcodeInfo, dealers,
-                            DateTimeOffset.Now.AddSeconds(time));
+                            DateTimeOffset.Now.AddMinutes(time));
                     }
                     return ResponseHelper.FormatMessage(JsonConvert.SerializeObject(dealers));
                 }
@@ -164,7 +164,7 @@ namespace Combobulator.ApiControllers
                     var isParsed = double.TryParse(Common.Config.CacheExpiration, out time);
                     if (!isParsed)
                         Cache.SaveToCache("MC-DEALERLOOKUP-" + postcodeInfo, viewModel,
-                            DateTimeOffset.Now.AddSeconds(time));
+                            DateTimeOffset.Now.AddMinutes(time));
                     return ResponseHelper.FormatMessage(JsonConvert.SerializeObject(viewModel));
                 }
             }

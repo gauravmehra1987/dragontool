@@ -528,7 +528,6 @@
     <Content Include="Assets\sprites\svg\speed-nippy.svg" />
     <Content Include="Assets\sprites\svg\speed-quick.svg" />
     <Content Include="Assets\sprites\svg\speed-woohoo.svg" />
-    <Content Include="Content\EmailTemplate\EmailCustomerDetailsTemplate.htm" />
     <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.txt" />
     <Content Include="Content\EmailTemplate\EmailMeResultsTemplate.htm" />
     <Content Include="favicon.ico" />

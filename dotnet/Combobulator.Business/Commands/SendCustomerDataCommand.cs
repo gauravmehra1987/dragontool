@@ -23,18 +23,20 @@ namespace Combobulator.Business.Commands
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Customer _customer;
         private readonly string _carModel;
-        private readonly string _templatePath;
+        private readonly string _htmlTemplatePath;
+        private readonly string _textTemplatePath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SendCustomerDataCommand"/> class.
         /// </summary>
         /// <param name="customer">The customer object.</param>
         /// <param name="carModel">The car model identifier.</param>
-        public SendCustomerDataCommand(Customer customer, string carModel, string templatePath)
+        public SendCustomerDataCommand(Customer customer, string carModel, string htmlTemplatePath, string textTemplatePath)
         {
             _customer = customer;
             _carModel = carModel;
-            _templatePath = templatePath;
+            _htmlTemplatePath = htmlTemplatePath;
+            _textTemplatePath = textTemplatePath;
         }
 
         /// <summary>
@@ -116,13 +118,19 @@ namespace Combobulator.Business.Commands
             if (!grgResponse)
                 return isComplete;
 
-            string readFile;
+            string readHTMLFile;
+            string readTextFile;
             var subject = Config.EmailMeResultsSubject;
-            using (var reader = new StreamReader(_templatePath))
+            using (var reader = new StreamReader(_htmlTemplatePath))
             {
-                readFile = reader.ReadToEnd();
+                readHTMLFile = reader.ReadToEnd();
             }
-            var body = readFile;
+            using (var reader = new StreamReader(_textTemplatePath))
+            {
+                readTextFile = reader.ReadToEnd();
+            }
+            var htmlBody = readHTMLFile;
+            var textBody = readTextFile;
             var assetPath = Config.EmailAssetsDomain + Config.EmailAssetsLocation;
             var carAssetPath = Config.EmailAssetsDomain + Config.EmailCarAssetsLocation;
             var carPath = carAssetPath + "/" + _customer.Car.Code + ".jpg";
@@ -133,7 +141,15 @@ namespace Combobulator.Business.Commands
                     .FirstOrDefault(v => v.GetDescription() == _customer.Car.Color);
             var hexColour = colour.DisplayName();
 
-            body = body.Replace("[[Title]]", _customer.Title)
+            htmlBody = htmlBody.Replace("[[Title]]", _customer.Title)
+                .Replace("[[Firstname]]", _customer.FirstName)
+                .Replace("[[Lastname]]", _customer.LastName)
+                .Replace("[[CarName]]", Config.Brand + " " + car.EngineName.ToLower().ToTitleCase() + " " + car.Model.ToLower().ToTitleCase())
+                .Replace("[[Location]]", assetPath)
+                .Replace("[[CarImage]]", carPath)
+                .Replace("[[Colour]]", hexColour);
+				
+            textBody = textBody.Replace("[[Title]]", _customer.Title)
                 .Replace("[[Firstname]]", _customer.FirstName)
                 .Replace("[[Lastname]]", _customer.LastName)
                 .Replace("[[CarName]]", Config.Brand + " " + car.EngineName.ToLower().ToTitleCase() + " " + car.Model.ToLower().ToTitleCase())
@@ -141,7 +157,7 @@ namespace Combobulator.Business.Commands
                 .Replace("[[CarImage]]", carPath)
                 .Replace("[[Colour]]", hexColour);
 
-            MandrillHelper.SendEmail(_customer.Email, subject, body);
+            MandrillHelper.SendEmail(_customer.Email, subject, htmlBody, textBody);
 
             isComplete = true;
 

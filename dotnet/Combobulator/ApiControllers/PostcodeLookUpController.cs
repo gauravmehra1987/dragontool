@@ -69,7 +69,7 @@ namespace Combobulator.ApiControllers
                     if (isCacheEnabled)
                     {
                         Cache.SaveToCache("MC-POSTCODELOOKUP-" + postcodeInfo, postcodes,
-                            DateTimeOffset.Now.AddSeconds(time));
+                            DateTimeOffset.Now.AddMinutes(time));
                     }
                     return ResponseHelper.FormatMessage(JsonConvert.SerializeObject(postcodes));
                 }
@@ -112,7 +112,7 @@ namespace Combobulator.ApiControllers
                         var isParsed = double.TryParse(Common.Config.CacheExpiration, out time);
                         if (!isParsed)
                             Cache.SaveToCache("MC-POSTCODELOOKUP-" + postcodeInfo, postcodeApi.Addresses,
-                                DateTimeOffset.Now.AddSeconds(time));
+                                DateTimeOffset.Now.AddMinutes(time));
                         return ResponseHelper.FormatMessage(JsonConvert.SerializeObject(postcodeApi.Addresses));
                     }
                     else

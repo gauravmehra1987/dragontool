@@ -36,9 +36,9 @@ namespace Combobulator.Controllers
                 var customer = command.Execute();
                 viewModel = new FormViewModel
                 {
-                    FirstName = customer.FirstName,
-                    LastName = customer.LastName,
-                    Email = customer.Email
+                    FirstName = customer.FirstName.ToLower().ToTitleCase(),
+                    LastName = customer.LastName.ToLower().ToTitleCase(),
+                    Email = customer.Email.ToLower()
                 };
             }
             if (!String.IsNullOrEmpty(Request.QueryString["m"]))
@@ -89,15 +89,12 @@ namespace Combobulator.Controllers
             {
                 Response.StatusCode = 400;
                 Response.TrySkipIisCustomErrors = true;
-
-                var modelErrors = ModelState.AllErrors();
-                return Json(modelErrors);
+                return Json(ModelState.AllErrors());
             }
             try
             {
                 var isPhone = viewModel.info.optout_phone == null;
                 var isPost = viewModel.info.optout_post == null;
-
                 var customer = new Customer
                 {
                     AddressLine1 = viewModel.info.address_1,
@@ -136,8 +133,7 @@ namespace Combobulator.Controllers
                     }
                 };
                 var carModel = viewModel.car;
-                var template = Common.Config.EmailMeResultsTemplate;
-                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(template));
+                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(Common.Config.EmailHTMLTemplate), Server.MapPath(Common.Config.EmailTextTemplate));
                 var dataSent = command.Execute();
                 if (!dataSent)
                 {

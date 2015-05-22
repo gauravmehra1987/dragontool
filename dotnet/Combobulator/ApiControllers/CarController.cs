@@ -122,7 +122,7 @@ namespace Combobulator.ApiControllers
                     return response2;
                 response.Headers.CacheControl = new CacheControlHeaderValue
                 {
-                    MaxAge = new TimeSpan(expiryTimeOut, 0, 0),
+                    MaxAge = new TimeSpan(0, expiryTimeOut, 0),
                     Public = true
                 };
 
