@@ -31,7 +31,7 @@ namespace Combobulator.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email address is required")]
-        [EmailAddress(ErrorMessage = "Please enter a valid email address")]
+        [RegularExpression(".+@.+")]
         [StringLength(256)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
