@@ -16,23 +16,23 @@ namespace Combobulator.Models
         public string UserId { get; set; }
 
         [Required(ErrorMessage = "Title is required")]
-        [StringLength(20)]
+        [StringLength(8)]
         [Display(Name = "Title")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "First names is required")]
-        [StringLength(20)]
+        [StringLength(64)]
         [Display(Name = "First names")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Last name is required")]
-        [StringLength(20)]
+        [StringLength(64)]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email address is required")]
         [EmailAddress(ErrorMessage = "Please enter a valid email address")]
-        [StringLength(50)]
+        [StringLength(256)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
@@ -54,12 +54,12 @@ namespace Combobulator.Models
         public string AddressType { get; set; }
 
         [Required(ErrorMessage = "Address line 1 is required")]
-        [StringLength(20)]
+        [StringLength(128)]
         [Display(Name = "Address line 1")]
         public string AddressLine1 { get; set; }
 
         [Required(ErrorMessage = "Address line 2 is required")]
-        [StringLength(20)]
+        [StringLength(128)]
         [Display(Name = "Address line 2")]
         public string AddressLine2 { get; set; }
 
