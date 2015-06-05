@@ -35,7 +35,7 @@ namespace Combobulator.Business.ViewModels
         [Compare("postcode_search", ErrorMessage = "Postcode does not match.")]
         public string postcode { get; set; }
         [Required]
-        [EmailValidator]
+        [EmailAddress]
         public string email { get; set; }
         [Required]
         public string dealer { get; set; }
