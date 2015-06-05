@@ -116,7 +116,7 @@ namespace Combobulator.Controllers
                     
                     Selections = new Selections
                     {
-                        Capacity = viewModel.input.seats.CountCharacterFrequency(0).ToString(),
+                        Capacity = string.Join(",", viewModel.input.seats),
                         Luggage = viewModel.input.luggage,
                         PriceRange = viewModel.input.price.ToString(),
                         Performance = viewModel.input.speed,

@@ -34,9 +34,9 @@ namespace Combobulator.Business.Services.Providers
                     price_range = customer.Selections.PriceRange ?? "",
                     economy = customer.Selections.Economy ?? "",
 
-                    capacity = customer.Selections.Capacity == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
-                    performance = customer.Selections.Performance == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale"),
-                    use = customer.Selections.Use == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
+                    capacity = customer.Selections.Capacity,
+                    performance = customer.Selections.Performance,
+                    use = customer.Selections.Use
                 };
 
                 var json = JsonConvert.SerializeObject(result);
