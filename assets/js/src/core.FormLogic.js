@@ -387,10 +387,20 @@ function FormLogic() {
 		});
 
 	}
+	
+	this.validateStoredInput = function() {
+		console.log(store.get( 'miniInput' ));
+		if (store.get( 'miniInput' ) === undefined && window.location.href.indexOf('/form') != -1) {
+			
+			window.location.href=window.location.href.replace('/form', '');
+			
+		}
+		
+	}
 
 
 	this.init = function() {
-
+		_this.validateStoredInput();
 		_this.eventListeners();
 		_this.ajaxFormResults();
 		_this.activateForms();
