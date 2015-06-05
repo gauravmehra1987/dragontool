@@ -90,47 +90,10 @@ function UI() {
 	this.preloadImages = function() {
 
 		this.loadSVGs();
-
-		// Preload images to avoid nasty visual glitches
-
-		sysMsg( 'Loading: 0%' );
-
-		$.get( path.preload, { type: 'svg' }, function( images ){
-
-			var loaded = 0;
-
-			$.map( images, function( el ) {
-
-				$.get( el, function() {
-
-					var img	= new Image();
-
-					img.src = el;
-
-					$( img ).on( 'load', function() {
-
-						loaded++;
-
-						var unit		= images.length / 100;
-						var percentage	= ( loaded / images.length ) * 100;
-						var progress	= 0;
-
-						progress = Math.floor( percentage );
-
-						sysMsg( 'Loading: '+ progress + '%' );
-
-						if( progress === 100 ) $sys.toggleClass( 'hidden' );
-
-					} );
-
-				} );
-
-			} );
-
-		} );
-
+		$(window).load(function(){$sys.toggleClass( 'hidden' );});
+		
+		
 	}
-
 	// Render results
 
 	this.render = function( car, related ) {
