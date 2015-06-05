@@ -13,6 +13,11 @@ namespace Combobulator.Common.Helpers
                 try
                 {
                     success = func(entity);
+
+                    if (!success)
+                    {
+                        throw new Exception("Function did not return true");
+                    }
                     break; // success
                 }
                 catch (Exception ex)
