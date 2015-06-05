@@ -142,10 +142,16 @@ function FormLogic() {
 
 			if ( ! _.isEmpty( addrObj[ key ] ) ) {
 
-				if ( key === 'Name' || key === 'Town' || key === 'Postcode' ) {
+				if ( key === 'Name' ) {
 
 					address += addrObj[ key ] + ', ';
 
+				}
+				else if (key === 'Address') {
+					
+					var parts = addrObj[ key ].split(';');
+					address += parts.slice(Math.max(parts.length - 2, 1)).join(', ') + ', '
+					
 				}
 
 			}

@@ -55,20 +55,13 @@ namespace Combobulator.ApiControllers
                     var dealers = postcodeData.Select(x => new Models.DealerLookUp
                     {
                         DealerId = x.DealerId,
-                        Country = x.Country,
-                        Url = x.Url,
-                        Town = x.Town,
                         Phone = x.Phone,
                         Name = x.Name,
                         Longitude = x.Longitude,
                         Latitude = x.Latitude,
-                        Fax = x.Fax,
-                        Email = x.Email,
                         Distance = x.Distance,
-                        County = x.County,
-                        Address = x.Address,
-                        Postcode = x.Postcode.NormalizePostcode()
-                    }).ToList();
+                        Address = x.Address
+                    }).OrderByDescending(x => x.Distance).ToList();
 
                     double time;
                     var isParsed = double.TryParse(Common.Config.CacheExpiration, out time);
@@ -98,37 +91,26 @@ namespace Combobulator.ApiControllers
                         return null;
 
                     var dealerUri = new Uri(Common.Config.DealerApi)
-                        .AddParameter("country", Common.Config.DealerCountry)
-                        .AddParameter("category", Common.Config.DealerCategory)
-                        .AddParameter("maxResults", Common.Config.DealerMaxTotal)
-                        .AddParameter("language", Common.Config.DealerLanguage)
-                        .AddParameter("lat", location.lat)
-                        .AddParameter("lng", location.lng);
+                        .AddParameter("application", Common.Config.DealerApplication)
+                        .AddParameter("brand", Common.Config.DealerCategory)
+                        .AddParameter("resultcount", Common.Config.DealerMaxTotal)
+                        .AddParameter("latitude", location.lat)
+                        .AddParameter("longitude", location.lng);
                     var dealerResponse = HttpWebRequestHelper.MakeRequest(dealerUri.ToString(),5000);
                     var feed = HttpWebRequestHelper.GetHttpWebResponseData(dealerResponse);
 
-                    var start = feed.IndexOf("(", StringComparison.Ordinal);
-                    var end = feed.LastIndexOf(")", StringComparison.Ordinal);
-                    var data = feed.Substring(start + 1, end - start - 1);
-                    var dealerList = (DealerResponse) JsonConvert.DeserializeObject(data, typeof (DealerResponse));
+                    var dealerList = (DealerResponse)JsonConvert.DeserializeObject(feed, typeof(DealerResponse));
 
-                    var viewModel = dealerList.data.pois.Select(loc => new Models.DealerLookUp()
+                    var viewModel = dealerList.dealers.Select(loc => new Models.DealerLookUp()
                     {
-                        Address = loc.street,
-                        Country = loc.country,
-                        County = loc.state,
-                        DealerId = Convert.ToInt32(loc.attributes.distributionPartnerId),
-                        Email = loc.attributes.mail,
-                        Fax = loc.attributes.fax,
-                        Phone = loc.attributes.phone,
-                        Latitude = loc.lat,
-                        Longitude = loc.lng,
+                        Address = loc.address,
+                        DealerId = Convert.ToInt32(loc.dealerid),
+                        Phone = loc.telephone,
+                        Latitude = double.Parse(loc.latitude),
+                        Longitude = double.Parse(loc.longitude),
                         Name = loc.name,
-                        Town = loc.city,
-                        Postcode = loc.postalCode,
-                        Distance = loc.dist,
-                        Url = loc.attributes.homepage
-                    }).ToList();
+                        Distance = double.Parse(loc.distance)
+                    }).OrderByDescending(x => x.Distance).ToList();
 
                     //Save Result to DB
                     foreach (var dealer in viewModel)
@@ -139,19 +121,12 @@ namespace Combobulator.ApiControllers
                             DealerLookUp = new DealerLookUp
                             {
                                 Address = dealer.Address,
-                                Postcode = dealer.Postcode,
-                                Country = dealer.Country,
-                                County = dealer.County,
                                 DealerId = dealer.DealerId,
                                 Distance = dealer.Distance,
-                                Email = dealer.Email,
-                                Fax = dealer.Fax,
                                 Latitude = dealer.Latitude,
                                 Longitude = dealer.Longitude,
                                 Name = dealer.Name,
-                                Phone = dealer.Phone,
-                                Town = dealer.Town,
-                                Url = dealer.Url
+                                Phone = dealer.Phone
                             }
                         });
                     }

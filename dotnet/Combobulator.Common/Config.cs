@@ -17,14 +17,12 @@ namespace Combobulator.Common
 
         public static string DealerApi = ConfigurationManager.AppSettings["DealerAPI"];
 
-        public static string DealerCountry = ConfigurationManager.AppSettings["DealerCountry"];
+        public static string DealerApplication = ConfigurationManager.AppSettings["DealerApplication"];
 
         public static string DealerCategory = ConfigurationManager.AppSettings["DealerCategory"];
 
         public static string DealerMaxTotal = ConfigurationManager.AppSettings["DealerMaxTotal"];
-
-        public static string DealerLanguage = ConfigurationManager.AppSettings["DealerLanguage"];
-
+        
         public static string SystemId = ConfigurationManager.AppSettings["FiscSystemId"];
 
         public static string Random = ConfigurationManager.AppSettings["FiscRandom"];
