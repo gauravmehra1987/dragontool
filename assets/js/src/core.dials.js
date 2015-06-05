@@ -53,8 +53,7 @@ function Dials() {
 			// Update the draggable object
 			_this.update();
 		}
-
-
+		
 		/**
 		 * GET SLOT VALUE
 		 * @return {String} Returns the value of the active slot (Man, Woman, Boy, Girl etc)
@@ -85,13 +84,14 @@ function Dials() {
 		var getSlotState = function( pos, height, padding ) {
 			//
 			// Current Position returns the absolute value of the position
-			var currentPosition = Math.abs( pos );
+			var currentPosition = pos - (height/2);
 			//
 			// Active Slot calculates the position and the height and rounds the number upwards
 			var activeSlot = Math.ceil( currentPosition / height );
 			//
+						
 			// Returns the active slot plus 1 (maybe because otherwise it would start at 0?)
-			return Math.ceil( activeSlot ) + 1;
+			return Math.abs( activeSlot ) + 1;
 		}
 
 
