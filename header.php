@@ -1,13 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-            "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html class="no-js ie" lang="en">
 
-	<head>
-
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta http-equiv="X-UA-Compatible" content="IE=9" />
-		<meta http-equiv="X-UA-Compatible" content="IE=8" />
-	
+	<head>	
 		<meta charset="utf-8" />
 
 		<!-- build:template
