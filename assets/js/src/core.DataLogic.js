@@ -124,8 +124,6 @@ function DataLogic() {
 				// convert the dataset value into an array
 				var numberArray = Helpers.convertValueToArray(dValue);
 
-				// ensure the query number is a string for matching
-				qValue = qValue.toString();
 
 				var matchAccept = function(){
 					Filter.addObjectToCollection(obj);
@@ -137,6 +135,12 @@ function DataLogic() {
 					console.log(qValue)
 					console.log(dValue)
  				}
+			
+				if (qValue === undefined) {
+					return matchAccept();
+				}
+				// ensure the query number is a string for matching
+				qValue = qValue.toString();
 
 				return !!Helpers.areValuesValid(dValue, qValue) && ( Helpers.doValuesMatch(numberArray, qValue) ? matchAccept() : matchReject() );
 			},
