@@ -3,6 +3,7 @@
 
 	<head>	
 		<meta charset="utf-8" />
+		<meta name="X-UA-Compatible" value="IE=Edge,chrome=1"/>
 
 		<!-- build:template
 		<title><%= global.title %></title>
