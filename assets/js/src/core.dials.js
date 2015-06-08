@@ -523,7 +523,7 @@ function Dials() {
 			}
 
 			// Google Analytics
-			var triggeredEvent = $slick.closest('.control-wrapper').attr('id');
+			var triggeredEvent = $($slick).closest('.control-wrapper').attr('id');
 			trackDialEvents( triggeredEvent );
 
 		}
