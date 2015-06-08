@@ -63,8 +63,8 @@
 				<div class="input">
 					
 					<div><label><input type="checkbox" id="awd" name="awd" value="1">4WD</label></div>
-					<div><label><input type="checkbox" id="high" name="high" value="2">High driving position</label></div>
-					<div><label><input type="checkbox" id="convertible" name="convertible" value="3">Drop top</label></div>
+					<div><label><input type="checkbox" id="high" name="high" value="3">High driving position</label></div>
+					<div><label><input type="checkbox" id="convertible" name="convertible" value="2">Drop top</label></div>
 
 				</div><!-- end div.input -->
 
@@ -202,16 +202,33 @@
 	<script src="../bower_components/underscore/underscore.js"></script>    
 	<script src="../bower_components/store/store.js"></script>    
 	<script src="../bower_components/taffydb/taffy.js"></script>    
-	<script src="../assets/js/src/config.js"></script>    
-	<script src="../assets/js/src/core.logic.js"></script>    
+	<script src="../assets/js/src/core.Config.js"></script>    
+	<script src="../assets/js/src/core.DataLogic.js"></script>    
+	<script src="../assets/js/src/core.DashboardLogic.js"></script>    
 	<script type="text/javascript">
 
 	path.api = '../json/data.json';
 
 	// Local variables for prototype
 	
-	var logic	= new Logic();
-	var query	= new logic.query();
+	var dashboardLogic	= new DashboardLogic();
+	var dataLogic	= new DataLogic();
+	dataLogic.init();
+	var query	= new dashboardLogic.query();
+	var _collection = new Array();
+	ui = function() {};
+	ui.render = function(e) {
+		finalData = dataLogic._collection.all()[0];
+		
+		$output.find( '.output-content' ).remove();
+		$output.append( template( {
+
+			query: JSON.stringify( search ),
+			cars: finalData
+
+		} ) );
+	};
+	var finalData;
 
 	function getObj() {
 
@@ -224,33 +241,30 @@
 			price:			parseInt( $( '#price' ).val() ),
 			speed:			parseInt( $( '#speed' ).val() ),
 			economy:		parseInt( $( '#economy' ).val() ),
-
-			awd:			parseInt( $( '#awd:checked' ).val() ) || 0,
-			high:			parseInt( $( '#high:checked' ).val() ) || 0,
-			convertible:	parseInt( $( '#convertible:checked' ).val() ) || 0,
-
+			
+			awd:			$( '#awd:checked' ).length === 1,
+			high:			$( '#high:checked' ).length === 1,
+			convertible:	$( '#convertible:checked' ).length === 1,
+			//tp:				$( '#convertible:checked' ).length === 1
 		};
 
+		
 		return query.filter( obj );
 
 	};
 
+	var $output     = $( '#output' );
+	var template    = Handlebars.compile( $('#template').html() );
+	var search;
+	
 	$( '#submit' ).on( 'click', function( e ) {
 
 		e.preventDefault();
 
-		var $output     = $( '#output' );
-		var template    = Handlebars.compile( $('#template').html() );
-		var search		= getObj();
-		var data		= logic.getCars( query.build( search ) );
-
-		$output.find( '.output-content' ).remove();
-		$output.append( template( {
-
-			query: JSON.stringify( search ),
-			cars: data.data
-
-		} ) );
+		search		= getObj();
+		var q = query.build( search );
+		var data		= dashboardLogic.getCars( q );	
+		
 
 	} );
 
