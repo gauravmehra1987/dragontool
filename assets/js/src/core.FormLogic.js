@@ -403,10 +403,15 @@ function FormLogic() {
 		}
 		
 	}
+	
+	this.enableUserTracking = function() {
+		$('#results_recombobulate a').attr('href', '/' + window.location.search);
+	}
 
 
 	this.init = function() {
 		_this.validateStoredInput();
+		_this.enableUserTracking();
 		_this.eventListeners();
 		_this.ajaxFormResults();
 		_this.activateForms();
