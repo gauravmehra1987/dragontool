@@ -35,6 +35,10 @@ namespace Combobulator.Common
 
         public static string GrassRootsAppName = ConfigurationManager.AppSettings["GrassRootsAppName"];
 
+        public static string ErrorEmailSubject = ConfigurationManager.AppSettings["ErrorEmail.Subject"];
+
+        public static string ErrorEmailDestination = ConfigurationManager.AppSettings["ErrorEmail.Destination"];
+
         public static string Host = ConfigurationManager.AppSettings["Email.Host"];
 
         public static string Username = ConfigurationManager.AppSettings["Email.Username"];

@@ -5,14 +5,16 @@ namespace Combobulator.Common.Helpers
 {
     public static class FuncHelper
     {
-        public static bool DoFuncWithRetry<T>(Func<T, bool> func, T entity, TimeSpan sleepPeriod, int retryCount = 3)
+        public delegate T3 ExternalApiFunction<in T1,T2, out T3>(T1 customer, out T2 url);
+        public static bool DoFuncWithRetry<T>(ExternalApiFunction<T, string, bool> func, T entity, out string requestUrl, TimeSpan sleepPeriod, int retryCount = 3)
         {
+            requestUrl = string.Empty;
             var success = false;
             while (true)
             {
                 try
                 {
-                    success = func(entity);
+                    success = func(entity, out requestUrl);
 
                     if (!success)
                     {

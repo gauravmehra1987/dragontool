@@ -21,6 +21,7 @@ namespace Combobulator.Business.Commands
     {
         private readonly CombobulatorDataContext _dbContext = new CombobulatorDataContext();
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly Customer _customer;
         private readonly string _carModel;
         private readonly string _htmlTemplatePath;
@@ -98,25 +99,31 @@ namespace Combobulator.Business.Commands
                 Joke = dbCar.Joke
             };
             _customer.Car = car;
+            var requestUrl = string.Empty;
 
             // Send to eMaster API
             var emResponse = false;
             if (_customer.UserId != "0")
             {
                 IProvider eMasterProvider = new EMasterProvider();
-                Func<Customer, bool> emfunc = eMasterProvider.SendData;
-                emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, TimeSpan.FromSeconds(2));
+                var emfunc = new FuncHelper.ExternalApiFunction<Customer, string, bool>(eMasterProvider.SendData);
+                emResponse = FuncHelper.DoFuncWithRetry(emfunc, _customer, out requestUrl, TimeSpan.FromSeconds(2));
             }
 
             // Send to GRG API
             IProvider grassRootsProvider = new GrassRootsProvider();
-            Func<Customer, bool> grgfunc = grassRootsProvider.SendData;
-            var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, TimeSpan.FromSeconds(2));
+            var grgfunc = new FuncHelper.ExternalApiFunction<Customer, string, bool>(grassRootsProvider.SendData);
+            var grgResponse = FuncHelper.DoFuncWithRetry(grgfunc, _customer, out requestUrl, TimeSpan.FromSeconds(2));
 
             Log.Info("Response: " + grgResponse);
 
             if (!grgResponse)
-                return isComplete;
+            {
+                var errorEmailSubject = Config.ErrorEmailSubject;
+                var errorEmailDestination = Config.ErrorEmailDestination;
+                var errorEmailText = requestUrl;
+                MandrillHelper.SendEmail(errorEmailDestination, errorEmailSubject, null, "An error occured while processing the following URL:\r\n\r\n" + errorEmailText);
+            }
 
             string readHTMLFile;
             string readTextFile;

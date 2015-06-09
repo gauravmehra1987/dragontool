@@ -9,6 +9,6 @@ namespace Combobulator.Business.Interfaces
 {
     public interface IProvider
     {
-        bool SendData(Customer customer);
+        bool SendData(Customer customer, out string requestUrl);
     }
 }

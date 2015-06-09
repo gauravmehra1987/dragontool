@@ -15,9 +15,10 @@ namespace Combobulator.Business.Services.Providers
     {
         public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public bool SendData(Customer customer)
+        public bool SendData(Customer customer, out string requestUrl)
         {
             var isComplete = false;
+            requestUrl = string.Empty;
             try
             {
                 var result = new GRGViewModel
@@ -77,7 +78,7 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("dealer", customer.Dealer)
                     .AddParameter("model", customer.Car.Code);
 
-                var requestUrl = string.Format(url + "&comments=##{0}##", json);
+                requestUrl = string.Format(url + "&comments=##{0}##", json);
 
                 Log.Info("Request URL:" + requestUrl);
 
