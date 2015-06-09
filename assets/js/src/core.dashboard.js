@@ -18,7 +18,13 @@ function Dashboard() {
      * Any color passed in, will change all the nessisary elements back ground colors/paths/strokes/borders etc
      * @param {String} Color
     */
+	previousColor = '';
+	
 	this.colors = function( color ) {
+		if (color == previousColor) {
+			return;
+		}
+		previousColor = color;
 		//
 		// Background colors
 		$( '.switch-bg' ).css({

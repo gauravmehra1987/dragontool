@@ -84,13 +84,32 @@ function UI() {
 		$body.find( '[data-panel-name="' + panel + '"]' ).addClass( 'panel-active' );
 
 	}
+	
+	this.currentScale = 0;
+	this.fudgeMpg = function() {
+		$('.control.mpg').prop('class', 'control mpg scale-' + _this.currentScale);
+		if (_this.currentScale == 14) {
+			$('.control.mpg').prop('class', 'control mpg scale-0');
+			$sys.toggleClass( 'hidden' );
+			setTimeout(function() {introAnimations.init();}, 2000);
+		}
+		++_this.currentScale;
+		setTimeout(_this.fudgeMpg, 1000);
+	}
 
 	// Image preloader
 
 	this.preloadImages = function() {
 
 		this.loadSVGs();
-		$(window).load(function(){$sys.toggleClass( 'hidden' );});
+		$(window).load(function(){
+			
+			
+			$sys.toggleClass( 'hidden' );
+			setTimeout(function() {introAnimations.init();}, 500);
+			
+		} );
+	// Initialize intro animations on the dashboard
 		
 		
 	}

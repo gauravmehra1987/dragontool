@@ -77,8 +77,6 @@ $( window ).load( function() {
 	// Which will activate all the dials and change the dashboard color
 	dashboard.init();
 
-	// Initialize intro animations on the dashboard
-	introAnimations.init();
 
 	// Initialize UI
 	// Which will show the first panel, passed in

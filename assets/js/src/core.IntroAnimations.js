@@ -116,7 +116,7 @@ function IntroAnimations() {
 					x = Math.ceil(this.Counter);
 					//
 					// And use the iterator to give the wrapper the correct class name
-					$wrap.removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
+					$wrap.addClass('scale-' + x).removeClassExcept( 'control mpg scale-' + x);
 				},
 				//
 				// Once the sequence is complete...
@@ -136,7 +136,7 @@ function IntroAnimations() {
 				easing: 'swing',
 				step: function () {
 					x = Math.ceil(this.Counter);
-					$wrap.removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
+					$wrap.addClass('scale-' + x).removeClassExcept( 'control mpg scale-' + x);
 				},
 				complete: function() {
 					$wrap.removeClassExcept( 'control mpg' );

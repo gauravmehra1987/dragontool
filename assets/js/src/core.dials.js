@@ -609,7 +609,7 @@ function Dials() {
 
 				// Update CSS classes
 
-				$( '.control.mpg' ).removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + css_name );
+				$( '.control.mpg' ).addClass('scale-' + css_name).removeClassExcept( 'control mpg scale-' + css_name );
 				$( '#mpg_value' ).text( v );
 
 				// Google Analytics
