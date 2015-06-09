@@ -324,6 +324,7 @@
     <Content Include="Assets\email\btn-twt.gif" />
     <Content Include="Assets\email\chevg.gif" />
     <Content Include="Assets\email\chevronb.gif" />
+    <Content Include="Assets\email\chevronw.gif" />
     <Content Include="Assets\email\convertible_mar15.jpg" />
     <Content Include="Assets\email\countryman_mar15.jpg" />
     <Content Include="Assets\email\coupe_mar15.jpg" />
