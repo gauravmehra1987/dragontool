@@ -72,6 +72,7 @@ grunt.registerTask( 'compile-dev',	[
 
 	'less:dev',
 	'concat',
+	'imageEmbed'
 
 ] );
 
@@ -79,13 +80,14 @@ grunt.registerTask( 'compile-dist',	[
 
 	'less:dist',
 	'concat',
+	'imageEmbed',
 	'uglify',
 
 ] );
 
 grunt.registerTask( 'compile',	[ 'compile-dev' ] );
 
-grunt.registerTask( 'build-staging',	[ 'compile-dev','imageEmbed', 'dotnet' ] );
+grunt.registerTask( 'build-staging',	[ 'compile-dev', 'dotnet' ] );
 
 grunt.registerTask( 'build-live',	[ 'compile-dist', 'dotnet' ] );
 
