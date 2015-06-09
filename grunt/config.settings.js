@@ -89,8 +89,17 @@ grunt.config.merge( {
 		}
 
 	},
-
-	// Icons
+imageEmbed: {
+    dist: {
+      src: [ "assets/css/style.css" ],
+      dest: "assets/css/style.css",
+      options: {
+        deleteAfterEncoding : false,
+        preEncodeCallback: function (filename) { return true; }
+      }
+    }
+  },
+		// Icons
 
 	webfont: {
 

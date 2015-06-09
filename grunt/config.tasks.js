@@ -1,7 +1,7 @@
 /*! (c) 2015 John Przeslakowski | Code released under the MIT license | goodpixels.co.uk */
 	
 // Placeholder task
-	
+grunt.loadNpmTasks('grunt-image-embed');
 grunt.registerTask( 'noop', 'Empty task.', function() {} );
 
 // Other tasks - to be updated with latest tasks
@@ -85,7 +85,7 @@ grunt.registerTask( 'compile-dist',	[
 
 grunt.registerTask( 'compile',	[ 'compile-dev' ] );
 
-grunt.registerTask( 'build-staging',	[ 'compile-dev', 'dotnet' ] );
+grunt.registerTask( 'build-staging',	[ 'compile-dev','imageEmbed', 'dotnet' ] );
 
 grunt.registerTask( 'build-live',	[ 'compile-dist', 'dotnet' ] );
 
