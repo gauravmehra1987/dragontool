@@ -94,7 +94,7 @@ var Mini	= {
 	// Third party ID's
 	thirdParty: {
 		facebookID:		815494961880957,
-		analyticsID:	'UA-63131183-1'
+		analyticsID:	'UA-62062073-2'
 	},
 	//
 	// Browser and device information
