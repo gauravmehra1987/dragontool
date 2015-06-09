@@ -10,8 +10,14 @@ namespace Combobulator.Common.Helpers
             mail.To.Add(to);
             mail.From = new MailAddress(Config.FromAddress, Config.FromName);
             mail.Subject = subject;
-            mail.AddView(htmlBody, "text/html");
-            mail.AddView(textBody, "text/plain");
+            if (!string.IsNullOrEmpty(htmlBody))
+            {
+                mail.AddView(htmlBody, "text/html");
+            }
+            if (!string.IsNullOrEmpty(textBody))
+            {
+                mail.AddView(textBody, "text/plain");
+            }
 
             using (var smtp = new SmtpClient())
             {
