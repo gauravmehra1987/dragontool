@@ -3,7 +3,7 @@
 A car picker tool for Mini.
 
 1. [Requirements](#requirements)
-2. [Project overview](#project-overview)
+2. [Front End Project overview](#project-overview)
 	1. [Scripts / libraries used in the project](#scripts-libraries-used-in-the-project)
 	2. [Directory structure](#directory-structure)	
 3. [Installation](#installation)
@@ -53,7 +53,7 @@ A car picker tool for Mini.
 > ##### Note
 > Steps 4 and 5 won't work if you're on a Windows machine. [Click here](#addendum) to read on how to compile the project in Windows.
 
-## Project overview
+## Front End Project overview
 
 ### Scripts / libraries used in the project
 
@@ -150,7 +150,8 @@ Task				| Description
 `templates` 		| generates .NET views and copies them into the `dotnet/` folder.
 `dotnet` 			| same as above but also copies the assets over to the `dotnet/` folder.
 `compile` 			| compiles JavaScript and LESS files without minification.
-`build`				| compiles, then minifies JavaScript and LESS and runs `grunt dotnet` afterwards.
+`build-staging`		| compiles and runs `grunt dotnet` afterwards.
+`build-live`		| compiles, then minifies JavaScript and LESS and runs `grunt dotnet` afterwards.
 
 Typing `grunt` will run `grunt compile` and then `grunt watch`.
 
@@ -287,4 +288,3 @@ You can do it by changing `settings.iconEngine` to `node` in `combobulator.json`
 
 ---
 
-<small>&copy; 2014-2015 by [John Przeslakowski](http://goodpixels.co.uk).</small>
