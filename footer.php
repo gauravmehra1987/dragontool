@@ -14,8 +14,8 @@
             })();
         </script>
 
-        <script>window.fbAsyncInit=function(){FB.init({appId:Mini.thirdParty.facebookID,xfbml:!0,version:"v2.1"})},function(a,b,c){var d,e=a.getElementsByTagName(b)[0];a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
-        <!--[if gt IE 8]><!--><script>window.twttr=function(a,b,c){var d,e=a.getElementsByTagName(b)[0],f=window.twttr||{};if(!a.getElementById(c))return d=a.createElement(b),d.id=c,d.src="https://platform.twitter.com/widgets.js",e.parentNode.insertBefore(d,e),f._e=[],f.ready=function(a){f._e.push(a)},f}(document,"script","twitter-wjs");</script><!--<![endif]-->
+        <script>window.fbAsyncInit=function(){FB.init({appId:Mini.thirdParty.facebookID,xfbml:!0,version:"v2.1"})},function(a,b,c){var d,e=a.getElementsByTagName(b)[0];a.getElementById(c)||(d=a.createElement(b),d.id=c,d.async=true,d.src="//connect.facebook.net/en_US/sdk.js",e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
+        <!--[if gt IE 8]><!--><script>window.twttr=function(a,b,c){var d,e=a.getElementsByTagName(b)[0],f=window.twttr||{};if(!a.getElementById(c))return d=a.createElement(b),d.id=c,d.async=true,d.src="https://platform.twitter.com/widgets.js",e.parentNode.insertBefore(d,e),f._e=[],f.ready=function(a){f._e.push(a)},f}(document,"script","twitter-wjs");</script><!--<![endif]-->
 
 	</body>
 

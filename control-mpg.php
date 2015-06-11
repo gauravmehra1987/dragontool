@@ -1,7 +1,7 @@
 <div class="res-wrap">
 
 	<img src="assets/img/tpl-mpg.gif" class="img-base" />
-
+	<div style="visibility:hidden">
 	<div class="control mpg scale-0"><div class="indicators"></div></div>
 	<div class="control mpg scale-1"><div class="indicators"></div></div>
 	<div class="control mpg scale-2"><div class="indicators"></div></div>
@@ -16,6 +16,7 @@
 	<div class="control mpg scale-11"><div class="indicators"></div></div>
 	<div class="control mpg scale-12"><div class="indicators"></div></div>
 	<div class="control mpg scale-13"><div class="indicators"></div></div>
+	</div>
 	<div class="control mpg scale">
 		
 		<div class="scale">

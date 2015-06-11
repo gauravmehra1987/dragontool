@@ -95,7 +95,8 @@ imageEmbed: {
       dest: "assets/css/style.css",
       options: {
         deleteAfterEncoding : false,
-        preEncodeCallback: function (filename) { return true; }
+        preEncodeCallback: function (filename) { return true; },
+		maxImageSize: 32678
       }
     }
   },
@@ -215,7 +216,9 @@ imageEmbed: {
 		dist: {
 
 			options: {
-
+				
+				optimization: 100,
+				compress: true,
 				cleancss: true,
 				paths: [ '<%= project.paths.less %>' ]
 			
@@ -349,8 +352,9 @@ imageEmbed: {
 
 			options: {
 
-				preserveComments:	'some',
+				preserveComments:	false,
 				mangle:				true,
+				screwIE8:			true,
 				compress: {
 
 					sequences:		true,
