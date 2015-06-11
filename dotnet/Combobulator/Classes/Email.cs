@@ -68,7 +68,7 @@ namespace Combobulator.Classes
                 .Replace("[[TelephoneHome]]", customer.TelephoneHome)
                 .Replace("[[TelephoneMobile]]", customer.TelephoneMobile)
                 .Replace("[[TelephoneWork]]", customer.TelephoneWork)
-                .Replace("[[CarName]]", customer.Car.Name);
+                .Replace("[[CarName]]", customer.Car.Name.ToUpper());
 
                      //.Replace("[[RequestCallback]]", customer.RequestCallback ? "Yes" : "No")
                      //.Replace("[[RequestEarlyRedemption]]", customer.RequestEarlyRedemption ? "Yes" : "No");
