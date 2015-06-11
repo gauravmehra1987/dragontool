@@ -16,20 +16,13 @@ namespace Combobulator.Controllers
             Customer customer = null;
             if (!string.IsNullOrEmpty(Request.QueryString["c"]))
             {
-                try
+                int customerId;
+                var isInteger = Int32.TryParse(Request.QueryString["c"], out customerId);
+                if (isInteger)
                 {
-                    int customerId;
-                    var isInteger = Int32.TryParse(Request.QueryString["c"], out customerId);
-                    if (isInteger)
-                    {
-                        var command = new GetCustomerDataCommand(customerId);
-                        customer = command.Execute();
-                        ViewBag.UserId = customerId.ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("GetCustomerById", ex);
+                    var command = new GetCustomerDataCommand(customerId);
+                    customer = command.Execute();
+                    ViewBag.UserId = customerId.ToString();
                 }
             }
             ViewBag.FirstName = customer != null ? customer.FirstName : "";

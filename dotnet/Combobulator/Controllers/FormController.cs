@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using Combobulator.Business.Commands;
 using Combobulator.Business.ViewModels;
@@ -91,66 +93,56 @@ namespace Combobulator.Controllers
                 Response.TrySkipIisCustomErrors = true;
                 return Json(ModelState.AllErrors());
             }
-            try
+            var isPhone = viewModel.info.optout_phone == null;
+            var isPost = viewModel.info.optout_post == null;
+            var customer = new Customer
             {
-                var isPhone = viewModel.info.optout_phone == null;
-                var isPost = viewModel.info.optout_post == null;
-                var customer = new Customer
+                AddressLine1 = viewModel.info.address_1,
+                AddressLine2 = viewModel.info.address_2,
+                AddressLine3 = viewModel.info.address_3,
+                AddressPostcode = viewModel.info.postcode,
+                Dealer = viewModel.info.dealer,
+                Email = viewModel.info.email,
+                FirstName = viewModel.info.name,
+                LastName = viewModel.info.surname,
+                Title = viewModel.info.title,
+                TelephoneMobile = viewModel.info.tel_mobile,
+                TelephoneHome = viewModel.info.tel_home,
+                TelephoneWork = viewModel.info.tel_work,
+                AddressType = viewModel.info.address_type,
+                IsPhone = isPhone,
+                IsPost = isPost,
+                UserId = viewModel.info.userid,
+
+                Selections = new Selections
                 {
-                    AddressLine1 = viewModel.info.address_1,
-                    AddressLine2 = viewModel.info.address_2,
-                    AddressLine3 = viewModel.info.address_3,
-                    AddressPostcode = viewModel.info.postcode,
-                    Dealer = viewModel.info.dealer,
-                    Email = viewModel.info.email,
-                    FirstName = viewModel.info.name,
-                    LastName = viewModel.info.surname,
-                    Title = viewModel.info.title,
-                    TelephoneMobile = viewModel.info.tel_mobile,
-                    TelephoneHome = viewModel.info.tel_home,
-                    TelephoneWork = viewModel.info.tel_work,
-                    AddressType = viewModel.info.address_type,
-                    IsPhone = isPhone,
-                    IsPost = isPost,
-                    UserId = viewModel.info.userid,
-                    
-                    Selections = new Selections
+                    Capacity = string.Join(",", viewModel.input.seats),
+                    Luggage = viewModel.input.luggage,
+                    PriceRange = viewModel.input.price.ToString(),
+                    Performance = viewModel.input.speed,
+                    Use = viewModel.input.lifestyle,
+                    Economy = viewModel.input.mpg.ToString(),
+                    Options = new Options
                     {
-                        Capacity = string.Join(",", viewModel.input.seats),
-                        Luggage = viewModel.input.luggage,
-                        PriceRange = viewModel.input.price.ToString(),
-                        Performance = viewModel.input.speed,
-                        Use = viewModel.input.lifestyle,
-                        Economy = viewModel.input.mpg.ToString(),
-                        Options = new Options
-                        {
-                            AWD = viewModel.input.options.awd.ToString(),
-                            DT = viewModel.input.options.dt.ToString(),
-                            HP = viewModel.input.options.hp.ToString(),
-                            TP = viewModel.input.options.tp.ToString()
-                        }
-                        
+                        AWD = viewModel.input.options.awd.ToString(),
+                        DT = viewModel.input.options.dt.ToString(),
+                        HP = viewModel.input.options.hp.ToString(),
+                        TP = viewModel.input.options.tp.ToString()
                     }
-                };
-                var carModel = viewModel.car;
-                var command = new SendCustomerDataCommand(customer, carModel, Server.MapPath(Common.Config.EmailHTMLTemplate), Server.MapPath(Common.Config.EmailTextTemplate));
-                var dataSent = command.Execute();
-                if (!dataSent)
-                {
-                    Response.StatusCode = 500;
-                    Response.StatusDescription = "error";
-                    return Json("error");
+
                 }
-                Response.StatusCode = 201;
-                Response.StatusDescription = "success";
-                return Json("success");
-            }
-            catch (Exception ex)
+            };
+            var carModel = viewModel.car;
+            var command = new SendCustomerDataCommand(customer, carModel,
+                Server.MapPath(Common.Config.EmailHTMLTemplate), Server.MapPath(Common.Config.EmailTextTemplate));
+            var dataSent = command.Execute();
+            if (!dataSent)
             {
-                Log.Error(ex.Message);
-                Response.StatusCode = 500;
-                return Json("error");
+                throw new HttpException((Int32) HttpStatusCode.InternalServerError, "An error occured sending data");
             }
+            Response.StatusCode = 201;
+            Response.StatusDescription = "success";
+            return Json("success");
         }
     }
 }

@@ -54,6 +54,13 @@
     <Reference Include="CsvHelper">
       <HintPath>..\packages\CsvHelper.2.10.0\lib\net40-client\CsvHelper.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HtmlSanitizationLibrary">
       <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
       <Private>True</Private>
