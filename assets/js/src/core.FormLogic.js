@@ -405,7 +405,7 @@ function FormLogic() {
 	}
 	
 	this.enableUserTracking = function() {
-		$('#results_recombobulate a').attr('href', '/' + window.location.search);
+		$('#results_recombobulate a,#results_back a').attr('href', '/' + window.location.search);
 	}
 
 
