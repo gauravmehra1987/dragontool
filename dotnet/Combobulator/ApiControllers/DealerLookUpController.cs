@@ -61,7 +61,7 @@ namespace Combobulator.ApiControllers
                         Latitude = x.Latitude,
                         Distance = x.Distance,
                         Address = x.Address
-                    }).OrderByDescending(x => x.Distance).ToList();
+                    }).OrderBy(x => x.Distance).ToList();
 
                     double time;
                     var isParsed = double.TryParse(Common.Config.CacheExpiration, out time);
@@ -110,7 +110,7 @@ namespace Combobulator.ApiControllers
                         Longitude = double.Parse(loc.longitude),
                         Name = loc.name,
                         Distance = double.Parse(loc.distance)
-                    }).OrderByDescending(x => x.Distance).ToList();
+                    }).OrderBy(x => x.Distance).ToList();
 
                     //Save Result to DB
                     foreach (var dealer in viewModel)
