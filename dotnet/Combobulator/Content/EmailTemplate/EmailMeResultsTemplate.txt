@@ -23,7 +23,7 @@ MINI.CO.UK
 
 YOUR COMBOBULATION. 
 
-Hello [[Firstname]],
+HELLO [[Firstname]],
 
 Thanks for taking a spin on the MINI Combobulator. Looks like the [[CarName]] caught your eye. 
 

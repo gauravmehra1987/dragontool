@@ -149,16 +149,16 @@ namespace Combobulator.Business.Commands
             var hexColour = colour.DisplayName();
 
             htmlBody = htmlBody.Replace("[[Title]]", _customer.Title)
-                .Replace("[[Firstname]]", _customer.FirstName)
-                .Replace("[[Lastname]]", _customer.LastName)
+                .Replace("[[Firstname]]", _customer.FirstName.ToUpper())
+                .Replace("[[Lastname]]", _customer.LastName.ToUpper())
                 .Replace("[[CarName]]", (Config.Brand + " " + car.EngineName + " " + car.Model).ToUpper())
                 .Replace("[[Location]]", assetPath)
                 .Replace("[[CarImage]]", carPath)
                 .Replace("[[Colour]]", hexColour);
 				
             textBody = textBody.Replace("[[Title]]", _customer.Title)
-                .Replace("[[Firstname]]", _customer.FirstName)
-                .Replace("[[Lastname]]", _customer.LastName)
+                .Replace("[[Firstname]]", _customer.FirstName.ToUpper())
+                .Replace("[[Lastname]]", _customer.LastName.ToUpper())
                 .Replace("[[CarName]]", (Config.Brand + " " + car.EngineName + " " + car.Model).ToUpper())
                 .Replace("[[Location]]", assetPath)
                 .Replace("[[CarImage]]", carPath)
