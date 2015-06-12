@@ -391,7 +391,6 @@
     <Content Include="Assets\img\ministry-of-finance-ie8.png" />
     <Content Include="Assets\img\ministry-of-finance.png" />
     <Content Include="Assets\img\not_found.gif" />
-    <Content Include="Assets\img\sprites\sprites.png" />
     <Content Include="Assets\img\teleport-scanlines.jpg" />
     <Content Include="Assets\img\tpl-bumper-wide.gif" />
     <Content Include="Assets\img\tpl-bumper.gif" />
@@ -623,6 +622,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\img\sprites\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>

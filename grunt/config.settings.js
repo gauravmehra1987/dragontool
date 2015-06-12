@@ -89,17 +89,30 @@ grunt.config.merge( {
 		}
 
 	},
-imageEmbed: {
-    dist: {
-      src: [ "assets/css/style.css" ],
-      dest: "assets/css/style.css",
-      options: {
-        deleteAfterEncoding : false,
-        preEncodeCallback: function (filename) { return true; },
-		maxImageSize: 32678
-      }
-    }
-  },
+	imageEmbed: {
+		dist: {
+		  src: [ "assets/css/style.css" ],
+		  dest: "assets/css/style.css",
+		  options: {
+			deleteAfterEncoding : false,
+			preEncodeCallback: function (filename) { return true; },
+			maxImageSize: 32678
+		  }
+		}
+	  },
+	  criticalcss: {
+		custom: {
+		  options: {
+			url: "http://localhost:8882",
+            width: 1200,
+            height: 900,
+            outputfile: "test/critical.css",
+            filename: "assets/css/style.css", // Using path.resolve( path.join( ... ) ) is a good idea here
+            buffer: 800*1024,
+            ignoreConsole: false
+		  }
+		}
+	  },
 		// Icons
 
 	webfont: {

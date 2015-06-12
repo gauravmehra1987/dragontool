@@ -3,6 +3,7 @@
 // Placeholder task
 grunt.loadNpmTasks('grunt-image-embed');
 grunt.registerTask( 'noop', 'Empty task.', function() {} );
+grunt.loadNpmTasks('grunt-criticalcss');
 
 // Other tasks - to be updated with latest tasks
 
