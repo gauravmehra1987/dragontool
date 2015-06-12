@@ -12,6 +12,7 @@
         public string request_callback { get; set; }
         public string request_early_redemption { get; set; }
 
+        public string email_communication { get; set; }
         public string phone_communication { get; set; }
         public string post_communication { get; set; }
 

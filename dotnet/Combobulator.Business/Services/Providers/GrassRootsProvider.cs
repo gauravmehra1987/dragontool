@@ -72,7 +72,7 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("worktelephone", customer.TelephoneWork)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
-                    .AddParameter("emailmarketing", "I")
+                    .AddParameter("emailmarketing", customer.IsEmail ? "I" : "O")
                     .AddParameter("postmarketing", customer.IsPost ? "I" : "O")
                     .AddParameter("telephonemarketing", customer.IsPhone ? "I" : "O")
                     .AddParameter("dealer", customer.Dealer)

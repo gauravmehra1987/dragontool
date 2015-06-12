@@ -274,8 +274,18 @@
 
 			<div id="optout_chooser" class="form-control form-control-checkbox">
 
-				<p class="notice">Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
+				<p class="notice">Just pop a tick in the box to opt-in for future communications.</p>
+				
+				<div class="checkbox">
 
+					<!-- build:remove --><input id="optout_email" name="optout" type="checkbox" value="email" /><!-- /build -->
+					<!-- build:template
+					<%= form.field.optout.email %>
+					/build -->
+					<label for="optout_email">by email</label>
+
+				</div>
+				
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="optout_phone" name="optout" type="checkbox" value="phone" /><!-- /build -->

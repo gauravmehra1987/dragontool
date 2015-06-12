@@ -40,6 +40,7 @@
 		"finance":		"@Html.TextBoxFor(model => model.RequestCallback, new {@type=\"checkbox\", @id = \"finance\", @Name = \"finance\", @value = \"1\", @checked=\"checked\"})",
 		"optout": {
 
+			"email":	"@Html.TextBoxFor(model => model.RequestCallback, new { @type = \"checkbox\", @id = \"optout_email\", @Name = \"optout_email\", @value = \"email\" })",
 			"phone":	"@Html.TextBoxFor(model => model.RequestCallback, new { @type = \"checkbox\", @id = \"optout_phone\", @Name = \"optout_phone\", @value = \"phone\" })",
 			"post":		"@Html.TextBoxFor(model => model.EmailResults, new { @type = \"checkbox\", @id = \"optout_post\", @Name = \"optout_post\", @value = \"post\" })"
 

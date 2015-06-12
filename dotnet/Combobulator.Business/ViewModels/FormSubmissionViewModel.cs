@@ -44,6 +44,7 @@ namespace Combobulator.Business.ViewModels
 
         public bool finance { get; set; }
 
+        public string optout_email { get; set; }
         public string optout_phone { get; set; }
         public string optout_post { get; set; }
     }

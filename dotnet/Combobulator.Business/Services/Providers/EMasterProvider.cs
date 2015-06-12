@@ -27,8 +27,9 @@ namespace Combobulator.Business.Services.Providers
             try
             {
                 //var isFinance = customer.IsFinance;
+                var isEmail = customer.IsEmail;
                 var isPhone = customer.IsPhone;
-                var isPost = customer.IsPhone;
+                var isPost = customer.IsPost;
 
                 var viewModel = new ResultViewModel
                 {
@@ -42,6 +43,7 @@ namespace Combobulator.Business.Services.Providers
                     request_callback = "false",
                     request_early_redemption = "false",
 
+                    email_communication = isEmail ? "true" : "false",
                     phone_communication = isPhone ? "true" : "false",
                     post_communication = isPost ? "true" : "false",
 

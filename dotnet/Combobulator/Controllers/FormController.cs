@@ -93,6 +93,7 @@ namespace Combobulator.Controllers
                 Response.TrySkipIisCustomErrors = true;
                 return Json(ModelState.AllErrors());
             }
+            var isEmail = viewModel.info.optout_email == null;
             var isPhone = viewModel.info.optout_phone == null;
             var isPost = viewModel.info.optout_post == null;
             var customer = new Customer
@@ -110,6 +111,7 @@ namespace Combobulator.Controllers
                 TelephoneHome = viewModel.info.tel_home,
                 TelephoneWork = viewModel.info.tel_work,
                 AddressType = viewModel.info.address_type,
+                IsEmail = isEmail,
                 IsPhone = isPhone,
                 IsPost = isPost,
                 UserId = viewModel.info.userid,
