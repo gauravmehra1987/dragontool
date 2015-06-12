@@ -30,7 +30,7 @@
 		<meta property="og:image" content="https://minicombobulator.co.uk/Assets/social/combobulator_social_200x200.png" />
 		<meta property="og:url" content="https://minicombobulator.co.uk/" />
 		<meta property="og:site_name" content="THE MINI COMBOBULATOR." />
-		<meta property="og:description" content="Want a shiny new MINI, but don't know your Countryman from your Convertible? Let the Combobulator find the right model for you, at the touch of a button. Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two." />
+		<meta property="og:description" content="Want a shiny new MINI, but don't know your MINI Countryman from your MINI Paceman? Let the Combobulator find the right model for you, at the touch of a button. Choose how much you'd like to spend, how turbo-charged you want your engine, and throw in an extra or two." />
 		
 		<!--[if lt IE 10]>
 		<!-- build:css Assets/css/ie.css --><link href="assets/css/ie.css" rel="stylesheet" /><!-- /build -->
