@@ -25,7 +25,7 @@ YOUR COMBOBULATION.
 
 Hello [[Firstname]],
 
-Thanks for navigating the MINI Combobulator. Looks like the [[CarName]] caught your eye. 
+Thanks for taking a spin on the MINI Combobulator. Looks like the [[CarName]] caught your eye. 
 
 IS IT THE ONE?
 
