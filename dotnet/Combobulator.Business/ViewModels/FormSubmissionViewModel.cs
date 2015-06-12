@@ -16,10 +16,8 @@ namespace Combobulator.Business.ViewModels
         [Required]
         public string title { get; set; }
         [Required]
-        [NameValidator]
         public string name { get; set; }
         [Required]
-        [NameValidator]
         public string surname { get; set; }
         [Required]
         public string address_1 { get; set; }
@@ -31,7 +29,6 @@ namespace Combobulator.Business.ViewModels
         [Required]
         public string postcode_search { get; set; }
         [Required]
-        [PostcodeValidator]
         [Compare("postcode_search", ErrorMessage = "Postcode does not match.")]
         public string postcode { get; set; }
         [Required]
@@ -41,11 +38,8 @@ namespace Combobulator.Business.ViewModels
         public string dealer { get; set; }
 
         [Required]
-        [PhoneValidator]
         public string tel_home { get; set; }
-        [PhoneValidator]
         public string tel_work { get; set; }
-        [PhoneValidator]
         public string tel_mobile { get; set; }
 
         public bool finance { get; set; }

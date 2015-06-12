@@ -6,29 +6,25 @@ $.validator.setDefaults( {
 
 		'name':				{
 
-			required: true,
-			regexName: true
+			required: true
 
 		},
 		'surname':			{
 
-			required: true,
-			regexSurame: true
+			required: true
 
 		},
 		'address_1':		{ required: true },
 		'tel_home':			{
 
-			required: true,
-			regexPhoneUK: true
+			required: true
 
 		},
 		'dealer':			{ required: true },
 		'title':			{ required: true },
 		'postcode_search':	{
 
-			required: true,
-			regexPostcode: true
+			required: true
 
 		},
 		'email':			{

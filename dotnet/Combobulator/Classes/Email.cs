@@ -33,9 +33,9 @@ namespace Combobulator.Classes
                 readFile = reader.ReadToEnd();
             }
             strBody = readFile;
-            strBody = strBody.Replace("[[Title]]", customer.Title)
-                     .Replace("[[Firstname]]", customer.FirstName)
-                     .Replace("[[Lastname]]", customer.LastName)
+            strBody = strBody.Replace("[[Title]]", customer.Title.ToUpper())
+                     .Replace("[[Firstname]]", customer.FirstName.ToUpper())
+                     .Replace("[[Lastname]]", customer.LastName.ToUpper())
                      .Replace("[[ModelCode]]", car.Code)
                      .Replace("[[Model]]", car.Name)
                      .Replace("[[Cost]]", car.Cost.ToString())
