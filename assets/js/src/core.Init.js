@@ -1,3 +1,18 @@
+// Horrible hack to clear the local cache after a day. Implimented an hour before departure. I am sorry.
+var lastAccess = store.get('last-access');
+if (lastAccess !== undefined) {
+	expire = new Date(parseInt(lastAccess) + 86400000);
+	var currentDate = new Date();
+	if (expire < currentDate) {
+		store.clear();
+	}
+}
+else {
+	store.clear();
+}
+store.set('last-access', +new Date())
+
+
 // Setting up some global variables...
 // Creating instances of all the functions and saving as global variables
 var ie				= new IE();
