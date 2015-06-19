@@ -13,15 +13,11 @@
 		
 	</ul><!-- end ul.social -->
 
-</header><!-- end header.layout-header -->
+</header><!-- end header.layout-header -->
 
-	@model Combobulator.Business.ViewModels.FormViewModel
-@{ViewBag.Title = "MINI Combobulator Form"; }
+	@model Combobulator.Business.ViewModels.FormViewModel@{ViewBag.Title = "MINI Combobulator Form"; }
 
-@using (Ajax.BeginForm("Submit", "Form", new AjaxOptions { HttpMethod = "POST" }, new {autocomplete ="off"}))
-{
-@Html.AntiForgeryToken()
-@Html.ValidationSummary(true)
+@using (Ajax.BeginForm("Submit", "Form", new AjaxOptions { HttpMethod = "POST" }, new {autocomplete ="off"})){@Html.AntiForgeryToken()@Html.ValidationSummary(true)
 
 
 
@@ -225,8 +221,14 @@
 
 			<div id="optout_chooser" class="form-control form-control-checkbox">
 
-				<p class="notice">Just pop a tick in the relevant box if you'd prefer NOT to be contacted</p>
+				<p class="notice">Just pop a tick in the box to opt-in for future communications.</p>
+				
+				<div class="checkbox">
+					@Html.TextBoxFor(model => model.RequestCallback, new { @type = "checkbox", @id = "optout_email", @Name = "optout_email", @value = "email" })
+					<label for="optout_email">by email</label>
 
+				</div>
+				
 				<div class="checkbox">
 					@Html.TextBoxFor(model => model.RequestCallback, new { @type = "checkbox", @id = "optout_phone", @Name = "optout_phone", @value = "phone" })
 					<label for="optout_phone">by phone</label>
@@ -337,7 +339,7 @@
 
 </div><!-- end div.layout -->
 
-}
+}
 
 	<footer class="layout-footer">
 		
