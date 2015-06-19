@@ -60,10 +60,10 @@ var carColors = {
 	'Jungle Green':			'#426046',
 	
 	'Blazing Red':			'#d71d24',
-	'Chili red':			'#d71d24',
+	'Chili Red':			'#d71d24',
 	
-	'Pepper white':			'#e4dfce',
-	'Light white':			'#e4dfce',
+	'Pepper White':			'#e4dfce',
+	'Light White':			'#e4dfce',
 
 	// Extra colors
 	'Toy brown':			'#47322e',

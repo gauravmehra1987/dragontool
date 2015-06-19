@@ -60,10 +60,10 @@ var carColors = {
 	'Jungle Green':			'#426046',
 	
 	'Blazing Red':			'#d71d24',
-	'Chili red':			'#d71d24',
+	'Chili Red':			'#d71d24',
 	
-	'Pepper white':			'#e4dfce',
-	'Light white':			'#e4dfce',
+	'Pepper White':			'#e4dfce',
+	'Light White':			'#e4dfce',
 
 	// Extra colors
 	'Toy brown':			'#47322e',
@@ -2518,6 +2518,8 @@ function Dashboard() {
 		//
 		// If we have a car code, set the 'color' to the color of that car, if not set 'color' to false
 		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
+
+		console.log(">>> activateDashColor >>> carCode: " + carCode + ", color: " + color);
 		//
 		// If 'color' is set above, set the dashboard to that color, otherwise set a hard coded color
 		var dashColor = ( color ) ? color : 'Blazing Red';
