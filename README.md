@@ -13,6 +13,7 @@ A car picker tool for Mini.
 	3. [Windows workflow](#windows-workflow)
 	4. [Rendering Razor views and copying assets](#rendering-razor-views-and-copying-assets)
 5. [.NET integration](#net-integration)
+6. [CSV data import](#csv-data-import)
 6. [Troubleshooting](#troubleshooting)
 
 > ##### Disclaimer
@@ -261,6 +262,28 @@ The last thing we need to do, is to remove the static HTML / PHP code, by wrappi
 
 > ##### <span style="color: firebrick">Warning</span>
 > **Never** make direct changes to any files in the `dotnet/Combobulator/Views/` as they will be removed each time `grunt generate` is run. Moreover, making changes inside that folder will make it difficult to keep both the front-end and the back-end in sync. Feel free to write and test *Razor* syntax in those files, but once you're finished, copy them over to a corresponding `*.json` file before committing your changes.
+
+## CSV data import
+
+Data comes from the client (via the PM and AM teams) in CSV format, exported from Excel. To import this there is an `ImportController` excluded from the C# project — simply follow these steps:
+
+1. Open the CSV file in your text editor of choice.
+1. There is more than one Price column in the source data; you may need to change `Price` to `Finance_Price`.
+1. Save the file in `~/App_Data`, converting it to UTF-8.
+1. In SQL against your "local" database (which should hopefully be our shared dev SQL server Justforkix):
+   
+   ```
+   Delete From Cars;
+   Delete From Finances;
+   ```
+1. In the C# project, include the `ImportController` back into the solution and Build or Debug so you can access it in a browser.
+1. Go to [your local instance of `~/Import?type=csv`](http://localhost:1896/Import?type=csv), which currently provides no output. (We should fix this.)
+1. **Make sure you re-exclude the `ImportController` from the solution**, so it never goes live!
+1. From Visual Studio, generate `Insert` scripts for your "local" `Cars` and `Finance` tables.
+1. Execute these `Insert` scripts (deleting first, if the scripts do not do so) on the Dev and QA database — database `MINI_FS_QA` on Rackspace Shared Windows Staging, then test on [Dev](http://minifs-dev.id-staging.com/).
+1. Once you're happy with the content on Dev, check on [QA](http://minifs-qa.id-staging.com/), if the codebase differs.
+1. Once you're happy with the content on QA, execute the scripts (or DTS the tables `Cars` and `Finance`) onto Staging — database `MINI_FS` on the same server, and test on [Staging](http://minifs.id-staging.com/).
+1. When everything is finally signed off, deploy those changes to Production in the same manner.
 
 ## Troubleshooting
 
