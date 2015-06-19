@@ -94,7 +94,7 @@ var Mini	= {
 	// Third party ID's
 	thirdParty: {
 		facebookID:		815494961880957,
-		analyticsID:	'UA-63131183-1'
+		analyticsID:	'UA-62062073-2'
 	},
 	//
 	// Browser and device information
@@ -1045,8 +1045,6 @@ function DataLogic() {
 				// convert the dataset value into an array
 				var numberArray = Helpers.convertValueToArray(dValue);
 
-				// ensure the query number is a string for matching
-				qValue = qValue.toString();
 
 				var matchAccept = function(){
 					Filter.addObjectToCollection(obj);
@@ -1058,6 +1056,12 @@ function DataLogic() {
 					console.log(qValue)
 					console.log(dValue)
  				}
+			
+				if (qValue === undefined) {
+					return matchAccept();
+				}
+				// ensure the query number is a string for matching
+				qValue = qValue.toString();
 
 				return !!Helpers.areValuesValid(dValue, qValue) && ( Helpers.doValuesMatch(numberArray, qValue) ? matchAccept() : matchReject() );
 			},
@@ -1307,19 +1311,23 @@ function FormLogic() {
 
 		finance.name = car.name;
 
-		finance.payment = Number(finance.payment).toFixed(2);
-		finance.price = Number(finance.price).toFixed(2);
-		finance.deposit = Number(finance.deposit).toFixed(2);
-		finance.contribution = Number(finance.contribution).toFixed(2);
-		finance.purchase_fee = Number(finance.purchase_fee).toFixed(2);
-		finance.final_payment = Number(finance.final_payment).toFixed(2);
+		finance.payment = _this.numberWithCommas(Number(finance.payment).toFixed(2));
+		finance.price = _this.numberWithCommas(Number(finance.price).toFixed(2));
+		finance.deposit = _this.numberWithCommas(Number(finance.deposit).toFixed(2));
+		finance.contribution = _this.numberWithCommas(Number(finance.contribution).toFixed(2));
+		finance.purchase_fee = _this.numberWithCommas(Number(finance.purchase_fee).toFixed(2));
+		finance.final_payment = _this.numberWithCommas(Number(finance.final_payment).toFixed(2));
 
-		finance.total_deposit	= Number(finance.total_deposit).toFixed(2);
-		finance.total_amount	= Number(finance.total_amount).toFixed(2);
-		finance.credit_charge 	= Number(finance.credit_charge).toFixed(2);
+		finance.total_deposit	= _this.numberWithCommas(Number(finance.total_deposit).toFixed(2));
+		finance.total_amount	= _this.numberWithCommas(Number(finance.total_amount).toFixed(2));
+		finance.credit_charge 	= _this.numberWithCommas(Number(finance.credit_charge).toFixed(2));
 		finance.terms			= car.terms;
 
 		return finance;
+	}
+	
+	this.numberWithCommas = function(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
 
@@ -1371,10 +1379,16 @@ function FormLogic() {
 
 			if ( ! _.isEmpty( addrObj[ key ] ) ) {
 
-				if ( key === 'Name' || key === 'Town' || key === 'Postcode' ) {
+				if ( key === 'Name' ) {
 
 					address += addrObj[ key ] + ', ';
 
+				}
+				else if (key === 'Address') {
+					
+					var parts = addrObj[ key ].split(';');
+					address += parts.slice(Math.max(parts.length - 2, 1)).join(', ') + ', '
+					
 				}
 
 			}
@@ -1616,10 +1630,25 @@ function FormLogic() {
 		});
 
 	}
+	
+	this.validateStoredInput = function() {
+		console.log(store.get( 'miniInput' ));
+		if (store.get( 'miniInput' ) === undefined && window.location.href.indexOf('/form') != -1) {
+			
+			window.location.href=window.location.href.replace('/form', '');
+			
+		}
+		
+	}
+	
+	this.enableUserTracking = function() {
+		$('#results_recombobulate a,#results_back a').attr('href', '/' + window.location.search);
+	}
 
 
 	this.init = function() {
-
+		_this.validateStoredInput();
+		_this.enableUserTracking();
 		_this.eventListeners();
 		_this.ajaxFormResults();
 		_this.activateForms();
@@ -1682,8 +1711,7 @@ function Dials() {
 			// Update the draggable object
 			_this.update();
 		}
-
-
+		
 		/**
 		 * GET SLOT VALUE
 		 * @return {String} Returns the value of the active slot (Man, Woman, Boy, Girl etc)
@@ -1714,13 +1742,14 @@ function Dials() {
 		var getSlotState = function( pos, height, padding ) {
 			//
 			// Current Position returns the absolute value of the position
-			var currentPosition = Math.abs( pos );
+			var currentPosition = pos - (height/2);
 			//
 			// Active Slot calculates the position and the height and rounds the number upwards
 			var activeSlot = Math.ceil( currentPosition / height );
 			//
+						
 			// Returns the active slot plus 1 (maybe because otherwise it would start at 0?)
-			return Math.ceil( activeSlot ) + 1;
+			return Math.abs( activeSlot ) + 1;
 		}
 
 
@@ -2152,7 +2181,7 @@ function Dials() {
 			}
 
 			// Google Analytics
-			var triggeredEvent = $slick.closest('.control-wrapper').attr('id');
+			var triggeredEvent = $($slick).closest('.control-wrapper').attr('id');
 			trackDialEvents( triggeredEvent );
 
 		}
@@ -2238,7 +2267,7 @@ function Dials() {
 
 				// Update CSS classes
 
-				$( '.control.mpg' ).removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + css_name );
+				$( '.control.mpg' ).addClass('scale-' + css_name).removeClassExcept( 'control mpg scale-' + css_name );
 				$( '#mpg_value' ).text( v );
 
 				// Google Analytics
@@ -2926,53 +2955,35 @@ function UI() {
 		$body.find( '[data-panel-name="' + panel + '"]' ).addClass( 'panel-active' );
 
 	}
+	
+	this.currentScale = 0;
+	this.fudgeMpg = function() {
+		$('.control.mpg').prop('class', 'control mpg scale-' + _this.currentScale);
+		if (_this.currentScale == 14) {
+			$('.control.mpg').prop('class', 'control mpg scale-0');
+			$sys.toggleClass( 'hidden' );
+			setTimeout(function() {introAnimations.init();}, 2000);
+		}
+		++_this.currentScale;
+		setTimeout(_this.fudgeMpg, 1000);
+	}
 
 	// Image preloader
 
 	this.preloadImages = function() {
 
 		this.loadSVGs();
-
-		// Preload images to avoid nasty visual glitches
-
-		sysMsg( 'Loading: 0%' );
-
-		$.get( path.preload, { type: 'svg' }, function( images ){
-
-			var loaded = 0;
-
-			$.map( images, function( el ) {
-
-				$.get( el, function() {
-
-					var img	= new Image();
-
-					img.src = el;
-
-					$( img ).on( 'load', function() {
-
-						loaded++;
-
-						var unit		= images.length / 100;
-						var percentage	= ( loaded / images.length ) * 100;
-						var progress	= 0;
-
-						progress = Math.floor( percentage );
-
-						sysMsg( 'Loading: '+ progress + '%' );
-
-						if( progress === 100 ) $sys.toggleClass( 'hidden' );
-
-					} );
-
-				} );
-
-			} );
-
+		$(window).load(function(){
+			
+			
+			$sys.toggleClass( 'hidden' );
+			setTimeout(function() {introAnimations.init();}, 500);
+			
 		} );
-
+	// Initialize intro animations on the dashboard
+		
+		
 	}
-
 	// Render results
 
 	this.render = function( car, related ) {
@@ -3579,7 +3590,7 @@ function IntroAnimations() {
 					x = Math.ceil(this.Counter);
 					//
 					// And use the iterator to give the wrapper the correct class name
-					$wrap.removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
+					$wrap.addClass('scale-' + x).removeClassExcept( 'control mpg scale-' + x);
 				},
 				//
 				// Once the sequence is complete...
@@ -3599,7 +3610,7 @@ function IntroAnimations() {
 				easing: 'swing',
 				step: function () {
 					x = Math.ceil(this.Counter);
-					$wrap.removeClassExcept( 'control mpg' ).addClass( 'control mpg scale-' + x );
+					$wrap.addClass('scale-' + x).removeClassExcept( 'control mpg scale-' + x);
 				},
 				complete: function() {
 					$wrap.removeClassExcept( 'control mpg' );
@@ -3857,6 +3868,21 @@ function IntroAnimations() {
 
 }
 
+// Horrible hack to clear the local cache after a day. Implimented an hour before departure. I am sorry.
+var lastAccess = store.get('last-access');
+if (lastAccess !== undefined) {
+	expire = new Date(parseInt(lastAccess) + 86400000);
+	var currentDate = new Date();
+	if (expire < currentDate) {
+		store.clear();
+	}
+}
+else {
+	store.clear();
+}
+store.set('last-access', +new Date())
+
+
 // Setting up some global variables...
 // Creating instances of all the functions and saving as global variables
 var ie				= new IE();
@@ -3936,8 +3962,6 @@ $( window ).load( function() {
 	// Which will activate all the dials and change the dashboard color
 	dashboard.init();
 
-	// Initialize intro animations on the dashboard
-	introAnimations.init();
 
 	// Initialize UI
 	// Which will show the first panel, passed in
@@ -4151,6 +4175,16 @@ function IE() {
 		$( document ).on( 'ready', function() { obj.flow(); } );
 
 	}
+	
+	if (!Array.prototype.indexOf) {
+	  Array.prototype.indexOf = function(obj, start) {
+		for (var i = (start || 0), j = this.length; i < j; i += 1) {
+		  if (this[i] === obj) { return i; }
+		}
+		return -1;
+	  }
+	}
+
 
 	// Return function
 
