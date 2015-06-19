@@ -89,7 +89,7 @@ $.validator.addMethod(
 	'regexName',
 	function(value, element, regexp) {
 		var check = false;
-		var re = new RegExp("^[a-zA-Z]'?([a-zA-Z]|\.| |-)+$");
+		var re = new RegExp("^[a-zA-Z]'?([a-zA-Z]|\.| |-)*$");
 		return this.optional(element) || re.test(value);
 	},
 	'Please enter a valid name.'
