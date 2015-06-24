@@ -78,7 +78,7 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("dealer", customer.Dealer)
                     .AddParameter("model", customer.Car.Code);
 
-                requestUrl = string.Format(url + "&comments=##{0}##", json);
+                requestUrl = string.Format(url + "&comments={0}", json);
 
                 Log.Info("Request URL:" + requestUrl);
 
