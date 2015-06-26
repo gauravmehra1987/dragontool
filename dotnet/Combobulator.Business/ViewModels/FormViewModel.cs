@@ -16,6 +16,7 @@ namespace Combobulator.Business.ViewModels
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string AddressLine3 { get; set; }
+        public string Town { get; set; }
         public string AddressPostcode { get; set; }
         public string Dealer { get; set; }
         public bool RequestCallback { get; set; }

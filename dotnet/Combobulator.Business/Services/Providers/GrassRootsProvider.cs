@@ -21,22 +21,23 @@ namespace Combobulator.Business.Services.Providers
             requestUrl = string.Empty;
             try
             {
+                var capacity = customer.Selections.Capacity.Split(',');
+
                 var result = new GRGViewModel
                 {
-                    model_name = customer.Car.Name ?? "",
-                    model_code = customer.Car.Code ?? "",
+                    model = customer.Car.Code ?? "",
                     luggage = customer.Selections.Luggage ?? "",
 
                     awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
                     dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
                     hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
-                    tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
+                    cn = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
 
-                    price_range = customer.Selections.PriceRange ?? "",
-                    economy = customer.Selections.Economy ?? "",
+                    price = customer.Selections.PriceRange ?? "",
+                    mpg = customer.Selections.Economy ?? "",
 
-                    capacity = customer.Selections.Capacity,
-                    performance = customer.Selections.Performance,
+                    capacity = capacity.CountCharacterFrequency(0),
+                    speed = customer.Selections.Performance,
                     use = customer.Selections.Use
                 };
 
@@ -52,8 +53,6 @@ namespace Combobulator.Business.Services.Providers
                         Config.SystemId, action, customer.UserId, Config.Random, json);
                 */
 
-                var town = customer.AddressLine3 ?? customer.AddressLine2;
-
                 var url = new Uri(Config.GrassRootsHostUrl)
                     .AddParameter("application", Config.GrassRootsAppName)
                     .AddParameter("form", Config.GrassRootsPDICode)
@@ -66,7 +65,7 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("address1", customer.AddressLine1)
                     .AddParameter("address2", customer.AddressLine2)
                     .AddParameter("address3", customer.AddressLine3)
-                    .AddParameter("town", town)
+                    .AddParameter("town", customer.Town)
                     .AddParameter("postcode", customer.AddressPostcode)
                     .AddParameter("hometelephone", customer.TelephoneHome.Replace(" ", ""))
                     .AddParameter("worktelephone", customer.TelephoneWork)

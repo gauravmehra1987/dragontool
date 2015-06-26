@@ -33,7 +33,8 @@
 			"postcode":		"@Html.TextBoxFor(model => model.AddressPostcode, new { type = \"text\", id = \"postcode\", Name = \"postcode\", placeholder = \"Postcode\" })",
 			"address1":		"@Html.TextBoxFor(model => model.AddressLine1, new { @type = \"text\", @id = \"address_1\", @Name = \"address_1\", @placeholder = \"Address line 1\", @disabled = \"disabled\" })",
 			"address2":		"@Html.TextBoxFor(model => model.AddressLine2, new { @type = \"text\", @id = \"address_2\", @Name = \"address_2\", @placeholder = \"Address line 2\", @disabled = \"disabled\" })",
-			"address3":		"@Html.TextBoxFor(model => model.AddressLine3, new { @type = \"text\", @id = \"address_3\", @Name = \"address_3\", @placeholder = \"Address line 3\", @disabled = \"disabled\" })"
+			"address3":		"@Html.TextBoxFor(model => model.AddressLine3, new { @type = \"text\", @id = \"address_3\", @Name = \"address_3\", @placeholder = \"Address line 3\", @disabled = \"disabled\" })",
+			"town":		"@Html.TextBoxFor(model => model.Town, new { @type = \"text\", @id = \"town\", @Name = \"town\", @placeholder = \"Town\", @disabled = \"disabled\" })"
 
 		},
 		

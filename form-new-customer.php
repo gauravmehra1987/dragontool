@@ -241,6 +241,17 @@
 				<span class="field-icon"></span>
 
 			</div>
+			
+			<div class="form-control form-control-input disabled append home full-width">
+
+				<!-- build:template
+				<%= form.field.address.town %>
+				/build -->
+
+				<!-- build:remove --><input type="text" id="town" name="town" placeholder="Town" disabled="disabled" /><!-- /build -->
+				<span class="field-icon"></span>
+
+			</div>
 
 			<div class="form-control form-control-input disabled append home full-width">
 

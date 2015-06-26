@@ -23,6 +23,7 @@ namespace Combobulator.Business.ViewModels
         public string address_1 { get; set; }
         public string address_2 { get; set; }
         public string address_3 { get; set; }
+        public string town { get; set; }
 
         public string address_type { get; set; }
 

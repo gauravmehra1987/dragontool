@@ -125,6 +125,8 @@ function FormLogic() {
 
 		address = address.substr( 0, address.length - 2 );
 
+		console.log(address);
+		
 		return address;
 
 	}
@@ -299,9 +301,11 @@ function FormLogic() {
 			
 			var postcode_search = $( '#postcode_search' ).val();
 
-			$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
-			$( form.address2 ).val( address.Town );
-			$( form.address3 ).val( address.County );
+			//$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
+			$( form.address1 ).val( address.Address1 );
+			$( form.address2 ).val( address.Address2 );
+			$( form.address3 ).val( address.Address3 );
+			$( form.town ).val( address.Town );
 			$( form.postcode ).val( postcode_search );
 
 		}
@@ -311,6 +315,7 @@ function FormLogic() {
 			$( form.address1 ).val( null );
 			$( form.address2 ).val( null );
 			$( form.address3 ).val( null );
+			$( form.town ).val( null );
 			$( form.postcode ).val( null );
 
 		}

@@ -675,11 +675,11 @@ function DashboardLogic() {
 			*/
 			function price( v ) {
 
-				if( v < 191 ) return 0;
-				if( v >= 191 && v < 216 ) return 1;
-				if( v >= 216 && v < 246 ) return 2;
-				if( v >= 246 && v < 270 ) return 3;
-				if( v >= 270 && v < 295 ) return 4;
+				if( v < 190 ) return 0;
+				if( v >= 191 && v < 215 ) return 1;
+				if( v >= 216 && v < 245 ) return 2;
+				if( v >= 246 && v < 269 ) return 3;
+				if( v >= 270 && v < 294 ) return 4;
 				if( v >= 295 ) return 5;
 			}
 
@@ -1358,6 +1358,8 @@ function FormLogic() {
 
 		address = address.substr( 0, address.length - 2 );
 
+		console.log(address);
+		
 		return address;
 
 	}
@@ -1532,9 +1534,11 @@ function FormLogic() {
 			
 			var postcode_search = $( '#postcode_search' ).val();
 
-			$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
-			$( form.address2 ).val( address.Town );
-			$( form.address3 ).val( address.County );
+			//$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
+			$( form.address1 ).val( address.Address1 );
+			$( form.address2 ).val( address.Address2 );
+			$( form.address3 ).val( address.Address3 );
+			$( form.town ).val( address.Town );
 			$( form.postcode ).val( postcode_search );
 
 		}
@@ -1544,6 +1548,7 @@ function FormLogic() {
 			$( form.address1 ).val( null );
 			$( form.address2 ).val( null );
 			$( form.address3 ).val( null );
+			$( form.town ).val( null );
 			$( form.postcode ).val( null );
 
 		}
@@ -2394,6 +2399,7 @@ function Dashboard() {
      * @param {String} Color
     */
 	this.colors = function( color ) {
+		console.log(">>> Changing colors >>> color: " + color);
 		//
 		// Background colors
 		$( '.switch-bg' ).css({
@@ -3085,7 +3091,7 @@ function UI() {
 		this.showPanel( 'results' );
 
 		// Change dashboard color
-
+		console.log(">>> ui.render >>> car.code: " + car.code + ", color: " + color);
 		dashboard.colors( carColors[ car.color ] );
 
 		// If mobile, scroll to the top
@@ -3921,6 +3927,7 @@ var form = {
 	address1:			'#address_1',
 	address2:			'#address_2',
 	address3:			'#address_3',
+	town:				'#town',
 	postcodeSearch: 	'#postcode_search',
 	postcode:			'#postcode',
 	addressLookup: 		'#address_lookup',
