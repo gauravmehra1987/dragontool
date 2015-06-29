@@ -48,7 +48,7 @@ $.validator.setDefaults( {
 		'surname':			{ required: 'Last name is required.' },
 		'address_1':		{ required: 'Address line 1 is required.' },
 		'postcode': 		{ required: 'Postcode is required.' },
-		'tel_home':			{ required: 'Home telephone is required.' },
+		'tel_home':			{ required: 'Telephone is required.' },
 		'dealer': 			{ required: 'Please choose a dealer from the list.' },
 		'title': 			{ required: 'Title is required.' },
 		'postcode_search': 	{ required: 'Postcode is required.' },
@@ -77,9 +77,8 @@ $.validator.addMethod(
 $.validator.addMethod(
 	'regexPhoneUK',
 	function(phone_number, element) {
-		phone_number = phone_number.replace(/\s/g, '');
-		return this.optional(element) || 
-		phone_number.match(/^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/);
+		return this.optional(element) ||
+		phone_number.match(/^(0|\+44)\d{10}$/);
 	},
 	'Please specify a valid phone number.'
 );

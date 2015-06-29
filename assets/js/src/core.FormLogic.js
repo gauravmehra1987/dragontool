@@ -92,7 +92,7 @@ function FormLogic() {
 
 		return finance;
 	}
-	
+
 	this.numberWithCommas = function(x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
@@ -126,7 +126,7 @@ function FormLogic() {
 		address = address.substr( 0, address.length - 2 );
 
 		console.log(address);
-		
+
 		return address;
 
 	}
@@ -154,10 +154,10 @@ function FormLogic() {
 
 				}
 				else if (key === 'Address') {
-					
+
 					var parts = addrObj[ key ].split(';');
 					address += parts.slice(Math.max(parts.length - 2, 1)).join(', ') + ', '
-					
+
 				}
 
 			}
@@ -298,7 +298,7 @@ function FormLogic() {
 		console.log(address.Postcode);
 
 		if( ! _.isEmpty( $target.val() ) ) {
-			
+
 			var postcode_search = $( '#postcode_search' ).val();
 
 			//$( form.address1 ).val( _this.formatAddress( _.extend( {}, address ), [ 'County', 'Town', 'Postcode' ] ) );
@@ -336,6 +336,15 @@ function FormLogic() {
 
 		};
 
+	}
+
+	// Format phone number
+	this.phoneNumber = function( e ) {
+
+		var phone_number = $(e.target).val();
+		phone_number = phone_number.replace(/[\s().-]+/g, '');
+
+		$(e.target).val( phone_number );
 	}
 
 
@@ -401,18 +410,21 @@ function FormLogic() {
 			}
 		});
 
+		$('#tel_home').on('blur', function( e ) {
+			_this.phoneNumber( e );
+		});
 	}
-	
+
 	this.validateStoredInput = function() {
 		console.log(store.get( 'miniInput' ));
 		if (store.get( 'miniInput' ) === undefined && window.location.href.indexOf('/form') != -1) {
-			
+
 			window.location.href=window.location.href.replace('/form', '');
-			
+
 		}
-		
+
 	}
-	
+
 	this.enableUserTracking = function() {
 		$('#results_recombobulate a,#results_back a').attr('href', '/' + window.location.search);
 	}

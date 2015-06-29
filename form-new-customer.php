@@ -12,15 +12,15 @@
 
 	<div class="v-center-wrap">
 		<div class="v-center-content">
-	
+
 			<div class="combobulate-spinning">
-		
+
 				<img src="assets/img/tpl-button.gif" class="img-base">
 
 					<div class="control start">
-			
+
 						<div id="start">
-				
+
 							<div class="button-inner switch-bg">Combobulate</div><!-- end div.button-inner -->
 
 						</div>
@@ -28,7 +28,7 @@
 					<div class="shape"></div><!-- end div.shape -->
 
 				</div><!-- end div.control start -->
-		
+
 			</div><!-- end div.res-wrap -->
 
 			<p><br/>Form submitting...</p>
@@ -91,6 +91,8 @@
 
 				</div>
 
+				<p class="error-message error-message-select"></p>
+
 			</div>
 
 			<div class="form-control form-control-input append user full-width">
@@ -101,6 +103,8 @@
 
 				<!-- build:remove --><input type="text" id="name" name="name" placeholder="First name" /><!-- /build -->
 				<span class="field-icon"></span>
+
+				<p class="error-message"></p>
 
 			</div>
 
@@ -113,6 +117,8 @@
 				<!-- build:remove --><input type="text" id="surname" name="surname" placeholder="Last name" /><!-- /build -->
 				<span class="field-icon"></span>
 
+				<p class="error-message"></p>
+
 			</div>
 
 			<div class="form-control form-control-input append mail full-width">
@@ -124,10 +130,11 @@
 				<!-- build:remove --><input type="email" id="email" name="email" placeholder="E-mail address" /><!-- /build -->
 				<span class="field-icon"></span>
 
+				<p class="error-message"></p>
+
 			</div>
 
-			<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or MINI Centres, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest news on our vehicles and and other products and services by email. We may occasionally ask for your assistance in market research to help improve our service to customers. Have a look at our <a href="http://www.mini.co.uk/privacy-policy/?_ga=1.57454506.1480298000.1427200403
-" target="_blank">privacy policy</a> for more information.  </p>
+			<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or MINI Centres, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest news on our vehicles and and other products and services by email. We may occasionally ask for your assistance in market research to help improve our service to customers. Have a look at our <a href="http://www.mini.co.uk/privacy-policy/?_ga=1.57454506.1480298000.1427200403" target="_blank">privacy policy</a> for more information.  </p>
 
 			<div class="form-control form-control-input append phone full-width">
 
@@ -137,6 +144,8 @@
 
 				<!-- build:remove --><input type="tel" id="tel_home" name="tel_home" placeholder="Telephone" /><!-- /build -->
 				<span class="field-icon"></span>
+
+				<p class="error-message"></p>
 
 			</div>
 
@@ -150,6 +159,8 @@
 
 					<!-- build:remove --><input type="text" id="postcode_search" name="postcode_search" placeholder="Postcode" /><!-- /build -->
 					<span class="field-icon"></span>
+
+					<p class="error-message"></p>
 
 				</div>
 
@@ -186,7 +197,7 @@
 			</div><!-- end div.inline -->
 
 			<div class="form-control form-control-button">
-				
+
 				<a href="#" id="address_lookup" class="button cta">Address lookup</a><span class="loader-inline">Searching</span>
 
 			</div>
@@ -241,7 +252,7 @@
 				<span class="field-icon"></span>
 
 			</div>
-			
+
 			<div class="form-control form-control-input disabled append home full-width">
 
 				<!-- build:template
@@ -278,6 +289,8 @@
 
 					</div>
 
+					<p class="error-message error-message-select"></p>
+
 				</div>
 
 			</div><!-- end div#dealer_chooser -->
@@ -286,7 +299,7 @@
 			<div id="optout_chooser" class="form-control form-control-checkbox">
 
 				<p class="notice">Just pop a tick in the box to opt-in for future communications.</p>
-				
+
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="optout_email" name="optout" type="checkbox" value="email" /><!-- /build -->
@@ -296,7 +309,7 @@
 					<label for="optout_email">by email</label>
 
 				</div>
-				
+
 				<div class="checkbox">
 
 					<!-- build:remove --><input id="optout_phone" name="optout" type="checkbox" value="phone" /><!-- /build -->
@@ -343,9 +356,9 @@
 
 
 				<header class="header centred">
-							
+
 					<p class="ministry">Ministry of Finance</p>
-							
+
 					<h3>Nice one.</h3>
 
 					<p>Your MINI Centre will be in contact soon. (We're sending you an email to your inbox with all the info.) Until then, see what else we’ve got up our sleeve.</p>
@@ -400,7 +413,7 @@
 
 
 	<div class="form-right">
-		
+
 		<div id="form_car_wrap">
 
 			<!-- build:template
