@@ -432,7 +432,7 @@
     <Content Include="Assets\js\tpl\dealers.mustache" />
     <Content Include="Assets\js\tpl\rocketcar.mustache" />
     <Content Include="Assets\css\style.css.map" />
-    <None Include="App_Data\MINI_FS_logic_v38.csv" />
+    <Content Include="App_Data\MINI_FS_logic_v44.csv" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -466,6 +466,7 @@
     <Content Include="Views\Error\Http404.cshtml" />
     <Content Include="Views\Error\Http500.cshtml" />
     <None Include="Properties\PublishProfiles\StagingSite_DEV.pubxml" />
+    <None Include="Properties\PublishProfiles\StagingSite_QA.pubxml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
