@@ -432,6 +432,7 @@
     <Content Include="Assets\js\tpl\dealers.mustache" />
     <Content Include="Assets\js\tpl\rocketcar.mustache" />
     <Content Include="Assets\css\style.css.map" />
+    <Content Include="App_Data\MINI_FS_logic_v45.csv" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -497,7 +498,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Assets\img\sprites\" />
     <Folder Include="Assets\js\htc\" />
     <Folder Include="Scripts\" />

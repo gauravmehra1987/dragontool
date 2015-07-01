@@ -1,12 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Combobulator.Common.Validators;
 
 namespace Combobulator.Business.ViewModels
 {
     public class FormSubmissionViewModel
     {
+        [Required]
         public FormStuff info { get; set; }
+        [Required]
         public string car { get; set; }
+        [Required]
         public InputStuff input { get; set; }
     }
 

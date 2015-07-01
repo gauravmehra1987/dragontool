@@ -11,6 +11,7 @@ using Combobulator.Common.Extensions;
 using Combobulator.Data;
 using Combobulator.Helpers;
 using Combobulator.Models;
+using Newtonsoft.Json;
 using Options = Combobulator.Models.Options;
 using Title = Combobulator.Models.Title;
 
@@ -135,6 +136,9 @@ namespace Combobulator.Controllers
 
                 }
             };
+            var json = JsonConvert.SerializeObject(viewModel);
+            Log.Info("Data: " + json);
+
             var carModel = viewModel.car;
             var command = new SendCustomerDataCommand(customer, carModel,
                 Server.MapPath(Common.Config.EmailHTMLTemplate), Server.MapPath(Common.Config.EmailTextTemplate));
