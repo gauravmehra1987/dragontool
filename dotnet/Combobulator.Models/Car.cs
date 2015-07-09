@@ -1,6 +1,6 @@
 ﻿namespace Combobulator.Models
 {
-    public class Car
+    public class Car : IEntity
     {
         public int Id { get; set; }
         public string Model { get; set; }

@@ -18,7 +18,7 @@
 
         public string model_name { get; set; }
         public string model_code { get; set; }
-        public string capacity { get; set; }
+        public int capacity { get; set; }
         public string luggage { get; set; }
 
         public string awd { get; set; }

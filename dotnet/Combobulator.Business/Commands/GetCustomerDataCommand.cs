@@ -40,7 +40,6 @@ namespace Combobulator.Business.Commands
                 var line = HttpWebRequestHelper.GetHttpWebResponseData(response);
 
                 dynamic obj = JsonConvert.DeserializeObject(line);
-                //dynamic obj = JsonUtils.JsonObject.GetDynamicJsonObject(line);
                 if (obj.Error != null)
                 {
                     Log.Error("GetCustomerDataCommand Error - " + obj.Error);

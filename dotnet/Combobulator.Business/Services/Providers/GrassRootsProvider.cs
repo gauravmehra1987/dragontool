@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Reflection;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
@@ -84,14 +85,36 @@ namespace Combobulator.Business.Services.Providers
                 var data = String.Empty;
                 try
                 {
-                    var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
-                    data = HttpWebRequestHelper.GetHttpWebResponseData(response);
-                    Log.Info("JSON Response: " + data);
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+                    httpWebRequest.ContentType = "text/xml";
+                    httpWebRequest.Method = "GET";
+                    httpWebRequest.KeepAlive = false;
+                    httpWebRequest.Timeout = 50000;
+
+                    try
+                    {
+                        var testResponse = (HttpWebResponse) httpWebRequest.GetResponse();
+
+                        var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
+                        Log.Info("Response Code: " + response.StatusCode);
+                        Log.Info("Response: " + response.StatusDescription);
+                        data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                        Log.Info("JSON Response: " + data);
+                    }
+                    catch (WebException ex)
+                    {
+                        Log.Info("Error - " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Info("Error - " + ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
                     Log.Error("No data received.");
                     Log.Error(ex.Message);
+                    Log.Info(ex.StackTrace);
                 }
                 if (string.IsNullOrEmpty(data))
                     return isComplete;
