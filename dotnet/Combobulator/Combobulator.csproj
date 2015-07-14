@@ -205,6 +205,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -557,7 +558,7 @@
     <Content Include="Assets\js\tpl\dealers.mustache" />
     <Content Include="Assets\js\tpl\rocketcar.mustache" />
     <Content Include="Assets\css\style.css.map" />
-    <Content Include="App_Data\MINI_FS_logic_v45.csv" />
+    <Content Include="App_Data\MINI_FS_logic_v47.csv" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">

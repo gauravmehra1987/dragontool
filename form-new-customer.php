@@ -379,7 +379,7 @@
 						<!-- build:remove --><a href="http://www.mini.co.uk/model-range/2014-hatch/connected" target="_blank">TAKE A CLOSER LOOK.</a><!-- /build -->
 
 					</h4>
-					<p>Find out more about your MINI and the rest of family.</p>
+					<p>Find out more about your MINI and the rest of the family.</p>
 
 					<hr />
 

@@ -6634,3 +6634,12 @@ body {
   display: none!important;
 }
 /*# sourceMappingURL=style.css.map */
+
+#page-results .car-result--finance p {
+font-size: 12px;
+margin: 0 0 10px;
+line-height: 16px;
+}
+#page-results .car-result--finance p.small {
+font-size: 10px;
+}

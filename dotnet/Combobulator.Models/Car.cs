@@ -1,8 +1,7 @@
 ﻿namespace Combobulator.Models
 {
-    public class Car : IEntity
+    public class Car
     {
-        public int Id { get; set; }
         public string Model { get; set; }
         public string ModelCode { get; set; }
         public string Colour { get; set; }
