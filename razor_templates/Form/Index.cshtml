@@ -13,15 +13,11 @@
 		
 	</ul><!-- end ul.social -->
 
-</header><!-- end header.layout-header -->
+</header><!-- end header.layout-header -->
 
-	@model Combobulator.Business.ViewModels.FormViewModel
-@{ViewBag.Title = "MINI Combobulator Form"; }
+	@model Combobulator.Business.ViewModels.FormViewModel@{ViewBag.Title = "MINI Combobulator Form"; }
 
-@using (Ajax.BeginForm("Submit", "Form", new AjaxOptions { HttpMethod = "POST" }, new {autocomplete ="off"}))
-{
-@Html.AntiForgeryToken()
-@Html.ValidationSummary(true)
+@using (Ajax.BeginForm("Submit", "Form", new AjaxOptions { HttpMethod = "POST" }, new {autocomplete ="off"})){@Html.AntiForgeryToken()@Html.ValidationSummary(true)
 
 
 
@@ -310,7 +306,7 @@
 						<a href="@ViewBag.Url" target="_blank">TAKE A CLOSER LOOK.</a>
 
 					</h4>
-					<p>Find out more about your MINI and the rest of family.</p>
+					<p>Find out more about your MINI and the rest of the family.</p>
 
 					<hr />
 
@@ -363,7 +359,7 @@
 
 </div><!-- end div.layout -->
 
-}
+}
 
 	<footer class="layout-footer">
 		

@@ -761,10 +761,10 @@
 })(Function('return this')());
 
 /**
- * SVGInjector v1.1.2 - Fast, caching, dynamic inline SVG DOM injection library
+ * SVGInjector v1.1.3 - Fast, caching, dynamic inline SVG DOM injection library
  * https://github.com/iconic/SVGInjector
  *
- * Copyright (c) 2014 Waybury <hello@waybury.com>
+ * Copyright (c) 2014-2015 Waybury <hello@waybury.com>
  * @license MIT
  */
 
@@ -1040,30 +1040,44 @@
       // contained in parent elements that are hidden, so if you hide the first
       // SVG instance on the page, then all other instances lose their clipping.
       // Reference: https://bugzilla.mozilla.org/show_bug.cgi?id=376027
-      var clipPaths = svg.querySelectorAll('defs clipPath[id]');
-      var newClipPathName;
-      for (var g = 0, clipPathsLen = clipPaths.length; g < clipPathsLen; g++) {
-        newClipPathName = clipPaths[g].id + '-' + injectCount;
-        // :NOTE: using a substring match attr selector here to deal with IE "adding extra quotes in url() attrs"
-        var usingClipPath = svg.querySelectorAll('[clip-path*="' + clipPaths[g].id + '"]');
-        for (var h = 0, usingClipPathLen = usingClipPath.length; h < usingClipPathLen; h++) {
-          usingClipPath[h].setAttribute('clip-path', 'url(#' + newClipPathName + ')');
-        }
-        clipPaths[g].id = newClipPathName;
-      }
 
-      // Do the same for masks
-      var masks = svg.querySelectorAll('defs mask[id]');
-      var newMaskName;
-      for (var i = 0, masksLen = masks.length; i < masksLen; i++) {
-        newMaskName = masks[i].id + '-' + injectCount;
-        // :NOTE: using a substring match attr selector here to deal with IE "adding extra quotes in url() attrs"
-        var usingMask = svg.querySelectorAll('[mask*="' + masks[i].id + '"]');
-        for (var j = 0, usingMaskLen = usingMask.length; j < usingMaskLen; j++) {
-          usingMask[j].setAttribute('mask', 'url(#' + newMaskName + ')');
+      // Handle all defs elements that have iri capable attributes as defined by w3c: http://www.w3.org/TR/SVG/linking.html#processingIRI
+      // Mapping IRI addressable elements to the properties that can reference them:
+      var iriElementsAndProperties = {
+        'clipPath': ['clip-path'],
+        'color-profile': ['color-profile'],
+        'cursor': ['cursor'],
+        'filter': ['filter'],
+        'linearGradient': ['fill', 'stroke'],
+        'marker': ['marker', 'marker-start', 'marker-mid', 'marker-end'],
+        'mask': ['mask'],
+        'pattern': ['fill', 'stroke'],
+        'radialGradient': ['fill', 'stroke']
+      };
+
+      var element, elementDefs, properties, currentId, newId;
+      Object.keys(iriElementsAndProperties).forEach(function (key) {
+        element = key;
+        properties = iriElementsAndProperties[key];
+
+        elementDefs = svg.querySelectorAll('defs ' + element + '[id]');
+        for (var i = 0, elementsLen = elementDefs.length; i < elementsLen; i++) {
+          currentId = elementDefs[i].id;
+          newId = currentId + '-' + injectCount;
+
+          // All of the properties that can reference this element type
+          var referencingElements;
+          forEach.call(properties, function (property) {
+            // :NOTE: using a substring match attr selector here to deal with IE "adding extra quotes in url() attrs"
+            referencingElements = svg.querySelectorAll('[' + property + '*="' + currentId + '"]');
+            for (var j = 0, referencingElementLen = referencingElements.length; j < referencingElementLen; j++) {
+              referencingElements[j].setAttribute(property, 'url(#' + newId + ')');
+            }
+          });
+
+          elementDefs[i].id = newId;
         }
-        masks[i].id = newMaskName;
-      }
+      });
 
       // Remove any unwanted/invalid namespaces that might have been added by SVG editing tools
       svg.removeAttribute('xmlns:a');
@@ -1110,6 +1124,16 @@
         // Remember we already ran scripts for this svg
         ranScripts[imgUrl] = true;
       }
+
+      // :WORKAROUND:
+      // IE doesn't evaluate <style> tags in SVGs that are dynamically added to the page.
+      // This trick will trigger IE to read and use any existing SVG <style> tags.
+      //
+      // Reference: https://github.com/iconic/SVGInjector/issues/23
+      var styleTags = svg.querySelectorAll('style');
+      forEach.call(styleTags, function (styleTag) {
+        styleTag.textContent += '';
+      });
 
       // Replace the image with the svg
       el.parentNode.replaceChild(svg, el);

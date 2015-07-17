@@ -1,14 +1,4 @@
-@{
-ViewBag.Title = "MINI Combobulator Dashboard";
-string firstName = string.Empty;
-string userId = ViewBag.UserId;
-if (!string.IsNullOrEmpty(ViewBag.FirstName))
-{
-firstName = "<h3>Hi " + ViewBag.FirstName + "</h3>";
-}else{
-firstName = "<h3>Hi there,</h3>";
-}
-}
+@{ViewBag.Title = "MINI Combobulator Dashboard";string firstName = string.Empty;string userId = ViewBag.UserId;if (!string.IsNullOrEmpty(ViewBag.FirstName)){firstName = "<h3>Hi " + ViewBag.FirstName + "</h3>";}else{firstName = "<h3>Hi there,</h3>";}}
 
 <div id="page-home" class="layout-wrapper">
 
@@ -23,7 +13,7 @@ firstName = "<h3>Hi there,</h3>";
 		
 	</ul><!-- end ul.social -->
 
-</header><!-- end header.layout-header -->
+</header><!-- end header.layout-header -->
 
 	<main id="layout-dash" class="layout-dash">
 		
