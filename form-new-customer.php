@@ -126,9 +126,6 @@
 
 			</div>
 
-			<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or MINI Centres, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest news on our vehicles and and other products and services by email. We may occasionally ask for your assistance in market research to help improve our service to customers. Have a look at our <a href="http://www.mini.co.uk/privacy-policy/?_ga=1.57454506.1480298000.1427200403
-" target="_blank">privacy policy</a> for more information.  </p>
-
 			<div class="form-control form-control-input append phone full-width">
 
 				<!-- build:template
@@ -273,6 +270,18 @@
 
 
 			<div id="optout_chooser" class="form-control form-control-checkbox">
+
+				<p class="notice">By providing your email address you agree to hear from BMW Group companies, authorised BMW or 
+					MINI Centres, BMW i agents and other suppliers of BMW or MINI branded products and services about the latest 
+					news on our vehicles and and other products and services by email. We may occasionally ask for your assistance 
+					in market research to help improve our service to customers. Have a look at our 
+					<a href="http://www.mini.co.uk/privacy-policy/?_ga=1.57454506.1480298000.1427200403" target="_blank">privacy 
+					policy</a> for more information.
+				</p>
+				<p class="notice">You can tell us at any time if you would prefer NOT to recieve marketing communications;
+					please call us free on 0800 561 0666, or write to us at BMW Customer Information Centre, Selectapost 51,
+					Sheffield S97 3FZ.
+				</p>
 
 				<p class="notice">Just pop a tick in the box to opt-in for future communications.</p>
 				
