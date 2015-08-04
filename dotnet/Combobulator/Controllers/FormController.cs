@@ -11,6 +11,7 @@ using Combobulator.Common.Extensions;
 using Combobulator.Data;
 using Combobulator.Helpers;
 using Combobulator.Models;
+using Newtonsoft.Json;
 using Options = Combobulator.Models.Options;
 using Title = Combobulator.Models.Title;
 
@@ -101,6 +102,7 @@ namespace Combobulator.Controllers
                 AddressLine1 = viewModel.info.address_1,
                 AddressLine2 = viewModel.info.address_2,
                 AddressLine3 = viewModel.info.address_3,
+                Town = viewModel.info.town,
                 AddressPostcode = viewModel.info.postcode,
                 Dealer = viewModel.info.dealer,
                 Email = viewModel.info.email,
@@ -134,6 +136,9 @@ namespace Combobulator.Controllers
 
                 }
             };
+            var json = JsonConvert.SerializeObject(viewModel);
+            Log.Info("Data: " + json);
+
             var carModel = viewModel.car;
             var command = new SendCustomerDataCommand(customer, carModel,
                 Server.MapPath(Common.Config.EmailHTMLTemplate), Server.MapPath(Common.Config.EmailTextTemplate));

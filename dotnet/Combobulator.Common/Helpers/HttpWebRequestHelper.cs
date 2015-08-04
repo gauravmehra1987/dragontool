@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
@@ -81,8 +82,18 @@ namespace Combobulator.Common.Helpers
             httpWebRequest.KeepAlive = false;
             httpWebRequest.Timeout = timeout;
 
-            var responseTask = Task.Factory.FromAsync<WebResponse>(httpWebRequest.BeginGetResponse, httpWebRequest.EndGetResponse, null);
-            return (HttpWebResponse)responseTask.Result;
+            try
+            {
+                return (HttpWebResponse)httpWebRequest.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                return (HttpWebResponse)ex.Response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static string GetHttpWebResponseData(HttpWebResponse response)

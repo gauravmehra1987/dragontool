@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Reflection;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
@@ -21,22 +22,23 @@ namespace Combobulator.Business.Services.Providers
             requestUrl = string.Empty;
             try
             {
+                var capacity = customer.Selections.Capacity.Split(',');
+
                 var result = new GRGViewModel
                 {
-                    model_name = customer.Car.Name ?? "",
-                    model_code = customer.Car.Code ?? "",
+                    model = customer.Car.Code ?? "",
                     luggage = customer.Selections.Luggage ?? "",
 
                     awd = Convert.ToBoolean(customer.Selections.Options.AWD) ? "Yes" : "No",
                     dt = Convert.ToBoolean(customer.Selections.Options.DT) ? "Yes" : "No",
                     hp = Convert.ToBoolean(customer.Selections.Options.HP) ? "Yes" : "No",
-                    tp = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
+                    cn = Convert.ToBoolean(customer.Selections.Options.TP) ? "Yes" : "No",
 
-                    price_range = customer.Selections.PriceRange ?? "",
-                    economy = customer.Selections.Economy ?? "",
+                    price = customer.Selections.PriceRange ?? "",
+                    mpg = customer.Selections.Economy ?? "",
 
-                    capacity = customer.Selections.Capacity,
-                    performance = customer.Selections.Performance,
+                    capacity = capacity.CountCharacterFrequency(0),
+                    speed = customer.Selections.Performance,
                     use = customer.Selections.Use
                 };
 
@@ -52,8 +54,6 @@ namespace Combobulator.Business.Services.Providers
                         Config.SystemId, action, customer.UserId, Config.Random, json);
                 */
 
-                var town = customer.AddressLine3 ?? customer.AddressLine2;
-
                 var url = new Uri(Config.GrassRootsHostUrl)
                     .AddParameter("application", Config.GrassRootsAppName)
                     .AddParameter("form", Config.GrassRootsPDICode)
@@ -66,33 +66,55 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("address1", customer.AddressLine1)
                     .AddParameter("address2", customer.AddressLine2)
                     .AddParameter("address3", customer.AddressLine3)
-                    .AddParameter("town", town)
+                    .AddParameter("town", customer.Town)
                     .AddParameter("postcode", customer.AddressPostcode)
                     .AddParameter("hometelephone", customer.TelephoneHome.Replace(" ", ""))
                     .AddParameter("worktelephone", customer.TelephoneWork)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
                     .AddParameter("mobiletelephone", customer.TelephoneMobile)
-                    .AddParameter("emailmarketing", customer.IsEmail ? "I" : "O")
-                    .AddParameter("postmarketing", customer.IsPost ? "I" : "O")
-                    .AddParameter("telephonemarketing", customer.IsPhone ? "I" : "O")
+                    .AddParameter("emailmarketing", customer.IsEmail ? "O" : "I")
+                    .AddParameter("postmarketing", customer.IsPost ? "O" : "I")
+                    .AddParameter("telephonemarketing", customer.IsPhone ? "O" : "I")
                     .AddParameter("dealer", customer.Dealer)
                     .AddParameter("model", customer.Car.Code);
 
-                requestUrl = string.Format(url + "&comments=##{0}##", json);
+                requestUrl = string.Format(url + "&comments={0}", json);
 
                 Log.Info("Request URL:" + requestUrl);
 
                 var data = String.Empty;
                 try
                 {
-                    var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
-                    data = HttpWebRequestHelper.GetHttpWebResponseData(response);
-                    Log.Info("JSON Response: " + data);
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+                    httpWebRequest.ContentType = "text/xml";
+                    httpWebRequest.Method = "GET";
+                    httpWebRequest.KeepAlive = false;
+                    httpWebRequest.Timeout = 50000;
+
+                    try
+                    {
+                        var testResponse = (HttpWebResponse) httpWebRequest.GetResponse();
+
+                        var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
+                        Log.Info("Response Code: " + response.StatusCode);
+                        Log.Info("Response: " + response.StatusDescription);
+                        data = HttpWebRequestHelper.GetHttpWebResponseData(response);
+                        Log.Info("JSON Response: " + data);
+                    }
+                    catch (WebException ex)
+                    {
+                        Log.Info("Error - " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Info("Error - " + ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
                     Log.Error("No data received.");
                     Log.Error(ex.Message);
+                    Log.Info(ex.StackTrace);
                 }
                 if (string.IsNullOrEmpty(data))
                     return isComplete;

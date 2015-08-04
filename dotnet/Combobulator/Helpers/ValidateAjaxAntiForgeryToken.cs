@@ -28,11 +28,6 @@ namespace Combobulator.Helpers
 
                     AntiForgery.Validate(cookieValue, token);
                 }
-                else
-                {
-                    new ValidateAntiForgeryTokenAttribute()
-                        .OnAuthorization(filterContext);
-                }
             }
         }
     }

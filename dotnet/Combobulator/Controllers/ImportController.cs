@@ -21,7 +21,7 @@ namespace Combobulator.Controllers
             switch (type)
             {
                 case "csv":
-                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v38.csv");
+                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v48.csv");
                     var fileEncoding = GetEncoding(fileName);
 
                     using (var fileReader = System.IO.File.OpenText(fileName))

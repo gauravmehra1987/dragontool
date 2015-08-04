@@ -4,6 +4,7 @@ using System.Reflection;
 using Combobulator.Business.Interfaces;
 using Combobulator.Business.ViewModels;
 using Combobulator.Common;
+using Combobulator.Common.Extensions;
 using Combobulator.Common.Helpers;
 using Combobulator.Models;
 using log4net;
@@ -31,6 +32,8 @@ namespace Combobulator.Business.Services.Providers
                 var isPhone = customer.IsPhone;
                 var isPost = customer.IsPost;
 
+                var capacity = customer.Selections.Capacity.Split(',');
+
                 var viewModel = new ResultViewModel
                 {
                     id = customer.UserId ?? "",
@@ -47,7 +50,6 @@ namespace Combobulator.Business.Services.Providers
                     phone_communication = isPhone ? "true" : "false",
                     post_communication = isPost ? "true" : "false",
 
-                    
                     model_name = customer.Car.Name ?? "",
                     model_code = customer.Car.Code ?? "",
                     
@@ -60,9 +62,9 @@ namespace Combobulator.Business.Services.Providers
                     hp = customer.Selections.Options.HP,
                     tp = customer.Selections.Options.TP,
                     
-                    performance = customer.Selections.Performance == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Performance, "PerformanceScale"),
-                    capacity = customer.Selections.Capacity == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Capacity, "CapacityScale"),
-                    use = customer.Selections.Use == null ? "" : SelectionsDescriptionHelper.SelectionName(customer.Selections.Use, "Use")
+                    performance = customer.Selections.Performance,
+                    capacity = capacity.CountCharacterFrequency(0),
+                    use = customer.Selections.Use
                 };
 
                 var json = JsonConvert.SerializeObject(viewModel);
@@ -71,6 +73,8 @@ namespace Combobulator.Business.Services.Providers
                         Config.HostUrl +
                         "&checksum={0}&system_id={1}&action={2}&de_id={3}&random={4}&outcome={5}&type=json", checksum,
                         Config.SystemId, action, customer.UserId, Config.Random, json);
+
+                Log.Info("Request URL:" + requestUrl);
 
                 var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
                 var data = HttpWebRequestHelper.GetHttpWebResponseData(response);
@@ -89,6 +93,7 @@ namespace Combobulator.Business.Services.Providers
                 }
                 else
                 {
+                    Log.Info(obj.ToString());
                     isComplete = true;
                 }
                 return isComplete;

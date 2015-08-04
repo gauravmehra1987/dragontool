@@ -1,0 +1,47 @@
+@model Combobulator.Business.ViewModels.CarViewModel
+
+<ul class="actions">
+
+	<li id="results_back"><a href="./">Recombobulate</a></li>
+
+</ul>
+
+<div class="car-result--layout">
+
+	<div class="car-result--caption">
+		<h2 class="switch-color model-name">@Model.Brand <br/> @Model.Engine_Name <br/> @Model.Model</h2>
+
+		<a href="/form?m=@Model.Code&c=@ViewBag.UserId" class="button transparent car-link cta">How to get your hands on it</a>
+	</div>
+
+
+	<div class="car-result--bottom">
+
+		<div class="car-result--image">
+
+			<figure id="results-car" class="model-image">
+
+				<img src="assets/cars/none.png" class="img-base" />
+
+				<a href="/form?m=@Model.Code&c=@ViewBag.UserId">
+				<img src="@Url.Content("assets/cars/" + @Model.Code + ".jpg")" id="car-image" class="img-content" />
+				</a>
+
+			</figure><!-- end figure#car -->
+
+		</div>
+
+
+		<div class="car-result--finance">
+
+			<div id="tpl-finance">Loading...</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+
+

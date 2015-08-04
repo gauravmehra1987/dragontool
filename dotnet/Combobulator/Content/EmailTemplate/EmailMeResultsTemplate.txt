@@ -1,4 +1,4 @@
-﻿See the results from all your combobulating. 
+See the results from all your combobulating. 
 
 To help MINI emails find a parking spot in your inbox, just add our email address to your address book or safe-list.
 
@@ -9,13 +9,13 @@ MINI
 ( http://www.mini.co.uk/?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=MINI_Logo )
 
 DOWNLOAD A BROCHURE
-( http://www.minicherished.co.uk/miniuk/minicherished/forms/downloadbrochure/?s3QuickLinks=request-brochure&utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=Download_Brochure )
+( https://www.mini.co.uk/en_GB/home/forms/brochure-request.html?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=Download_Brochure )
 
 DESIGN YOUR MINI
-( http://m.mini.co.uk/mobile/_master/en/forms/test_drive_a_mini.html?utm_campaign=Prospects&utm_medium=email&utm_source=Technology&utm_content=Book_a_test_drive_mobile&utm_term=v2 )
+( https://www.mini.co.uk/en_GB/home/standard-selector/configurator.html?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=Design_MINI )
 
 MINI.CO.UK
-( http://m.mini.co.uk/mobile/_master/en/forms/request_a_brochure.html?utm_campaign=Prospects&utm_medium=email&utm_source=Technology&utm_content=Request_a_brochure_mobile&utm_term=v2 )
+( http://www.mini.co.uk/?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=MINI_mobile )
 
 
 -------------------------------------------------------------------
@@ -32,12 +32,12 @@ IS IT THE ONE?
 Found your next MINI? Get to know it a little better by exploring the models.
 
 >> SEE MORE
-( http://m.mini.co.uk/mobile/_master/en/index.html?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=Explore_The_Models_Mobile )
+( https://www.mini.co.uk/en_GB/home/range/mini-3-door-hatch.html?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=See_More )
 
 Or, if you'd prefer a page-turner, download a brochure.
 
 >> LEARN MORE
-( http://m.mini.co.uk/mobile/_master/en/forms/request_a_brochure.html?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=Brochure_mobile )
+( https://www.mini.co.uk/en_GB/home/forms/brochure-request.html?utm_campaign=Combobulator&utm_medium=email&utm_source=Confirmation&utm_content=Learn_More )
 
 Your local MINI Centre will be in touch soon to talk numbers and get you behind the wheel. 
 

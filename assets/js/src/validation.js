@@ -28,6 +28,8 @@ $.validator.setDefaults( {
 				console.log( el );
 				console.log( errors[ el.name ] );
 
+				$( el ).closest('.form-control').find('.error-message').text( errors[ el.name ] ).addClass('show');
+
 			} );
 
 		}
@@ -40,7 +42,7 @@ $.validator.setDefaults( {
 			ajaxDelay = 1000; // Not needed but included here to illustrate the loading DIV behaviour
 
 		var ajaxRequest = function() {
-		
+
 			var formData = {
 					info: $( 'form' ).serializeObject(),
 					car: carCode,
@@ -75,6 +77,7 @@ $.validator.setDefaults( {
 						// apply custom logic with field keys and messages
 						var input = $('#' + fieldKey).addClass('error');
 						input.attr('aria-required', 'true');
+
 						/*
 						var select = input.parent('.select');
 
@@ -114,6 +117,7 @@ $.validator.setDefaults( {
 		$( el ).removeClass( 'error' );
 		$( el ).parent().removeClass( 'error' );
 		$( el ).closest( '.form-control' ).find( '.form-error' ).remove();
+		$( el ).closest('.form-control').find('.error-message').removeClass('show');
 
 	},
 	onfocusout: function( el ) {
@@ -121,6 +125,7 @@ $.validator.setDefaults( {
 		$( el ).removeClass( 'error' );
 		$( el ).parent().removeClass( 'error' );
 		$( el ).closest( '.form-control' ).find( '.form-error' ).remove();
+		$( el ).closest('.form-control').find('.error-message').removeClass('show');
 
 	}
 

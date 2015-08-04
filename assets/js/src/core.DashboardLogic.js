@@ -294,11 +294,11 @@ function DashboardLogic() {
 			*/
 			function price( v ) {
 
-				if( v < 191 ) return 0;
-				if( v >= 191 && v < 216 ) return 1;
-				if( v >= 216 && v < 246 ) return 2;
-				if( v >= 246 && v < 270 ) return 3;
-				if( v >= 270 && v < 295 ) return 4;
+				if( v < 190 ) return 0;
+				if( v >= 191 && v < 215 ) return 1;
+				if( v >= 216 && v < 245 ) return 2;
+				if( v >= 246 && v < 269 ) return 3;
+				if( v >= 270 && v < 294 ) return 4;
 				if( v >= 295 ) return 5;
 			}
 

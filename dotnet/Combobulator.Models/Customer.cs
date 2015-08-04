@@ -69,6 +69,9 @@ namespace Combobulator.Models
         [Display(Name = "Address line 4")]
         public string AddressLine4 { get; set; }
 
+        [Display(Name = "Town")]
+        public string Town { get; set; }
+
         [Required(ErrorMessage = "Postcode is required")]
         [StringLength(10)]
         [Display(Name = "Postcode")]

@@ -19,6 +19,7 @@ function Dashboard() {
      * @param {String} Color
     */
 	this.colors = function( color ) {
+		console.log(">>> Changing colors >>> color: " + color);
 		//
 		// Background colors
 		$( '.switch-bg' ).css({

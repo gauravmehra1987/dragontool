@@ -49,6 +49,7 @@ var form = {
 	address1:			'#address_1',
 	address2:			'#address_2',
 	address3:			'#address_3',
+	town:				'#town',
 	postcodeSearch: 	'#postcode_search',
 	postcode:			'#postcode',
 	addressLookup: 		'#address_lookup',

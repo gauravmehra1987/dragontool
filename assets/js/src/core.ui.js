@@ -212,7 +212,7 @@ function UI() {
 		this.showPanel( 'results' );
 
 		// Change dashboard color
-
+		//console.log(">>> ui.render >>> car.code: " + car.code + ", color: " + color);
 		dashboard.colors( carColors[ car.color ] );
 
 		// If mobile, scroll to the top
