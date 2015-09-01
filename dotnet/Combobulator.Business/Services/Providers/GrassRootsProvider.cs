@@ -78,7 +78,9 @@ namespace Combobulator.Business.Services.Providers
                     .AddParameter("dealer", customer.Dealer)
                     .AddParameter("model", customer.Car.Code);
 
-                requestUrl = string.Format(url + "&comments={0}", json);
+                // Comments request to be removed (2015-09-01, by Alison Bater, via Email)
+                // Removal actioned by @willperring
+                //requestUrl = string.Format(url + "&comments={0}", json);
 
                 Log.Info("Request URL:" + requestUrl);
 
@@ -93,7 +95,8 @@ namespace Combobulator.Business.Services.Providers
 
                     try
                     {
-                        var testResponse = (HttpWebResponse) httpWebRequest.GetResponse();
+                        // Seemingly redundant, removed by @willperring 2015-09-01
+                        //var testResponse = (HttpWebResponse) httpWebRequest.GetResponse();
 
                         var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
                         Log.Info("Response Code: " + response.StatusCode);
