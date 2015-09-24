@@ -45,5 +45,7 @@
         public string APR { get; set; }
         public double? TotalAmount { get; set; }
         public string Joke { get; set; }
+
+        public string Disclaimer { get; set; }
     }
 }

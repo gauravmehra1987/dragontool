@@ -46,6 +46,7 @@ namespace Combobulator.Config
             Map(m => m.APR).Name("APR");
             Map(m => m.TotalAmount).Name("Total_amount_payable");
             Map(m => m.Joke).Name("Results_joke");
+            Map(m => m.Disclaimer).Name("Disclaimer");
         }
     }
 }

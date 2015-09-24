@@ -29,6 +29,7 @@ namespace Combobulator.Business.ViewModels
         public string Terms { get; set; }
         public string Joke { get; set; }
         public string Url { get; set; }
+        public string Disclaimer { get; set; }
         public Finance Finance { get; set; }
     }
 }
