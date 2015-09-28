@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.75" name="Combobulator">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.625" name="Combobulator">
   <DataContextMoniker Name="/CombobulatorDataContext" />
   <nestedChildShapes>
     <classShape Id="944607fe-64aa-4774-a085-2b781db2d84a" absoluteBounds="0.75, 3.625, 2, 1.1939925130208327">
@@ -39,16 +39,16 @@
         <elementListCompartment Id="b7faf394-8714-4790-97f3-c6fc9c108617" absoluteBounds="0.76499999999999968, 5.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="13ecda67-622e-4ddf-914d-af4496bcde1d" absoluteBounds="3.625, 4.75, 2, 5.8092268880208326">
-      <DataClassMoniker Name="/CombobulatorDataContext/Car" />
+    <classShape Id="639646c4-9f25-448a-85c4-579944380b33" absoluteBounds="6.375, 2.375, 2, 6.0015283203125">
+      <DataClassMoniker Name="/CombobulatorDataContext/Cars" />
       <nestedChildShapes>
-        <elementListCompartment Id="6c57a793-feb0-4eaa-9680-10c18b2d192d" absoluteBounds="3.6399999999999997, 5.21, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fe3d6757-63e0-4035-b23a-921bb62e6b19" absoluteBounds="6.39, 2.835, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.625 : 7.44310628255208); (2.75 : 7.44310628255208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/CombobulatorDataContext/Car/Car_Finance" />
+    <associationConnector edgePoints="[(6.375 : 6.93826416015625); (2.75 : 6.93826416015625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CombobulatorDataContext/Cars/Car_Finance" />
       <nodes>
-        <classShapeMoniker Id="13ecda67-622e-4ddf-914d-af4496bcde1d" />
+        <classShapeMoniker Id="639646c4-9f25-448a-85c4-579944380b33" />
         <classShapeMoniker Id="431caa76-469c-4455-89ca-abdd4c30c779" />
       </nodes>
     </associationConnector>
