@@ -84,7 +84,7 @@ function FormLogic() {
 		];
 
 		for( i=0; i<_fields.length; i++ ) {
-			var param = fields[i];
+			var param = _fields[i];
 			finance[ param ] = _this.numberWithCommas(
 				Number( finance[param] ).toFixed(2)
 			);
