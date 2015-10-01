@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MINI_Combobulator" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=JUSTFORKIX;Initial Catalog=MINI_Combobulator;Integrated Security=True" SettingsObjectName="Combobulator.Data.Properties.Settings" SettingsPropertyName="CombobulatorConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MINI_FS_QA" Class="CombobulatorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DEL-LW7-72;Initial Catalog=MINI_FS_QA;Persist Security Info=True;User ID=sa;Connect Timeout=60" SettingsObjectName="Combobulator.Data.Properties.Settings" SettingsPropertyName="MINI_FS_QAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Titles" Member="Titles">
     <Type Name="Title" Id="ID1">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -63,11 +63,11 @@
       <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TotalDeposit" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="DealerDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Car_Finance" Member="Car" ThisKey="NewCarId" OtherKey="Id" Type="Car" IsForeignKey="true" />
+      <Association Name="Car_Finance" Member="Cars" ThisKey="NewCarId" OtherKey="Id" Type="Cars" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Cars" Member="Cars">
-    <Type Name="Car">
+    <Type Name="Cars">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
@@ -94,6 +94,7 @@
       <Column Name="EngineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Model" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Brand" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Disclaimer" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Association Name="Car_Finance" Member="Finances" ThisKey="Id" OtherKey="NewCarId" Type="Finance" />
     </Type>
   </Table>

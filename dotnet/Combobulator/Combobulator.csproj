@@ -205,6 +205,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,6 +223,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cars\LN32.jpg" />
+    <Content Include="Assets\cars\LN72.jpg" />
+    <Content Include="Assets\cars\LR92.jpg" />
     <Content Include="Assets\cars\MR92.jpg" />
     <Content Include="Assets\cars\none.png" />
     <Content Include="Assets\cars\RJ52.jpg" />
@@ -246,6 +250,9 @@
     <Content Include="Assets\cars\SY32.jpg" />
     <Content Include="Assets\cars\SY72.jpg" />
     <Content Include="Assets\cars\SY92.jpg" />
+    <Content Include="Assets\cars\thumbnails\LN32.jpg" />
+    <Content Include="Assets\cars\thumbnails\LN72.jpg" />
+    <Content Include="Assets\cars\thumbnails\LR92.jpg" />
     <Content Include="Assets\cars\thumbnails\MR92.jpg" />
     <Content Include="Assets\cars\thumbnails\none.png" />
     <Content Include="Assets\cars\thumbnails\RJ52.jpg" />
@@ -269,6 +276,7 @@
     <Content Include="Assets\cars\thumbnails\XD12.jpg" />
     <Content Include="Assets\cars\thumbnails\XM52.jpg" />
     <Content Include="Assets\cars\thumbnails\XM72.jpg" />
+    <Content Include="Assets\cars\thumbnails\XM92.jpg" />
     <Content Include="Assets\cars\thumbnails\XN12.jpg" />
     <Content Include="Assets\cars\thumbnails\XN32.jpg" />
     <Content Include="Assets\cars\thumbnails\XN72.jpg" />
@@ -296,6 +304,7 @@
     <Content Include="Assets\cars\XD12.jpg" />
     <Content Include="Assets\cars\XM52.jpg" />
     <Content Include="Assets\cars\XM72.jpg" />
+    <Content Include="Assets\cars\XM92.jpg" />
     <Content Include="Assets\cars\XN12.jpg" />
     <Content Include="Assets\cars\XN32.jpg" />
     <Content Include="Assets\cars\XN72.jpg" />
@@ -556,7 +565,6 @@
     <Content Include="Assets\js\tpl\addresses.mustache" />
     <Content Include="Assets\js\tpl\dealers.mustache" />
     <Content Include="Assets\js\tpl\rocketcar.mustache" />
-    <Content Include="Assets\css\style.css.map" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Web.config">
@@ -590,6 +598,7 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\Http404.cshtml" />
     <Content Include="Views\Error\Http500.cshtml" />
+    <None Include="Properties\PublishProfiles\StagingSite2012_QA.pubxml" />
     <None Include="Properties\PublishProfiles\StagingSite_DEV.pubxml" />
     <None Include="Properties\PublishProfiles\StagingSite_QA.pubxml" />
     <None Include="Web.Staging.config">

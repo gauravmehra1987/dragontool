@@ -18,10 +18,12 @@ namespace Combobulator.Controllers
         /// </summary>
         public void Index(string type)
         {
+            
             switch (type)
             {
                 case "csv":
-                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v50.csv");
+
+                    var fileName = Server.MapPath("~/App_Data/MINI_FS_logic_v57.csv");
                     var fileEncoding = GetEncoding(fileName);
 
                     using (var fileReader = System.IO.File.OpenText(fileName))
@@ -63,7 +65,7 @@ namespace Combobulator.Controllers
                                     }
                                 };
 
-                                context.Cars.InsertOnSubmit(new Car
+                                context.Cars.InsertOnSubmit(new Cars
                                 {
                                     Brand = Common.Config.Brand,
                                     Code = record.Code,
@@ -90,6 +92,7 @@ namespace Combobulator.Controllers
                                     Alt2 = record.Alt_2,
                                     Alt3 = record.Alt_3,
                                     Terms = record.Terms,
+                                    Disclaimer=record.Disclaimer,
                                     Finances = finance
                                 });
                                 context.SubmitChanges();
@@ -124,7 +127,7 @@ namespace Combobulator.Controllers
                                     }
                                 };
 
-                            context.Cars.InsertOnSubmit(new Car
+                            context.Cars.InsertOnSubmit(new Cars
                             {
                                 Code = record.Code,
                                 Color = record.Color,
@@ -146,6 +149,7 @@ namespace Combobulator.Controllers
                                 Alt2 = record.Alt_2,
                                 Alt3 = record.Alt_3,
                                 Terms = record.Terms,
+                                Disclaimer=record.Disclaimer,
                                 Finances = finance
                             });
                             context.SubmitChanges();
@@ -158,6 +162,8 @@ namespace Combobulator.Controllers
 
         protected System.Text.Encoding GetEncoding(string path)
         {
+            
+            
             System.Text.Encoding[] encodings = { System.Text.Encoding.UTF8 };
             foreach (var encoding in encodings)
             {

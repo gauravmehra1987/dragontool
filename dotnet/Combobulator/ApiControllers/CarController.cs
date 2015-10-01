@@ -57,6 +57,8 @@ namespace Combobulator.ApiControllers
                         Terms = car.Terms,
                         Joke = car.Joke,
                         Url = car.Url,
+                       Disclaimer=car.Disclaimer,
+
                         Finance = new Models.Finance
                         {
                             Info = finance.Info,
@@ -132,7 +134,7 @@ namespace Combobulator.ApiControllers
                 Log.Error("GetCars", ex);
                 var error = new ErrorResponse
                 {
-                    Error = "Failed to get cars"
+                    Error = "Failed to get cars: " + ex.GetType().FullName + "; " + ex.Message
                 };
                 var sc = new StringContent(serializer.Serialize(error));
                 sc.Headers.ContentType = new MediaTypeHeaderValue("application/json");
