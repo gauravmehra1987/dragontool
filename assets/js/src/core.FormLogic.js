@@ -78,16 +78,18 @@ function FormLogic() {
 
 		finance.name = car.name;
 
-		finance.payment = _this.numberWithCommas(Number(finance.payment).toFixed(2));
-		finance.price = _this.numberWithCommas(Number(finance.price).toFixed(2));
-		finance.deposit = _this.numberWithCommas(Number(finance.deposit).toFixed(2));
-		finance.contribution = _this.numberWithCommas(Number(finance.contribution).toFixed(2));
-		finance.purchase_fee = _this.numberWithCommas(Number(finance.purchase_fee).toFixed(2));
-		finance.final_payment = _this.numberWithCommas(Number(finance.final_payment).toFixed(2));
+		var _fields = [
+			'payment', 'price', 'deposit', 'contribution', 'purchase_fee', 'credit_charge',
+			'final_payment', 'dealer_discount', 'total_deposit', 'total_amount'
+		];
 
-		finance.total_deposit	= _this.numberWithCommas(Number(finance.total_deposit).toFixed(2));
-		finance.total_amount	= _this.numberWithCommas(Number(finance.total_amount).toFixed(2));
-		finance.credit_charge 	= _this.numberWithCommas(Number(finance.credit_charge).toFixed(2));
+		for( i=0; i<_fields.length; i++ ) {
+			var param = fields[i];
+			finance[ param ] = _this.numberWithCommas(
+				Number( finance[param] ).toFixed(2)
+			);
+		}
+
 		finance.terms			= car.terms;
 
 		return finance;
