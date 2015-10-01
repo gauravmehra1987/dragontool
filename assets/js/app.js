@@ -2845,7 +2845,7 @@ function Finance() {
 				function manipulateFinanceTpl() {
 					//
 					// Check if contibution is 0 and if so, hide it and hide the customer deposit
-					if ( parseInt(carFinance.contribution) === 0 ) {
+					if ( parseInt(carFinance.dealer_discount) === 0 ) {
 						//
 						$('.retailer-deposit-contribution--row').addClass('hide');
 						$('.customer-deposit--row').addClass('hide');
