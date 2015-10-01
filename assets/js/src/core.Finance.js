@@ -11,6 +11,11 @@ function Finance() {
 		//
 		// If we are on the results page...
 		if ( $( '#page-results' ).length > 0 ) {
+
+			// Show disclaimer
+			var car = dashboardLogic.getCarByCode(carCode);
+		    $('#results-car').after('<p class="disclaimer">' + car.disclaimer + '</p>');
+
 			//
 			// Get the car finance data by passing in the car code to the getFinance function
 			var carFinance = formLogic.getFinance( carCode );

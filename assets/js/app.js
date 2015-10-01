@@ -1322,13 +1322,13 @@ function FormLogic() {
 		];
 
 		for( i=0; i<_fields.length; i++ ) {
-			var param = fields[i];
+			var param = _fields[i];
 			finance[ param ] = _this.numberWithCommas(
 				Number( finance[param] ).toFixed(2)
 			);
 		}
 
-		finance.terms			= car.terms;
+		finance.terms = car.terms;
 
 		return finance;
 	}
@@ -2829,6 +2829,11 @@ function Finance() {
 		//
 		// If we are on the results page...
 		if ( $( '#page-results' ).length > 0 ) {
+
+			// Show disclaimer
+			var car = dashboardLogic.getCarByCode(carCode);
+		    $('#results-car').after('<p class="disclaimer">' + car.disclaimer + '</p>');
+
 			//
 			// Get the car finance data by passing in the car code to the getFinance function
 			var carFinance = formLogic.getFinance( carCode );

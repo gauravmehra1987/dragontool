@@ -90,7 +90,7 @@ function FormLogic() {
 			);
 		}
 
-		finance.terms			= car.terms;
+		finance.terms = car.terms;
 
 		return finance;
 	}

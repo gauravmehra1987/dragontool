@@ -57,7 +57,7 @@ namespace Combobulator.ApiControllers
                         Terms = car.Terms,
                         Joke = car.Joke,
                         Url = car.Url,
-                       Disclaimer=car.Disclaimer,
+                        Disclaimer=car.Disclaimer,
 
                         Finance = new Models.Finance
                         {
