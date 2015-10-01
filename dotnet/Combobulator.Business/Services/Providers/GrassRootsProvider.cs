@@ -54,6 +54,8 @@ namespace Combobulator.Business.Services.Providers
                         Config.SystemId, action, customer.UserId, Config.Random, json);
                 */
 
+                Log.Info("Base Url: " + Config.GrassRootsHostUrl);
+
                 var url = new Uri(Config.GrassRootsHostUrl)
                     .AddParameter("application", Config.GrassRootsAppName)
                     .AddParameter("form", Config.GrassRootsPDICode)
@@ -81,17 +83,18 @@ namespace Combobulator.Business.Services.Providers
                 // Comments request to be removed (2015-09-01, by Alison Bater, via Email)
                 // Removal actioned by @willperring
                 //requestUrl = string.Format(url + "&comments={0}", json);
+                requestUrl = url.ToString();
 
-                Log.Info("Request URL:" + requestUrl);
+                Log.Info("Request URL: " + url);
 
                 var data = String.Empty;
                 try
                 {
-                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-                    httpWebRequest.ContentType = "text/xml";
-                    httpWebRequest.Method = "GET";
-                    httpWebRequest.KeepAlive = false;
-                    httpWebRequest.Timeout = 50000;
+                    //var httpWebRequest = (HttpWebRequest)WebRequest.Create(requestUrl);
+                    //httpWebRequest.ContentType = "text/xml";
+                    //httpWebRequest.Method = "GET";
+                    //httpWebRequest.KeepAlive = false;
+                    //httpWebRequest.Timeout = 50000;
 
                     try
                     {
@@ -99,6 +102,8 @@ namespace Combobulator.Business.Services.Providers
                         //var testResponse = (HttpWebResponse) httpWebRequest.GetResponse();
 
                         var response = HttpWebRequestHelper.MakeRequest(requestUrl, 5000);
+                        Log.Info("Response Null?: " + (response == null));
+                        Log.Info("Response Content: " + response);
                         Log.Info("Response Code: " + response.StatusCode);
                         Log.Info("Response: " + response.StatusDescription);
                         data = HttpWebRequestHelper.GetHttpWebResponseData(response);
@@ -106,11 +111,11 @@ namespace Combobulator.Business.Services.Providers
                     }
                     catch (WebException ex)
                     {
-                        Log.Info("Error - " + ex.Message);
+                        Log.Error("WebException: " + ex.Message + "\n" + ex.StackTrace);
                     }
                     catch (Exception ex)
                     {
-                        Log.Info("Error - " + ex.Message);
+                        Log.Error("Exception: " + ex.Message + "\n" + ex.StackTrace);
                     }
                 }
                 catch (Exception ex)

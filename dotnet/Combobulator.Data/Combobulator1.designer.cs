@@ -51,7 +51,7 @@ namespace Combobulator.Data
     #endregion
 		
 		public CombobulatorDataContext() : 
-				base(global::Combobulator.Data.Properties.Settings.Default.MINI_FS_QAConnectionString, mappingSource)
+				 base(global::System.Configuration.ConfigurationManager.ConnectionStrings["CombobulatorConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

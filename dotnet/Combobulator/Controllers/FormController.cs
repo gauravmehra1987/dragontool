@@ -137,8 +137,11 @@ namespace Combobulator.Controllers
                 }
             };
             var json = JsonConvert.SerializeObject(viewModel);
+            Log.Info("\n");
+            Log.Info("Beginning API Request...");
             Log.Info("Data: " + json);
-
+            Log.Info("\n");
+            Log.Info("Beginning Provider Request...");
             var carModel = viewModel.car;
             var command = new SendCustomerDataCommand(customer, carModel,
                 Server.MapPath(Common.Config.EmailHTMLTemplate), Server.MapPath(Common.Config.EmailTextTemplate));
