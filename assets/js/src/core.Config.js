@@ -66,7 +66,7 @@ var carColors = {
 	'Light White':			'#e4dfce',
 
 	// Extra colors
-	'Toy brown':			'#47322e',
+	'Toy brown':			'#6A1D2D', //#47322e
 	'Rocket gold':			'gold'
 }
 
