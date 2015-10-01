@@ -1,3 +1,4 @@
+
 // Setting up social media values to use later
 var socialMedia = {
 
@@ -65,8 +66,8 @@ var carColors = {
 	'Light White':			'#e4dfce',
 
 	// Extra colors
-	'Toy brown':            '#6A1D2D',
-	'Rocket gold':          'gold',
+	'Toy brown':			'#6A1D2D', //#47322e
+	'Rocket gold':			'gold',
 	'Pure Burgundy':        '#993e52'
 }
 
@@ -874,7 +875,7 @@ function DashboardLogic() {
 	var loadData = function() {
 		//
 		// Data will contain miniData from local storage if it's there, otherwise make it false
-	    var data = false; //store.get( 'miniData' ) || false;
+		var data = store.get( 'miniData' ) || false;
 		//
 		// If data is true...
 		if ( data ) {
@@ -2827,13 +2828,7 @@ function Finance() {
 		// If we are on the results page...
 		if ( $( '#page-results' ).length > 0 ) {
 			//
-		    // Get the car finance data by passing in the car code to the getFinance function
-
-
-		    var car = dashboardLogic.getCarByCode(carCode);
-		    console.log(car);
-		    $('#results-car').after('<p class="disclaimer">' + car.disclaimer + '</p>');
-
+			// Get the car finance data by passing in the car code to the getFinance function
 			var carFinance = formLogic.getFinance( carCode );
 			//
 			// Get finance template
