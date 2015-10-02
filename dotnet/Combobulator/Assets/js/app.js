@@ -2848,6 +2848,8 @@ function Finance() {
 
 			// Show disclaimer
 			var car = dashboardLogic.getCarByCode(carCode);
+			car.terms      = dashboardLogic.superscriptCharacters( car.terms,      8224 );
+			car.disclaimer = dashboardLogic.superscriptCharacters( car.disclaimer, 8224 );
 		    $('#results-car').after('<p class="disclaimer">' + car.disclaimer + '</p>');
 
 			//
