@@ -917,6 +917,22 @@ function DashboardLogic() {
 		}
 	}
 
+	this.superscriptCharacters = function( string, chars ) {
+
+		if( !chars || !string )
+			return string;
+
+		if( chars instanceof Array == false )
+			chars = [ chars ];
+
+		for( var i=0; i<chars.length; i++ ) {
+			var char = String.fromCharCode( chars[i] );
+			string = string.replace( char, '<sup>' + char + '</sup>' );
+		}
+
+		return string;
+	};
+
 
 	// Initialize loadData function
 	// Which will get JSON data (array of cars)
