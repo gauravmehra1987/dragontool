@@ -28,6 +28,9 @@ namespace Combobulator.Common.Enums
         PepperWhite = 7,
         [Display(Name = "#e4dfce")]
         [Description("Light White")]
-        LightWhite = 8
+        LightWhite = 8,
+        [Display(Name = "#993e52")]
+        [Description("Pure Burgundy")]
+        PureBurgundy = 9
     }
 }
