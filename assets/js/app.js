@@ -23,9 +23,9 @@ var system_paths = {
 	// Dotnet version
 	net: {
 		assets:			'Assets/cars/',
-		results:		'results?',
+		results:		'results.php?',
 		spriteFallback:	'Assets/sprites',
-		api:			'api/car',
+		api:			'json/data.json',
 		apiPostcode:	'api/postcodelookup',
 		apiDealers:		'api/dealerlookup',
 		preload:		'api/assets/svg',
@@ -279,8 +279,8 @@ $.validator.setDefaults( {
 
 				// Validate the fields here
 
-				console.log( el );
-				console.log( errors[ el.name ] );
+//				console.log( el );
+//				console.log( errors[ el.name ] );
 
 				$( el ).closest('.form-control').find('.error-message').text( errors[ el.name ] ).addClass('show');
 
@@ -344,7 +344,8 @@ $.validator.setDefaults( {
 						*/
 					}
 				},
-				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); } // Feel free to remove this if not needed
+				beforeSend: function() { if( Mini.settings.debug ) console.log( 'Submitting form to: ' + ajaxURL ); 
+                        } // Feel free to remove this if not needed
 
 			} );
 
@@ -480,11 +481,11 @@ function DashboardLogic() {
      * to filter down.
     */
 	this.getCars = function( q ) {
-		console.log('getCars')
+//		console.log('getCars')
 		//
 		// If there is an eggs object in the data
 		if ( typeof q.eggs === 'object' ) {
-			console.log('q.eggs')
+//			console.log('q.eggs')
 			//
 			// Console log
 			console.log( 'Easter eggs triggered' );
@@ -495,8 +496,8 @@ function DashboardLogic() {
 		//
 		// Else, if there are no eggs, do some logic to return the correct car
 		else {
-			console.log('sending to dataLogic')
-			console.log(this)
+//			console.log('sending to dataLogic')
+//			console.log(this)
 			//
 			// Results will contain an array of all the cars
 			var results = db().get();
@@ -512,6 +513,7 @@ function DashboardLogic() {
      * sends it to the UI to render in the view
     */
 	this.publishCar = function(car){
+            
 		ui.render(car);
 	}
 
@@ -523,12 +525,12 @@ function DashboardLogic() {
 	*/
 	this.getCarByName = function( name ) {
 
-		console.log('name:');
-		console.log(name);
+//		console.log('name:');
+//		console.log(name);
 		//
 		// Queries the database to get data about that car
 
-		console.log(db( { name: name } ).first());
+//		console.log(db( { name: name } ).first());
 		return db( { name: name } ).first();
 	}
 
@@ -540,8 +542,8 @@ function DashboardLogic() {
 	*/
 	this.getCarByCode = function( code ) {
 		//
-		console.log('getCarByCode');
-		console.log(code);
+//		console.log('getCarByCode');
+//		console.log(code);
 		//
 		// Queries the database to get data about that car
 		return db( { code: code } ).first();
@@ -665,7 +667,7 @@ function DashboardLogic() {
 			 * @return {Number} Returns an integar (1 to 4)
 			*/
 			function mpg( v ) {
-
+console.log("value of mpg inside " + v)
 				if( v < 25 ) return 0;
 				if( v >= 25 && v < 46 ) return 1;
 				if( v >= 46 && v < 61 ) return 2;
@@ -742,40 +744,40 @@ function DashboardLogic() {
 				o.family = o.people + o.children;
 
 				if (o.family <= 2 && o.infants === 0) {
-					console.log('o.family <= 2 && o.infants === 0');
+//					console.log('o.family <= 2 && o.infants === 0');
 					return 1;
 				}
 
 				if (o.people === 2 && (0 < o.children && o.children <= 2) && o.infants === 0) {
-					console.log('o.people === 2 && (0 < o.children && o.children <= 2) && o.infants === 0');
+//					console.log('o.people === 2 && (0 < o.children && o.children <= 2) && o.infants === 0');
 					return 3;
 				}
 				if (o.people === 1 && (0 < o.children && o.children <= 3) && o.infants === 0) {
-					console.log('o.people === 1 && (0 < o.children && o.children <= 3) && o.infants === 0');
+//					console.log('o.people === 1 && (0 < o.children && o.children <= 3) && o.infants === 0');
 					return 3;
 				}
 
 				if (o.family <= 4 && o.infants === 0){
-					console.log('o.family <= 4 && o.infants === 0');
+//					console.log('o.family <= 4 && o.infants === 0');
 					return 2;
 				}
 				if (o.family <= 3 && o.infants === 1){
-					console.log('o.family <= 3 && o.infants === 1');
+//					console.log('o.family <= 3 && o.infants === 1');
 					return 2;
 				}
 
 				if (o.family === 5) {
-					console.log('o.family === 5');
+//					console.log('o.family === 5');
 					return 4;
 				}
 
 				if (o.family === 4 && o.infants === 1) {
-					console.log('o.family === 4 && o.infants === 1');
+//					console.log('o.family === 4 && o.infants === 1');
 					return 4;
 				}
 
 				if (o.family === 3 && o.infants === 2) {
-					console.log('o.family === 3 && o.infants === 2');
+//					console.log('o.family === 3 && o.infants === 2');
 					return 4;
 				} else {
 					return 1;
@@ -839,7 +841,7 @@ function DashboardLogic() {
 	 * @return {Object} database
 	*/
 	var populateDB = function( data ) {
-		console.log('populateDB')
+//		console.log('populateDB')
 
 
 		//
@@ -850,14 +852,14 @@ function DashboardLogic() {
 		// Passes to TAFFY method which turns it into a database structure, saving the result as db
 		db = TAFFY( JSON.stringify( cars ) );
 
-		console.log(typeof db)
+//		console.log(typeof db)
 		
 		//
 		// Make dashboardLogic.database equal to db
 		_this.database = db;
 		//
 		// Prints out how many rows of cars have been loaded in the database
-		console.log( data.length + ' rows loaded successfully to the database' );
+//		console.log( data.length + ' rows loaded successfully to the database' );
 		//
 		// Publish so that it can be subscribed to anywhere
 		$.publish( 'data-loaded' );
@@ -881,7 +883,7 @@ function DashboardLogic() {
 		if ( data ) {
 			//
 			// Let us know that we are accessing the data from local storage 
-			console.log( 'loading database from local storage' );
+//			console.log( 'loading database from local storage' );
 			//
 			// and pass that data to the populateDB function
 			populateDB( data );
@@ -891,7 +893,7 @@ function DashboardLogic() {
 		else {
 			//
 			// Let us know that we are going request the data
-			console.log( 'requesting data to populate the database' );
+//			console.log( 'requesting data to populate the database' );
 			//
 			// Load data via ajax
 			$.ajax( {
@@ -968,12 +970,12 @@ function DataLogic() {
 		var Helpers = {
 
 			shuffle: function(array) {
-				console.log('shuffling');
-				console.log(typeof array)
+//				console.log('shuffling');
+//				console.log(typeof array)
 				var m = array.length, t, i;
-				// While there remain elements to shuffle…
+				// While there remain elements to shuffleâ€¦
 				while (m) {
-					// Pick a remaining element…
+					// Pick a remaining elementâ€¦
 					i = Math.floor(Math.random() * m--);
 					// And swap it with the current element.
 					t = array[m];
@@ -1049,13 +1051,13 @@ function DataLogic() {
 			reduced : 0,
 
 			outputDatasetMessages: function(queryProp, dataSet){
-				console.log(this.reduced)
+//				console.log(this.reduced)
 				if(this.reduced !== 0) {
-					console.log('reduced by : ' + (dataSet.length - this.reduced));
+//					console.log('reduced by : ' + (dataSet.length - this.reduced));
 				} else {
-					console.log('not reduced')
+//					console.log('not reduced')
 				}
-				console.log(Filter.store);
+//				console.log(Filter.store);
 			},
 
 			// accepts database value, query value, record
@@ -1073,9 +1075,9 @@ function DataLogic() {
 				}
 
 				var matchReject = function(){
- 					console.log('skipped value');
-					console.log(qValue)
-					console.log(dValue)
+// 					console.log('skipped value');
+//					console.log(qValue)
+//					console.log(dValue)
  				}
 			
 				if (qValue === undefined) {
@@ -1109,7 +1111,7 @@ function DataLogic() {
 
 				var continueLoop = function(){
 					counter.update();
-					console.log('Dataset still large so next is > ' + order[counter.echo()]);
+//					console.log('Dataset still large so next is > ' + order[counter.echo()]);
 					filterObjectsWithProperty(resultCollection, order[counter.echo()]);
 				}
 
@@ -1123,6 +1125,9 @@ function DataLogic() {
 					self.activeCar = carList[0];
 
 					// Filering complete render a singe car
+                                        
+                                        store.set('carResult',carList[0]);
+                                        
 					dashboardLogic.publishCar( carList[0] );
 
 				}
@@ -1132,7 +1137,7 @@ function DataLogic() {
 
 
 			endMasterLoop: function(dataSet, prop){
-				console.log('end')
+				console.log('ending the loop now')
 
 				// output console message
 				Filter.outputDatasetMessages(prop, dataSet);
@@ -1161,9 +1166,9 @@ function DataLogic() {
 				convertible: 2
 			}
 
-			console.log(prop)
-
-			console.log('This is ' + prop + ': ' + self.query[prop]);
+//			console.log(prop)
+//
+//			console.log('This is ' + prop + ': ' + self.query[prop]);
 
 			// Main loop through dataset
 			for (var i=0; i<dataSet.length; i++) {
@@ -1179,11 +1184,11 @@ function DataLogic() {
 
 			};
 
-			console.log('end of ' + prop);
+//			console.log('end of ' + prop);
 
 		};
 
-		console.log(cars)
+//		console.log(cars)
 
 		filterObjectsWithProperty(cars, self.selection[(counter.echo())]);
 
@@ -1197,15 +1202,16 @@ function DataLogic() {
 	this.cycleThroughCarList = function(){
 		var carList = Array.prototype.slice.call(self._collection.latest());
 		var index = carList.indexOf(self.activeCar);
-		console.log(carList);
-		console.log(self.activeCar)
+                
+//		console.log(carList);
+//		console.log(self.activeCar)
 
 		if ((++index) <= carList.length-1 ) {
-			console.log('next is ' + (index));
+//			console.log('next is ' + (index));
 			self.activeCar = carList[index];
 			dashboardLogic.publishCar( carList[index] );
 		} else {
-			console.log('restart');
+//			console.log('restart');
 			self.activeCar = carList[0];
 			dashboardLogic.publishCar( carList[0] );
 		}
@@ -1236,15 +1242,15 @@ function DataLogic() {
      * Initialize
     */
 	this.init = function() {
-		console.log('DataLogic')
+//		console.log('DataLogic')
 
 		this._collection = CarsFactory();
 
-		console.log(this)
+//		console.log(this)
 
 		$.subscribe('data-ready', function(data){
-			console.log(e)
-			console.log(data)
+//			console.log(e)
+//			console.log(data)
 		})
 
 	}
@@ -1381,7 +1387,7 @@ function FormLogic() {
 
 		address = address.substr( 0, address.length - 2 );
 
-		console.log(address);
+//		console.log(address);
 
 		return address;
 
@@ -1551,7 +1557,7 @@ function FormLogic() {
 
 		var address	= addressObj[ $target.val() ];
 
-		console.log(address.Postcode);
+//		console.log(address.Postcode);
 
 		if( ! _.isEmpty( $target.val() ) ) {
 
@@ -1615,7 +1621,7 @@ function FormLogic() {
 
 		$.subscribe( 'form-ajax-results', function( e, data ) {
 
-			console.log( data );
+//			console.log( data );
 
 			$formContent.slideUp( 600 );
 			$thanks.slideDown( 600 );
@@ -1672,7 +1678,7 @@ function FormLogic() {
 	}
 
 	this.validateStoredInput = function() {
-		console.log(store.get( 'miniInput' ));
+//		console.log(store.get( 'miniInput' ));
 		if (store.get( 'miniInput' ) === undefined && window.location.href.indexOf('/form') != -1) {
 
 			window.location.href=window.location.href.replace('/form', '');
@@ -1729,9 +1735,11 @@ function Dials() {
 		var reset = function() {
 			//
 			// '_this' is an instance of the draggable object
+//                        console.log("Reset event called 200");
 			var _this = this;
 			//
 			// Greensock tween to the first fake-list item, for 0.6 seconds
+//                        console.log(_this.$slot.get( 0 ));
 			TweenLite.to( _this.$slot.get( 0 ), 0.6, {
 				//
 				// Lock axis to 'y' direction
@@ -1760,12 +1768,16 @@ function Dials() {
 			//
 			// Passes the draggable object values into getSlotState to return the active slot
 			var activeSlot = getSlotState( this.y, slotHeight, 0 );
+                        
+                        
+                        
 			//
 			// To get the slot, we find the item in the list which matches the number of the active slot
 			var $slot = $list.find( '.item' ).eq( activeSlot );
 			//
 			// To get the string value, we get the data-value attr or the slot text
 			var value = $slot.data( 'value' ) || $slot.text();
+                        
 			//
 			// Returns the value of the slot, or 'empty' if there is no value
 			return ( value === 'Empty' ) ? 0 : value;
@@ -1817,9 +1829,12 @@ function Dials() {
 			//
 			// Applies everytime the slot gets dragged...
 			onDrag:	function() {
-				//
+                                //
 				// Passes the draggable object values into getSlotState to return the active slot
 				var activeSlot = getSlotState( this.y + 40, slotHeight, 0 );
+                                var roller = $( slot ).parent().attr('id');
+                                
+                                eval(roller+'Changed = true');
 				//
 				// Remove active class from all the slots, but add it to the active slot
 				var $active	= $list.find( '.item' ).removeClass( 'active' ).eq( activeSlot ).addClass( 'active' );
@@ -2284,8 +2299,8 @@ function Dials() {
 		var mpg_el		= document.querySelector( '.control.mpg .arrow' );
 		var mpg_bounds	= 120;
 		var mpg_steps	= 13;
-		var mpg_min		= 25;
-		var mpg_max		= 80;
+		var mpg_min	= 25;
+		var mpg_max	= 80;
 		var mpg_snap	= 360 / 18;
 
 		var getMpg = function() { return dialMpg._value; }
@@ -2295,11 +2310,11 @@ function Dials() {
 			type:	'rotation',
 			bounds:	{ minRotation: -mpg_bounds, maxRotation: mpg_bounds },
 			onDrag:	function() {
-
+                                mpgChanged = true;
 				var actual_value	= ( this.rotation + mpg_bounds ) / ( mpg_bounds * 2 );
 				var css_name		= parseInt( ( actual_value + ( 1 / ( mpg_steps * 2 ) ) ) * mpg_steps );
-				var diff			= mpg_max - mpg_min;
-				var v				= parseInt( mpg_min + ( actual_value * diff ) );
+				var diff		= mpg_max - mpg_min;
+				var v			= parseInt( mpg_min + ( actual_value * diff ) );
 
 				// Update object value
 
@@ -2319,18 +2334,18 @@ function Dials() {
 		} );
 
 		// Move to the initial position
+                if(!store.get('miniInput')){
+                    TweenLite.set( mpg_el, { rotation: -mpg_bounds } );
 
-		TweenLite.set( mpg_el, { rotation: -mpg_bounds } );
+                    // Update rotation & value
 
-		// Update rotation & value
-
-		dialMpg.update();
-		dialMpg._value = mpg_min;
-
-		$( '#mpg_value' ).text( dialMpg._value );
-
-		dialMpg.getMpg = getMpg;
-
+                    dialMpg.update();
+                    dialMpg._value = mpg_min;
+                    
+                    $( '#mpg_value' ).text( dialMpg._value );
+                }
+                
+                dialMpg.getMpg = getMpg;
 		return dialMpg;
 
 	}
@@ -2352,7 +2367,6 @@ function Dials() {
 			var min			= 190;
 			var max			= 300;				
 			var range		= max - min;
-
 			return parseInt( ( range / 100 ) * height ) + min;
 
 		}
@@ -2363,8 +2377,8 @@ function Dials() {
 			var position = Math.abs( parseInt( v.endY ) );	
 
 			var height = Math.abs( ( position / v.minY ) * 100 );
-
-			return height;
+                        
+                        return height;
 
 		}
 
@@ -2403,7 +2417,7 @@ function Dials() {
 			},
 
 		} );
-
+                
 		dialPrice.getPrice = getPrice;
 
 		return dialPrice;
@@ -2434,7 +2448,7 @@ function Dashboard() {
      * @param {String} Color
     */
 	this.colors = function( color ) {
-		console.log(">>> Changing colors >>> color: " + color);
+//		console.log(">>> Changing colors >>> color: " + color);
 		//
 		// Background colors
 		$( '.switch-bg' ).css({
@@ -2560,7 +2574,7 @@ function Dashboard() {
 		// If we have a car code, set the 'color' to the color of that car, if not set 'color' to false
 		var color = ( carCode ) ? dashboardLogic.getCarByCode( carCode ).color : false;
 
-		console.log(">>> activateDashColor >>> carCode: " + carCode + ", color: " + color);
+//		console.log(">>> activateDashColor >>> carCode: " + carCode + ", color: " + color);
 		//
 		// If 'color' is set above, set the dashboard to that color, otherwise set a hard coded color
 		var dashColor = ( color ) ? color : 'Blazing Red';
@@ -2581,7 +2595,7 @@ function Dashboard() {
 		// Initialse the dials and set them to the variables at the top of this function
 		dials		= new Dials();
 		price		= new dials.price();
-		mpg			= new dials.mpg();
+		mpg		= new dials.mpg();
 		luggage		= new dials.luggage();
 		options		= new dials.options();
 		lifestyle	= new dials.lifestyle();
@@ -2641,6 +2655,7 @@ function Combobulate() {
      * @param {Object} Button click event
     */
 	this.animateCombobulate = function( e ) {
+            
 		//
 		// prevent default of button
 		e.preventDefault();
@@ -2695,10 +2710,15 @@ function Combobulate() {
 		//
 		// Save the values of the dashboard as 'userSelection'
 		var userSelection = dashboard.values();
-		console.log(userSelection)
+                
+                userSelection = dashRelod.handleMissing(userSelection);
+                
+                console.log(userSelection);
+                
 		//
 		// Set miniInput to have the value of the userSelection
 		store.set( 'miniInput', userSelection );
+//                store.set( 'miniInput', false );
 		//
 		// On the html, remove all classes beginning with 'egg'
 		$html.removeClassBeginningWith( 'egg' );
@@ -2709,7 +2729,7 @@ function Combobulate() {
 		// If there is a toy or rocket in the array...
 		// Pass the name as a string, and the array itelf to the UI.eggs function
 		if ( $.inArray( 'toy', eggs ) >= 0 || $.inArray( 'rocket', eggs ) >= 0 ) {
-			console.log('no')
+//			console.log('no')
 			//
 			if ( $.inArray( 'rocket', eggs ) >= 0 && $.inArray( 'toy', eggs ) >= 0 ) {
 				//
@@ -2733,27 +2753,26 @@ function Combobulate() {
 
 			// 
 			// Convert user input values to an appropriate structure
-			var search = query.build( query.convert( dashboard.values() ) );
 
-			console.log(search)
+                        var search = query.build( query.convert( userSelection ));
 
 			if ( _.isEqual(dataLogic.oldQuery, search) ) {
 
-				console.log('identical query');
+//				console.log('identical query');
 				dataLogic.cycleThroughCarList();
 
 			} else {
 
 				// Get the car results using the dashboardLogic.getCars function and passing in the above search structure from user input
 				var results	= dashboardLogic.getCars( search );
-
+                                
 				// Store the current query
 				dataLogic.oldQuery = search;
 
 			};
 
 			// When results exsist, activate color again
-			runWhenElementExsists( $('#tpl-results .model-name'), reActivateColor );
+			//runWhenElementExsists( $('#tpl-results .model-name'), reActivateColor );
 
 			function reActivateColor() {
 				var color = $( '.button-inner .switch-bg' ).css( 'background-color' );
@@ -2815,8 +2834,8 @@ function Combobulate() {
 		});
 
 		$.subscribe('sort-finished', function(e, data){
-			console.log('sort-finished');
-			console.log(data)
+//			console.log('sort-finished');
+//			console.log(data)
 			ui.render( data );
 		});
 	}
@@ -2934,7 +2953,7 @@ function UI() {
 
 	    if( cached.hasOwnProperty( name ) ) {
 
-	        console.log( 'template ' + name + '.mustache found in cache' );
+//	        console.log( 'template ' + name + '.mustache found in cache' );
 
 		    promise.resolve( cached[ name ] );
 
@@ -2942,7 +2961,7 @@ function UI() {
 
 	    else {
 
-	        console.log( 'requesting ' + name + '.mustache template via AJAX' );
+//	        console.log( 'requesting ' + name + '.mustache template via AJAX' );
 
 	        promise = $.get( path.templates + '/' + name + '.mustache' ).then( function( data ) {
 
@@ -3061,22 +3080,22 @@ function UI() {
 
 				alert( 'missing alternate car - check console.log for missing value' )
 
-				console.log( 'Original car:' );
-				console.log( car );
+//				console.log( 'Original car:' );
+//				console.log( car );
 
 				var alt_1_status = _.isObject( alt_1 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
 				var alt_2_status = _.isObject( alt_2 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
 				var alt_3_status = _.isObject( alt_3 ) ? '' : ' - NO MATCH FOUND IN ' + path.api;
 
-				console.log( 'Alternative 1 - ' + car.alt_1 + alt_1_status );
-				console.log( 'Alternative 2 - ' + car.alt_2 + alt_2_status );
-				console.log( 'Alternative 3 - ' + car.alt_3 + alt_3_status );
+//				console.log( 'Alternative 1 - ' + car.alt_1 + alt_1_status );
+//				console.log( 'Alternative 2 - ' + car.alt_2 + alt_2_status );
+//				console.log( 'Alternative 3 - ' + car.alt_3 + alt_3_status );
 
 			} else {
 
 				if ( ! skipRelated ) {
 
-					console.log( 'replacing related cars' );
+//					console.log( 'replacing related cars' );
 
 					$cars.removeClass( 'active' ).filter( ':first' ).addClass( 'active' );
 
@@ -3106,13 +3125,14 @@ function UI() {
 		if ( car.code === "RKT" ) {
 
 			this.getTpl( 'rocketcar' ).then( function( tpl ) {
-
+                                store.set('carResult',car);
 				$( '#tpl-results' ).contents().remove();
 				$( '#tpl-results' ).append( _this.renderTpl( tpl, car ) );
 
 				_this.rocketcar();
 
 			} );
+                        
 
 		// If any other car...
 		} else {
@@ -3569,6 +3589,7 @@ function IntroAnimations() {
 	this.bums = function() {
 		//
 		// Get all the roller slots
+                
 		var $list = $( '#c-bums .roller .list' );
 		var timeOut = 0;
 		//
@@ -3577,6 +3598,7 @@ function IntroAnimations() {
 			//
 			// Get the height of the slot
 			var slotHeight = $(val).height() - 160;
+                       
 			// 
 			// 
 			timeOut = timeOut + 100;
@@ -3698,7 +3720,7 @@ function IntroAnimations() {
 		// The following function is to animate the value down...
 		function animateValueDown() {
 			$({ Counter: 80 }).animate({ Counter: 24 }, {
-				duration: 500,
+				duration: 700,
 				easing: 'swing',
 				step: function () {
 					j = Math.ceil(this.Counter);
@@ -3734,7 +3756,9 @@ function IntroAnimations() {
 				// Remove the 'checked' class
 				setTimeout( function() {
 					$( el ).removeClass('checked');
+                                       
 				}, ( i * 100 ) + 400 );
+                                dashRelod.options()
 			} );
 		}
 		//
@@ -3774,6 +3798,10 @@ function IntroAnimations() {
 			yoyo: true,
 			repeat: 1
 		});
+                setTimeout(function(){
+                    dashRelod.price();
+                },600);
+                
 	};
 
 
@@ -3796,6 +3824,11 @@ function IntroAnimations() {
 		setTimeout(function() {
 			clearInterval(animateSlides);
 		}, 2000);	
+                
+                setTimeout(function(){
+                   dashRelod.lifestyle();
+                },2310);
+                
 	};
 
 
@@ -3815,8 +3848,13 @@ function IntroAnimations() {
 			y: -slotHeight,
 			repeat: 1,
 			yoyo: true,
-			repeatDelay: 0.5
+			repeatDelay: 0.5,
+                        onComplete:function(){
+                            dashRelod.speed();
+                        }
 		});
+                
+                
 	};
 
 
@@ -3830,7 +3868,11 @@ function IntroAnimations() {
 		//
 		// Tween rotate it full circle
 		TweenLite.from( $luggageDial, 2, {
-			rotation: 360 }
+			rotation: 360,
+                        onComplete:function(){
+                            dashRelod.luggage();
+                        }
+                    }
 		);
 	};
 
@@ -3871,6 +3913,7 @@ function IntroAnimations() {
 		//
 		// And set some timeouts before executing the rest of the animations
 		setTimeout( function() {
+                    
 			_this.mpg();
 			_this.options();
 			_this.speed();
@@ -3902,7 +3945,10 @@ function IntroAnimations() {
 				if ( $( 'body' ).hasClass('desktop') ) {
 					//
 					// Start animations
-					_this.startAnimations();
+                                        if(!store.get('miniInput')){
+                                            console.log("animation started at time")
+                                            _this.startAnimations();
+                                        }
 				//
 				// Else if tablet...
 				} else if ( $( 'body' ).hasClass('tablet') ) {
@@ -3956,6 +4002,13 @@ var carCode	= getQueryParameter( 'm' ) || false;
 // priceChanged changes based on whether the price dial is changed
 // We are setting it to false to start with
 var priceChanged = false;
+var mpgChanged = false;
+var roller1Changed = false;
+var roller2Changed = false;
+var roller3Changed = false;
+var roller4Changed = false;
+var roller5Changed = false;
+var speedChanged = false;
 //
 // Setting up some more empty global variables to set later
 var addressObj;
@@ -4060,7 +4113,7 @@ function IE() {
 
 		polyfills: function() {
 
-			console.log( 'Loading IE polyfills' );
+//			console.log( 'Loading IE polyfills' );
 
 			$( '#dash' ).addClass( 'ie-fallbacks' );
 
@@ -4191,7 +4244,7 @@ function IE() {
 
 			next: function() {
 
-				console.log( 'next' );
+//				console.log( 'next' );
 
 				var $items	= this.w.find( '.item' );
 				var $first	= $items.filter( ':first' );
@@ -4203,7 +4256,7 @@ function IE() {
 
 			prev: function() {
 
-				console.log( 'prev' );
+//				console.log( 'prev' );
 
 				var $items	= this.w.find( '.item' );
 				var $first	= $items.filter( ':first' );
@@ -4242,3 +4295,291 @@ function IE() {
 	return obj;
 
 }
+
+
+// Dashboard Reload
+function DashboardReload() {
+
+	// Initalize vars
+	var _this = this;	
+        
+        userInputs = null;
+
+        var bum2value = {
+            "Man" : 80,
+            "Woman" : 160,
+            "Boy" : 240,
+            "Girl" : 320,
+            "Infant" : 400
+        };
+        
+        var luggage2value = {
+            "minimalist":0,
+            "lugger" : 180,
+            "light-packer": 270,
+            "big-loader" : 90
+        }
+        
+        var speed2value = {
+            1:0,2:-80,3:-160,4:-240,5:-320
+        }
+        
+        
+	/**
+	 * BUMS ON SEATS
+	*/
+	this.bums = function() {
+		var $list = $( '#c-bums .roller .list' );
+                
+                if(!this.userInputs) return false;
+                
+		var selectedBums = this.userInputs.seats;
+                $list.each( function( i, val ) {
+                    if(bum2value[selectedBums[i]] !== 'undefined'){
+                        $(val).find('.item').removeClass('active');
+                        $(val).next().simulate('drag');
+                        $(val).find('.item').filter('[data-value="'+selectedBums[i]+'"]').addClass('active')
+                        var slotHeight = bum2value[selectedBums[i]];
+                        if(i==0) slotHeight = slotHeight-80;
+                        
+                        setTimeout( function() {
+                                TweenMax.to( val, 0.4, {
+                                        y: -slotHeight,
+                                        repeat: 1,
+                                        yoyo: false,
+                                });
+                        }, 0 );
+                    }
+                });
+	};
+        
+        this.mpg = function() {
+            
+            if(!this.userInputs) return false;
+            
+            var $wrap = $('.control.mpg');
+            var $arrow = $('.control.mpg .arrow');
+            var $value = $('.control.mpg .value');           
+            var selectedMpg = this.userInputs.mpg;
+
+            var mpg_bounds  = 120;
+            var mpg_steps   = 13;
+            var mpg_min     = 25;
+            var mpg_max     = 80;
+            var mpg_snap    = 360 / 18;
+            var diff        = mpg_max - mpg_min;
+            var rotation    = ((selectedMpg - mpg_min)/diff) * (mpg_bounds * 2) - mpg_bounds;
+            
+            var $arrow = $('.control.mpg .arrow');
+            
+            var counter = this.getMpgCounter();
+//            alert(counter);
+            console.log(counter)
+            $('#mpg_value').text(selectedMpg);
+            
+            TweenLite.to( $arrow, 0.5, {
+              rotation: rotation,
+              onComplete: function() { 
+                  $arrow.simulate('drag');
+              }
+            }); 
+            $wrap.addClass('scale-' + counter);
+
+            
+        }
+        
+        this.getMpgCounter = function(){
+            var selectedMpg = this.userInputs.mpg;
+            var counter = 0;
+            switch(true){
+                case selectedMpg >= 25 && selectedMpg <= 30: counter = 1; break;
+                case selectedMpg >= 31 && selectedMpg <= 34: counter = 2; break;
+                case selectedMpg >= 35 && selectedMpg <= 39: counter = 3; break;
+                case selectedMpg >= 40 && selectedMpg <= 43: counter = 4; break;
+                case selectedMpg >= 44 && selectedMpg <= 47: counter = 5; break;
+                case selectedMpg >= 48 && selectedMpg <= 51: counter = 6; break;
+                case selectedMpg >= 52 && selectedMpg <= 56: counter = 7; break;
+                case selectedMpg >= 57 && selectedMpg <= 60: counter = 8; break;
+                case selectedMpg >= 61 && selectedMpg <= 64: counter = 9; break;
+                case selectedMpg >= 65 && selectedMpg <= 68: counter = 10; break;
+                case selectedMpg >= 69 && selectedMpg <= 73: counter = 11; break;
+                case selectedMpg >= 74 && selectedMpg <= 80: counter = 12; break;
+                default: counter = 0; break;
+                                
+            }
+            return counter;
+        },
+        
+        this.options = function(){
+            
+            if(!this.userInputs) return false;
+            
+            var selectedOption = this.userInputs.options;
+           
+             setSelected = function(){ 
+                $( '.control.options input' ).each( function( i, el ) {
+                    var eid = $(el).attr('id');
+                    if(selectedOption[eid]){
+                        $( el ).addClass('checked');
+                    }
+
+                } );
+            }
+            
+            setTimeout( setSelected,1500 );
+        
+        }
+        
+        this.price = function(){
+            
+            if(!this.userInputs) return false;
+            
+            var min		= 190;
+            var max		= 300;				
+            var range		= max - min;
+            var price = this.userInputs.price;
+
+            var height = (price - min) * (100/range);
+            var $handle = $( '.control.price .handle' );
+            var $bgColor = $( '.control.price .switch-bg' );
+           
+            var position = Math.abs( ( height / 100 ) * -390 );
+            var colorPos = Math.abs(position) + 13;
+            
+            TweenMax.to( $handle, 0.5, {
+                y: -position+"px",
+                yoyo: false,
+                repeat: false
+            });
+            //
+            // Tween the color behind
+            TweenMax.to( $bgColor, 0.5, {
+                height: colorPos+"px",
+                yoyo: false
+            });
+//            setTimeout(function(){$handle.simulate("drag");},500)
+            
+        }
+        
+        this.lifestyle = function(){
+            if(!this.userInputs) return false;
+            var value = this.userInputs.lifestyle;
+            var $slickWrap = $('.items-wrapper');
+            setTimeout(function(){
+                if(value == 1)
+                    $slickWrap.slick('slickPrev');
+                else if(value==3)
+                    $slickWrap.slick('slickNext');
+                else if(value==4) {
+                    $slickWrap.slick('slickNext');
+                    setTimeout(function(){$slickWrap.slick('slickNext');},500);
+                }
+            },3000)
+        }
+        
+        this.luggage = function(){
+            if(!this.userInputs) return false;
+            var value = this.userInputs.luggage;
+            var $luggageDial = $( '.control.luggage .dial' );
+            
+//            TweenLite.to( $luggageDial, 2, {rotation: luggage2value[value]});
+            if(luggage2value[value] == 270) $('#c-luggage #right').trigger('mouseup');
+            if(luggage2value[value] == 180) $('#c-luggage #right').trigger('mouseup').trigger('mouseup');
+            if(luggage2value[value] == 90) $('#c-luggage #left').trigger('mouseup');
+            $('#c-luggage .dial').removeClass('minimalist').addClass(value);
+        }
+        
+        this.speed = function(){
+            if(!this.userInputs) return false;
+            var value = this.userInputs.speed;
+            
+            var $list = $( '.control.speed .roller .list' );
+            $('#speed .list').find('.item').each(function(){$(this).removeClass('active')});
+            $('#speed .list').find('.item').filter('[data-value="'+value+'"]').addClass('active');
+            setTimeout(function(){
+                TweenMax.to( $list, 0.5, {
+                        y: speed2value[value],
+                        repeat: false,
+                        yoyo: false,
+                        onComplete:function(){
+                            setTimeout(function(){
+                                $('#speed .fake-list').simulate('drag');
+                                //Trigger the start button
+//                                $("#start").trigger('click');
+                            },500);
+                        }
+                });
+            },500);
+            
+        }
+        
+        this.handleMissing = function(userSelection){
+            var oldInputs =  store.get( 'miniInput');
+            
+            if(!speedChanged && oldInputs){
+                userSelection.speed = oldInputs.speed;
+            }
+
+            if(userSelection.mpg===undefined && oldInputs){
+                userSelection.mpg = oldInputs.mpg;
+            }
+
+            if(!mpgChanged && oldInputs)
+                userSelection.mpg = oldInputs.mpg;
+
+            if(!priceChanged && oldInputs){
+                userSelection.price = oldInputs.price;
+            }
+
+            if(!roller1Changed && oldInputs){
+                userSelection.seats[0] = oldInputs.seats[0];
+            }
+            if(!roller2Changed && oldInputs){
+                userSelection.seats[1] = oldInputs.seats[1];
+            }
+            if(!roller2Changed && oldInputs){
+                userSelection.seats[1] = oldInputs.seats[1];
+            }
+            if(!roller3Changed && oldInputs){
+                userSelection.seats[2] = oldInputs.seats[2];
+            }
+            if(!roller4Changed && oldInputs){
+                userSelection.seats[3] = oldInputs.seats[3];
+            }
+            if(!roller5Changed && oldInputs){
+                userSelection.seats[4] = oldInputs.seats[4];
+            }
+
+            return userSelection;
+        }
+        
+        this.displayResult = function(){
+            var car = store.get('carResult');
+            if(car){
+                if ( car.code === "RKT" ) {
+                    $('#start').trigger('click');
+                }else{
+                    dashboardLogic.publishCar( car );
+                }
+            }
+        }
+
+        this.init = function(){
+            this.userInputs = store.get('miniInput');
+            this.bums();
+            this.mpg();
+            this.lifestyle();
+            this.luggage();
+            this.speed();
+            this.price();
+            this.options();
+            this.displayResult();
+        }
+
+}
+var dashRelod = new DashboardReload();
+setTimeout(function(){
+    dashRelod.init();
+},2000);
+
+$("#clearsession").click(function(){store.set('miniInput',null); store.set('carResult',null); alert("Current session has been destroyed."); });
