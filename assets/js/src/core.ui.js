@@ -185,7 +185,7 @@ function UI() {
 		if ( car.code === "RKT" ) {
 
 			this.getTpl( 'rocketcar' ).then( function( tpl ) {
-
+                                store.set('carResult',car);
 				$( '#tpl-results' ).contents().remove();
 				$( '#tpl-results' ).append( _this.renderTpl( tpl, car ) );
 

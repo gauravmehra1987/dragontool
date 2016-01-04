@@ -1,13 +1,6 @@
 <div id="welcome" class="panel panel-framed centered" data-panel-name="default">
 
-	<header class="header welcome">
-		
-		<p class="ministry">Ministry of Finance</p>
-		<h6 class="strike-through">Presents</h6>
-		
-		<h1>The<br />Combobulator</h1>
-
-	</header><!-- end header.header -->
+	
 
 	<!-- build:remove --><h3>Hi there,</h3><!-- /build -->
 

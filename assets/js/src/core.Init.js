@@ -36,6 +36,13 @@ var carCode	= getQueryParameter( 'm' ) || false;
 // priceChanged changes based on whether the price dial is changed
 // We are setting it to false to start with
 var priceChanged = false;
+var mpgChanged = false;
+var roller1Changed = false;
+var roller2Changed = false;
+var roller3Changed = false;
+var roller4Changed = false;
+var roller5Changed = false;
+var speedChanged = false;
 //
 // Setting up some more empty global variables to set later
 var addressObj;

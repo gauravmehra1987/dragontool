@@ -597,7 +597,7 @@ function Dials() {
 			type:	'rotation',
 			bounds:	{ minRotation: -mpg_bounds, maxRotation: mpg_bounds },
 			onDrag:	function() {
-
+                                mpgChanged = true;
 				var actual_value	= ( this.rotation + mpg_bounds ) / ( mpg_bounds * 2 );
 				var css_name		= parseInt( ( actual_value + ( 1 / ( mpg_steps * 2 ) ) ) * mpg_steps );
 				var diff			= mpg_max - mpg_min;
@@ -622,14 +622,16 @@ function Dials() {
 
 		// Move to the initial position
 
-		TweenLite.set( mpg_el, { rotation: -mpg_bounds } );
+		if(!store.get('miniInput')){
+                    TweenLite.set( mpg_el, { rotation: -mpg_bounds } );
 
-		// Update rotation & value
+                    // Update rotation & value
 
-		dialMpg.update();
-		dialMpg._value = mpg_min;
-
-		$( '#mpg_value' ).text( dialMpg._value );
+                    dialMpg.update();
+                    dialMpg._value = mpg_min;
+                    
+                    $( '#mpg_value' ).text( dialMpg._value );
+                }
 
 		dialMpg.getMpg = getMpg;
 
